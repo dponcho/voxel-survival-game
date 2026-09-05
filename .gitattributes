@@ -1,0 +1,15 @@
+* text=auto
+AGENTS.md -text
+ARCHITECTURE.md -text
+GAME_DESIGN.md -text
+PERFORMANCE.md -text
+ROADMAP.md -text
+TESTING.md -text
+*.gd text eol=lf
+*.py text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.yml text eol=lf
+*.godot text eol=lf
+*.tscn text eol=lf
+*.cfg text eol=lf

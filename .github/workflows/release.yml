@@ -1,0 +1,31 @@
+name: Authorized tagged candidate release
+on:
+  push:
+    tags: ['v[0-9]*']
+permissions:
+  contents: read
+jobs:
+  validate:
+    uses: ./.github/workflows/windows-build.yml
+    with:
+      cold: true
+  attach:
+    needs: validate
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-windows-x86_64-${{ github.sha }}
+          path: candidate
+      - name: Attach the exact validated bytes as an experimental prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        working-directory: candidate
+        run: |
+          sha256sum --check SHA256SUMS.txt
+          gh release create "$RELEASE_TAG" Cairn-windows-x86_64.zip SHA256SUMS.txt BUILD_INFO.json --verify-tag --prerelease --title "Cairn $RELEASE_TAG" --notes "Experimental candidate. See BUILD_INFO.json for source identity. Target hardware performance remains unverified."
+

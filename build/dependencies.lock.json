@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "godot": {
+    "version": "4.7.2",
+    "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "url": "https://codeload.github.com/godotengine/godot/zip/ed1daf0bf001b61586d9930840f2f1394092c079",
+    "sha256": "098b0a71e95ad98ab44651199d55c3f085e4e02c735514e284a2d5263ac81fb2"
+  },
+  "voxel": {
+    "version": "1.7",
+    "commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "url": "https://codeload.github.com/Zylann/godot_voxel/zip/2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "sha256": "782c0676318f05efdd03204f70932435255464daaa80eb9d995f2ab920d32e4b"
+  },
+  "compiler": {
+    "version": "llvm-mingw-20250709-ucrt-x86_64",
+    "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20250709/llvm-mingw-20250709-ucrt-x86_64.zip",
+    "sha256": "82babcd6aae4dc3606e8e0471d816989c384b4bf86a139f184a8b4a1b2c2758d"
+  },
+  "python": "3.12.10",
+  "scons": {
+    "version": "4.9.1",
+    "url": "https://files.pythonhosted.org/packages/45/92/50b739021983b131dcacd57aa8b04d31c5acc2e7e0eb4ed4a362f438c6b7/scons-4.9.1-py3-none-any.whl",
+    "sha256": "d2db1a22eb6039e97cbbb0106f18f435af033d0aad190299c9688378e2810a5e"
+  }
+}

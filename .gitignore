@@ -1,0 +1,16 @@
+.work/
+.godot/
+game/.godot/
+game/build_info.json
+engine-src/
+build/toolchain/
+build/templates/
+build/engine-bundle/
+build/downloads/
+dist/
+reports/
+__pycache__/
+*.pyc
+*.obj
+*.pdb
+

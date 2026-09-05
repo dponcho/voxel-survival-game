@@ -1,0 +1,21 @@
+name: Windows portable candidate
+on:
+  workflow_call:
+    inputs:
+      cold:
+        type: boolean
+        default: false
+  workflow_dispatch:
+    inputs:
+      cold:
+        description: Ignore the engine cache for a source-to-ZIP proof
+        type: boolean
+        default: true
+permissions:
+  contents: read
+jobs:
+  engine-and-package:
+    uses: ./.github/workflows/engine.yml
+    with:
+      cold: ${{ inputs.cold }}
+

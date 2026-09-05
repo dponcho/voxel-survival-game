@@ -1,0 +1,7 @@
+Cairn project source and UI: original work for this repository.
+No third-party game art, fonts or audio have been added in M0.
+Godot's built-in default font and third-party libraries are covered by the
+Godot license and copyright notices retained in this directory.
+Voxel Tools and its third-party notices are retained under godot/modules/voxel.
+The LLVM-MinGW static-runtime notices are retained under llvm-mingw.
+No additional license grant is made for the original project by this notice.
