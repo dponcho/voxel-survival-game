@@ -20,6 +20,7 @@ All compiler/tool setup and game execution for development tests run in GitHub
 Actions. Source/toolchain hashes are locked in `build/dependencies.lock.json`.
 CI automatically builds a matching custom editor and both export templates on a
 cache miss. Manual Windows builds and the weekly cold build can bypass the cache.
+Moving a draft pull request to ready for review also runs the full cold-build gate.
 Only authorized `v*` tags invoke release publication; ordinary builds are artifacts.
 
 The package/evidence and symbols are separate artifacts. Cloud headless success

@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,3 +28,5 @@ jobs:
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml
+    with:
+      cold: ${{ github.event.action == 'ready_for_review' }}
