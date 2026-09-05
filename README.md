@@ -5,9 +5,13 @@ is [GAME_DESIGN.md](GAME_DESIGN.md), with [ARCHITECTURE.md](ARCHITECTURE.md),
 [ROADMAP.md](ROADMAP.md), [PERFORMANCE.md](PERFORMANCE.md),
 [TESTING.md](TESTING.md) and [AGENTS.md](AGENTS.md).
 
-Only **M0: cloud build foundation** is currently being implemented. The candidate
+**M0: cloud build foundation is implemented and cloud-verified.** The candidate
 opens a title screen and offers a startup check; gameplay has not been implemented.
 See [the milestone evidence record](docs/M0_EVIDENCE.md) for actual verification status.
+
+[Download the verified M0 Windows candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/33978065158/artifacts/9975747665)
+from the [successful cold source-to-ZIP run](https://github.com/dponcho/voxel-survival-game/actions/runs/33978065158).
+Target hardware performance remains unverified.
 
 ## Portable builds
 
