@@ -46,6 +46,8 @@ jobs:
       - name: Audit distribution and test offline extractions
         env:
           CAIRN_CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+          TEMP: ${{ runner.temp }}
+          TMP: ${{ runner.temp }}
         run: python tools/ci/pipeline.py package
       - name: Upload portable player ZIP and identity
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
