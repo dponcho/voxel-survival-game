@@ -4,7 +4,7 @@
   "targets": ["editor", "template_debug", "template_release"],
   "flags": [
     "platform=windows", "arch=x86_64", "use_mingw=yes", "use_llvm=yes",
-    "use_static_cpp=yes", "vulkan=no", "d3d12=no", "opengl3=yes",
+    "use_static_cpp=yes", "vulkan=no", "d3d12=no", "opengl3=yes", "angle=no",
     "lto=none", "precision=single", "debug_symbols=yes", "separate_debug_symbols=yes",
     "winrt=no", "accesskit=no", "voxel_gpu=no", "voxel_fast_noise_2=no"
   ]
