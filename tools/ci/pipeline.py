@@ -177,7 +177,7 @@ def build():
     symbols = BUNDLE / "symbols"
     symbols.mkdir(exist_ok=True)
     for path in (engine / "bin").iterdir():
-        if path.suffix in [".debug", ".pdb"]:
+        if path.suffix in [".debug", ".debugsymbols", ".pdb"]:
             shutil.copy2(path, symbols / path.name)
     if not list(symbols.iterdir()):
         raise RuntimeError("Separate symbols were not produced")
