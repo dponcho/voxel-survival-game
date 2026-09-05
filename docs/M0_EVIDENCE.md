@@ -25,7 +25,21 @@ dependency audit, editor/debug/release self-tests and two offline fresh-extracti
 reports. Successful jobs publish `candidate.json` with the ZIP digest, commit,
 run URL and whether the engine was built on a cache miss. Symbols are separate.
 
-Pending: first successful cold-cache cloud build and its actual artifact identity.
+First cold cloud run: https://github.com/dponcho/voxel-survival-game/actions/runs/33941123135
+at source `65cc62df14eb42be656d07be8809f35ed93abe55` (PR merge build
+`ae54499a86293accd757fdd7ea7b60d579dd4f03`). Linux and Windows regression
+tests passed; all three engine targets compiled; editor import and editor/debug/
+release native self-tests passed. Packaging failed because the initial system-DLL
+allowlist omitted seven Windows components. No candidate ZIP passed that run.
+
+The audit now explicitly includes those components. Microsoft documents
+[Windows API sets](https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-apisets),
+[DirectWrite](https://learn.microsoft.com/en-us/windows/win32/api/dwrite/nf-dwrite-dwritecreatefactory),
+[Shcore](https://learn.microsoft.com/en-us/windows/win32/api/shellscalingapi/nf-shellscalingapi-getdpiformonitor)
+and the [Winsock compatibility library](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-2-architecture-2).
+Unknown API sets and external C++ runtime DLLs remain rejected.
+
+Pending: first successful complete cold-cache cloud build and its artifact identity.
 Target OpenGL launch and HD 620 frame/memory performance are **not_run**.
 Hosted Windows headless checks do not certify rendering. A rendered smoke test
 is not yet available. The complete benchmark is an M1 deliverable.

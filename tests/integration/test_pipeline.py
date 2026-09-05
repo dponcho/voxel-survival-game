@@ -17,6 +17,9 @@ class PackagingTests(unittest.TestCase):
         self.assertEqual(pipeline.imported_dlls(output), {"kernel32.dll", "vcruntime140.dll"})
         self.assertFalse(pipeline.is_system_dll("vcruntime140.dll"))
         self.assertFalse(pipeline.is_system_dll("libc++.dll"))
+        self.assertFalse(pipeline.is_system_dll("api-ms-win-unknown-custom.dll"))
+        self.assertTrue(pipeline.is_system_dll("dwrite.dll"))
+        self.assertTrue(pipeline.is_system_dll("api-ms-win-core-registry-l1-1-0.dll"))
         self.assertTrue(pipeline.is_system_dll("api-ms-win-crt-runtime-l1-1-0.dll"))
         with self.assertRaises(RuntimeError):
             pipeline.imported_dlls(output.replace("AMD64 (0x8664)", "I386 (0x14C)"))

@@ -1,11 +1,14 @@
 name: CI
 on:
   push:
-    branches: ['main', 'codex/**']
+    branches: [main]
   pull_request:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   static:
     runs-on: ubuntu-24.04
@@ -24,4 +27,3 @@ jobs:
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml
-

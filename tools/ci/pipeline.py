@@ -243,11 +243,17 @@ def self_test(executable, label, cwd, offline=False):
         env["PATH"] = str(Path(os.environ["SystemRoot"]) / "System32")
         args = [executable, "--headless", "--", "--self-test"]
         if offline:
-            # Hosted Windows Actions runs as administrator. Fail if the rule cannot be installed.
             rule = "Cairn-M0-offline-" + label
             script = ROOT / "tools/ci/offline_test.ps1"
-            output = run(["powershell.exe", "-NoProfile", "-File", script,
-                          "-Executable", executable, "-RuleName", rule], label, cwd=cwd, env=env, timeout=90)
+            powershell = Path(os.environ["SystemRoot"]) / "System32/WindowsPowerShell/v1.0/powershell.exe"
+            firewall = [powershell, "-NoProfile", "-File", script,
+                        "-Executable", executable, "-RuleName", rule]
+            # Run the game directly so a timeout kills it and still removes the rule.
+            try:
+                run([*firewall, "-Mode", "block"], label + "-block-network", timeout=60)
+                output = run(args, label, cwd=cwd, env=env, timeout=60)
+            finally:
+                run([*firewall, "-Mode", "remove"], label + "-restore-network", timeout=60)
         else:
             output = run(args, label, cwd=cwd, env=env, timeout=60)
         records = [line.split("CAIRN_SELF_TEST=", 1)[1] for line in output.splitlines() if "CAIRN_SELF_TEST=" in line]
@@ -261,7 +267,7 @@ def self_test(executable, label, cwd, offline=False):
         write_json(REPORTS / (label + ".json"), report)
 
 
-def package():
+def prepare():
     manifest = verify_bundle()
     game = ROOT / "game"
     templates = ROOT / "build/templates"
@@ -297,6 +303,15 @@ def package():
     shutil.copy2(ROOT / "distribution/NOTICE.txt", player / "LICENSES/CAIRN-NOTICE.txt")
     if (player / "Cairn.pck").read_bytes()[:4] != b"GDPC":
         raise RuntimeError("Missing or invalid Godot PCK")
+
+
+def package():
+    verify_bundle()
+    dist = ROOT / "dist"
+    player = dist / "player"
+    info = read_json(player / "BUILD_INFO.json")
+    if info["game_commit"] != os.environ["GITHUB_SHA"] or info["engine_inputs"] != input_hash():
+        raise RuntimeError("Prepared distribution is stale")
     audit(player)
     package_path = dist / "Cairn-windows-x86_64.zip"
     with zipfile.ZipFile(package_path, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as zipped:
@@ -325,7 +340,7 @@ def package():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["key", "setup", "build", "verify", "package"])
+    parser.add_argument("command", choices=["key", "setup", "build", "verify", "prepare", "package"])
     args = parser.parse_args()
     if args.command == "key":
         value = "windows-m0-" + input_hash()
@@ -333,7 +348,8 @@ def main():
         with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
             output.write("key=" + value + "\n")
     else:
-        {"setup": setup, "build": build, "verify": verify_bundle, "package": package}[args.command]()
+        {"setup": setup, "build": build, "verify": verify_bundle,
+         "prepare": prepare, "package": package}[args.command]()
 
 
 if __name__ == "__main__":

@@ -35,16 +35,18 @@ jobs:
       - name: Build editor, debug and release templates from pinned sources
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: python tools/ci/pipeline.py build
-      - name: Verify, import, export, audit and test offline extractions
-        env:
-          CAIRN_CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
-        run: python tools/ci/pipeline.py package
+      - name: Verify matching editor and both exported native templates
+        run: python tools/ci/pipeline.py prepare
       - name: Cache only successfully verified engine bundles
         if: ${{ success() && steps.cache.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: build/engine-bundle
           key: ${{ steps.inputs.outputs.key }}
+      - name: Audit distribution and test offline extractions
+        env:
+          CAIRN_CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+        run: python tools/ci/pipeline.py package
       - name: Upload portable player ZIP and identity
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
@@ -73,4 +75,3 @@ jobs:
             build/dependencies.lock.json
             build/config/
           retention-days: 30
-
