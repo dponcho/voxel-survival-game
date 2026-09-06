@@ -35,14 +35,17 @@ jobs:
       - name: Build editor, debug and release templates from pinned sources
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: python tools/ci/pipeline.py build
-      - name: Verify matching editor and both exported native templates
-        run: python tools/ci/pipeline.py prepare
+      - name: Qualify native registrations in editor and both templates
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        run: python tools/ci/pipeline.py qualify
       - name: Cache only successfully verified engine bundles
         if: ${{ success() && steps.cache.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: build/engine-bundle
           key: ${{ steps.inputs.outputs.key }}
+      - name: Verify game imports, native mesher coverage and scenario integration
+        run: python tools/ci/pipeline.py prepare
       - name: Audit distribution and test offline extractions
         env:
           CAIRN_CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}

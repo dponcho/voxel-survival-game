@@ -334,6 +334,61 @@ def prepare():
         raise RuntimeError("Missing or invalid Godot PCK")
 
 
+def qualify():
+    """Prove native registrations in all three binaries before caching them.
+
+    Gameplay import/tests remain mandatory after this gate. A script defect must
+    not discard hours of already qualified native compilation.
+    """
+    manifest = verify_bundle()
+    project = ROOT / "build/native-qualification"
+    project.mkdir(parents=True, exist_ok=True)
+    (project / "project.godot").write_text(
+        'config_version=5\n[application]\nrun/main_scene="res://check.tscn"\n'
+        '[rendering]\nrenderer/rendering_method="gl_compatibility"\n', encoding="utf-8")
+    (project / "check.tscn").write_text(
+        '[gd_scene load_steps=2 format=3]\n[ext_resource type="Script" path="res://check.gd" id="1"]\n'
+        '[node name="NativeQualification" type="Node"]\nscript=ExtResource("1")\n', encoding="utf-8")
+    identity = {key: manifest[key] for key in ["engine_inputs", "godot_commit", "voxel_commit"]}
+    script = '''extends Node
+func _ready() -> void:
+    var errors: Array[String] = []
+    for name_value: String in ["VoxelTerrain", "VoxelMesherBlocky", "VoxelBoxMover", "SandboxWorld", "CairnFixture", "CairnMesher", "CairnProbe", "CairnReportSink"]:
+        if not ClassDB.can_instantiate(name_value): errors.append(name_value)
+    if not errors.is_empty():
+        push_error(str(errors))
+        get_tree().quit(1)
+        return
+    var entry: RefCounted = ClassDB.instantiate("SandboxWorld")
+    var identity: Dictionary = entry.call("get_build_identity")
+    var expected: Dictionary = EXPECTED
+    if identity != expected: errors.append("Native identity mismatch")
+    var terrain: Node3D = ClassDB.instantiate("VoxelTerrain")
+    terrain.set("generate_collisions", false)
+    terrain.set("mesher", ClassDB.instantiate("VoxelMesherBlocky"))
+    add_child(terrain)
+    await get_tree().process_frame
+    terrain.queue_free()
+    await get_tree().process_frame
+    print("CAIRN_SELF_TEST=" + JSON.stringify({"passed": errors.is_empty(), "errors": errors, "identity": identity, "game_commit": GAME_COMMIT}))
+    get_tree().quit(0 if errors.is_empty() else 1)
+'''.replace("EXPECTED", json.dumps(identity)).replace("GAME_COMMIT", json.dumps(os.environ["GITHUB_SHA"]))
+    (project / "check.gd").write_text(script, encoding="utf-8")
+    preset = (ROOT / "game/export_presets.cfg").read_text(encoding="utf-8")
+    for mode in ["debug", "release"]:
+        preset = preset.replace(f"../build/templates/windows_{mode}.exe", f"../engine-bundle/template_{mode}.exe")
+    (project / "export_presets.cfg").write_text(preset, encoding="utf-8")
+    editor = BUNDLE / "editor.exe"
+    run([editor, "--headless", "--path", project, "--import"], "qualification-import")
+    self_test(editor, "qualification-editor", project)
+    for mode in ["debug", "release"]:
+        target = project / mode / "Cairn.exe"
+        target.parent.mkdir(exist_ok=True)
+        run([editor, "--headless", "--path", project, "--export-" + mode,
+             "Windows Portable", target], "qualification-export-" + mode)
+        self_test(target, "qualification-" + mode, ROOT)
+
+
 def package():
     verify_bundle()
     dist = ROOT / "dist"
@@ -369,7 +424,7 @@ def package():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["key", "setup", "build", "verify", "prepare", "package"])
+    parser.add_argument("command", choices=["key", "setup", "build", "verify", "qualify", "prepare", "package"])
     args = parser.parse_args()
     if args.command == "key":
         value = "windows-m0-" + input_hash()
@@ -377,7 +432,7 @@ def main():
         with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
             output.write("key=" + value + "\n")
     else:
-        {"setup": setup, "build": build, "verify": verify_bundle,
+        {"setup": setup, "build": build, "verify": verify_bundle, "qualify": qualify,
          "prepare": prepare, "package": package}[args.command]()
 
 
