@@ -46,6 +46,6 @@ func _check_mesh(mesher: CairnMesher, buffer: VoxelBuffer, material: Material, e
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
 		triangles += vertices.size() / 3
-		if vertices.size() * 64 > 256 * 1024: failures.append(label + ": oversized upload")
+		if vertices.size() * 68 > 256 * 1024: failures.append(label + ": oversized upload")
 		if normals.size() != vertices.size(): failures.append(label + ": lost normal data")
 	if triangles != expected: failures.append(label + ": face coverage changed")

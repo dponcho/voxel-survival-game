@@ -15,10 +15,12 @@ inline uint64_t next_revision = 0;
 inline uint32_t result_tasks = 0;
 inline uint32_t retired_meshes = 0, retired_high_water = 0;
 inline uint32_t byte_budget = 512 * 1024, time_budget = 1000;
+inline bool shutting_down = false;
 inline void begin_frame() { frame_upload_bytes = 0; frame_upload_usec = 0; }
 inline bool admit_upload(uint32_t bytes) {
+    if (shutting_down) return true; // Exit is not a gameplay frame; shutdown must drain.
     if (bytes > 256 * 1024) { ++overloads; return false; }
-    return frame_upload_bytes + bytes <= byte_budget && frame_upload_usec < time_budget;
+    return frame_upload_bytes + bytes <= byte_budget && frame_upload_usec + 750 <= time_budget;
 }
 inline void record_upload(uint32_t bytes, uint64_t start) {
     const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;

@@ -152,8 +152,8 @@ func _make_scene() -> void:
 	add_child(camera)
 	actor_instances = _make_instances(24, Color("d9a353"), Vector3(0.5, 1.2, 0.5))
 	rain = _make_instances(256, Color("bbd7e5"), Vector3(0.025, 0.3, 0.025))
-	mover.step_climbing_enabled = true
-	mover.max_step_height = 0.5
+	mover.set_step_climbing_enabled(true)
+	mover.set_max_step_height(0.5)
 
 func _make_instances(count: int, color: Color, size: Vector3) -> MultiMeshInstance3D:
 	var node := MultiMeshInstance3D.new()
@@ -347,12 +347,8 @@ func _edit_border(tool: VoxelTool) -> void:
 		edit_positions.append(position_value)
 		edit_originals.append(old)
 	# Only the bounded temporary edit budget is admitted in M1; no arbitrary builds.
-	tool.value = 2 if old == 0 else 0
-	tool.do_point(position_value)
-	if tool.get_voxel(position_value) == tool.value:
-		var generator: CairnFixture = terrain.generator
-		if generator.set_override(position_value, tool.value): accepted_edits += 1
-		else: rejected_edits += 1
+	var generator: CairnFixture = terrain.generator
+	if generator.try_edit(terrain, position_value, 2 if old == 0 else 0): accepted_edits += 1
 	else: rejected_edits += 1
 
 func _process(_delta: float) -> void:

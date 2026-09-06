@@ -2,21 +2,28 @@
 #include "m1_hooks.h"
 #include "../core/fixture.h"
 #include "modules/voxel/storage/voxel_buffer.h"
+#include "modules/voxel/terrain/fixed_lod/voxel_terrain.h"
 #include "core/os/os.h"
 
 void CairnFixture::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_fixture", "value"), &CairnFixture::set_fixture);
     ClassDB::bind_method(D_METHOD("get_fixture"), &CairnFixture::get_fixture);
-    ClassDB::bind_method(D_METHOD("set_override", "position", "value"), &CairnFixture::set_override);
+    ClassDB::bind_method(D_METHOD("try_edit", "terrain", "position", "value"), &CairnFixture::try_edit);
     ADD_PROPERTY(PropertyInfo(Variant::INT, "fixture"), "set_fixture", "get_fixture");
 }
-bool CairnFixture::set_override(Vector3i position, int value) {
-    std::lock_guard<std::mutex> lock(edits_mutex);
-    for (unsigned int i = 0; i < edit_count; ++i) if (edits[i].position == position) {
-        edits[i].value = uint16_t(value); return true;
-    }
-    if (edit_count == edits.size() || value < 0 || value > 2) return false;
-    edits[edit_count++] = {position, uint16_t(value)};
+bool CairnFixture::try_edit(Object *object, Vector3i position, int value) {
+    auto *terrain = Object::cast_to<zylann::voxel::VoxelTerrain>(object);
+    if (terrain == nullptr || terrain->get_generator().ptr() != this || value < 0 || value > 2) return false;
+    std::unique_lock<std::mutex> lock(edits_mutex, std::try_to_lock);
+    if (!lock.owns_lock()) return false;
+    unsigned int index = 0;
+    while (index < edit_count && edits[index].position != position) ++index;
+    if (index == edits.size()) return false;
+    if (!terrain->get_storage().try_set_voxel(value, position, zylann::voxel::VoxelBuffer::CHANNEL_TYPE)) return false;
+    edits[index] = {position, uint16_t(value)};
+    if (index == edit_count) ++edit_count;
+    lock.unlock();
+    terrain->post_edit_voxel(position);
     return true;
 }
 int CairnFixture::get_used_channels_mask() const { return 1 << zylann::voxel::VoxelBuffer::CHANNEL_TYPE; }
@@ -76,10 +83,13 @@ void CairnMesher::build(Output &output, const Input &input) {
         for (int begin = 0; begin < indices.size(); begin += cairn::TRIANGLES_PER_UPLOAD * 3) {
             const int count = MIN(cairn::TRIANGLES_PER_UPLOAD * 3, indices.size() - begin);
             PackedVector3Array v, n; PackedVector2Array uv; PackedColorArray col; PackedFloat32Array tan;
+            PackedInt32Array sequential;
+            sequential.resize(count);
             v.resize(count); n.resize(count); uv.resize(count); col.resize(count);
             if (!tangents.is_empty()) tan.resize(count * 4);
             for (int i = 0; i < count; ++i) {
                 const int source = indices[begin + i];
+                sequential.set(i, i);
                 v.set(i, vertices[source]);
                 n.set(i, normals[source]);
                 uv.set(i, uvs[source]);
@@ -89,6 +99,7 @@ void CairnMesher::build(Output &output, const Input &input) {
             Array arrays; arrays.resize(Mesh::ARRAY_MAX);
             arrays[Mesh::ARRAY_VERTEX] = v; arrays[Mesh::ARRAY_NORMAL] = n;
             arrays[Mesh::ARRAY_TEX_UV] = uv; arrays[Mesh::ARRAY_COLOR] = col;
+            arrays[Mesh::ARRAY_INDEX] = sequential;
             if (!tan.is_empty()) arrays[Mesh::ARRAY_TANGENT] = tan;
             split.push_back({ arrays, surface.material_index });
         }

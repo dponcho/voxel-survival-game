@@ -20,6 +20,6 @@ int main() {
     // Out-of-envelope checkerboards must be rejected before mesh allocation.
     const int checker_faces = 16 * 32 * 32 * 6;
     assert(checker_faces > cairn::MAX_FACES);
-    assert(cairn::TRIANGLES_PER_UPLOAD * 3 * 64 <= 256 * 1024);
+    assert(cairn::TRIANGLES_PER_UPLOAD * 3 * 68 <= 256 * 1024);
     std::cout << "M1 fixture coordinate, admission and upload-bound checks passed\n";
 }

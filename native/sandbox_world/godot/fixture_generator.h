@@ -16,7 +16,7 @@ protected:
 public:
     void set_fixture(int value) { fixture = CLAMP(value, 0, 2); }
     int get_fixture() const { return fixture; }
-    bool set_override(Vector3i position, int value);
+    bool try_edit(Object *terrain, Vector3i position, int value);
     Result generate_block(VoxelQueryData input) override;
     int get_used_channels_mask() const override;
 };
