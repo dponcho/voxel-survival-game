@@ -86,6 +86,7 @@ var csv_bytes: int = 0
 var expected_edits: Dictionary = {}
 var revisit_checked: int = 0
 var sun: DirectionalLight3D
+var worst_event: Dictionary = {}
 
 func _ready() -> void:
 	for argument: String in OS.get_cmdline_user_args():
@@ -228,6 +229,7 @@ func _create_terrain(fixture: int) -> void:
 func _start_scenario() -> void:
 	state = "loading"
 	var scenario: Dictionary = SCENARIOS[scenario_index]
+	route_origin = Vector3(10, -10, 2) if scenario["id"] == "N2" else Vector3(10, 8, 10)
 	player = route_origin
 	velocity = Vector3.ZERO
 	expected_edits.clear()
@@ -239,6 +241,7 @@ func _start_scenario() -> void:
 	rain.visible = scenario["id"] == "H2"
 	var paced: bool = scenario["id"] == "paced"
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if paced else DisplayServer.VSYNC_DISABLED)
+	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), not str(scenario["id"]).begins_with("AB-off-"))
 	probe.configure(workers, str(scenario["id"]).begins_with("H"))
 
 func _begin_measurement() -> void:
@@ -249,6 +252,7 @@ func _begin_measurement() -> void:
 	sample_count = 0
 	sum_ms = 0.0
 	max_ms = 0.0
+	worst_event = {}
 	misses = 0
 	histogram.resize(100001)
 	histogram.fill(0)
@@ -281,6 +285,9 @@ func _begin_measurement() -> void:
 	next_proxy_save = 1.0
 	proxy_saves = 0
 	last_frame_usec = Time.get_ticks_usec()
+	if str(SCENARIOS[scenario_index]["id"]).begins_with("AB-off-"):
+		status_label.text = "Measuring diagnostic baseline • 30 seconds"
+		detail_label.text = "The scene continues running. Detailed counters and live labels are paused for this comparison."
 	if mode == "explore": Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -302,6 +309,8 @@ func _physics_process(delta: float) -> void:
 	if heavy:
 		# Persistent outward motion; the camera reverses every 15 seconds without teleporting the viewer.
 		target = route_origin + Vector3(6.5 * scenario_elapsed, 0, 0)
+	elif id == "R1" and scenario_elapsed <= 5.0:
+		target = player
 	elif id == "R1" or id.begins_with("AB-"):
 		target = route_origin
 	else:
@@ -339,8 +348,9 @@ func _physics_process(delta: float) -> void:
 	_tick_proxies(delta)
 	var rate: float = float(SCENARIOS[scenario_index]["rate"])
 	if rate > 0.0 and scenario_elapsed >= float(next_edit) / rate:
-		_edit_border(tool)
-		next_edit += 1
+		# A busy native read lock defers the due command to a later fixed tick.
+		# At most one command is attempted per tick; missed work stays counted.
+		if _edit_border(tool): next_edit += 1
 	if id in ["N2", "H2"] and scenario_elapsed >= next_proxy_save:
 		if sink.append(JSON.stringify({"proxy_tick": simulation_ticks, "accepted_edits": accepted_edits, "payload": "x".repeat(32768)}), true): proxy_saves += 1
 		else: report_io_failed = true
@@ -361,17 +371,18 @@ func _tick_proxies(delta: float) -> void:
 			var offset := Vector3(float(index % 16) - 8.0, fposmod(float(index) * 0.37 - actor_phase * 8.0, 12.0), floorf(float(index) / 16.0) - 8.0)
 			rain.multimesh.set_instance_transform(index, Transform3D(Basis(), player + offset))
 
-func _edit_border(tool: VoxelTool) -> void:
+func _edit_border(tool: VoxelTool) -> bool:
 	# One toggled voxel on a 16/32 border. A bounded proxy edit, not inventory or durable saving.
-	var position_value := Vector3i(int(floor(player.x / 32.0)) * 32, 6, int(floor(player.z)) + 3)
+	var edit_height: int = -8 if SCENARIOS[scenario_index]["id"] == "N2" else 6
+	var position_value := Vector3i(int(round(player.x / 32.0)) * 32, edit_height, int(floor(player.z)) + 3)
 	if not tool.is_area_editable(AABB(Vector3(position_value) - Vector3.ONE, Vector3.ONE * 3.0)):
 		rejected_edits += 1
-		return
+		return false
 	tool.channel = VoxelBuffer.CHANNEL_TYPE
 	var old: int = tool.get_voxel(position_value)
 	if edit_positions.size() >= 64 and not position_value in edit_positions:
 		rejected_edits += 1
-		return
+		return false
 	if not position_value in edit_positions:
 		edit_positions.append(position_value)
 		edit_originals.append(old)
@@ -381,7 +392,9 @@ func _edit_border(tool: VoxelTool) -> void:
 	if generator.try_edit(terrain, position_value, value):
 		accepted_edits += 1
 		expected_edits[position_value] = value
-	else: rejected_edits += 1
+		return true
+	rejected_edits += 1
+	return false
 
 func _process(_delta: float) -> void:
 	if state == "finished": return
@@ -429,6 +442,9 @@ func _process(_delta: float) -> void:
 		return
 	var counters: Dictionary = probe.snapshot()
 	var terrain_stats: Dictionary = terrain.get_statistics()
+	if frame_ms >= max_ms:
+		worst_event = {"frame": sample_count, "wall_seconds": elapsed_wall, "simulation_seconds": scenario_elapsed,
+			"player": [player.x, player.y, player.z], "native": counters.duplicate(), "terrain": terrain_stats.duplicate()}
 	var queue: int = int(counters["generation_jobs"]) + int(counters["mesh_jobs"]) + int(counters["main_jobs"]) + int(terrain_stats.get("pending_data", 0)) + int(terrain_stats.get("pending_mesh", 0))
 	queue_window_peak = maxi(queue_window_peak, queue)
 	if elapsed_wall >= next_queue_window:
@@ -457,6 +473,12 @@ func _process(_delta: float) -> void:
 	var triangles: int = int(Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME))
 	peaks["draw_calls"] = maxi(int(peaks.get("draw_calls", 0)), draws)
 	peaks["triangles"] = maxi(int(peaks.get("triangles", 0)), triangles)
+	var gpu_bytes: int = int(Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED))
+	if gpu_bytes > 0: peaks["gpu_resource_estimate_bytes"] = maxi(int(peaks.get("gpu_resource_estimate_bytes", 0)), gpu_bytes)
+	var upstream_stats: Dictionary = VoxelEngine.get_stats()
+	var pools: Dictionary = upstream_stats["memory_pools"]
+	for key: String in ["voxel_total", "voxel_used", "block_count"]:
+		peaks["pool_" + key] = maxi(int(peaks.get("pool_" + key, 0)), int(pools[key]))
 	raw_lines.append("%d,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d" % [sample_count, elapsed_wall, scenario_elapsed, frame_ms,
 		counters["generation_jobs"], counters["mesh_jobs"], counters["result_jobs"], terrain_stats.get("pending_data", 0), terrain_stats.get("pending_mesh", 0),
 		counters.get("private_bytes", 0), counters.get("working_set", 0), draws, triangles, accepted_edits, readiness_stops])
@@ -499,6 +521,10 @@ func _flush_csv() -> void:
 func _end_scenario() -> void:
 	_flush_csv()
 	sink.finish()
+	if not raw_lines.is_empty():
+		# Never leak a previous phase's unwritten samples into the next CSV.
+		report_io_failed = true
+		raw_lines.clear()
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	var id: String = scenario["id"]
 	var heavy: bool = id.begins_with("H")
@@ -519,13 +545,17 @@ func _end_scenario() -> void:
 		for i: int in range(queue_windows.size() - 5, queue_windows.size()):
 			if queue_windows[i] <= queue_windows[i - 1]: growth = false
 		if growth: reasons.append("Queue grew across the final thirty seconds")
-	if report_io_failed or sink.has_failed(): reasons.append("Diagnostic disk queue or write failed")
+	if report_io_failed or sink.has_failed():
+		reasons.append("Diagnostic disk queue or write failed")
+		integration_failures.append(id + ": incomplete diagnostic output")
 	if misses > 0: reasons.append("Raw frame deadline misses require attribution and repeat")
 	if elapsed_wall - scenario_elapsed > 0.25: reasons.append("Simulation fell behind wall time")
 	if int(peaks.get("resident_data", 0)) > 8192 or int(peaks.get("resident_mesh", 0)) > 512: reasons.append("Resident pool cap exceeded")
 	if int(peaks.get("generation_jobs", 0)) + int(peaks.get("mesh_jobs", 0)) > 64 or int(peaks.get("result_jobs", 0)) > 16: reasons.append("Native job cap exceeded")
 	if int(peaks.get("draw_calls", 0)) > (400 if heavy else 250) or int(peaks.get("triangles", 0)) > (450000 if heavy else 250000): reasons.append("View geometry envelope exceeded")
 	if int(peaks.get("private_bytes", 0)) > (2147483648 if heavy else 1610612736) or int(peaks.get("working_set", 0)) > (1610612736 if heavy else 1342177280): reasons.append("Process memory ceiling exceeded")
+	if int(peaks.get("gpu_resource_estimate_bytes", 0)) > (402653184 if heavy else 268435456): reasons.append("Graphics resource estimate exceeded budget")
+	if int(peaks.get("pool_voxel_total", 0)) > 201326592: reasons.append("Voxel allocation pool exceeded budget")
 	if float(scenario["rate"]) > 0.0 and accepted_edits < int(floor(_duration() * float(scenario["rate"]))) - 1: reasons.append("Required edit workload was not accepted")
 	var counters: Dictionary = probe.snapshot()
 	if int(counters["upload_max_usec"]) > 750: reasons.append("Individual upload exceeded 0.75 ms")
@@ -539,6 +569,7 @@ func _end_scenario() -> void:
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
 		"maximum_ms": max_ms, "deadline_misses": misses, "simulated_seconds": scenario_elapsed, "wall_seconds": elapsed_wall,
+		"worst_event": worst_event.duplicate(), "raw_frames": id + "-frames.csv" if not id.begins_with("AB-off-") else "disabled for A/B baseline; histogram retained",
 		"readiness_stops": readiness_stops, "accepted_proxy_edits": accepted_edits, "rejected_proxy_edits": rejected_edits,
 		"actor_ticks": actor_ticks, "collision_usec": collision_usec, "diagnostic_cpu_fraction": overhead,
 		"requested_distance_m": requested_distance, "travelled_distance_m": travelled_distance,
@@ -546,10 +577,17 @@ func _end_scenario() -> void:
 		"queue_five_second_peaks": queue_windows.duplicate(), "loading_seconds": loading_seconds,
 		"generation_service_per_second": float(int(counters["generated"]) - int(start_counters["generated"])) / maxf(elapsed_wall, 0.001),
 		"meshing_service_per_second": float(int(counters["meshed"]) - int(start_counters["meshed"])) / maxf(elapsed_wall, 0.001),
+		"generation_worker_fraction": float(int(counters["generation_usec"]) - int(start_counters["generation_usec"])) / maxf(elapsed_wall * 1000000.0 * workers, 1.0),
+		"meshing_worker_fraction": float(int(counters["meshing_usec"]) - int(start_counters["meshing_usec"])) / maxf(elapsed_wall * 1000000.0 * workers, 1.0),
 		"csv_write_usec": csv_usec, "peaks": peaks.duplicate(), "native_start": start_counters, "native_end": counters,
 		"gpu_timing": "asynchronous engine viewport query" if peaks.has("render_gpu_ms") else "unavailable",
+		"gpu_memory": "engine resource estimate; excludes unreported driver allocations" if peaks.has("gpu_resource_estimate_bytes") else "unavailable",
+		"unavailable_metrics": ["independent non-voxel allocation pools", "physical presentation intervals", "driver-deferred deletion time"],
 		"proxy_autosaves": proxy_saves, "presentation": "application callback intervals; physical scanout unavailable",
 		"durability": "not_run: M1 edits are temporary; storage workload is not a durability test"})
+	if mode == "explore":
+		_finish("completed", "Exploration time limit reached; partial engine report saved")
+		return
 	if scenario_index + 1 < SCENARIOS.size() and SCENARIOS[scenario_index + 1]["id"] == "R1":
 		# Revisit the same edited fixture; do not regenerate a substitute world.
 		scenario_index += 1
@@ -581,6 +619,10 @@ func _finish(outcome: String, message: String) -> void:
 		"scenarios": reports, "limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
 	summary["integration_failures"] = integration_failures
+	summary["configuration"]["actual_workers"] = VoxelEngine.get_thread_count()
+	summary["configuration"]["shadows"] = false
+	summary["configuration"]["anti_aliasing"] = "disabled"
+	summary["configuration"]["fog_density"] = 0.025
 	var off_means: Array[float] = []
 	var on_means: Array[float] = []
 	for report: Dictionary in reports:
@@ -602,13 +644,25 @@ func _finish(outcome: String, message: String) -> void:
 	var pack: String = executable.get_base_dir().path_join("Cairn.pck")
 	if FileAccess.file_exists(pack): summary["pack_sha256"] = FileAccess.get_sha256(pack)
 	var file := FileAccess.open(report_dir + "/summary.json", FileAccess.WRITE)
-	if file != null: file.store_string(JSON.stringify(summary, "  ")); file.close()
+	var summary_saved: bool = file != null
+	if file != null:
+		file.store_string(JSON.stringify(summary, "  "))
+		file.flush()
+		summary_saved = file.get_error() == OK
+		file.close()
 	file = FileAccess.open(report_dir + "/summary.txt", FileAccess.WRITE)
 	if file != null:
 		file.store_string("CAIRN M1 ENGINE CHECK\n" + message + "\nTarget certification remains unverified.\nAttach summary.json and the frame CSV files for review.\n")
+		file.flush()
+		summary_saved = summary_saved and file.get_error() == OK
 		file.close()
+	else: summary_saved = false
 	status_label.text = message
 	detail_label.text = "Reports saved. Use Open reports folder and share summary.json with the frame CSV files.\nPerformance is not certified until the report has been reviewed."
+	if not summary_saved:
+		integration_failures.append("Could not write the final summary")
+		status_label.text = "Could not save the final report"
+		detail_label.text = "Check that your drive has free space and the Cairn data folder is writable. This run cannot qualify M1."
 	cancel_button.text = "Return to title"
 	if cancel_button.pressed.is_connected(_cancel): cancel_button.pressed.disconnect(_cancel)
 	cancel_button.pressed.connect(func() -> void:

@@ -325,6 +325,12 @@ def prepare():
         output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke"],
                      mode + "-m1-smoke", timeout=300)
         if "CAIRN_M1_SMOKE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
+            # A native assertion can log an error without changing the process
+            # exit code. Surface unique diagnostics in the Actions log as well
+            # as retaining the full scenario log in the evidence artifact.
+            errors = dict.fromkeys(line for line in output.splitlines()
+                                   if "ERROR:" in line or "SCRIPT ERROR:" in line)
+            print("\n".join(errors)[:8000], flush=True)
             raise RuntimeError("M1 scenario integration failed")
     write_json(player / "BUILD_INFO.json", info)
     shutil.copytree(BUNDLE / "LICENSES", player / "LICENSES", dirs_exist_ok=True)

@@ -138,5 +138,10 @@
     "path": "engine/voxel_engine.cpp",
     "old": "VoxelEngine::~VoxelEngine() {",
     "replacement": "VoxelEngine::~VoxelEngine() {\n\tcairn::shutting_down = true;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t\tconst Vector3i anchor_pos = data_box.position + Vector3i(1, 1, 1);",
+    "replacement": "\t\t\t// The fixed bounds align to data chunks, not necessarily to render blocks.\n\t\t\t// Keep the readiness assertion, but anchor it inside their intersection.\n\t\t\tconst Box3i valid_data_box = Box3i(mesh_block_pos * mesh_to_data_factor,\n\t\t\t\t\tVector3iUtil::create(mesh_to_data_factor))\n\t\t\t\t\t.clipped(_data->get_bounds().downscaled(get_data_block_size()));\n\t\t\tZN_ASSERT_CONTINUE(!valid_data_box.is_empty());\n\t\t\tconst Vector3i anchor_pos = valid_data_box.position;"
   }
 ]

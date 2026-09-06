@@ -8,7 +8,16 @@ passed Linux sanitizer fixture checks and Linux/Windows packaging regression
 tests, then failed during editor compilation: the project module lacked upstream
 Voxel Tools' conditional build definitions. The module build now reads the pinned
 upstream configuration so headers share its namespace and feature/class layout.
-The correction still needs a successful cloud run.
+The correction passed native compilation in
+[run 34007283054](https://github.com/dponcho/voxel-survival-game/actions/runs/34007283054).
+Its editor, debug and release templates qualified, the game imported, and native
+mesher coverage passed. The debug scenario check then exposed an upstream boundary
+assertion: the first 16-voxel data chunk of a 32-voxel render region can be outside
+the fixed terrain bounds. The check now anchors within the intersection of the
+render region and actual data bounds; it still asserts that this data exists.
+The fixture size and all specification budgets remain unchanged. The existing
+debug scenario is the regression reproducer (396 assertion errors in that run).
+This native correction requires a new matching source build; no M1 ZIP has passed.
 
 This increment retains VoxelTerrain, VoxelBoxMover and the pinned stock blocky
 mesher. A project mesher subclasses the stock mesher to divide output into bounded
