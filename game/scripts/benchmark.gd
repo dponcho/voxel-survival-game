@@ -70,6 +70,7 @@ var matrix_index: int = 0
 var next_proxy_save: float = 1.0
 var proxy_saves: int = 0
 var report_io_failed: bool = false
+var integration_failures: Array[String] = []
 
 func _ready() -> void:
 	for argument: String in OS.get_cmdline_user_args():
@@ -348,7 +349,10 @@ func _edit_border(tool: VoxelTool) -> void:
 	# Only the bounded temporary edit budget is admitted in M1; no arbitrary builds.
 	tool.value = 2 if old == 0 else 0
 	tool.do_point(position_value)
-	if tool.get_voxel(position_value) == tool.value: accepted_edits += 1
+	if tool.get_voxel(position_value) == tool.value:
+		var generator: CairnFixture = terrain.generator
+		if generator.set_override(position_value, tool.value): accepted_edits += 1
+		else: rejected_edits += 1
 	else: rejected_edits += 1
 
 func _process(_delta: float) -> void:
@@ -435,6 +439,10 @@ func _end_scenario() -> void:
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	var id: String = scenario["id"]
 	var heavy: bool = id.begins_with("H")
+	if sample_count == 0 or int(peaks.get("resident_data", 0)) == 0:
+		integration_failures.append(id + ": empty terrain workload")
+	if actor_ticks < simulation_ticks * int(scenario["actors"]): integration_failures.append(id + ": missing actor workload")
+	if readiness_stops > 0: integration_failures.append(id + ": missing movement data")
 	if readiness_stops > 0: reasons.append("Movement encountered missing data")
 	if report_io_failed or sink.has_failed(): reasons.append("Diagnostic disk queue or write failed")
 	if misses > 0: reasons.append("Raw frame deadline misses require attribution and repeat")
@@ -448,7 +456,10 @@ func _end_scenario() -> void:
 	if int(counters["upload_max_usec"]) > 750: reasons.append("Individual upload exceeded 0.75 ms")
 	var overhead: float = float(measurement_usec) / maxf(sum_ms * 1000.0, 1.0)
 	if overhead >= 0.01: reasons.append("Measured diagnostic CPU cost reached 1%; A/B qualification required")
-	reports.append({"id": id, "outcome": "inconclusive" if not reasons.is_empty() else "passed",
+	var hard_failure: bool = readiness_stops > 0 or report_io_failed or sink.has_failed()
+	for reason: String in reasons:
+		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason: hard_failure = true
+	reports.append({"id": id, "outcome": "failed" if hard_failure else ("inconclusive" if not reasons.is_empty() else "passed"),
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
 		"maximum_ms": max_ms, "deadline_misses": misses, "simulated_seconds": scenario_elapsed, "wall_seconds": elapsed_wall,
@@ -487,6 +498,7 @@ func _finish(outcome: String, message: String) -> void:
 			"workers": workers, "visual_radius": 96, "data_radius": 128, "fixture_y": [-16,32], "triangle_colliders": false},
 		"scenarios": reports, "limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
+	summary["integration_failures"] = integration_failures
 	var executable: String = OS.get_executable_path()
 	summary["executable_sha256"] = FileAccess.get_sha256(executable)
 	var pack: String = executable.get_base_dir().path_join("Cairn.pck")
@@ -509,4 +521,4 @@ func _finish(outcome: String, message: String) -> void:
 		get_tree().quit()
 	if test_mode:
 		print("CAIRN_M1_SMOKE=" + JSON.stringify(summary))
-		get_tree().quit(0 if outcome == "completed" else 1)
+		get_tree().quit(0 if outcome == "completed" and integration_failures.is_empty() else 1)

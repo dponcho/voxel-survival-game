@@ -307,6 +307,10 @@ def prepare():
         raise RuntimeError("Project import reported errors")
     # Run the title/self-test through the matching editor, then both actual export templates.
     self_test(editor, "editor-self-test", game)
+    output = run([editor, "--headless", "--path", game, "--script", "res://scripts/m1_native_tests.gd"],
+                 "m1-native-mesher-tests", timeout=120)
+    if "CAIRN_M1_NATIVE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
+        raise RuntimeError("M1 native mesher tests failed")
     dist = ROOT / "dist"
     player = dist / "player"
     player.mkdir(parents=True, exist_ok=True)

@@ -7,7 +7,17 @@
 void CairnFixture::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_fixture", "value"), &CairnFixture::set_fixture);
     ClassDB::bind_method(D_METHOD("get_fixture"), &CairnFixture::get_fixture);
+    ClassDB::bind_method(D_METHOD("set_override", "position", "value"), &CairnFixture::set_override);
     ADD_PROPERTY(PropertyInfo(Variant::INT, "fixture"), "set_fixture", "get_fixture");
+}
+bool CairnFixture::set_override(Vector3i position, int value) {
+    std::lock_guard<std::mutex> lock(edits_mutex);
+    for (unsigned int i = 0; i < edit_count; ++i) if (edits[i].position == position) {
+        edits[i].value = uint16_t(value); return true;
+    }
+    if (edit_count == edits.size() || value < 0 || value > 2) return false;
+    edits[edit_count++] = {position, uint16_t(value)};
+    return true;
 }
 int CairnFixture::get_used_channels_mask() const { return 1 << zylann::voxel::VoxelBuffer::CHANNEL_TYPE; }
 CairnFixture::Result CairnFixture::generate_block(VoxelQueryData input) {
@@ -18,6 +28,15 @@ CairnFixture::Result CairnFixture::generate_block(VoxelQueryData input) {
         const Vector3i p = input.origin_in_voxels + Vector3i(x, y, z);
         buffer.set_voxel(cairn::fixture_voxel(p.x, p.y, p.z, fixture), x, y, z,
                 zylann::voxel::VoxelBuffer::CHANNEL_TYPE);
+    }
+    // Bounded session-only overlay survives fixture eviction; no durable save format.
+    {
+        std::lock_guard<std::mutex> lock(edits_mutex);
+        for (unsigned int i = 0; i < edit_count; ++i) {
+            const Vector3i local = edits[i].position - input.origin_in_voxels;
+            if (local.x >= 0 && local.y >= 0 && local.z >= 0 && local.x < size.x && local.y < size.y && local.z < size.z)
+                buffer.set_voxel(edits[i].value, local.x, local.y, local.z, zylann::voxel::VoxelBuffer::CHANNEL_TYPE);
+        }
     }
     buffer.compress_uniform_channels();
     cairn::generation_usec.fetch_add(OS::get_singleton()->get_ticks_usec() - start);

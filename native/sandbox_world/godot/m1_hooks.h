@@ -10,6 +10,7 @@ inline std::atomic<uint64_t> overloads{0};
 inline uint64_t upload_usec = 0, upload_max_usec = 0, upload_bytes = 0, uploads = 0;
 inline uint64_t stale = 0, frame_upload_bytes = 0, frame_upload_usec = 0;
 inline uint64_t deletion_usec = 0, deletion_max_usec = 0;
+inline uint64_t data_apply_usec = 0, data_apply_max_usec = 0;
 inline uint64_t next_revision = 0;
 inline uint32_t result_tasks = 0;
 inline uint32_t retired_meshes = 0, retired_high_water = 0;

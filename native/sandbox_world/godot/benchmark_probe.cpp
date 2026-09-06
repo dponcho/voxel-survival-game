@@ -32,6 +32,8 @@ Dictionary CairnProbe::snapshot() const {
     d["stale_results"] = int64_t(cairn::stale); d["overloads"] = int64_t(cairn::overloads.load());
     d["deletion_usec"] = int64_t(cairn::deletion_usec); d["deletion_max_usec"] = int64_t(cairn::deletion_max_usec);
     d["retired_meshes"] = cairn::retired_meshes; d["retired_high_water"] = cairn::retired_high_water;
+    d["data_apply_usec"] = int64_t(cairn::data_apply_usec);
+    d["data_apply_max_usec"] = int64_t(cairn::data_apply_max_usec);
 #ifdef WINDOWS_ENABLED
     PROCESS_MEMORY_COUNTERS_EX memory = {};
     memory.cb = sizeof(memory);

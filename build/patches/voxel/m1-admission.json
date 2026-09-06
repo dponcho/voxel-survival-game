@@ -113,5 +113,25 @@
     "path": "terrain/voxel_mesh_block.cpp",
     "old": "\t\t_mesh_instance.destroy();",
     "replacement": "\t\tFreeMeshTask::try_add_and_destroy(_mesh_instance);"
+  },
+  {
+    "path": "util/tasks/threaded_task_runner.h",
+    "old": "\t// Blocks and wait for all tasks to finish (assuming no more are getting added!)",
+    "replacement": "    // M1: bounded main-thread collection, keeping ownership in the original queue.\n    template <typename F>\n    bool dequeue_one_completed_task(F f) {\n        IThreadedTask *task = nullptr;\n        {\n            MutexLock lock(_completed_tasks_mutex);\n            if (_completed_tasks.empty()) return false;\n            task = _completed_tasks.front();\n            _completed_tasks.erase(_completed_tasks.begin());\n        }\n#ifdef ZN_THREADED_TASK_RUNNER_CHECK_DUPLICATE_TASKS\n        debug_remove_owned_task(task);\n#endif\n        f(task);\n        return true;\n    }\n\n\t// Blocks and wait for all tasks to finish (assuming no more are getting added!)"
+  },
+  {
+    "path": "engine/voxel_engine.cpp",
+    "old": "\t_general_thread_pool.dequeue_completed_tasks([](zylann::IThreadedTask *task) {\n\t\ttask->apply_result();\n\t\tZN_DELETE(task);\n\t});",
+    "replacement": "    for (unsigned int collected = 0; collected < 8 && cairn::frame_upload_usec < cairn::time_budget; ++collected) {\n        const uint64_t start = OS::get_singleton()->get_ticks_usec();\n        if (!_general_thread_pool.dequeue_one_completed_task([](zylann::IThreadedTask *task) {\n            task->apply_result();\n            ZN_DELETE(task);\n        })) break;\n        const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;\n        cairn::data_apply_usec += elapsed;\n        cairn::data_apply_max_usec = MAX(cairn::data_apply_max_usec, elapsed);\n        cairn::frame_upload_usec += elapsed;\n    }"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "#include \"../voxel_data_block_enter_info.h\"",
+    "replacement": "#include \"../voxel_data_block_enter_info.h\"\n#include \"../free_mesh_task.h\""
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t~ApplyMeshUpdateTask() { --cairn::result_tasks; }",
+    "replacement": "\t\t~ApplyMeshUpdateTask() {\n\t\t\tdata.mesh.unref();\n\t\t\tif (partial.is_valid() && partial->get_reference_count() == 1) FreeMeshTask::add(partial);\n\t\t\t--cairn::result_tasks;\n\t\t}"
   }
 ]
