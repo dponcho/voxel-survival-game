@@ -1,0 +1,28 @@
+#pragma once
+#include "core/os/os.h"
+#include "scene/resources/mesh.h"
+#include <atomic>
+#include <cstdint>
+
+namespace cairn {
+inline std::atomic<uint64_t> generated{0}, meshed{0}, generation_usec{0}, meshing_usec{0};
+inline std::atomic<uint64_t> overloads{0};
+inline uint64_t upload_usec = 0, upload_max_usec = 0, upload_bytes = 0, uploads = 0;
+inline uint64_t stale = 0, frame_upload_bytes = 0, frame_upload_usec = 0;
+inline uint64_t deletion_usec = 0, deletion_max_usec = 0;
+inline uint64_t next_revision = 0;
+inline uint32_t result_tasks = 0;
+inline uint32_t retired_meshes = 0, retired_high_water = 0;
+inline uint32_t byte_budget = 512 * 1024, time_budget = 1000;
+inline void begin_frame() { frame_upload_bytes = 0; frame_upload_usec = 0; }
+inline bool admit_upload(uint32_t bytes) {
+    if (bytes > 256 * 1024) { ++overloads; return false; }
+    return frame_upload_bytes + bytes <= byte_budget && frame_upload_usec < time_budget;
+}
+inline void record_upload(uint32_t bytes, uint64_t start) {
+    const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;
+    frame_upload_bytes += bytes; frame_upload_usec += elapsed;
+    upload_bytes += bytes; upload_usec += elapsed; ++uploads;
+    upload_max_usec = MAX(upload_max_usec, elapsed);
+}
+}

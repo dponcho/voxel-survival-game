@@ -59,9 +59,22 @@ def run(args, label, cwd=ROOT, timeout=300, env=None):
         output.write(json.dumps(args) + "\n")
         output.flush()
         try:
-            result = subprocess.run(args, cwd=cwd, env=env, stdout=output,
-                                    stderr=subprocess.STDOUT, timeout=timeout, check=False)
-            code = result.returncode
+            process = subprocess.Popen(args, cwd=cwd, env=env, stdout=output,
+                                       stderr=subprocess.STDOUT)
+            while True:
+                remaining = timeout - (time.monotonic() - started)
+                if remaining <= 0:
+                    process.kill()
+                    process.wait()
+                    raise subprocess.TimeoutExpired(args, timeout)
+                try:
+                    code = process.wait(timeout=min(30, remaining))
+                    break
+                except subprocess.TimeoutExpired:
+                    with log.open("rb") as progress:
+                        progress.seek(max(0, log.stat().st_size - 2048))
+                        lines = progress.read().decode("utf-8", errors="replace").splitlines()
+                    print(f"{label}: {int(time.monotonic() - started)}s; " + (lines[-1] if lines else "running"), flush=True)
         except subprocess.TimeoutExpired:
             code = -1
             output.write("\nTIMEOUT\n")
@@ -161,9 +174,17 @@ def build():
     (module / "build_identity.gen.h").write_text(
         "#pragma once\n" + "\n".join(f'#define CAIRN_{key.upper()} "{value}"'
                                     for key, value in identity.items()) + "\n", encoding="utf-8")
-    patches = sorted((ROOT / "build/patches").rglob("*.patch"))
-    if patches:
-        raise RuntimeError("Downstream patches require an explicit application and verification step")
+    for patch_file in sorted((ROOT / "build/patches/voxel").glob("*.json")):
+        for change in read_json(patch_file):
+            target = (engine / "modules/voxel" / change["path"]).resolve()
+            if not target.is_relative_to((engine / "modules/voxel").resolve()):
+                raise RuntimeError("Patch path escapes the pinned module")
+            source = target.read_text(encoding="utf-8")
+            if change["replacement"] in source:
+                continue
+            if source.count(change["old"]) != 1:
+                raise RuntimeError("Pinned source patch does not match: " + change["path"])
+            target.write_text(source.replace(change["old"], change["replacement"]), encoding="utf-8", newline="\n")
     BUNDLE.mkdir(parents=True, exist_ok=True)
     for target in config["targets"]:
         run([sys.executable, "-m", "SCons", *config["flags"], f"target={target}",
@@ -275,7 +296,7 @@ def prepare():
     for kind in ["debug", "release"]:
         shutil.copy2(BUNDLE / ("template_" + kind + ".exe"), templates / ("windows_" + kind + ".exe"))
     info = {key: manifest[key] for key in ["engine_inputs", "godot_commit", "voxel_commit"]}
-    info.update({"game_commit": os.environ["GITHUB_SHA"], "milestone": "M0",
+    info.update({"game_commit": os.environ["GITHUB_SHA"], "milestone": "M1",
                  "ci_run": f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{os.environ["GITHUB_RUN_ID"]}',
                  "target_performance": "not_run", "renderer": "gl_compatibility",
                  "engine_binaries": {key: value for key, value in manifest["files"].items() if key.endswith(".exe")}})
@@ -297,6 +318,10 @@ def prepare():
         if "SCRIPT ERROR:" in output or "ERROR:" in output:
             raise RuntimeError("Export reported errors")
         self_test(destination / "Cairn.exe", mode + "-self-test", ROOT)
+        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke"],
+                     mode + "-m1-smoke", timeout=300)
+        if "CAIRN_M1_SMOKE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
+            raise RuntimeError("M1 scenario integration failed")
     write_json(player / "BUILD_INFO.json", info)
     shutil.copytree(BUNDLE / "LICENSES", player / "LICENSES", dirs_exist_ok=True)
     shutil.copy2(ROOT / "distribution/README.txt", player / "README.txt")

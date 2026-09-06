@@ -1,0 +1,80 @@
+#include "fixture_generator.h"
+#include "m1_hooks.h"
+#include "../core/fixture.h"
+#include "modules/voxel/storage/voxel_buffer.h"
+#include "core/os/os.h"
+
+void CairnFixture::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("set_fixture", "value"), &CairnFixture::set_fixture);
+    ClassDB::bind_method(D_METHOD("get_fixture"), &CairnFixture::get_fixture);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "fixture"), "set_fixture", "get_fixture");
+}
+int CairnFixture::get_used_channels_mask() const { return 1 << zylann::voxel::VoxelBuffer::CHANNEL_TYPE; }
+CairnFixture::Result CairnFixture::generate_block(VoxelQueryData input) {
+    const uint64_t start = OS::get_singleton()->get_ticks_usec();
+    auto &buffer = input.voxel_buffer;
+    const Vector3i size = buffer.get_size();
+    for (int z = 0; z < size.z; ++z) for (int x = 0; x < size.x; ++x) for (int y = 0; y < size.y; ++y) {
+        const Vector3i p = input.origin_in_voxels + Vector3i(x, y, z);
+        buffer.set_voxel(cairn::fixture_voxel(p.x, p.y, p.z, fixture), x, y, z,
+                zylann::voxel::VoxelBuffer::CHANNEL_TYPE);
+    }
+    buffer.compress_uniform_channels();
+    cairn::generation_usec.fetch_add(OS::get_singleton()->get_ticks_usec() - start);
+    cairn::generated.fetch_add(1);
+    return Result();
+}
+
+void CairnMesher::build(Output &output, const Input &input) {
+    const uint64_t start = OS::get_singleton()->get_ticks_usec();
+    // Refuse the whole unsupported fixture before allocating unbounded geometry.
+    // The harness observes overloads and stops with a failed result.
+    const auto &voxels = input.voxels;
+    const Vector3i size = voxels.get_size();
+    int faces = 0;
+    const Vector3i sides[] = { Vector3i(1,0,0), Vector3i(-1,0,0), Vector3i(0,1,0),
+        Vector3i(0,-1,0), Vector3i(0,0,1), Vector3i(0,0,-1) };
+    for (int z = 1; z < size.z - 1; ++z) for (int x = 1; x < size.x - 1; ++x)
+        for (int y = 1; y < size.y - 1; ++y) {
+            const Vector3i p(x,y,z);
+            if (voxels.get_voxel(p, zylann::voxel::VoxelBuffer::CHANNEL_TYPE) == 0) continue;
+            for (const Vector3i &side : sides) if (voxels.get_voxel(p + side,
+                    zylann::voxel::VoxelBuffer::CHANNEL_TYPE) == 0) ++faces;
+        }
+    if (faces > cairn::MAX_FACES) { ++cairn::overloads; return; }
+    VoxelMesherBlocky::build(output, input);
+    zylann::StdVector<Output::Surface> split;
+    // Preserve the stock cube mesher, winding, colors, AO, UVs and tangent data.
+    // Expand indexed triangles into fixed-size uploads, on the terrain worker.
+    for (const auto &surface : output.surfaces) {
+        const Array &a = surface.arrays;
+        const PackedVector3Array vertices = a[Mesh::ARRAY_VERTEX];
+        const PackedVector3Array normals = a[Mesh::ARRAY_NORMAL];
+        const PackedVector2Array uvs = a[Mesh::ARRAY_TEX_UV];
+        const PackedColorArray colors = a[Mesh::ARRAY_COLOR];
+        const PackedFloat32Array tangents = a[Mesh::ARRAY_TANGENT];
+        const PackedInt32Array indices = a[Mesh::ARRAY_INDEX];
+        for (int begin = 0; begin < indices.size(); begin += cairn::TRIANGLES_PER_UPLOAD * 3) {
+            const int count = MIN(cairn::TRIANGLES_PER_UPLOAD * 3, indices.size() - begin);
+            PackedVector3Array v, n; PackedVector2Array uv; PackedColorArray col; PackedFloat32Array tan;
+            v.resize(count); n.resize(count); uv.resize(count); col.resize(count);
+            if (!tangents.is_empty()) tan.resize(count * 4);
+            for (int i = 0; i < count; ++i) {
+                const int source = indices[begin + i];
+                v.set(i, vertices[source]);
+                n.set(i, normals[source]);
+                uv.set(i, uvs[source]);
+                col.set(i, colors[source]);
+                if (!tangents.is_empty()) for (int j = 0; j < 4; ++j) tan.set(i * 4 + j, tangents[source * 4 + j]);
+            }
+            Array arrays; arrays.resize(Mesh::ARRAY_MAX);
+            arrays[Mesh::ARRAY_VERTEX] = v; arrays[Mesh::ARRAY_NORMAL] = n;
+            arrays[Mesh::ARRAY_TEX_UV] = uv; arrays[Mesh::ARRAY_COLOR] = col;
+            if (!tan.is_empty()) arrays[Mesh::ARRAY_TANGENT] = tan;
+            split.push_back({ arrays, surface.material_index });
+        }
+    }
+    output.surfaces = std::move(split);
+    cairn::meshing_usec.fetch_add(OS::get_singleton()->get_ticks_usec() - start);
+    cairn::meshed.fetch_add(1);
+}

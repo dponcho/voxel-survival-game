@@ -25,6 +25,11 @@ jobs:
         run: python -m unittest discover -s tests/integration -v
       - name: Compile-check owned cloud scripts
         run: python -m compileall -q tools/ci native/sandbox_world/config.py
+      - name: Native fixture checks with sanitizers
+        run: |
+          c++ --version
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_fixture.cpp -o /tmp/cairn-fixture-test
+          /tmp/cairn-fixture-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml
