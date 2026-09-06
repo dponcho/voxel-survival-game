@@ -9,7 +9,11 @@ const SCENARIOS: Array[Dictionary] = [
 	{"id": "H2", "seconds": 240.0, "fixture": 1, "actors": 24, "rate": 4.0},
 	{"id": "N3", "seconds": 120.0, "fixture": 2, "actors": 12, "rate": 2.0},
 	{"id": "R1", "seconds": 60.0, "fixture": 2, "actors": 12, "rate": 0.0},
-	{"id": "paced", "seconds": 120.0, "fixture": 1, "actors": 12, "rate": 2.0}
+	{"id": "paced", "seconds": 120.0, "fixture": 1, "actors": 12, "rate": 2.0},
+	{"id": "AB-off-1", "seconds": 30.0, "fixture": 0, "actors": 12, "rate": 0.0},
+	{"id": "AB-on-1", "seconds": 30.0, "fixture": 0, "actors": 12, "rate": 0.0},
+	{"id": "AB-on-2", "seconds": 30.0, "fixture": 0, "actors": 12, "rate": 0.0},
+	{"id": "AB-off-2", "seconds": 30.0, "fixture": 0, "actors": 12, "rate": 0.0}
 ]
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 var probe: CairnProbe = CairnProbe.new()
@@ -71,6 +75,17 @@ var next_proxy_save: float = 1.0
 var proxy_saves: int = 0
 var report_io_failed: bool = false
 var integration_failures: Array[String] = []
+var requested_distance: float = 0.0
+var travelled_distance: float = 0.0
+var recovery_seconds: float = -1.0
+var queue_windows: Array[int] = []
+var queue_window_peak: int = 0
+var next_queue_window: float = 5.0
+var loading_seconds: float = 0.0
+var csv_bytes: int = 0
+var expected_edits: Dictionary = {}
+var revisit_checked: int = 0
+var sun: DirectionalLight3D
 
 func _ready() -> void:
 	for argument: String in OS.get_cmdline_user_args():
@@ -142,7 +157,7 @@ func _make_scene() -> void:
 	environment.fog_density = 0.025
 	world_environment.environment = environment
 	add_child(world_environment)
-	var sun := DirectionalLight3D.new()
+	sun = DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-55, -30, 0)
 	sun.shadow_enabled = false
 	add_child(sun)
@@ -215,6 +230,7 @@ func _start_scenario() -> void:
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	player = route_origin
 	velocity = Vector3.ZERO
+	expected_edits.clear()
 	_create_terrain(int(scenario["fixture"]))
 	loading_started = Time.get_ticks_msec()
 	status_label.text = "Preparing %s • %d³ render blocks • %d terrain worker(s)" % [scenario["id"], render_size, workers]
@@ -241,6 +257,7 @@ func _begin_measurement() -> void:
 	rejected_edits = 0
 	next_edit = 1
 	actor_ticks = 0
+	actor_phase = 0.0
 	collision_usec = 0
 	measurement_usec = 0
 	csv_usec = 0
@@ -251,6 +268,14 @@ func _begin_measurement() -> void:
 	start_counters = probe.snapshot()
 	previous_queue = 0
 	queue_growth_samples = 0
+	requested_distance = 0.0
+	travelled_distance = 0.0
+	recovery_seconds = -1.0
+	queue_windows.clear()
+	queue_window_peak = 0
+	next_queue_window = 5.0
+	csv_bytes = 0
+	revisit_checked = 0
 	sink.start(report_dir + "/" + str(SCENARIOS[scenario_index]["id"]) + "-frames.csv")
 	sink.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops\n", false)
 	next_proxy_save = 1.0
@@ -277,7 +302,7 @@ func _physics_process(delta: float) -> void:
 	if heavy:
 		# Persistent outward motion; the camera reverses every 15 seconds without teleporting the viewer.
 		target = route_origin + Vector3(6.5 * scenario_elapsed, 0, 0)
-	elif id == "R1":
+	elif id == "R1" or id.begins_with("AB-"):
 		target = route_origin
 	else:
 		target = route_origin + Vector3(sin(scenario_elapsed * 0.07) * 22.0, 0, 0)
@@ -291,6 +316,7 @@ func _physics_process(delta: float) -> void:
 	velocity.z = wanted.z
 	velocity.y = maxf(velocity.y - 18.0 * delta, -30.0)
 	var motion: Vector3 = velocity * delta
+	requested_distance += Vector2(motion.x, motion.z).length()
 	var swept: AABB = AABB(player + PLAYER_BOX.position, PLAYER_BOX.size).merge(AABB(player + motion + PLAYER_BOX.position, PLAYER_BOX.size)).grow(0.1)
 	var tool: VoxelTool = terrain.get_voxel_tool()
 	var collision_start: int = Time.get_ticks_usec()
@@ -299,6 +325,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		var actual: Vector3 = mover.get_motion(player, motion, PLAYER_BOX, terrain)
 		player += actual
+		travelled_distance += Vector2(actual.x, actual.z).length()
 		if absf(actual.y - motion.y) > 0.0001: velocity.y = 0.0
 		if player.y < -14.0 and not "Collision route left the safe fixture" in reasons:
 			reasons.append("Collision route left the safe fixture")
@@ -321,6 +348,8 @@ func _physics_process(delta: float) -> void:
 
 func _tick_proxies(delta: float) -> void:
 	actor_phase += delta
+	# Shared day/night light proxy; no light node per voxel or lamp.
+	sun.light_energy = 0.2 + 0.8 * (0.5 + 0.5 * cos(scenario_elapsed * TAU / 60.0))
 	var count: int = actor_instances.multimesh.visible_instance_count
 	for index: int in range(count):
 		var angle: float = actor_phase * 0.3 + float(index) * TAU / float(count)
@@ -348,13 +377,19 @@ func _edit_border(tool: VoxelTool) -> void:
 		edit_originals.append(old)
 	# Only the bounded temporary edit budget is admitted in M1; no arbitrary builds.
 	var generator: CairnFixture = terrain.generator
-	if generator.try_edit(terrain, position_value, 2 if old == 0 else 0): accepted_edits += 1
+	var value: int = 2 if old == 0 else 0
+	if generator.try_edit(terrain, position_value, value):
+		accepted_edits += 1
+		expected_edits[position_value] = value
 	else: rejected_edits += 1
 
 func _process(_delta: float) -> void:
 	if state == "finished": return
 	if state == "draining":
 		var drain: Dictionary = probe.snapshot()
+		if Time.get_ticks_msec() - loading_started > 180000:
+			_finish("failed", "Terrain resources did not drain within three minutes")
+			return
 		if int(drain["generation_jobs"]) + int(drain["mesh_jobs"]) + int(drain["main_jobs"]) == 0:
 			scenario_index += 1
 			if scenario_index >= SCENARIOS.size(): _finish("completed", "All applicable engine scenarios ran")
@@ -369,7 +404,8 @@ func _process(_delta: float) -> void:
 		if Time.get_ticks_msec() - loading_started > 180000:
 			_finish("failed", "Terrain did not become ready within three minutes")
 			return
-		if int(stats.get("pending_data", 1)) + int(stats.get("pending_mesh", 1)) + int(stats.get("loading_data", 1)) == 0 and int(counters["generation_jobs"]) + int(counters["mesh_jobs"]) + int(counters["main_jobs"]) == 0:
+		if int(stats.get("resident_data", 0)) > 0 and int(stats.get("pending_data", 1)) + int(stats.get("pending_mesh", 1)) + int(stats.get("loading_data", 1)) == 0 and int(counters["generation_jobs"]) + int(counters["mesh_jobs"]) + int(counters["main_jobs"]) == 0:
+			loading_seconds = float(Time.get_ticks_msec() - loading_started) / 1000.0
 			_begin_measurement()
 		return
 	var now: int = Time.get_ticks_usec()
@@ -382,10 +418,33 @@ func _process(_delta: float) -> void:
 	max_ms = maxf(max_ms, frame_ms)
 	histogram[mini(100000, int(ceil(frame_ms * 100.0)))] += 1
 	var id: String = SCENARIOS[scenario_index]["id"]
-	var deadline: float = 33.333 if id.begins_with("H") else 16.667
+	var deadline: float = 33.333 if id.begins_with("H") or (id == "R1" and scenario_elapsed <= 5.0) else 16.667
 	if frame_ms > deadline: misses += 1
+	if id.begins_with("AB-off-"):
+		# Minimal interval/histogram baseline. Disable per-frame probes, GPU
+		# polling, formatting, CSV I/O and live labels; keep identical simulation.
+		if scenario_elapsed >= _duration(): _end_scenario()
+		elif elapsed_wall > _duration() * 2.0 + 30.0:
+			_finish("failed", "Diagnostic baseline simulation stalled")
+		return
 	var counters: Dictionary = probe.snapshot()
 	var terrain_stats: Dictionary = terrain.get_statistics()
+	var queue: int = int(counters["generation_jobs"]) + int(counters["mesh_jobs"]) + int(counters["main_jobs"]) + int(terrain_stats.get("pending_data", 0)) + int(terrain_stats.get("pending_mesh", 0))
+	queue_window_peak = maxi(queue_window_peak, queue)
+	if elapsed_wall >= next_queue_window:
+		queue_windows.append(queue_window_peak)
+		if queue_windows.size() > 60: queue_windows.pop_front()
+		queue_window_peak = 0
+		next_queue_window += 5.0
+	if id == "R1" and queue == 0 and recovery_seconds < 0.0:
+		recovery_seconds = elapsed_wall
+		var tool: VoxelTool = terrain.get_voxel_tool()
+		tool.channel = VoxelBuffer.CHANNEL_TYPE
+		for position_value: Vector3i in expected_edits:
+			if tool.is_area_editable(AABB(Vector3(position_value), Vector3.ONE)):
+				revisit_checked += 1
+				if tool.get_voxel(position_value) != int(expected_edits[position_value]):
+					integration_failures.append("R1: edited fixture value changed")
 	var render_cpu: float = RenderingServer.viewport_get_measured_render_time_cpu(get_viewport().get_viewport_rid())
 	var render_gpu: float = RenderingServer.viewport_get_measured_render_time_gpu(get_viewport().get_viewport_rid())
 	peaks["render_cpu_ms"] = maxf(float(peaks.get("render_cpu_ms", 0.0)), render_cpu)
@@ -407,6 +466,8 @@ func _process(_delta: float) -> void:
 		status_label.text = "%s • %d / %d seconds • %d³ / %d worker(s)" % [id, int(scenario_elapsed), int(_duration()), render_size, workers]
 		detail_label.text = "%.1f fps • %d frame deadline misses • %d accepted proxy edits\nThis is an engine experiment. Final survival systems are not present." % [1000.0 / maxf(frame_ms, 0.001), misses, accepted_edits]
 	if int(counters["overloads"]) > 0: _finish("failed", "Native admission rejected unsupported geometry")
+	elif elapsed_wall > _duration() * 2.0 + 30.0 or sample_count > 500000:
+		_finish("failed", "Scenario exceeded its wall-time or diagnostic sample bound")
 	elif scenario_elapsed >= _duration(): _end_scenario()
 
 func _duration() -> float:
@@ -423,7 +484,13 @@ func _percentile(percent: float) -> float:
 func _flush_csv() -> void:
 	if raw_lines.is_empty(): return
 	var start: int = Time.get_ticks_usec()
-	if sink.append("\n".join(raw_lines) + "\n", false): raw_lines.clear()
+	var payload: String = "\n".join(raw_lines) + "\n"
+	if csv_bytes + payload.length() > 64 * 1024 * 1024:
+		report_io_failed = true
+		raw_lines.clear()
+	elif sink.append(payload, false):
+		csv_bytes += payload.length()
+		raw_lines.clear()
 	elif raw_lines.size() >= 512:
 		report_io_failed = true
 		raw_lines.clear()
@@ -435,11 +502,23 @@ func _end_scenario() -> void:
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	var id: String = scenario["id"]
 	var heavy: bool = id.begins_with("H")
+	if id.begins_with("AB-off-"):
+		# One end sample verifies a real fixture without measuring these probes
+		# as part of the baseline frame series.
+		peaks["resident_data"] = terrain.get_statistics().get("resident_data", 0)
 	if sample_count == 0 or int(peaks.get("resident_data", 0)) == 0:
 		integration_failures.append(id + ": empty terrain workload")
 	if actor_ticks < simulation_ticks * int(scenario["actors"]): integration_failures.append(id + ": missing actor workload")
 	if readiness_stops > 0: integration_failures.append(id + ": missing movement data")
 	if readiness_stops > 0: reasons.append("Movement encountered missing data")
+	if id == "R1" and (recovery_seconds < 0.0 or recovery_seconds > 5.0): reasons.append("Recovery exceeded five seconds")
+	if id == "R1" and not test_mode and revisit_checked == 0: integration_failures.append("R1: no edited data revisited")
+	if heavy and travelled_distance < 6.5 * scenario_elapsed - 1.0: reasons.append("Required sprint distance was not accepted")
+	if queue_windows.size() >= 6:
+		var growth: bool = true
+		for i: int in range(queue_windows.size() - 5, queue_windows.size()):
+			if queue_windows[i] <= queue_windows[i - 1]: growth = false
+		if growth: reasons.append("Queue grew across the final thirty seconds")
 	if report_io_failed or sink.has_failed(): reasons.append("Diagnostic disk queue or write failed")
 	if misses > 0: reasons.append("Raw frame deadline misses require attribution and repeat")
 	if elapsed_wall - scenario_elapsed > 0.25: reasons.append("Simulation fell behind wall time")
@@ -450,17 +529,23 @@ func _end_scenario() -> void:
 	if float(scenario["rate"]) > 0.0 and accepted_edits < int(floor(_duration() * float(scenario["rate"]))) - 1: reasons.append("Required edit workload was not accepted")
 	var counters: Dictionary = probe.snapshot()
 	if int(counters["upload_max_usec"]) > 750: reasons.append("Individual upload exceeded 0.75 ms")
+	if int(counters["deletion_max_usec"]) > 750: reasons.append("Individual deletion exceeded 0.75 ms")
 	var overhead: float = float(measurement_usec) / maxf(sum_ms * 1000.0, 1.0)
 	if overhead >= 0.01: reasons.append("Measured diagnostic CPU cost reached 1%; A/B qualification required")
 	var hard_failure: bool = readiness_stops > 0 or report_io_failed or sink.has_failed()
 	for reason: String in reasons:
-		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason: hard_failure = true
+		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason: hard_failure = true
 	reports.append({"id": id, "outcome": "failed" if hard_failure else ("inconclusive" if not reasons.is_empty() else "passed"),
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
 		"maximum_ms": max_ms, "deadline_misses": misses, "simulated_seconds": scenario_elapsed, "wall_seconds": elapsed_wall,
 		"readiness_stops": readiness_stops, "accepted_proxy_edits": accepted_edits, "rejected_proxy_edits": rejected_edits,
 		"actor_ticks": actor_ticks, "collision_usec": collision_usec, "diagnostic_cpu_fraction": overhead,
+		"requested_distance_m": requested_distance, "travelled_distance_m": travelled_distance,
+		"recovery_seconds": recovery_seconds, "revisited_edits": revisit_checked,
+		"queue_five_second_peaks": queue_windows.duplicate(), "loading_seconds": loading_seconds,
+		"generation_service_per_second": float(int(counters["generated"]) - int(start_counters["generated"])) / maxf(elapsed_wall, 0.001),
+		"meshing_service_per_second": float(int(counters["meshed"]) - int(start_counters["meshed"])) / maxf(elapsed_wall, 0.001),
 		"csv_write_usec": csv_usec, "peaks": peaks.duplicate(), "native_start": start_counters, "native_end": counters,
 		"gpu_timing": "asynchronous engine viewport query" if peaks.has("render_gpu_ms") else "unavailable",
 		"proxy_autosaves": proxy_saves, "presentation": "application callback intervals; physical scanout unavailable",
@@ -474,6 +559,7 @@ func _end_scenario() -> void:
 		viewer.queue_free()
 		data_viewer.queue_free()
 		state = "draining"
+		loading_started = Time.get_ticks_msec()
 		status_label.text = "Finishing scenario and retiring terrain resources…"
 
 func _cancel() -> void:
@@ -495,6 +581,22 @@ func _finish(outcome: String, message: String) -> void:
 		"scenarios": reports, "limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
 	summary["integration_failures"] = integration_failures
+	var off_means: Array[float] = []
+	var on_means: Array[float] = []
+	for report: Dictionary in reports:
+		var mean_ms: float = float(report["wall_seconds"]) * 1000.0 / maxf(float(report["samples"]), 1.0)
+		if str(report["id"]).begins_with("AB-off-"): off_means.append(mean_ms)
+		if str(report["id"]).begins_with("AB-on-"): on_means.append(mean_ms)
+	if off_means.size() == 2 and on_means.size() == 2:
+		var off_mean: float = (off_means[0] + off_means[1]) * 0.5
+		var on_mean: float = (on_means[0] + on_means[1]) * 0.5
+		var variation: float = absf(off_means[0] - off_means[1]) / maxf(off_mean, 0.0001)
+		var fraction: float = (on_mean - off_mean) / maxf(off_mean, 0.0001)
+		summary["diagnostic_ab"] = {"off_mean_ms": off_means, "on_mean_ms": on_means,
+			"added_fraction": fraction, "baseline_variation": variation,
+			"outcome": "inconclusive" if variation >= 0.01 else ("failed" if fraction >= 0.01 else "passed"),
+			"scope": "per-frame diagnostic probes, formatting and CSV worker I/O; shared native counters remain enabled"}
+	else: summary["diagnostic_ab"] = {"outcome": "not_run"}
 	var executable: String = OS.get_executable_path()
 	summary["executable_sha256"] = FileAccess.get_sha256(executable)
 	var pack: String = executable.get_base_dir().path_join("Cairn.pck")

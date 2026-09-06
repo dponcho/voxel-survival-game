@@ -46,6 +46,8 @@ jobs:
           key: ${{ steps.inputs.outputs.key }}
       - name: Verify game imports, native mesher coverage and scenario integration
         run: python tools/ci/pipeline.py prepare
+      - name: Verify collision, edit eviction, cancellation and all four profiles
+        run: python tools/qa/m1_integration.py
       - name: Audit distribution and test offline extractions
         env:
           CAIRN_CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
