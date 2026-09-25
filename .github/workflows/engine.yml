@@ -1,16 +1,28 @@
-name: Matching native engine and templates
+name: Reusable native Windows binaries
 on:
   workflow_call:
     inputs:
       cold:
         type: boolean
         default: false
+    outputs:
+      artifact_id:
+        value: ${{ jobs.native-binaries.outputs.artifact_id }}
+      artifact_run_id:
+        value: ${{ jobs.native-binaries.outputs.artifact_run_id }}
+      source:
+        value: ${{ jobs.native-binaries.outputs.source }}
 permissions:
   contents: read
+  actions: read
 jobs:
-  windows:
+  native-binaries:
     runs-on: windows-2022
     timeout-minutes: 350
+    outputs:
+      artifact_id: ${{ steps.restore.outputs.artifact_id || steps.publish.outputs.artifact-id }}
+      artifact_run_id: ${{ steps.restore.outputs.artifact_run_id || github.run_id }}
+      source: ${{ steps.restore.outputs.source || 'built' }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -18,67 +30,60 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.12.10'
-      - name: Windows packaging regression tests
-        run: python -m unittest discover -s tests/integration -v
-      - name: Compute complete engine input identity
+      - name: Identify native sources, pins and compilation recipe
         id: inputs
         run: python tools/ci/pipeline.py key
-      - name: Restore exact verified engine bundle
+      - name: Restore exact native cache
         if: ${{ !inputs.cold }}
         id: cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: build/engine-bundle
           key: ${{ steps.inputs.outputs.key }}
-      - name: Install hash-verified cloud toolchain
+      - name: Reuse the identical pre-redesign native build
+        if: ${{ !inputs.cold && steps.cache.outputs.cache-hit != 'true' && steps.inputs.outputs.legacy_key != '' }}
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: build/engine-bundle
+          key: ${{ steps.inputs.outputs.legacy_key }}
+      - name: Verify cache or restore a qualified native artifact
+        if: ${{ !inputs.cold }}
+        id: restore
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/ci/native_bundle.py restore
+      - name: Install compiler only for a native source build
+        if: ${{ inputs.cold || steps.restore.outputs.source == 'built' }}
         run: python tools/ci/pipeline.py setup
-      - name: Build editor, debug and release templates from pinned sources
-        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+      - name: Build editor and matching Windows templates
+        if: ${{ inputs.cold || steps.restore.outputs.source == 'built' }}
         run: python tools/ci/pipeline.py build
-      - name: Qualify native registrations in editor and both templates
-        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+      - name: Qualify editor and both templates independently of gameplay
         run: python tools/ci/pipeline.py qualify
-      - name: Cache only successfully verified engine bundles
-        if: ${{ success() && steps.cache.outputs.cache-hit != 'true' }}
+      - name: Include the pinned packaging inspector
+        run: python tools/ci/native_bundle.py inspector
+      - name: Save verified native bundle
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: build/engine-bundle
           key: ${{ steps.inputs.outputs.key }}
-      - name: Verify game imports, native mesher coverage and scenario integration
-        run: python tools/ci/pipeline.py prepare
-      - name: Verify collision, edit eviction, cancellation and all four profiles
-        run: python tools/qa/m1_integration.py
-      - name: Audit distribution and test offline extractions
-        env:
-          CAIRN_CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
-          TEMP: ${{ runner.temp }}
-          TMP: ${{ runner.temp }}
-        run: python tools/ci/pipeline.py package
-      - name: Upload portable player ZIP and identity
+      - name: Publish reusable native bundle
+        if: ${{ steps.restore.outputs.artifact_id == '' }}
+        id: publish
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: Cairn-windows-x86_64-${{ github.sha }}
-          path: |
-            dist/Cairn-windows-x86_64.zip
-            dist/SHA256SUMS.txt
-            dist/BUILD_INFO.json
+          name: ${{ steps.inputs.outputs.artifact }}
+          path: build/engine-bundle/
           if-no-files-found: error
-          retention-days: 30
-      - name: Upload separate symbols
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: Cairn-symbols-${{ github.sha }}
-          path: dist/Cairn-symbols.zip
-          if-no-files-found: error
-          retention-days: 30
-      - name: Preserve command outcomes even after failure
+          compression-level: 1
+          retention-days: 90
+      - name: Preserve native build and reuse evidence
         if: ${{ always() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: Cairn-evidence-${{ github.sha }}
+          name: Cairn-native-evidence-${{ github.sha }}
           path: |
             reports/
             build/engine-bundle/manifest.json
-            build/dependencies.lock.json
-            build/config/
-          retention-days: 30
+          retention-days: 90

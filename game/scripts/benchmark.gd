@@ -338,12 +338,14 @@ func _physics_process(delta: float) -> void:
 		if absf(actual.y - motion.y) > 0.0001: velocity.y = 0.0
 		if player.y < -14.0 and not "Collision route left the safe fixture" in reasons:
 			reasons.append("Collision route left the safe fixture")
+			integration_failures.append(id + ": collision route left the safe fixture")
 	collision_usec += Time.get_ticks_usec() - collision_start
 	viewer.position = player
 	data_viewer.position = player
 	camera.position = player + Vector3(0, 1.65, 0)
 	if mode != "explore":
 		camera.rotation.y = -PI * 0.5 if not heavy else (-PI * 0.5 + PI * float(int(scenario_elapsed / 15.0) % 2))
+		if id == "N3": camera.rotation.y += scenario_elapsed * TAU / 30.0
 		camera.rotation.x = -0.18
 	_tick_proxies(delta)
 	var rate: float = float(SCENARIOS[scenario_index]["rate"])
@@ -564,7 +566,7 @@ func _end_scenario() -> void:
 	if overhead >= 0.01: reasons.append("Measured diagnostic CPU cost reached 1%; A/B qualification required")
 	var hard_failure: bool = readiness_stops > 0 or report_io_failed or sink.has_failed()
 	for reason: String in reasons:
-		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason: hard_failure = true
+		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason or "Collision" in reason: hard_failure = true
 	reports.append({"id": id, "outcome": "failed" if hard_failure else ("inconclusive" if not reasons.is_empty() else "passed"),
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
@@ -669,8 +671,11 @@ func _finish(outcome: String, message: String) -> void:
 		OS.create_process(OS.get_executable_path(), PackedStringArray())
 		get_tree().quit())
 	if mode == "matrix" and not cancelled and outcome == "completed" and matrix_index < 3:
-		OS.create_process(OS.get_executable_path(), PackedStringArray(["--", "--benchmark", "--benchmark-mode=matrix", "--matrix-index=%d" % (matrix_index + 1)]))
-		get_tree().quit()
+		var next_process: int = OS.create_process(OS.get_executable_path(), PackedStringArray(["--", "--benchmark", "--benchmark-mode=matrix", "--matrix-index=%d" % (matrix_index + 1)]))
+		if next_process > 0: get_tree().quit()
+		else:
+			status_label.text = "Comparison stopped: the next setting could not start"
+			detail_label.text = "Keep this report. Return to the title and run the remaining settings individually."
 	if test_mode:
 		print("CAIRN_M1_SMOKE=" + JSON.stringify(summary))
 		get_tree().quit(0 if outcome == "completed" and integration_failures.is_empty() else 1)

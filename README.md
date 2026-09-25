@@ -5,12 +5,13 @@ is [GAME_DESIGN.md](GAME_DESIGN.md), with [ARCHITECTURE.md](ARCHITECTURE.md),
 [ROADMAP.md](ROADMAP.md), [PERFORMANCE.md](PERFORMANCE.md),
 [TESTING.md](TESTING.md) and [AGENTS.md](AGENTS.md).
 
-**M0: cloud build foundation is implemented and cloud-verified.** The candidate
-opens a title screen and offers a startup check; gameplay has not been implemented.
-See [the milestone evidence record](docs/M0_EVIDENCE.md) for actual verification status.
+**M1: engine experiment; cloud passed, target performance unverified.** The
+candidate includes temporary terrain fixtures, voxel-box movement and automated
+performance comparisons. Survival gameplay and durable worlds are later milestones.
+See [the M1 evidence record](docs/M1_EVIDENCE.md) and [laptop testing instructions](docs/M1_TESTING.md).
 
-[Download the verified M0 Windows candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/33978065158/artifacts/9975747665)
-from the [successful cold source-to-ZIP run](https://github.com/dponcho/voxel-survival-game/actions/runs/33978065158).
+[Download the cloud-verified M1 Windows candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/34036830778/artifacts/9992504297)
+from the [successful source-to-ZIP run](https://github.com/dponcho/voxel-survival-game/actions/runs/34036830778).
 Target hardware performance remains unverified.
 
 ## Portable builds
@@ -22,9 +23,11 @@ There is no player installation, account or first-launch download.
 
 All compiler/tool setup and game execution for development tests run in GitHub
 Actions. Source/toolchain hashes are locked in `build/dependencies.lock.json`.
-CI automatically builds a matching custom editor and both export templates on a
-cache miss. Manual Windows builds and the weekly cold build can bypass the cache.
-Moving a draft pull request to ready for review also runs the full cold-build gate.
+CI restores matching native binaries from an exact cache or qualified artifact.
+Game scripts, scenes and assets are exported and tested without changing the native
+key. A native source/configuration change or unavailable bundle builds automatically;
+an explicit manual cold-proof run can bypass reuse. See the [CI architecture audit](docs/CI_ARCHITECTURE.md)
+for invalidation rules, artifact trust and the GDExtension evaluation.
 Only authorized `v*` tags invoke release publication; ordinary builds are artifacts.
 
 The package/evidence and symbols are separate artifacts. Cloud headless success

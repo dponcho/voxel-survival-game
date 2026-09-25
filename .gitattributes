@@ -1,4 +1,4 @@
-* text=auto
+* text=auto eol=lf
 AGENTS.md -text
 ARCHITECTURE.md -text
 GAME_DESIGN.md -text

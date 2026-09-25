@@ -1,25 +1,37 @@
 extends SceneTree
 
 var failures: Array[String] = []
+var reference := VoxelMesherBlocky.new()
 
 func _initialize() -> void:
 	var library := VoxelBlockyLibrary.new()
 	var cube := VoxelBlockyModelCube.new()
 	var material := StandardMaterial3D.new()
 	cube.set_material_override(0, material)
-	library.models = [VoxelBlockyModelEmpty.new(), cube]
+	var colored_cube := VoxelBlockyModelCube.new()
+	colored_cube.color = Color(0.2, 0.6, 0.9)
+	colored_cube.set_material_override(0, material)
+	library.models = [VoxelBlockyModelEmpty.new(), cube, colored_cube]
 	library.bake()
 	var mesher := CairnMesher.new()
 	mesher.library = library
+	reference.library = library
 	for side: int in range(6): mesher.set_shadow_occluder_side(side, false)
+	for side: int in range(6): reference.set_shadow_occluder_side(side, false)
 	var buffer := VoxelBuffer.new()
 	buffer.create(18,18,18)
+	var empty: Mesh = mesher.build_mesh(buffer, [material])
+	if empty != null and empty.get_surface_count() > 0: failures.append("Empty region emitted geometry")
 	buffer.set_voxel(1, 1, 1, 1, VoxelBuffer.CHANNEL_TYPE)
 	_check_mesh(mesher, buffer, material, 12, "single cube")
 	buffer.set_voxel(1, 2, 1, 1, VoxelBuffer.CHANNEL_TYPE)
 	_check_mesh(mesher, buffer, material, 20, "shared face culled")
 	buffer.set_voxel(1, 0, 1, 1, VoxelBuffer.CHANNEL_TYPE)
 	_check_mesh(mesher, buffer, material, 18, "negative border halo")
+	buffer.create(18,18,18)
+	buffer.set_voxel(1, 1, 1, 1, VoxelBuffer.CHANNEL_TYPE)
+	buffer.set_voxel(2, 2, 1, 1, VoxelBuffer.CHANNEL_TYPE)
+	_check_mesh(mesher, buffer, material, 20, "mixed block colors")
 	buffer.create(18,18,18)
 	buffer.fill_area(1, Vector3i.ONE, Vector3i(17,17,17), VoxelBuffer.CHANNEL_TYPE)
 	_check_mesh(mesher, buffer, material, 6 * 16 * 16 * 2, "solid region split without dropped faces")
@@ -49,3 +61,26 @@ func _check_mesh(mesher: CairnMesher, buffer: VoxelBuffer, material: Material, e
 		if vertices.size() * 68 > 256 * 1024: failures.append(label + ": oversized upload")
 		if normals.size() != vertices.size(): failures.append(label + ": lost normal data")
 	if triangles != expected: failures.append(label + ": face coverage changed")
+	var original: Mesh = reference.build_mesh(buffer, [material])
+	if original == null or _triangle_records(mesh) != _triangle_records(original):
+		failures.append(label + ": split changed triangle winding or vertex attributes")
+
+func _triangle_records(mesh: Mesh) -> Dictionary:
+	# Compare ordered triangle vertices, independent of surface splitting/index
+	# reuse. Repeated triangles remain counted, so duplicates cannot hide a loss.
+	var records: Dictionary = {}
+	for surface: int in range(mesh.get_surface_count()):
+		var arrays: Array = mesh.surface_get_arrays(surface)
+		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+		for triangle: int in range(0, indices.size(), 3):
+			var record: Array = []
+			for corner: int in range(3):
+				var index: int = indices[triangle + corner]
+				for channel: int in [Mesh.ARRAY_VERTEX, Mesh.ARRAY_NORMAL, Mesh.ARRAY_TEX_UV, Mesh.ARRAY_COLOR]:
+					record.append(arrays[channel][index])
+				var tangents: PackedFloat32Array = arrays[Mesh.ARRAY_TANGENT]
+				if not tangents.is_empty():
+					for component: int in range(4): record.append(tangents[index * 4 + component])
+			var key: String = var_to_str(record)
+			records[key] = int(records.get(key, 0)) + 1
+	return records

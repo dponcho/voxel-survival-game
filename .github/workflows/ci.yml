@@ -7,9 +7,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   static:
     runs-on: ubuntu-24.04
@@ -34,4 +35,4 @@ jobs:
     needs: static
     uses: ./.github/workflows/windows-build.yml
     with:
-      cold: ${{ github.event.action == 'ready_for_review' }}
+      cold: false
