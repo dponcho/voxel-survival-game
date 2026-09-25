@@ -622,6 +622,8 @@ func _finish(outcome: String, message: String) -> void:
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
 	summary["integration_failures"] = integration_failures
 	summary["configuration"]["actual_workers"] = VoxelEngine.get_thread_count()
+	var actual_window_size: Vector2i = DisplayServer.window_get_size()
+	summary["configuration"]["reported_window_size"] = [actual_window_size.x, actual_window_size.y]
 	summary["configuration"]["shadows"] = false
 	summary["configuration"]["anti_aliasing"] = "disabled"
 	summary["configuration"]["fog_density"] = 0.025
