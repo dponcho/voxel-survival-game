@@ -1,18 +1,26 @@
 # Cairn
 
-An original native Windows voxel survival sandbox. The authoritative specification
+A native Windows voxel survival sandbox following Java Edition's core survival
+and building conventions, with original content. The authoritative specification
 is [GAME_DESIGN.md](GAME_DESIGN.md), with [ARCHITECTURE.md](ARCHITECTURE.md),
 [ROADMAP.md](ROADMAP.md), [PERFORMANCE.md](PERFORMANCE.md),
 [TESTING.md](TESTING.md) and [AGENTS.md](AGENTS.md).
 
-**M1: engine experiment; cloud passed, target performance unverified.** The
+**M1: cloud passed; laptop reports reviewed; qualification blocked.** The
 candidate includes temporary terrain fixtures, voxel-box movement and automated
 performance comparisons. Survival gameplay and durable worlds are later milestones.
-See [the M1 evidence record](docs/M1_EVIDENCE.md) and [laptop testing instructions](docs/M1_TESTING.md).
+See [the M1 evidence record](docs/M1_EVIDENCE.md), [target review](docs/M1_TARGET_REVIEW.md)
+and [laptop testing instructions](docs/M1_TESTING.md). M2 waits for the measurement
+and pacing gaps to be resolved. A new comparison run is not requested yet.
 
-[Download the cloud-verified M1 Windows candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/34036830778/artifacts/9992504297)
-from the [successful source-to-ZIP run](https://github.com/dponcho/voxel-survival-game/actions/runs/34036830778).
-Target hardware performance remains unverified.
+The [core reference contract](docs/JAVA_CORE_REFERENCE.md) records the user-selected
+Java Edition direction. Core survival/building comes first; automation circuits,
+enchanting, brewing, extra dimensions and bosses are deferred until after 1.0.
+
+[Download the cloud-verified M1 Windows candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/36183549961/artifacts/10889930434)
+from the [successful reuse-and-export run](https://github.com/dponcho/voxel-survival-game/actions/runs/36183549961).
+This game-only follow-up reused the qualified native bundle and skipped compilation.
+The candidate has target-machine measurements but no qualified profile yet.
 
 ## Portable builds
 

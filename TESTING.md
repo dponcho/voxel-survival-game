@@ -1,6 +1,6 @@
 # Testing and build verification
 
-Design baseline: 2026-09-05. Status: required test plan; no tests or game builds were executed as part of writing these documents. References to scripts and application flags below are interfaces to implement in M0 and subsequent milestones.
+Design baseline: 2026-09-05; Java core and target-report requirements revised 2026-09-26. Status: required test plan; executed results are recorded in milestone evidence. References to scripts and application flags below are interfaces to implement in M0 and subsequent milestones.
 
 ## 1. Evidence levels
 
@@ -59,6 +59,12 @@ Missing data must never become air in collision or mining. Inventory is charged 
 
 Instantiate every shipping scene and content family through tests or a content-validation scene. Parsing only the main script does not validate all resources. Use warning/error policy appropriate to owned code; retain upstream warnings separately instead of suppressing meaningful project failures.
 
+### Core Java-style behaviour checks
+
+Use [the core reference contract](docs/JAVA_CORE_REFERENCE.md) for movement/sneak ledges, target reach, block hardness/tool drops/durability, stairs/slab collision, 9+27 inventory/armour/offhand, shaped/shapeless 2×2/3×3 crafting and recipe-book assistance. Test furnace input/fuel/output transactions, hunger/saturation/regen, bed obstruction/respawn, death-drop expiry in loaded simulation time, bounded cap saturation without item loss, farming/breeding, local water/lava and falling-block borders. Unloaded crop/furnace work must stay paused. Verify Creative-style flight/instant breaking/catalogue independently of survival consumption.
+
+Compare original rendered block materials, silhouettes, held tools, hotbar/grid and interaction feedback at 720p against the intended reference. Record intentional differences; a matching interface label is not behaviour or visual proof. Automation circuits, enchanting, brewing, extra dimensions and boss progression are post-1.0 and are not exit tests for core 1.0.
+
 ## 5. Persistence fault injection
 
 Use temporary worlds and a deterministic driver. Inject failure before/after transaction append, commit, snapshot write, pruning watermark, backup and migration. The cloud process controller can terminate the game at declared test hooks; this is never performed against a player's saves.
@@ -109,6 +115,8 @@ Run the suite uncapped for deadline capacity, then a paced diagnostic pass for d
 ## 8. Measurements and report schema
 
 Use monotonic high-resolution timing. Measure application frame intervals and engine phases directly, with asynchronous GPU timers only where supported; never block waiting for a GPU query. A missing GPU metric is `unavailable`, not zero. An engine frame callback is not proof of physical scanout time: label presentation estimates accurately. If pacing remains ambiguous, retain “inconclusive” rather than overstating the measurement.
+
+Phase attribution is mandatory: label preparation, measured gameplay, paced diagnostics and retirement separately. Retain lifetime counters as context, but assess individual-operation limits using phase-local maxima and bounded per-frame payload/time records. Subtracting cumulative maxima is invalid. Include enough event context to distinguish native work, diagnostic work, renderer work and unavailable OS/driver attribution. Completion text must not imply a passing evaluation. Preserve first-use failures and raw paced misses. Missing measurements and unstable A/B comparisons remain inconclusive. These requirements address the [September 25 target review](docs/M1_TARGET_REVIEW.md) without relaxing any gate.
 
 Each report contains:
 

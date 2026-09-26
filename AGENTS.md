@@ -2,7 +2,7 @@
 
 ## Mission and authority
 
-Build the complete original voxel survival sandbox defined in [GAME_DESIGN.md](GAME_DESIGN.md). Work incrementally through [ROADMAP.md](ROADMAP.md). The required deliverable is a native, portable Windows x64 game produced entirely by Codex Cloud and GitHub Actions.
+Build the complete voxel survival sandbox defined in [GAME_DESIGN.md](GAME_DESIGN.md), following the user-selected Java Edition core survival/building reference in [docs/JAVA_CORE_REFERENCE.md](docs/JAVA_CORE_REFERENCE.md) with original or appropriately licensed content. Work incrementally through [ROADMAP.md](ROADMAP.md). The required deliverable is a native, portable Windows x64 game produced entirely by Codex Cloud and GitHub Actions.
 
 These instructions describe the intended repository. In the initial six-document package, implementation files, workflows and test commands are planned, not present. Inspect the actual checkout before claiming any exist or have run. User instructions take precedence over these project defaults; do not reinterpret a hard requirement merely to pass a test.
 
@@ -70,6 +70,6 @@ A task is complete when its intended behaviour works, relevant checks have run o
 
 ## Keep the project focused
 
-Complete the specified single-player 1.0 before adding multiplayer, mod loaders, electrical networks, moving voxel machines, unbounded water or advanced rendering. Avoid broad rewrites without a measured reason. Prefer a small tested native change over a growing abstraction layer with no demonstrated use.
+Complete the specified single-player core survival/building 1.0 before adding automation circuits, enchanting, brewing, extra dimensions, boss progression, multiplayer, mod loaders, moving voxel machines, unbounded water or advanced rendering. Avoid broad rewrites without a measured reason. Prefer a small tested native change over a growing abstraction layer with no demonstrated use.
 
 Do not delegate to additional agents by default. Use delegation only when the user's request or applicable higher-priority instructions authorize it. Continue useful authorized work until the bounded task is concrete and reviewable.

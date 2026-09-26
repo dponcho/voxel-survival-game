@@ -4,6 +4,12 @@ M1 is an engine experiment: visible voxel terrain, movement, temporary edits and
 automatic performance measurements. It does not include survival gameplay or saved
 worlds. A startup-check pass alone does not qualify M1.
 
+The September 25 candidate's standalone baseline and four-setting comparison have
+now been received and [reviewed](M1_TARGET_REVIEW.md). M1 is not yet qualified.
+Keep those reports; another full comparison or final qualification repeat should
+wait for the diagnostic attribution/overhead correction and its new candidate.
+The procedure below remains applicable when that candidate is ready.
+
 ## Get the candidate
 
 Use the M1 Windows artifact linked in [M1_EVIDENCE.md](M1_EVIDENCE.md) once its

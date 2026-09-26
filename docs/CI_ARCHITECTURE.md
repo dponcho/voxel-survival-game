@@ -113,9 +113,33 @@ target-performance certification is part of this CI correction.
 
 ## Acceptance evidence
 
-New cloud validation is pending. Required evidence is: regression tests prove
-game/export-only changes keep the key while native/pin/flag changes invalidate it;
-a Windows run restores matching binaries and skips compiler installation/build;
-the separate export job produces an audited portable ZIP; a follow-up ordinary
-game change reuses the same native artifact. Keep M1 target-unverified until the
-actual laptop reports pass the project specifications.
+Cloud validation passed in producer run
+[36180365572](https://github.com/dponcho/voxel-survival-game/actions/runs/36180365572)
+and game-only follow-up run
+[36183549961](https://github.com/dponcho/voxel-survival-game/actions/runs/36183549961).
+Both runs passed all 12 regression tests on Linux and Windows, including native-key
+invalidation and reuse logic, and the Linux sanitizer native fixture.
+
+The producer's native job `108221080856` encountered actual exact and legacy cache
+misses, compiled and qualified the matching editor/debug/release binaries, saved
+the exact cache and published the qualified native bundle before the separate
+export job `108262732907` passed. The follow-up native job `108264737945` hit the
+exact cache and passed qualification; compiler installation, native compilation,
+cache save and bundle publication were skipped. Its export job `108264995129`
+downloaded the same producer artifact
+[10888733603](https://github.com/dponcho/voxel-survival-game/actions/runs/36180365572/artifacts/10888733603),
+verified its SHA-256 and passed all export/package checks.
+
+The native source key and actual embedded `engine_inputs` identity are both
+`6adda08d3b832e3e5c40a41fd5b7bcd527bd2d1d6b274cd37b039a2371b61d7f`;
+these runs did not use the legacy migration identity. The native artifact archive
+SHA-256 is `891e85323d95c1c7204c854237ab982c082fb3095cbaefbd64b8b5f2b91673f3`,
+with recorded expiry `2026-12-24T19:33:03Z`.
+
+These runs establish exact-cache native reuse and a real cross-run export download
+of the qualified artifact. They did not exercise native acquisition's artifact
+fallback after an exact-cache miss; that selection path has mocked regression
+coverage only. See [M1_EVIDENCE.md](M1_EVIDENCE.md) for the player candidate and
+package evidence. The [five supplied laptop runs](M1_TARGET_REVIEW.md) match that
+candidate but leave qualification blocked on measurement and pacing issues.
+Native reuse is cloud-verified; no target profile is certified.
