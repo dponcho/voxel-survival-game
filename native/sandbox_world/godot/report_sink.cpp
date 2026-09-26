@@ -5,6 +5,7 @@
 void CairnReportSink::_bind_methods() {
     ClassDB::bind_method(D_METHOD("start", "path"), &CairnReportSink::start);
     ClassDB::bind_method(D_METHOD("append", "text", "snapshot"), &CairnReportSink::append);
+    ClassDB::bind_method(D_METHOD("append_operations", "text"), &CairnReportSink::append_operations);
     ClassDB::bind_method(D_METHOD("finish"), &CairnReportSink::finish);
     ClassDB::bind_method(D_METHOD("has_failed"), &CairnReportSink::has_failed);
     ClassDB::bind_method(D_METHOD("get_completed"), &CairnReportSink::get_completed);
@@ -13,7 +14,8 @@ void CairnReportSink::start(String path) {
     finish(); stopping = false; failed = false; completed = 0;
     worker = std::thread([this, path]() {
         Ref<FileAccess> csv = FileAccess::open(path, FileAccess::WRITE);
-        if (csv.is_null()) { failed = true; return; }
+        Ref<FileAccess> operations = FileAccess::open(path + ".operations.csv", FileAccess::WRITE);
+        if (csv.is_null() || operations.is_null()) { failed = true; return; }
         for (;;) {
             Write item;
             {
@@ -26,18 +28,29 @@ void CairnReportSink::start(String path) {
                 Ref<FileAccess> file = FileAccess::open(path + ".proxy.tmp", FileAccess::WRITE);
                 if (file.is_null()) failed = true;
                 else { file->store_string(item.text); file->flush(); if (file->get_error() != OK) failed = true; }
-            } else { csv->store_string(item.text); if (csv->get_error() != OK) failed = true; }
+            } else {
+                Ref<FileAccess> output = item.operations ? operations : csv;
+                output->store_string(item.text); if (output->get_error() != OK) failed = true;
+            }
             ++completed;
         }
         csv->flush();
         if (csv->get_error() != OK) failed = true;
+        operations->flush();
+        if (operations->get_error() != OK) failed = true;
     });
 }
 bool CairnReportSink::append(String text, bool snapshot) {
     if (text.length() > 65536 || failed.load()) return false;
     std::unique_lock<std::mutex> lock(mutex, std::try_to_lock);
     if (!lock.owns_lock() || stopping || queue.size() >= 64) return false;
-    queue.push_back({text, snapshot}); wake.notify_one(); return true;
+    queue.push_back({text, snapshot, false}); wake.notify_one(); return true;
+}
+bool CairnReportSink::append_operations(String text) {
+    if (text.length() > 65536 || failed.load()) return false;
+    std::unique_lock<std::mutex> lock(mutex, std::try_to_lock);
+    if (!lock.owns_lock() || stopping || queue.size() >= 64) return false;
+    queue.push_back({text, false, true}); wake.notify_one(); return true;
 }
 void CairnReportSink::finish() {
     { std::lock_guard<std::mutex> lock(mutex); stopping = true; }

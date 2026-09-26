@@ -31,6 +31,10 @@ jobs:
           c++ --version
           c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_fixture.cpp -o /tmp/cairn-fixture-test
           /tmp/cairn-fixture-test
+      - name: Phase-local operation regression tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_operation_metrics.cpp -o /tmp/cairn-operation-test
+          /tmp/cairn-operation-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml

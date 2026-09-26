@@ -1,6 +1,7 @@
 #pragma once
 #include "core/os/os.h"
 #include "scene/resources/mesh.h"
+#include "../core/operation_metrics.h"
 #include <atomic>
 #include <cstdint>
 
@@ -16,7 +17,11 @@ inline uint32_t result_tasks = 0;
 inline uint32_t retired_meshes = 0, retired_high_water = 0;
 inline uint32_t byte_budget = 512 * 1024, time_budget = 1000;
 inline bool shutting_down = false;
-inline void begin_frame() { frame_upload_bytes = 0; frame_upload_usec = 0; }
+inline OperationMetrics operations;
+inline void begin_frame() {
+    operations.begin_frame(OS::get_singleton()->get_ticks_usec());
+    frame_upload_bytes = 0; frame_upload_usec = 0;
+}
 inline bool admit_upload(uint32_t bytes) {
     if (shutting_down) return true; // Exit is not a gameplay frame; shutdown must drain.
     if (bytes > 256 * 1024) { ++overloads; return false; }
@@ -27,5 +32,12 @@ inline void record_upload(uint32_t bytes, uint64_t start) {
     frame_upload_bytes += bytes; frame_upload_usec += elapsed;
     upload_bytes += bytes; upload_usec += elapsed; ++uploads;
     upload_max_usec = MAX(upload_max_usec, elapsed);
+    operations.record_upload(bytes, start, elapsed);
+}
+inline void record_deletion(uint32_t bytes, uint64_t start, bool surface) {
+    const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;
+    deletion_usec += elapsed; frame_upload_usec += elapsed;
+    deletion_max_usec = MAX(deletion_max_usec, elapsed);
+    operations.record_deletion(bytes, start, elapsed, surface);
 }
 }

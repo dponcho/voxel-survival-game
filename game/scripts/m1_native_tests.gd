@@ -4,6 +4,7 @@ var failures: Array[String] = []
 var reference := VoxelMesherBlocky.new()
 
 func _initialize() -> void:
+	_check_evaluation()
 	var library := VoxelBlockyLibrary.new()
 	var cube := VoxelBlockyModelCube.new()
 	var material := StandardMaterial3D.new()
@@ -46,6 +47,35 @@ func _initialize() -> void:
 	if int(CairnProbe.new().snapshot()["overloads"]) != 1: failures.append("Overload was not reported")
 	print("CAIRN_M1_NATIVE=" + JSON.stringify({"passed": failures.is_empty(), "failures": failures}))
 	quit(0 if failures.is_empty() else 1)
+
+func _check_evaluation() -> void:
+	var evaluation = load("res://scripts/benchmark_evaluation.gd")
+	var probe := CairnProbe.new()
+	var lifetime: Dictionary = probe.snapshot()
+	probe.begin_phase(10, true)
+	var phase: Dictionary = probe.end_phase()
+	if phase["upload"]["count"] != 0 or phase["deletion"]["max_usec"] != 0:
+		failures.append("Empty measurement inherited earlier operations")
+	if probe.snapshot()["upload_max_usec"] != lifetime["upload_max_usec"] or probe.snapshot()["deletion_max_usec"] != lifetime["deletion_max_usec"]:
+		failures.append("Phase boundary reset lifetime maxima")
+	probe.take_operation_frames()
+	# Deliberately large lifetime values cannot affect a quiet measured phase.
+	phase["native_start"] = {"upload_max_usec": 5000, "deletion_max_usec": 4000}
+	phase["native_end"] = phase["native_start"].duplicate()
+	phase["upload"]["max_usec"] = 750
+	phase["deletion"]["max_usec"] = 750
+	if not evaluation.operation_failures(phase).is_empty(): failures.append("Lifetime maximum contaminated phase evaluation")
+	phase["upload"]["max_usec"] = 900
+	phase["deletion"]["max_usec"] = 800
+	var reasons: Array[String] = evaluation.operation_failures(phase)
+	if reasons.size() != 2: failures.append("Later over-budget operations below the lifetime maximum were missed")
+	var result: Dictionary = evaluation.scenario_result(true, true, reasons)
+	if not result["completed"] or result["qualified"] or result["evaluation"] != "failed": failures.append("Completion hid a failed evaluation")
+	var empty: Array[String] = []
+	result = evaluation.scenario_result(true, false, empty)
+	if result["qualified"] or result["evaluation"] != "passed": failures.append("Passing measured subset falsely qualified M1")
+	phase["dropped_frames"] = 1
+	if evaluation.operation_failures(phase).size() != 3: failures.append("Dropped evidence was hidden")
 
 func _check_mesh(mesher: CairnMesher, buffer: VoxelBuffer, material: Material, expected: int, label: String) -> void:
 	var mesh: Mesh = mesher.build_mesh(buffer, [material])

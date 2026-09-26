@@ -16,6 +16,7 @@ const SCENARIOS: Array[Dictionary] = [
 	{"id": "AB-off-2", "seconds": 30.0, "fixture": 0, "actors": 12, "rate": 0.0}
 ]
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
+const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
 var probe: CairnProbe = CairnProbe.new()
 var terrain: VoxelTerrain
 var viewer: VoxelViewer
@@ -87,6 +88,74 @@ var expected_edits: Dictionary = {}
 var revisit_checked: int = 0
 var sun: DirectionalLight3D
 var worst_event: Dictionary = {}
+var operation_phases: Array[Dictionary] = []
+var phase_id: int = 0
+var phase_name: String = ""
+var phase_start_counters: Dictionary = {}
+var operation_lines: PackedStringArray = []
+var operation_bytes: int = 0
+var operation_file: String = ""
+
+func _open_reports() -> void:
+	csv_bytes = 0
+	operation_bytes = 0
+	operation_file = str(SCENARIOS[scenario_index]["id"]) + "-frames.csv.operations.csv"
+	sink.start(report_dir + "/" + str(SCENARIOS[scenario_index]["id"]) + "-frames.csv")
+	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec")
+	operation_lines.append("native_frame,phase,start_usec,end_usec,phase_boundary,upload_count,upload_bytes,upload_usec,upload_max_usec,upload_max_bytes,upload_max_start_usec,deletion_count,deletion_bytes,deletion_usec,deletion_max_usec,deletion_max_bytes,deletion_max_start_usec,deletion_max_kind")
+
+func _begin_phase(label: String, trace: bool = true) -> void:
+	phase_id += 1
+	phase_name = label
+	phase_start_counters = probe.snapshot()
+	probe.begin_phase(phase_id, trace)
+
+func _drain_operation_frames() -> void:
+	for frame: Dictionary in probe.take_operation_frames():
+		var upload: Dictionary = frame["upload"]
+		var deletion: Dictionary = frame["deletion"]
+		operation_lines.append("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d" % [
+			frame["native_frame"], frame["phase"], frame["start_usec"], frame["end_usec"], int(frame["phase_boundary"]),
+			upload["count"], upload["bytes"], upload["usec"], upload["max_usec"], upload["max_bytes"], upload["max_start_usec"],
+			deletion["count"], deletion["bytes"], deletion["usec"], deletion["max_usec"], deletion["max_bytes"], deletion["max_start_usec"], deletion["max_kind"]])
+		# Each submitted batch fits the existing sink's 64 KiB item limit.
+		if operation_lines.size() >= 64: _flush_operations()
+
+func _flush_operations() -> void:
+	if operation_lines.is_empty(): return
+	var payload: String = "\n".join(operation_lines) + "\n"
+	if operation_bytes + payload.length() > 64 * 1024 * 1024:
+		report_io_failed = true
+		operation_lines.clear()
+	elif sink.append_operations(payload):
+		operation_bytes += payload.length()
+		operation_lines.clear()
+	elif operation_lines.size() >= 128:
+		report_io_failed = true
+		operation_lines.clear()
+
+func _close_phase() -> Dictionary:
+	if phase_name.is_empty(): return {}
+	var result: Dictionary = probe.end_phase()
+	_drain_operation_frames()
+	_flush_operations()
+	result.merge({"scenario": SCENARIOS[scenario_index]["id"], "phase": phase_name,
+		"raw_operations": operation_file if bool(result["tracing"]) else "disabled for A/B baseline",
+		"native_start": phase_start_counters, "native_end": probe.snapshot()})
+	operation_phases.append(result)
+	if int(result["dropped_frames"]) > 0:
+		integration_failures.append(str(result["scenario"]) + ": native operation trace dropped frames")
+	phase_name = ""
+	return result
+
+func _close_reports() -> void:
+	_flush_csv()
+	_flush_operations()
+	sink.finish()
+	if not raw_lines.is_empty() or not operation_lines.is_empty() or sink.has_failed(): report_io_failed = true
+	raw_lines.clear()
+	operation_lines.clear()
+	if report_io_failed: integration_failures.append("Incomplete diagnostic output")
 
 func _ready() -> void:
 	for argument: String in OS.get_cmdline_user_args():
@@ -228,6 +297,8 @@ func _create_terrain(fixture: int) -> void:
 
 func _start_scenario() -> void:
 	state = "loading"
+	_open_reports()
+	_begin_phase("preparation")
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	route_origin = Vector3(10, -10, 2) if scenario["id"] == "N2" else Vector3(10, 8, 10)
 	player = route_origin
@@ -245,6 +316,7 @@ func _start_scenario() -> void:
 	probe.configure(workers, str(scenario["id"]).begins_with("H"))
 
 func _begin_measurement() -> void:
+	_close_phase()
 	state = "running"
 	scenario_elapsed = 0.0
 	elapsed_wall = 0.0
@@ -278,10 +350,13 @@ func _begin_measurement() -> void:
 	queue_windows.clear()
 	queue_window_peak = 0
 	next_queue_window = 5.0
-	csv_bytes = 0
 	revisit_checked = 0
-	sink.start(report_dir + "/" + str(SCENARIOS[scenario_index]["id"]) + "-frames.csv")
-	sink.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops\n", false)
+	var id: String = SCENARIOS[scenario_index]["id"]
+	var label: String = "gameplay"
+	if id == "warmup": label = "warmup"
+	elif id == "paced": label = "paced_diagnostic"
+	elif id.begins_with("AB-"): label = "overhead_diagnostic"
+	_begin_phase(label, not id.begins_with("AB-off-"))
 	next_proxy_save = 1.0
 	proxy_saves = 0
 	last_frame_usec = Time.get_ticks_usec()
@@ -400,12 +475,17 @@ func _edit_border(tool: VoxelTool) -> bool:
 
 func _process(_delta: float) -> void:
 	if state == "finished": return
+	var measure_start: int = Time.get_ticks_usec()
+	if phase_name != "overhead_diagnostic" or not str(SCENARIOS[scenario_index]["id"]).begins_with("AB-off-"):
+		_drain_operation_frames()
 	if state == "draining":
 		var drain: Dictionary = probe.snapshot()
 		if Time.get_ticks_msec() - loading_started > 180000:
 			_finish("failed", "Terrain resources did not drain within three minutes")
 			return
 		if int(drain["generation_jobs"]) + int(drain["mesh_jobs"]) + int(drain["main_jobs"]) == 0:
+			_close_phase()
+			_close_reports()
 			scenario_index += 1
 			if scenario_index >= SCENARIOS.size(): _finish("completed", "All applicable engine scenarios ran")
 			else: _start_scenario()
@@ -427,7 +507,6 @@ func _process(_delta: float) -> void:
 	var frame_ms: float = float(now - last_frame_usec) / 1000.0
 	last_frame_usec = now
 	elapsed_wall += frame_ms / 1000.0
-	var measure_start: int = Time.get_ticks_usec()
 	sample_count += 1
 	sum_ms += frame_ms
 	max_ms = maxf(max_ms, frame_ms)
@@ -481,10 +560,11 @@ func _process(_delta: float) -> void:
 	var pools: Dictionary = upstream_stats["memory_pools"]
 	for key: String in ["voxel_total", "voxel_used", "block_count"]:
 		peaks["pool_" + key] = maxi(int(peaks.get("pool_" + key, 0)), int(pools[key]))
-	raw_lines.append("%d,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d" % [sample_count, elapsed_wall, scenario_elapsed, frame_ms,
+	raw_lines.append("%d,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.6f,%.6f,%d" % [sample_count, elapsed_wall, scenario_elapsed, frame_ms,
 		counters["generation_jobs"], counters["mesh_jobs"], counters["result_jobs"], terrain_stats.get("pending_data", 0), terrain_stats.get("pending_mesh", 0),
-		counters.get("private_bytes", 0), counters.get("working_set", 0), draws, triangles, accepted_edits, readiness_stops])
-	if raw_lines.size() >= 256: _flush_csv()
+		counters.get("private_bytes", 0), counters.get("working_set", 0), draws, triangles, accepted_edits, readiness_stops,
+		now, render_cpu, render_gpu, Time.get_ticks_usec() - measure_start])
+	if raw_lines.size() >= 128: _flush_csv()
 	measurement_usec += Time.get_ticks_usec() - measure_start
 	if sample_count % 30 == 0:
 		status_label.text = "%s • %d / %d seconds • %d³ / %d worker(s)" % [id, int(scenario_elapsed), int(_duration()), render_size, workers]
@@ -515,18 +595,14 @@ func _flush_csv() -> void:
 	elif sink.append(payload, false):
 		csv_bytes += payload.length()
 		raw_lines.clear()
-	elif raw_lines.size() >= 512:
+	elif raw_lines.size() >= 256:
 		report_io_failed = true
 		raw_lines.clear()
 	csv_usec += Time.get_ticks_usec() - start
 
 func _end_scenario() -> void:
+	var measured_phase: Dictionary = _close_phase()
 	_flush_csv()
-	sink.finish()
-	if not raw_lines.is_empty():
-		# Never leak a previous phase's unwritten samples into the next CSV.
-		report_io_failed = true
-		raw_lines.clear()
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	var id: String = scenario["id"]
 	var heavy: bool = id.begins_with("H")
@@ -560,14 +636,13 @@ func _end_scenario() -> void:
 	if int(peaks.get("pool_voxel_total", 0)) > 201326592: reasons.append("Voxel allocation pool exceeded budget")
 	if float(scenario["rate"]) > 0.0 and accepted_edits < int(floor(_duration() * float(scenario["rate"]))) - 1: reasons.append("Required edit workload was not accepted")
 	var counters: Dictionary = probe.snapshot()
-	if int(counters["upload_max_usec"]) > 750: reasons.append("Individual upload exceeded 0.75 ms")
-	if int(counters["deletion_max_usec"]) > 750: reasons.append("Individual deletion exceeded 0.75 ms")
+	reasons.append_array(Evaluation.operation_failures(measured_phase))
 	var overhead: float = float(measurement_usec) / maxf(sum_ms * 1000.0, 1.0)
 	if overhead >= 0.01: reasons.append("Measured diagnostic CPU cost reached 1%; A/B qualification required")
-	var hard_failure: bool = readiness_stops > 0 or report_io_failed or sink.has_failed()
+	var hard_failure: bool = readiness_stops > 0 or report_io_failed or sink.has_failed() or int(measured_phase["dropped_frames"]) > 0
 	for reason: String in reasons:
 		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason or "Collision" in reason: hard_failure = true
-	reports.append({"id": id, "outcome": "failed" if hard_failure else ("inconclusive" if not reasons.is_empty() else "passed"),
+	var report: Dictionary = {"id": id, "operation_phase": measured_phase,
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
 		"maximum_ms": max_ms, "deadline_misses": misses, "simulated_seconds": scenario_elapsed, "wall_seconds": elapsed_wall,
@@ -586,15 +661,20 @@ func _end_scenario() -> void:
 		"gpu_memory": "engine resource estimate; excludes unreported driver allocations" if peaks.has("gpu_resource_estimate_bytes") else "unavailable",
 		"unavailable_metrics": ["independent non-voxel allocation pools", "physical presentation intervals", "driver-deferred deletion time"],
 		"proxy_autosaves": proxy_saves, "presentation": "application callback intervals; physical scanout unavailable",
-		"durability": "not_run: M1 edits are temporary; storage workload is not a durability test"})
+		"durability": "not_run: M1 edits are temporary; storage workload is not a durability test"}
+	report.merge(Evaluation.scenario_result(true, hard_failure, reasons))
+	reports.append(report)
 	if mode == "explore":
 		_finish("completed", "Exploration time limit reached; partial engine report saved")
 		return
 	if scenario_index + 1 < SCENARIOS.size() and SCENARIOS[scenario_index + 1]["id"] == "R1":
 		# Revisit the same edited fixture; do not regenerate a substitute world.
+		_close_reports()
 		scenario_index += 1
+		_open_reports()
 		_begin_measurement()
 	else:
+		_begin_phase("retirement")
 		terrain.queue_free()
 		viewer.queue_free()
 		data_viewer.queue_free()
@@ -607,18 +687,30 @@ func _cancel() -> void:
 	_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 
 func _finish(outcome: String, message: String) -> void:
+	_close_phase()
 	state = "finished"
-	_flush_csv()
-	sink.finish()
+	_close_reports()
+	if test_mode:
+		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	var summary: Dictionary = {"schema": 1, "milestone": "M1", "scope": "temporary engine proxy experiment",
-		"outcome": outcome, "target_certification": "unverified: review exact-build reports and all outstanding gates",
+	var summary: Dictionary = {"schema": 2, "milestone": "M1", "scope": "temporary engine proxy experiment",
+		"outcome": outcome, "completed": outcome == "completed", "qualified": false,
+		"qualification": "unverified", "target_certification": "unverified: review exact-build reports and all outstanding gates",
 		"message": message, "build": build_info, "machine": initial_machine,
 		"scenario_version": "m1-proxy-1", "fixture_version": "m1-integer-1", "test_mode": test_mode,
 		"configuration": {"resolution": [1280,720], "render_scale": 1.0, "render_block": render_size, "data_chunk": 16,
 			"workers": workers, "visual_radius": 96, "data_radius": 128, "fixture_y": [-16,32], "triangle_colliders": false},
-		"scenarios": reports, "limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
+		"scenarios": reports, "operation_phases": operation_phases,
+		"operation_trace": {"clock": "process monotonic microseconds; join to frame callback_usec",
+			"frames": "native engine process intervals; phase boundaries split a frame without resetting admission",
+			"payload": "estimated vertex layout plus sequential indices at 68 bytes/vertex; reference release has zero payload",
+			"deletion_kinds": {"2": "surface_remove", "3": "mesh_reference_release"},
+			"bounds": "64 native frame records; 128 pending CSV rows; 64 MiB per operation file; shared bounded disk worker",
+			"unavailable": ["driver-deferred work", "OS attribution"],
+			"diagnostic_usec": "callback probes through row construction; excludes that row formatting, flush and subsequent UI",
+			"renderer": "asynchronous viewport CPU/GPU queries; not additive with native or callback times"},
+		"limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
 	summary["integration_failures"] = integration_failures
 	summary["configuration"]["actual_workers"] = VoxelEngine.get_thread_count()
@@ -656,12 +748,12 @@ func _finish(outcome: String, message: String) -> void:
 		file.close()
 	file = FileAccess.open(report_dir + "/summary.txt", FileAccess.WRITE)
 	if file != null:
-		file.store_string("CAIRN M1 ENGINE CHECK\n" + message + "\nTarget certification remains unverified.\nAttach summary.json and the frame CSV files for review.\n")
+		file.store_string("CAIRN M1 ENGINE CHECK\n" + message + "\nCompletion: " + outcome + "\nQualification: UNVERIFIED; completion is not a performance pass.\nAttach summary.json and all CSV files for review.\n")
 		file.flush()
 		summary_saved = summary_saved and file.get_error() == OK
 		file.close()
 	else: summary_saved = false
-	status_label.text = message
+	status_label.text = message + " • qualification unverified"
 	detail_label.text = "Reports saved. Use Open reports folder and share summary.json with the frame CSV files.\nPerformance is not certified until the report has been reviewed."
 	if not summary_saved:
 		integration_failures.append("Could not write the final summary")

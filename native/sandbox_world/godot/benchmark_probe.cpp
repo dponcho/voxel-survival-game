@@ -11,6 +11,47 @@ void CairnProbe::_bind_methods() {
     ClassDB::bind_method(D_METHOD("snapshot"), &CairnProbe::snapshot);
     ClassDB::bind_method(D_METHOD("machine"), &CairnProbe::machine);
     ClassDB::bind_method(D_METHOD("configure", "workers", "heavy"), &CairnProbe::configure);
+    ClassDB::bind_method(D_METHOD("begin_phase", "id", "trace"), &CairnProbe::begin_phase);
+    ClassDB::bind_method(D_METHOD("end_phase"), &CairnProbe::end_phase);
+    ClassDB::bind_method(D_METHOD("phase_snapshot"), &CairnProbe::phase_snapshot);
+    ClassDB::bind_method(D_METHOD("take_operation_frames"), &CairnProbe::take_operation_frames);
+}
+static Dictionary operation_totals(const cairn::OperationTotals &s) {
+    Dictionary d;
+    d["count"] = int64_t(s.count); d["bytes"] = int64_t(s.bytes); d["usec"] = int64_t(s.usec);
+    d["max_usec"] = int64_t(s.max_usec); d["max_bytes"] = int64_t(s.max_bytes);
+    d["max_start_usec"] = int64_t(s.max_start_usec); d["max_kind"] = s.max_kind;
+    return d;
+}
+void CairnProbe::begin_phase(int64_t id, bool trace) {
+    cairn::operations.begin_phase(id, OS::get_singleton()->get_ticks_usec(), trace);
+}
+Dictionary CairnProbe::phase_snapshot() const {
+    const auto &s = cairn::operations;
+    Dictionary d;
+    d["id"] = int64_t(s.phase); d["upload"] = operation_totals(s.upload);
+    d["deletion"] = operation_totals(s.deletion); d["frames"] = int64_t(s.frames);
+    d["dropped_frames"] = int64_t(s.dropped); d["tracing"] = s.tracing;
+    d["peak_frame_operation_usec"] = int64_t(s.peak_frame_usec);
+    d["peak_frame_upload_bytes"] = int64_t(s.peak_frame_upload_bytes);
+    return d;
+}
+Dictionary CairnProbe::end_phase() {
+    cairn::operations.end_phase(OS::get_singleton()->get_ticks_usec());
+    return phase_snapshot();
+}
+Array CairnProbe::take_operation_frames() {
+    Array frames;
+    cairn::OperationFrame frame;
+    while (cairn::operations.pop(frame)) {
+        Dictionary d;
+        d["native_frame"] = int64_t(frame.native_frame); d["phase"] = int64_t(frame.phase);
+        d["start_usec"] = int64_t(frame.start_usec); d["end_usec"] = int64_t(frame.end_usec);
+        d["phase_boundary"] = frame.phase_boundary;
+        d["upload"] = operation_totals(frame.upload); d["deletion"] = operation_totals(frame.deletion);
+        frames.push_back(d);
+    }
+    return frames;
 }
 void CairnProbe::configure(int workers, bool heavy) {
     auto &engine = zylann::voxel::VoxelEngine::get_singleton();
