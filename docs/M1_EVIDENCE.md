@@ -18,6 +18,16 @@ existing public PR #2 after the initial automatic approval rejection. No new tes
 failure was observed; unexecuted tests are not passes. The qualified exact native
 bundle below remains available for normal reuse. See [NEXT_TASK.md](NEXT_TASK.md).
 
+Initial validation [36287222011](https://github.com/dponcho/voxel-survival-game/actions/runs/36287222011)
+passed import, new accounting/evaluation regressions, debug/release smoke,
+streaming correctness and 16³/one-worker integration, then failed 32³/two-worker
+report integrity. [Preserved evidence](https://github.com/dponcho/voxel-survival-game/actions/runs/36287222011/artifacts/10920778828)
+records incomplete diagnostic output beginning between N1 and N2; no script
+error was logged. Report closure submitted each partial batch only once despite
+the native sink's transient try-lock rejection. The follow-up retries pending
+batches between frames outside gameplay with a bounded submission window, and
+adds deterministic transient/permanent-rejection tests. Follow-up CI is pending.
+
 ## Current Windows candidate: phase-local attribution correction
 
 [CI run 36280383637](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637)

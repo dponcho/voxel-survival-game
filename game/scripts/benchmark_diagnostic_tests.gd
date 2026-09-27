@@ -3,6 +3,26 @@ extends RefCounted
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
 const Diagnostics = preload("res://scripts/benchmark_diagnostics.gd")
 
+static func verify_flush(next_frame: Signal) -> Array[String]:
+	var failures: Array[String] = []
+	var writer: Dictionary = {"attempts": 0, "pending": true, "writes": 0}
+	var flush := func() -> void:
+		writer["attempts"] += 1
+		if writer["attempts"] >= 3:
+			writer["pending"] = false
+			writer["writes"] += 1
+	var pending := func() -> bool: return bool(writer["pending"])
+	var healthy := func() -> bool: return false
+	if not await Diagnostics.drain_pending(flush, pending, healthy, next_frame, 4) or writer["writes"] != 1:
+		failures.append("Transient writer rejection lost or duplicated the final batch")
+	var blocked := func() -> bool: return true
+	var no_progress := func() -> void: pass
+	if await Diagnostics.drain_pending(no_progress, blocked, healthy, next_frame, 3):
+		failures.append("Permanently blocked writer was reported complete")
+	if await Diagnostics.drain_pending(no_progress, blocked, blocked, next_frame, 3):
+		failures.append("Failed writer was reported complete")
+	return failures
+
 static func _phases(on_usec: int = 30150000, off_usec: int = 30000000) -> Array[Dictionary]:
 	var phases: Array[Dictionary] = []
 	for id: String in ["AB-off-1", "AB-on-1", "AB-on-2", "AB-off-2"]:

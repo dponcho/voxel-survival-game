@@ -23,6 +23,7 @@ var end_requested: bool = false
 var finish_reason: String = ""
 var writer_drain_usec: int = 0
 var reports_open: bool = false
+var finishing: bool = false
 var probe: CairnProbe = CairnProbe.new()
 var terrain: VoxelTerrain
 var viewer: VoxelViewer
@@ -158,9 +159,9 @@ func _close_phase() -> Dictionary:
 
 func _close_reports() -> void:
 	if not reports_open: return
-	_flush_csv()
-	_flush_operations()
 	var drain_start: int = Time.get_ticks_usec()
+	if not await Diagnostics.drain_pending(_flush_pending_reports, _has_pending_reports, sink.has_failed, get_tree().process_frame):
+		report_io_failed = true
 	sink.finish()
 	writer_drain_usec = Time.get_ticks_usec() - drain_start
 	reports_open = false
@@ -168,6 +169,13 @@ func _close_reports() -> void:
 	raw_lines.clear()
 	operation_lines.clear()
 	if report_io_failed: integration_failures.append("Incomplete diagnostic output")
+
+func _flush_pending_reports() -> void:
+	_flush_csv()
+	_flush_operations()
+
+func _has_pending_reports() -> bool:
+	return not raw_lines.is_empty() or not operation_lines.is_empty()
 
 func _ready() -> void:
 	for argument: String in OS.get_cmdline_user_args():
@@ -328,8 +336,12 @@ func _start_scenario() -> void:
 	probe.configure(workers, str(scenario["id"]).begins_with("H"))
 
 func _begin_measurement() -> void:
+	state = "reporting"
 	_close_phase()
-	_close_reports()
+	await _close_reports()
+	if cancelled:
+		_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
+		return
 	state = "running"
 	scenario_elapsed = 0.0
 	elapsed_wall = 0.0
@@ -492,7 +504,7 @@ func _edit_border(tool: VoxelTool) -> bool:
 	return false
 
 func _process(_delta: float) -> void:
-	if state == "finished": return
+	if state == "finished" or state == "reporting": return
 	var begin: int = Time.get_ticks_usec()
 	var measured: bool = state == "running"
 	_process_frame(begin)
@@ -513,7 +525,11 @@ func _process_frame(now: int) -> void:
 			return
 		if int(drain["generation_jobs"]) + int(drain["mesh_jobs"]) + int(drain["main_jobs"]) == 0:
 			_close_phase()
-			_close_reports()
+			state = "reporting"
+			await _close_reports()
+			if cancelled:
+				_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
+				return
 			scenario_index += 1
 			if scenario_index >= SCENARIOS.size(): _finish("completed", "All applicable engine scenarios ran")
 			else: _start_scenario()
@@ -631,7 +647,10 @@ func _end_scenario() -> void:
 	state = "reporting"
 	var measured_phase: Dictionary = _close_phase()
 	# Join/flush while explicitly outside gameplay, before retirement can add work.
-	_close_reports()
+	await _close_reports()
+	if cancelled:
+		_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
+		return
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	var id: String = scenario["id"]
 	var heavy: bool = id.begins_with("H")
@@ -721,11 +740,14 @@ func _end_scenario() -> void:
 
 func _cancel() -> void:
 	cancelled = true
+	if state == "reporting": return
 	_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 
 func _finish(outcome: String, message: String) -> void:
+	if finishing: return
+	finishing = true
 	var begin: int = Time.get_ticks_usec()
-	_finish_report(outcome, message)
+	await _finish_report(outcome, message)
 	# A separate terminal record avoids pretending a file can include its own write cost.
 	var end: int = Time.get_ticks_usec()
 	var file := FileAccess.open(report_dir + "/report-finalization.json", FileAccess.WRITE)
@@ -747,7 +769,7 @@ func _finish(outcome: String, message: String) -> void:
 func _finish_report(outcome: String, message: String) -> void:
 	_close_phase()
 	state = "finished"
-	_close_reports()
+	await _close_reports()
 	if test_mode:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 	Engine.max_fps = 60

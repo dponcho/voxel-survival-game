@@ -13,6 +13,18 @@ var block_usec: int = 0
 var blocks: Array[Dictionary] = []
 var overflow: bool = false
 
+# A rejected try-lock/queue submission is retried only between scenarios.
+# Yield to the existing worker; never spin or drop a final partial batch.
+static func drain_pending(flush: Callable, pending: Callable, failed: Callable, next_frame: Signal, max_attempts: int = 120) -> bool:
+	var deadline: int = Time.get_ticks_usec() + 1000000
+	for attempt: int in range(max_attempts):
+		if failed.call(): return false
+		flush.call()
+		if not pending.call(): return true
+		if Time.get_ticks_usec() >= deadline: return false
+		await next_frame
+	return false
+
 func start(now: int) -> void:
 	started_usec = now
 

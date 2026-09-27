@@ -35,6 +35,11 @@ The old misleading `diagnostic_cpu_fraction` field is replaced by
 Each scenario also records the window from measurement setup through the last
 callback, phase closure, writer join/flush and report construction. The writer is
 closed before terrain retirement; preparation I/O drains before this window opens.
+Final partial batches rejected by the sink's nonblocking queue are retried between
+frames outside gameplay, for at most 120 attempts or one second. Permanent failure
+still fails evidence integrity. Cancellation waits for that bounded submission
+step; it cannot start a second concurrent close. The existing final writer join
+remains outside gameplay and has no new timeout guarantee.
 `writer_drain_usec` is nested within finalization, never added to overlapping
 callback/worker/GPU times. No disk join is introduced within measured gameplay.
 `report-finalization.json` separately times combined summary construction, hashing,
