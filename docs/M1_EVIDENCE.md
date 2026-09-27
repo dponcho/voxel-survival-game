@@ -1,14 +1,60 @@
 # M1 engine experiment evidence
 
 Current milestone status: **blocked; target not qualified** after the
-[five-run laptop review](M1_TARGET_REVIEW.md) on 2026-09-26. The candidate's
-immutable cloud result remains **cloud_passed_target_unverified** from
+[five-run laptop review](M1_TARGET_REVIEW.md) on 2026-09-26. The bounded attribution
+correction below is **cloud_passed_target_unverified**; it does not qualify M1.
+
+## Current Windows candidate: phase-local attribution correction
+
+[CI run 36280383637](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637)
+completed successfully on 2026-09-27 at 01:29 UTC (September 26 locally).
+Download [Windows player artifact 10920027865](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637/artifacts/10920027865)
+and extract its contained portable ZIP. The artifact contains the ZIP, checksum
+file and build identity. GitHub reports expiry on 2026-10-27 at 01:29 UTC.
+
+| Identity | Value verified from CI logs/artifact metadata |
+| --- | --- |
+| Implementation branch commit | `3685dd472e5ffd3429ba5d35b7ee63c949b374e5` |
+| Exported synthetic merge / game build ID | `b65ba3e409ba7a80da282b5297783533de2f6fc6` |
+| Native source key | `3909c871bcac301ba2e0d91cd32b53b99555b9d9a30f2e3b62421b842145d803` |
+| GitHub-reported outer player archive SHA-256 | `acf8f7b1c32a00c8a33ab38a5dc9f50ad9f5a428a0d08e91c0fba192c71c76b8` |
+
+The source pins, compiler and flags are unchanged. The native instrumentation
+changed the source key, so the ordinary reuse-enabled workflow built matching
+editor/debug/release binaries after an exact cache/artifact miss. Native job
+`108511005497` qualified them, saved the exact cache and published
+[native artifact 10920566667](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637/artifacts/10920566667)
+before game export. No manual cold build or redundant CI run was launched.
+
+Static job `108510956501` passed all 12 packaging/cache regressions, Python
+compile checks, the existing native fixture checks and the new phase/frame
+regressions with address/undefined-behaviour sanitizers. Windows job `108525026003`
+verified native identity/digests, passed all 12 Windows regressions, matching-editor
+import and native/evaluation tests, debug/release smoke, all four correctness
+profiles, streaming/collision/edit/eviction/cancellation, dependency audit and two
+fresh offline extractions. Every smoke report checks actual operation CSV totals,
+maxima, timestamps and phase isolation against phase/lifetime counters.
+
+[Export evidence 10920157662](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637/artifacts/10920157662)
+and [separate symbols 10919853233](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637/artifacts/10919853233)
+are retained. This session inspected completed logs and artifact metadata; it did
+not independently download/hash the new archives or run the game locally.
+
+The [correction](M1_OPERATION_DIAGNOSTICS.md) adds phase-local upload/deletion
+maxima, bounded per-frame operation evidence and explicit completion versus
+qualification. Lifetime counters, thresholds, workload, generator and saves are
+unchanged. No current cloud check failed. Corrected exact-build HD 620 results,
+end-to-end overhead, edit visibility, pacing/driver attribution, allocation and
+retention/qualification evidence remain unverified. M2 remains gated. The
+[handoff](NEXT_TASK.md) names the next bounded implementation task.
+
+## September 25 reviewed candidate
+
+The previous candidate's immutable cloud result was **cloud_passed_target_unverified** from
 [GitHub run 36183549961](https://github.com/dponcho/voxel-survival-game/actions/runs/36183549961),
 completed successfully on 2026-09-25. This is not an M1 target-performance pass.
 Run status, completed job logs, artifact metadata and downloaded player/evidence
 archives were inspected on 2026-09-25.
-
-## Current Windows candidate
 
 Download [player artifact 10889930434](https://github.com/dponcho/voxel-survival-game/actions/runs/36183549961/artifacts/10889930434),
 then extract the contained `Cairn-windows-x86_64.zip` into a fresh folder.
@@ -38,7 +84,7 @@ The export evidence archive SHA-256 is
 `d7d2414bcd7cb2b7f9f266721380f74961419a74793943c6ab33267aa4772837`,
 also verified after download.
 
-## Executed cloud checks
+## September 25 executed cloud checks
 
 The follow-up static job `108264637172` passed all 12 packaging/native-reuse
 regression tests, Python compile checks and native fixture checks with address
@@ -76,11 +122,11 @@ fixed 720p window and stronger mesher checks. The current cloud results supersed
 their previously pending validation status. See the [CI architecture evidence](CI_ARCHITECTURE.md#acceptance-evidence)
 for the exact bundle, reuse proof and remaining fallback-path limitation.
 
-## Scope and remaining target evidence
+## September 25 target evidence and remaining scope
 
 Hosted Windows rendered smoke was **not run**. The user supplied one standalone
 baseline and a complete four-profile comparison from the actual i7-7600U / HD 620.
-All five report identities and executable/PCK hashes match this candidate;
+All five report identities and executable/PCK hashes match the September 25 candidate;
 1,682,025 CSV rows were independently checked against their summaries. See the
 [target review](M1_TARGET_REVIEW.md) and [machine-readable results](evidence/m1-target-2026-09-25-review.json).
 Frame-rate capacity, memory and recorded collision/readiness results are promising,
@@ -92,12 +138,13 @@ The experiment uses stock blocky meshing with bounded split uploads, not greedy
 meshing. Every comparison uses the finite fixture slab Y [-16,32), visual radius
 96 m and data radius 128 m. Edits use a bounded temporary session overlay; actor,
 weather and storage workloads are proxies. There is no durable save format or
-complete-world vertical qualification. The runtime/native inputs are unchanged by
-this review. The user's [2026-09-26 Java core requirements](JAVA_CORE_REFERENCE.md)
-apply to future implementation and do not retroactively change this candidate.
+complete-world vertical qualification. That report review did not change runtime
+inputs. The user's [2026-09-26 Java core requirements](JAVA_CORE_REFERENCE.md)
+apply to future implementation and do not retroactively change the reviewed candidate.
 
-The next bounded task is the diagnostic attribution/overhead correction described
-in the target review. Do not request another four-profile run or the final three
+The attribution correction above addresses one part of the target review.
+End-to-end overhead accounting is the next task in [NEXT_TASK.md](NEXT_TASK.md).
+Do not request another four-profile run or the final three
 qualification repeats until the corrected evidence path is ready. The
 [laptop guide](M1_TESTING.md) remains the procedure for the next exact-build
 candidate. A startup-check pass alone does not qualify M1.
@@ -117,4 +164,5 @@ had outer archive SHA-256
 and recorded expiry 2026-10-06; availability was not rechecked in this continuation.
 Its [evidence artifact 9992510088](https://github.com/dponcho/voxel-survival-game/actions/runs/34036830778/artifacts/9992510088)
 and the earlier failed run `34003770515` / corrective run `34007283054` remain
-historical provenance. Use the current September 25 candidate for new laptop tests.
+historical provenance. Use the corrected candidate above for subsequent
+instrumentation checks; review remaining measurement gaps before qualification repeats.

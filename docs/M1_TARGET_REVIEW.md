@@ -121,3 +121,13 @@ complete the patch and identify the changed native key; reuse unaffected outputs
 where valid. Do not rebuild merely to publish this evidence or change requirements.
 Review corrected measurements before requesting another four-profile run or the
 three final repeats. M2 has not been implemented in this continuation.
+
+## Bounded attribution correction
+
+The subsequent [operation instrumentation change](M1_OPERATION_DIAGNOSTICS.md)
+preserves lifetime counters and adds independently accumulated phase maxima,
+bounded native frame traces, and explicit completion/qualification fields.
+See [current cloud evidence](M1_EVIDENCE.md) for validation and the corrected
+candidate. It does not retroactively change the five reports reviewed above.
+End-to-end diagnostic overhead, edit visibility and the remaining target gates
+are still outstanding; the broader next-task list above is not marked complete.
