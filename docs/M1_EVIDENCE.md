@@ -1,34 +1,64 @@
 # M1 engine experiment evidence
 
 Current milestone status: **blocked; target not qualified** after the
-[five-run laptop review](M1_TARGET_REVIEW.md) on 2026-09-26. The bounded attribution
-correction below is **cloud_passed_target_unverified**; it does not qualify M1.
+[five-run laptop review](M1_TARGET_REVIEW.md). The diagnostic corrections below
+are **cloud_passed_target_unverified**; they do not qualify M1.
 
-## Diagnostic-overhead correction: cloud verification pending
+## Current Windows candidate: diagnostic-overhead accounting
 
-The working tree adds schema 3 callback/UI/CSV timing, isolated measurement writer
-drain, final-summary timing, equivalent bounded A/B histogram/block evidence and
-conservative repeat/drift evaluation. Regression checks are wired into the existing
-native-test and exported smoke routes. No native source, dependency pin, save,
-generator, simulation workload or acceptance threshold changed.
+[CI 36287728890](https://github.com/dponcho/voxel-survival-game/actions/runs/36287728890)
+completed successfully on 2026-09-27 UTC (September 26 locally).
+Download [Windows player artifact 10921940219](https://github.com/dponcho/voxel-survival-game/actions/runs/36287728890/artifacts/10921940219)
+and extract the contained portable ZIP. GitHub reports expiry on 2026-10-27
+at 02:17 UTC. Symbols are separate from the player distribution.
 
-`git diff --check` passed. The new runtime/regression checks have **not run** and
-no matching candidate exists yet. The user explicitly approved publication to
-existing public PR #2 after the initial automatic approval rejection. No new test
-failure was observed; unexecuted tests are not passes. The qualified exact native
-bundle below remains available for normal reuse. See [NEXT_TASK.md](NEXT_TASK.md).
+| Identity | Verified value |
+| --- | --- |
+| Implementation branch commit | `1c9b7c638bb6154ce78c06f50831a7eda1db737e` |
+| Exported synthetic merge / game build ID | `404af829964d341524f6c7ae29b4aebdac683b2a` |
+| Native source key | `3909c871bcac301ba2e0d91cd32b53b99555b9d9a30f2e3b62421b842145d803` |
+| GitHub-reported outer player archive SHA-256 | `e6ae070fbbf6000ad7f479891b421e39f3e5dedada12a0ff90dca3e86551cbac` |
+
+The user approved publication to existing public PR #2. Schema 3 now accounts
+for callback formatting, CSV submission and UI work, preserves the final callback,
+drains each measurement writer before retirement, and separately times final
+summary assembly/hash/write/UI work. Both A/B modes retain bounded histograms and
+five-second timing blocks. Conservative evaluation rejects unstable repeats in
+either mode, within-phase drift, incomplete workloads and ranges crossing 1%.
+[Measurement semantics and limits](M1_OPERATION_DIAGNOSTICS.md) remain explicit:
+wall time is not CPU service time, overlapping costs are not added, shared native
+counters remain enabled, and switched A/B success cannot certify total overhead.
+
+Static job `108531574512` passed 12 packaging/cache regressions, Python compile
+checks and both native sanitizer suites. Native job `108531629036` used the exact
+cache, requalified editor/debug/release and skipped compiler installation/build.
+It reused qualified native artifact `10920566667`; no new native source was built.
+Windows job `108531756571` passed 12 Windows regressions, import, native/evaluation
+and queue-rejection tests, debug/release smoke with actual CSV reconciliation,
+all four correctness profiles, streaming/collision/edit/eviction/cancellation,
+dependency audit and two fresh offline extractions. No check in this run failed.
+
+[Export evidence 10921845799](https://github.com/dponcho/voxel-survival-game/actions/runs/36287728890/artifacts/10921845799)
+and [symbols 10921516464](https://github.com/dponcho/voxel-survival-game/actions/runs/36287728890/artifacts/10921516464)
+are retained. Completed logs and artifact metadata were inspected; the new player
+archive was not independently downloaded/hashed or executed locally.
 
 Initial validation [36287222011](https://github.com/dponcho/voxel-survival-game/actions/runs/36287222011)
-passed import, new accounting/evaluation regressions, debug/release smoke,
-streaming correctness and 16³/one-worker integration, then failed 32³/two-worker
-report integrity. [Preserved evidence](https://github.com/dponcho/voxel-survival-game/actions/runs/36287222011/artifacts/10920778828)
-records incomplete diagnostic output beginning between N1 and N2; no script
-error was logged. Report closure submitted each partial batch only once despite
-the native sink's transient try-lock rejection. The follow-up retries pending
-batches between frames outside gameplay with a bounded submission window, and
-adds deterministic transient/permanent-rejection tests. Follow-up CI is pending.
+failed 32³/two-worker report integrity after earlier checks passed.
+[Preserved evidence 10920778828](https://github.com/dponcho/voxel-survival-game/actions/runs/36287222011/artifacts/10920778828)
+was downloaded and reviewed: incomplete output began after N1; no script error
+was logged. Source review identified one-shot final-batch submission despite
+transient native queue rejection. The follow-up adds bounded between-frame retries
+outside gameplay and regressions for transient rejection, permanent blockage and
+writer failure. The corrected full run passed; the original failure is preserved.
 
-## Current Windows candidate: phase-local attribution correction
+No native inputs, save/generator behavior, simulation workload or acceptance
+threshold changed. Exact-build HD 620 overhead, edit visibility, pacing/driver
+attribution, allocation and retention/qualification evidence remain unverified.
+M2 remains gated. Review one corrected baseline before another full comparison
+or final repeats. The [handoff](NEXT_TASK.md) names the next bounded implementation.
+
+## September 26 candidate: phase-local attribution correction
 
 [CI run 36280383637](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637)
 completed successfully on 2026-09-27 at 01:29 UTC (September 26 locally).
@@ -167,7 +197,7 @@ inputs. The user's [2026-09-26 Java core requirements](JAVA_CORE_REFERENCE.md)
 apply to future implementation and do not retroactively change the reviewed candidate.
 
 The attribution correction above addresses one part of the target review.
-End-to-end overhead accounting is the next task in [NEXT_TASK.md](NEXT_TASK.md).
+The schema 3 overhead correction above now has cloud evidence; exact-build target overhead remains unverified.
 Do not request another four-profile run or the final three
 qualification repeats until the corrected evidence path is ready. The
 [laptop guide](M1_TESTING.md) remains the procedure for the next exact-build

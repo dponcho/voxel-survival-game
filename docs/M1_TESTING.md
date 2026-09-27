@@ -6,9 +6,9 @@ worlds. A startup-check pass alone does not qualify M1.
 
 The September 25 candidate's standalone baseline and four-setting comparison have
 now been received and [reviewed](M1_TARGET_REVIEW.md). M1 is not yet qualified.
-Keep those reports; another full comparison or final qualification repeat should
-wait for the diagnostic attribution/overhead correction and its new candidate.
-The procedure below remains applicable when that candidate is ready.
+Keep those reports. Use the corrected diagnostic candidate linked below for one
+new baseline report first. Review its measurements before another full comparison
+or final qualification repeat; completion still does not qualify M1.
 
 ## Get the candidate
 
@@ -55,7 +55,8 @@ the run safely if needed. Keep a cancelled or failed report; do not treat it as 
 pass or discard an inconvenient slow result.
 
 When it finishes, select **Open reports folder**. Send the entire report folder
-as a ZIP, including `summary.json`, `summary.txt` and the frame CSV files. The report
+as a ZIP, including `summary.json`, `summary.txt`, `report-finalization.json` and
+all preparation, measurement and retirement CSV files. The report
 contains hardware/build information and measurements; it does not upload anything
 automatically. Also mention whether the picture and controls looked normal and
 whether another application interrupted the run.
