@@ -17,6 +17,12 @@ const SCENARIOS: Array[Dictionary] = [
 ]
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
+const Diagnostics = preload("res://scripts/benchmark_diagnostics.gd")
+var diagnostics := Diagnostics.new()
+var end_requested: bool = false
+var finish_reason: String = ""
+var writer_drain_usec: int = 0
+var reports_open: bool = false
 var probe: CairnProbe = CairnProbe.new()
 var terrain: VoxelTerrain
 var viewer: VoxelViewer
@@ -96,12 +102,14 @@ var operation_lines: PackedStringArray = []
 var operation_bytes: int = 0
 var operation_file: String = ""
 
-func _open_reports() -> void:
+func _open_reports(suffix: String = "") -> void:
 	csv_bytes = 0
 	operation_bytes = 0
-	operation_file = str(SCENARIOS[scenario_index]["id"]) + "-frames.csv.operations.csv"
-	sink.start(report_dir + "/" + str(SCENARIOS[scenario_index]["id"]) + "-frames.csv")
-	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec")
+	var name: String = str(SCENARIOS[scenario_index]["id"]) + suffix + "-frames.csv"
+	operation_file = name + ".operations.csv"
+	sink.start(report_dir + "/" + name)
+	reports_open = true
+	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec,diagnostic_frame")
 	operation_lines.append("native_frame,phase,start_usec,end_usec,phase_boundary,upload_count,upload_bytes,upload_usec,upload_max_usec,upload_max_bytes,upload_max_start_usec,deletion_count,deletion_bytes,deletion_usec,deletion_max_usec,deletion_max_bytes,deletion_max_start_usec,deletion_max_kind")
 
 func _begin_phase(label: String, trace: bool = true) -> void:
@@ -149,9 +157,13 @@ func _close_phase() -> Dictionary:
 	return result
 
 func _close_reports() -> void:
+	if not reports_open: return
 	_flush_csv()
 	_flush_operations()
+	var drain_start: int = Time.get_ticks_usec()
 	sink.finish()
+	writer_drain_usec = Time.get_ticks_usec() - drain_start
+	reports_open = false
 	if not raw_lines.is_empty() or not operation_lines.is_empty() or sink.has_failed(): report_io_failed = true
 	raw_lines.clear()
 	operation_lines.clear()
@@ -297,7 +309,7 @@ func _create_terrain(fixture: int) -> void:
 
 func _start_scenario() -> void:
 	state = "loading"
-	_open_reports()
+	_open_reports("-preparation")
 	_begin_phase("preparation")
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	route_origin = Vector3(10, -10, 2) if scenario["id"] == "N2" else Vector3(10, 8, 10)
@@ -317,6 +329,7 @@ func _start_scenario() -> void:
 
 func _begin_measurement() -> void:
 	_close_phase()
+	_close_reports()
 	state = "running"
 	scenario_elapsed = 0.0
 	elapsed_wall = 0.0
@@ -351,6 +364,11 @@ func _begin_measurement() -> void:
 	queue_window_peak = 0
 	next_queue_window = 5.0
 	revisit_checked = 0
+	end_requested = false
+	finish_reason = ""
+	diagnostics = Diagnostics.new()
+	diagnostics.start(Time.get_ticks_usec())
+	_open_reports()
 	var id: String = SCENARIOS[scenario_index]["id"]
 	var label: String = "gameplay"
 	if id == "warmup": label = "warmup"
@@ -475,7 +493,17 @@ func _edit_border(tool: VoxelTool) -> bool:
 
 func _process(_delta: float) -> void:
 	if state == "finished": return
-	var measure_start: int = Time.get_ticks_usec()
+	var begin: int = Time.get_ticks_usec()
+	var measured: bool = state == "running"
+	_process_frame(begin)
+	if measured:
+		# Includes row formatting, batch submission, live UI and the final callback.
+		diagnostics.record_callback(begin, Time.get_ticks_usec())
+		measurement_usec = diagnostics.callback_usec
+		if not finish_reason.is_empty(): _finish("failed", finish_reason)
+		elif end_requested: _end_scenario()
+
+func _process_frame(now: int) -> void:
 	if phase_name != "overhead_diagnostic" or not str(SCENARIOS[scenario_index]["id"]).begins_with("AB-off-"):
 		_drain_operation_frames()
 	if state == "draining":
@@ -503,8 +531,8 @@ func _process(_delta: float) -> void:
 			loading_seconds = float(Time.get_ticks_msec() - loading_started) / 1000.0
 			_begin_measurement()
 		return
-	var now: int = Time.get_ticks_usec()
 	var frame_ms: float = float(now - last_frame_usec) / 1000.0
+	diagnostics.record_interval(now - last_frame_usec)
 	last_frame_usec = now
 	elapsed_wall += frame_ms / 1000.0
 	sample_count += 1
@@ -517,9 +545,9 @@ func _process(_delta: float) -> void:
 	if id.begins_with("AB-off-"):
 		# Minimal interval/histogram baseline. Disable per-frame probes, GPU
 		# polling, formatting, CSV I/O and live labels; keep identical simulation.
-		if scenario_elapsed >= _duration(): _end_scenario()
+		if scenario_elapsed >= _duration(): end_requested = true
 		elif elapsed_wall > _duration() * 2.0 + 30.0:
-			_finish("failed", "Diagnostic baseline simulation stalled")
+			finish_reason = "Diagnostic baseline simulation stalled"
 		return
 	var counters: Dictionary = probe.snapshot()
 	var terrain_stats: Dictionary = terrain.get_statistics()
@@ -560,19 +588,18 @@ func _process(_delta: float) -> void:
 	var pools: Dictionary = upstream_stats["memory_pools"]
 	for key: String in ["voxel_total", "voxel_used", "block_count"]:
 		peaks["pool_" + key] = maxi(int(peaks.get("pool_" + key, 0)), int(pools[key]))
-	raw_lines.append("%d,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.6f,%.6f,%d" % [sample_count, elapsed_wall, scenario_elapsed, frame_ms,
+	raw_lines.append("%d,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.6f,%.6f,%d,%d" % [sample_count, elapsed_wall, scenario_elapsed, frame_ms,
 		counters["generation_jobs"], counters["mesh_jobs"], counters["result_jobs"], terrain_stats.get("pending_data", 0), terrain_stats.get("pending_mesh", 0),
 		counters.get("private_bytes", 0), counters.get("working_set", 0), draws, triangles, accepted_edits, readiness_stops,
-		now, render_cpu, render_gpu, Time.get_ticks_usec() - measure_start])
+		now, render_cpu, render_gpu, diagnostics.last_callback_usec, diagnostics.callbacks])
 	if raw_lines.size() >= 128: _flush_csv()
-	measurement_usec += Time.get_ticks_usec() - measure_start
 	if sample_count % 30 == 0:
 		status_label.text = "%s • %d / %d seconds • %d³ / %d worker(s)" % [id, int(scenario_elapsed), int(_duration()), render_size, workers]
 		detail_label.text = "%.1f fps • %d frame deadline misses • %d accepted proxy edits\nThis is an engine experiment. Final survival systems are not present." % [1000.0 / maxf(frame_ms, 0.001), misses, accepted_edits]
-	if int(counters["overloads"]) > 0: _finish("failed", "Native admission rejected unsupported geometry")
+	if int(counters["overloads"]) > 0: finish_reason = "Native admission rejected unsupported geometry"
 	elif elapsed_wall > _duration() * 2.0 + 30.0 or sample_count > 500000:
-		_finish("failed", "Scenario exceeded its wall-time or diagnostic sample bound")
-	elif scenario_elapsed >= _duration(): _end_scenario()
+		finish_reason = "Scenario exceeded its wall-time or diagnostic sample bound"
+	elif scenario_elapsed >= _duration(): end_requested = true
 
 func _duration() -> float:
 	if mode == "explore": return 1800.0
@@ -601,8 +628,10 @@ func _flush_csv() -> void:
 	csv_usec += Time.get_ticks_usec() - start
 
 func _end_scenario() -> void:
+	state = "reporting"
 	var measured_phase: Dictionary = _close_phase()
-	_flush_csv()
+	# Join/flush while explicitly outside gameplay, before retirement can add work.
+	_close_reports()
 	var scenario: Dictionary = SCENARIOS[scenario_index]
 	var id: String = scenario["id"]
 	var heavy: bool = id.begins_with("H")
@@ -638,7 +667,7 @@ func _end_scenario() -> void:
 	var counters: Dictionary = probe.snapshot()
 	reasons.append_array(Evaluation.operation_failures(measured_phase))
 	var overhead: float = float(measurement_usec) / maxf(sum_ms * 1000.0, 1.0)
-	if overhead >= 0.01: reasons.append("Measured diagnostic CPU cost reached 1%; A/B qualification required")
+	if overhead >= 0.01: reasons.append("Diagnostic callback wall time reached 1%; A/B qualification required")
 	var hard_failure: bool = readiness_stops > 0 or report_io_failed or sink.has_failed() or int(measured_phase["dropped_frames"]) > 0
 	for reason: String in reasons:
 		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason or "Collision" in reason: hard_failure = true
@@ -648,7 +677,8 @@ func _end_scenario() -> void:
 		"maximum_ms": max_ms, "deadline_misses": misses, "simulated_seconds": scenario_elapsed, "wall_seconds": elapsed_wall,
 		"worst_event": worst_event.duplicate(), "raw_frames": id + "-frames.csv" if not id.begins_with("AB-off-") else "disabled for A/B baseline; histogram retained",
 		"readiness_stops": readiness_stops, "accepted_proxy_edits": accepted_edits, "rejected_proxy_edits": rejected_edits,
-		"actor_ticks": actor_ticks, "collision_usec": collision_usec, "diagnostic_cpu_fraction": overhead,
+		"actor_ticks": actor_ticks, "simulation_ticks": simulation_ticks, "collision_usec": collision_usec,
+		"diagnostic_callback_wall_fraction": overhead,
 		"requested_distance_m": requested_distance, "travelled_distance_m": travelled_distance,
 		"recovery_seconds": recovery_seconds, "revisited_edits": revisit_checked,
 		"queue_five_second_peaks": queue_windows.duplicate(), "loading_seconds": loading_seconds,
@@ -663,17 +693,24 @@ func _end_scenario() -> void:
 		"proxy_autosaves": proxy_saves, "presentation": "application callback intervals; physical scanout unavailable",
 		"durability": "not_run: M1 edits are temporary; storage workload is not a durability test"}
 	report.merge(Evaluation.scenario_result(true, hard_failure, reasons))
+	if id.begins_with("AB-"):
+		# Same bounded timing evidence in both modes, including the baseline distribution.
+		var bins: Array[Array] = []
+		for i: int in range(histogram.size()):
+			if histogram[i] > 0: bins.append([i, histogram[i]])
+		report["interval_histogram_10usec"] = bins
+	# Final combined serialization/file hashing has its own measured lifecycle below.
+	report["diagnostic_accounting"] = diagnostics.snapshot(Time.get_ticks_usec(), writer_drain_usec)
 	reports.append(report)
 	if mode == "explore":
 		_finish("completed", "Exploration time limit reached; partial engine report saved")
 		return
 	if scenario_index + 1 < SCENARIOS.size() and SCENARIOS[scenario_index + 1]["id"] == "R1":
 		# Revisit the same edited fixture; do not regenerate a substitute world.
-		_close_reports()
 		scenario_index += 1
-		_open_reports()
 		_begin_measurement()
 	else:
+		_open_reports("-retirement")
 		_begin_phase("retirement")
 		terrain.queue_free()
 		viewer.queue_free()
@@ -687,6 +724,27 @@ func _cancel() -> void:
 	_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 
 func _finish(outcome: String, message: String) -> void:
+	var begin: int = Time.get_ticks_usec()
+	_finish_report(outcome, message)
+	# A separate terminal record avoids pretending a file can include its own write cost.
+	var end: int = Time.get_ticks_usec()
+	var file := FileAccess.open(report_dir + "/report-finalization.json", FileAccess.WRITE)
+	var timing_saved: bool = file != null
+	if file != null:
+		file.store_string(JSON.stringify({"start_usec": begin, "end_usec": end, "elapsed_usec": end - begin,
+			"scope": "phase closure, writer drain, summary assembly, hashing, serialization, writes/flushes and final UI",
+			"excluded": "this terminal timing record write; process exit; deferred renderer work",
+			"test_mode": test_mode}))
+		file.flush()
+		timing_saved = file.get_error() == OK
+		file.close()
+	if not timing_saved:
+		integration_failures.append("Could not save finalization timing")
+		status_label.text = "Could not save complete diagnostic evidence"
+		detail_label.text = "The final timing record could not be written. Keep the partial reports; this run cannot qualify M1."
+	if test_mode: get_tree().quit(0 if outcome == "completed" and integration_failures.is_empty() else 1)
+
+func _finish_report(outcome: String, message: String) -> void:
 	_close_phase()
 	state = "finished"
 	_close_reports()
@@ -694,7 +752,7 @@ func _finish(outcome: String, message: String) -> void:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	var summary: Dictionary = {"schema": 2, "milestone": "M1", "scope": "temporary engine proxy experiment",
+	var summary: Dictionary = {"schema": 3, "milestone": "M1", "scope": "temporary engine proxy experiment",
 		"outcome": outcome, "completed": outcome == "completed", "qualified": false,
 		"qualification": "unverified", "target_certification": "unverified: review exact-build reports and all outstanding gates",
 		"message": message, "build": build_info, "machine": initial_machine,
@@ -708,7 +766,7 @@ func _finish(outcome: String, message: String) -> void:
 			"deletion_kinds": {"2": "surface_remove", "3": "mesh_reference_release"},
 			"bounds": "64 native frame records; 128 pending CSV rows; 64 MiB per operation file; shared bounded disk worker",
 			"unavailable": ["driver-deferred work", "OS attribution"],
-			"diagnostic_usec": "callback probes through row construction; excludes that row formatting, flush and subsequent UI",
+			"diagnostic_usec": "full previous callback elapsed wall time, keyed by diagnostic_frame; final callback retained in scenario accounting",
 			"renderer": "asynchronous viewport CPU/GPU queries; not additive with native or callback times"},
 		"limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
@@ -719,22 +777,13 @@ func _finish(outcome: String, message: String) -> void:
 	summary["configuration"]["shadows"] = false
 	summary["configuration"]["anti_aliasing"] = "disabled"
 	summary["configuration"]["fog_density"] = 0.025
-	var off_means: Array[float] = []
-	var on_means: Array[float] = []
-	for report: Dictionary in reports:
-		var mean_ms: float = float(report["wall_seconds"]) * 1000.0 / maxf(float(report["samples"]), 1.0)
-		if str(report["id"]).begins_with("AB-off-"): off_means.append(mean_ms)
-		if str(report["id"]).begins_with("AB-on-"): on_means.append(mean_ms)
-	if off_means.size() == 2 and on_means.size() == 2:
-		var off_mean: float = (off_means[0] + off_means[1]) * 0.5
-		var on_mean: float = (on_means[0] + on_means[1]) * 0.5
-		var variation: float = absf(off_means[0] - off_means[1]) / maxf(off_mean, 0.0001)
-		var fraction: float = (on_mean - off_mean) / maxf(off_mean, 0.0001)
-		summary["diagnostic_ab"] = {"off_mean_ms": off_means, "on_mean_ms": on_means,
-			"added_fraction": fraction, "baseline_variation": variation,
-			"outcome": "inconclusive" if variation >= 0.01 else ("failed" if fraction >= 0.01 else "passed"),
-			"scope": "per-frame diagnostic probes, formatting and CSV worker I/O; shared native counters remain enabled"}
-	else: summary["diagnostic_ab"] = {"outcome": "not_run"}
+	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
+	summary["diagnostic_accounting"] = {
+		"unit": "elapsed monotonic wall microseconds; neither CPU service nor additive with overlapping worker/GPU time",
+		"scenario": "measurement setup through last callback, phase close, full writer drain and report construction; excludes preparation/retirement",
+		"final_report": "report-finalization.json; one-time combined reporting cost, outside the switched A/B window",
+		"shared_baseline": "interval/histogram/block accounting, collision timers and native lifetime/phase counters stay enabled",
+		"qualification": "unverified: switched A/B cannot certify shared baseline or unavailable deferred renderer/OS attribution"}
 	var executable: String = OS.get_executable_path()
 	summary["executable_sha256"] = FileAccess.get_sha256(executable)
 	var pack: String = executable.get_base_dir().path_join("Cairn.pck")
@@ -748,13 +797,13 @@ func _finish(outcome: String, message: String) -> void:
 		file.close()
 	file = FileAccess.open(report_dir + "/summary.txt", FileAccess.WRITE)
 	if file != null:
-		file.store_string("CAIRN M1 ENGINE CHECK\n" + message + "\nCompletion: " + outcome + "\nQualification: UNVERIFIED; completion is not a performance pass.\nAttach summary.json and all CSV files for review.\n")
+		file.store_string("CAIRN M1 ENGINE CHECK\n" + message + "\nCompletion: " + outcome + "\nQualification: UNVERIFIED; completion is not a performance pass.\nAttach the complete report folder, including report-finalization.json and all CSV files.\n")
 		file.flush()
 		summary_saved = summary_saved and file.get_error() == OK
 		file.close()
 	else: summary_saved = false
 	status_label.text = message + " • qualification unverified"
-	detail_label.text = "Reports saved. Use Open reports folder and share summary.json with the frame CSV files.\nPerformance is not certified until the report has been reviewed."
+	detail_label.text = "Reports saved. Use Open reports folder and share the complete folder.\nPerformance is not certified until the report has been reviewed."
 	if not summary_saved:
 		integration_failures.append("Could not write the final summary")
 		status_label.text = "Could not save the final report"
@@ -772,4 +821,3 @@ func _finish(outcome: String, message: String) -> void:
 			detail_label.text = "Keep this report. Return to the title and run the remaining settings individually."
 	if test_mode:
 		print("CAIRN_M1_SMOKE=" + JSON.stringify(summary))
-		get_tree().quit(0 if outcome == "completed" and integration_failures.is_empty() else 1)

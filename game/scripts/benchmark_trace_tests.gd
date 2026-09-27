@@ -58,9 +58,56 @@ static func verify(directory: String, phases: Array[Dictionary], reports: Array[
 			for field: String in ["count", "bytes", "usec", "max_usec"]:
 				if int(total[kind + "_" + field]) != int(phase[kind][field]): failures.append("CSV and phase " + kind + " " + field + " disagree")
 	for report: Dictionary in reports:
+		failures.append_array(_verify_diagnostics(directory, report))
 		if not report["completed"] or report["qualified"]: failures.append("Scenario completion and qualification were conflated")
 		var phase: Dictionary = report["operation_phase"]
 		for kind: String in ["upload", "deletion"]:
 			var reason: String = "Individual " + kind + " exceeded 0.75 ms"
 			if (int(phase[kind]["max_usec"]) > 750) != (reason in report["reasons"]): failures.append("Scenario used an incorrect operation maximum")
+	return failures
+
+static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[String]:
+	var failures: Array[String] = []
+	var accounting: Dictionary = report["diagnostic_accounting"]
+	var samples: int = int(report["samples"])
+	if int(accounting["callbacks"]) != samples or int(accounting["end_usec"]) - int(accounting["start_usec"]) != int(accounting["elapsed_usec"]):
+		failures.append("Diagnostic callback/window accounting disagrees")
+	if int(accounting["writer_drain_usec"]) > int(accounting["finalization_usec"]) or int(accounting["finalization_usec"]) < 0 or int(accounting["callback_usec"]) > int(accounting["elapsed_usec"]):
+		failures.append("Diagnostic finalization/drain lies outside its window")
+	var block_samples: int = int(accounting["partial_block"]["samples"])
+	var block_usec: int = int(accounting["partial_block"]["usec"])
+	for block: Dictionary in accounting["blocks"]:
+		block_samples += int(block["samples"])
+		block_usec += int(block["usec"])
+	if accounting["overflow"] or block_samples != samples or absf(float(block_usec) - float(report["wall_seconds"]) * 1000000.0) > 1.0:
+		failures.append("Timing blocks lost intervals")
+	var id: String = report["id"]
+	if id.begins_with("AB-"):
+		var histogram_samples: int = 0
+		for bin: Array in report["interval_histogram_10usec"]: histogram_samples += int(bin[1])
+		if histogram_samples != samples: failures.append("A/B histogram lost samples")
+	var file := FileAccess.open(directory.path_join(id + "-frames.csv"), FileAccess.READ)
+	if file == null: return ["Missing frame CSV"]
+	var header: PackedStringArray = file.get_csv_line()
+	var rows: int = 0
+	var callback_sum: int = int(accounting["last_callback_usec"])
+	var previous_stamp: int = 0
+	while not file.eof_reached():
+		var fields: PackedStringArray = file.get_csv_line()
+		if fields.size() == 1 and fields[0].is_empty(): continue
+		if fields.size() != 20 or header.size() != 20:
+			failures.append("Malformed frame CSV")
+			break
+		rows += 1
+		if int(fields[0]) != rows or int(fields[19]) != rows - 1: failures.append("Diagnostic callback CSV is shifted incorrectly")
+		callback_sum += int(fields[18])
+		var stamp: int = int(fields[15])
+		if previous_stamp > 0 and absf(float(stamp - previous_stamp) - float(fields[3]) * 1000.0) > 1.0:
+			failures.append("Frame interval has mismatched callback boundaries")
+		previous_stamp = stamp
+	file.close()
+	if id.begins_with("AB-off-"):
+		if rows != 0: failures.append("Baseline emitted detailed frame probes")
+	elif rows != samples or callback_sum != int(accounting["callback_usec"]):
+		failures.append("CSV omits callback/format/flush/UI time or final sample")
 	return failures

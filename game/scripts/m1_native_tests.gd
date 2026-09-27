@@ -49,6 +49,7 @@ func _initialize() -> void:
 	quit(0 if failures.is_empty() else 1)
 
 func _check_evaluation() -> void:
+	failures.append_array(load("res://scripts/benchmark_diagnostic_tests.gd").verify())
 	var evaluation = load("res://scripts/benchmark_evaluation.gd")
 	var probe := CairnProbe.new()
 	var lifetime: Dictionary = probe.snapshot()

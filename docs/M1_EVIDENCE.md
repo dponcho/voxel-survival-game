@@ -4,6 +4,20 @@ Current milestone status: **blocked; target not qualified** after the
 [five-run laptop review](M1_TARGET_REVIEW.md) on 2026-09-26. The bounded attribution
 correction below is **cloud_passed_target_unverified**; it does not qualify M1.
 
+## Diagnostic-overhead correction: cloud verification pending
+
+The working tree adds schema 3 callback/UI/CSV timing, isolated measurement writer
+drain, final-summary timing, equivalent bounded A/B histogram/block evidence and
+conservative repeat/drift evaluation. Regression checks are wired into the existing
+native-test and exported smoke routes. No native source, dependency pin, save,
+generator, simulation workload or acceptance threshold changed.
+
+`git diff --check` passed. The new runtime/regression checks have **not run** and
+no matching candidate exists yet. The user explicitly approved publication to
+existing public PR #2 after the initial automatic approval rejection. No new test
+failure was observed; unexecuted tests are not passes. The qualified exact native
+bundle below remains available for normal reuse. See [NEXT_TASK.md](NEXT_TASK.md).
+
 ## Current Windows candidate: phase-local attribution correction
 
 [CI run 36280383637](https://github.com/dponcho/voxel-survival-game/actions/runs/36280383637)
