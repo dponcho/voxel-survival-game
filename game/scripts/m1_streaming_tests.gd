@@ -35,6 +35,7 @@ func _run() -> void:
 		viewer.position = Vector3(0,2,0)
 		root.add_child(viewer)
 		if not await _settle(): break
+		probe.start_edit_trace(true)
 		var tool: VoxelTool = terrain.get_voxel_tool()
 		tool.channel = VoxelBuffer.CHANNEL_TYPE
 		var mover := VoxelBoxMover.new()
@@ -51,7 +52,19 @@ func _run() -> void:
 					break
 				await process_frame
 			if not accepted: failures.append("Border edit was not admitted")
-		if not await _settle(): break
+			if not await _settle(): break
+		probe.finish_edit_trace()
+		var trace: Dictionary = probe.edit_trace_snapshot()
+		var events: Array = probe.take_edit_events()
+		if int(trace["accepted"]) != 4 or int(trace["submitted"]) != 4 or int(trace["overflow"]) != 0 or events.size() != 4:
+			failures.append("Border edit mesh submissions were not completely observed")
+		for event: Dictionary in events:
+			if event["outcome"] != "submitted": failures.append("Border edit had no current mesh submission")
+			var targets: Array = event["targets"]
+			if targets.size() < 2: failures.append("Border edit did not update adjacent render meshes")
+			for target: Dictionary in targets:
+				if not target["submitted"] or int(target["revision"]) <= 0:
+					failures.append("Border edit accepted a stale mesh revision")
 		viewer.position = Vector3(400,2,0)
 		if not await _settle(): break
 		if tool.is_area_editable(AABB(Vector3(-1,0,0), Vector3(34,1,1))):
@@ -86,7 +99,7 @@ func _settle() -> bool:
 		if int(native_stats["overloads"]) > 0:
 			failures.append("Permitted fixture rejected by native admission")
 			return false
-		if int(stats.get("resident_data",0)) > 0 and int(stats.get("pending_data",1)) + int(stats.get("pending_mesh",1)) + int(stats.get("loading_data",1)) + int(native_stats["generation_jobs"]) + int(native_stats["mesh_jobs"]) + int(native_stats["main_jobs"]) == 0:
+		if int(stats.get("resident_data",0)) > 0 and int(stats.get("pending_data",1)) + int(stats.get("pending_mesh",1)) + int(stats.get("loading_data",1)) + int(native_stats["generation_jobs"]) + int(native_stats["mesh_jobs"]) + int(native_stats["result_jobs"]) + int(native_stats["main_jobs"]) == 0:
 			return true
 		await process_frame
 	failures.append("Streaming did not settle within its timeout")

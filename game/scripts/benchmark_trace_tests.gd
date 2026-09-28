@@ -59,11 +59,61 @@ static func verify(directory: String, phases: Array[Dictionary], reports: Array[
 				if int(total[kind + "_" + field]) != int(phase[kind][field]): failures.append("CSV and phase " + kind + " " + field + " disagree")
 	for report: Dictionary in reports:
 		failures.append_array(_verify_diagnostics(directory, report))
+		failures.append_array(_verify_edit_visibility(directory, report))
 		if not report["completed"] or report["qualified"]: failures.append("Scenario completion and qualification were conflated")
 		var phase: Dictionary = report["operation_phase"]
 		for kind: String in ["upload", "deletion"]:
 			var reason: String = "Individual " + kind + " exceeded 0.75 ms"
 			if (int(phase[kind]["max_usec"]) > 750) != (reason in report["reasons"]): failures.append("Scenario used an incorrect operation maximum")
+	return failures
+
+static func _verify_edit_visibility(directory: String, report: Dictionary) -> Array[String]:
+	var failures: Array[String] = []
+	var id: String = report["id"]
+	if id != "N2" and id != "H2": return failures
+	var metrics: Dictionary = report["edit_visibility"]
+	var file := FileAccess.open(directory.path_join(report["edit_visibility_events"]), FileAccess.READ)
+	if file == null: return ["Missing edit visibility event file"]
+	var counts: Dictionary = {"submitted": 0, "superseded": 0, "cancelled": 0, "timeout": 0, "unavailable": 0}
+	var latencies: Array[int] = []
+	var seen_ids: Dictionary = {}
+	while not file.eof_reached():
+		var line: String = file.get_line()
+		if line.is_empty(): continue
+		var parsed: Variant = JSON.parse_string(line)
+		if not parsed is Dictionary:
+			failures.append("Malformed edit visibility event")
+			break
+		var event: Dictionary = parsed
+		var outcome: String = str(event.get("outcome", ""))
+		if not counts.has(outcome):
+			failures.append("Unknown edit visibility outcome")
+			break
+		counts[outcome] += 1
+		if int(event["id"]) <= 0 or seen_ids.has(int(event["id"])): failures.append("Duplicate or invalid edit visibility ID")
+		seen_ids[int(event["id"])] = true
+		if int(event["end_usec"]) < int(event["accepted_usec"]) or int(event["latency_usec"]) != int(event["end_usec"]) - int(event["accepted_usec"]):
+			failures.append("Edit visibility latency clock disagrees")
+		var targets: Array = event["targets"]
+		if targets.size() > 8: failures.append("Edit visibility target bound exceeded")
+		if outcome == "submitted":
+			if targets.is_empty(): failures.append("Submitted edit has no mesh targets")
+			for target: Dictionary in targets:
+				if not target["submitted"] or int(target["revision"]) <= 0: failures.append("Submitted edit has unconfirmed mesh revision")
+			latencies.append(int(event["latency_usec"]))
+	file.close()
+	var total: int = 0
+	for outcome: String in counts:
+		total += int(counts[outcome])
+		if int(counts[outcome]) != int(metrics[outcome]): failures.append("Edit visibility summary and events disagree")
+	if total != int(report["accepted_proxy_edits"]) or int(metrics["accepted"]) != total or int(metrics["pending"]) != 0 or int(metrics["queued"]) != 0 or int(metrics["overflow"]) != 0:
+		failures.append("Edit visibility evidence is incomplete")
+	if not latencies.is_empty():
+		latencies.sort()
+		var p95_index: int = int(ceil(float(latencies.size()) * 0.95)) - 1
+		var upper: int = latencies.back() if latencies[p95_index] >= 1000000 else (latencies[p95_index] / 1000 + 1) * 1000
+		if upper != int(metrics["p95_upper_usec"]) or latencies.back() != int(metrics["max_usec"]):
+			failures.append("Edit visibility percentile or maximum disagrees")
 	return failures
 
 static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[String]:

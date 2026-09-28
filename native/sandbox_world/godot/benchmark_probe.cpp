@@ -15,6 +15,68 @@ void CairnProbe::_bind_methods() {
     ClassDB::bind_method(D_METHOD("end_phase"), &CairnProbe::end_phase);
     ClassDB::bind_method(D_METHOD("phase_snapshot"), &CairnProbe::phase_snapshot);
     ClassDB::bind_method(D_METHOD("take_operation_frames"), &CairnProbe::take_operation_frames);
+    ClassDB::bind_method(D_METHOD("start_edit_trace", "enabled"), &CairnProbe::start_edit_trace);
+    ClassDB::bind_method(D_METHOD("tick_edit_trace"), &CairnProbe::tick_edit_trace);
+    ClassDB::bind_method(D_METHOD("finish_edit_trace"), &CairnProbe::finish_edit_trace);
+    ClassDB::bind_method(D_METHOD("edit_trace_snapshot"), &CairnProbe::edit_trace_snapshot);
+    ClassDB::bind_method(D_METHOD("take_edit_events"), &CairnProbe::take_edit_events);
+}
+void CairnProbe::start_edit_trace(bool enabled) {
+    cairn::edit_visibility.reset(enabled);
+}
+void CairnProbe::tick_edit_trace() {
+    cairn::edit_visibility.tick(OS::get_singleton()->get_ticks_usec());
+}
+void CairnProbe::finish_edit_trace() {
+    cairn::edit_visibility.stop(OS::get_singleton()->get_ticks_usec());
+}
+Dictionary CairnProbe::edit_trace_snapshot() const {
+    const auto &s = cairn::edit_visibility;
+    Dictionary d;
+    d["enabled"] = s.enabled;
+    d["accepted"] = int64_t(s.accepted);
+    d["submitted"] = int64_t(s.submitted);
+    d["superseded"] = int64_t(s.superseded);
+    d["cancelled"] = int64_t(s.cancelled);
+    d["timeout"] = int64_t(s.timed_out);
+    d["unavailable"] = int64_t(s.unavailable);
+    d["overflow"] = int64_t(s.overflow);
+    d["pending"] = int64_t(s.pending());
+    d["pending_high_water"] = int64_t(s.pending_high_water);
+    d["queued"] = int64_t(s.queued());
+    d["p95_upper_usec"] = int64_t(s.p95_upper_usec());
+    d["max_usec"] = int64_t(s.max_usec);
+    return d;
+}
+Array CairnProbe::take_edit_events() {
+    Array result;
+    cairn::EditEvidence e;
+    while (cairn::edit_visibility.pop(e)) {
+        Dictionary d;
+        d["id"] = int64_t(e.id);
+        Array voxel;
+        voxel.push_back(e.x); voxel.push_back(e.y); voxel.push_back(e.z);
+        d["voxel"] = voxel;
+        d["accepted_usec"] = int64_t(e.accepted_usec);
+        d["end_usec"] = int64_t(e.end_usec);
+        d["latency_usec"] = int64_t(e.end_usec - e.accepted_usec);
+        static const char *names[] = {"invalid", "submitted", "superseded", "cancelled", "timeout", "unavailable"};
+        d["outcome"] = names[e.outcome];
+        Array targets;
+        for (unsigned int i = 0; i < e.target_count; ++i) {
+            const auto &block = e.targets[i];
+            Dictionary target;
+            Array coordinate;
+            coordinate.push_back(block.x); coordinate.push_back(block.y); coordinate.push_back(block.z);
+            target["block"] = coordinate;
+            target["revision"] = int64_t(block.revision);
+            target["submitted"] = block.submitted;
+            targets.push_back(target);
+        }
+        d["targets"] = targets;
+        result.push_back(d);
+    }
+    return result;
 }
 static Dictionary operation_totals(const cairn::OperationTotals &s) {
     Dictionary d;

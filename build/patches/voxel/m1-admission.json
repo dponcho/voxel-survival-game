@@ -40,11 +40,6 @@
     "replacement": "\tbool is_in_update_list = false;\n\tuint64_t cairn_revision = 0;"
   },
   {
-    "path": "terrain/fixed_lod/voxel_terrain.cpp",
-    "old": "void VoxelTerrain::try_schedule_mesh_update(VoxelMeshBlockVT &mesh_block) {\n\tZN_PROFILE_SCOPE();",
-    "replacement": "void VoxelTerrain::try_schedule_mesh_update(VoxelMeshBlockVT &mesh_block) {\n\tZN_PROFILE_SCOPE();\n\tmesh_block.cairn_revision = ++cairn::next_revision;"
-  },
-  {
     "path": "meshers/mesh_block_task.h",
     "old": "\tuint8_t lod_index = 0;",
     "replacement": "\tuint8_t lod_index = 0;\n\tuint64_t cairn_revision = 0;"
@@ -72,7 +67,7 @@
   {
     "path": "terrain/fixed_lod/voxel_terrain.cpp",
     "old": "\t\t\tself->apply_mesh_update(data);",
-    "replacement": "\n            VoxelMeshBlockVT *block = self->_mesh_map.get_block(data.position);\n            if (block == nullptr || block->cairn_revision != data.cairn_revision) {\n                ++cairn::stale; return;\n            }\n            if (cairn::overloads.load() > 0) return;\n            if (data.type == VoxelEngine::BlockMeshOutput::TYPE_MESHED && data.visual_was_required && !data.has_mesh_resource) {\n                if (surface_index < data.surfaces.surfaces.size()) {\n                    const auto &surface = data.surfaces.surfaces[surface_index];\n                    PackedVector3Array vertices = surface.arrays[Mesh::ARRAY_VERTEX];\n                    const uint32_t bytes = vertices.size() * 68; // Complete vertex layout plus sequential indices.\n                    if (!cairn::admit_upload(bytes)) { ctx.postpone = true; return; }\n                    const uint64_t start = OS::get_singleton()->get_ticks_usec();\n                    if (partial.is_null()) partial.instantiate();\n                    partial->add_surface_from_arrays(Mesh::PRIMITIVE_TRIANGLES, surface.arrays);\n                    data.mesh_material_indices.push_back(surface.material_index);\n                    cairn::record_upload(bytes, start);\n                    ++surface_index;\n                    ctx.postpone = true;\n                    return;\n                }\n                data.mesh = partial;\n                data.has_mesh_resource = true;\n            }\n            self->apply_mesh_update(data);"
+    "replacement": "\n            VoxelMeshBlockVT *block = self->_mesh_map.get_block(data.position);\n            if (block == nullptr || block->cairn_revision != data.cairn_revision) {\n                ++cairn::stale; return;\n            }\n            if (data.type == VoxelEngine::BlockMeshOutput::TYPE_DROPPED || cairn::overloads.load() > 0) {\n                cairn::edit_visibility.mesh_cancelled({data.position.x, data.position.y, data.position.z, data.cairn_revision}, OS::get_singleton()->get_ticks_usec());\n                if (data.type != VoxelEngine::BlockMeshOutput::TYPE_DROPPED) return;\n            }\n            if (data.type == VoxelEngine::BlockMeshOutput::TYPE_MESHED && data.visual_was_required && !data.has_mesh_resource) {\n                if (surface_index < data.surfaces.surfaces.size()) {\n                    const auto &surface = data.surfaces.surfaces[surface_index];\n                    PackedVector3Array vertices = surface.arrays[Mesh::ARRAY_VERTEX];\n                    const uint32_t bytes = vertices.size() * 68; // Complete vertex layout plus sequential indices.\n                    if (!cairn::admit_upload(bytes)) { ctx.postpone = true; return; }\n                    const uint64_t start = OS::get_singleton()->get_ticks_usec();\n                    if (partial.is_null()) partial.instantiate();\n                    partial->add_surface_from_arrays(Mesh::PRIMITIVE_TRIANGLES, surface.arrays);\n                    data.mesh_material_indices.push_back(surface.material_index);\n                    cairn::record_upload(bytes, start);\n                    ++surface_index;\n                    ctx.postpone = true;\n                    return;\n                }\n                data.mesh = partial;\n                data.has_mesh_resource = true;\n            }\n            self->apply_mesh_update(data);\n            if (data.type == VoxelEngine::BlockMeshOutput::TYPE_MESHED && data.visual_was_required)\n                cairn::edit_visibility.mesh_submitted({data.position.x, data.position.y, data.position.z, data.cairn_revision}, OS::get_singleton()->get_ticks_usec());"
   },
   {
     "path": "terrain/fixed_lod/voxel_terrain.cpp",
@@ -143,5 +138,20 @@
     "path": "terrain/fixed_lod/voxel_terrain.cpp",
     "old": "\t\t\tconst Vector3i anchor_pos = data_box.position + Vector3i(1, 1, 1);",
     "replacement": "\t\t\t// The fixed bounds align to data chunks, not necessarily to render blocks.\n\t\t\t// Keep the readiness assertion, but anchor it inside their intersection.\n\t\t\tconst Box3i valid_data_box = Box3i(mesh_block_pos * mesh_to_data_factor,\n\t\t\t\t\tVector3iUtil::create(mesh_to_data_factor))\n\t\t\t\t\t.clipped(_data->get_bounds().downscaled(get_data_block_size()));\n\t\t\tZN_ASSERT_CONTINUE(!valid_data_box.is_empty());\n\t\t\tconst Vector3i anchor_pos = valid_data_box.position;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "if (data_available) {\n\t\t// Regardless of if the updater is updating the block already,",
+    "replacement": "if (data_available) {\n\t\tmesh_block.cairn_revision = ++cairn::next_revision;\n\t\tif (cairn::edit_visibility.enabled)\n\t\t\tcairn::edit_visibility.revision_changed({mesh_block.position.x, mesh_block.position.y, mesh_block.position.z, mesh_block.cairn_revision}, OS::get_singleton()->get_ticks_usec());\n\t\t// Regardless of if the updater is updating the block already,"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t\ttry_schedule_mesh_update(*block);\n\t\t}\n\t});",
+    "replacement": "\t\t\ttry_schedule_mesh_update(*block);\n\t\t\tif (block->mesh_viewers.get() > 0 && block->is_in_update_list && block->cairn_revision != 0)\n\t\t\t\tcairn::edit_visibility.target({pos.x, pos.y, pos.z, block->cairn_revision}, OS::get_singleton()->get_ticks_usec());\n\t\t}\n\t});"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "void VoxelTerrain::unload_mesh_block(Vector3i bpos) {",
+    "replacement": "void VoxelTerrain::unload_mesh_block(Vector3i bpos) {\n\tcairn::edit_visibility.mesh_cancelled({bpos.x, bpos.y, bpos.z, 0}, OS::get_singleton()->get_ticks_usec());"
   }
 ]

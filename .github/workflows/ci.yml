@@ -35,6 +35,10 @@ jobs:
         run: |
           c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_operation_metrics.cpp -o /tmp/cairn-operation-test
           /tmp/cairn-operation-test
+      - name: Edit visibility lifecycle tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_edit_visibility.cpp -o /tmp/cairn-edit-visibility-test
+          /tmp/cairn-edit-visibility-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml

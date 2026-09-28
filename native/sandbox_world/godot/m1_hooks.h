@@ -2,6 +2,7 @@
 #include "core/os/os.h"
 #include "scene/resources/mesh.h"
 #include "../core/operation_metrics.h"
+#include "../core/edit_visibility.h"
 #include <atomic>
 #include <cstdint>
 
@@ -18,6 +19,7 @@ inline uint32_t retired_meshes = 0, retired_high_water = 0;
 inline uint32_t byte_budget = 512 * 1024, time_budget = 1000;
 inline bool shutting_down = false;
 inline OperationMetrics operations;
+inline EditVisibility edit_visibility;
 inline void begin_frame() {
     operations.begin_frame(OS::get_singleton()->get_ticks_usec());
     frame_upload_bytes = 0; frame_upload_usec = 0;

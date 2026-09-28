@@ -102,12 +102,19 @@ var phase_start_counters: Dictionary = {}
 var operation_lines: PackedStringArray = []
 var operation_bytes: int = 0
 var operation_file: String = ""
+var edit_trace_active: bool = false
+var edit_lines: PackedStringArray = []
+var edit_bytes: int = 0
+var edit_event_rows: int = 0
+var edit_file: String = ""
 
 func _open_reports(suffix: String = "") -> void:
 	csv_bytes = 0
 	operation_bytes = 0
+	edit_bytes = 0
 	var name: String = str(SCENARIOS[scenario_index]["id"]) + suffix + "-frames.csv"
 	operation_file = name + ".operations.csv"
+	edit_file = name + ".edits.jsonl"
 	sink.start(report_dir + "/" + name)
 	reports_open = true
 	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec,diagnostic_frame")
@@ -130,6 +137,26 @@ func _drain_operation_frames() -> void:
 		# Each submitted batch fits the existing sink's 64 KiB item limit.
 		if operation_lines.size() >= 64: _flush_operations()
 
+func _drain_edit_events() -> void:
+	if not edit_trace_active: return
+	for event: Dictionary in probe.take_edit_events():
+		edit_lines.append(JSON.stringify(event))
+		edit_event_rows += 1
+		if edit_lines.size() >= 32: _flush_edits()
+
+func _flush_edits() -> void:
+	if edit_lines.is_empty(): return
+	var payload: String = "\n".join(edit_lines) + "\n"
+	if edit_bytes + payload.length() > 8 * 1024 * 1024:
+		report_io_failed = true
+		edit_lines.clear()
+	elif sink.append_edits(payload):
+		edit_bytes += payload.length()
+		edit_lines.clear()
+	elif edit_lines.size() >= 128:
+		report_io_failed = true
+		edit_lines.clear()
+
 func _flush_operations() -> void:
 	if operation_lines.is_empty(): return
 	var payload: String = "\n".join(operation_lines) + "\n"
@@ -147,7 +174,9 @@ func _close_phase() -> Dictionary:
 	if phase_name.is_empty(): return {}
 	var result: Dictionary = probe.end_phase()
 	_drain_operation_frames()
+	_drain_edit_events()
 	_flush_operations()
+	_flush_edits()
 	result.merge({"scenario": SCENARIOS[scenario_index]["id"], "phase": phase_name,
 		"raw_operations": operation_file if bool(result["tracing"]) else "disabled for A/B baseline",
 		"native_start": phase_start_counters, "native_end": probe.snapshot()})
@@ -165,17 +194,19 @@ func _close_reports() -> void:
 	sink.finish()
 	writer_drain_usec = Time.get_ticks_usec() - drain_start
 	reports_open = false
-	if not raw_lines.is_empty() or not operation_lines.is_empty() or sink.has_failed(): report_io_failed = true
+	if not raw_lines.is_empty() or not operation_lines.is_empty() or not edit_lines.is_empty() or sink.has_failed(): report_io_failed = true
 	raw_lines.clear()
 	operation_lines.clear()
+	edit_lines.clear()
 	if report_io_failed: integration_failures.append("Incomplete diagnostic output")
 
 func _flush_pending_reports() -> void:
 	_flush_csv()
 	_flush_operations()
+	_flush_edits()
 
 func _has_pending_reports() -> bool:
-	return not raw_lines.is_empty() or not operation_lines.is_empty()
+	return not raw_lines.is_empty() or not operation_lines.is_empty() or not edit_lines.is_empty()
 
 func _ready() -> void:
 	for argument: String in OS.get_cmdline_user_args():
@@ -356,6 +387,7 @@ func _begin_measurement() -> void:
 	readiness_stops = 0
 	accepted_edits = 0
 	rejected_edits = 0
+	edit_event_rows = 0
 	next_edit = 1
 	actor_ticks = 0
 	actor_phase = 0.0
@@ -382,6 +414,8 @@ func _begin_measurement() -> void:
 	diagnostics.start(Time.get_ticks_usec())
 	_open_reports()
 	var id: String = SCENARIOS[scenario_index]["id"]
+	edit_trace_active = id == "N2" or id == "H2"
+	probe.start_edit_trace(edit_trace_active)
 	var label: String = "gameplay"
 	if id == "warmup": label = "warmup"
 	elif id == "paced": label = "paced_diagnostic"
@@ -516,6 +550,9 @@ func _process(_delta: float) -> void:
 		elif end_requested: _end_scenario()
 
 func _process_frame(now: int) -> void:
+	if edit_trace_active:
+		probe.tick_edit_trace()
+		_drain_edit_events()
 	if phase_name != "overhead_diagnostic" or not str(SCENARIOS[scenario_index]["id"]).begins_with("AB-off-"):
 		_drain_operation_frames()
 	if state == "draining":
@@ -645,6 +682,10 @@ func _flush_csv() -> void:
 
 func _end_scenario() -> void:
 	state = "reporting"
+	if edit_trace_active:
+		probe.finish_edit_trace()
+		_drain_edit_events()
+	var edit_trace: Dictionary = probe.edit_trace_snapshot() if edit_trace_active else {"status": "not_run"}
 	var measured_phase: Dictionary = _close_phase()
 	# Join/flush while explicitly outside gameplay, before retirement can add work.
 	await _close_reports()
@@ -683,6 +724,14 @@ func _end_scenario() -> void:
 	if int(peaks.get("gpu_resource_estimate_bytes", 0)) > (402653184 if heavy else 268435456): reasons.append("Graphics resource estimate exceeded budget")
 	if int(peaks.get("pool_voxel_total", 0)) > 201326592: reasons.append("Voxel allocation pool exceeded budget")
 	if float(scenario["rate"]) > 0.0 and accepted_edits < int(floor(_duration() * float(scenario["rate"]))) - 1: reasons.append("Required edit workload was not accepted")
+	if edit_trace_active:
+		var accounted: int = int(edit_trace["submitted"]) + int(edit_trace["superseded"]) + int(edit_trace["cancelled"]) + int(edit_trace["timeout"]) + int(edit_trace["unavailable"])
+		if int(edit_trace["accepted"]) != accepted_edits or accounted != accepted_edits or edit_event_rows != accepted_edits or int(edit_trace["overflow"]) > 0 or int(edit_trace["queued"]) > 0:
+			integration_failures.append(id + ": edit visibility evidence incomplete")
+		if int(edit_trace["superseded"]) + int(edit_trace["cancelled"]) + int(edit_trace["timeout"]) + int(edit_trace["unavailable"]) > 0:
+			reasons.append("Edit visibility has superseded, cancelled, timed-out or unavailable outcomes")
+		if int(edit_trace["submitted"]) > 0 and (int(edit_trace["p95_upper_usec"]) > 100000 or int(edit_trace["max_usec"]) > 200000):
+			reasons.append("Edit visibility exceeded the 100/200 ms limits")
 	var counters: Dictionary = probe.snapshot()
 	reasons.append_array(Evaluation.operation_failures(measured_phase))
 	var overhead: float = float(measurement_usec) / maxf(sum_ms * 1000.0, 1.0)
@@ -691,6 +740,7 @@ func _end_scenario() -> void:
 	for reason: String in reasons:
 		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason or "Collision" in reason: hard_failure = true
 	var report: Dictionary = {"id": id, "operation_phase": measured_phase,
+		"edit_visibility": edit_trace, "edit_visibility_events": edit_file if edit_trace_active else "not_run",
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
 		"maximum_ms": max_ms, "deadline_misses": misses, "simulated_seconds": scenario_elapsed, "wall_seconds": elapsed_wall,
@@ -767,6 +817,9 @@ func _finish(outcome: String, message: String) -> void:
 	if test_mode: get_tree().quit(0 if outcome == "completed" and integration_failures.is_empty() else 1)
 
 func _finish_report(outcome: String, message: String) -> void:
+	if edit_trace_active:
+		probe.finish_edit_trace()
+		_drain_edit_events()
 	_close_phase()
 	state = "finished"
 	await _close_reports()
@@ -774,7 +827,7 @@ func _finish_report(outcome: String, message: String) -> void:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	var summary: Dictionary = {"schema": 3, "milestone": "M1", "scope": "temporary engine proxy experiment",
+	var summary: Dictionary = {"schema": 4, "milestone": "M1", "scope": "temporary engine proxy experiment",
 		"outcome": outcome, "completed": outcome == "completed", "qualified": false,
 		"qualification": "unverified", "target_certification": "unverified: review exact-build reports and all outstanding gates",
 		"message": message, "build": build_info, "machine": initial_machine,
@@ -790,6 +843,10 @@ func _finish_report(outcome: String, message: String) -> void:
 			"unavailable": ["driver-deferred work", "OS attribution"],
 			"diagnostic_usec": "full previous callback elapsed wall time, keyed by diagnostic_frame; final callback retained in scenario accounting",
 			"renderer": "asynchronous viewport CPU/GPU queries; not additive with native or callback times"},
+		"edit_visibility_trace": {"scope": "N2/H2 accepted proxy edits through all affected current mesh revisions",
+			"endpoint": "last affected mesh submitted to RenderingServer; physical display presentation unavailable",
+			"timeout_usec": 200000, "p95": "conservative one-millisecond upper bin", "pending_cap": 64,
+			"event_cap": 128, "file_cap_bytes": 8388608, "outcomes": ["submitted", "superseded", "cancelled", "timeout", "unavailable"]},
 		"limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
 	summary["integration_failures"] = integration_failures
@@ -819,7 +876,7 @@ func _finish_report(outcome: String, message: String) -> void:
 		file.close()
 	file = FileAccess.open(report_dir + "/summary.txt", FileAccess.WRITE)
 	if file != null:
-		file.store_string("CAIRN M1 ENGINE CHECK\n" + message + "\nCompletion: " + outcome + "\nQualification: UNVERIFIED; completion is not a performance pass.\nAttach the complete report folder, including report-finalization.json and all CSV files.\n")
+		file.store_string("CAIRN M1 ENGINE CHECK\n" + message + "\nCompletion: " + outcome + "\nQualification: UNVERIFIED; completion is not a performance pass.\nAttach the complete report folder, including report-finalization.json, CSV and edit event files.\n")
 		file.flush()
 		summary_saved = summary_saved and file.get_error() == OK
 		file.close()

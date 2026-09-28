@@ -15,4 +15,9 @@ public:
     Dictionary end_phase();
     Dictionary phase_snapshot() const;
     Array take_operation_frames();
+    void start_edit_trace(bool enabled);
+    void tick_edit_trace();
+    void finish_edit_trace();
+    Dictionary edit_trace_snapshot() const;
+    Array take_edit_events();
 };

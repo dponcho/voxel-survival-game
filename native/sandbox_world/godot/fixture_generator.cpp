@@ -23,7 +23,9 @@ bool CairnFixture::try_edit(Object *object, Vector3i position, int value) {
     edits[index] = {position, uint16_t(value)};
     if (index == edit_count) ++edit_count;
     lock.unlock();
+    cairn::edit_visibility.begin(position.x, position.y, position.z, OS::get_singleton()->get_ticks_usec());
     terrain->post_edit_voxel(position);
+    cairn::edit_visibility.end(OS::get_singleton()->get_ticks_usec());
     return true;
 }
 int CairnFixture::get_used_channels_mask() const { return 1 << zylann::voxel::VoxelBuffer::CHANNEL_TYPE; }

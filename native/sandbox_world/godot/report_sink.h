@@ -10,7 +10,7 @@
 // One bounded disk worker shared by CSV and temporary autosave proxy writes.
 class CairnReportSink : public RefCounted {
     GDCLASS(CairnReportSink, RefCounted);
-    struct Write { String text; bool snapshot; bool operations; };
+    struct Write { String text; bool snapshot; bool operations; bool edits; };
     std::thread worker;
     std::mutex mutex;
     std::condition_variable wake;
@@ -24,6 +24,7 @@ public:
     void start(String path);
     bool append(String text, bool snapshot);
     bool append_operations(String text);
+    bool append_edits(String text);
     void finish();
     bool has_failed() const { return failed.load(); }
     int64_t get_completed() const { return completed.load(); }
