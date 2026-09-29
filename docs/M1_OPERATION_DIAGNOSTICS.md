@@ -1,6 +1,6 @@
 # M1 phase-local operation evidence
 
-Report schema 3 preserves the schema 1 lifetime `native_start`/`native_end`
+Report schema 4 preserves the schema 1 lifetime `native_start`/`native_end`
 counters. Scenario upload/deletion gates now use independently accumulated
 `operation_phase.upload.max_usec` and `operation_phase.deletion.max_usec`.
 The 750 microsecond limit is unchanged. Maxima are never subtracted.
@@ -77,3 +77,17 @@ bounded overflow, and actual saved CSV/phase/lifetime-total reconciliation throu
 the existing debug/release smoke route. No generator, save, workload, worker,
 resolution or performance-threshold change is included. Target validation of the
 corrected measurements remains required; M2 remains gated.
+
+Schema 4 adds N2/H2 edit evidence. An accepted proxy edit records every current
+render block touched by Voxel Tools' padded invalidation and its mesh revision.
+The endpoint is the last affected mesh submitted to the renderer. Physical
+presentation remains unavailable. Superseded, cancelled, timed-out (>200 ms)
+and unavailable edits retain separate outcomes; none becomes a zero-latency
+sample. Per-edit records go to `<id>-frames.csv.edits.jsonl` through the same
+bounded disk worker. The tracker caps pending edits at 64, queued events at 128
+and each edit at eight affected render blocks. The event file caps at 8 MiB;
+overflow or missing rows fails evidence integrity. The p95 value is a
+conservative 1 ms upper bin, checked against 100 ms alongside the 200 ms
+maximum. This instrumentation changes neither the edit workload nor the
+thresholds. It requires a matching Windows build and exact-build target report
+before the visibility gate can pass.

@@ -4,7 +4,43 @@ Current milestone status: **blocked; target not qualified** after the
 [five-run laptop review](M1_TARGET_REVIEW.md). The diagnostic corrections below
 are **cloud_passed_target_unverified**; they do not qualify M1.
 
-## Current Windows candidate: diagnostic-overhead accounting
+## Current Windows candidate: edit visibility evidence
+
+Implementation commit `525a079c414aa1c7c2ff531018b447d2b538ce8d` on
+`codex/m1-engine-proof` adds bounded N2/H2 edit-to-mesh-submission evidence and
+border/stale-result regressions. Save and generator formats, benchmark workloads
+and thresholds are unchanged. Ordered patch entries matched the pinned Voxel
+Tools source; local compilation/game execution did not run under the cloud build
+rule.
+
+[CI 36364646208](https://github.com/dponcho/voxel-survival-game/actions/runs/36364646208)
+passed all three jobs. Static checks passed packaging/cache regressions, Python
+compile checks and native fixture, operation and edit-visibility sanitizer tests.
+The native job built and qualified the matching editor, Windows debug and release
+templates. The export job verified their exact native identity, passed Windows
+packaging regressions, native mesher and benchmark integration checks, debug and
+release smoke, all four streaming profiles including border edits, dependency
+audit and two fresh offline extractions. No check in this run failed.
+
+Download [Windows player artifact 10950256937](https://github.com/dponcho/voxel-survival-game/actions/runs/36364646208/artifacts/10950256937)
+and extract its contained portable ZIP. GitHub reports expiry on 2026-10-28 at
+03:21 UTC. [Export evidence 10949963015](https://github.com/dponcho/voxel-survival-game/actions/runs/36364646208/artifacts/10949963015)
+and [symbols 10949808351](https://github.com/dponcho/voxel-survival-game/actions/runs/36364646208/artifacts/10949808351)
+are separate.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation branch commit | `525a079c414aa1c7c2ff531018b447d2b538ce8d` |
+| Exported synthetic merge / game build ID | `3aa0b73091de21d860f3aaf12bc0fe26d654628c` |
+| Native source key | `26d6169a6b9c2c8417a241ecae4ec3fee6829cfb9b4859edc39404b482320a1d` |
+| GitHub-reported outer player archive SHA-256 | `2dcbb82c801507b079b7a36bd6e4dcc3520d8b74a22d3e7d2428aec7127baa59` |
+
+The logs and artifact metadata were inspected. The player archive was not
+independently downloaded/hashed or executed locally. Exact-build HD 620 edit
+latency, diagnostic overhead, pacing/driver attribution, allocation completeness,
+retention and qualification repeats remain unverified; M1 stays blocked.
+
+## Previous Windows candidate: diagnostic-overhead accounting
 
 [CI 36287728890](https://github.com/dponcho/voxel-survival-game/actions/runs/36287728890)
 completed successfully on 2026-09-27 UTC (September 26 locally).
