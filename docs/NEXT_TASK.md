@@ -3,7 +3,7 @@
 - Branch: `codex/m1-engine-proof`; verified implementation:
   `7024be977653ffbe03376cda215323be58cb6835`.
   Head before this documentation update:
-  `5232367577b1c351354009674215af09692b37c3` (documentation only).
+  `ece632cd9dbe82808037399a2f982817c2339201` (documentation only).
 - Milestone: **M1 blocked; target not qualified**. Fog/frontier instrumentation
   is cloud verified; M2 remains gated.
 - Latest successful [CI 36775406042](https://github.com/dponcho/voxel-survival-game/actions/runs/36775406042)
