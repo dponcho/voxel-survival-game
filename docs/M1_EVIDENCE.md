@@ -4,19 +4,49 @@ Current milestone status: **blocked; target not qualified** after the
 [five-run laptop review](M1_TARGET_REVIEW.md). The diagnostic corrections below
 are **cloud_passed_target_unverified**; they do not qualify M1.
 
-## Fog/frontier increment: CI pending
+## Current Windows candidate: fog/frontier evidence
 
-The bounded [fog/frontier evidence path](M1_FOG_FRONTIER.md) now records H1/H2
-mesh readiness, camera pose, conservative frontier distance and fog transmittance.
-Schema 5 keeps missing boundaries/samples explicit and adds actual CSV/summary
-reconciliation. The current exponential fog has no finite fully opaque boundary;
-settings, workloads and acceptance thresholds are unchanged.
+Implementation commit `7024be977653ffbe03376cda215323be58cb6835` on
+`codex/m1-engine-proof` adds bounded [H1/H2 fog/frontier evidence](M1_FOG_FRONTIER.md):
+mesh readiness, camera pose, conservative frontier distance and analytic fog
+transmittance. Schema 5 retains missing boundaries/samples and reconciles saved
+CSV rows with summary counts/minima. Settings, workloads, acceptance thresholds
+and save/generator formats are unchanged.
 
-All 33 ordered Voxel Tools patch entries matched the pinned source. The 12
-packaging/cache regressions passed in the cloud editing workspace. Matching
-native compilation, import, engine integration and Windows packaging have not
-run for this increment yet. No local engine/game compilation or execution ran.
-An exact-build HD 620 baseline is unavailable; target qualification stays blocked.
+[CI 36775406042](https://github.com/dponcho/voxel-survival-game/actions/runs/36775406042)
+passed all three jobs. Static job `110091931750` passed the 12 packaging/cache
+regressions, Python compile checks and three native sanitizer suites. Native job
+`110092054562` built and qualified matching editor/debug/release binaries.
+Windows export job `110137002347` verified native identity, passed Windows
+packaging regressions, import, native/evaluation/helper tests, debug/release
+smoke with saved-report reconciliation, all four streaming profiles, dependency
+audit and two fresh offline extractions. All 33 ordered Voxel Tools patch entries
+matched the pinned source. No check in this run failed.
+
+Download [Windows player 11131500525](https://github.com/dponcho/voxel-survival-game/actions/runs/36775406042/artifacts/11131500525)
+and extract its contained portable ZIP. GitHub reports expiry on 2026-10-30 at
+23:08 UTC. [Export evidence 11131505658](https://github.com/dponcho/voxel-survival-game/actions/runs/36775406042/artifacts/11131505658)
+and [symbols 11131026214](https://github.com/dponcho/voxel-survival-game/actions/runs/36775406042/artifacts/11131026214)
+are separate.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation branch commit | `7024be977653ffbe03376cda215323be58cb6835` |
+| Exported synthetic merge / game build ID | `e51d00d0d3e847e4b1c04362df6642eef695c3ad` |
+| Native source key | `81d54daaa9ffc8907de4e024c6f999f60b00dec21c21883608df1a49fc487f3e` |
+| GitHub-reported outer player archive SHA-256 | `01ab158d2a8ce8ea2fe207c32a04a17903d292aeaf9e0d6ae0dc5df2318b94bd` |
+
+Completed logs and artifact metadata were inspected. The archive was not
+independently downloaded/hashed or executed locally. No local engine compilation
+or game execution ran. Exact-build HD 620 coverage, edit latency, full diagnostic
+overhead and pacing, shader/driver precision, allocation completeness, retention
+and qualification repeats remain unverified. No corrected target baseline was
+supplied; **M1 remains blocked**.
+
+The exponential model has no finite analytic opaque boundary. The shader's
+half-precision packing can round opacity; analytic transmittance and conservative
+box/frustum overlap do not establish rendered-opacity boundaries or pixel
+visibility. Unavailable boundary evidence remains inconclusive.
 
 ## Previous Windows candidate: edit visibility evidence
 
