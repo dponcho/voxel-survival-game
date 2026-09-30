@@ -20,12 +20,15 @@ fog transmittance and available boundary/clearance values. No sample outside H1/
 is represented as zero; those fields say `not_run`.
 
 The pinned Compatibility shader uses `1 - exp(-distance * density)` for the
-current exponential fog. It has no finite fully opaque boundary. Boundary and
-clearance remain null/`unavailable`, with the reason retained in the summary.
-No arbitrary opacity cutoff or new acceptance tolerance is introduced. An
-unready required region before opaque fog fails the conservative coverage check;
-complete coverage with an unavailable boundary remains inconclusive. Depth fog
-can supply a finite boundary only when its terminal opacity is 1. An unobserved
+current exponential fog. This analytic model has no finite fully opaque boundary.
+The report evaluates transmittance before the shader's `packHalf2x16` opacity
+packing; rounding can produce stored opacity 1. No rendered-opacity boundary is
+qualified by this analytic evidence. Boundary and clearance remain
+null/`unavailable`, with the reason retained in the summary. No arbitrary opacity
+cutoff or new acceptance tolerance is introduced. An unready required region
+before analytic opaque fog fails the conservative coverage check; complete
+coverage with an unavailable boundary remains inconclusive. Depth fog can supply
+a finite analytic boundary only when its terminal opacity is 1. An unobserved
 boundary beyond the far clip cannot pass. Settings and workloads are unchanged.
 
 The probe rejects scans exceeding 1,024 candidate regions before traversal.
