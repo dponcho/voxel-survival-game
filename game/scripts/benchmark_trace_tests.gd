@@ -1,5 +1,7 @@
 extends RefCounted
 
+const Frontier = preload("res://scripts/benchmark_frontier.gd")
+
 # Runs only in the existing cloud smoke route, after the shared writer drains.
 static func verify(directory: String, phases: Array[Dictionary], reports: Array[Dictionary]) -> Array[String]:
 	var failures: Array[String] = []
@@ -60,11 +62,66 @@ static func verify(directory: String, phases: Array[Dictionary], reports: Array[
 	for report: Dictionary in reports:
 		failures.append_array(_verify_diagnostics(directory, report))
 		failures.append_array(_verify_edit_visibility(directory, report))
+		failures.append_array(_verify_frontier(directory, report))
 		if not report["completed"] or report["qualified"]: failures.append("Scenario completion and qualification were conflated")
 		var phase: Dictionary = report["operation_phase"]
 		for kind: String in ["upload", "deletion"]:
 			var reason: String = "Individual " + kind + " exceeded 0.75 ms"
 			if (int(phase[kind]["max_usec"]) > 750) != (reason in report["reasons"]): failures.append("Scenario used an incorrect operation maximum")
+	return failures
+
+static func _verify_frontier(directory: String, report: Dictionary) -> Array[String]:
+	var failures: Array[String] = []
+	var active: bool = report["id"] == "H1" or report["id"] == "H2"
+	var file := FileAccess.open(directory.path_join(str(report["id"]) + "-frames.csv"), FileAccess.READ)
+	if file == null: return ["Missing frontier frame CSV"]
+	var header: PackedStringArray = file.get_csv_line()
+	if header.size() != 38: return ["Missing frontier CSV columns"]
+	for i: int in range(Frontier.COLUMNS.size()):
+		if header[20 + i] != Frontier.COLUMNS[i]: failures.append("Incorrect frontier column mapping")
+	var ledger := Frontier.new()
+	while not file.eof_reached():
+		var fields: PackedStringArray = file.get_csv_line()
+		if fields.size() == 1 and fields[0].is_empty(): continue
+		if fields.size() != 38:
+			failures.append("Malformed frontier CSV row")
+			break
+		if not active:
+			for i: int in range(20, 38):
+				if fields[i] != "not_run": failures.append("Frontier probes ran outside H1/H2")
+			continue
+		var sample: Dictionary = {"status": fields[20]}
+		if fields[20] == "measured":
+			var keys: Array[String] = ["candidate_regions", "checked_regions", "ready_regions", "empty_regions", "unready_regions"]
+			for i: int in range(5): sample[keys[i]] = int(fields[21 + i])
+			sample["frontier_distance_m"] = float(fields[26])
+			sample["frontier_kind"] = fields[27]
+			var unready: bool = int(sample["unready_regions"]) > 0
+			if unready and (fields[28].split(";").size() != 3 or not fields[29] in ["missing", "pending", "hidden"]): failures.append("Missing frontier region identity")
+			if sample["frontier_kind"] != ("unready_region_lower_bound" if unready else "far_clip_lower_bound"): failures.append("Incorrect frontier distance scope")
+		var evaluated: Dictionary = ledger.record(sample, report["fog_frontier"]["fog"])
+		for i: int in range(3):
+			var key: String = ["fog_boundary_m", "fog_clearance_m", "fog_transmittance"][i]
+			if evaluated[key] == null:
+				if fields[30 + i] != "unavailable": failures.append("Unavailable fog metric became a numeric sample")
+			elif not fields[30 + i].is_valid_float() or absf(float(fields[30 + i]) - float(evaluated[key])) > 0.0001:
+				failures.append("Fog equation and CSV disagree")
+	file.close()
+	var expected: Dictionary = ledger.snapshot(active)
+	var actual: Dictionary = report["fog_frontier"]
+	for key: String in ["evaluation", "samples"]:
+		if expected[key] != actual[key]: failures.append("Frontier summary and CSV disagree: " + key)
+	if active:
+		if int(expected["samples"]) != int(report["samples"]): failures.append("Frontier trace omitted measured frames")
+		for key: String in ["measured_samples", "invalid_samples", "exposed_samples", "inconclusive_samples"]:
+			if expected[key] != actual[key]: failures.append("Frontier counts and CSV disagree: " + key)
+		for key: String in ["minimum_frontier_distance_m", "minimum_fog_clearance_m"]:
+			if expected[key] == null or actual[key] == null:
+				if expected[key] != actual[key]: failures.append("Missing frontier minimum became zero")
+			elif absf(float(expected[key]) - float(actual[key])) > 0.0001: failures.append("Frontier minimum and CSV disagree")
+		var reason: String = "Required mesh coverage is unready before fog obscures it"
+		if (actual["evaluation"] == "failed") != (reason in report["reasons"]): failures.append("Scenario ignored exposed mesh coverage")
+		if actual["evaluation"] == "failed" and report["evaluation"] != "failed": failures.append("Fog crossing did not fail the scenario")
 	return failures
 
 static func _verify_edit_visibility(directory: String, report: Dictionary) -> Array[String]:
@@ -145,7 +202,7 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 	while not file.eof_reached():
 		var fields: PackedStringArray = file.get_csv_line()
 		if fields.size() == 1 and fields[0].is_empty(): continue
-		if fields.size() != 20 or header.size() != 20:
+		if fields.size() != 38 or header.size() != 38:
 			failures.append("Malformed frame CSV")
 			break
 		rows += 1

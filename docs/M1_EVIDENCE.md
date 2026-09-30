@@ -4,7 +4,21 @@ Current milestone status: **blocked; target not qualified** after the
 [five-run laptop review](M1_TARGET_REVIEW.md). The diagnostic corrections below
 are **cloud_passed_target_unverified**; they do not qualify M1.
 
-## Current Windows candidate: edit visibility evidence
+## Fog/frontier increment: CI pending
+
+The bounded [fog/frontier evidence path](M1_FOG_FRONTIER.md) now records H1/H2
+mesh readiness, camera pose, conservative frontier distance and fog transmittance.
+Schema 5 keeps missing boundaries/samples explicit and adds actual CSV/summary
+reconciliation. The current exponential fog has no finite fully opaque boundary;
+settings, workloads and acceptance thresholds are unchanged.
+
+All 33 ordered Voxel Tools patch entries matched the pinned source. The 12
+packaging/cache regressions passed in the cloud editing workspace. Matching
+native compilation, import, engine integration and Windows packaging have not
+run for this increment yet. No local engine/game compilation or execution ran.
+An exact-build HD 620 baseline is unavailable; target qualification stays blocked.
+
+## Previous Windows candidate: edit visibility evidence
 
 Implementation commit `525a079c414aa1c7c2ff531018b447d2b538ce8d` on
 `codex/m1-engine-proof` adds bounded N2/H2 edit-to-mesh-submission evidence and

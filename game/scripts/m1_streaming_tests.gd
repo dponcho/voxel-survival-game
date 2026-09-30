@@ -34,7 +34,26 @@ func _run() -> void:
 		viewer.requires_collisions = false
 		viewer.position = Vector3(0,2,0)
 		root.add_child(viewer)
+		var camera := Camera3D.new()
+		camera.current = true
+		camera.far = 32.0
+		camera.position = Vector3(1,2,1)
+		camera.rotation = Vector3(-0.18, -PI * 0.5, 0)
+		root.add_child(camera)
+		var surface_bounds := AABB(Vector3(-1024,-16,-1024), Vector3(2048,17,2048))
+		var frontier: Dictionary = probe.sample_frontier(terrain, camera, surface_bounds)
+		if frontier.get("status") != "measured" or int(frontier.get("unready_regions", 0)) == 0:
+			failures.append("Unsubmitted terrain was reported ready")
 		if not await _settle(): break
+		for heading: float in [-PI * 0.5, PI * 0.5]:
+			camera.rotation.y = heading
+			frontier = probe.sample_frontier(terrain, camera, surface_bounds)
+			if frontier.get("status") != "measured" or int(frontier.get("unready_regions", -1)) != 0 or int(frontier.get("empty_regions", 0)) == 0:
+				failures.append("Submitted and confirmed-empty coverage failed across a camera reversal")
+		camera.far = 2048.0
+		if probe.sample_frontier(terrain, camera, surface_bounds)["status"] != "unavailable": failures.append("Frontier scan bound was not enforced")
+		camera.far = 32.0
+		if probe.sample_frontier(null, null, AABB())["status"] != "unavailable": failures.append("Missing frontier inputs became valid measurements")
 		probe.start_edit_trace(true)
 		var tool: VoxelTool = terrain.get_voxel_tool()
 		tool.channel = VoxelBuffer.CHANNEL_TYPE
@@ -67,6 +86,8 @@ func _run() -> void:
 					failures.append("Border edit accepted a stale mesh revision")
 		viewer.position = Vector3(400,2,0)
 		if not await _settle(): break
+		frontier = probe.sample_frontier(terrain, camera, surface_bounds)
+		if frontier.get("status") != "measured" or int(frontier.get("unready_regions", 0)) == 0: failures.append("Evicted mesh coverage was reported ready")
 		if tool.is_area_editable(AABB(Vector3(-1,0,0), Vector3(34,1,1))):
 			failures.append("Eviction test did not unload edited data")
 		viewer.position = Vector3(0,2,0)
@@ -79,6 +100,7 @@ func _run() -> void:
 		await process_frame
 		terrain.queue_free()
 		viewer.queue_free()
+		camera.queue_free()
 		await process_frame
 		if not await _drain(): break
 		print("CAIRN_M1_STREAMING_PROFILE=" + str(configuration))

@@ -51,6 +51,7 @@ func _initialize() -> void:
 
 func _check_evaluation() -> void:
 	failures.append_array(load("res://scripts/benchmark_diagnostic_tests.gd").verify())
+	failures.append_array(load("res://scripts/benchmark_frontier_tests.gd").verify())
 	var evaluation = load("res://scripts/benchmark_evaluation.gd")
 	var probe := CairnProbe.new()
 	var lifetime: Dictionary = probe.snapshot()
@@ -116,3 +117,4 @@ func _triangle_records(mesh: Mesh) -> Dictionary:
 			var key: String = var_to_str(record)
 			records[key] = int(records.get(key, 0)) + 1
 	return records
+

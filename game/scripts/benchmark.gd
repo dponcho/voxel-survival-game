@@ -18,6 +18,9 @@ const SCENARIOS: Array[Dictionary] = [
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
 const Diagnostics = preload("res://scripts/benchmark_diagnostics.gd")
+const Frontier = preload("res://scripts/benchmark_frontier.gd")
+var frontier := Frontier.new()
+var benchmark_environment: Environment
 var diagnostics := Diagnostics.new()
 var end_requested: bool = false
 var finish_reason: String = ""
@@ -117,7 +120,7 @@ func _open_reports(suffix: String = "") -> void:
 	edit_file = name + ".edits.jsonl"
 	sink.start(report_dir + "/" + name)
 	reports_open = true
-	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec,diagnostic_frame")
+	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec,diagnostic_frame," + ",".join(Frontier.COLUMNS))
 	operation_lines.append("native_frame,phase,start_usec,end_usec,phase_boundary,upload_count,upload_bytes,upload_usec,upload_max_usec,upload_max_bytes,upload_max_start_usec,deletion_count,deletion_bytes,deletion_usec,deletion_max_usec,deletion_max_bytes,deletion_max_start_usec,deletion_max_kind")
 
 func _begin_phase(label: String, trace: bool = true) -> void:
@@ -268,6 +271,7 @@ func _make_ui() -> void:
 func _make_scene() -> void:
 	var world_environment := WorldEnvironment.new()
 	var environment := Environment.new()
+	benchmark_environment = environment
 	environment.background_mode = Environment.BG_COLOR
 	environment.background_color = Color("809eac")
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
@@ -411,6 +415,7 @@ func _begin_measurement() -> void:
 	end_requested = false
 	finish_reason = ""
 	diagnostics = Diagnostics.new()
+	frontier = Frontier.new()
 	diagnostics.start(Time.get_ticks_usec())
 	_open_reports()
 	var id: String = SCENARIOS[scenario_index]["id"]
@@ -637,6 +642,14 @@ func _process_frame(now: int) -> void:
 	peaks["triangles"] = maxi(int(peaks.get("triangles", 0)), triangles)
 	var gpu_bytes: int = int(Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED))
 	if gpu_bytes > 0: peaks["gpu_resource_estimate_bytes"] = maxi(int(peaks.get("gpu_resource_estimate_bytes", 0)), gpu_bytes)
+	var frontier_sample: Dictionary = {}
+	if id == "H1" or id == "H2":
+		# Required fixture geometry and the H2 proxy edits fit this surface envelope.
+		# The scan is conservative: box/frustum overlap does not imply pixel visibility.
+		var sample: Dictionary = probe.sample_frontier(terrain, camera, AABB(Vector3(-4096, -16, -4096), Vector3(8192, 23, 8192)))
+		sample.merge({"frame": sample_count, "camera_x": camera.position.x, "camera_y": camera.position.y,
+			"camera_z": camera.position.z, "camera_yaw": camera.rotation.y})
+		frontier_sample = frontier.record(sample, Frontier.fog_configuration(benchmark_environment, camera.far))
 	var upstream_stats: Dictionary = VoxelEngine.get_stats()
 	var pools: Dictionary = upstream_stats["memory_pools"]
 	for key: String in ["voxel_total", "voxel_used", "block_count"]:
@@ -644,7 +657,7 @@ func _process_frame(now: int) -> void:
 	raw_lines.append("%d,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.6f,%.6f,%d,%d" % [sample_count, elapsed_wall, scenario_elapsed, frame_ms,
 		counters["generation_jobs"], counters["mesh_jobs"], counters["result_jobs"], terrain_stats.get("pending_data", 0), terrain_stats.get("pending_mesh", 0),
 		counters.get("private_bytes", 0), counters.get("working_set", 0), draws, triangles, accepted_edits, readiness_stops,
-		now, render_cpu, render_gpu, diagnostics.last_callback_usec, diagnostics.callbacks])
+		now, render_cpu, render_gpu, diagnostics.last_callback_usec, diagnostics.callbacks] + "," + ",".join(Frontier.csv_fields(frontier_sample)))
 	if raw_lines.size() >= 128: _flush_csv()
 	if sample_count % 30 == 0:
 		status_label.text = "%s • %d / %d seconds • %d³ / %d worker(s)" % [id, int(scenario_elapsed), int(_duration()), render_size, workers]
@@ -736,11 +749,15 @@ func _end_scenario() -> void:
 	reasons.append_array(Evaluation.operation_failures(measured_phase))
 	var overhead: float = float(measurement_usec) / maxf(sum_ms * 1000.0, 1.0)
 	if overhead >= 0.01: reasons.append("Diagnostic callback wall time reached 1%; A/B qualification required")
-	var hard_failure: bool = readiness_stops > 0 or report_io_failed or sink.has_failed() or int(measured_phase["dropped_frames"]) > 0
+	var frontier_report: Dictionary = frontier.snapshot(id == "H1" or id == "H2")
+	frontier_report["fog"] = Frontier.fog_configuration(benchmark_environment, camera.far)
+	if frontier_report["evaluation"] == "failed": reasons.append("Required mesh coverage is unready before fog obscures it")
+	elif frontier_report["evaluation"] == "inconclusive": reasons.append("Fog/frontier qualification is inconclusive; inspect measured and unavailable samples")
+	var hard_failure: bool = frontier_report["evaluation"] == "failed" or readiness_stops > 0 or report_io_failed or sink.has_failed() or int(measured_phase["dropped_frames"]) > 0
 	for reason: String in reasons:
 		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason or "Collision" in reason: hard_failure = true
 	var report: Dictionary = {"id": id, "operation_phase": measured_phase,
-		"edit_visibility": edit_trace, "edit_visibility_events": edit_file if edit_trace_active else "not_run",
+		"fog_frontier": frontier_report, "edit_visibility": edit_trace, "edit_visibility_events": edit_file if edit_trace_active else "not_run",
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
 		"maximum_ms": max_ms, "deadline_misses": misses, "simulated_seconds": scenario_elapsed, "wall_seconds": elapsed_wall,
@@ -827,7 +844,7 @@ func _finish_report(outcome: String, message: String) -> void:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	var summary: Dictionary = {"schema": 4, "milestone": "M1", "scope": "temporary engine proxy experiment",
+	var summary: Dictionary = {"schema": 5, "milestone": "M1", "scope": "temporary engine proxy experiment",
 		"outcome": outcome, "completed": outcome == "completed", "qualified": false,
 		"qualification": "unverified", "target_certification": "unverified: review exact-build reports and all outstanding gates",
 		"message": message, "build": build_info, "machine": initial_machine,
@@ -847,6 +864,13 @@ func _finish_report(outcome: String, message: String) -> void:
 			"endpoint": "last affected mesh submitted to RenderingServer; physical display presentation unavailable",
 			"timeout_usec": 200000, "p95": "conservative one-millisecond upper bin", "pending_cap": 64,
 			"event_cap": 128, "file_cap_bytes": 8388608, "outcomes": ["submitted", "superseded", "cancelled", "timeout", "unavailable"]},
+		"fog_frontier_trace": {"scope": "H1/H2 required fixture region coverage at every measured frame; conservative AABB/frustum overlap",
+			"readiness": "visible submitted mesh or confirmed empty; pending, missing and hidden regions remain unready",
+			"distance": "Euclidean lower bound to the nearest unready region; far-clip lower bound when all inspected regions are ready",
+			"fog": Frontier.fog_configuration(benchmark_environment, camera.far),
+			"boundary": "fully opaque fog only; exponential fog has no finite boundary; no opacity cutoff is introduced",
+			"bounds": "1024 candidate regions per sample; one retained worst sample; same bounded frame CSV and disk worker",
+			"unavailable": ["pixel visibility/occlusion", "physical presentation", "heavy-frontier diagnostic overhead qualification"]},
 		"limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
 			"GPU attribution and physical presentation timing unavailable", "Hardware qualification requires report review"]}
 	summary["integration_failures"] = integration_failures

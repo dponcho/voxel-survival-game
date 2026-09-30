@@ -153,5 +153,15 @@
     "path": "terrain/fixed_lod/voxel_terrain.cpp",
     "old": "void VoxelTerrain::unload_mesh_block(Vector3i bpos) {",
     "replacement": "void VoxelTerrain::unload_mesh_block(Vector3i bpos) {\n\tcairn::edit_visibility.mesh_cancelled({bpos.x, bpos.y, bpos.z, 0}, OS::get_singleton()->get_ticks_usec());"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.h",
+    "old": "\tArray get_mesh_block_surface(Vector3i block_pos) const;",
+    "replacement": "\tArray get_mesh_block_surface(Vector3i block_pos) const;\n\t// M1 main-thread-only readiness query: missing, pending, hidden, visible, confirmed empty.\n\tint get_cairn_mesh_state(Vector3i block_pos) const;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "// This function is primarily intended for editor use cases at the moment.",
+    "replacement": "int VoxelTerrain::get_cairn_mesh_state(Vector3i block_pos) const {\n\tconst VoxelMeshBlockVT *block = _mesh_map.get_block(block_pos);\n\tif (block == nullptr) return 0;\n\tif (!block->is_loaded) return 1;\n\tif (block->mesh_viewers.get() == 0 || !block->is_visible()) return 2;\n\treturn block->has_mesh() ? 3 : 4;\n}\n\n// This function is primarily intended for editor use cases at the moment."
   }
 ]
