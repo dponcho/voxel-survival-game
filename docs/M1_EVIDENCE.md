@@ -4,7 +4,47 @@ Current milestone status: **blocked; target not qualified** after the
 [five-run laptop review](M1_TARGET_REVIEW.md). The diagnostic corrections below
 are **cloud_passed_target_unverified**; they do not qualify M1.
 
-## Current Windows candidate: fog/frontier evidence
+## Current Windows candidate: lifecycle correction
+
+Implementation `5ce757dfdce039dea5cfbe1f4ceff76635a272d8` initializes fixture
+camera/viewer pose before measurement and allows final accepted N2/H2 edits
+their existing bounded acknowledgement window. Those final frames/native costs
+stay measured; route commands stop at the original endpoint. Genuine timeouts
+and explicit cancellation remain observable. Invalid GPU query values stay in
+raw CSV, with validity counts and a separately scoped valid-sample peak.
+[Measurement semantics](M1_OPERATION_DIAGNOSTICS.md) describe the limits.
+Settings, workloads, formats and thresholds are unchanged.
+
+[CI 36803692007](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007)
+passed all three jobs. Static job `110183343579` passed 12 packaging/cache
+regressions, Python compile checks and three native sanitizer suites. Native
+job `110183424337` reused and requalified the matching binaries. Export job
+`110183626534` passed import, native/evaluation/diagnostic/lifecycle tests,
+debug/release smoke, all four streaming profiles, dependency audit and two
+fresh offline extractions. All five smoke exports reconciled saved evidence;
+every N2/H2 accepted edit submitted, with zero cancellations, timeouts or pending
+edits at closure. Cloud timings do not establish HD 620 performance.
+
+Download [Windows player 11137310682](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007/artifacts/11137310682)
+and extract its contained portable ZIP. GitHub reports expiry on 2026-10-31
+at 02:06 UTC. [Export evidence 11136737690](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007/artifacts/11136737690)
+and [symbols 11136633094](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007/artifacts/11136633094)
+are separate.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation branch commit | `5ce757dfdce039dea5cfbe1f4ceff76635a272d8` |
+| Exported synthetic merge / game build ID | `f3eb4ce72dd659f96df6d5e4804331c1fd4e1642` |
+| Native source key | `81d54daaa9ffc8907de4e024c6f999f60b00dec21c21883608df1a49fc487f3e` |
+| Outer player archive SHA-256 | `f56bbe77e7bdf5dd69b78343cf6a93321c76bb306ea85b473596c55030b34511` |
+| Contained portable ZIP SHA-256 | `f9d4e963bbfdfe07d2939d25239f152518bbe8b8d17d69231c61ccd67dfb1769` |
+
+Completed logs and downloaded player/evidence archives were inspected. Digests,
+ZIP CRCs, the contained checksum and build identity matched. No local engine
+compilation or game execution ran. Exact-build target performance remains
+unverified; **M1 remains blocked**, and these fixes do not certify it.
+
+## Previous Windows candidate: fog/frontier evidence
 
 Implementation commit `7024be977653ffbe03376cda215323be58cb6835` on
 `codex/m1-engine-proof` adds bounded [H1/H2 fog/frontier evidence](M1_FOG_FRONTIER.md):
