@@ -1,65 +1,52 @@
 # Development handoff
 
-- Branch: `codex/m1-engine-proof`; implementation/head before this docs update:
-  `5ce757dfdce039dea5cfbe1f4ceff76635a272d8`.
-- Milestone: **M1 blocked; target not qualified**. This increment is
-  **cloud_passed_target_unverified**; M2 remains gated.
+- Branch: `codex/m1-engine-proof`; runtime/head before this checkpoint:
+  `1a03f16747fa01563150b8a03f6cf6a219718312`.
+- Milestone: **M1 blocked; target not qualified**. Indexed-upload implementation
+  is in verification. [CI 36893428789](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789)
+  is running its native Windows rebuild.
 - Latest successful [CI 36803692007](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007)
-  published [Windows player 11137310682](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007/artifacts/11137310682).
-  Exported build: `f3eb4ce72dd659f96df6d5e4804331c1fd4e1642`.
+  and [Windows player 11137310682](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007/artifacts/11137310682)
+  contain the previous lifecycle correction, **not** the indexed optimization.
 
-**Completed this session:** initialized player/viewer/camera pose at fixture
-preparation and measurement start; stopped route commands at scenario end while
-pending edits retain their existing 200 ms acknowledgement window. Final
-acknowledgement frames, deadlines, native costs and latency stay measured;
-writer drain/retirement follow settlement. Genuine timeout, broken-tracker
-failure and immediate user cancellation remain distinct. Invalid GPU query
-values remain in CSV, are counted, and cannot contaminate the valid-sample peak.
-Recorded the user's GPT-6.1 Sol Max default in `AGENTS.md`.
+Implemented this session: preserve source vertex reuse inside the existing
+1,024-triangle batches; retain triangle order, attributes, surface/material order
+and draw count. Worker-local scratch is bounded to a 384 KiB lookup and 24 KiB
+batch arrays. Invalid indices/channel layouts fail admission. Upload/retirement
+payload estimates count actual vertices and indices, with conservative tangent
+reserve; no renderer buffer readback. Full quad batches estimate 143,360 bytes
+instead of 208,896. This proves data-size reduction, not target timing improvement.
+No settings, workload, face/queue/time/byte caps, generator or save format changed.
 
-All three CI jobs passed: 12 packaging/cache regressions, Python compile checks,
-three native sanitizer suites, exact native reuse/requalification, matching
-editor import and lifecycle/GPU regressions, debug/release smoke, four-profile
-streaming/collision/edit/eviction/cancellation checks, dependency audit and two
-offline fresh extractions. All five smoke exports reconciled saved CSV/summary
-evidence and submitted every N2/H2 accepted edit with zero cancellations,
-timeouts or pending edits. Independently downloaded player/evidence hashes and
-ZIP CRCs matched; the contained player checksum/build identity matched. No local
-engine compilation or execution occurred. Workloads, settings, formats and
-thresholds were preserved.
+Verified: 12 packaging/cache regressions, Python compile checks and four native
+sanitizer suites passed in this CI. The new remap suite checks full batches,
+reconstruction, batch resets, malformed indices, bounds and payload accounting.
+Changed ordered upstream patch groups matched pinned source. Native source key:
+`bb20d80d8e527335a7cb2e9a728c0eb1328812fd0650b66dcc494daea121763b`.
 
-**Failed in the supplied prior target baseline:** individual uploads and some
-frame-operation allowances, conservative heavy mesh coverage, and recorded raw
-dense/warm-up deadline misses. These outcomes remain evidence, not fixed claims.
-No CI check failed this session.
+Failed checks this session: none. Pending/unverified: matching editor/debug/release
+builds; engine geometry/AO/UV/color/tangent and unchanged-surface-count tests;
+exported lifecycle/streaming/edit/collision checks, offline package checks, candidate
+hashes and HD 620 timing. Prior target upload/coverage failures and raw deadline
+misses remain evidence. Detailed uploaded-report/hardware data remain private.
+No local engine compilation or execution occurred.
 
-**Unverified/inconclusive:** corrected exact-build HD 620 lifecycle/edit latency,
-GPU timing validity, diagnostic overhead (especially heavy frontier sampling),
-upload/OS/driver attribution, pacing, rendered visibility/fog, allocation
-completeness/retention and qualification repeats. Detailed uploaded-report and
-hardware data remain private. Request at most one corrected baseline before
-any full comparison or qualification repeats.
+**Single next task:** finish verification of the indexed-upload candidate,
+then obtain one exact-build 32³/one-worker laptop baseline. No laptop action
+is needed before the new Windows candidate passes CI.
 
-**Single highest-priority next implementation task:** one bounded upload-cost
-experiment retaining indexed vertex reuse within the existing surface batches.
-Source currently duplicates indexed triangle vertices; reducing batch size
-blindly also increases draw calls. Preserve the accepted architecture.
+Acceptance: native engine attributes/winding/face counts and batch surface counts
+match the stock mesher; saved CSV/summary reconciliation, all four profiles,
+dependency audit and fresh offline extractions pass. Publish the matching candidate
+and assess scoped upload/frame costs, edit acknowledgement, coverage and overhead.
+Keep unmeasured improvements and unresolved outliers unqualified. Do not request
+full comparisons or qualification repeats yet.
 
-Acceptance: stock triangle coverage/winding/AO/UV/color/tangents match; draw-call
-and face envelopes, bounded buffers/queues, routes and thresholds stay intact.
-Payload accounting includes actual vertex/index data. Matching cloud native
-tests, debug/release export and offline package checks pass. Produce a new
-Windows candidate; compare scoped target upload/frame costs without claiming
-an unmeasured improvement or suppressing smaller-payload outliers.
-
-Inspect `PERFORMANCE.md` section 3, `TESTING.md` sections 7/8,
+Inspect `native/sandbox_world/core/mesh_batch.h`,
 `native/sandbox_world/godot/fixture_generator.cpp`,
-`native/sandbox_world/core/fixture.h`,
-`build/patches/voxel/m1-admission.json`,
 `native/sandbox_world/godot/m1_hooks.h`,
+`build/patches/voxel/m1-admission.json`, `tests/native/test_mesh_batch.cpp`,
 `game/scripts/m1_native_tests.gd`, `game/scripts/benchmark.gd`,
-`game/scripts/benchmark_lifecycle_tests.gd` and
-`game/scripts/benchmark_trace_tests.gd`.
+`PERFORMANCE.md` section 3 and `docs/M1_OPERATION_DIAGNOSTICS.md`.
 
-Recommended next model: **GPT-6.1 Sol Max** (`gpt-6.1-sol`, effort `max`), the
-user's project default. No specialist escalation is currently justified.
+Next model: **GPT-6.1 Sol Max** (`gpt-6.1-sol`, effort `max`), the user's default.
