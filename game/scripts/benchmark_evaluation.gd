@@ -1,5 +1,12 @@
 extends RefCounted
 
+static func gpu_sample_status(milliseconds: float, now_usec: int) -> String:
+	if milliseconds == 0.0: return "unavailable"
+	# An asynchronous elapsed query cannot predate this process's clock origin.
+	# Keep impossible/overflowed raw values; do not let them certify a GPU peak.
+	if not is_finite(milliseconds) or milliseconds < 0.0 or milliseconds > float(now_usec) / 1000.0: return "invalid"
+	return "valid"
+
 # Accept only explicitly scoped measurements. Lifetime maxima remain context.
 static func operation_failures(phase: Dictionary) -> Array[String]:
 	var failures: Array[String] = []

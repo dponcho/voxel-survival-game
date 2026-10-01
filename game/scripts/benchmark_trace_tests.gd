@@ -1,6 +1,7 @@
 extends RefCounted
 
 const Frontier = preload("res://scripts/benchmark_frontier.gd")
+const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
 
 # Runs only in the existing cloud smoke route, after the shared writer drains.
 static func verify(directory: String, phases: Array[Dictionary], reports: Array[Dictionary]) -> Array[String]:
@@ -142,6 +143,8 @@ static func _verify_edit_visibility(directory: String, report: Dictionary) -> Ar
 			failures.append("Malformed edit visibility event")
 			break
 		var event: Dictionary = parsed
+		if int(event["accepted_usec"]) < int(report["diagnostic_accounting"]["start_usec"]) or int(event["end_usec"]) > int(report["measurement_end_usec"]):
+			failures.append("Accepted edit settled outside the measured gameplay phase")
 		var outcome: String = str(event.get("outcome", ""))
 		if not counts.has(outcome):
 			failures.append("Unknown edit visibility outcome")
@@ -199,6 +202,10 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 	var rows: int = 0
 	var callback_sum: int = int(accounting["last_callback_usec"])
 	var previous_stamp: int = 0
+	var acknowledgement: Dictionary = report["edit_acknowledgement"]
+	var acknowledgement_rows: int = 0
+	var invalid_gpu_rows: int = 0
+	var valid_gpu_peak: float = 0.0
 	while not file.eof_reached():
 		var fields: PackedStringArray = file.get_csv_line()
 		if fields.size() == 1 and fields[0].is_empty(): continue
@@ -209,6 +216,14 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 		if int(fields[0]) != rows or int(fields[19]) != rows - 1: failures.append("Diagnostic callback CSV is shifted incorrectly")
 		callback_sum += int(fields[18])
 		var stamp: int = int(fields[15])
+		if stamp > int(report["measurement_end_usec"]): failures.append("Measured frame lies after gameplay closure")
+		if int(acknowledgement["start_usec"]) > 0 and stamp >= int(acknowledgement["start_usec"]):
+			acknowledgement_rows += 1
+			if absf(float(fields[2]) - float(report["simulated_seconds"])) > 0.000001 or int(fields[13]) != int(report["accepted_proxy_edits"]):
+				failures.append("Acknowledgement frames changed the route clock or edit workload")
+		var gpu_status: String = Evaluation.gpu_sample_status(float(fields[17]), stamp) if fields[17].is_valid_float() else "invalid"
+		if gpu_status == "invalid": invalid_gpu_rows += 1
+		elif gpu_status == "valid": valid_gpu_peak = maxf(valid_gpu_peak, float(fields[17]))
 		if previous_stamp > 0 and absf(float(stamp - previous_stamp) - float(fields[3]) * 1000.0) > 1.0:
 			failures.append("Frame interval has mismatched callback boundaries")
 		previous_stamp = stamp
@@ -217,4 +232,7 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 		if rows != 0: failures.append("Baseline emitted detailed frame probes")
 	elif rows != samples or callback_sum != int(accounting["callback_usec"]):
 		failures.append("CSV omits callback/format/flush/UI time or final sample")
+	if acknowledgement_rows != int(acknowledgement["samples"]): failures.append("Final edit acknowledgement samples disagree with CSV")
+	if invalid_gpu_rows != int(report["invalid_gpu_samples"]) or absf(valid_gpu_peak - float(report["peaks"].get("render_gpu_ms", 0.0))) > 0.00001:
+		failures.append("Raw GPU validity/peak and summary disagree")
 	return failures

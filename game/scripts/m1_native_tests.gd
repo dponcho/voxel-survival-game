@@ -6,6 +6,7 @@ var reference := VoxelMesherBlocky.new()
 func _initialize() -> void:
 	_check_evaluation()
 	failures.append_array(await load("res://scripts/benchmark_diagnostic_tests.gd").verify_flush(process_frame))
+	failures.append_array(await load("res://scripts/benchmark_lifecycle_tests.gd").verify(self))
 	var library := VoxelBlockyLibrary.new()
 	var cube := VoxelBlockyModelCube.new()
 	var material := StandardMaterial3D.new()

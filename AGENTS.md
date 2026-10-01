@@ -73,3 +73,7 @@ A task is complete when its intended behaviour works, relevant checks have run o
 Complete the specified single-player core survival/building 1.0 before adding automation circuits, enchanting, brewing, extra dimensions, boss progression, multiplayer, mod loaders, moving voxel machines, unbounded water or advanced rendering. Avoid broad rewrites without a measured reason. Prefer a small tested native change over a growing abstraction layer with no demonstrated use.
 
 Do not delegate to additional agents by default. Use delegation only when the user's request or applicable higher-priority instructions authorize it. Continue useful authorized work until the bounded task is concrete and reviewable.
+
+## Model default
+
+Use **GPT-6.1 Sol Max** (`gpt-6.1-sol`, reasoning effort `max`) as the user's project default for subsequent implementation tasks. Include the next-task recommendation in `docs/NEXT_TASK.md`. Change this default only when the user requests it or a demonstrated specialist need justifies a clearly explained exception.

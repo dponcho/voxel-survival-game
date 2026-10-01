@@ -91,3 +91,18 @@ conservative 1 ms upper bin, checked against 100 ms alongside the 200 ms
 maximum. This instrumentation changes neither the edit workload nor the
 thresholds. It requires a matching Windows build and exact-build target report
 before the visibility gate can pass.
+
+Fixture preparation and measurement both initialize the player/viewer/camera
+pose before any measured frame. At the route's end, N2/H2 stop issuing commands
+and continue measured callbacks and native phase accounting until pending edits
+submit or reach the existing 200 ms timeout. `edit_acknowledgement` labels these
+final frames and their wall time; the route clock and edit count stay fixed.
+Their frame deadlines, native costs and edit latencies remain in the scenario
+results. Writer drain and retirement start only after settlement. Explicit user
+cancellation still closes a partial run immediately. A broken tracker that stays
+pending beyond this bounded window fails the run.
+
+GPU query values remain unchanged in the frame CSV. Zero is unavailable;
+non-finite, negative or process-age-exceeding elapsed values are invalid.
+`invalid_gpu_samples` records them, `render_gpu_ms` covers valid samples only,
+and any invalid sample makes GPU timing inconclusive. No GPU wait is introduced.

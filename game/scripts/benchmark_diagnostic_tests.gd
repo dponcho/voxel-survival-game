@@ -36,6 +36,12 @@ static func _phases(on_usec: int = 30150000, off_usec: int = 30000000) -> Array[
 
 static func verify() -> Array[String]:
 	var failures: Array[String] = []
+	for sample: Dictionary in [
+		{"value": 0.0, "expected": "unavailable"}, {"value": 3.0, "expected": "valid"},
+		{"value": -1.0, "expected": "invalid"}, {"value": INF, "expected": "invalid"},
+		{"value": NAN, "expected": "invalid"}, {"value": 1.0e15, "expected": "invalid"}]:
+		if Evaluation.gpu_sample_status(sample["value"], 1000000) != sample["expected"]:
+			failures.append("Invalid or unavailable GPU query contaminated valid timing")
 	var ledger := Diagnostics.new()
 	ledger.start(100)
 	# Simulated probes (10), formatting/flush (20), UI (30): timer ends after all three.

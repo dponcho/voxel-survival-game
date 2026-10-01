@@ -110,6 +110,10 @@ var edit_lines: PackedStringArray = []
 var edit_bytes: int = 0
 var edit_event_rows: int = 0
 var edit_file: String = ""
+var acknowledgement_started_usec: int = 0
+var acknowledgement_started_sample: int = 0
+var acknowledgement_started_wall: float = 0.0
+var invalid_gpu_samples: int = 0
 
 func _open_reports(suffix: String = "") -> void:
 	csv_bytes = 0
@@ -358,8 +362,10 @@ func _start_scenario() -> void:
 	route_origin = Vector3(10, -10, 2) if scenario["id"] == "N2" else Vector3(10, 8, 10)
 	player = route_origin
 	velocity = Vector3.ZERO
+	scenario_elapsed = 0.0
 	expected_edits.clear()
 	_create_terrain(int(scenario["fixture"]))
+	_sync_pose(true)
 	loading_started = Time.get_ticks_msec()
 	status_label.text = "Preparing %s • %d³ render blocks • %d terrain worker(s)" % [scenario["id"], render_size, workers]
 	detail_label.text = "Fixed 1280 × 720 • visual radius 96 m • data radius 128 m\nTemporary engine fixtures; no player world is touched."
@@ -379,6 +385,7 @@ func _begin_measurement() -> void:
 		return
 	state = "running"
 	scenario_elapsed = 0.0
+	_sync_pose(true)
 	elapsed_wall = 0.0
 	simulation_ticks = 0
 	sample_count = 0
@@ -414,6 +421,10 @@ func _begin_measurement() -> void:
 	revisit_checked = 0
 	end_requested = false
 	finish_reason = ""
+	acknowledgement_started_usec = 0
+	acknowledgement_started_sample = 0
+	acknowledgement_started_wall = 0.0
+	invalid_gpu_samples = 0
 	diagnostics = Diagnostics.new()
 	frontier = Frontier.new()
 	diagnostics.start(Time.get_ticks_usec())
@@ -484,13 +495,7 @@ func _physics_process(delta: float) -> void:
 			reasons.append("Collision route left the safe fixture")
 			integration_failures.append(id + ": collision route left the safe fixture")
 	collision_usec += Time.get_ticks_usec() - collision_start
-	viewer.position = player
-	data_viewer.position = player
-	camera.position = player + Vector3(0, 1.65, 0)
-	if mode != "explore":
-		camera.rotation.y = -PI * 0.5 if not heavy else (-PI * 0.5 + PI * float(int(scenario_elapsed / 15.0) % 2))
-		if id == "N3": camera.rotation.y += scenario_elapsed * TAU / 30.0
-		camera.rotation.x = -0.18
+	_sync_pose()
 	_tick_proxies(delta)
 	var rate: float = float(SCENARIOS[scenario_index]["rate"])
 	if rate > 0.0 and scenario_elapsed >= float(next_edit) / rate:
@@ -501,6 +506,17 @@ func _physics_process(delta: float) -> void:
 		if sink.append(JSON.stringify({"proxy_tick": simulation_ticks, "accepted_edits": accepted_edits, "payload": "x".repeat(32768)}), true): proxy_saves += 1
 		else: report_io_failed = true
 		next_proxy_save += 1.0
+
+func _sync_pose(reset_angles: bool = false) -> void:
+	viewer.position = player
+	data_viewer.position = player
+	camera.position = player + Vector3(0, 1.65, 0)
+	if mode != "explore" or reset_angles:
+		var id: String = SCENARIOS[scenario_index]["id"]
+		camera.rotation.y = -PI * 0.5
+		if id.begins_with("H"): camera.rotation.y += PI * float(int(scenario_elapsed / 15.0) % 2)
+		if id == "N3": camera.rotation.y += scenario_elapsed * TAU / 30.0
+		camera.rotation.x = -0.18
 
 func _tick_proxies(delta: float) -> void:
 	actor_phase += delta
@@ -545,14 +561,33 @@ func _edit_border(tool: VoxelTool) -> bool:
 func _process(_delta: float) -> void:
 	if state == "finished" or state == "reporting": return
 	var begin: int = Time.get_ticks_usec()
-	var measured: bool = state == "running"
+	var measured: bool = state == "running" or state == "acknowledging"
 	_process_frame(begin)
 	if measured:
 		# Includes row formatting, batch submission, live UI and the final callback.
 		diagnostics.record_callback(begin, Time.get_ticks_usec())
 		measurement_usec = diagnostics.callback_usec
 		if not finish_reason.is_empty(): _finish("failed", finish_reason)
-		elif end_requested: _end_scenario()
+		elif end_requested: _complete_scenario_if_ready(Time.get_ticks_usec())
+
+func _pending_edits() -> int:
+	return int(probe.edit_trace_snapshot()["pending"]) if edit_trace_active else 0
+
+func _complete_scenario_if_ready(now: int) -> void:
+	if _pending_edits() > 0:
+		if state == "running":
+			# Stop issuing commands at the route's existing end. Continue sampling
+			# frames and native work until the last edit submits or truly times out.
+			state = "acknowledging"
+			acknowledgement_started_usec = now
+			acknowledgement_started_sample = sample_count
+			acknowledgement_started_wall = elapsed_wall
+		elif now - acknowledgement_started_usec > 200000:
+			# Native tick_edit_trace expires each edit at 200 ms from acceptance.
+			# A pending item beyond this bound indicates broken trace processing.
+			_finish("failed", "Edit acknowledgement did not settle within its existing 200 ms limit")
+		return
+	_end_scenario()
 
 func _process_frame(now: int) -> void:
 	if edit_trace_active:
@@ -631,7 +666,9 @@ func _process_frame(now: int) -> void:
 	var render_cpu: float = RenderingServer.viewport_get_measured_render_time_cpu(get_viewport().get_viewport_rid())
 	var render_gpu: float = RenderingServer.viewport_get_measured_render_time_gpu(get_viewport().get_viewport_rid())
 	peaks["render_cpu_ms"] = maxf(float(peaks.get("render_cpu_ms", 0.0)), render_cpu)
-	if render_gpu > 0.0: peaks["render_gpu_ms"] = maxf(float(peaks.get("render_gpu_ms", 0.0)), render_gpu)
+	var gpu_status: String = Evaluation.gpu_sample_status(render_gpu, now)
+	if gpu_status == "valid": peaks["render_gpu_ms"] = maxf(float(peaks.get("render_gpu_ms", 0.0)), render_gpu)
+	elif gpu_status == "invalid": invalid_gpu_samples += 1
 	for key: String in ["private_bytes", "working_set", "generation_jobs", "mesh_jobs", "result_jobs", "main_jobs"]:
 		peaks[key] = maxi(int(peaks.get(key, 0)), int(counters.get(key, 0)))
 	for key: String in ["resident_data", "resident_mesh", "pending_data", "pending_mesh"]:
@@ -695,7 +732,9 @@ func _flush_csv() -> void:
 
 func _end_scenario() -> void:
 	state = "reporting"
+	var measurement_end_usec: int = Time.get_ticks_usec()
 	if edit_trace_active:
+		if _pending_edits() > 0: integration_failures.append("Normal scenario closure still had pending edits")
 		probe.finish_edit_trace()
 		_drain_edit_events()
 	var edit_trace: Dictionary = probe.edit_trace_snapshot() if edit_trace_active else {"status": "not_run"}
@@ -729,7 +768,8 @@ func _end_scenario() -> void:
 		reasons.append("Diagnostic disk queue or write failed")
 		integration_failures.append(id + ": incomplete diagnostic output")
 	if misses > 0: reasons.append("Raw frame deadline misses require attribution and repeat")
-	if elapsed_wall - scenario_elapsed > 0.25: reasons.append("Simulation fell behind wall time")
+	var acknowledgement_wall: float = elapsed_wall - acknowledgement_started_wall if acknowledgement_started_usec > 0 else 0.0
+	if elapsed_wall - acknowledgement_wall - scenario_elapsed > 0.25: reasons.append("Simulation fell behind wall time")
 	if int(peaks.get("resident_data", 0)) > 8192 or int(peaks.get("resident_mesh", 0)) > 512: reasons.append("Resident pool cap exceeded")
 	if int(peaks.get("generation_jobs", 0)) + int(peaks.get("mesh_jobs", 0)) > 64 or int(peaks.get("result_jobs", 0)) > 16: reasons.append("Native job cap exceeded")
 	if int(peaks.get("draw_calls", 0)) > (400 if heavy else 250) or int(peaks.get("triangles", 0)) > (450000 if heavy else 250000): reasons.append("View geometry envelope exceeded")
@@ -757,6 +797,11 @@ func _end_scenario() -> void:
 	for reason: String in reasons:
 		if "exceeded" in reason or "fell behind" in reason or "was not accepted" in reason or "Queue grew" in reason or "Collision" in reason: hard_failure = true
 	var report: Dictionary = {"id": id, "operation_phase": measured_phase,
+		"measurement_end_usec": measurement_end_usec,
+		"edit_acknowledgement": {"start_usec": acknowledgement_started_usec, "end_usec": measurement_end_usec,
+			"wall_seconds": acknowledgement_wall,
+			"samples": sample_count - acknowledgement_started_sample if acknowledgement_started_usec > 0 else 0,
+			"scope": "final edit settlement; included in measured frames/native phase; route commands have ended"},
 		"fog_frontier": frontier_report, "edit_visibility": edit_trace, "edit_visibility_events": edit_file if edit_trace_active else "not_run",
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
@@ -773,7 +818,8 @@ func _end_scenario() -> void:
 		"generation_worker_fraction": float(int(counters["generation_usec"]) - int(start_counters["generation_usec"])) / maxf(elapsed_wall * 1000000.0 * workers, 1.0),
 		"meshing_worker_fraction": float(int(counters["meshing_usec"]) - int(start_counters["meshing_usec"])) / maxf(elapsed_wall * 1000000.0 * workers, 1.0),
 		"csv_write_usec": csv_usec, "peaks": peaks.duplicate(), "native_start": start_counters, "native_end": counters,
-		"gpu_timing": "asynchronous engine viewport query" if peaks.has("render_gpu_ms") else "unavailable",
+		"gpu_timing": "inconclusive: invalid query samples retained in raw CSV" if invalid_gpu_samples > 0 else ("asynchronous engine viewport query" if peaks.has("render_gpu_ms") else "unavailable"),
+		"invalid_gpu_samples": invalid_gpu_samples, "gpu_peak_scope": "valid query samples only; raw values retained in CSV",
 		"gpu_memory": "engine resource estimate; excludes unreported driver allocations" if peaks.has("gpu_resource_estimate_bytes") else "unavailable",
 		"unavailable_metrics": ["independent non-voxel allocation pools", "physical presentation intervals", "driver-deferred deletion time"],
 		"proxy_autosaves": proxy_saves, "presentation": "application callback intervals; physical scanout unavailable",
