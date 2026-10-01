@@ -900,7 +900,7 @@ func _finish_report(outcome: String, message: String) -> void:
 		"scenarios": reports, "operation_phases": operation_phases,
 		"operation_trace": {"clock": "process monotonic microseconds; join to frame callback_usec",
 			"frames": "native engine process intervals; phase boundaries split a frame without resetting admission",
-			"payload": "estimated vertex layout plus sequential indices at 68 bytes/vertex; reference release has zero payload",
+			"payload": "conservative input layout: 64 bytes per unique vertex plus 4 per actual index; includes tangent reserve; excludes driver allocations; reference release has zero payload",
 			"deletion_kinds": {"2": "surface_remove", "3": "mesh_reference_release"},
 			"bounds": "64 native frame records; 128 pending CSV rows; 64 MiB per operation file; shared bounded disk worker",
 			"unavailable": ["driver-deferred work", "OS attribution"],

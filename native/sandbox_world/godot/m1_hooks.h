@@ -3,6 +3,7 @@
 #include "scene/resources/mesh.h"
 #include "../core/operation_metrics.h"
 #include "../core/edit_visibility.h"
+#include "../core/mesh_batch.h"
 #include <atomic>
 #include <cstdint>
 

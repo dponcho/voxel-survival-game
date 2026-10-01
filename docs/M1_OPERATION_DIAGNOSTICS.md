@@ -16,8 +16,9 @@ existing disk worker. Preparation and retirement use separate files with
 `-preparation`/`-retirement` suffixes before `-frames.csv`. Rows contain native frame and phase IDs, monotonic interval endpoints,
 operation counts, estimated payload bytes, total times, and the slowest operation's
 time, payload and start timestamp. Deletion kind 2 means surface removal; kind 3
-means mesh reference release. Payload estimates use the existing 68 bytes per
-vertex convention and do not measure driver allocation or deferred destruction.
+means mesh reference release. Payload estimates use 64 bytes per unique vertex
+(position/normal/UV/color and tangent reserve) plus four bytes per actual index.
+They do not measure driver allocation, compressed GPU buffers or deferred destruction.
 The timed deletion scope remains the existing native removal/reference-release
 block; renderer/driver work outside it is unavailable.
 
@@ -106,3 +107,15 @@ GPU query values remain unchanged in the frame CSV. Zero is unavailable;
 non-finite, negative or process-age-exceeding elapsed values are invalid.
 `invalid_gpu_samples` records them, `render_gpu_ms` covers valid samples only,
 and any invalid sample makes GPU timing inconclusive. No GPU wait is introduced.
+
+Indexed upload batches retain the same 1,024-triangle limit and surface/material
+order. Original source vertex IDs preserve attribute seams; equal positions are
+never welded. The worker copies each referenced vertex once per batch, resets
+only touched lookup entries, and preserves every ordered triangle index.
+Scratch lookup is capped at 98,304 entries (384 KiB), plus two 3,072-entry arrays
+(24 KiB) per active mesh worker. Invalid indices or unsupported channel/count
+layouts fail native admission. Face, worker, queue, byte and time caps are unchanged.
+Upload and surface-retirement payloads use actual vertex/index counts without
+reading renderer buffers back. A full cube-quad batch has 2,048 vertices and
+3,072 indices: 143,360 estimated input bytes versus 208,896 in the old expanded
+batch. This data-size reduction alone does not establish a target timing gain.

@@ -39,6 +39,10 @@ jobs:
         run: |
           c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_edit_visibility.cpp -o /tmp/cairn-edit-visibility-test
           /tmp/cairn-edit-visibility-test
+      - name: Indexed mesh batch tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_mesh_batch.cpp -o /tmp/cairn-mesh-batch-test
+          /tmp/cairn-mesh-batch-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml

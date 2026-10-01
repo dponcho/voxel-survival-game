@@ -1,6 +1,7 @@
 #include "fixture_generator.h"
 #include "m1_hooks.h"
 #include "../core/fixture.h"
+#include "../core/mesh_batch.h"
 #include "modules/voxel/storage/voxel_buffer.h"
 #include "modules/voxel/terrain/fixed_lod/voxel_terrain.h"
 #include "core/os/os.h"
@@ -73,7 +74,8 @@ void CairnMesher::build(Output &output, const Input &input) {
     VoxelMesherBlocky::build(output, input);
     zylann::StdVector<Output::Surface> split;
     // Preserve the stock cube mesher, winding, colors, AO, UVs and tangent data.
-    // Expand indexed triangles into fixed-size uploads, on the terrain worker.
+    // Keep the same triangle batches/draw count, retaining stock vertex reuse.
+    uint64_t total_indices = 0, total_vertices = 0;
     for (const auto &surface : output.surfaces) {
         const Array &a = surface.arrays;
         const PackedVector3Array vertices = a[Mesh::ARRAY_VERTEX];
@@ -82,16 +84,33 @@ void CairnMesher::build(Output &output, const Input &input) {
         const PackedColorArray colors = a[Mesh::ARRAY_COLOR];
         const PackedFloat32Array tangents = a[Mesh::ARRAY_TANGENT];
         const PackedInt32Array indices = a[Mesh::ARRAY_INDEX];
+        total_indices += indices.size();
+        total_vertices += vertices.size();
+        if (total_indices > cairn::MAX_SOURCE_INDICES || total_vertices > cairn::MAX_SOURCE_VERTICES ||
+                indices.size() % 3 != 0 || normals.size() != vertices.size() ||
+                uvs.size() != vertices.size() || colors.size() != vertices.size() ||
+                (!tangents.is_empty() && tangents.size() != vertices.size() * 4)) {
+            ++cairn::overloads;
+            output.surfaces.clear();
+            return;
+        }
+        cairn::IndexedMeshBatch batch(vertices.size());
         for (int begin = 0; begin < indices.size(); begin += cairn::TRIANGLES_PER_UPLOAD * 3) {
             const int count = MIN(cairn::TRIANGLES_PER_UPLOAD * 3, indices.size() - begin);
+            if (!batch.build(indices.ptr() + begin, count)) {
+                ++cairn::overloads;
+                output.surfaces.clear();
+                return;
+            }
+            const int unique_count = batch.vertices();
             PackedVector3Array v, n; PackedVector2Array uv; PackedColorArray col; PackedFloat32Array tan;
-            PackedInt32Array sequential;
-            sequential.resize(count);
-            v.resize(count); n.resize(count); uv.resize(count); col.resize(count);
-            if (!tangents.is_empty()) tan.resize(count * 4);
-            for (int i = 0; i < count; ++i) {
-                const int source = indices[begin + i];
-                sequential.set(i, i);
+            PackedInt32Array remapped;
+            remapped.resize(count);
+            for (int i = 0; i < count; ++i) remapped.set(i, batch.index(i));
+            v.resize(unique_count); n.resize(unique_count); uv.resize(unique_count); col.resize(unique_count);
+            if (!tangents.is_empty()) tan.resize(unique_count * 4);
+            for (int i = 0; i < unique_count; ++i) {
+                const int source = batch.source_vertex(i);
                 v.set(i, vertices[source]);
                 n.set(i, normals[source]);
                 uv.set(i, uvs[source]);
@@ -101,7 +120,7 @@ void CairnMesher::build(Output &output, const Input &input) {
             Array arrays; arrays.resize(Mesh::ARRAY_MAX);
             arrays[Mesh::ARRAY_VERTEX] = v; arrays[Mesh::ARRAY_NORMAL] = n;
             arrays[Mesh::ARRAY_TEX_UV] = uv; arrays[Mesh::ARRAY_COLOR] = col;
-            arrays[Mesh::ARRAY_INDEX] = sequential;
+            arrays[Mesh::ARRAY_INDEX] = remapped;
             if (!tan.is_empty()) arrays[Mesh::ARRAY_TANGENT] = tan;
             split.push_back({ arrays, surface.material_index });
         }

@@ -35,9 +35,16 @@ func _initialize() -> void:
 	buffer.set_voxel(1, 1, 1, 1, VoxelBuffer.CHANNEL_TYPE)
 	buffer.set_voxel(2, 2, 1, 1, VoxelBuffer.CHANNEL_TYPE)
 	_check_mesh(mesher, buffer, material, 20, "mixed block colors")
+	buffer.set_voxel(1, 1, 2, 1, VoxelBuffer.CHANNEL_TYPE)
+	_check_mesh(mesher, buffer, material, 28, "non-coplanar corner preserves ambient occlusion")
 	buffer.create(18,18,18)
 	buffer.fill_area(1, Vector3i.ONE, Vector3i(17,17,17), VoxelBuffer.CHANNEL_TYPE)
 	_check_mesh(mesher, buffer, material, 6 * 16 * 16 * 2, "solid region split without dropped faces")
+	buffer.create(34,34,34)
+	buffer.fill_area(1, Vector3i.ONE, Vector3i(33,33,33), VoxelBuffer.CHANNEL_TYPE)
+	_check_mesh(mesher, buffer, material, 6 * 32 * 32 * 2, "32-cube region spans multiple indexed uploads")
+	buffer.set_voxel(1, 0, 1, 1, VoxelBuffer.CHANNEL_TYPE)
+	_check_mesh(mesher, buffer, material, 6 * 32 * 32 * 2 - 2, "32-cube negative border halo")
 	# Beyond-envelope case: it must reject before building large renderer payloads.
 	buffer.create(34,34,34)
 	for z: int in range(1,33):
@@ -87,17 +94,30 @@ func _check_mesh(mesher: CairnMesher, buffer: VoxelBuffer, material: Material, e
 		failures.append(label + ": no mesh")
 		return
 	var triangles: int = 0
+	var reused: bool = false
 	for i: int in range(mesh.get_surface_count()):
 		var arrays: Array = mesh.surface_get_arrays(i)
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
-		triangles += vertices.size() / 3
-		if vertices.size() * 68 > 256 * 1024: failures.append(label + ": oversized upload")
+		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+		triangles += indices.size() / 3
+		if indices.is_empty() or indices.size() % 3 != 0 or indices.size() > 1024 * 3: failures.append(label + ": invalid triangle batch")
+		if vertices.size() * 64 + indices.size() * 4 > 256 * 1024: failures.append(label + ": oversized upload")
 		if normals.size() != vertices.size(): failures.append(label + ": lost normal data")
+		for index: int in indices:
+			if index < 0 or index >= vertices.size(): failures.append(label + ": invalid remapped vertex index")
+		if vertices.size() < indices.size(): reused = true
 	if triangles != expected: failures.append(label + ": face coverage changed")
+	if not reused: failures.append(label + ": vertex expansion was not removed")
 	var original: Mesh = reference.build_mesh(buffer, [material])
 	if original == null or _triangle_records(mesh) != _triangle_records(original):
 		failures.append(label + ": split changed triangle winding or vertex attributes")
+	if original != null:
+		var expected_surfaces: int = 0
+		for surface: int in range(original.get_surface_count()):
+			var original_indices: PackedInt32Array = original.surface_get_arrays(surface)[Mesh.ARRAY_INDEX]
+			expected_surfaces += int(ceil(float(original_indices.size()) / float(1024 * 3)))
+		if mesh.get_surface_count() != expected_surfaces: failures.append(label + ": upload surface/draw count changed")
 
 func _triangle_records(mesh: Mesh) -> Dictionary:
 	# Compare ordered triangle vertices, independent of surface splitting/index
