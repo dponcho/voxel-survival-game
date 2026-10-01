@@ -1,10 +1,61 @@
 # M1 engine experiment evidence
 
 Current milestone status: **blocked; target not qualified** after the
-[five-run laptop review](M1_TARGET_REVIEW.md). The diagnostic corrections below
+[five-run laptop review](M1_TARGET_REVIEW.md). The candidates below
 are **cloud_passed_target_unverified**; they do not qualify M1.
 
-## Current Windows candidate: lifecycle correction
+## Current Windows candidate: indexed upload batches
+
+Implementation `1a03f16747fa01563150b8a03f6cf6a219718312` preserves source vertex
+reuse within the existing 1,024-triangle upload batches. Triangle order,
+normals, UVs, color/AO, tangents, materials and surface/draw counts are retained.
+The worker-local remap is bounded; malformed indices or channel layouts fail
+admission. Upload and retirement estimates now use actual vertex and index counts,
+with conservative tangent reserve and no renderer buffer readback.
+A full quad batch estimates 143,360 bytes instead of 208,896 (about 31% less).
+This is an input-payload reduction, not a measured target timing improvement.
+[Measurement semantics](M1_OPERATION_DIAGNOSTICS.md) describe its limits.
+Workloads, settings, budgets and save/generator formats are unchanged.
+
+[CI 36893428789](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789)
+passed all three jobs on 2026-10-01 UTC. Static job `110474396180` passed
+12 packaging/cache regressions, Python compile checks and four native sanitizer
+suites, including remap reconstruction, resets, malformed indices and bounds.
+Native job `110474542921` built and independently qualified the matching
+editor/debug/release binaries after an exact native-cache miss.
+Export job `110528071000` passed native geometry/attribute/winding and
+unchanged-surface-count regressions, import/export, debug/release smoke,
+all four streaming profiles, collision/edit/eviction/cancellation checks,
+dependency audit and two fresh offline extractions.
+All five smoke exports completed with no integration failures; every N2/H2
+accepted edit submitted, with zero cancellations, timeouts or pending edits at
+closure. Saved-report reconciliation passed. No CI check in this run failed.
+
+Download [Windows player 11186079360](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789/artifacts/11186079360)
+and extract its contained portable ZIP. GitHub reports expiry on 2026-10-31
+at 18:52 UTC. [Export evidence 11185869587](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789/artifacts/11185869587),
+[native evidence 11185868553](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789/artifacts/11185868553)
+and [symbols 11185219665](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789/artifacts/11185219665)
+are separate.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation branch commit | `1a03f16747fa01563150b8a03f6cf6a219718312` |
+| Exported synthetic merge / game build ID | `25e4501360187b3a6afc56e507ac74f841c788b7` |
+| Native source key | `bb20d80d8e527335a7cb2e9a728c0eb1328812fd0650b66dcc494daea121763b` |
+| Outer player archive SHA-256 | `c62f2e9217158957a470134a26dff5c678c6e76ce574f42a098987f4d6cf7ea4` |
+| Contained portable ZIP SHA-256 | `374fa1830097c6f19894b1e9271b2dd1311ff14b9adf9001eaf9e1e2b92fd4fa` |
+
+Completed logs and downloaded player/export/native evidence were inspected.
+Archive digests, ZIP CRCs, contained checksums, build identities and native
+manifest binary hashes matched. No local engine compilation or execution ran.
+Cloud/headless checks do not establish rendered HD 620 performance.
+Exact-build upload costs, coverage, edit deadlines, full diagnostic overhead,
+allocation/retention and qualification repeats remain unverified.
+**M1 remains blocked; target not qualified.** Review one new 32³/one-worker
+baseline before requesting a full comparison or qualification repeats.
+
+## Previous Windows candidate: lifecycle correction
 
 Implementation `5ce757dfdce039dea5cfbe1f4ceff76635a272d8` initializes fixture
 camera/viewer pose before measurement and allows final accepted N2/H2 edits

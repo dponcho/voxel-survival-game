@@ -1,52 +1,55 @@
 # Development handoff
 
-- Branch: `codex/m1-engine-proof`; runtime/head before this checkpoint:
-  `1a03f16747fa01563150b8a03f6cf6a219718312`.
-- Milestone: **M1 blocked; target not qualified**. Indexed-upload implementation
-  is in verification. [CI 36893428789](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789)
-  is running its native Windows rebuild.
-- Latest successful [CI 36803692007](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007)
-  and [Windows player 11137310682](https://github.com/dponcho/voxel-survival-game/actions/runs/36803692007/artifacts/11137310682)
-  contain the previous lifecycle correction, **not** the indexed optimization.
+- Branch: `codex/m1-engine-proof`; head when prepared:
+  `4660a193656ff6164fb9b4262c18f2521af13547`.
+  Runtime implementation: `1a03f16747fa01563150b8a03f6cf6a219718312`.
+- Milestone: **M1 blocked; target not qualified**. Indexed-upload candidate:
+  **cloud_passed_target_unverified**.
+- Latest successful [CI 36893428789](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789)
+  passed all three jobs. [Windows player 11186079360](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789/artifacts/11186079360)
+  exports game build `25e4501360187b3a6afc56e507ac74f841c788b7`.
+  Artifact expires 2026-10-31, 18:52 UTC.
 
-Implemented this session: preserve source vertex reuse inside the existing
-1,024-triangle batches; retain triangle order, attributes, surface/material order
-and draw count. Worker-local scratch is bounded to a 384 KiB lookup and 24 KiB
-batch arrays. Invalid indices/channel layouts fail admission. Upload/retirement
-payload estimates count actual vertices and indices, with conservative tangent
-reserve; no renderer buffer readback. Full quad batches estimate 143,360 bytes
-instead of 208,896. This proves data-size reduction, not target timing improvement.
-No settings, workload, face/queue/time/byte caps, generator or save format changed.
+Completed: indexed vertex reuse within existing 1,024-triangle batches, preserving
+triangle order, attributes, materials and draw/surface counts. Invalid indices
+and channel layouts fail admission; scratch is bounded to a 384 KiB lookup plus
+24 KiB batch arrays per mesh worker. Upload/retirement estimates count actual
+vertices/indices with tangent reserve; no renderer readback. Full quad batches
+estimate 143,360 rather than 208,896 bytes. This is data-size reduction, not a
+target timing result. Settings, workloads, budgets and save/generator formats
+are unchanged.
 
-Verified: 12 packaging/cache regressions, Python compile checks and four native
-sanitizer suites passed in this CI. The new remap suite checks full batches,
-reconstruction, batch resets, malformed indices, bounds and payload accounting.
-Changed ordered upstream patch groups matched pinned source. Native source key:
-`bb20d80d8e527335a7cb2e9a728c0eb1328812fd0650b66dcc494daea121763b`.
+This continuation finished verification: 12 packaging/cache regressions, Python
+compile checks and four native sanitizer suites passed; matching editor/debug/
+release binaries were built and qualified. Engine attribute/AO/winding and
+multi-batch/border/surface-count tests passed. All four profiles, streaming,
+collision, edits, eviction/cancellation, dependency audit and fresh offline
+extractions passed. Five smoke exports reconciled saved reports; all accepted
+N2/H2 edits submitted with zero pending/cancelled/timed-out edits at closure.
+Downloaded player/export/native evidence digests, ZIP CRCs, checksums,
+manifest hashes and build identities matched. No local engine build or execution.
 
-Failed checks this session: none. Pending/unverified: matching editor/debug/release
-builds; engine geometry/AO/UV/color/tangent and unchanged-surface-count tests;
-exported lifecycle/streaming/edit/collision checks, offline package checks, candidate
-hashes and HD 620 timing. Prior target upload/coverage failures and raw deadline
-misses remain evidence. Detailed uploaded-report/hardware data remain private.
-No local engine compilation or execution occurred.
+Failed in this CI: none. Prior target upload/coverage failures and raw deadline
+misses remain unresolved evidence. Unverified: this candidate's HD 620 upload/frame
+costs, rendered coverage, edit deadlines, full diagnostic overhead, allocation/
+retention and final repeats. Uploaded target details remain private.
+Native key: `bb20d80d8e527335a7cb2e9a728c0eb1328812fd0650b66dcc494daea121763b`.
 
-**Single next task:** finish verification of the indexed-upload candidate,
-then obtain one exact-build 32³/one-worker laptop baseline. No laptop action
-is needed before the new Windows candidate passes CI.
+**Single next task / implementation gate:** review one exact-build 32³/one-worker
+laptop baseline and identify the highest-priority remaining M1 blocker.
+Further implementation waits for that evidence; do not request full comparisons
+or qualification repeats yet.
 
-Acceptance: native engine attributes/winding/face counts and batch surface counts
-match the stock mesher; saved CSV/summary reconciliation, all four profiles,
-dependency audit and fresh offline extractions pass. Publish the matching candidate
-and assess scoped upload/frame costs, edit acknowledgement, coverage and overhead.
-Keep unmeasured improvements and unresolved outliers unqualified. Do not request
-full comparisons or qualification repeats yet.
+Acceptance: matching build identity, complete summary/finalization and CSV/edit
+evidence; review scoped upload/frame costs, raw deadline misses, edit submission,
+coverage and overhead against unchanged gates. Select one attributable failing
+gate for the next bounded fix; retain unverified results as unverified.
 
-Inspect `native/sandbox_world/core/mesh_batch.h`,
+Inspect `docs/M1_TESTING.md`, `docs/M1_EVIDENCE.md`,
+`docs/M1_OPERATION_DIAGNOSTICS.md`, `PERFORMANCE.md` section 3,
+`native/sandbox_world/core/mesh_batch.h`,
 `native/sandbox_world/godot/fixture_generator.cpp`,
-`native/sandbox_world/godot/m1_hooks.h`,
-`build/patches/voxel/m1-admission.json`, `tests/native/test_mesh_batch.cpp`,
-`game/scripts/m1_native_tests.gd`, `game/scripts/benchmark.gd`,
-`PERFORMANCE.md` section 3 and `docs/M1_OPERATION_DIAGNOSTICS.md`.
+`native/sandbox_world/godot/m1_hooks.h`, `build/patches/voxel/m1-admission.json`,
+`tests/native/test_mesh_batch.cpp` and `game/scripts/m1_native_tests.gd`.
 
 Next model: **GPT-6.1 Sol Max** (`gpt-6.1-sol`, effort `max`), the user's default.
