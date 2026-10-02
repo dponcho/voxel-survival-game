@@ -1,55 +1,59 @@
 # Development handoff
 
-- Branch: `codex/m1-engine-proof`; head when prepared:
-  `4660a193656ff6164fb9b4262c18f2521af13547`.
+- Branch: `codex/m1-engine-proof`; head reviewed:
+  `ce87bf3c50486ec04a5edcc7497dff72c60d4041`.
   Runtime implementation: `1a03f16747fa01563150b8a03f6cf6a219718312`.
 - Milestone: **M1 blocked; target not qualified**. Indexed-upload candidate:
-  **cloud_passed_target_unverified**.
+  cloud checks passed; exact-build laptop baseline reviewed privately.
 - Latest successful [CI 36893428789](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789)
   passed all three jobs. [Windows player 11186079360](https://github.com/dponcho/voxel-survival-game/actions/runs/36893428789/artifacts/11186079360)
   exports game build `25e4501360187b3a6afc56e507ac74f841c788b7`.
   Artifact expires 2026-10-31, 18:52 UTC.
 
-Completed: indexed vertex reuse within existing 1,024-triangle batches, preserving
-triangle order, attributes, materials and draw/surface counts. Invalid indices
-and channel layouts fail admission; scratch is bounded to a 384 KiB lookup plus
-24 KiB batch arrays per mesh worker. Upload/retirement estimates count actual
-vertices/indices with tangent reserve; no renderer readback. Full quad batches
-estimate 143,360 rather than 208,896 bytes. This is data-size reduction, not a
-target timing result. Settings, workloads, budgets and save/generator formats
-are unchanged.
+Completed this session: validated the uploaded baseline against the release
+artifact's build identity and executable/PCK hashes; reconciled raw frame,
+operation, edit, callback/finalization and coverage evidence with its summary.
+No integrity errors were found. Accepted edit submission met its latency gate
+in this run, with no missing-data movement stops. Saved the detailed review
+privately; no runtime code, settings, workloads or formats changed.
 
-This continuation finished verification: 12 packaging/cache regressions, Python
-compile checks and four native sanitizer suites passed; matching editor/debug/
-release binaries were built and qualified. Engine attribute/AO/winding and
-multi-batch/border/surface-count tests passed. All four profiles, streaming,
-collision, edits, eviction/cancellation, dependency audit and fresh offline
-extractions passed. Five smoke exports reconciled saved reports; all accepted
-N2/H2 edits submitted with zero pending/cancelled/timed-out edits at closure.
-Downloaded player/export/native evidence digests, ZIP CRCs, checksums,
-manifest hashes and build identities matched. No local engine build or execution.
+Inspected pinned `VoxelTerrain::process_viewers`: it centers visual demand on
+the floored mesh-block coordinate. At fractional positions its positive edge
+falls short of the fixed world-space viewing distance. Frontier traces identify
+unready required blocks outside that requested box. This is an attributable
+coverage-admission defect; correction does not by itself qualify coverage.
 
-Failed in this CI: none. Prior target upload/coverage failures and raw deadline
-misses remain unresolved evidence. Unverified: this candidate's HD 620 upload/frame
-costs, rendered coverage, edit deadlines, full diagnostic overhead, allocation/
-retention and final repeats. Uploaded target details remain private.
-Native key: `bb20d80d8e527335a7cb2e9a728c0eb1328812fd0650b66dcc494daea121763b`.
+Failed: conservative H1/H2 mesh coverage and isolated individual upload limits;
+one normal phase also exceeded the tracked upload/deletion frame allocation.
+Unverified/inconclusive: attribution of raw frame/paced misses, actual exposed
+pixels and rendered fog boundary, full diagnostic overhead, deferred renderer
+costs, allocation/retention qualification and all-profile target repeats.
+Latest CI failures: none. No local engine build or game execution.
 
-**Single next task / implementation gate:** review one exact-build 32³/one-worker
-laptop baseline and identify the highest-priority remaining M1 blocker.
-Further implementation waits for that evidence; do not request full comparisons
-or qualification repeats yet.
+**Single next implementation task:** correct native world-space visual demand
+bounds and derive its required meshing-data halo. Preserve the established
+viewer/demand-difference lifecycle, 96 m visual radius, 128 m data prefetch,
+workloads and admission ceilings. No additional laptop run is needed before
+implementing and producing this candidate.
 
-Acceptance: matching build identity, complete summary/finalization and CSV/edit
-evidence; review scoped upload/frame costs, raw deadline misses, edit submission,
-coverage and overhead against unchanged gates. Select one attributable failing
-gate for the next bounded fix; retain unverified results as unverified.
+Acceptance:
 
-Inspect `docs/M1_TESTING.md`, `docs/M1_EVIDENCE.md`,
-`docs/M1_OPERATION_DIAGNOSTICS.md`, `PERFORMANCE.md` section 3,
-`native/sandbox_world/core/mesh_batch.h`,
-`native/sandbox_world/godot/fixture_generator.cpp`,
-`native/sandbox_world/godot/m1_hooks.h`, `build/patches/voxel/m1-admission.json`,
-`tests/native/test_mesh_batch.cpp` and `game/scripts/m1_native_tests.gd`.
+- Geometry/property regressions cover fractional, exact-boundary and negative
+  positions for 16/32 render blocks and clipped fixture bounds; every block
+  intersecting the required visual envelope is demanded with its data halo.
+- Existing geometry, edits, collision, eviction/cancellation and all four cloud
+  profiles pass; resident regions/objects and queue/payload limits remain bounded
+  under unchanged ceilings. Matching binaries and a portable Windows artifact
+  are produced by GitHub Actions.
+- Keep frustum corners, exponential-fog limitations and remaining timing failures
+  explicit; do not weaken readiness or declare M1 qualified from this partial fix.
+
+Inspect `build/patches/voxel/m1-admission.json`, pinned upstream
+`terrain/fixed_lod/voxel_terrain.cpp` (`process_viewers`),
+`native/sandbox_world/godot/benchmark_probe.cpp`,
+`game/scripts/benchmark_frontier.gd`, `game/scripts/m1_native_tests.gd`,
+`game/scripts/benchmark.gd`, `docs/M1_FOG_FRONTIER.md`, `docs/M1_TESTING.md`,
+`docs/M1_EVIDENCE.md` and `PERFORMANCE.md` sections 2-6.
 
 Next model: **GPT-6.1 Sol Max** (`gpt-6.1-sol`, effort `max`), the user's default.
+This is bounded native integration; no specialist escalation is demonstrated.

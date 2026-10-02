@@ -1,8 +1,9 @@
 # M1 engine experiment evidence
 
-Current milestone status: **blocked; target not qualified** after the
-[five-run laptop review](M1_TARGET_REVIEW.md). The candidates below
-are **cloud_passed_target_unverified**; they do not qualify M1.
+Current milestone status: **blocked; target not qualified**. The original
+[five-run laptop review](M1_TARGET_REVIEW.md) and subsequent private exact-build
+reviews retain unresolved gates. The candidates below passed cloud checks;
+none qualifies M1.
 
 ## Current Windows candidate: indexed upload batches
 
@@ -50,10 +51,16 @@ Completed logs and downloaded player/export/native evidence were inspected.
 Archive digests, ZIP CRCs, contained checksums, build identities and native
 manifest binary hashes matched. No local engine compilation or execution ran.
 Cloud/headless checks do not establish rendered HD 620 performance.
-Exact-build upload costs, coverage, edit deadlines, full diagnostic overhead,
-allocation/retention and qualification repeats remain unverified.
-**M1 remains blocked; target not qualified.** Review one new 32³/one-worker
-baseline before requesting a full comparison or qualification repeats.
+The exact-build 32³/one-worker laptop baseline was reviewed privately on
+2026-10-02 UTC. Build identity and raw evidence reconciled; accepted edit
+submission met its latency gate in that run, with no missing-data movement
+stops. Conservative heavy-streaming coverage and isolated upload limits still
+failed. Frame/pacing attribution, rendered fog coverage, full diagnostic
+overhead, allocation/retention and qualification repeats remain unresolved.
+**M1 remains blocked; target not qualified.** The next bounded fix is native
+world-space visual demand and its meshing-data halo; see [NEXT_TASK.md](NEXT_TASK.md).
+Detailed uploaded measurements remain private. No new laptop run is required
+before implementing and producing that candidate.
 
 ## Previous Windows candidate: lifecycle correction
 
