@@ -94,6 +94,7 @@ func _run() -> void:
 		if not await _settle(): break
 		for position_value: Vector3i in positions:
 			if tool.get_voxel(position_value) != 2: failures.append("Edited data changed across eviction/reload")
+		if not await _check_world_space_demand(configuration): break
 		# Cancel with newly admitted generation outstanding, then drain before
 		# changing the global worker count or creating the next world.
 		viewer.position = Vector3(-400,2,0)
@@ -118,6 +119,9 @@ func _settle() -> bool:
 	while Time.get_ticks_msec() - start < 60000:
 		var stats: Dictionary = terrain.get_statistics()
 		var native_stats: Dictionary = probe.snapshot()
+		if int(stats.get("resident_mesh", 0)) > 512 or int(stats.get("resident_data", 0)) > 8192 or int(native_stats["retired_meshes"]) > 768:
+			failures.append("Viewer demand exceeded the existing resident/retirement caps")
+			return false
 		if int(native_stats["overloads"]) > 0:
 			failures.append("Permitted fixture rejected by native admission")
 			return false
@@ -126,6 +130,79 @@ func _settle() -> bool:
 		await process_frame
 	failures.append("Streaming did not settle within its timeout")
 	return false
+
+func _view_area(position_value: Vector3, distance: float) -> AABB:
+	var area: AABB = AABB(position_value - Vector3.ONE * distance, Vector3.ONE * distance * 2.0).intersection(terrain.bounds)
+	var first: Vector3 = area.position.floor()
+	return AABB(first, area.end.ceil() - first)
+
+func _mesh_cells(area: AABB, side: int) -> Array[Vector3i]:
+	# Independent geometric oracle: enumerate a generous candidate range and
+	# intersect each actual block box with the required world-space envelope.
+	var first := Vector3i((area.position / float(side)).floor()) - Vector3i.ONE
+	var last := Vector3i((area.end / float(side)).ceil()) + Vector3i.ONE
+	var result: Array[Vector3i] = []
+	for z: int in range(first.z, last.z):
+		for y: int in range(first.y, last.y):
+			for x: int in range(first.x, last.x):
+				var cell := Vector3i(x, y, z)
+				if AABB(Vector3(cell * side), Vector3.ONE * side).intersects(area): result.append(cell)
+	return result
+
+func _check_world_space_demand(configuration: Vector2i) -> bool:
+	viewer.view_distance = 96
+	var data_viewer := VoxelViewer.new()
+	data_viewer.view_distance = 128
+	data_viewer.requires_visuals = false
+	data_viewer.requires_collisions = false
+	data_viewer.position = viewer.position
+	root.add_child(data_viewer)
+	var passed: bool = true
+	var tool: VoxelTool = terrain.get_voxel_tool()
+	for pose: Vector3 in [Vector3(10.125,2,10.125), Vector3(31.875,2,31.875),
+			Vector3(32,2,32), Vector3(-0.125,2,-0.125), Vector3(-1023.75,2,-1023.75)]:
+		viewer.position = pose
+		data_viewer.position = pose
+		if not await _settle():
+			passed = false
+			break
+		var visual_area: AABB = _view_area(pose, 96.0)
+		var cells: Array[Vector3i] = _mesh_cells(visual_area, configuration.x)
+		var stats: Dictionary = terrain.get_statistics()
+		if not terrain.is_area_meshed(visual_area) or int(stats["resident_mesh"]) != cells.size():
+			failures.append("World-space visual envelope was under-requested or retained extra blocks: " + str(configuration) + " " + str(pose))
+			passed = false
+		if not tool.is_area_editable(_view_area(pose, 128.0)):
+			failures.append("Data-only viewer did not cover its world-space prefetch envelope")
+			passed = false
+		if pose == Vector3(10.125,2,10.125) and cells.size() != (507 if configuration.x == 16 else 98):
+			failures.append("Fixture clipping or independent visual-demand oracle changed")
+			passed = false
+		print("CAIRN_M1_DEMAND=" + JSON.stringify({"profile": [configuration.x, configuration.y],
+			"pose": [pose.x, pose.y, pose.z], "required_regions": cells.size(),
+			"resident_mesh": stats["resident_mesh"], "resident_data": stats["resident_data"], "passed": passed}))
+		if not passed: break
+	data_viewer.queue_free()
+	await process_frame
+	if not passed: return false
+	# Fresh demand with no data-only viewer proves the actual native meshing halo
+	# is sufficient, rather than relying on the wider prefetch viewer to hide it.
+	viewer.position = Vector3(400.125,2,400.125)
+	if not await _settle(): return false
+	var visual_area: AABB = _view_area(viewer.position, 96.0)
+	var cells: Array[Vector3i] = _mesh_cells(visual_area, configuration.x)
+	var first: Vector3i = cells[0]
+	var last: Vector3i = first + Vector3i.ONE
+	for cell: Vector3i in cells:
+		first = first.min(cell)
+		last = last.max(cell + Vector3i.ONE)
+	var halo: AABB = AABB(Vector3(first * configuration.x) - Vector3.ONE * 16,
+		Vector3((last - first) * configuration.x) + Vector3.ONE * 32).intersection(terrain.bounds)
+	if not terrain.is_area_meshed(visual_area) or not tool.is_area_editable(halo):
+		failures.append("Mesh-only demand did not load its complete clipped data halo")
+		return false
+	print("CAIRN_M1_DEMAND_HALO=" + str(configuration))
+	return true
 
 func _drain() -> bool:
 	var start: int = Time.get_ticks_msec()
