@@ -1,6 +1,6 @@
 # Performance contract
 
-Design baseline: 2026-09-05. **No performance result has been measured for this project.** Every number below is a requirement, admission limit or initial engineering allocation. Settings become a certified profile only after the exported Windows build passes on the specified machine.
+Design baseline: 2026-09-05. The [September 25 target reports](docs/M1_TARGET_REVIEW.md) were reviewed on 2026-09-26; **no profile is qualified yet**. All numbers below remain requirements, admission limits or initial engineering allocations. The Java-style product-direction change does not relax these gates. Settings become a certified profile only after the exported Windows build passes on the specified machine.
 
 ## 1. Fixed target and meaning of a pass
 

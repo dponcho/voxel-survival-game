@@ -7,9 +7,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   static:
     runs-on: ubuntu-24.04
@@ -25,8 +26,29 @@ jobs:
         run: python -m unittest discover -s tests/integration -v
       - name: Compile-check owned cloud scripts
         run: python -m compileall -q tools/ci native/sandbox_world/config.py
+      - name: Native fixture checks with sanitizers
+        run: |
+          c++ --version
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_fixture.cpp -o /tmp/cairn-fixture-test
+          /tmp/cairn-fixture-test
+      - name: Phase-local operation regression tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_operation_metrics.cpp -o /tmp/cairn-operation-test
+          /tmp/cairn-operation-test
+      - name: Edit visibility lifecycle tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_edit_visibility.cpp -o /tmp/cairn-edit-visibility-test
+          /tmp/cairn-edit-visibility-test
+      - name: Indexed mesh batch tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_mesh_batch.cpp -o /tmp/cairn-mesh-batch-test
+          /tmp/cairn-mesh-batch-test
+      - name: World-space viewer demand tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_viewer_demand.cpp -o /tmp/cairn-viewer-demand-test
+          /tmp/cairn-viewer-demand-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml
     with:
-      cold: ${{ github.event.action == 'ready_for_review' }}
+      cold: false

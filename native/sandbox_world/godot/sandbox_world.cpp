@@ -2,6 +2,9 @@
 #include "../build_identity.gen.h"
 #include "../register_types.h"
 #include "core/object/class_db.h"
+#include "fixture_generator.h"
+#include "benchmark_probe.h"
+#include "report_sink.h"
 
 void SandboxWorld::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_build_identity"), &SandboxWorld::get_build_identity);
@@ -18,6 +21,10 @@ Dictionary SandboxWorld::get_build_identity() const {
 void initialize_sandbox_world_module(ModuleInitializationLevel p_level) {
     if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE) {
         ClassDB::register_class<SandboxWorld>();
+        ClassDB::register_class<CairnFixture>();
+        ClassDB::register_class<CairnMesher>();
+        ClassDB::register_class<CairnProbe>();
+        ClassDB::register_class<CairnReportSink>();
     }
 }
 

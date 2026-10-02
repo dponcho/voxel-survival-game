@@ -1,0 +1,162 @@
+[
+  {
+    "path": "engine/voxel_engine.cpp",
+    "old": "#include \"voxel_engine.h\"",
+    "replacement": "#include \"voxel_engine.h\"\n#include \"modules/sandbox_world/godot/m1_hooks.h\"\n"
+  },
+  {
+    "path": "engine/voxel_engine.cpp",
+    "old": "void VoxelEngine::process() {",
+    "replacement": "void VoxelEngine::process() {\n\tcairn::begin_frame();"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "#include \"voxel_terrain.h\"",
+    "replacement": "#include \"voxel_terrain.h\"\n#include \"modules/sandbox_world/godot/m1_hooks.h\"\n"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\n\t\tfor (size_t i = 0; i < _blocks_pending_load.size(); ++i) {",
+    "replacement": "\n\t\tsize_t i = 0;\n\t\tfor (; i < _blocks_pending_load.size(); ++i) {\n\t\t\tif (VoxelEngine::get_singleton().get_stats().generation_tasks >= 48) break;\n\t\t\tif (_loading_blocks.find(_blocks_pending_load[i]) == _loading_blocks.end()) continue;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t_blocks_pending_load.clear();\n\t}\n}\n\nvoid VoxelTerrain::consume_block_data_save_requests",
+    "replacement": "\t\t_blocks_pending_load.erase(_blocks_pending_load.begin(), _blocks_pending_load.begin() + i);\n\t}\n}\n\nvoid VoxelTerrain::consume_block_data_save_requests"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\tfor (size_t bi = 0; bi < _blocks_pending_update.size(); ++bi) {",
+    "replacement": "\tsize_t bi = 0;\n\tfor (; bi < _blocks_pending_update.size(); ++bi) {\n\t\tif (VoxelEngine::get_singleton().get_stats().meshing_tasks + cairn::result_tasks >= 4) break;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t_blocks_pending_update.clear();\n\n\t_stats.time_request_blocks_to_update",
+    "replacement": "\t_blocks_pending_update.erase(_blocks_pending_update.begin(), _blocks_pending_update.begin() + bi);\n\n\t_stats.time_request_blocks_to_update"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_mesh_block_vt.h",
+    "old": "\tbool is_in_update_list = false;",
+    "replacement": "\tbool is_in_update_list = false;\n\tuint64_t cairn_revision = 0;"
+  },
+  {
+    "path": "meshers/mesh_block_task.h",
+    "old": "\tuint8_t lod_index = 0;",
+    "replacement": "\tuint8_t lod_index = 0;\n\tuint64_t cairn_revision = 0;"
+  },
+  {
+    "path": "engine/voxel_engine.h",
+    "old": "\t\tVoxelMesher::Output surfaces;",
+    "replacement": "\t\tVoxelMesher::Output surfaces;\n\t\tuint64_t cairn_revision = 0;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\ttask->mesh_block_position = mesh_block_pos;",
+    "replacement": "\t\ttask->mesh_block_position = mesh_block_pos;\n\t\ttask->cairn_revision = mesh_block->cairn_revision;"
+  },
+  {
+    "path": "meshers/mesh_block_task.cpp",
+    "old": "\t\t\to.position = mesh_block_position;",
+    "replacement": "\t\t\to.position = mesh_block_position;\n\t\t\to.cairn_revision = cairn_revision;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\tstruct ApplyMeshUpdateTask : public ITimeSpreadTask {",
+    "replacement": "\tstruct ApplyMeshUpdateTask : public ITimeSpreadTask {\n\t\tApplyMeshUpdateTask() { ++cairn::result_tasks; }\n\t\t~ApplyMeshUpdateTask() {\n\t\t\tdata.mesh.unref();\n\t\t\tif (partial.is_valid() && partial->get_reference_count() == 1) FreeMeshTask::add(partial);\n\t\t\t--cairn::result_tasks;\n\t\t}\n\t\tsize_t surface_index = 0;\n\t\tRef<ArrayMesh> partial;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t\tself->apply_mesh_update(data);",
+    "replacement": "\n            VoxelMeshBlockVT *block = self->_mesh_map.get_block(data.position);\n            if (block == nullptr || block->cairn_revision != data.cairn_revision) {\n                ++cairn::stale; return;\n            }\n            if (data.type == VoxelEngine::BlockMeshOutput::TYPE_DROPPED || cairn::overloads.load() > 0) {\n                cairn::edit_visibility.mesh_cancelled({data.position.x, data.position.y, data.position.z, data.cairn_revision}, OS::get_singleton()->get_ticks_usec());\n                if (data.type != VoxelEngine::BlockMeshOutput::TYPE_DROPPED) return;\n            }\n            if (data.type == VoxelEngine::BlockMeshOutput::TYPE_MESHED && data.visual_was_required && !data.has_mesh_resource) {\n                if (surface_index < data.surfaces.surfaces.size()) {\n                    const auto &surface = data.surfaces.surfaces[surface_index];\n                    PackedVector3Array vertices = surface.arrays[Mesh::ARRAY_VERTEX];\n                    PackedInt32Array indices = surface.arrays[Mesh::ARRAY_INDEX];\n                    const uint32_t bytes = cairn::mesh_payload_bytes(vertices.size(), indices.size());\n                    if (!cairn::admit_upload(bytes)) { ctx.postpone = true; return; }\n                    const uint64_t start = OS::get_singleton()->get_ticks_usec();\n                    if (partial.is_null()) partial.instantiate();\n                    partial->add_surface_from_arrays(Mesh::PRIMITIVE_TRIANGLES, surface.arrays);\n                    data.mesh_material_indices.push_back(surface.material_index);\n                    cairn::record_upload(bytes, start);\n                    ++surface_index;\n                    ctx.postpone = true;\n                    return;\n                }\n                data.mesh = partial;\n                data.has_mesh_resource = true;\n            }\n            self->apply_mesh_update(data);\n            if (data.type == VoxelEngine::BlockMeshOutput::TYPE_MESHED && data.visual_was_required)\n                cairn::edit_visibility.mesh_submitted({data.position.x, data.position.y, data.position.z, data.cairn_revision}, OS::get_singleton()->get_ticks_usec());"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\td[\"updated_blocks\"] = _stats.updated_blocks;",
+    "replacement": "\td[\"updated_blocks\"] = _stats.updated_blocks;\n\td[\"resident_data\"] = int64_t(_data->get_block_count());\n\td[\"pending_data\"] = int64_t(_blocks_pending_load.size());\n\td[\"pending_mesh\"] = int64_t(_blocks_pending_update.size());\n\td[\"loading_data\"] = int64_t(_loading_blocks.size());\n\td[\"resident_mesh\"] = int64_t(_mesh_map.get_block_count());"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "void VoxelTerrain::process_viewers() {",
+    "replacement": "void VoxelTerrain::process_viewers() {\n\tif (cairn::retired_meshes > 128) return;"
+  },
+  {
+    "path": "storage/voxel_data.cpp",
+    "old": "\tSpatialLock3D::Write swlock(data_lod0.spatial_lock, BoxBounds3i::from_position(block_pos_lod0));",
+    "replacement": "\tconst BoxBounds3i write_box = BoxBounds3i::from_position(block_pos_lod0);\n\tif (!data_lod0.spatial_lock.try_lock_write(write_box)) return false;\n\tstruct UnlockWrite { SpatialLock3D &lock; BoxBounds3i box; ~UnlockWrite() { lock.unlock_write(box); } } unlock{data_lod0.spatial_lock, write_box};"
+  },
+  {
+    "path": "terrain/free_mesh_task.h",
+    "old": "#ifndef VOXEL_FREE_MESH_TASK_H\n#define VOXEL_FREE_MESH_TASK_H\n\n#include \"../engine/voxel_engine.h\"\n#include \"../util/godot/direct_mesh_instance.h\"\n#include \"../util/profiling.h\"\n#include \"../util/tasks/progressive_task_runner.h\"\n\nnamespace zylann::voxel {\n\n// Had to resort to this in Godot4 because deleting meshes is particularly expensive,\n// because of the Vulkan allocator used by the renderer.\n// It is a deferred cost (it is not spent at the exact time the Mesh object is destroyed, it happens later), so had to\n// use a different type of task to load-balance it. What this task actually does is just to hold a reference on a mesh a\n// bit longer, assuming that mesh is no longer used. Then the execution of the task releases that reference.\nclass FreeMeshTask : public IProgressiveTask {\npublic:\n\tstatic inline void try_add_and_destroy(zylann::godot::DirectMeshInstance &mi) {\n\t\tconst Mesh *mesh = mi.get_mesh_ptr();\n\t\tif (mesh != nullptr && mesh->get_reference_count() == 1) {\n\t\t\t// That instances holds the last reference to this mesh\n\t\t\tadd(mi.get_mesh());\n\t\t}\n\t\tmi.destroy();\n\t}\n\n\tvoid run() override {\n\t\tZN_PROFILE_SCOPE();\n\t\tif (_mesh->get_reference_count() > 1) {\n\t\t\tZN_PRINT_WARNING(\"Mesh has more than one ref left, task spreading will not be effective at smoothing \"\n\t\t\t\t\t\t\t \"destruction cost\");\n\t\t}\n\t\t_mesh.unref();\n\t}\n\nprivate:\n\tstatic void add(Ref<Mesh> mesh) {\n\t\tZN_ASSERT(mesh.is_valid());\n\t\tFreeMeshTask *task = ZN_NEW(FreeMeshTask(mesh));\n\t\tVoxelEngine::get_singleton().push_main_thread_progressive_task(task);\n\t}\n\n\tFreeMeshTask(Ref<Mesh> p_mesh) : _mesh(p_mesh) {}\n\n\tRef<Mesh> _mesh;\n};\n\n} // namespace zylann::voxel\n\n#endif // VOXEL_FREE_MESH_TASK_H\n",
+    "replacement": "#ifndef VOXEL_FREE_MESH_TASK_H\n#define VOXEL_FREE_MESH_TASK_H\n#include \"../engine/voxel_engine.h\"\n#include \"../util/godot/direct_mesh_instance.h\"\n#include \"modules/sandbox_world/godot/m1_hooks.h\"\nnamespace zylann::voxel {\n// Release a bounded surface per operation, under the same upload/delete allowance.\n// The M1 single-viewer slab has <=507 mesh blocks. New viewer demand waits above\n// 128 retirees, leaving capacity for a complete old scene plus four mesh results.\nclass FreeMeshTask : public ITimeSpreadTask {\npublic:\n    static void add(Ref<Mesh> mesh) {\n        if (mesh.is_null()) return;\n        FreeMeshTask *task = ZN_NEW(FreeMeshTask(mesh));\n        VoxelEngine::get_singleton().push_main_thread_time_spread_task(task);\n    }\n    static void try_add_and_destroy(zylann::godot::DirectMeshInstance &mi) {\n        if (mi.get_mesh_ptr() != nullptr) add(mi.get_mesh());\n        mi.destroy();\n    }\n    void run(TimeSpreadTaskContext &ctx) override {\n        if (!cairn::admit_upload(0)) { ctx.postpone = true; return; }\n        const uint64_t start = OS::get_singleton()->get_ticks_usec();\n        Ref<ArrayMesh> array = _mesh;\n        const bool surface = array.is_valid() && array->get_surface_count() > 0;\n        const int last_surface = surface ? array->get_surface_count() - 1 : 0;\n        const uint32_t bytes = surface ? cairn::mesh_payload_bytes(\n                array->surface_get_array_len(last_surface), array->surface_get_array_index_len(last_surface)) : 0;\n        if (surface) {\n            array->surface_remove(array->get_surface_count() - 1);\n            ctx.postpone = true;\n        } else { _mesh.unref(); }\n        cairn::record_deletion(bytes, start, surface);\n    }\n    ~FreeMeshTask() { --cairn::retired_meshes; }\nprivate:\n    explicit FreeMeshTask(Ref<Mesh> mesh) : _mesh(mesh) {\n        ++cairn::retired_meshes;\n        cairn::retired_high_water = MAX(cairn::retired_high_water, cairn::retired_meshes);\n        if (cairn::retired_meshes > 768) ++cairn::overloads;\n    }\n    Ref<Mesh> _mesh;\n};\n}\n#endif\n"
+  },
+  {
+    "path": "terrain/voxel_mesh_block.cpp",
+    "old": "\t\t_mesh_instance.set_mesh(mesh);",
+    "replacement": "\t\tFreeMeshTask::add(_mesh_instance.get_mesh());\n\t\t_mesh_instance.set_mesh(mesh);"
+  },
+  {
+    "path": "terrain/voxel_mesh_block.cpp",
+    "old": "\t\t\t_mesh_instance.destroy();",
+    "replacement": "\t\t\tFreeMeshTask::try_add_and_destroy(_mesh_instance);"
+  },
+  {
+    "path": "terrain/voxel_mesh_block.cpp",
+    "old": "\t\t_mesh_instance.destroy();",
+    "replacement": "\t\tFreeMeshTask::try_add_and_destroy(_mesh_instance);"
+  },
+  {
+    "path": "util/tasks/threaded_task_runner.h",
+    "old": "\t// Blocks and wait for all tasks to finish (assuming no more are getting added!)",
+    "replacement": "    // M1: bounded main-thread collection, keeping ownership in the original queue.\n    template <typename F>\n    bool dequeue_one_completed_task(F f) {\n        IThreadedTask *task = nullptr;\n        {\n            MutexLock lock(_completed_tasks_mutex);\n            if (_completed_tasks.empty()) return false;\n            task = _completed_tasks.front();\n            _completed_tasks.erase(_completed_tasks.begin());\n        }\n#ifdef ZN_THREADED_TASK_RUNNER_CHECK_DUPLICATE_TASKS\n        debug_remove_owned_task(task);\n#endif\n        f(task);\n        return true;\n    }\n\n\t// Blocks and wait for all tasks to finish (assuming no more are getting added!)"
+  },
+  {
+    "path": "engine/voxel_engine.cpp",
+    "old": "\t_general_thread_pool.dequeue_completed_tasks([](zylann::IThreadedTask *task) {\n\t\ttask->apply_result();\n\t\tZN_DELETE(task);\n\t});",
+    "replacement": "    for (unsigned int collected = 0; collected < 8 && cairn::frame_upload_usec < cairn::time_budget; ++collected) {\n        const uint64_t start = OS::get_singleton()->get_ticks_usec();\n        if (!_general_thread_pool.dequeue_one_completed_task([](zylann::IThreadedTask *task) {\n            task->apply_result();\n            ZN_DELETE(task);\n        })) break;\n        const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;\n        cairn::data_apply_usec += elapsed;\n        cairn::data_apply_max_usec = MAX(cairn::data_apply_max_usec, elapsed);\n        cairn::frame_upload_usec += elapsed;\n    }"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "#include \"../voxel_data_block_enter_info.h\"",
+    "replacement": "#include \"../voxel_data_block_enter_info.h\"\n#include \"../free_mesh_task.h\""
+  },
+  {
+    "path": "engine/voxel_engine.cpp",
+    "old": "VoxelEngine::~VoxelEngine() {",
+    "replacement": "VoxelEngine::~VoxelEngine() {\n\tcairn::shutting_down = true;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t\tconst Vector3i anchor_pos = data_box.position + Vector3i(1, 1, 1);",
+    "replacement": "\t\t\t// The fixed bounds align to data chunks, not necessarily to render blocks.\n\t\t\t// Keep the readiness assertion, but anchor it inside their intersection.\n\t\t\tconst Box3i valid_data_box = Box3i(mesh_block_pos * mesh_to_data_factor,\n\t\t\t\t\tVector3iUtil::create(mesh_to_data_factor))\n\t\t\t\t\t.clipped(_data->get_bounds().downscaled(get_data_block_size()));\n\t\t\tZN_ASSERT_CONTINUE(!valid_data_box.is_empty());\n\t\t\tconst Vector3i anchor_pos = valid_data_box.position;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "if (data_available) {\n\t\t// Regardless of if the updater is updating the block already,",
+    "replacement": "if (data_available) {\n\t\tmesh_block.cairn_revision = ++cairn::next_revision;\n\t\tif (cairn::edit_visibility.enabled)\n\t\t\tcairn::edit_visibility.revision_changed({mesh_block.position.x, mesh_block.position.y, mesh_block.position.z, mesh_block.cairn_revision}, OS::get_singleton()->get_ticks_usec());\n\t\t// Regardless of if the updater is updating the block already,"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t\ttry_schedule_mesh_update(*block);\n\t\t}\n\t});",
+    "replacement": "\t\t\ttry_schedule_mesh_update(*block);\n\t\t\tif (block->mesh_viewers.get() > 0 && block->is_in_update_list && block->cairn_revision != 0)\n\t\t\t\tcairn::edit_visibility.target({pos.x, pos.y, pos.z, block->cairn_revision}, OS::get_singleton()->get_ticks_usec());\n\t\t}\n\t});"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "void VoxelTerrain::unload_mesh_block(Vector3i bpos) {",
+    "replacement": "void VoxelTerrain::unload_mesh_block(Vector3i bpos) {\n\tcairn::edit_visibility.mesh_cancelled({bpos.x, bpos.y, bpos.z, 0}, OS::get_singleton()->get_ticks_usec());"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.h",
+    "old": "\tArray get_mesh_block_surface(Vector3i block_pos) const;",
+    "replacement": "\tArray get_mesh_block_surface(Vector3i block_pos) const;\n\t// M1 main-thread-only readiness query: missing, pending, hidden, visible, confirmed empty.\n\tint get_cairn_mesh_state(Vector3i block_pos) const;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "// This function is primarily intended for editor use cases at the moment.",
+    "replacement": "int VoxelTerrain::get_cairn_mesh_state(Vector3i block_pos) const {\n\tconst VoxelMeshBlockVT *block = _mesh_map.get_block(block_pos);\n\tif (block == nullptr) return 0;\n\tif (!block->is_loaded) return 1;\n\tif (block->mesh_viewers.get() == 0 || !block->is_visible()) return 2;\n\treturn block->has_mesh() ? 3 : 4;\n}\n\n// This function is primarily intended for editor use cases at the moment."
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\t\t\tint view_distance_data_blocks_h;\n\t\t\t\tint view_distance_data_blocks_v;\n\t\t\t\tVector3i data_block_pos;\n\n\t\t\t\tif (state.requires_meshes || state.requires_collisions) {\n\t\t\t\t\tconst int view_distance_mesh_blocks_h =\n\t\t\t\t\t\t\tmath::ceildiv(state.horizontal_view_distance_voxels, mesh_block_size);\n\t\t\t\t\tconst int view_distance_mesh_blocks_v =\n\t\t\t\t\t\t\tmath::ceildiv(state.vertical_view_distance_voxels, mesh_block_size);\n\n\t\t\t\t\tconst int render_to_data_factor = (mesh_block_size / data_block_size);\n\t\t\t\t\tconst Vector3i mesh_block_pos = math::floordiv(state.local_position_voxels, mesh_block_size);\n\n\t\t\t\t\t// Adding one block of padding because meshing requires neighbors\n\t\t\t\t\tview_distance_data_blocks_h = view_distance_mesh_blocks_h * render_to_data_factor + 1;\n\t\t\t\t\tview_distance_data_blocks_v = view_distance_mesh_blocks_v * render_to_data_factor + 1;\n\n\t\t\t\t\tdata_block_pos = mesh_block_pos * render_to_data_factor;\n\t\t\t\t\tstate.mesh_box = Box3i::from_center_extents(\n\t\t\t\t\t\t\t\t\t\t\t mesh_block_pos,\n\t\t\t\t\t\t\t\t\t\t\t Vector3i(\n\t\t\t\t\t\t\t\t\t\t\t\t\t view_distance_mesh_blocks_h,\n\t\t\t\t\t\t\t\t\t\t\t\t\t view_distance_mesh_blocks_v,\n\t\t\t\t\t\t\t\t\t\t\t\t\t view_distance_mesh_blocks_h\n\t\t\t\t\t\t\t\t\t\t\t )\n\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\t\t\t .clipped(bounds_in_mesh_blocks);\n\n\t\t\t\t} else {\n\t\t\t\t\tview_distance_data_blocks_h = math::ceildiv(state.horizontal_view_distance_voxels, data_block_size);\n\t\t\t\t\tview_distance_data_blocks_v = math::ceildiv(state.vertical_view_distance_voxels, data_block_size);\n\n\t\t\t\t\tdata_block_pos = math::floordiv(state.local_position_voxels, data_block_size);\n\t\t\t\t\tstate.mesh_box = Box3i();\n\t\t\t\t}\n\n\t\t\t\tstate.data_box = Box3i::from_center_extents(\n\t\t\t\t\t\t\t\t\t\t data_block_pos,\n\t\t\t\t\t\t\t\t\t\t Vector3i(\n\t\t\t\t\t\t\t\t\t\t\t\t view_distance_data_blocks_h,\n\t\t\t\t\t\t\t\t\t\t\t\t view_distance_data_blocks_v,\n\t\t\t\t\t\t\t\t\t\t\t\t view_distance_data_blocks_h\n\t\t\t\t\t\t\t\t\t\t )\n\t\t\t\t)\n\t\t\t\t\t\t\t\t\t\t .clipped(bounds_in_data_blocks);",
+    "replacement": "\t\t\t\tconst Vector3i radius(state.horizontal_view_distance_voxels,\n\t\t\t\t\t\tstate.vertical_view_distance_voxels, state.horizontal_view_distance_voxels);\n\t\t\t\tif (state.requires_meshes || state.requires_collisions) {\n\t\t\t\t\tstate.mesh_box = cairn::viewer_demand_box(local_position, radius,\n\t\t\t\t\t\t\tmesh_block_size, bounds_in_mesh_blocks);\n\t\t\t\t\tstate.data_box = cairn::meshing_data_box(state.mesh_box,\n\t\t\t\t\t\t\tmesh_block_size / data_block_size, bounds_in_data_blocks);\n\t\t\t\t} else {\n\t\t\t\t\tstate.mesh_box = Box3i();\n\t\t\t\t\tstate.data_box = cairn::viewer_demand_box(local_position, radius,\n\t\t\t\t\t\t\tdata_block_size, bounds_in_data_blocks);\n\t\t\t\t}"
+  }
+]

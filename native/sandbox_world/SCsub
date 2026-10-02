@@ -1,2 +1,18 @@
 Import("env")
-env.add_source_files(env.modules_sources, "godot/*.cpp")
+Import("env_modules")
+
+import importlib.util
+
+# Our native subclasses include upstream headers. Their conditional class layouts
+# must use exactly the upstream feature definitions, not just ZN_GODOT alone.
+spec = importlib.util.spec_from_file_location(
+    "cairn_voxel_build_config", env.File("#modules/voxel/common.py").abspath
+)
+voxel_config = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(voxel_config)
+module_env = env_modules.Clone()
+voxel_config.get_sources(module_env, env.editor_build)
+module_env.AppendUnique(CPPDEFINES=["ZN_GODOT"])
+if env["tracy"]:
+    module_env.AppendUnique(CPPDEFINES=["TRACY_ENABLE"])
+module_env.add_source_files(env.modules_sources, "godot/*.cpp")

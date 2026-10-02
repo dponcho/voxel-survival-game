@@ -1,6 +1,6 @@
 # Architecture
 
-Design baseline: 2026-09-05. Status: implementation specification, not a tested engine. [GAME_DESIGN.md](GAME_DESIGN.md) owns product scope; [PERFORMANCE.md](PERFORMANCE.md) owns budgets; [TESTING.md](TESTING.md) owns evidence requirements.
+Design baseline: 2026-09-05; gameplay-state requirements clarified 2026-09-26. Status: implementation specification; qualification is tracked in milestone evidence. [GAME_DESIGN.md](GAME_DESIGN.md) owns product scope; [PERFORMANCE.md](PERFORMANCE.md) owns budgets; [TESTING.md](TESTING.md) owns evidence requirements.
 
 ## 1. Engine decision
 
@@ -135,7 +135,7 @@ Never discard unsaved state during eviction. Once its complete transaction is du
 
 Start with `VoxelTerrain`, `VoxelMesherBlocky`, shared `VoxelBlockyLibrary` resources, hidden-face removal and frustum culling. **The stock blocky mesher does not do greedy meshing.** Its vertex ambient occlusion is useful, but it is not the game's full sunlight/emissive-light system. [Blocky meshing](https://voxel-tools.readthedocs.io/en/latest/blocky_terrain/).
 
-Keep at most three terrain material families: opaque, cutout and water. Empty surfaces create no draw calls. Prefer opaque geometry for leaves and small plants where it remains attractive; keep cutout coverage bounded. Use a minimal atlas shader, no normal maps or real-time shadows on the target preset, and linear/distance fog. Use ordinary frustum/backface/hidden-face culling first; dynamic occluder baking is not part of the initial implementation.
+Keep at most three terrain material families: opaque/emissive, cutout and water. The core block set includes stairs/slabs and bounded water/lava/falling-block behaviour; collision shapes, orientation and fluid/light state must remain data-driven with no node per voxel. Empty surfaces create no draw calls. Prefer opaque geometry for leaves and small plants where it remains attractive; keep cutout coverage bounded. Use a minimal atlas shader, no normal maps or real-time shadows on the target preset, and linear/distance fog. Use ordinary frustum/backface/hidden-face culling first; dynamic occluder baking is not part of the initial implementation.
 
 The project owns a native light field and the shader/mesh attribute path that consumes it. Implement this explicitly in M2/M5; do not assume the upstream mesher automatically reads a custom light channel. Seed skylight from bounded column summaries, propagate at most 15 intensity levels, and propagate removals as well as additions. Persist/reconstruct boundary conditions so load order cannot leave lighting seams. Changing time of day changes a shader multiplier, not every chunk mesh.
 
@@ -169,6 +169,8 @@ Logical schema:
 | `state_snapshots` | Player, inventory, entities, containers and progression at an identified sequence |
 
 Journal authoritative after-values and explicit IDs, including all sides of inventory/world changes. Replaying must not call a recipe RNG or generation function to rediscover an outcome. Commit coupled state changes atomically. A block removed and its item awarded are one logical transaction. Snapshots are acceleration data; transactions after their incorporated sequence remain recoverable. Prune journal prefixes only after every affected snapshot and the pruning watermark are committed consistently.
+
+The Java-style core contract uses nine hotbar plus twenty-seven backpack slots, armour/offhand slots, 2×2/3×3 crafting grids and input/fuel/output furnace state. Grid consumption/output, tool durability, death inventory clearing plus item-drop creation, pickup and drop expiry all use the transaction model above. Unloaded crops/furnaces pause; loaded-time item expiry never advances from the system clock. Drop-cap saturation retains bounded authoritative pending contents instead of deleting inventory. The core reference is a behaviour contract, not Minecraft save or protocol compatibility.
 
 Target a durable batch at least once per second in active play. Distinguish visible changes from durable changes in diagnostics. The 2-second/8-MiB pending ceiling pauses new mutations if the writer stalls. Save and Quit waits asynchronously for a barrier covering all accepted commands and the final player state, then closes cleanly. On failure, keep the session recoverable and show the problem rather than claiming success.
 

@@ -8,14 +8,75 @@ on:
   workflow_dispatch:
     inputs:
       cold:
-        description: Ignore the engine cache for a source-to-ZIP proof
+        description: Explicit source-to-ZIP rebuild (normally leave disabled)
         type: boolean
-        default: true
+        default: false
 permissions:
   contents: read
+  actions: read
 jobs:
-  engine-and-package:
+  native:
     uses: ./.github/workflows/engine.yml
     with:
       cold: ${{ inputs.cold }}
-
+  export-and-test:
+    needs: native
+    runs-on: windows-2022
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.10'
+      - name: Download qualified native binaries from this run
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.native.outputs.artifact_id }}
+          run-id: ${{ needs.native.outputs.artifact_run_id }}
+          github-token: ${{ github.token }}
+          path: build/engine-bundle
+          merge-multiple: true
+      - name: Verify exact native identity and every bundle file
+        run: python tools/ci/pipeline.py verify
+      - name: Windows packaging regression tests
+        run: python -m unittest discover -s tests/integration -v
+      - name: Import, export and verify game scenarios
+        run: python tools/ci/pipeline.py prepare
+      - name: Verify collision, edits, eviction and all four profiles
+        run: python tools/qa/m1_integration.py
+      - name: Audit portable distribution and test offline extractions
+        env:
+          CAIRN_NATIVE_SOURCE: ${{ needs.native.outputs.source }}
+          TEMP: ${{ runner.temp }}
+          TMP: ${{ runner.temp }}
+        run: python tools/ci/pipeline.py package
+      - name: Upload portable player ZIP and identity
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Cairn-windows-x86_64-${{ github.sha }}
+          path: |
+            dist/Cairn-windows-x86_64.zip
+            dist/SHA256SUMS.txt
+            dist/BUILD_INFO.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload separate symbols
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Cairn-symbols-${{ github.sha }}
+          path: dist/Cairn-symbols.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve export evidence even after failure
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Cairn-evidence-${{ github.sha }}
+          path: |
+            reports/
+            build/engine-bundle/manifest.json
+            build/dependencies.lock.json
+            build/config/
+          retention-days: 30
