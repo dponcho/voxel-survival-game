@@ -42,3 +42,13 @@ Cloud checks cover fog crossings and the exact boundary, missing/invalid inputs,
 confirmed-empty readiness, negative coordinates/camera reversals, eviction,
 scan bounds and actual saved CSV/count/minimum/equation reconciliation. Headless
 integration proves these mechanics, not target rendering or performance.
+
+The world-space demand correction covers the fixed 96 m visual and 128 m
+data-only envelopes at the actual viewer position, including fractional and
+negative positions. Its meshing-data halo covers complete demanded render
+blocks and the existing neighbour padding. Independent geometry and all four
+cloud profiles verify settled coverage within the clipped M1 fixture and
+unchanged caps. These checks do not prove readiness while moving, rendered
+opacity or target throughput. The fog model and this ledger's conservative
+failure semantics remain unchanged; a finite shader-matched boundary is the
+next implementation task.

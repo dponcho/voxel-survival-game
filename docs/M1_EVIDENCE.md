@@ -5,7 +5,67 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: indexed upload batches
+## Current Windows candidate: world-space demand and meshing halo
+
+Implementation `c1ad85b55359a3e013ef43d017223116617a0bca` covers the full fixed
+96 m visual and 128 m data-only envelopes from the actual viewer position.
+It replaces a block-snapped demand box that could omit required edge regions.
+Meshing data follows every demanded render block plus its existing neighbouring
+data-block halo. Bounds are clipped before coordinate narrowing; widened
+intermediates and empty-demand handling avoid invalid or phantom requests.
+The existing viewer/reference/difference lifecycle, settings, budgets and
+save/generator formats remain. Two overlapping patch pairs were consolidated
+with identical emitted code; repeat application against pinned source is stable.
+
+[CI 37024767302](https://github.com/dponcho/voxel-survival-game/actions/runs/37024767302)
+passed all three jobs on 2026-10-02 UTC. Static job `110896469348` passed
+12 packaging/cache regressions, Python compile checks and five native sanitizer
+suites, including an independent geometric demand/halo oracle. Native job
+`110896642681` freshly built and qualified matching editor/debug/release binaries.
+Export job `110946829805` passed import/export, native geometry, collision,
+border edits, eviction/cancellation, all four profiles, dependency audit and two
+fresh offline extractions.
+
+The engine log contains 20 passing world-space demand cases across 32/1, 16/1,
+32/2 and 16/2: fractional and negative positions, an exact block boundary and a
+clipped world corner. Required and resident render counts match the independent
+block-intersection oracle. The fractional pose requires 507 regions at 16³
+or 98 at 32³ in the clipped M1 slab, within the unchanged 512-region cap.
+Four fresh mesh-only checks prove the full clipped meshing-data halo loads
+without a wider data-only viewer hiding omissions. Resident data and retirement
+remain within existing caps. Five smoke exports completed with no integration
+failures; all accepted N2/H2 edits submitted, with zero cancellations, timeouts
+or pending edits at closure. Saved-report reconciliation passed.
+
+Download [Windows player 11242141810](https://github.com/dponcho/voxel-survival-game/actions/runs/37024767302/artifacts/11242141810)
+and extract its contained portable ZIP. GitHub reports expiry on 2026-11-01
+at 17:25 UTC. [Export evidence 11242421606](https://github.com/dponcho/voxel-survival-game/actions/runs/37024767302/artifacts/11242421606),
+[native evidence 11242440353](https://github.com/dponcho/voxel-survival-game/actions/runs/37024767302/artifacts/11242440353)
+and [symbols 11242116942](https://github.com/dponcho/voxel-survival-game/actions/runs/37024767302/artifacts/11242116942)
+are separate.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation branch commit | `c1ad85b55359a3e013ef43d017223116617a0bca` |
+| Exported synthetic merge / game build ID | `77be48ed0ac431da50f7fd9d267873feee403123` |
+| Native source key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Outer player archive SHA-256 | `4f2627ef0be796e70e2bf1a9bc00a2bb7138d9d3191469354af3eb3c6c83b484` |
+| Contained portable ZIP SHA-256 | `0151f42967f371384fb7c77d5763489b001fe77a91720bc9ab4d3ed11c99c374` |
+
+Completed logs and downloaded player/export/native evidence were inspected.
+Archive digests, ZIP CRCs, contained checksums, build identities and native
+manifest binary hashes matched. The synthetic merge includes the implementation
+commit. No local engine installation, compilation or execution ran.
+
+These are settled demand and cloud correctness checks, not rendered HD 620
+coverage or performance qualification. Exponential fog is unchanged; its analytic
+model has no finite opaque boundary. Moving-frontier readiness, prior target
+upload failures, frame/pacing attribution, full diagnostic overhead, retention
+and qualification repeats remain unresolved. **M1 remains blocked.** Implement
+the finite fog-boundary task in [NEXT_TASK.md](NEXT_TASK.md) before another laptop
+baseline. Detailed uploaded target measurements remain private.
+
+## Previous Windows candidate: indexed upload batches
 
 Implementation `1a03f16747fa01563150b8a03f6cf6a219718312` preserves source vertex
 reuse within the existing 1,024-triangle upload batches. Triangle order,
@@ -57,10 +117,8 @@ submission met its latency gate in that run, with no missing-data movement
 stops. Conservative heavy-streaming coverage and isolated upload limits still
 failed. Frame/pacing attribution, rendered fog coverage, full diagnostic
 overhead, allocation/retention and qualification repeats remain unresolved.
-**M1 remains blocked; target not qualified.** The next bounded fix is native
-world-space visual demand and its meshing-data halo; see [NEXT_TASK.md](NEXT_TASK.md).
-Detailed uploaded measurements remain private. No new laptop run is required
-before implementing and producing that candidate.
+**M1 remains blocked; target not qualified.** That review motivated the
+world-space demand correction above. Detailed uploaded measurements remain private.
 
 ## Previous Windows candidate: lifecycle correction
 
