@@ -74,6 +74,10 @@ static func verify(directory: String, phases: Array[Dictionary], reports: Array[
 static func _verify_frontier(directory: String, report: Dictionary) -> Array[String]:
 	var failures: Array[String] = []
 	var active: bool = report["id"] == "H1" or report["id"] == "H2"
+	if active:
+		var fog: Dictionary = report["fog_frontier"]["fog"]
+		if fog != {"enabled": true, "mode": "depth", "density": 1.0, "height_density": 0.0, "begin_m": 16.0, "end_m": 96.0, "curve": 1.0}:
+			failures.append("Saved heavy scenario did not use the finite 96 m M1 fog profile")
 	var file := FileAccess.open(directory.path_join(str(report["id"]) + "-frames.csv"), FileAccess.READ)
 	if file == null: return ["Missing frontier frame CSV"]
 	var header: PackedStringArray = file.get_csv_line()

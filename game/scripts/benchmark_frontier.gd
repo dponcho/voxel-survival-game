@@ -1,6 +1,8 @@
 extends RefCounted
 
 # Conservative required-region coverage, not pixel visibility or physical scanout.
+const FOG_BEGIN_M: float = 16.0
+const FOG_END_M: float = 96.0
 const COLUMNS: Array[String] = ["frontier_status", "frontier_candidate_regions", "frontier_checked_regions", "frontier_ready_regions", "frontier_empty_regions", "frontier_unready_regions", "frontier_distance_m", "frontier_kind", "frontier_block", "frontier_mesh_state", "fog_boundary_m", "fog_clearance_m", "fog_transmittance", "frontier_probe_usec", "camera_x", "camera_y", "camera_z", "camera_yaw"]
 var samples: int = 0
 var measured: int = 0
@@ -10,6 +12,17 @@ var inconclusive: int = 0
 var minimum_distance: Variant = null
 var minimum_clearance: Variant = null
 var worst: Dictionary = {}
+
+static func configure_m1_fog(environment: Environment) -> void:
+	# Pinned Compatibility depth fog uses radial smoothstep, not camera Z depth.
+	# Density 1 reaches opacity 1 at 96 m without an arbitrary opacity cutoff.
+	environment.fog_enabled = true
+	environment.fog_mode = Environment.FOG_MODE_DEPTH
+	environment.fog_density = 1.0
+	environment.fog_depth_begin = FOG_BEGIN_M
+	environment.fog_depth_end = FOG_END_M
+	environment.fog_depth_curve = 1.0
+	environment.fog_height_density = 0.0
 
 static func fog_configuration(environment: Environment, far_m: float) -> Dictionary:
 	var end_m: float = environment.fog_depth_end if environment.fog_depth_end > 0.0 else far_m

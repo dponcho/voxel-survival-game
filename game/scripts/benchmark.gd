@@ -281,9 +281,8 @@ func _make_scene() -> void:
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	environment.ambient_light_color = Color.WHITE
 	environment.ambient_light_energy = 0.7
-	environment.fog_enabled = true
 	environment.fog_light_color = Color("809eac")
-	environment.fog_density = 0.025
+	Frontier.configure_m1_fog(environment)
 	world_environment.environment = environment
 	add_child(world_environment)
 	sun = DirectionalLight3D.new()
@@ -890,6 +889,7 @@ func _finish_report(outcome: String, message: String) -> void:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	var fog_configuration: Dictionary = Frontier.fog_configuration(benchmark_environment, camera.far)
 	var summary: Dictionary = {"schema": 5, "milestone": "M1", "scope": "temporary engine proxy experiment",
 		"outcome": outcome, "completed": outcome == "completed", "qualified": false,
 		"qualification": "unverified", "target_certification": "unverified: review exact-build reports and all outstanding gates",
@@ -913,8 +913,8 @@ func _finish_report(outcome: String, message: String) -> void:
 		"fog_frontier_trace": {"scope": "H1/H2 required fixture region coverage at every measured frame; conservative AABB/frustum overlap",
 			"readiness": "visible submitted mesh or confirmed empty; pending, missing and hidden regions remain unready",
 			"distance": "Euclidean lower bound to the nearest unready region; far-clip lower bound when all inspected regions are ready",
-			"fog": Frontier.fog_configuration(benchmark_environment, camera.far),
-			"boundary": "fully opaque fog only; exponential fog has no finite boundary; no opacity cutoff is introduced",
+			"fog": fog_configuration,
+			"boundary": "analytic terminal opacity 1 before shader half packing; radial depth fog ends at 96 m; no opacity cutoff",
 			"bounds": "1024 candidate regions per sample; one retained worst sample; same bounded frame CSV and disk worker",
 			"unavailable": ["pixel visibility/occlusion", "physical presentation", "heavy-frontier diagnostic overhead qualification"]},
 		"limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",
@@ -925,7 +925,8 @@ func _finish_report(outcome: String, message: String) -> void:
 	summary["configuration"]["reported_window_size"] = [actual_window_size.x, actual_window_size.y]
 	summary["configuration"]["shadows"] = false
 	summary["configuration"]["anti_aliasing"] = "disabled"
-	summary["configuration"]["fog_density"] = 0.025
+	summary["configuration"]["fog_density"] = benchmark_environment.fog_density
+	summary["configuration"]["fog"] = fog_configuration
 	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["diagnostic_accounting"] = {
 		"unit": "elapsed monotonic wall microseconds; neither CPU service nor additive with overlapping worker/GPU time",

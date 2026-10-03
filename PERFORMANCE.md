@@ -32,6 +32,7 @@ No finite benchmark proves every possible operating-system event or construction
 | Resolution / scale | 1280 × 720 / 1.0 |
 | Display pacing | 60-Hz target; uncapped/VSync-off only for workload diagnosis |
 | Visual radius | 96 m, six 16-voxel data-chunk widths |
+| M1 distance fog | Compatibility depth fog, begin 16 m / opaque end 96 m, density 1 / curve 1; rendered target boundary unverified |
 | Data prefetch radius | 128 m plus the measured required halo |
 | Data / render block | 16³ / 32³; compare 16³ render blocks in M1 |
 | Terrain CPU workers | One on this 4-logical-thread machine |

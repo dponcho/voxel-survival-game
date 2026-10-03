@@ -40,4 +40,40 @@ static func verify() -> Array[String]:
 	if Frontier.csv_fields({}).size() != Frontier.COLUMNS.size() or Frontier.csv_fields(ledger.worst).size() != Frontier.COLUMNS.size() or Frontier.csv_fields(ledger.worst)[8] != "-1;-1;0":
 		failures.append("Frontier CSV lost fields or negative coordinates")
 	if ledger.snapshot(false)["evaluation"] != "not_run": failures.append("Other scenarios claimed frontier evidence")
+	failures.append_array(_verify_m1_profile())
+	return failures
+
+static func _verify_m1_profile() -> Array[String]:
+	var failures: Array[String] = []
+	var environment := Environment.new()
+	Frontier.configure_m1_fog(environment)
+	var fog: Dictionary = Frontier.fog_configuration(environment, 96.0)
+	var expected: Dictionary = {"enabled": true, "mode": "depth", "density": 1.0,
+		"height_density": 0.0, "begin_m": 16.0, "end_m": 96.0, "curve": 1.0}
+	if fog != expected: failures.append("Actual M1 Environment did not retain the finite 96 m fog profile")
+	var sample: Dictionary = {"status": "measured", "candidate_regions": 3, "checked_regions": 3,
+		"ready_regions": 2, "empty_regions": 1, "unready_regions": 1, "frontier_distance_m": 0.0}
+	# Independent analytic values at endpoints and quarter points of the pinned
+	# shader's smoothstep interval. Do not use the production equation as oracle.
+	var distances: Array[float] = [0.0, 16.0, 36.0, 56.0, 76.0, 95.0, 96.0, 112.0]
+	var transmittances: Array[float] = [1.0, 1.0, 0.84375, 0.5, 0.15625, 0.00046484375, 0.0, 0.0]
+	for i: int in range(distances.size()):
+		sample["frontier_distance_m"] = distances[i]
+		var result: Dictionary = Frontier.evaluate(sample, fog)
+		if result["fog_boundary_m"] != 96.0 or result["fog_clearance_m"] != distances[i] - 96.0 or absf(float(result["fog_transmittance"]) - transmittances[i]) > 0.000001:
+			failures.append("Finite M1 fog differs from the pinned shader at distance " + str(distances[i]))
+		if result["evaluation"] != ("failed" if distances[i] < 96.0 else "passed"):
+			failures.append("Finite M1 fog concealed inside-boundary unready coverage")
+	var complete: Dictionary = sample.duplicate(true)
+	complete.merge({"ready_regions": 3, "unready_regions": 0, "frontier_distance_m": 96.0}, true)
+	if Frontier.evaluate(complete, fog)["evaluation"] != "passed": failures.append("Complete coverage through the finite fog boundary did not pass")
+	complete["frontier_distance_m"] = 95.0
+	if Frontier.evaluate(complete, fog)["evaluation"] != "inconclusive": failures.append("Shortened scan passed an unobserved 96 m boundary")
+	var partial: Dictionary = fog.duplicate(true)
+	partial["density"] = 0.5
+	var partial_result: Dictionary = Frontier.evaluate(sample, partial)
+	if partial_result["evaluation"] != "failed" or partial_result["fog_boundary_m"] != null:
+		failures.append("Partial terminal opacity concealed an unready region")
+	partial["enabled"] = false
+	if Frontier.evaluate(complete, partial)["evaluation"] != "inconclusive": failures.append("Disabled fog manufactured a boundary")
 	return failures
