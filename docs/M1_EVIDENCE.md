@@ -5,7 +5,66 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: world-space demand and meshing halo
+## Current Windows candidate: finite shader-matched fog boundary
+
+Implementation `f1fea7bc56dc7aeef4f372e26baada84bbce7132` configures the actual
+Environment with Compatibility depth fog: begin 16 m, opaque end 96 m,
+density 1, curve 1 and no height fog. The pinned radial smoothstep equation
+matches the conservative frontier distance. Reports record the actual settings;
+the existing density field is no longer hardcoded. The analytic boundary is
+evaluated before shader half packing and does not prove rendered pixel coverage.
+See [fog/frontier semantics](M1_FOG_FRONTIER.md). Visual/data demand remains
+96/128 m; resolution, routes, ticks, workloads and resource/time caps remain.
+
+[CI 37160455260](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260)
+passed all three jobs on 2026-10-03 UTC. Static job `111312633017` passed
+12 packaging/cache regressions, Python compile checks and five native sanitizer
+suites. Native job `111312696593` reused the exact native cache and independently
+requalified editor/debug/release binaries; compilation was skipped. Export job
+`111312843050` passed engine import, actual-Environment fog regressions,
+independent smoothstep values and before/at/after-96 m crossings, invalid-input
+handling, saved-report reconciliation, geometry, edits, collision,
+eviction/cancellation, all four streaming profiles, dependency audit and two
+fresh offline extractions. The 20 demand cases and four mesh-only halo checks
+still pass. Five smoke exports completed with no integration failures; every
+accepted N2/H2 edit submitted, with no cancellations, timeouts or pending edits
+at closure. Every report records the configured finite fog profile.
+
+The short cloud 32³ smoke runs pass the conservative H1/H2 coverage check.
+Both 16³ profiles still fail it: pending regions reach approximately 95.5 m,
+inside the 96 m boundary. Those failures remain recorded and prevent scenario
+qualification; green integration tests do not erase them. Prior target upload
+failures have no new target evidence resolving them. Hosted render smoke says
+`not_run`; exact-build HD 620 rendering/performance, moving-frontier readiness,
+full heavy diagnostics overhead, retention and qualification repeats remain
+unverified. Frame/pacing attribution and A/B remain inconclusive.
+**M1 remains blocked; no profile is qualified.**
+
+Download [Windows player 11287845333](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11287845333)
+and extract its contained portable ZIP. Expiry: 2026-11-02 at 23:10 UTC.
+[Export evidence 11287477678](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11287477678),
+[native evidence 11286619792](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11286619792)
+and [symbols 11287422754](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11287422754)
+are separate.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation branch commit | `f1fea7bc56dc7aeef4f372e26baada84bbce7132` |
+| Exported synthetic merge / game build ID | `c1a71cdf77fe4ee9810eff3573f93460c9c2cc0a` |
+| Native source key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Outer player archive SHA-256 | `bcdeb9f91c476505be7ed785faa8ccd4b66951984bd459e41817ce998ee56058` |
+| Contained portable ZIP SHA-256 | `0eb379163e88441d0380b48ede68ecb5510037d2d4a6f80bad387feecfd4d130` |
+
+Completed logs and downloaded player/export/native evidence were inspected.
+Archive digests, ZIP CRCs, contained checksums, build identities and native
+manifest binary hashes matched. The synthetic merge includes the implementation
+commit. No local engine installation, compilation or execution ran.
+Review one exact-build 32³/one-worker laptop baseline before another full matrix
+or selecting the next bounded correction. [Laptop instructions](M1_TESTING.md)
+and [development handoff](NEXT_TASK.md) describe that prerequisite.
+Detailed uploaded target measurements remain private.
+
+## Previous Windows candidate: world-space demand and meshing halo
 
 Implementation `c1ad85b55359a3e013ef43d017223116617a0bca` covers the full fixed
 96 m visual and 128 m data-only envelopes from the actual viewer position.
@@ -61,9 +120,8 @@ These are settled demand and cloud correctness checks, not rendered HD 620
 coverage or performance qualification. Exponential fog is unchanged; its analytic
 model has no finite opaque boundary. Moving-frontier readiness, prior target
 upload failures, frame/pacing attribution, full diagnostic overhead, retention
-and qualification repeats remain unresolved. **M1 remains blocked.** Implement
-the finite fog-boundary task in [NEXT_TASK.md](NEXT_TASK.md) before another laptop
-baseline. Detailed uploaded target measurements remain private.
+and qualification repeats remained unresolved. The finite-boundary candidate
+above supersedes this build. Detailed uploaded target measurements remain private.
 
 ## Previous Windows candidate: indexed upload batches
 

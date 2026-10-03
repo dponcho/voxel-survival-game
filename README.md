@@ -17,10 +17,10 @@ The [core reference contract](docs/JAVA_CORE_REFERENCE.md) records the user-sele
 Java Edition direction. Core survival/building comes first; automation circuits,
 enchanting, brewing, extra dimensions and bosses are deferred until after 1.0.
 
-[Download the cloud-verified M1 Windows candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/36183549961/artifacts/10889930434)
-from the [successful reuse-and-export run](https://github.com/dponcho/voxel-survival-game/actions/runs/36183549961).
-This game-only follow-up reused the qualified native bundle and skipped compilation.
-The candidate has target-machine measurements but no qualified profile yet.
+[Download the cloud-verified M1 Windows candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11287845333)
+from the [successful reuse-and-export run](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260).
+This candidate adds a finite 96 m fog boundary and reuses the qualified native
+bundle. Its target-machine baseline is outstanding; no profile is qualified.
 
 ## Portable builds
 
