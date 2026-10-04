@@ -1,6 +1,7 @@
 extends RefCounted
 
 const Frontier = preload("res://scripts/benchmark_frontier.gd")
+const ShaderFog = preload("res://scripts/benchmark_shader_fog.gd")
 
 static func verify() -> Array[String]:
 	var failures: Array[String] = []
@@ -41,7 +42,68 @@ static func verify() -> Array[String]:
 		failures.append("Frontier CSV lost fields or negative coordinates")
 	if ledger.snapshot(false)["evaluation"] != "not_run": failures.append("Other scenarios claimed frontier evidence")
 	failures.append_array(_verify_m1_profile())
+	failures.append_array(_verify_shader_model())
 	return failures
+
+static func _verify_shader_model() -> Array[String]:
+	var failures: Array[String] = []
+	# Independent expected encodings at exact binary16 values, both sides of
+	# the nearest-rounding midpoint, and the polyfill's small-value cutoff.
+	var cases: Array[Array] = [[0.0, 0x0000, 0.0], [0.5, 0x3800, 0.5],
+		[0.99951171875, 0x3bff, 0.99951171875],
+		[0.999755859375, 0x3bff, 0.99951171875],
+		[0.9998189509608, 0x3bff, 0.99951171875],
+		[0.9999211701536, 0x3bff, 0.99951171875],
+		[1.0, 0x3c00, 1.0], [0.00006103515625, 0x0400, 0.00006103515625],
+		[0.000060, 0x0000, 0.0]]
+	for entry: Array in cases:
+		var packed: Dictionary = ShaderFog.pack_opacity(float(entry[0]))
+		if packed["packed_alpha_bits"] != entry[1] or packed["packed_opacity"] != entry[2]:
+			failures.append("Shader polyfill packing differs from independent binary16 encoding")
+	for value: float in [NAN, INF, -0.01, 1.01]:
+		if not ShaderFog.pack_opacity(value).is_empty(): failures.append("Invalid shader opacity became a numeric model")
+	var context: Dictionary = {"godot_commit": ShaderFog.GODOT_COMMIT, "rendering_method": "gl_compatibility",
+		"rendering_driver": "opengl3", "platform": "Windows", "display": "Windows"}
+	var fog: Dictionary = {"enabled": true, "mode": "depth", "density": 1.0,
+		"height_density": 0.0, "begin_m": 16.0, "end_m": 96.0, "curve": 1.0}
+	var sample: Dictionary = {"status": "measured", "candidate_regions": 3, "checked_regions": 3,
+		"ready_regions": 2, "empty_regions": 1, "unready_regions": 1, "frontier_distance_m": 95.38}
+	var ledger := Frontier.new()
+	ledger.configure_renderer_model(context)
+	var row: Dictionary = ledger.record(sample, fog)
+	var model: Dictionary = ledger.snapshot(true)["renderer_model"]
+	if row["evaluation"] != "failed" or model["evaluation"] != "failed" or model["worst_sample"]["packed_alpha_bits"] != 0x3bff:
+		failures.append("Nearest rounding concealed the desktop shader's nonzero transmittance")
+	if model["qualified"] or model["pixel_visibility"] != "unverified": failures.append("Shader model claimed measured pixels")
+	sample["frontier_distance_m"] = 96.0
+	if ShaderFog.evaluate(_evaluated_sample(sample, fog), fog, context)["evaluation"] != "passed": failures.append("Exact shader fog boundary did not pass the model")
+	sample["frontier_distance_m"] = 95.99999
+	if ShaderFog.evaluate(_evaluated_sample(sample, fog), fog, context)["evaluation"] != "inconclusive": failures.append("Float32 conversion certified unverified inside-boundary arithmetic")
+	sample["unready_regions"] = 0
+	sample["ready_regions"] = 3
+	sample["frontier_distance_m"] = 95.0
+	if ShaderFog.evaluate(_evaluated_sample(sample, fog), fog, context)["evaluation"] != "inconclusive": failures.append("Clipped coverage passed the shader model")
+	for change: Dictionary in [{"godot_commit": "unknown"}, {"rendering_method": "forward_plus"},
+		{"rendering_driver": "opengl3_angle"}, {"rendering_driver": "opengl3_es"},
+		{"platform": "Web"}, {"display": "headless"}, {"display": ""}, {"rendering_driver": ""}]:
+		var other: Dictionary = context.duplicate(true)
+		other.merge(change, true)
+		if ShaderFog.evaluate(row, fog, other)["status"] != "unavailable": failures.append("Unsupported renderer path passed the shader model")
+	var invalid: Dictionary = sample.duplicate(true)
+	invalid["frontier_distance_m"] = NAN
+	if ShaderFog.evaluate(_evaluated_sample(invalid, fog), fog, context)["status"] != "unavailable": failures.append("Invalid frontier became a valid shader model")
+	var changed_fog: Dictionary = fog.duplicate(true)
+	changed_fog["density"] = 0.5
+	if ShaderFog.evaluate(row, changed_fog, context)["status"] != "unavailable": failures.append("Unverified fog setting passed the shader model")
+	ledger.record({"status": "unavailable"}, fog)
+	model = ledger.snapshot(true)["renderer_model"]
+	if model["samples"] != 2 or model["measured_samples"] != 1 or model["exposed_samples"] != 1 or model["inconclusive_samples"] != 1 or model["evaluation"] != "failed": failures.append("Shader ledger lost failed or unavailable evidence")
+	return failures
+
+static func _evaluated_sample(sample: Dictionary, fog: Dictionary) -> Dictionary:
+	var row: Dictionary = sample.duplicate(true)
+	row.merge(Frontier.evaluate(sample, fog), true)
+	return row
 
 static func _verify_m1_profile() -> Array[String]:
 	var failures: Array[String] = []

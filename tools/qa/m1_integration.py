@@ -2,6 +2,7 @@
 import json
 import subprocess
 from pathlib import Path
+from fog_render_probe import run as check_fog_render
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -32,3 +33,4 @@ if __name__ == "__main__":
         check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
                f"--render-size={render_size}", f"--workers={workers}"],
               f"m1-release-{render_size}-{workers}", "CAIRN_M1_SMOKE=")
+    check_fog_render()

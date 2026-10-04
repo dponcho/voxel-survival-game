@@ -1,23 +1,53 @@
 # Development handoff
 
-- Branch: `codex/m1-engine-proof`; head reviewed: `2d857f21e26fc032c0d42a7103304c78de336ff9`. This handoff update is documentation-only.
-- Milestone: **M1 blocked; no target profile qualified**. The exact finite-fog candidate's baseline has now been reviewed.
-- Latest successful [CI 37160455260](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260), completed 2026-10-03 UTC; all three jobs passed. No runtime change or new CI in this review.
-- [Windows player 11287845333](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11287845333); expiry 2026-11-02 at 23:10 UTC.
-- Game build ID: `c1a71cdf77fe4ee9810eff3573f93460c9c2cc0a`; native key: `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
+Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
-Completed this session: verified exact candidate identity and reconciled the complete baseline's frame, operation, edit, fog and finalization records without integrity errors. All accepted edits met submission latency gates; no movement-data stops occurred. Analysed paced interval severity and residual coverage rather than equating raw deadline counts with visible stutters. Saved detailed review privately. No runtime, settings, workload or acceptance threshold changed.
+The authorized October 3 baseline handoff was published. This increment verifies
+the exact pinned Godot desktop shader path and adds a separately labelled
+conversion-model verdict, actual rendering-driver identity, independent evaluator
+regressions, saved-CSV reconciliation and an optional cloud conversion readback.
+Raw analytic coverage, CSV columns, fog, radii, settings, workloads and caps remain.
+World/save versions and the native source key are unchanged.
 
-Current findings: measured gameplay capacity, process memory and queue behaviour are encouraging. The paced phase has no callback interval above 25 ms; physical presentation remains unavailable. Retain its raw counts. Residual analytic coverage alarms occur very near the opaque boundary. Source review of the pinned fragment shader confirms fog alpha is packed to binary16 before blending; an independent nearest-rounding model maps every flagged sample to full opacity. This is an inference, not verified target pixels. Further terrain optimization solely to erase those alarms is premature.
+Correction: the default desktop `opengl3` Compatibility shader uses a truncating
+`float2half` polyfill, not nearest binary16 rounding. Under that confirmed-path
+assumption, complete baseline replay retains 352 H1 and 527 H2 alarms at packed
+transmittance 0.00048828125. Another eight H1 and nine H2 analytic alarms convert
+to opacity one but remain inconclusive because shader arithmetic and clipped
+coverage are unverified. The old report lacks exact driver identity. None of
+these conservative region alarms establishes visible pixels; none qualifies M1.
 
-Failed recorded gates: analytic H1/H2 coverage; isolated gameplay individual-upload limits and one normal terrain-operation subtotal. Both 16³ cloud smoke profiles retain conservative coverage failures. Unresolved/inconclusive: one substantial early warm-up hitch and one near-deadline gameplay interval lack attribution; paced physical delivery, unstable flat-fixture A/B, heavy diagnostic overhead, independent allocation/deferred-renderer accounting, retention, profile comparison and qualification repeats. No CI correctness check failed.
+Verification in progress: 18 Python regressions, compile checks and diff checks
+pass. Native key remains
+`11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
+The matching-editor/cloud/portable candidate checks are pending; replace this
+paragraph with the inspected CI and artifact identities before task completion.
+Until then the last inspected player is [11287845333](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11287845333).
 
-**Single next implementation task:** verify the shader-packed fog model and add a separately labelled renderer-model coverage verdict while preserving the raw analytic verdict. Do not change fog, distance, terrain demand, simulation or caps. Do not add prefetch merely to satisfy an analytically conservative alarm.
+Failed recorded gates remain analytic H1/H2 coverage and isolated target upload
+limits/one terrain subtotal. Unresolved: startup warm-up hitch (184.252 ms),
+one near-deadline gameplay interval, physical pacing, unstable flat A/B,
+heavy diagnostic overhead, allocation/deferred-renderer accounting, retention,
+profile comparison and qualification repeats. Headless or hosted conversion
+evidence cannot certify HD 620 terrain rendering or speed.
 
-Acceptance: independently test binary16 rounding, exact boundaries and supported shader settings; use the saved baseline rows to reconcile both verdicts. Retain failures wherever the conservative region lower bound allows nonzero packed transmittance. Missing/invalid/unsupported evidence stays inconclusive. Verify the pinned shader path and seek bounded render evidence when available; absent target pixel evidence must remain explicit. Run affected evaluator/cloud/portable checks. Reuse existing target measurements for reporting-only changes; another full baseline is not needed solely for that update. Preserve the startup hitch for the subsequent focused attribution task.
+**Single next implementation task:** add bounded first-use/startup attribution
+around the early warm-up hitch. Separate loading/preparation from gameplay;
+retain the complete callback interval, native work and diagnostic timing, and
+explicitly label unavailable engine/driver/OS attribution. Do not absorb the
+hitch into an average, hide it with warm-up, add unbounded samples, or change
+terrain demand/caps. Independently test phase boundaries and saved timing
+reconciliation, then run the affected cloud/export/portable checks. Reuse the
+existing baseline for this reporting task; another full matrix is premature.
 
-Presentation follow-up: rain remains an M1 proxy defect deferred to M5, not a passed visual-quality check. Add motion-review checks for repetition, synchronization, popping, flicker and responsiveness; require measured benefit plus preserved behaviour for optimizations and record deliberate compromises. Do not adopt an overall test-pass percentage or weaken correctness gates.
+Rain remains an M1 proxy defect deferred to M5. `TESTING.md` now requires motion
+review for repetition, synchronized resets, popping, flicker and responsiveness,
+and measured optimization benefit with preserved behaviour. No pass percentage
+overrides a failed gate. Moving-frontier readiness and upload optimization still
+need evidence after attribution is trustworthy.
 
-Inspect `docs/M1_FOG_FRONTIER.md`, `PERFORMANCE.md`, `TESTING.md`, `game/scripts/benchmark_frontier.gd`, `game/scripts/benchmark_frontier_tests.gd`, `game/scripts/benchmark_evaluation.gd`, `game/scripts/benchmark_trace_tests.gd`, and pinned Godot `drivers/gles3/shaders/scene.glsl` around fog processing, packing and blending.
+Read `AGENTS.md`, `docs/M1_FOG_FRONTIER.md`, `docs/M1_EVIDENCE.md`, `PERFORMANCE.md`,
+`TESTING.md`, `game/scripts/benchmark.gd`, `game/scripts/benchmark_diagnostics.gd`,
+`game/scripts/benchmark_trace_tests.gd` and the existing operation phase metrics.
 
 Model: **GPT-6.1 Sol Max** (`gpt-6.1-sol`, effort `max`), the user's default.

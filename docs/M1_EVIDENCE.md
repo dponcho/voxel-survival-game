@@ -5,7 +5,25 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: finite shader-matched fog boundary
+## Shader conversion evidence increment: cloud verification pending
+
+The October 4 increment adds a separate conversion-only coverage verdict and
+actual rendering driver/platform/display identity. It preserves the raw analytic
+verdict and every runtime setting/workload/cap. The pinned desktop shader uses
+a truncating polyfill, overturning the prior nearest-rounding inference. Complete
+baseline H1/H2 replay retains 879 of 896 analytic alarms with nonzero packed
+transmittance; the remaining 17 stay inconclusive. Prior reports do not identify
+the exact driver. These are conservative region alarms, not target pixel proof.
+See [the verified source path and model limits](M1_FOG_FRONTIER.md).
+
+Eighteen Python regressions and owned-script compile checks pass. Matching-engine
+tests, exports and the portable candidate are pending. A bounded optional canvas
+readback isolates shader packing; unavailable OpenGL is explicit, and script or
+shader defects fail CI. World/save versions and native inputs are unchanged.
+The startup hitch, target upload limits, coverage and all outstanding qualification
+gates remain. No new target run is required solely to restate the old evidence.
+
+## Previous Windows candidate: finite shader-matched fog boundary
 
 Implementation `f1fea7bc56dc7aeef4f372e26baada84bbce7132` configures the actual
 Environment with Compatibility depth fog: begin 16 m, opaque end 96 m,

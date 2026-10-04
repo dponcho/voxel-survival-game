@@ -85,6 +85,7 @@ static func _verify_frontier(directory: String, report: Dictionary) -> Array[Str
 	for i: int in range(Frontier.COLUMNS.size()):
 		if header[20 + i] != Frontier.COLUMNS[i]: failures.append("Incorrect frontier column mapping")
 	var ledger := Frontier.new()
+	if active: ledger.configure_renderer_model(report["fog_frontier"]["renderer_model"]["context"])
 	while not file.eof_reached():
 		var fields: PackedStringArray = file.get_csv_line()
 		if fields.size() == 1 and fields[0].is_empty(): continue
@@ -116,7 +117,17 @@ static func _verify_frontier(directory: String, report: Dictionary) -> Array[Str
 	var actual: Dictionary = report["fog_frontier"]
 	for key: String in ["evaluation", "samples"]:
 		if expected[key] != actual[key]: failures.append("Frontier summary and CSV disagree: " + key)
+	var expected_model: Dictionary = expected["renderer_model"]
+	var actual_model: Dictionary = actual["renderer_model"]
+	for key: String in ["evaluation", "samples", "qualified"]:
+		if expected_model[key] != actual_model[key]: failures.append("Shader model summary and CSV disagree: " + key)
 	if active:
+		for key: String in ["model", "measured_samples", "exposed_samples", "inconclusive_samples", "pixel_visibility"]:
+			if expected_model[key] != actual_model[key]: failures.append("Shader model counts or scope disagree: " + key)
+		for key: String in ["status", "evaluation", "packed_alpha_bits", "packed_opacity", "packed_transmittance"]:
+			if expected_model["worst_sample"].get(key) != actual_model["worst_sample"].get(key): failures.append("Shader model worst sample and CSV disagree: " + key)
+		if actual_model["context"].get("display") == "headless" and (actual_model["evaluation"] != "inconclusive" or actual_model["measured_samples"] != 0):
+			failures.append("Headless scenario claimed supported shader evidence")
 		if int(expected["samples"]) != int(report["samples"]): failures.append("Frontier trace omitted measured frames")
 		for key: String in ["measured_samples", "invalid_samples", "exposed_samples", "inconclusive_samples"]:
 			if expected[key] != actual[key]: failures.append("Frontier counts and CSV disagree: " + key)

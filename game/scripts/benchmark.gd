@@ -240,6 +240,7 @@ func _ready() -> void:
 		"gpu": RenderingServer.get_video_adapter_name(), "vendor": RenderingServer.get_video_adapter_vendor(),
 		"driver": RenderingServer.get_video_adapter_api_version(), "os": OS.get_version(),
 		"renderer": RenderingServer.get_current_rendering_method(),
+		"rendering_driver": RenderingServer.get_current_rendering_driver_name(), "platform": OS.get_name(),
 		"display": DisplayServer.get_name(), "refresh_hz": DisplayServer.screen_get_refresh_rate()})
 	var stamp: String = Time.get_datetime_string_from_system().replace(":", "-")
 	report_dir = "user://diagnostics/M1-%s-%d-%d-%d" % [stamp, render_size, workers, OS.get_process_id()]
@@ -426,6 +427,9 @@ func _begin_measurement() -> void:
 	invalid_gpu_samples = 0
 	diagnostics = Diagnostics.new()
 	frontier = Frontier.new()
+	frontier.configure_renderer_model({"godot_commit": build_info.get("godot_commit", ""),
+		"rendering_method": initial_machine["renderer"], "rendering_driver": initial_machine["rendering_driver"],
+		"platform": initial_machine["platform"], "display": initial_machine["display"]})
 	diagnostics.start(Time.get_ticks_usec())
 	_open_reports()
 	var id: String = SCENARIOS[scenario_index]["id"]
@@ -915,6 +919,7 @@ func _finish_report(outcome: String, message: String) -> void:
 			"distance": "Euclidean lower bound to the nearest unready region; far-clip lower bound when all inspected regions are ready",
 			"fog": fog_configuration,
 			"boundary": "analytic terminal opacity 1 before shader half packing; radial depth fog ends at 96 m; no opacity cutoff",
+			"renderer_model": "separate pinned desktop truncating polyfill verdict; unsupported drivers and headless rendering are inconclusive; does not replace the analytic alarm",
 			"bounds": "1024 candidate regions per sample; one retained worst sample; same bounded frame CSV and disk worker",
 			"unavailable": ["pixel visibility/occlusion", "physical presentation", "heavy-frontier diagnostic overhead qualification"]},
 		"limitations": ["M1 proxy actors, edits and weather; no survival simulation or durable world store",

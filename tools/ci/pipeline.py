@@ -267,6 +267,7 @@ def package():
     write_json(REPORTS / "candidate.json", {**info, "status": "cloud_passed_target_unverified",
                "artifact_sha256": digest(package_path), "artifact_bytes": package_path.stat().st_size,
                "render_smoke": "not_run: hosted Windows OpenGL availability is not guaranteed",
+               "fog_conversion_probe": read_json(REPORTS / "m1-fog-render.json"),
                "cold_cache": os.environ.get("CAIRN_NATIVE_SOURCE") == "built",
                "native_bundle_source": os.environ.get("CAIRN_NATIVE_SOURCE", "unknown")})
     shutil.make_archive(str(dist / "Cairn-symbols"), "zip", BUNDLE / "symbols")

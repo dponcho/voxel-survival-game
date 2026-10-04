@@ -3,6 +3,7 @@ extends RefCounted
 # Conservative required-region coverage, not pixel visibility or physical scanout.
 const FOG_BEGIN_M: float = 16.0
 const FOG_END_M: float = 96.0
+const ShaderFog = preload("res://scripts/benchmark_shader_fog.gd")
 const COLUMNS: Array[String] = ["frontier_status", "frontier_candidate_regions", "frontier_checked_regions", "frontier_ready_regions", "frontier_empty_regions", "frontier_unready_regions", "frontier_distance_m", "frontier_kind", "frontier_block", "frontier_mesh_state", "fog_boundary_m", "fog_clearance_m", "fog_transmittance", "frontier_probe_usec", "camera_x", "camera_y", "camera_z", "camera_yaw"]
 var samples: int = 0
 var measured: int = 0
@@ -12,6 +13,14 @@ var inconclusive: int = 0
 var minimum_distance: Variant = null
 var minimum_clearance: Variant = null
 var worst: Dictionary = {}
+var renderer_context: Dictionary = {}
+var renderer_measured: int = 0
+var renderer_exposed: int = 0
+var renderer_inconclusive: int = 0
+var renderer_worst: Dictionary = {}
+
+func configure_renderer_model(context: Dictionary) -> void:
+	renderer_context = context.duplicate(true)
 
 static func configure_m1_fog(environment: Environment) -> void:
 	# Pinned Compatibility depth fog uses radial smoothstep, not camera Z depth.
@@ -101,15 +110,28 @@ func record(sample: Dictionary, fog: Dictionary) -> Dictionary:
 	else: invalid += 1
 	if row["evaluation"] == "inconclusive": inconclusive += 1
 	if worst.is_empty() or (row["evaluation"] == "failed" and (worst["evaluation"] != "failed" or float(row["frontier_distance_m"]) < float(worst["frontier_distance_m"]))): worst = row.duplicate(true)
+	var renderer_row: Dictionary = ShaderFog.evaluate(row, fog, renderer_context)
+	if renderer_row["status"] == "measured": renderer_measured += 1
+	if renderer_row["evaluation"] == "failed": renderer_exposed += 1
+	if renderer_row["evaluation"] == "inconclusive": renderer_inconclusive += 1
+	if renderer_worst.is_empty() or (renderer_row["evaluation"] == "failed" and (renderer_worst["evaluation"] != "failed" or float(row["frontier_distance_m"]) < float(renderer_worst["frontier_distance_m"]))):
+		renderer_worst = row.duplicate(true)
+		renderer_worst.merge(renderer_row, true)
 	return row
 
 func snapshot(active: bool) -> Dictionary:
-	if not active: return {"evaluation": "not_run", "samples": 0}
+	if not active: return {"evaluation": "not_run", "samples": 0, "renderer_model": {"evaluation": "not_run", "samples": 0, "qualified": false}}
 	return {"evaluation": "failed" if exposed > 0 else ("inconclusive" if samples == 0 or inconclusive > 0 else "passed"), "samples": samples,
 		"measured_samples": measured, "invalid_samples": invalid, "exposed_samples": exposed,
 		"inconclusive_samples": inconclusive,
 		"minimum_frontier_distance_m": minimum_distance, "minimum_fog_clearance_m": minimum_clearance,
-		"worst_sample": worst.duplicate(true), "qualified": false}
+		"worst_sample": worst.duplicate(true), "qualified": false,
+		"renderer_model": {"evaluation": "failed" if renderer_exposed > 0 else ("inconclusive" if samples == 0 or renderer_inconclusive > 0 else "passed"),
+			"scope": "analytic opacity quantized with pinned desktop shader polyfill; shader arithmetic and pixels unverified",
+			"model": ShaderFog.MODEL, "context": renderer_context.duplicate(true), "samples": samples,
+			"measured_samples": renderer_measured, "exposed_samples": renderer_exposed,
+			"inconclusive_samples": renderer_inconclusive, "worst_sample": renderer_worst.duplicate(true),
+			"qualified": false, "pixel_visibility": "unverified"}}
 
 static func csv_fields(sample: Dictionary) -> PackedStringArray:
 	if sample.is_empty():

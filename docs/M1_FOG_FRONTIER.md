@@ -28,9 +28,9 @@ without reducing the fixed 96 m visual or 128 m data demand. The fog color still
 matches the existing background. Resolution, routes, ticks, workloads and caps
 are unchanged. This rendering-setting change requires new target evidence.
 
-The report evaluates transmittance before the shader's `packHalf2x16` opacity
-packing; rounding may produce stored opacity 1 earlier. The analytic terminal
-boundary is conservative and does not qualify rendered opacity or pixel coverage.
+The original report evaluates transmittance before the shader's `packHalf2x16`
+opacity packing. The analytic terminal boundary is conservative and does not
+qualify rendered opacity or pixel coverage.
 No arbitrary opacity cutoff or new acceptance tolerance is introduced. An unready
 required region inside 96 m still fails; coverage at or beyond the opaque boundary
 can pass the conservative check. An unobserved boundary beyond the far clip
@@ -45,6 +45,50 @@ The ledger keeps totals, minima and one worst sample; raw rows use the existing
 bounded CSV and disk queue. Probe/formatting work belongs to the full callback
 timer. Existing flat-fixture A/B phases do not exercise this heavy-only probe, so
 they cannot qualify its overhead. Exact-build HD 620 evidence is outstanding.
+
+## Separately reported shader conversion model
+
+`fog_frontier.renderer_model` adds a conversion-only verdict; the raw CSV,
+analytic verdict, scenario gates and schema 5 remain unchanged. Reports now
+record the actual rendering driver, platform and display backend. Only the exact
+Godot pin, desktop Windows/Linux `opengl3` Compatibility path and the exact M1
+fog settings are supported. Missing context, ANGLE, GLES, Web, headless rendering,
+changed settings and invalid samples remain unavailable/inconclusive.
+
+Source verification changed the earlier nearest-rounding inference. At pinned
+Godot `ed1daf0bf001b61586d9930840f2f1394092c079`,
+[scene.glsl](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/drivers/gles3/shaders/scene.glsl)
+packs and unpacks fog before blending. Desktop
+[Config](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/drivers/gles3/storage/config.h)
+defaults `polyfill_half2float` to true;
+[shader_gles3.cpp](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/drivers/gles3/shader_gles3.cpp)
+selects `USE_HALF2FLOAT`. The
+[stdlib_inc.glsl](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/drivers/gles3/shaders/stdlib_inc.glsl)
+conversion drops float32 mantissa bits, without rounding, and flushes small
+values. `config.cpp` disables this polyfill for ANGLE and Web; their conversion
+is outside this model. Ordinary IEEE nearest binary16 conversion is not a valid
+oracle for the default desktop shader path.
+
+An independent arithmetic-floor oracle replayed all 113,890 saved baseline H1/H2
+rows. H1 has 360 analytic alarms: 352 retain packed alpha `0x3bff`
+(transmittance 0.00048828125) and eight convert to alpha one. H2 has 536 alarms:
+527 retain `0x3bff` and nine convert to one. The latter 17 remain inconclusive:
+conversion alone cannot certify float32 shader arithmetic or inside-boundary
+coverage. The older report did not record the actual rendering driver, so this
+replay assumes the confirmed desktop path; it does not certify target rendering.
+These are conservative region alarms, not observed exposed pixels.
+
+The ledger retains counts and one worst model sample. It never promotes an
+inside-boundary sample to passed or marks pixel visibility qualified. Evaluator
+tests use independent binary16 encodings, midpoint/cutoff cases and unsupported
+contexts. Cloud smoke reconstructs both summaries from the unchanged frame CSV.
+An optional 8×8 canvas readback tests the same shared shader conversion by
+encoding half bits as two color bytes. This isolates packing, not terrain fog,
+HD 620 rendering or performance; startup OpenGL unavailability is explicit and
+script/shader failures block CI. Its result is retained separately in candidate
+metadata. No renderer readback is added to gameplay. The reporting increment
+does not change world/save versions, native inputs, fog, radii, caps or workloads;
+heavy diagnostic overhead still needs measurement.
 
 Regressions cover the actual Environment profile, independent smoothstep values,
 fog crossings and the exact 96 m boundary, missing/invalid inputs,

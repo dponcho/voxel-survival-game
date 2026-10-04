@@ -59,6 +59,15 @@ Missing data must never become air in collision or mining. Inventory is charged 
 
 Instantiate every shipping scene and content family through tests or a content-validation scene. Parsing only the main script does not validate all resources. Use warning/error policy appropriate to owned code; retain upstream warnings separately instead of suppressing meaningful project failures.
 
+Review animated presentation in motion over several cycles and during movement,
+turns, edits and transitions. Check repetition, synchronized resets, popping,
+flicker and input responsiveness as well as still images. Record deliberate
+visual compromises with their scope and replacement milestone; the M1 rain
+proxy's synchronized appearance remains a deferred M5 defect, not a passed
+weather-quality check. An optimization needs a measured benefit and preserved
+behaviour, including these motion checks when relevant. No overall test-pass
+percentage can override a failed correctness or performance gate.
+
 ### Core Java-style behaviour checks
 
 Use [the core reference contract](docs/JAVA_CORE_REFERENCE.md) for movement/sneak ledges, target reach, block hardness/tool drops/durability, stairs/slab collision, 9+27 inventory/armour/offhand, shaped/shapeless 2×2/3×3 crafting and recipe-book assistance. Test furnace input/fuel/output transactions, hunger/saturation/regen, bed obstruction/respawn, death-drop expiry in loaded simulation time, bounded cap saturation without item loss, farming/breeding, local water/lava and falling-block borders. Unloaded crop/furnace work must stay paused. Verify Creative-style flight/instant breaking/catalogue independently of survival consumption.
