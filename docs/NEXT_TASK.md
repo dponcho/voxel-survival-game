@@ -1,5 +1,13 @@
 # Development handoff
 
+Startup attribution increment is under cloud verification. It adds bounded
+script/physics/render-signal wall timing, independent interval/CSV reconciliation
+and a short fresh-process warmup/N1 mode. See [semantics](M1_STARTUP_ATTRIBUTION.md).
+The older report supports investigating rendering/wait time but cannot identify
+background activity or pair asynchronous viewport results to an origin frame.
+No historical hitch or qualification gate has been waived. Replace the candidate
+record below only after the new cloud/export/portable checks pass.
+
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
 The authorized October 3 baseline handoff was published. This increment verifies

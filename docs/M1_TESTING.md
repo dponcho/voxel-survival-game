@@ -26,7 +26,7 @@ Internet connection to run the extracted candidate.
 ## First check: a few minutes
 
 1. Open `Cairn.exe`. Confirm that the title says Milestone 1 and note its build ID.
-2. Select **Run startup check**. It should report that the native modules are ready.
+2. Select **Check native modules**. It should report that the native modules are ready.
 3. Leave the setting at **32³ render blocks • 1 worker (baseline)** and select
    **Explore the terrain fixture**. After preparation, terrain should be visible.
 4. Move with **W, A, S, D** and look with the **mouse**. Check that the ground holds
@@ -38,6 +38,24 @@ Internet connection to run the extracted candidate.
 If the game crashes, stays blank, falls through loaded ground or cannot finish
 preparation, stop here and report the build ID, what happened and any saved report.
 Do not spend an hour running comparisons on a visibly broken candidate.
+
+## Short startup reproduction: about 20 seconds plus preparation
+
+The current candidate adds **Run startup timing check (~20 s + loading)** for
+investigating the early warm-up hitch. Keep the baseline profile selected. Each
+launch starts a fresh game process and runs only shortened warm-up and N1 routes.
+The original full baseline and comparison are separate menu choices.
+
+When a targeted reproduction is requested, run the short check twice in succession
+and keep both complete report folders, even if the second seems smoother. Note
+any interruption or demanding background application you noticed; no task-list
+capture or system change is required. The game does not inspect other processes.
+Use **Open reports folder** to collect `summary.json`, finalization timing and all
+CSV files. No full matrix is requested solely for startup attribution.
+
+These short runs provide timing evidence, not performance qualification. A clean
+repeat cannot identify the cause of the historical hitch. See
+[startup timing semantics and limits](M1_STARTUP_ATTRIBUTION.md).
 
 ## Automatic baseline: about 24 minutes plus preparation
 

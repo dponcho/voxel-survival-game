@@ -18,10 +18,12 @@ const SCENARIOS: Array[Dictionary] = [
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
 const Diagnostics = preload("res://scripts/benchmark_diagnostics.gd")
+const Startup = preload("res://scripts/benchmark_startup.gd")
 const Frontier = preload("res://scripts/benchmark_frontier.gd")
 var frontier := Frontier.new()
 var benchmark_environment: Environment
 var diagnostics := Diagnostics.new()
+var startup := Startup.new()
 var end_requested: bool = false
 var finish_reason: String = ""
 var writer_drain_usec: int = 0
@@ -132,6 +134,13 @@ func _begin_phase(label: String, trace: bool = true) -> void:
 	phase_name = label
 	phase_start_counters = probe.snapshot()
 	probe.begin_phase(phase_id, trace)
+	if startup.active:
+		var now: int = Time.get_ticks_usec()
+		if scenario_index > 1 or (scenario_index == 1 and label != "preparation" and label != "gameplay"):
+			startup.stop(now, "initial gameplay ended before interval window filled")
+			_disconnect_startup_signals()
+		else:
+			startup.begin_phase(phase_id, str(SCENARIOS[scenario_index]["id"]), label, now)
 
 func _drain_operation_frames() -> void:
 	for frame: Dictionary in probe.take_operation_frames():
@@ -216,6 +225,11 @@ func _has_pending_reports() -> bool:
 	return not raw_lines.is_empty() or not operation_lines.is_empty() or not edit_lines.is_empty()
 
 func _ready() -> void:
+	var ready_begin: int = Time.get_ticks_usec()
+	startup.begin_phase(0, "warmup", "initialization", ready_begin)
+	startup.begin_process(ready_begin, null, null)
+	RenderingServer.frame_pre_draw.connect(_startup_render_started)
+	RenderingServer.frame_post_draw.connect(_startup_render_finished)
 	for argument: String in OS.get_cmdline_user_args():
 		if argument == "--m1-smoke": test_mode = true
 		if argument.begins_with("--render-size="): render_size = int(argument.get_slice("=", 1))
@@ -225,7 +239,10 @@ func _ready() -> void:
 	if mode == "matrix":
 		render_size = 32 if matrix_index % 2 == 0 else 16
 		workers = 1 if matrix_index < 2 else 2
-	if mode == "explore": scenario_index = 1
+	if mode == "explore":
+		scenario_index = 1
+		startup.stop(Time.get_ticks_usec(), "not run in exploration mode")
+		_disconnect_startup_signals()
 	if not render_size in [16, 32] or not workers in [1, 2]:
 		get_tree().quit(2)
 		return
@@ -249,6 +266,19 @@ func _ready() -> void:
 	_make_scene()
 	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
 	_start_scenario()
+	startup.record_span("process", ready_begin, Time.get_ticks_usec())
+
+func _startup_render_started() -> void:
+	startup.render_started(Time.get_ticks_usec())
+
+func _startup_render_finished() -> void:
+	startup.render_finished(Time.get_ticks_usec())
+
+func _disconnect_startup_signals() -> void:
+	if RenderingServer.frame_pre_draw.is_connected(_startup_render_started):
+		RenderingServer.frame_pre_draw.disconnect(_startup_render_started)
+	if RenderingServer.frame_post_draw.is_connected(_startup_render_finished):
+		RenderingServer.frame_post_draw.disconnect(_startup_render_finished)
 
 func _make_ui() -> void:
 	var layer := CanvasLayer.new()
@@ -458,6 +488,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		_cancel()
 
 func _physics_process(delta: float) -> void:
+	if not startup.active:
+		_physics_step(delta)
+		return
+	var begin: int = Time.get_ticks_usec()
+	_physics_step(delta)
+	startup.record_span("physics", begin, Time.get_ticks_usec())
+
+func _physics_step(delta: float) -> void:
 	if state != "running": return
 	simulation_ticks += 1
 	scenario_elapsed += delta
@@ -562,10 +600,17 @@ func _edit_border(tool: VoxelTool) -> bool:
 	return false
 
 func _process(_delta: float) -> void:
-	if state == "finished" or state == "reporting": return
+	if state == "finished": return
 	var begin: int = Time.get_ticks_usec()
 	var measured: bool = state == "running" or state == "acknowledging"
+	if startup.active:
+		startup.begin_process(begin, sample_count + 1 if measured else null, diagnostics.last_callback_usec if measured and diagnostics.callbacks > 0 else null)
+		if not startup.active: _disconnect_startup_signals()
+	if state == "reporting":
+		if startup.active: startup.record_span("process", begin, Time.get_ticks_usec())
+		return
 	_process_frame(begin)
+	if startup.active: startup.record_span("process", begin, Time.get_ticks_usec())
 	if measured:
 		# Includes row formatting, batch submission, live UI and the final callback.
 		diagnostics.record_callback(begin, Time.get_ticks_usec())
@@ -611,7 +656,8 @@ func _process_frame(now: int) -> void:
 				_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 				return
 			scenario_index += 1
-			if scenario_index >= SCENARIOS.size(): _finish("completed", "All applicable engine scenarios ran")
+			if scenario_index >= (2 if mode == "startup" else SCENARIOS.size()):
+				_finish("completed", "Short startup timing check completed; only warmup and N1 ran" if mode == "startup" else "All applicable engine scenarios ran")
 			else: _start_scenario()
 		return
 	if state == "loading":
@@ -672,6 +718,7 @@ func _process_frame(now: int) -> void:
 	var gpu_status: String = Evaluation.gpu_sample_status(render_gpu, now)
 	if gpu_status == "valid": peaks["render_gpu_ms"] = maxf(float(peaks.get("render_gpu_ms", 0.0)), render_gpu)
 	elif gpu_status == "invalid": invalid_gpu_samples += 1
+	if startup.active: startup.observe_renderer(now, sample_count, render_cpu, render_gpu, gpu_status)
 	for key: String in ["private_bytes", "working_set", "generation_jobs", "mesh_jobs", "result_jobs", "main_jobs"]:
 		peaks[key] = maxi(int(peaks.get(key, 0)), int(counters.get(key, 0)))
 	for key: String in ["resident_data", "resident_mesh", "pending_data", "pending_mesh"]:
@@ -709,6 +756,7 @@ func _process_frame(now: int) -> void:
 
 func _duration() -> float:
 	if mode == "explore": return 1800.0
+	if mode == "startup": return 1.0 if test_mode else 10.0
 	return 1.0 if test_mode else float(SCENARIOS[scenario_index]["seconds"])
 
 func _percentile(percent: float) -> float:
@@ -883,6 +931,8 @@ func _finish(outcome: String, message: String) -> void:
 	if test_mode: get_tree().quit(0 if outcome == "completed" and integration_failures.is_empty() else 1)
 
 func _finish_report(outcome: String, message: String) -> void:
+	startup.stop(Time.get_ticks_usec(), "benchmark ended before interval window filled")
+	_disconnect_startup_signals()
 	if edit_trace_active:
 		probe.finish_edit_trace()
 		_drain_edit_events()
@@ -891,10 +941,12 @@ func _finish_report(outcome: String, message: String) -> void:
 	await _close_reports()
 	if test_mode:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
+		integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	var fog_configuration: Dictionary = Frontier.fog_configuration(benchmark_environment, camera.far)
-	var summary: Dictionary = {"schema": 5, "milestone": "M1", "scope": "temporary engine proxy experiment",
+	var summary: Dictionary = {"schema": 5, "milestone": "M1", "scope": "short startup reproduction; shortened warmup/N1 only; not a baseline or qualification run" if mode == "startup" else "temporary engine proxy experiment",
+		"benchmark_mode": mode, "startup_attribution": startup.snapshot(),
 		"outcome": outcome, "completed": outcome == "completed", "qualified": false,
 		"qualification": "unverified", "target_certification": "unverified: review exact-build reports and all outstanding gates",
 		"message": message, "build": build_info, "machine": initial_machine,
