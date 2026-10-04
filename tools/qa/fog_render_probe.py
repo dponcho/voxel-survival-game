@@ -11,6 +11,7 @@ NO_CONTEXT = (
     "Unable to initialize OpenGL video driver",
     "Can't create an OpenGL context",
     "Failed to create an OpenGL context",
+    "Failed to create native OpenGL window",
     "Could not initialize OpenGL",
 )
 

@@ -13,14 +13,16 @@ spec.loader.exec_module(probe)
 class FogRenderEvidenceTests(unittest.TestCase):
     def test_driver_unavailability_is_explicit(self):
         for code, timed_out in [(1, False), (None, True)]:
-            result = probe.classify("ERROR: Unable to initialize OpenGL video driver", code, timed_out)
-            self.assertEqual(result["status"], "unavailable")
-            self.assertFalse(result["qualified"])
+            for output in ["ERROR: Unable to initialize OpenGL video driver",
+                           "ERROR: Failed to create native OpenGL window.\nERROR: Unexpected window message 0x1f received for window we cannot recognize in our collection; sequence error."]:
+                result = probe.classify(output, code, timed_out)
+                self.assertEqual(result["status"], "unavailable")
+                self.assertFalse(result["qualified"])
 
     def test_driver_error_cannot_hide_script_or_shader_defect(self):
         for defect in ["SCRIPT ERROR: Parse Error", "SHADER ERROR: expected expression", "Shader compilation failed"]:
             with self.assertRaises(RuntimeError):
-                probe.classify("Unable to initialize OpenGL video driver\n" + defect, 1)
+                probe.classify("Failed to create native OpenGL window\n" + defect, 1)
 
     def test_unknown_crash_or_timeout_is_a_failure(self):
         for code, timed_out in [(0, False), (1, False), (None, True)]:
