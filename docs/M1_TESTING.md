@@ -6,9 +6,11 @@ worlds. A startup-check pass alone does not qualify M1.
 
 The September 25 candidate's standalone baseline and four-setting comparison have
 now been received and [reviewed](M1_TARGET_REVIEW.md). M1 is not yet qualified.
-Keep those reports. Use the corrected diagnostic candidate linked below for one
-new baseline report first. Review its measurements before another full comparison
-or final qualification repeat; completion still does not qualify M1.
+The October 3 finite-fog 32³/one-worker baseline has also been reviewed. Keep those
+reports; no new full baseline is requested solely for the shader-model reporting
+update. Follow [NEXT_TASK.md](NEXT_TASK.md) before another comparison or final
+qualification repeat. The procedures below remain available when a targeted run
+is requested; completion still does not qualify M1.
 
 ## Get the candidate
 

@@ -26,7 +26,8 @@ Distance is radial, matching the probe's Euclidean lower bound, rather than
 camera Z depth. Opacity reaches 1 at 96 m, providing a finite analytic boundary
 without reducing the fixed 96 m visual or 128 m data demand. The fog color still
 matches the existing background. Resolution, routes, ticks, workloads and caps
-are unchanged. This rendering-setting change requires new target evidence.
+are unchanged. The October 3 exact-build baseline supplies new recorded timing
+evidence for that fog setting; rendered pixel coverage remains unverified.
 
 The original report evaluates transmittance before the shader's `packHalf2x16`
 opacity packing. The analytic terminal boundary is conservative and does not

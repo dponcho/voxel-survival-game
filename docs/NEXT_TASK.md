@@ -17,12 +17,23 @@ to opacity one but remain inconclusive because shader arithmetic and clipped
 coverage are unverified. The old report lacks exact driver identity. None of
 these conservative region alarms establishes visible pixels; none qualifies M1.
 
-Verification in progress: 18 Python regressions, compile checks and diff checks
-pass. Native key remains
-`11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
-The matching-editor/cloud/portable candidate checks are pending; replace this
-paragraph with the inspected CI and artifact identities before task completion.
-Until then the last inspected player is [11287845333](https://github.com/dponcho/voxel-survival-game/actions/runs/37160455260/artifacts/11287845333).
+Latest code: `919dc3b8ff75f58525647c1c3e6d3c99833cf402`.
+[CI 37204596489](https://github.com/dponcho/voxel-survival-game/actions/runs/37204596489)
+passed all three jobs on October 4. Eighteen Python regressions, five native
+sanitizer suites, matching-editor/evaluator/trace checks, all four profile integrations,
+debug/release exports, DLL audit and two fresh offline extractions pass.
+The hosted runner cannot create an OpenGL window: conversion readback is
+**unavailable**, not a render pass. Its observed startup error has regression
+coverage; unknown, script and shader failures still block CI.
+
+[Windows player 11303699005](https://github.com/dponcho/voxel-survival-game/actions/runs/37204596489/artifacts/11303699005)
+expires November 3 at 13:17 UTC. Verified build ID:
+`a082beed4e7df1c7378050a8a09ee2699cdfd2cd`; portable ZIP SHA-256:
+`f092ba31ace018c3ff029e08ea8ddc2267cf8a4233e37a9185ab0cf93999ca8a`.
+Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
+Downloaded player/evidence CRCs, checksums, identities and smoke reports match.
+Both 16³ cloud profiles retain analytic coverage failures; every headless model
+verdict is inconclusive. No new laptop baseline is needed solely for this update.
 
 Failed recorded gates remain analytic H1/H2 coverage and isolated target upload
 limits/one terrain subtotal. Unresolved: startup warm-up hitch (184.252 ms),

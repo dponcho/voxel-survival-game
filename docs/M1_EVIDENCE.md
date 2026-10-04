@@ -5,7 +5,7 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Shader conversion evidence increment: cloud verification pending
+## Current Windows candidate: separate shader conversion evidence
 
 The October 4 increment adds a separate conversion-only coverage verdict and
 actual rendering driver/platform/display identity. It preserves the raw analytic
@@ -16,12 +16,51 @@ transmittance; the remaining 17 stay inconclusive. Prior reports do not identify
 the exact driver. These are conservative region alarms, not target pixel proof.
 See [the verified source path and model limits](M1_FOG_FRONTIER.md).
 
-Eighteen Python regressions and owned-script compile checks pass. Matching-engine
-tests, exports and the portable candidate are pending. A bounded optional canvas
-readback isolates shader packing; unavailable OpenGL is explicit, and script or
-shader defects fail CI. World/save versions and native inputs are unchanged.
-The startup hitch, target upload limits, coverage and all outstanding qualification
-gates remain. No new target run is required solely to restate the old evidence.
+Implementation `d4883032c1c80dc9d59a2cb20550ba3c6156242e` and observed-hosted-error
+correction `919dc3b8ff75f58525647c1c3e6d3c99833cf402` are in exported synthetic
+merge `a082beed4e7df1c7378050a8a09ee2699cdfd2cd`. Its tree matches the code branch.
+[CI 37204596489](https://github.com/dponcho/voxel-survival-game/actions/runs/37204596489)
+passed all three jobs on October 4, completed 13:18 UTC. Static job `111443046643`
+passed 18 Python regressions, owned-script compile checks and five native
+sanitizer suites. Native job `111443100328` reused the exact cache and separately
+qualified editor/debug/release registrations. Export job `111443261093` passed
+matching-editor import, independent binary16 conversion/boundary/invalid-context
+regressions, both saved verdicts' CSV reconciliation, geometry, collision, edits,
+eviction/cancellation, all four profiles, debug/release export/self-test, DLL audit
+and two fresh offline extractions, including a space/Unicode path.
+
+Five smoke reports complete with no integration failures. The 32³ short cloud
+profiles pass analytic coverage; both 16³ profiles retain H1/H2 failures.
+Every heavy headless conversion-model verdict is inconclusive with zero supported
+model samples; other scenarios record `not_run`. Green logic tests do not erase
+recorded performance/coverage gates. The optional canvas probe cannot create a
+native OpenGL window on this runner and reports **unavailable** in candidate
+metadata. The observed startup error is independently tested; script/shader
+defects and unknown failures still block CI. No terrain rendering is claimed.
+
+Download [Windows player 11303699005](https://github.com/dponcho/voxel-survival-game/actions/runs/37204596489/artifacts/11303699005),
+expiry November 3 at 13:17 UTC. Separate
+[export evidence 11303359843](https://github.com/dponcho/voxel-survival-game/actions/runs/37204596489/artifacts/11303359843),
+[native evidence 11304281903](https://github.com/dponcho/voxel-survival-game/actions/runs/37204596489/artifacts/11304281903)
+and [symbols 11303279958](https://github.com/dponcho/voxel-survival-game/actions/runs/37204596489/artifacts/11303279958)
+retain provenance. Downloaded archives passed SHA-256 and CRC checks; the inner
+portable checksum, PE x86_64 header, PCK, executable/report hashes, manifests and
+build identity match. Completed logs and saved smoke/self-test reports were read.
+
+| Identity | Verified value |
+| --- | --- |
+| Code branch commit | `919dc3b8ff75f58525647c1c3e6d3c99833cf402` |
+| Exported merge / game build ID | `a082beed4e7df1c7378050a8a09ee2699cdfd2cd` |
+| Native source key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Outer player archive SHA-256 | `a9fd56332702b5d026f3998ae5a5483bf0139cfed90e140ce79ef86785b5dc0f` |
+| Portable ZIP SHA-256 | `f092ba31ace018c3ff029e08ea8ddc2267cf8a4233e37a9185ab0cf93999ca8a` |
+
+World/save versions, native inputs, fog, radii, workload and caps are unchanged.
+No local engine installation, compilation or execution ran. The startup hitch,
+target upload limits, conservative coverage and all outstanding qualification
+gates remain. No new target baseline is required solely for this reporting
+increment. Heavy diagnostic overhead and HD 620 rendering/performance remain
+unverified; next work is bounded startup attribution in [the handoff](NEXT_TASK.md).
 
 ## Previous Windows candidate: finite shader-matched fog boundary
 
@@ -77,10 +116,9 @@ Completed logs and downloaded player/export/native evidence were inspected.
 Archive digests, ZIP CRCs, contained checksums, build identities and native
 manifest binary hashes matched. The synthetic merge includes the implementation
 commit. No local engine installation, compilation or execution ran.
-Review one exact-build 32³/one-worker laptop baseline before another full matrix
-or selecting the next bounded correction. [Laptop instructions](M1_TESTING.md)
-and [development handoff](NEXT_TASK.md) describe that prerequisite.
-Detailed uploaded target measurements remain private.
+Its exact-build 32³/one-worker laptop baseline was subsequently reviewed; detailed
+uploaded measurements remain private. Use the current [development handoff](NEXT_TASK.md)
+before requesting another full matrix or qualification repeat.
 
 ## Previous Windows candidate: world-space demand and meshing halo
 
