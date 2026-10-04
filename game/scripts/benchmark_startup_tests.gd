@@ -35,8 +35,12 @@ static func _verify_interval(row: Dictionary) -> Array[String]:
 		if span["kind"] not in ["process", "physics", "render"] or int(span["start_usec"]) < begin or int(span["end_usec"]) > end or int(span["end_usec"]) <= int(span["start_usec"]):
 			return ["Invalid clipped startup span"]
 	var expected: Dictionary = _oracle(begin, end, spans)
-	if int(row["observed_union_usec"]) != int(expected["union"]) or row["stage_wall_usec"] != expected["stages"] or int(row["overlap_usec"]) != int(expected["overlap"]) or int(row["outside_observed_stages_usec"]) != int(expected["outside"]):
+	if int(row["observed_union_usec"]) != int(expected["union"]) or int(row["overlap_usec"]) != int(expected["overlap"]) or int(row["outside_observed_stages_usec"]) != int(expected["outside"]):
 		failures.append("Startup stage partition disagrees with independent endpoint sweep")
+	# Godot JSON numbers decode as floats; dictionary equality requires exact types.
+	for kind: String in ["process", "physics", "render"]:
+		if int(row["stage_wall_usec"][kind]) != int(expected["stages"][kind]):
+			failures.append("Startup stage duration disagrees with independent endpoint sweep")
 	if int(row["observed_union_usec"]) + int(row["outside_observed_stages_usec"]) != end - begin:
 		failures.append("Startup timing partition lost elapsed time")
 	if row["causal_attribution"] != "inconclusive" or row["background_activity"] != "unverified":
@@ -58,6 +62,7 @@ static func verify() -> Array[String]:
 		{"kind": "render", "start_usec": 200, "end_usec": 220}]
 	var row: Dictionary = Startup.interval_sample(100, 200, events)
 	failures.append_array(_verify_interval(row))
+	failures.append_array(_verify_interval(JSON.parse_string(JSON.stringify(row))))
 	if row["observed_union_usec"] != 70 or row["overlap_usec"] != 10 or row["outside_observed_stages_usec"] != 30:
 		failures.append("Overlapping/clipped wall spans were added or omitted")
 	row = Startup.interval_sample(100, 2000000, events, 1, 190)
