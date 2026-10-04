@@ -57,7 +57,9 @@ proof of background activity.
 Native operation CSVs use the same clock and phase IDs; their operation time
 may overlap these spans. Existing frame CSV columns, native limits and raw
 deadline misses remain intact. Latest viewport results stay separately labelled
-asynchronous observations with `origin_frame: null`. Causal attribution remains
+asynchronous observations with `origin_frame: null`; `observed_usec` identifies
+the polling callback's entry clock, not the exact query-read instant or original
+render frame. Causal attribution remains
 inconclusive, background activity unverified and qualification false. Startup
 instrumentation overhead, shader/driver/OS causes and physical pacing require
 target evidence; the later A/B does not certify these startup hooks.

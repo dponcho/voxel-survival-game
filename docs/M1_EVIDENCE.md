@@ -5,7 +5,78 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: separate shader conversion evidence
+## Current Windows candidate: bounded startup attribution
+
+The October 4 increment adds script, benchmark physics and render-signal wall
+spans during initialization/preparation/warm-up/retirement and the first N1
+gameplay intervals. Six groups retain bounded prefixes and maxima; intervals
+record overlap, outside-stage time, both phase IDs at transitions and explicit
+missing/partial evidence. Asynchronous viewport results retain unknown origin
+frames. No timing implies CPU service, GPU completion, presentation or a cause.
+See [startup semantics and pinned sources](M1_STARTUP_ATTRIBUTION.md).
+
+The original early 184.252 ms warm-up interval contains less than 1 ms of
+preceding diagnostic callback time and no overlapping traced terrain upload or
+deletion. A similarly large viewport CPU elapsed result arrives later. Rendering
+or waiting is a supported investigation direction; laptop background activity,
+shader first use, driver waits and OS scheduling remain unverified alternatives.
+This investigation does not waive either recorded slow interval.
+
+The title now offers **Run startup timing check (~20 s + loading)**, a fresh
+process with ten-second warm-up and N1 routes. This is a targeted reproduction,
+not a full baseline or qualification run. Normal full/matrix durations, CSV
+columns, demand, ticks, workload, budgets and world/save versions remain.
+
+Implementation `b5a7e122198b5fea4de251a34d024a19d6d6498f` and JSON-verifier
+correction `4df6cc2042f9778350b8ade48b16872c052e7c2a` are in exported synthetic
+merge `b7506f9ca2184ee3d59fa5cb1b8fcdd1914182b2`. Its tree matches the code branch.
+[CI 37225602689](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689)
+passed all three jobs, completed October 4 at 18:54 UTC. Static job `111504496131`
+passed 18 Python regressions and five native sanitizer suites. Native job
+`111504567249` reused the exact cache and independently qualified editor/debug/
+release registrations. Export job `111504725104` passed matching-editor import,
+endpoint-sweep/phase/cap/cancellation/JSON regressions, saved interval and
+diagnostic CSV reconciliation, existing geometry/frontier/edit checks, all four
+profiles, the short startup route, debug/release exports, DLL audit and two fresh
+offline extractions, including a space/Unicode path.
+
+The first attempt, [CI 37225288006](https://github.com/dponcho/voxel-survival-game/actions/runs/37225288006),
+caught a verifier type mismatch: Godot JSON numbers decode as floats while
+dictionary equality requires identical types. Its 273 retained partitions passed
+an independent numeric sweep. The corrected verifier compares numeric durations
+and explicitly regresses JSON round trips. No measured gate was suppressed.
+
+Six smoke reports complete with no integration failures or startup overflow/
+invalid/dropped spans. Downloaded reports independently reconcile 1,632 retained
+timing partitions. The short route contains only warm-up/N1. Both 16³ profiles
+still record analytic H1/H2 coverage failures; every heavy headless renderer-model
+verdict is inconclusive. The optional OpenGL conversion probe remains unavailable.
+Headless signal brackets and green logic checks do not establish HD 620 rendering,
+startup overhead, the historical stall's cause or target performance.
+
+Download [Windows player 11311923130](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689/artifacts/11311923130),
+expiry November 3 at 18:53 UTC. Separate
+[export evidence 11312236921](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689/artifacts/11312236921),
+[native evidence 11311564370](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689/artifacts/11311564370)
+and [symbols 11312232050](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689/artifacts/11312232050)
+retain provenance. Downloaded player/export/native archive digests and CRCs,
+portable checksum, x86_64 PE, PCK, executable/report hashes, build IDs and native
+manifest hashes match. Completed logs and saved smoke/self-test reports were read.
+
+| Identity | Verified value |
+| --- | --- |
+| Code branch commit | `4df6cc2042f9778350b8ade48b16872c052e7c2a` |
+| Exported merge / game build ID | `b7506f9ca2184ee3d59fa5cb1b8fcdd1914182b2` |
+| Native source key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Outer player archive SHA-256 | `023c09ab69fe04a423a1e3001361827af1419ef5cd457570b66124c145ef7836` |
+| Portable ZIP SHA-256 | `5d92cdcb885c2243015ae9ef856e4e774f1f6f32271ff999658c1d3d45b40437` |
+
+No local engine installation, compilation or execution ran. No new full target
+baseline or matrix is requested solely for this reporting change. All target
+upload/coverage, diagnostic overhead, pacing, retention and qualification gates
+remain in [the handoff](NEXT_TASK.md). **M1 remains blocked; no profile qualified.**
+
+## Previous Windows candidate: separate shader conversion evidence
 
 The October 4 increment adds a separate conversion-only coverage verdict and
 actual rendering driver/platform/display identity. It preserves the raw analytic
@@ -60,7 +131,8 @@ No local engine installation, compilation or execution ran. The startup hitch,
 target upload limits, conservative coverage and all outstanding qualification
 gates remain. No new target baseline is required solely for this reporting
 increment. Heavy diagnostic overhead and HD 620 rendering/performance remain
-unverified; next work is bounded startup attribution in [the handoff](NEXT_TASK.md).
+unverified. The current candidate adds bounded startup attribution; follow
+[the handoff](NEXT_TASK.md) for subsequent work.
 
 ## Previous Windows candidate: finite shader-matched fog boundary
 
