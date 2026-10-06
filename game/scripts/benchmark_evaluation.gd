@@ -137,7 +137,7 @@ static func heavy_workload_failures(selected: Array[Dictionary], workload: Strin
 		if int(report.get("simulation_ticks", -1)) != ticks or int(report.get("actor_ticks", -1)) != ticks * actors or int(contract.get("physics_hz", -1)) != 60:
 			failures.append("Heavy ticks/actor activity do not match the fixed workload")
 		var resolution: Array = contract.get("resolution", [])
-		if resolution.size() != 2 or int(resolution[0]) != 1280 or int(resolution[1]) != 720 or contract.get("visual_radius") != 96 or contract.get("data_radius") != 128 or contract.get("render_scale") != 1.0 or contract.get("triangle_colliders") != false or contract.get("max_physics_steps") != 4 or not contract.get("render_block") in [16, 32] or not contract.get("workers") in [1, 2]:
+		if resolution.size() != 2 or int(resolution[0]) != 1280 or int(resolution[1]) != 720 or contract.get("visual_radius") != 96 or contract.get("data_radius") != 128 or contract.get("render_scale") != 1.0 or contract.get("triangle_colliders") != false or contract.get("max_physics_steps") != 4 or not int(contract.get("render_block", -1)) in [16, 32] or not int(contract.get("workers", -1)) in [1, 2]:
 			failures.append("Heavy profile changed resolution/radii/worker/admission settings")
 		# Compare JSON-decoded numeric values, not dictionaries' numeric types.
 		var policy: Dictionary = contract.get("native_policy", {})

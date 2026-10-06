@@ -123,7 +123,7 @@ static func verify() -> Array[String]:
 		var decoded: Array[Dictionary] = []
 		for report: Dictionary in JSON.parse_string(JSON.stringify(_phases(workload))): decoded.append(report)
 		if Evaluation.heavy_diagnostic_ab(decoded, false, false)["workloads"][workload]["outcome"] != "passed":
-			failures.append("JSON numeric types changed heavy comparison eligibility")
+			failures.append("JSON numeric types changed heavy comparison eligibility: " + JSON.stringify(Evaluation.heavy_diagnostic_ab(decoded, false, false)["workloads"][workload]))
 		for label: String in ["missing", "reordered", "fixture", "radius", "workers", "cap", "ticks", "actors", "route", "probe off", "probe on", "unavailable", "zero coverage", "coverage failure", "operation failure", "stall", "block drift", "repeat drift", "threshold overlap", "overflow", "storage", "edits", "shared edit trace"]:
 			var phases: Array[Dictionary] = _phases(workload)
 			match label:
