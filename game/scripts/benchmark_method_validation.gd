@@ -22,7 +22,11 @@ func _initialize() -> void:
 				{"name": "below-limit", "permille": 5, "closure": 0, "stationary": "passed"},
 				{"name": "above-limit", "permille": 20, "closure": 0, "stationary": "failed"},
 				{"name": "closure-cost", "permille": 0, "closure": 600000, "stationary": "failed"}]:
-				var profile: Array[int] = [4000, 5000, 4000, 5000, 4000, 5000] if varying else [5000, 5000, 5000, 5000, 5000, 5000]
+				# A conditional expression produces an untyped Array in the pinned
+				# engine; initialize the typed literal directly, then change values.
+				var profile: Array[int] = [5000, 5000, 5000, 5000, 5000, 5000]
+				if varying:
+					for section: int in [0, 2, 4]: profile[section] = 4000
 				var phases: Array[Dictionary] = _phases(workload, profile, effect["permille"], effect["closure"])
 				var evaluated: Dictionary = Evaluation.heavy_diagnostic_ab(phases, false, false)
 				var comparison: Dictionary = evaluated["workloads"][workload]

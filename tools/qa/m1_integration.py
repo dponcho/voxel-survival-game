@@ -29,7 +29,7 @@ def check(command, name, marker, timeout=300):
 if __name__ == "__main__":
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/benchmark_method_validation.gd"],
-          "m1-diagnostic-method-controls", "CAIRN_DIAGNOSTIC_METHOD=")
+          "m1-diagnostic-method-controls", "CAIRN_DIAGNOSTIC_METHOD=", 60)
     controls = json.loads((REPORTS / "m1-diagnostic-method-controls.json").read_text(encoding="utf-8"))
     method = validate_method(controls)
     (REPORTS / "m1-diagnostic-method-validation.json").write_text(json.dumps(method, indent=2), encoding="utf-8")
