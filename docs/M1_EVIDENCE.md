@@ -5,7 +5,97 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: bounded startup attribution
+## Current Windows candidate: matched heavy-route frontier cost comparison
+
+The October 6 increment adds a separate seven-minute H1/H2 off/on/on/off check
+with exact 1,800-tick routes, fresh matching heavy fixtures and bounded workload
+contracts/command fingerprints. Off disables the native frontier scan and its
+analytic/shader-model ledger; shared operation/edit tracing, CSV/UI/renderer
+queries, collision timers, safety and gameplay remain. Disabled coverage retains
+unavailable/null values. Schema 6 partitions complete callback wall time into
+switched/shared spans and preserves last callbacks, preparation/measurement/
+retirement, writer drain and combined finalization/file-I/O evidence. A switched
+result cannot certify total shared diagnostic overhead. The 1% threshold, existing
+stability rules, qualification workloads and world/save/native inputs remain.
+See [measurement semantics and targeted check](M1_HEAVY_DIAGNOSTIC_AB.md).
+
+Implementation `d80aa2514403c0abb88ece4f1b92ebda13c1b256` and bounded saved-verifier/
+raw-evidence corrections through `92e69794aa5026baa740e92154b60126ef8a5a0d` are
+in exported synthetic merge `2216a08bc97676d772e41dee57d6c3bac824be54`. Its tree
+matches the runtime code branch. [CI 37515081002](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002)
+passed all three jobs October 6, completed 19:07 UTC. Static job `112446347243`
+passed 18 Python regressions and five native sanitizer suites. Native job
+`112446482807` reused the exact cache and independently qualified editor/debug/
+release registrations. Export job `112446923547` passed matching-editor import,
+actual route/fixture/actor/rain/tick-end/switch observation, workload mismatch,
+1% boundary/stability/incomplete/failed-evidence classifications, JSON round trips,
+saved CSV/phase/lifetime/edit/frontier reconciliation, existing geometry/streaming/
+collision/eviction/cancellation, all four profiles, short startup route,
+debug/release exports, DLL audit and two fresh offline extractions, including a
+space/Unicode path. No engine installation, compilation or execution ran locally.
+
+Earlier attempts caught saved-verifier defects, not a passing measurement:
+[CI 37513767685](https://github.com/dponcho/voxel-survival-game/actions/runs/37513767685),
+[37514384031](https://github.com/dponcho/voxel-survival-game/actions/runs/37514384031)
+and [37514759975](https://github.com/dponcho/voxel-survival-game/actions/runs/37514759975).
+Godot JSON numbers decode as floats while array membership/equality uses strict
+Variant types. The verifier now normalizes numeric profile values; a round-trip
+regression caught the remaining enum-membership mismatch before export. Edit
+collection is verified from the setup snapshot plus accepted event counts; the
+final tracker is intentionally disabled by normal closure. Regressions retain
+that lifecycle. No coverage or operation gate was suppressed.
+
+All nine raw cloud smoke folders complete without integration failures, retain
+qualification false and include summary/finalization JSON, frame/operation CSVs
+and edit events. An independent downloaded-file audit reconciles 89 scenarios,
+257 native phases, 34,041 operation rows, 11,545 frame rows and 78 edit events.
+Each of three heavy reports contains 27 preparation/measurement/retirement phases
+and both matched quartets: exactly 60 smoke ticks per repeat, corresponding actor
+activity, four H2 accepted edits and one storage write, identical contracts/command
+fingerprints/checkpoints, zero off scan dispatches and one on dispatch per callback.
+Their workload-equivalence and probe-switch verdicts are verified; overhead is
+inconclusive because smoke is short. Shared total overhead remains inconclusive
+with a null causal estimate. The actual release target run remains outstanding.
+
+Both 16³ profiles still fail analytic H1/H2 coverage and H2 edit latency; all four
+coverage alarms and two latency failures remain in saved reports. Every heavy
+headless shader-model verdict is inconclusive, and the optional OpenGL conversion
+probe is explicitly unavailable. Prior private target upload/terrain-budget
+failures remain unwaived. Green integration checks do not establish target
+rendering, physical pacing, diagnostic overhead, startup cause or qualification.
+
+Download [Windows player 11437078383](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002/artifacts/11437078383),
+expiry November 5 at 19:06 UTC. Separate
+[export evidence 11436784553](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002/artifacts/11436784553),
+[native evidence 11436018586](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002/artifacts/11436018586)
+and [symbols 11437208486](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002/artifacts/11437208486)
+retain provenance. The downloaded player/export/native archive digests match
+GitHub's artifact digests; ZIP CRCs, portable checksum/size, x64 PE/PCK, executable/
+pack/report hashes, build IDs, native manifest hashes and eight native/game/offline
+self-test reports match. Completed logs and saved reports were read. Symbols
+remain a separate artifact and were not downloaded for this verification.
+
+| Identity | Verified value |
+| --- | --- |
+| Runtime code branch commit | `92e69794aa5026baa740e92154b60126ef8a5a0d` |
+| Exported merge / game build ID | `2216a08bc97676d772e41dee57d6c3bac824be54` |
+| Native source key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Outer player archive SHA-256 | `b3612f5d5ef7dd894b6ed0a225e0071e802600cb6e07d21754faf0f98d156f7a` |
+| Portable ZIP SHA-256 | `50e5cb6d0e7311fdd4c5ebc265b33fb3950a85332366141a29ddcaa34e41f468` |
+| Portable ZIP bytes | `30002026` |
+| Executable SHA-256 | `9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35` |
+| PCK SHA-256 | `22778b435db7ff839e7079969901a9be00fcbdecee0e9918fff8e917ba950c35` |
+| Export evidence ZIP SHA-256 | `9147ad92b48a0c63f28f1f2f86a8961ab457cbb781fff48a7cad3d382994ff5f` |
+| Native evidence ZIP SHA-256 | `87032cbde78f14fc8766f36833d79c4938804bddded6f41740828a7e2fd2b7d2` |
+
+Startup investigation/report review is complete; its wall spans do not establish
+shader, driver or background-process causation. The smallest next target check is
+one baseline-profile run of the new heavy comparison, retaining the complete
+report folder privately. Review measurement integrity and stability before any
+longer repeat/full matrix. **M1 remains blocked; no target profile qualified.**
+Follow [NEXT_TASK.md](NEXT_TASK.md).
+
+## Previous Windows candidate: bounded startup attribution
 
 The October 4 increment adds script, benchmark physics and render-signal wall
 spans during initialization/preparation/warm-up/retirement and the first N1

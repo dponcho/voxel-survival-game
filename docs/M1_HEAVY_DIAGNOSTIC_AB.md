@@ -29,6 +29,9 @@ zeros. Enabled unavailable/invalid samples invalidate comparison integrity.
 Existing conservative analytic failures and operation-budget evidence remain in
 each report and continue to make a failed workload's comparison inconclusive.
 
+The native edit tracker is observed enabled at setup; its disabled final flag is
+normal closure, reconciled to accepted edit-event counts.
+
 Both modes retain detailed frame CSV/UI/renderer queries, native lifetime and
 phase counters, operation traces, edit tracing/settlement, collision timers,
 proxy storage writes and the existing bounded disk worker. H2's final edit still
@@ -82,3 +85,15 @@ retaining its complete report folder privately. Review equivalence, probe
 dispatch, raw reconciliation and stability before requesting any longer repeat
 or full matrix. The historical startup stall's cause remains unresolved; this
 later comparison does not measure startup instrumentation overhead.
+
+## Verified cloud candidate
+
+[CI 37515081002](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002)
+passed all three jobs October 6. Three saved debug/release heavy smoke reports
+independently reconcile both quartets, all 27 phases per report, callback
+partitions, native operation counters, unavailable off coverage and accepted edit
+events. Workload equivalence and switching are verified; smoke overhead and total
+shared overhead remain inconclusive. All four existing profiles ran; their 16³
+coverage/edit-latency failures remain. Exact portable identity/checksum and raw
+cloud artifact provenance are in [M1_EVIDENCE.md](M1_EVIDENCE.md). No HD 620 heavy
+comparison has been reviewed for this candidate.

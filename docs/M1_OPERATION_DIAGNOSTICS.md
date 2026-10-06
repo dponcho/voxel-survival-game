@@ -1,6 +1,6 @@
 # M1 phase-local operation evidence
 
-Report schema 5 preserves the schema 1 lifetime `native_start`/`native_end`
+Report schema 6 preserves the schema 1 lifetime `native_start`/`native_end`
 counters. Scenario upload/deletion gates now use independently accumulated
 `operation_phase.upload.max_usec` and `operation_phase.deletion.max_usec`.
 The 750 microsecond limit is unchanged. Maxima are never subtracted.
@@ -48,9 +48,9 @@ serialization, writes/flushes and final UI. Its own terminal record write and
 deferred renderer/OS work are explicitly excluded. Smoke timing includes verification
 and logging, so smoke can never pass overhead qualification.
 
-A/B remains the fixed 30-second off/on/on/off workload. Both modes retain phase
+The original flat-fixture A/B remains the fixed 30-second off/on/on/off workload. Both modes retain phase
 totals, sparse 10-microsecond histograms (the last bin includes >=1-second values),
-and up to 64 five-second timing blocks plus a partial block. Baseline detailed
+and up to 64 five-second timing blocks plus a partial block. Flat baseline detailed
 frame probes/traces remain disabled. The comparison uses complete-window time per
 callback and checks both repeats and within-phase block drift against 1%. The
 minimum/maximum repeat ratios give a conservative range, not a statistical

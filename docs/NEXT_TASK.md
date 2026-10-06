@@ -2,76 +2,80 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
-In progress October 6: the bounded matched H1/H2 frontier-cost A/B is implemented
-and undergoing matching-editor/Windows candidate validation. Read
-[M1_HEAVY_DIAGNOSTIC_AB.md](M1_HEAVY_DIAGNOSTIC_AB.md) for the exact switch,
-shared-instrumentation limits and targeted run. Existing evidence below remains
-until a new candidate has actually passed.
+Completed October 6: matched H1/H2 frontier-cost comparison. The title offers
+**Compare heavy-route probe cost (~7 min + loading)**: the existing three-minute
+warm-up, then separate H1 and H2 off/on/on/off quartets, each exactly 1,800 fixed
+60 Hz ticks. Fresh heavy fixtures, actors/rain, routes/camera turns, edits/storage,
+resolution, radii, workers, collision safeguards and native admission caps match.
+The full baseline/matrix and four-minute heavy qualification routes remain.
+Read [M1_HEAVY_DIAGNOSTIC_AB.md](M1_HEAVY_DIAGNOSTIC_AB.md).
 
-Completed bounded startup attribution: six logical initialization/preparation/
-warm-up/retirement/N1 groups, first 64 intervals plus one maximum per group,
-bounded script/physics/render-signal spans, overlap/outside-stage accounting,
-explicit phase crossings and unknown asynchronous renderer origins. The title
-offers **Run startup timing check (~20 s + loading)**, two shortened routes in a
-fresh process. Normal baseline/matrix durations and all workload/demand/budget,
-CSV, world/save and native inputs remain. Read [semantics](M1_STARTUP_ATTRIBUTION.md).
+Only the native frontier scan and analytic/shader-model ledger switch off.
+Dispatch counters prove zero calls off and one per measured callback on. Disabled
+coverage is explicitly unavailable with null minima/exposed counts. Both modes
+retain native operation/edit tracing, collision timers, renderer queries, detailed
+CSV/UI, bounded command fingerprints and proxy storage. Schema 6 separately
+reconciles switched/shared complete-callback costs, final callbacks, phase closure,
+writer drain and combined report finalization. The original 1% threshold and
+stability rules remain; incomplete, stalled, unstable or failed comparisons stay
+inconclusive. Shared instrumentation has no uninstrumented control, so a switched
+probe pass cannot qualify total diagnostic overhead. Its causal estimate stays null.
 
-Two exact-build HD 620 short startup repetitions were reviewed October 6.
-Both complete without integration failures. The historical 184.252 ms stall
-did not recur; smaller early warm-up hitches recur in both, mostly inside the
-render-signal bracket. Both shortened prepared N1 routes retain zero deadline
-misses. Raw CSV/diagnostic/native accounting, 585 retained timing partitions and
-260 interval joins reconcile. No overflow, invalid/dropped spans or unmatched
-signals occur. A recurring early rendering/wait delay is observed; background,
-driver/shader cause and physical presentation remain unverified. Callback/viewport
-times are wall elapsed, not CPU service. Neither the historical stall nor the
-smaller repetitions are waived. Detailed target reports remain private.
+Latest runtime code: `92e69794aa5026baa740e92154b60126ef8a5a0d`.
+[CI 37515081002](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002)
+passed all three jobs October 6, completed 19:07 UTC: 18 Python regressions,
+five native sanitizer suites, matching-editor/import/runtime/evaluator checks,
+saved-JSON round trips, workload/switch/phase/classification regressions,
+debug/release heavy smoke, streaming/collision/edit/eviction/cancellation,
+all four profiles, the short startup route, DLL audit and two fresh offline
+extractions (including a space/Unicode path). No engine ran or compiled locally.
 
-Latest code: `4df6cc2042f9778350b8ade48b16872c052e7c2a`.
-[CI 37225602689](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689)
-passed all three jobs on October 4. Eighteen Python regressions, five native
-sanitizer suites, matching-editor/evaluator/trace checks, all four profiles, the
-short release route, debug/release exports, DLL audit and two fresh offline
-extractions pass. The initial JSON verifier type mismatch was corrected and has
-a round-trip regression. Six reports complete without integration failures or
-startup overflow/invalid/dropped spans; 1,632 retained partitions were independently
-checked. Both 16³ profiles retain analytic coverage failures; every headless
-renderer-model verdict is inconclusive and OpenGL readback remains unavailable.
+Nine saved smoke folders complete without integration failures. Independent
+archive/report review reconciles 89 scenarios, 257 native phases, 34,041 operation
+rows, 11,545 frame rows and 78 edit events. All three heavy smoke reports verify
+both quartets' workload equivalence and probe switching; their one-second routes
+remain inconclusive for overhead. Both 16³ profiles retain H1/H2 analytic coverage
+failures and H2 edit-latency failures. Headless shader-model evidence remains
+inconclusive; the optional OpenGL readback is unavailable. Recorded target upload
+and terrain-budget failures remain unwaived. Cloud success is not HD 620 qualification.
 
-[Windows player 11311923130](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689/artifacts/11311923130)
-expires November 3 at 18:53 UTC. Verified build ID:
-`b7506f9ca2184ee3d59fa5cb1b8fcdd1914182b2`; portable ZIP SHA-256:
-`5d92cdcb885c2243015ae9ef856e4e774f1f6f32271ff999658c1d3d45b40437`.
+[Windows player 11437078383](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002/artifacts/11437078383)
+expires November 5 at 19:06 UTC. Exact exported merge/build ID:
+`2216a08bc97676d772e41dee57d6c3bac824be54`; its tree matches the runtime code.
+Portable `Cairn-windows-x86_64.zip` SHA-256:
+`50e5cb6d0e7311fdd4c5ebc265b33fb3950a85332366141a29ddcaa34e41f468`.
 Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
-Downloaded archives, checksums, identities, native registrations and smoke reports
-match. [Evidence](M1_EVIDENCE.md) retains exact provenance and earlier candidates.
+Downloaded archives/CRCs/checksums, x64 PE/PCK, build/binary identities, native
+registrations and saved reports match. [Evidence](M1_EVIDENCE.md) retains exact
+provenance and earlier candidates. Target measurements and raw reports stay private.
 
-No full target baseline/matrix is requested solely for this reporting increment.
-The two requested startup repeats are now reviewed; no further startup run is
-requested solely for this review. Startup overhead is unqualified by the later
-flat A/B. Failed recorded gates still include analytic H1/H2 coverage
-and isolated target upload limits/one terrain subtotal. Unresolved: pacing,
-unstable flat A/B, heavy diagnostics cost, allocation/deferred-renderer accounting,
-retention, profile comparison and qualification repeats. The truncating desktop
-shader model preserves analytic alarms; it does not establish visible pixels.
-The short repeats also retain preparation/retirement individual-operation budget
-exceedances, outside measured gameplay. Callback wall fractions are not a causal
-estimate of added diagnostics cost. Rain remains an M1 proxy defect deferred to
-M5. No gate or visual motion review is replaced by an overall pass percentage.
+The startup investigation and two exact-build HD 620 short repetitions are
+complete. The historical stall did not recur; smaller early warm-up hitches
+recurred mainly inside the render-signal bracket. Neither shortened N1 route had
+a deadline miss. This observes wall-time rendering/wait delay; shader, driver,
+background-process cause, CPU service and physical presentation remain unverified.
+No further startup reproduction is requested solely for that completed review.
+The heavy comparison does not qualify startup instrumentation overhead.
 
-**Single next implementation task:** add a matched heavy-route diagnostic cost
-comparison. The existing flat A/B cannot qualify the per-frame H1/H2 frontier
-scan. Keep fixtures, routes, actors, edits, resolution, radii, ticks and admission
-caps equivalent; bound storage and separately account the switched probe and
-shared instrumentation. Missing coverage samples must remain explicitly
-unavailable, never a passing zero. Independently verify matched workload, phase
-accounting, stability and saved-report reconciliation, then run affected cloud/
-export/portable checks. Target overhead and coverage still need actual HD 620
-evidence; another full matrix is premature until these measurements are trustworthy.
+**Single next evidence task:** run this candidate once on the HD 620 using
+**32³ render blocks • 1 worker (baseline)** and **Compare heavy-route probe cost
+(~7 min + loading)**, keeping the game visible on AC power. Keep the complete
+report folder privately, including failed/inconclusive results. Review actual
+fixture/route/tick/edit/storage parity, off/on dispatch, unavailable coverage,
+CSV/phase/edit reconciliation, callback/finalization/I/O scope and stability
+before requesting any longer repeat or full matrix. A stable switched-probe
+result still leaves shared diagnostic overhead unqualified. Do not request
+another full matrix before this evidence is trustworthy.
 
-Read `AGENTS.md`, `PERFORMANCE.md`, `TESTING.md`, `docs/M1_FOG_FRONTIER.md`,
-`docs/M1_STARTUP_ATTRIBUTION.md`, `game/scripts/benchmark.gd`,
-`game/scripts/benchmark_diagnostics.gd`, `game/scripts/benchmark_frontier.gd`
-and the existing operation/evaluation/trace tests.
+Unresolved M1 gates include pacing, conservative heavy coverage, recorded upload/
+terrain limits, unstable flat A/B, total diagnostic overhead, allocation/deferred
+renderer accounting, retention, profile comparison and qualification repeats.
+Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
+semantics or workload requirement changed; M2 remains gated.
+
+Read `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_FOG_FRONTIER.md`,
+`docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/
+diagnostics/frontier/evaluation scripts and existing operation/trace tests.
 
 Model: **GPT-6.1 Sol Max** (`gpt-6.1-sol`, effort `max`), the user's default.

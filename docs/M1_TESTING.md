@@ -41,8 +41,10 @@ Do not spend an hour running comparisons on a visibly broken candidate.
 
 ## Short startup reproduction: about 20 seconds plus preparation
 
-The current candidate adds **Run startup timing check (~20 s + loading)** for
-investigating the early warm-up hitch. Keep the baseline profile selected. Each
+The **Run startup timing check (~20 s + loading)** choice remains available for
+investigating the early warm-up hitch. The two requested exact-build HD 620
+repetitions have been reviewed; no additional startup run is requested solely for
+that completed investigation. Keep the baseline profile selected. Each
 launch starts a fresh game process and runs only shortened warm-up and N1 routes.
 The original full baseline and comparison are separate menu choices.
 
