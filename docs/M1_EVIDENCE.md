@@ -5,7 +5,85 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: matched heavy-route frontier cost comparison
+## Current Windows candidate: measurement-method controls
+
+The October 6 validation adds cloud-only injected-clock controls through the
+production diagnostic ledger and heavy evaluator, plus a closed-form independent
+Python oracle. Sixteen cases cover both H1/H2 contracts, stationary/varying routes,
+null/nominal +0.5%/+2% frame intervals and added closure cost. They retain callback
+partitions, final callbacks, setup/closure/drain scope and partial blocks. These
+are hypothetical eligible contracts and modeled clocks, not executed terrain,
+physical A/A, target noise calibration or shared instrumentation qualification.
+
+Stationary null/below-limit controls pass and above-limit/closure controls fail.
+Every perfectly repeatable varying control is inconclusive: the unchanged
+within-phase rule tests stationarity across different route sections. This
+counterexample leaves the general varying-heavy method **unvalidated** while
+confirming its arithmetic and declared classifications. No workload or acceptance
+rule changed. Existing target verdicts remain authoritative. Read
+[M1_MEASUREMENT_METHOD.md](M1_MEASUREMENT_METHOD.md).
+
+Code `eaa86172ae4c5fadf19e9241b9c4f700ff841b70` is exported in synthetic merge
+`c89ee2f6562d4c89c7bf8746d9f8693f1ebba812`; Git trees match exactly.
+[CI 37529525432](https://github.com/dponcho/voxel-survival-game/actions/runs/37529525432)
+passed all three jobs October 6, completed 21:01 UTC. Static job `112495026269`
+passed 25 Python regressions and five native sanitizer suites. Native job
+`112495196764` independently requalified the exact cached editor/debug/release
+registrations; native inputs are unchanged. Windows job `112495961162` passed
+matching-editor import, all sixteen controls and independent oracle, all existing
+runtime/evaluator/saved-report checks, debug/release heavy smoke, streaming/
+collision/edit/eviction/cancellation, four profiles, startup smoke, DLL audit and
+two fresh offline extractions (including space/Unicode). No engine installed,
+compiled or ran locally.
+
+The first attempt [37527915469](https://github.com/dponcho/voxel-survival-game/actions/runs/37527915469)
+failed on pinned-engine typed-array construction before producing controls.
+Direct typed initialization fixed it; the new clock-only check timeout is 60
+seconds. The failed run supplies no measurement verdict or candidate qualification.
+
+Independent downloaded-file review verifies all three artifact digests against
+GitHub, ZIP CRCs/path safety, portable SHA/size, inner/outer build identity, x64 PE/
+PCK, native manifest/template hashes and eight native/game/offline self-test
+reports. The 258,381-byte saved control report (64 modeled phases) reproduces the
+saved independent oracle exactly. All nine raw smoke folders complete with
+qualification false and no integration failures: 89 scenarios, 257 native phases,
+34,028 operation rows, 11,525 frame rows and 78 edit events. Raw callback partitions
+and final callbacks, full/partial timing blocks, native phase operation counters/
+bytes/maxima/lifetime deltas, final report timing and heavy contracts/switching
+reconcile. Flat off CSV/tracing remains explicitly disabled and unavailable.
+Heavy off coverage remains unavailable/null with zero dispatches; heavy on
+retains one dispatch per measured callback. All three shortened heavy quartets
+remain inconclusive. Both 16³ profiles retain H1/H2 analytic coverage failures
+and H2 edit-latency failures. Headless shader-model decisions remain inconclusive;
+OpenGL readback is unavailable. Earlier private target upload/phase-budget failures
+remain unwaived. Cloud success is not HD 620 qualification.
+
+Download [Windows player 11444855103](https://github.com/dponcho/voxel-survival-game/actions/runs/37529525432/artifacts/11444855103),
+expiry November 5 at 21:01 UTC. Separate
+[export evidence 11443763979](https://github.com/dponcho/voxel-survival-game/actions/runs/37529525432/artifacts/11443763979),
+[native evidence 11443308611](https://github.com/dponcho/voxel-survival-game/actions/runs/37529525432/artifacts/11443308611)
+and [symbols 11444830206](https://github.com/dponcho/voxel-survival-game/actions/runs/37529525432/artifacts/11444830206)
+retain provenance. Symbols were not downloaded for verification.
+
+| Identity | Verified value |
+| --- | --- |
+| Validation code commit | `eaa86172ae4c5fadf19e9241b9c4f700ff841b70` |
+| Exported merge / game build ID | `c89ee2f6562d4c89c7bf8746d9f8693f1ebba812` |
+| Native source key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Outer player archive SHA-256 | `95859821e26ee51600c282bd6fccad7dc7fef5b5617c1ae5ccb265174bf80fd6` |
+| Portable ZIP SHA-256 | `e2cb15fd4319b2cebc59bdaefefdc947d31fb35edf16b80f071827f51dd82c21` |
+| Portable ZIP bytes | `30005765` |
+| Executable SHA-256 | `9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35` |
+| PCK SHA-256 | `9ed6fbcb291b68ece1d348036077659b8886e1a803ff303bf5122ace500fe2b3` |
+| Export evidence ZIP SHA-256 | `44010534cb062147d58ec8d722199e4547073b823145108a6de0a0ba2ce68637` |
+| Native evidence ZIP SHA-256 | `2647e80672530c5d4b25eeb475a8e8c64d682968a60f82f7351a51fda5996a9c` |
+
+The target-review entry below concerns the earlier build, not this candidate.
+No new laptop run is requested solely for method validation. The next bounded
+work is supplementary route-matched calibration with legacy gates preserved;
+see [NEXT_TASK.md](NEXT_TASK.md). M1 remains blocked; no target profile qualified.
+
+## Previous Windows candidate: matched heavy-route frontier cost comparison
 
 The October 6 increment adds a separate seven-minute H1/H2 off/on/on/off check
 with exact 1,800-tick routes, fresh matching heavy fixtures and bounded workload

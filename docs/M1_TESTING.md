@@ -75,6 +75,11 @@ an individual upload failure keep both overhead verdicts inconclusive. No furthe
 laptop run is requested solely for that review. Follow [NEXT_TASK.md](NEXT_TASK.md)
 before a new candidate or any repeat/matrix.
 
+The [method investigation](M1_MEASUREMENT_METHOD.md) separately exercises synthetic
+null/positive clocks in the pinned engine. It tests the decision rule and does
+not calibrate target noise or total shared overhead. Follow the updated handoff
+before requesting physical A/A, another heavy repeat or qualification runs.
+
 ## Automatic baseline: about 24 minutes plus preparation
 
 Plug the target laptop into AC power. Use your normal Windows power setting and

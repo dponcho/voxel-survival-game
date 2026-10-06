@@ -21,33 +21,41 @@ stability rules remain; incomplete, stalled, unstable or failed comparisons stay
 inconclusive. Shared instrumentation has no uninstrumented control, so a switched
 probe pass cannot qualify total diagnostic overhead. Its causal estimate stays null.
 
-Latest runtime code: `92e69794aa5026baa740e92154b60126ef8a5a0d`.
-[CI 37515081002](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002)
-passed all three jobs October 6, completed 19:07 UTC: 18 Python regressions,
-five native sanitizer suites, matching-editor/import/runtime/evaluator checks,
-saved-JSON round trips, workload/switch/phase/classification regressions,
-debug/release heavy smoke, streaming/collision/edit/eviction/cancellation,
-all four profiles, the short startup route, DLL audit and two fresh offline
-extractions (including a space/Unicode path). No engine ran or compiled locally.
+Latest validation code: `eaa86172ae4c5fadf19e9241b9c4f700ff841b70`.
+The heavy gameplay/probe implementation through `92e69794aa5026baa740e92154b60126ef8a5a0d`
+remains intact; the new cloud-only controls exercise the actual ledger/evaluator
+with injected clocks and hypothetical eligible workload contracts.
+[CI 37529525432](https://github.com/dponcho/voxel-survival-game/actions/runs/37529525432)
+passed all three jobs October 6, completed 21:01 UTC: 25 Python regressions,
+five native sanitizer suites, native editor/debug/release registration checks,
+16 method controls/64 modeled phases and independent saved-result reconciliation,
+existing matching-editor/import/runtime/evaluator checks, debug/release heavy
+smoke, streaming/collision/edit/eviction/cancellation, all four profiles, the short
+startup route, DLL audit and two fresh offline extractions (including a space/
+Unicode path). The first control attempt failed on typed-array construction;
+the bounded correction passed. No engine ran or compiled locally.
 
 Nine saved smoke folders complete without integration failures. Independent
-archive/report review reconciles 89 scenarios, 257 native phases, 34,041 operation
-rows, 11,545 frame rows and 78 edit events. All three heavy smoke reports verify
+archive/report review reconciles 89 scenarios, 257 native phases, 34,028 operation
+rows, 11,525 frame rows and 78 edit events. All three heavy smoke reports verify
 both quartets' workload equivalence and probe switching; their one-second routes
 remain inconclusive for overhead. Both 16³ profiles retain H1/H2 analytic coverage
 failures and H2 edit-latency failures. Headless shader-model evidence remains
 inconclusive; the optional OpenGL readback is unavailable. Recorded target upload
 and terrain-budget failures remain unwaived. Cloud success is not HD 620 qualification.
 
-[Windows player 11437078383](https://github.com/dponcho/voxel-survival-game/actions/runs/37515081002/artifacts/11437078383)
-expires November 5 at 19:06 UTC. Exact exported merge/build ID:
-`2216a08bc97676d772e41dee57d6c3bac824be54`; its tree matches the runtime code.
+[Windows player 11444855103](https://github.com/dponcho/voxel-survival-game/actions/runs/37529525432/artifacts/11444855103)
+expires November 5 at 21:01 UTC. Exact exported merge/build ID:
+`c89ee2f6562d4c89c7bf8746d9f8693f1ebba812`; its tree matches the validation code.
 Portable `Cairn-windows-x86_64.zip` SHA-256:
-`50e5cb6d0e7311fdd4c5ebc265b33fb3950a85332366141a29ddcaa34e41f468`.
+`e2cb15fd4319b2cebc59bdaefefdc947d31fb35edf16b80f071827f51dd82c21`.
 Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
 Downloaded archives/CRCs/checksums, x64 PE/PCK, build/binary identities, native
 registrations and saved reports match. [Evidence](M1_EVIDENCE.md) retains exact
 provenance and earlier candidates. Target measurements and raw reports stay private.
+The existing target report belongs to the earlier `2216a08bc97676d772e41dee57d6c3bac824be54`
+build; the new candidate has no exact-build target report and needs no target run
+solely for these cloud method controls.
 
 The startup investigation and two exact-build HD 620 short repetitions are
 complete. The historical stall did not recur; smaller early warm-up hitches
@@ -76,21 +84,41 @@ pixels and the underlying readiness/scheduling/driver causes remain unverified.
 Shared total overhead remains inconclusive with a null causal estimate. Detailed
 target measurements, report identities and raw reports stay private.
 
-**Single next implementation task:** isolate and correct the recurring mesh-readiness
-gap at the existing fog frontier. Use the private reviewed alarms to build a
-bounded deterministic cloud boundary-crossing replay, inspect required-region
-geometry and actual demand/admission/submission state, and correct the demonstrated
-cause. Preserve the conservative analytic gate, separate conversion model,
-unavailable coverage, 96/128 m radii, fixtures/routes/actors/edits/ticks, worker and
-admission caps, operation evidence and all acceptance thresholds. Do not silence
-the alarms by widening fog, weakening required coverage or excluding failures.
-Keep timing instability, the recorded upload failure and shared diagnostic
-controls as unresolved gates. Any runtime correction needs matching cloud checks
-and a verified portable Windows candidate before a focused target confirmation.
+The measurement-method investigation now takes precedence over another target
+repeat or the coverage correction. The legacy rule requires different five-second
+sections of a route to have nearly constant mean frame cost. Synthetic injected
+clocks demonstrate that this can reject perfectly repeatable varying routes at
+both zero and known above-limit added cost. The independent arithmetic control
+and pinned-engine execution are recorded in
+[M1_MEASUREMENT_METHOD.md](M1_MEASUREMENT_METHOD.md). These are software controls,
+not physical target A/A or a qualification result. Matched private target analysis
+also retains between-repeat mismatches; a successor cannot retroactively pass the
+existing report. The legacy rule and recorded verdicts remain authoritative.
 
-No further laptop run is requested solely for this review. Another full baseline
-or matrix is premature; first resolve the bounded coverage correction and retain
-the original cost/stability verdicts. Startup attribution/review remains complete.
+**Single next implementation task:** build and validate a supplementary route-matched
+calibration experiment. Separate repeatable route shape from between-repeat drift
+with identical-mode and calibrated positive controls, predeclared matching
+simulation/route sections and a complete whole-trial cost window. Preserve actual
+fixtures/routes/actors/edits/storage/ticks, 96/128 m radii, resolution, workers and
+admission caps, unavailable coverage, callbacks/finalization/file-I/O scope and
+all failing evidence. Account separately for the minimal common measurement
+harness and still-shared instrumentation. Keep the 1% cost requirement and legacy
+classifier unchanged. Adopting a successor for qualification is a separate
+measurement-policy decision after validation; this task changes no acceptance rule.
+
+Use matching pinned-engine cloud checks and independently reconciled saved null,
+positive, incomplete, unstable and failed-workload cases. Any target-facing runtime
+change needs a verified portable Windows candidate before one focused target
+calibration. First demonstrate that the instrument can discriminate its declared
+controls; do not request another full matrix to compensate for an unvalidated
+method. No additional laptop run is requested solely for this review.
+
+The recurring frontier readiness gap and recorded H2 upload remain separate
+workload corrections: use the private alarms for a deterministic cloud boundary
+replay, inspect required-region geometry and demand/admission/submission state,
+and correct the demonstrated cause. Do not widen fog, weaken coverage, suppress
+operation failures or trim samples. Timing instability and shared total overhead
+remain unresolved. Startup attribution/review remains complete.
 
 Unresolved M1 gates include pacing, conservative heavy coverage, recorded upload/
 terrain limits, unstable flat A/B, total diagnostic overhead, allocation/deferred

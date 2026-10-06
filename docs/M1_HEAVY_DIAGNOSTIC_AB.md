@@ -114,3 +114,13 @@ causation remain unverified. Preparation/retirement budget exceedances and a
 warm-up deadline miss remain unwaived. Detailed target measurements and reports
 stay private. No additional target repeat/full matrix is requested solely for
 this review. Follow [NEXT_TASK.md](NEXT_TASK.md) for the bounded cloud correction.
+
+## Measurement-method review
+
+The clock-control investigation is recorded in
+[M1_MEASUREMENT_METHOD.md](M1_MEASUREMENT_METHOD.md). It tests the legacy evaluator's
+stationarity assumption using identical repeats with known frame clocks and
+closure costs. These controls are not physical A/A or executed heavy workloads.
+The legacy classifier and the target report's inconclusive results remain
+authoritative; coverage, operation and total-shared-overhead gates remain open.
+Supplementary route-matched calibration is the next bounded measurement task.
