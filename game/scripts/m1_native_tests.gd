@@ -7,6 +7,7 @@ func _initialize() -> void:
 	_check_evaluation()
 	failures.append_array(await load("res://scripts/benchmark_diagnostic_tests.gd").verify_flush(process_frame))
 	failures.append_array(await load("res://scripts/benchmark_lifecycle_tests.gd").verify(self))
+	failures.append_array(await load("res://scripts/benchmark_heavy_ab_tests.gd").verify_runtime(self))
 	var library := VoxelBlockyLibrary.new()
 	var cube := VoxelBlockyModelCube.new()
 	var material := StandardMaterial3D.new()
@@ -59,6 +60,7 @@ func _initialize() -> void:
 
 func _check_evaluation() -> void:
 	failures.append_array(load("res://scripts/benchmark_diagnostic_tests.gd").verify())
+	failures.append_array(load("res://scripts/benchmark_heavy_ab_tests.gd").verify())
 	failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify())
 	failures.append_array(load("res://scripts/benchmark_frontier_tests.gd").verify())
 	var evaluation = load("res://scripts/benchmark_evaluation.gd")

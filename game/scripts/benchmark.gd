@@ -15,6 +15,8 @@ const SCENARIOS: Array[Dictionary] = [
 	{"id": "AB-on-2", "seconds": 30.0, "fixture": 0, "actors": 12, "rate": 0.0},
 	{"id": "AB-off-2", "seconds": 30.0, "fixture": 0, "actors": 12, "rate": 0.0}
 ]
+var scenarios: Array[Dictionary] = SCENARIOS.duplicate(true)
+const HeavyAB = preload("res://scripts/benchmark_heavy_ab.gd")
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
 const Diagnostics = preload("res://scripts/benchmark_diagnostics.gd")
@@ -116,17 +118,21 @@ var acknowledgement_started_usec: int = 0
 var acknowledgement_started_sample: int = 0
 var acknowledgement_started_wall: float = 0.0
 var invalid_gpu_samples: int = 0
+var workload_contract: Dictionary = {}
+var command_hash: int = 0
+var route_checkpoints: Array[Dictionary] = []
+var switched_callback_usec: int = 0
 
 func _open_reports(suffix: String = "") -> void:
 	csv_bytes = 0
 	operation_bytes = 0
 	edit_bytes = 0
-	var name: String = str(SCENARIOS[scenario_index]["id"]) + suffix + "-frames.csv"
+	var name: String = str(scenarios[scenario_index]["id"]) + suffix + "-frames.csv"
 	operation_file = name + ".operations.csv"
 	edit_file = name + ".edits.jsonl"
 	sink.start(report_dir + "/" + name)
 	reports_open = true
-	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec,diagnostic_frame," + ",".join(Frontier.COLUMNS))
+	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec,diagnostic_frame," + ",".join(Frontier.COLUMNS) + ",diagnostic_switched_usec,diagnostic_shared_usec")
 	operation_lines.append("native_frame,phase,start_usec,end_usec,phase_boundary,upload_count,upload_bytes,upload_usec,upload_max_usec,upload_max_bytes,upload_max_start_usec,deletion_count,deletion_bytes,deletion_usec,deletion_max_usec,deletion_max_bytes,deletion_max_start_usec,deletion_max_kind")
 
 func _begin_phase(label: String, trace: bool = true) -> void:
@@ -140,7 +146,7 @@ func _begin_phase(label: String, trace: bool = true) -> void:
 			startup.stop(now, "initial gameplay ended before interval window filled")
 			_disconnect_startup_signals()
 		else:
-			startup.begin_phase(phase_id, str(SCENARIOS[scenario_index]["id"]), label, now)
+			startup.begin_phase(phase_id, str(scenarios[scenario_index]["id"]), label, now)
 
 func _drain_operation_frames() -> void:
 	for frame: Dictionary in probe.take_operation_frames():
@@ -193,7 +199,7 @@ func _close_phase() -> Dictionary:
 	_drain_edit_events()
 	_flush_operations()
 	_flush_edits()
-	result.merge({"scenario": SCENARIOS[scenario_index]["id"], "phase": phase_name,
+	result.merge({"scenario": scenarios[scenario_index]["id"], "phase": phase_name,
 		"raw_operations": operation_file if bool(result["tracing"]) else "disabled for A/B baseline",
 		"native_start": phase_start_counters, "native_end": probe.snapshot()})
 	operation_phases.append(result)
@@ -236,6 +242,10 @@ func _ready() -> void:
 		if argument.begins_with("--workers="): workers = int(argument.get_slice("=", 1))
 		if argument.begins_with("--benchmark-mode="): mode = argument.get_slice("=", 1)
 		if argument.begins_with("--matrix-index="): matrix_index = int(argument.get_slice("=", 1))
+	if mode == "heavy-ab":
+		scenarios = HeavyAB.scenarios(SCENARIOS[0])
+		startup.stop(Time.get_ticks_usec(), "startup trace not run in the separate heavy comparison")
+		_disconnect_startup_signals()
 	if mode == "matrix":
 		render_size = 32 if matrix_index % 2 == 0 else 16
 		workers = 1 if matrix_index < 2 else 2
@@ -388,7 +398,8 @@ func _start_scenario() -> void:
 	state = "loading"
 	_open_reports("-preparation")
 	_begin_phase("preparation")
-	var scenario: Dictionary = SCENARIOS[scenario_index]
+	var scenario: Dictionary = scenarios[scenario_index]
+	var workload: String = HeavyAB.workload(scenario)
 	route_origin = Vector3(10, -10, 2) if scenario["id"] == "N2" else Vector3(10, 8, 10)
 	player = route_origin
 	velocity = Vector3.ZERO
@@ -400,11 +411,56 @@ func _start_scenario() -> void:
 	status_label.text = "Preparing %s • %d³ render blocks • %d terrain worker(s)" % [scenario["id"], render_size, workers]
 	detail_label.text = "Fixed 1280 × 720 • visual radius 96 m • data radius 128 m\nTemporary engine fixtures; no player world is touched."
 	actor_instances.multimesh.visible_instance_count = int(scenario["actors"])
-	rain.visible = scenario["id"] == "H2"
+	rain.visible = workload == "H2"
 	var paced: bool = scenario["id"] == "paced"
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if paced else DisplayServer.VSYNC_DISABLED)
 	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), not str(scenario["id"]).begins_with("AB-off-"))
-	probe.configure(workers, str(scenario["id"]).begins_with("H"))
+	_configure_terrain_budget(workload.begins_with("H"))
+
+func _configure_terrain_budget(heavy: bool) -> void:
+	probe.configure(workers, heavy)
+
+func _workload_id() -> String:
+	return HeavyAB.workload(scenarios[scenario_index])
+
+func _frontier_sample() -> Dictionary:
+	if not _workload_id() in ["H1", "H2"]: return {}
+	if not HeavyAB.frontier_enabled(scenarios[scenario_index]):
+		return {"status": "unavailable", "reason": "frontier probe disabled for matched A/B baseline"}
+	var begin: int = Time.get_ticks_usec()
+	# Count actual calls at the dispatch boundary, including unavailable returns.
+	diagnostics.switched_calls += 1
+	var sample: Dictionary = _scan_frontier()
+	sample.merge({"frame": sample_count, "camera_x": camera.position.x, "camera_y": camera.position.y,
+		"camera_z": camera.position.z, "camera_yaw": camera.rotation.y})
+	var result: Dictionary = frontier.record(sample, Frontier.fog_configuration(benchmark_environment, camera.far))
+	switched_callback_usec += Time.get_ticks_usec() - begin
+	return result
+
+func _scan_frontier() -> Dictionary:
+	# Same bounded native scan as ordinary H1/H2, including temporary H2 edits.
+	return probe.sample_frontier(terrain, camera, AABB(Vector3(-4096, -16, -4096), Vector3(8192, 23, 8192)))
+
+func _capture_workload_contract() -> Dictionary:
+	var scenario: Dictionary = scenarios[scenario_index]
+	var window: Vector2i = DisplayServer.window_get_size()
+	return {"version": "m1-heavy-frontier-ab-1", "workload": _workload_id(),
+		"fixture": int(scenario["fixture"]), "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+		"actors": actor_instances.multimesh.visible_instance_count, "edit_rate": float(scenario["rate"]),
+		"rain_instances": rain.multimesh.instance_count if rain.visible else 0,
+		"autosave_interval_s": 1.0 if _workload_id() == "H2" else null,
+		"route_origin": [route_origin.x, route_origin.y, route_origin.z],
+		"player_start": [player.x, player.y, player.z], "seconds": _duration(),
+		"physics_hz": Engine.physics_ticks_per_second, "max_physics_steps": Engine.max_physics_steps_per_frame,
+		"resolution": [1280, 720], "reported_window": [window.x, window.y], "render_scale": 1.0,
+		"render_block": terrain.mesh_block_size, "workers": VoxelEngine.get_thread_count(),
+		"visual_radius": viewer.view_distance, "data_radius": data_viewer.view_distance,
+		"terrain_bounds": [-4096, -16, -4096, 8192, 48, 8192], "triangle_colliders": terrain.generate_collisions,
+		"camera_fov": camera.fov, "camera_far": camera.far, "fog": Frontier.fog_configuration(benchmark_environment, camera.far),
+		"native_policy": {"frame_usec": 2000, "frame_upload_bytes": 1048576, "single_upload_bytes": 262144,
+			"terrain_jobs": 64, "mesh_results": 16, "mesh_result_bytes": 33554432},
+		"edit_trace": edit_trace_active, "operation_trace": true, "render_queries": true,
+		"simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap"}
 
 func _begin_measurement() -> void:
 	state = "reporting"
@@ -455,6 +511,8 @@ func _begin_measurement() -> void:
 	acknowledgement_started_sample = 0
 	acknowledgement_started_wall = 0.0
 	invalid_gpu_samples = 0
+	command_hash = 0
+	route_checkpoints.clear()
 	diagnostics = Diagnostics.new()
 	frontier = Frontier.new()
 	frontier.configure_renderer_model({"godot_commit": build_info.get("godot_commit", ""),
@@ -462,8 +520,8 @@ func _begin_measurement() -> void:
 		"platform": initial_machine["platform"], "display": initial_machine["display"]})
 	diagnostics.start(Time.get_ticks_usec())
 	_open_reports()
-	var id: String = SCENARIOS[scenario_index]["id"]
-	edit_trace_active = id == "N2" or id == "H2"
+	var id: String = scenarios[scenario_index]["id"]
+	edit_trace_active = _workload_id() == "N2" or _workload_id() == "H2"
 	probe.start_edit_trace(edit_trace_active)
 	var label: String = "gameplay"
 	if id == "warmup": label = "warmup"
@@ -472,8 +530,12 @@ func _begin_measurement() -> void:
 	_begin_phase(label, not id.begins_with("AB-off-"))
 	next_proxy_save = 1.0
 	proxy_saves = 0
+	if HeavyAB.active(scenarios[scenario_index]):
+		_tick_proxies(0.0)
+		actor_ticks = 0
+		workload_contract = _capture_workload_contract()
 	last_frame_usec = Time.get_ticks_usec()
-	if str(SCENARIOS[scenario_index]["id"]).begins_with("AB-off-"):
+	if str(scenarios[scenario_index]["id"]).begins_with("AB-off-"):
 		status_label.text = "Measuring diagnostic baseline • 30 seconds"
 		detail_label.text = "The scene continues running. Detailed counters and live labels are paused for this comparison."
 	if mode == "explore": Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -497,20 +559,14 @@ func _physics_process(delta: float) -> void:
 
 func _physics_step(delta: float) -> void:
 	if state != "running": return
+	var matched: bool = HeavyAB.active(scenarios[scenario_index])
+	# Fix the endpoint despite different numbers of renders per physics tick.
+	if matched and simulation_ticks >= int(round(_duration() * 60.0)): return
 	simulation_ticks += 1
-	scenario_elapsed += delta
-	var id: String = SCENARIOS[scenario_index]["id"]
+	scenario_elapsed = float(simulation_ticks) / 60.0 if matched else scenario_elapsed + delta
+	var id: String = _workload_id()
 	var heavy: bool = id.begins_with("H")
-	var target: Vector3
-	if heavy:
-		# Persistent outward motion; the camera reverses every 15 seconds without teleporting the viewer.
-		target = route_origin + Vector3(6.5 * scenario_elapsed, 0, 0)
-	elif id == "R1" and scenario_elapsed <= 5.0:
-		target = player
-	elif id == "R1" or id.begins_with("AB-"):
-		target = route_origin
-	else:
-		target = route_origin + Vector3(sin(scenario_elapsed * 0.07) * 22.0, 0, 0)
+	var target: Vector3 = _route_target()
 	var wanted: Vector3 = target - player
 	if mode == "explore":
 		var axes := Vector2(float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A)), float(Input.is_physical_key_pressed(KEY_S)) - float(Input.is_physical_key_pressed(KEY_W)))
@@ -537,8 +593,14 @@ func _physics_step(delta: float) -> void:
 			integration_failures.append(id + ": collision route left the safe fixture")
 	collision_usec += Time.get_ticks_usec() - collision_start
 	_sync_pose()
+	if matched:
+		# Bounded intent fingerprint, not a world/content hash. Includes actual
+		# due-edit scheduling so deferred commands cannot appear matched.
+		command_hash = (command_hash * 65599 + simulation_ticks + int(round(target.x * 1000.0)) + next_edit * 31 + int(camera.rotation.y * 1000.0)) & 0x7fffffff
+		if simulation_ticks == 1 or simulation_ticks % 900 == 0 or simulation_ticks == int(round(_duration() * 60.0)):
+			route_checkpoints.append({"tick": simulation_ticks, "target_x": target.x, "yaw": camera.rotation.y})
 	_tick_proxies(delta)
-	var rate: float = float(SCENARIOS[scenario_index]["rate"])
+	var rate: float = float(scenarios[scenario_index]["rate"])
 	if rate > 0.0 and scenario_elapsed >= float(next_edit) / rate:
 		# A busy native read lock defers the due command to a later fixed tick.
 		# At most one command is attempted per tick; missed work stays counted.
@@ -548,12 +610,21 @@ func _physics_step(delta: float) -> void:
 		else: report_io_failed = true
 		next_proxy_save += 1.0
 
+func _route_target() -> Vector3:
+	var id: String = _workload_id()
+	if id.begins_with("H"):
+		# Persistent outward motion; only the camera reverses.
+		return route_origin + Vector3(6.5 * scenario_elapsed, 0, 0)
+	if id == "R1" and scenario_elapsed <= 5.0: return player
+	if id == "R1" or id.begins_with("AB-"): return route_origin
+	return route_origin + Vector3(sin(scenario_elapsed * 0.07) * 22.0, 0, 0)
+
 func _sync_pose(reset_angles: bool = false) -> void:
 	viewer.position = player
 	data_viewer.position = player
 	camera.position = player + Vector3(0, 1.65, 0)
 	if mode != "explore" or reset_angles:
-		var id: String = SCENARIOS[scenario_index]["id"]
+		var id: String = _workload_id()
 		camera.rotation.y = -PI * 0.5
 		if id.begins_with("H"): camera.rotation.y += PI * float(int(scenario_elapsed / 15.0) % 2)
 		if id == "N3": camera.rotation.y += scenario_elapsed * TAU / 30.0
@@ -576,7 +647,7 @@ func _tick_proxies(delta: float) -> void:
 
 func _edit_border(tool: VoxelTool) -> bool:
 	# One toggled voxel on a 16/32 border. A bounded proxy edit, not inventory or durable saving.
-	var edit_height: int = -8 if SCENARIOS[scenario_index]["id"] == "N2" else 6
+	var edit_height: int = -8 if scenarios[scenario_index]["id"] == "N2" else 6
 	var position_value := Vector3i(int(round(player.x / 32.0)) * 32, edit_height, int(floor(player.z)) + 3)
 	if not tool.is_area_editable(AABB(Vector3(position_value) - Vector3.ONE, Vector3.ONE * 3.0)):
 		rejected_edits += 1
@@ -602,6 +673,7 @@ func _edit_border(tool: VoxelTool) -> bool:
 func _process(_delta: float) -> void:
 	if state == "finished": return
 	var begin: int = Time.get_ticks_usec()
+	switched_callback_usec = 0
 	var measured: bool = state == "running" or state == "acknowledging"
 	if startup.active:
 		startup.begin_process(begin, sample_count + 1 if measured else null, diagnostics.last_callback_usec if measured and diagnostics.callbacks > 0 else null)
@@ -613,7 +685,7 @@ func _process(_delta: float) -> void:
 	if startup.active: startup.record_span("process", begin, Time.get_ticks_usec())
 	if measured:
 		# Includes row formatting, batch submission, live UI and the final callback.
-		diagnostics.record_callback(begin, Time.get_ticks_usec())
+		diagnostics.record_callback(begin, Time.get_ticks_usec(), switched_callback_usec)
 		measurement_usec = diagnostics.callback_usec
 		if not finish_reason.is_empty(): _finish("failed", finish_reason)
 		elif end_requested: _complete_scenario_if_ready(Time.get_ticks_usec())
@@ -641,7 +713,7 @@ func _process_frame(now: int) -> void:
 	if edit_trace_active:
 		probe.tick_edit_trace()
 		_drain_edit_events()
-	if phase_name != "overhead_diagnostic" or not str(SCENARIOS[scenario_index]["id"]).begins_with("AB-off-"):
+	if phase_name != "overhead_diagnostic" or not str(scenarios[scenario_index]["id"]).begins_with("AB-off-"):
 		_drain_operation_frames()
 	if state == "draining":
 		var drain: Dictionary = probe.snapshot()
@@ -656,7 +728,7 @@ func _process_frame(now: int) -> void:
 				_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 				return
 			scenario_index += 1
-			if scenario_index >= (2 if mode == "startup" else SCENARIOS.size()):
+			if scenario_index >= (2 if mode == "startup" else scenarios.size()):
 				_finish("completed", "Short startup timing check completed; only warmup and N1 ran" if mode == "startup" else "All applicable engine scenarios ran")
 			else: _start_scenario()
 		return
@@ -681,8 +753,8 @@ func _process_frame(now: int) -> void:
 	sum_ms += frame_ms
 	max_ms = maxf(max_ms, frame_ms)
 	histogram[mini(100000, int(ceil(frame_ms * 100.0)))] += 1
-	var id: String = SCENARIOS[scenario_index]["id"]
-	var deadline: float = 33.333 if id.begins_with("H") or (id == "R1" and scenario_elapsed <= 5.0) else 16.667
+	var id: String = scenarios[scenario_index]["id"]
+	var deadline: float = 33.333 if _workload_id().begins_with("H") or (id == "R1" and scenario_elapsed <= 5.0) else 16.667
 	if frame_ms > deadline: misses += 1
 	if id.begins_with("AB-off-"):
 		# Minimal interval/histogram baseline. Disable per-frame probes, GPU
@@ -729,14 +801,7 @@ func _process_frame(now: int) -> void:
 	peaks["triangles"] = maxi(int(peaks.get("triangles", 0)), triangles)
 	var gpu_bytes: int = int(Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED))
 	if gpu_bytes > 0: peaks["gpu_resource_estimate_bytes"] = maxi(int(peaks.get("gpu_resource_estimate_bytes", 0)), gpu_bytes)
-	var frontier_sample: Dictionary = {}
-	if id == "H1" or id == "H2":
-		# Required fixture geometry and the H2 proxy edits fit this surface envelope.
-		# The scan is conservative: box/frustum overlap does not imply pixel visibility.
-		var sample: Dictionary = probe.sample_frontier(terrain, camera, AABB(Vector3(-4096, -16, -4096), Vector3(8192, 23, 8192)))
-		sample.merge({"frame": sample_count, "camera_x": camera.position.x, "camera_y": camera.position.y,
-			"camera_z": camera.position.z, "camera_yaw": camera.rotation.y})
-		frontier_sample = frontier.record(sample, Frontier.fog_configuration(benchmark_environment, camera.far))
+	var frontier_sample: Dictionary = _frontier_sample()
 	var upstream_stats: Dictionary = VoxelEngine.get_stats()
 	var pools: Dictionary = upstream_stats["memory_pools"]
 	for key: String in ["voxel_total", "voxel_used", "block_count"]:
@@ -744,7 +809,7 @@ func _process_frame(now: int) -> void:
 	raw_lines.append("%d,%.6f,%.6f,%.6f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.6f,%.6f,%d,%d" % [sample_count, elapsed_wall, scenario_elapsed, frame_ms,
 		counters["generation_jobs"], counters["mesh_jobs"], counters["result_jobs"], terrain_stats.get("pending_data", 0), terrain_stats.get("pending_mesh", 0),
 		counters.get("private_bytes", 0), counters.get("working_set", 0), draws, triangles, accepted_edits, readiness_stops,
-		now, render_cpu, render_gpu, diagnostics.last_callback_usec, diagnostics.callbacks] + "," + ",".join(Frontier.csv_fields(frontier_sample)))
+		now, render_cpu, render_gpu, diagnostics.last_callback_usec, diagnostics.callbacks] + "," + ",".join(Frontier.csv_fields(frontier_sample)) + ",%d,%d" % [diagnostics.last_switched_usec, diagnostics.last_shared_usec])
 	if raw_lines.size() >= 128: _flush_csv()
 	if sample_count % 30 == 0:
 		status_label.text = "%s • %d / %d seconds • %d³ / %d worker(s)" % [id, int(scenario_elapsed), int(_duration()), render_size, workers]
@@ -757,7 +822,7 @@ func _process_frame(now: int) -> void:
 func _duration() -> float:
 	if mode == "explore": return 1800.0
 	if mode == "startup": return 1.0 if test_mode else 10.0
-	return 1.0 if test_mode else float(SCENARIOS[scenario_index]["seconds"])
+	return 1.0 if test_mode else float(scenarios[scenario_index]["seconds"])
 
 func _percentile(percent: float) -> float:
 	var remaining: int = int(ceil(float(sample_count) * percent))
@@ -795,9 +860,9 @@ func _end_scenario() -> void:
 	if cancelled:
 		_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 		return
-	var scenario: Dictionary = SCENARIOS[scenario_index]
+	var scenario: Dictionary = scenarios[scenario_index]
 	var id: String = scenario["id"]
-	var heavy: bool = id.begins_with("H")
+	var heavy: bool = _workload_id().begins_with("H")
 	if id.begins_with("AB-off-"):
 		# One end sample verifies a real fixture without measuring these probes
 		# as part of the baseline frame series.
@@ -840,7 +905,7 @@ func _end_scenario() -> void:
 	reasons.append_array(Evaluation.operation_failures(measured_phase))
 	var overhead: float = float(measurement_usec) / maxf(sum_ms * 1000.0, 1.0)
 	if overhead >= 0.01: reasons.append("Diagnostic callback wall time reached 1%; A/B qualification required")
-	var frontier_report: Dictionary = frontier.snapshot(id == "H1" or id == "H2")
+	var frontier_report: Dictionary = frontier.snapshot(_workload_id() in ["H1", "H2"], HeavyAB.frontier_enabled(scenario))
 	frontier_report["fog"] = Frontier.fog_configuration(benchmark_environment, camera.far)
 	if frontier_report["evaluation"] == "failed": reasons.append("Required mesh coverage is unready before fog obscures it")
 	elif frontier_report["evaluation"] == "inconclusive": reasons.append("Fog/frontier qualification is inconclusive; inspect measured and unavailable samples")
@@ -853,6 +918,7 @@ func _end_scenario() -> void:
 			"wall_seconds": acknowledgement_wall,
 			"samples": sample_count - acknowledgement_started_sample if acknowledgement_started_usec > 0 else 0,
 			"scope": "final edit settlement; included in measured frames/native phase; route commands have ended"},
+		"workload": _workload_id(), "frontier_enabled": HeavyAB.frontier_enabled(scenario),
 		"fog_frontier": frontier_report, "edit_visibility": edit_trace, "edit_visibility_events": edit_file if edit_trace_active else "not_run",
 		"reasons": reasons.duplicate(), "samples": sample_count, "average_fps": float(sample_count) * 1000.0 / maxf(sum_ms, 0.001),
 		"p50_ms": _percentile(0.5), "p95_ms": _percentile(0.95), "p99_ms": _percentile(0.99), "p99_9_ms": _percentile(0.999),
@@ -875,6 +941,10 @@ func _end_scenario() -> void:
 		"unavailable_metrics": ["independent non-voxel allocation pools", "physical presentation intervals", "driver-deferred deletion time"],
 		"proxy_autosaves": proxy_saves, "presentation": "application callback intervals; physical scanout unavailable",
 		"durability": "not_run: M1 edits are temporary; storage workload is not a durability test"}
+	if HeavyAB.active(scenario):
+		report["workload_contract"] = workload_contract.duplicate(true)
+		report["workload_evidence"] = {"command_hash": command_hash, "route_checkpoints": route_checkpoints.duplicate(true),
+			"player_end": [player.x, player.y, player.z], "due_edits": next_edit - 1}
 	report.merge(Evaluation.scenario_result(true, hard_failure, reasons))
 	if id.begins_with("AB-"):
 		# Same bounded timing evidence in both modes, including the baseline distribution.
@@ -888,7 +958,7 @@ func _end_scenario() -> void:
 	if mode == "explore":
 		_finish("completed", "Exploration time limit reached; partial engine report saved")
 		return
-	if scenario_index + 1 < SCENARIOS.size() and SCENARIOS[scenario_index + 1]["id"] == "R1":
+	if scenario_index + 1 < scenarios.size() and scenarios[scenario_index + 1]["id"] == "R1":
 		# Revisit the same edited fixture; do not regenerate a substitute world.
 		scenario_index += 1
 		_begin_measurement()
@@ -941,11 +1011,11 @@ func _finish_report(outcome: String, message: String) -> void:
 	await _close_reports()
 	if test_mode:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
-		integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
+		if mode != "heavy-ab": integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	var fog_configuration: Dictionary = Frontier.fog_configuration(benchmark_environment, camera.far)
-	var summary: Dictionary = {"schema": 5, "milestone": "M1", "scope": "short startup reproduction; shortened warmup/N1 only; not a baseline or qualification run" if mode == "startup" else "temporary engine proxy experiment",
+	var summary: Dictionary = {"schema": 6, "milestone": "M1", "scope": "short startup reproduction; shortened warmup/N1 only; not a baseline or qualification run" if mode == "startup" else ("matched heavy-route frontier probe cost experiment; not full H1/H2 qualification" if mode == "heavy-ab" else "temporary engine proxy experiment"),
 		"benchmark_mode": mode, "startup_attribution": startup.snapshot(),
 		"outcome": outcome, "completed": outcome == "completed", "qualified": false,
 		"qualification": "unverified", "target_certification": "unverified: review exact-build reports and all outstanding gates",
@@ -985,11 +1055,15 @@ func _finish_report(outcome: String, message: String) -> void:
 	summary["configuration"]["fog_density"] = benchmark_environment.fog_density
 	summary["configuration"]["fog"] = fog_configuration
 	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
+	summary["diagnostic_heavy_ab"] = Evaluation.heavy_diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["diagnostic_accounting"] = {
 		"unit": "elapsed monotonic wall microseconds; neither CPU service nor additive with overlapping worker/GPU time",
 		"scenario": "measurement setup through last callback, phase close, full writer drain and report construction; excludes preparation/retirement",
 		"final_report": "report-finalization.json; one-time combined reporting cost, outside the switched A/B window",
-		"shared_baseline": "interval/histogram/block accounting, collision timers and native lifetime/phase counters stay enabled",
+		"shared_baseline": "interval/histogram/block accounting, collision timers and native lifetime/phase counters stay enabled; heavy A/B also retains detailed CSV/UI/render queries, operation and edit traces",
+		"callback_partition": "switched scan/evaluation/model wall span plus shared callback remainder; previous callback CSV columns and final callback reconcile separately; file I/O is inside full window",
+		"total_diagnostic_overhead": {"outcome": "inconclusive", "added_fraction": null,
+			"reason": "shared native instrumentation, physics timers and bookkeeping have no uninstrumented control; callback wall spans are not causal overhead"},
 		"qualification": "unverified: switched A/B cannot certify shared baseline or unavailable deferred renderer/OS attribution"}
 	var executable: String = OS.get_executable_path()
 	summary["executable_sha256"] = FileAccess.get_sha256(executable)
@@ -1027,4 +1101,5 @@ func _finish_report(outcome: String, message: String) -> void:
 			status_label.text = "Comparison stopped: the next setting could not start"
 			detail_label.text = "Keep this report. Return to the title and run the remaining settings individually."
 	if test_mode:
+		integration_failures.append_array(load("res://scripts/benchmark_heavy_ab_tests.gd").verify_saved(report_dir))
 		print("CAIRN_M1_SMOKE=" + JSON.stringify(summary))

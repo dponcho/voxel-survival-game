@@ -2,6 +2,12 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+In progress October 6: the bounded matched H1/H2 frontier-cost A/B is implemented
+and undergoing matching-editor/Windows candidate validation. Read
+[M1_HEAVY_DIAGNOSTIC_AB.md](M1_HEAVY_DIAGNOSTIC_AB.md) for the exact switch,
+shared-instrumentation limits and targeted run. Existing evidence below remains
+until a new candidate has actually passed.
+
 Completed bounded startup attribution: six logical initialization/preparation/
 warm-up/retirement/N1 groups, first 64 intervals plus one maximum per group,
 bounded script/physics/render-signal spans, overlap/outside-stage accounting,

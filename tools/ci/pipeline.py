@@ -175,6 +175,10 @@ def prepare():
                                    if "ERROR:" in line or "SCRIPT ERROR:" in line)
             print("\n".join(errors)[:8000], flush=True)
             raise RuntimeError("M1 scenario integration failed")
+        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke", "--benchmark-mode=heavy-ab"],
+                     mode + "-m1-heavy-ab-smoke", timeout=300)
+        if "CAIRN_M1_SMOKE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
+            raise RuntimeError("M1 heavy A/B integration failed")
     write_json(player / "BUILD_INFO.json", info)
     shutil.copytree(BUNDLE / "LICENSES", player / "LICENSES", dirs_exist_ok=True)
     shutil.copy2(ROOT / "distribution/README.txt", player / "README.txt")

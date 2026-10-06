@@ -106,3 +106,8 @@ unchanged caps. These checks do not prove readiness while moving, rendered
 opacity or target throughput. The finite analytic boundary leaves genuine
 inside-boundary readiness failures observable; target rendering and moving-frontier
 qualification remain outstanding.
+
+The separate schema 6 [matched heavy comparison](M1_HEAVY_DIAGNOSTIC_AB.md)
+now exercises this exact scan on H1/H2 routes. Its off mode dispatches no scan;
+coverage is explicitly unavailable, not a passing zero. Its cost scope does not
+qualify shared diagnostic instrumentation or replace existing analytic alarms.

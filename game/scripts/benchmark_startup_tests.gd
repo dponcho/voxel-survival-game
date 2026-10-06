@@ -160,7 +160,7 @@ static func verify_saved(snapshot: Dictionary, directory: String, native_phases:
 			var previous_usec: int = -1
 			while not file.eof_reached() and not joins.is_empty():
 				var fields: PackedStringArray = file.get_csv_line()
-				if fields.size() != 38: continue
+				if fields.size() != 40: continue
 				var frame: int = int(fields[0])
 				if joins.has(frame):
 					var row: Dictionary = joins[frame]

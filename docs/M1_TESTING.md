@@ -57,6 +57,16 @@ These short runs provide timing evidence, not performance qualification. A clean
 repeat cannot identify the cause of the historical hitch. See
 [startup timing semantics and limits](M1_STARTUP_ATTRIBUTION.md).
 
+## Targeted heavy cost check: about 7 minutes plus preparation
+
+Select **32³ render blocks • 1 worker (baseline)**, then **Compare heavy-route
+probe cost (~7 min + loading)**. Keep the foreground game visible on AC power.
+The game runs the warm-up and matched H1/H2 off/on/on/off quartets automatically.
+Use **Open reports folder** and retain the entire folder, including finalization,
+frame/operation CSVs and edit events. Keep failed/inconclusive results too.
+This bounded check does not certify M1 or require another full matrix.
+Read the [measurement scope](M1_HEAVY_DIAGNOSTIC_AB.md).
+
 ## Automatic baseline: about 24 minutes plus preparation
 
 Plug the target laptop into AC power. Use your normal Windows power setting and

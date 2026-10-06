@@ -35,4 +35,6 @@ if __name__ == "__main__":
               f"m1-release-{render_size}-{workers}", "CAIRN_M1_SMOKE=")
     check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
            "--benchmark-mode=startup"], "m1-startup-release", "CAIRN_M1_SMOKE=")
+    check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
+           "--benchmark-mode=heavy-ab"], "m1-heavy-ab-release", "CAIRN_M1_SMOKE=")
     check_fog_render()

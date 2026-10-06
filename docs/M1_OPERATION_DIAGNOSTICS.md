@@ -119,3 +119,9 @@ Upload and surface-retirement payloads use actual vertex/index counts without
 reading renderer buffers back. A full cube-quad batch has 2,048 vertices and
 3,072 indices: 143,360 estimated input bytes versus 208,896 in the old expanded
 batch. This data-size reduction alone does not establish a target timing gain.
+
+Schema 6 adds a separate matched H1/H2 frontier-probe A/B mode; the original flat
+comparison remains. It retains shared detailed operation/edit/renderer/CSV work
+in both modes and appends two previous-callback cost partition columns. See
+[heavy comparison semantics](M1_HEAVY_DIAGNOSTIC_AB.md). Total diagnostic overhead
+remains inconclusive without an uninstrumented shared baseline.

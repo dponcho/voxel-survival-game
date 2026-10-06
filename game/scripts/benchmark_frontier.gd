@@ -119,8 +119,14 @@ func record(sample: Dictionary, fog: Dictionary) -> Dictionary:
 		renderer_worst.merge(renderer_row, true)
 	return row
 
-func snapshot(active: bool) -> Dictionary:
+func snapshot(active: bool, enabled: bool = true) -> Dictionary:
 	if not active: return {"evaluation": "not_run", "samples": 0, "renderer_model": {"evaluation": "not_run", "samples": 0, "qualified": false}}
+	if not enabled:
+		return {"status": "unavailable", "evaluation": "inconclusive", "reason": "probe disabled for matched A/B baseline",
+			"samples": 0, "measured_samples": 0, "invalid_samples": 0, "exposed_samples": null,
+			"minimum_frontier_distance_m": null, "minimum_fog_clearance_m": null, "qualified": false,
+			"renderer_model": {"status": "unavailable", "evaluation": "inconclusive", "samples": 0,
+				"measured_samples": 0, "exposed_samples": null, "qualified": false}}
 	return {"evaluation": "failed" if exposed > 0 else ("inconclusive" if samples == 0 or inconclusive > 0 else "passed"), "samples": samples,
 		"measured_samples": measured, "invalid_samples": invalid, "exposed_samples": exposed,
 		"inconclusive_samples": inconclusive,

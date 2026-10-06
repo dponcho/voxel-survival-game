@@ -73,7 +73,8 @@ static func verify(directory: String, phases: Array[Dictionary], reports: Array[
 
 static func _verify_frontier(directory: String, report: Dictionary) -> Array[String]:
 	var failures: Array[String] = []
-	var active: bool = report["id"] == "H1" or report["id"] == "H2"
+	var active: bool = report.get("workload", report["id"]) in ["H1", "H2"]
+	var enabled: bool = bool(report.get("frontier_enabled", true))
 	if active:
 		var fog: Dictionary = report["fog_frontier"]["fog"]
 		if fog != {"enabled": true, "mode": "depth", "density": 1.0, "height_density": 0.0, "begin_m": 16.0, "end_m": 96.0, "curve": 1.0}:
@@ -81,20 +82,24 @@ static func _verify_frontier(directory: String, report: Dictionary) -> Array[Str
 	var file := FileAccess.open(directory.path_join(str(report["id"]) + "-frames.csv"), FileAccess.READ)
 	if file == null: return ["Missing frontier frame CSV"]
 	var header: PackedStringArray = file.get_csv_line()
-	if header.size() != 38: return ["Missing frontier CSV columns"]
+	if header.size() != 40: return ["Missing frontier CSV columns"]
 	for i: int in range(Frontier.COLUMNS.size()):
 		if header[20 + i] != Frontier.COLUMNS[i]: failures.append("Incorrect frontier column mapping")
 	var ledger := Frontier.new()
-	if active: ledger.configure_renderer_model(report["fog_frontier"]["renderer_model"]["context"])
+	if active and enabled: ledger.configure_renderer_model(report["fog_frontier"]["renderer_model"]["context"])
 	while not file.eof_reached():
 		var fields: PackedStringArray = file.get_csv_line()
 		if fields.size() == 1 and fields[0].is_empty(): continue
-		if fields.size() != 38:
+		if fields.size() != 40:
 			failures.append("Malformed frontier CSV row")
 			break
 		if not active:
 			for i: int in range(20, 38):
 				if fields[i] != "not_run": failures.append("Frontier probes ran outside H1/H2")
+			continue
+		if not enabled:
+			for i: int in range(20, 38):
+				if fields[i] != "unavailable": failures.append("Disabled frontier field became a numeric/passing value")
 			continue
 		var sample: Dictionary = {"status": fields[20]}
 		if fields[20] == "measured":
@@ -113,7 +118,7 @@ static func _verify_frontier(directory: String, report: Dictionary) -> Array[Str
 			elif not fields[30 + i].is_valid_float() or absf(float(fields[30 + i]) - float(evaluated[key])) > 0.0001:
 				failures.append("Fog equation and CSV disagree")
 	file.close()
-	var expected: Dictionary = ledger.snapshot(active)
+	var expected: Dictionary = ledger.snapshot(active, enabled)
 	var actual: Dictionary = report["fog_frontier"]
 	for key: String in ["evaluation", "samples"]:
 		if expected[key] != actual[key]: failures.append("Frontier summary and CSV disagree: " + key)
@@ -121,7 +126,7 @@ static func _verify_frontier(directory: String, report: Dictionary) -> Array[Str
 	var actual_model: Dictionary = actual["renderer_model"]
 	for key: String in ["evaluation", "samples", "qualified"]:
 		if expected_model[key] != actual_model[key]: failures.append("Shader model summary and CSV disagree: " + key)
-	if active:
+	if active and enabled:
 		for key: String in ["model", "measured_samples", "exposed_samples", "inconclusive_samples", "pixel_visibility"]:
 			if expected_model[key] != actual_model[key]: failures.append("Shader model counts or scope disagree: " + key)
 		for key: String in ["status", "evaluation", "packed_alpha_bits", "packed_opacity", "packed_transmittance"]:
@@ -143,7 +148,7 @@ static func _verify_frontier(directory: String, report: Dictionary) -> Array[Str
 static func _verify_edit_visibility(directory: String, report: Dictionary) -> Array[String]:
 	var failures: Array[String] = []
 	var id: String = report["id"]
-	if id != "N2" and id != "H2": return failures
+	if report.get("workload", id) not in ["N2", "H2"]: return failures
 	var metrics: Dictionary = report["edit_visibility"]
 	var file := FileAccess.open(directory.path_join(report["edit_visibility_events"]), FileAccess.READ)
 	if file == null: return ["Missing edit visibility event file"]
@@ -199,6 +204,8 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 		failures.append("Diagnostic callback/window accounting disagrees")
 	if int(accounting["writer_drain_usec"]) > int(accounting["finalization_usec"]) or int(accounting["finalization_usec"]) < 0 or int(accounting["callback_usec"]) > int(accounting["elapsed_usec"]):
 		failures.append("Diagnostic finalization/drain lies outside its window")
+	if accounting["invalid_partition"] or int(accounting["switched_usec"]) + int(accounting["shared_usec"]) != int(accounting["callback_usec"]):
+		failures.append("Callback aggregate partition is invalid")
 	var block_samples: int = int(accounting["partial_block"]["samples"])
 	var block_usec: int = int(accounting["partial_block"]["usec"])
 	for block: Dictionary in accounting["blocks"]:
@@ -216,6 +223,8 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 	var header: PackedStringArray = file.get_csv_line()
 	var rows: int = 0
 	var callback_sum: int = int(accounting["last_callback_usec"])
+	var switched_sum: int = int(accounting["last_switched_usec"])
+	var shared_sum: int = int(accounting["last_shared_usec"])
 	var previous_stamp: int = 0
 	var acknowledgement: Dictionary = report["edit_acknowledgement"]
 	var acknowledgement_rows: int = 0
@@ -224,12 +233,16 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 	while not file.eof_reached():
 		var fields: PackedStringArray = file.get_csv_line()
 		if fields.size() == 1 and fields[0].is_empty(): continue
-		if fields.size() != 38 or header.size() != 38:
+		if fields.size() != 40 or header.size() != 40:
 			failures.append("Malformed frame CSV")
 			break
 		rows += 1
 		if int(fields[0]) != rows or int(fields[19]) != rows - 1: failures.append("Diagnostic callback CSV is shifted incorrectly")
 		callback_sum += int(fields[18])
+		switched_sum += int(fields[38])
+		shared_sum += int(fields[39])
+		if int(fields[38]) < 0 or int(fields[39]) < 0 or int(fields[38]) + int(fields[39]) != int(fields[18]):
+			failures.append("CSV callback partition lost or double-counted wall time")
 		var stamp: int = int(fields[15])
 		if stamp > int(report["measurement_end_usec"]): failures.append("Measured frame lies after gameplay closure")
 		if int(acknowledgement["start_usec"]) > 0 and stamp >= int(acknowledgement["start_usec"]):
@@ -245,7 +258,7 @@ static func _verify_diagnostics(directory: String, report: Dictionary) -> Array[
 	file.close()
 	if id.begins_with("AB-off-"):
 		if rows != 0: failures.append("Baseline emitted detailed frame probes")
-	elif rows != samples or callback_sum != int(accounting["callback_usec"]):
+	elif rows != samples or callback_sum != int(accounting["callback_usec"]) or switched_sum != int(accounting["switched_usec"]) or shared_sum != int(accounting["shared_usec"]):
 		failures.append("CSV omits callback/format/flush/UI time or final sample")
 	if acknowledgement_rows != int(acknowledgement["samples"]): failures.append("Final edit acknowledgement samples disagree with CSV")
 	if invalid_gpu_rows != int(report["invalid_gpu_samples"]) or absf(valid_gpu_peak - float(report["peaks"].get("render_gpu_ms", 0.0))) > 0.00001:

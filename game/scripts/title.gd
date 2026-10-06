@@ -28,7 +28,7 @@ func _ready() -> void:
 		profile.add_item(label)
 	$Margin/Content.add_child(profile)
 	$Margin/Content.move_child(profile, 5)
-	for entry: Array in [["Run startup timing check (~20 s + loading)", "startup"], ["Run performance check (~24 min)", "full"], ["Compare all four settings (~96 min)", "matrix"], ["Explore the terrain fixture", "explore"]]:
+	for entry: Array in [["Compare heavy-route probe cost (~7 min + loading)", "heavy-ab"], ["Run startup timing check (~20 s + loading)", "startup"], ["Run performance check (~24 min)", "full"], ["Compare all four settings (~96 min)", "matrix"], ["Explore the terrain fixture", "explore"]]:
 		var button := Button.new()
 		button.text = entry[0]
 		button.pressed.connect(_launch_benchmark.bind(entry[1]))

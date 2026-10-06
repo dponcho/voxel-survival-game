@@ -12,6 +12,11 @@ For measurements, use AC power and keep the game visible. Leave the baseline
 check (about 24 minutes plus preparation). Compare all four settings takes
 about 96 minutes. The game runs the workloads without user input.
 
+For the targeted heavy-probe comparison, select Compare heavy-route probe cost
+(about 7 minutes plus loading) with the baseline setting. It switches only the
+coverage probe; shared instrumentation and safety remain. This is a bounded
+cost experiment, not full performance qualification.
+
 Use Open reports folder after the check. Share summary.json, summary.txt and
 the frame CSV files for review. The comparison creates four sibling report
 folders. Keep failed and cancelled results too. Cancel saves a partial report.
