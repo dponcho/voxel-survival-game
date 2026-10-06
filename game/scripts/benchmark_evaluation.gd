@@ -149,7 +149,9 @@ static func heavy_workload_failures(selected: Array[Dictionary], workload: Strin
 			failures.append("Heavy scenario is not the required fixture/actors/edits/rain")
 		if int(report.get("accepted_proxy_edits", -1)) != (ticks / 15 if workload == "H2" else 0) or int(report.get("proxy_autosaves", -1)) != (ticks / 60 if workload == "H2" else 0) or int(report.get("rejected_proxy_edits", -1)) != 0:
 			failures.append("Heavy edits/storage were incomplete or deferred")
-		if not report.get("operation_phase", {}).get("tracing", false) or (workload == "H2" and not report.get("edit_visibility", {}).get("enabled", false)):
+		# finish_edit_trace intentionally disables collection before snapshotting.
+		# Use its observed setup state plus accepted events, not the closed flag.
+		if not report.get("operation_phase", {}).get("tracing", false) or (workload == "H2" and (not contract.get("edit_trace", false) or int(report.get("edit_visibility", {}).get("accepted", -1)) != int(report.get("accepted_proxy_edits", -2)))):
 			failures.append("Heavy baseline disabled shared operation/edit evidence")
 		if report.get("frontier_enabled") != enabled or int(accounting.get("switched_calls", -1)) != (int(report.get("samples", -2)) if enabled else 0) or accounting.get("invalid_partition", true):
 			failures.append("Heavy switched probe dispatch or callback partition is incomplete")

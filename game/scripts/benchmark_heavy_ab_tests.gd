@@ -81,7 +81,7 @@ static func _phases(workload: String, enabled_usec: int = 30150000) -> Array[Dic
 	var actors: int = 24 if workload == "H2" else 12
 	var contract: Dictionary = {"workload": workload, "fixture": 1, "actors": actors,
 		"edit_rate": 4.0 if workload == "H2" else 0.0, "rain_instances": 256 if workload == "H2" else 0,
-		"physics_hz": 60, "max_physics_steps": 4, "resolution": [1280, 720], "render_scale": 1.0,
+		"physics_hz": 60, "max_physics_steps": 4, "edit_trace": workload == "H2", "resolution": [1280, 720], "render_scale": 1.0,
 		"visual_radius": 96, "data_radius": 128, "triangle_colliders": false, "render_block": 32, "workers": 1,
 		"native_policy": {"frame_usec": 2000, "frame_upload_bytes": 1048576, "single_upload_bytes": 262144,
 			"terrain_jobs": 64, "mesh_results": 16, "mesh_result_bytes": 33554432}}
@@ -95,7 +95,7 @@ static func _phases(workload: String, enabled_usec: int = 30150000) -> Array[Dic
 			"travelled_distance_m": 195.0, "accepted_proxy_edits": 120 if workload == "H2" else 0,
 			"rejected_proxy_edits": 0, "proxy_autosaves": 30 if workload == "H2" else 0,
 			"workload_contract": contract.duplicate(true), "workload_evidence": {"command_hash": 123, "route_checkpoints": []},
-			"operation_phase": {"tracing": true}, "edit_visibility": {"enabled": workload == "H2"},
+			"operation_phase": {"tracing": true}, "edit_visibility": {"enabled": false, "accepted": 120 if workload == "H2" else 0},
 			"fog_frontier": {"samples": 6000, "invalid_samples": 0} if enabled else Frontier.new().snapshot(true, false),
 			"evaluation": "inconclusive", "diagnostic_accounting": {"callbacks": 6000, "overflow": false,
 				"switched_calls": 6000 if enabled else 0, "switched_usec": 6000 if enabled else 0, "invalid_partition": false,
@@ -124,7 +124,7 @@ static func verify() -> Array[String]:
 		for report: Dictionary in JSON.parse_string(JSON.stringify(_phases(workload))): decoded.append(report)
 		if Evaluation.heavy_diagnostic_ab(decoded, false, false)["workloads"][workload]["outcome"] != "passed":
 			failures.append("JSON numeric types changed heavy comparison eligibility")
-		for label: String in ["missing", "reordered", "fixture", "radius", "workers", "cap", "ticks", "actors", "route", "probe off", "probe on", "unavailable", "zero coverage", "coverage failure", "operation failure", "stall", "block drift", "repeat drift", "threshold overlap", "overflow", "storage", "edits"]:
+		for label: String in ["missing", "reordered", "fixture", "radius", "workers", "cap", "ticks", "actors", "route", "probe off", "probe on", "unavailable", "zero coverage", "coverage failure", "operation failure", "stall", "block drift", "repeat drift", "threshold overlap", "overflow", "storage", "edits", "shared edit trace"]:
 			var phases: Array[Dictionary] = _phases(workload)
 			match label:
 				"missing": phases.pop_back()
@@ -150,6 +150,7 @@ static func verify() -> Array[String]:
 				"overflow": phases[1]["diagnostic_accounting"]["overflow"] = true
 				"storage": phases[2]["proxy_autosaves"] += 1
 				"edits": phases[2]["rejected_proxy_edits"] = 1
+				"shared edit trace": phases[2]["operation_phase"]["tracing"] = false
 			if Evaluation.heavy_diagnostic_ab(phases, false, false)["workloads"][workload]["outcome"] != "inconclusive":
 				failures.append("Invalid matched comparison accepted: " + workload + " " + label)
 		if Evaluation.heavy_diagnostic_ab(_phases(workload), true, false)["workloads"][workload]["outcome"] != "inconclusive" or Evaluation.heavy_diagnostic_ab(_phases(workload), false, true)["workloads"][workload]["outcome"] != "inconclusive":

@@ -468,7 +468,7 @@ func _capture_workload_contract() -> Dictionary:
 		"camera_fov": camera.fov, "camera_far": camera.far, "fog": Frontier.fog_configuration(benchmark_environment, camera.far),
 		"native_policy": {"frame_usec": 2000, "frame_upload_bytes": 1048576, "single_upload_bytes": 262144,
 			"terrain_jobs": 64, "mesh_results": 16, "mesh_result_bytes": 33554432},
-		"edit_trace": edit_trace_active, "operation_trace": true, "render_queries": true,
+		"edit_trace": bool(probe.edit_trace_snapshot()["enabled"]), "operation_trace": true, "render_queries": true,
 		"simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap"}
 
 func _begin_measurement() -> void:
