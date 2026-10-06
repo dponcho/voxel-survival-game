@@ -3,6 +3,7 @@ import json
 import subprocess
 from pathlib import Path
 from fog_render_probe import run as check_fog_render
+from diagnostic_method_validation import validate as validate_method
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -26,6 +27,13 @@ def check(command, name, marker, timeout=300):
 
 
 if __name__ == "__main__":
+    check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
+           "--script", "res://scripts/benchmark_method_validation.gd"],
+          "m1-diagnostic-method-controls", "CAIRN_DIAGNOSTIC_METHOD=")
+    controls = json.loads((REPORTS / "m1-diagnostic-method-controls.json").read_text(encoding="utf-8"))
+    method = validate_method(controls)
+    (REPORTS / "m1-diagnostic-method-validation.json").write_text(json.dumps(method, indent=2), encoding="utf-8")
+    print("diagnostic method controls reconciled; heavy method remains unvalidated", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
