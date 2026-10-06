@@ -10,13 +10,16 @@ offers **Run startup timing check (~20 s + loading)**, two shortened routes in a
 fresh process. Normal baseline/matrix durations and all workload/demand/budget,
 CSV, world/save and native inputs remain. Read [semantics](M1_STARTUP_ATTRIBUTION.md).
 
-The older 184.252 ms warm-up interval contains less than 1 ms of preceding
-diagnostic callback time, no overlapping traced terrain upload/deletion and no
-terrain queue at its ending sample. A similarly large viewport CPU elapsed result
-arrives later. Rendering/wait time is worth investigating; background activity is
-plausible, not established. Those engine timestamps measure wall elapsed time,
-not CPU service; the origin frame, driver/shader/OS cause and physical presentation
-are unavailable. The historical hitch and near-deadline N2 interval remain open.
+Two exact-build HD 620 short startup repetitions were reviewed October 6.
+Both complete without integration failures. The historical 184.252 ms stall
+did not recur; smaller early warm-up hitches recur in both, mostly inside the
+render-signal bracket. Both shortened prepared N1 routes retain zero deadline
+misses. Raw CSV/diagnostic/native accounting, 585 retained timing partitions and
+260 interval joins reconcile. No overflow, invalid/dropped spans or unmatched
+signals occur. A recurring early rendering/wait delay is observed; background,
+driver/shader cause and physical presentation remain unverified. Callback/viewport
+times are wall elapsed, not CPU service. Neither the historical stall nor the
+smaller repetitions are waived. Detailed target reports remain private.
 
 Latest code: `4df6cc2042f9778350b8ade48b16872c052e7c2a`.
 [CI 37225602689](https://github.com/dponcho/voxel-survival-game/actions/runs/37225602689)
@@ -38,15 +41,17 @@ Downloaded archives, checksums, identities, native registrations and smoke repor
 match. [Evidence](M1_EVIDENCE.md) retains exact provenance and earlier candidates.
 
 No full target baseline/matrix is requested solely for this reporting increment.
-Two short startup reports, when available, can compare fresh launches; a clean
-repeat cannot identify the historical cause. Startup overhead is unqualified by
-the later flat A/B. Failed recorded gates still include analytic H1/H2 coverage
+The two requested startup repeats are now reviewed; no further startup run is
+requested solely for this review. Startup overhead is unqualified by the later
+flat A/B. Failed recorded gates still include analytic H1/H2 coverage
 and isolated target upload limits/one terrain subtotal. Unresolved: pacing,
 unstable flat A/B, heavy diagnostics cost, allocation/deferred-renderer accounting,
 retention, profile comparison and qualification repeats. The truncating desktop
 shader model preserves analytic alarms; it does not establish visible pixels.
-Rain remains an M1 proxy defect deferred to M5. No gate or visual motion review
-is replaced by an overall pass percentage.
+The short repeats also retain preparation/retirement individual-operation budget
+exceedances, outside measured gameplay. Callback wall fractions are not a causal
+estimate of added diagnostics cost. Rain remains an M1 proxy defect deferred to
+M5. No gate or visual motion review is replaced by an overall pass percentage.
 
 **Single next implementation task:** add a matched heavy-route diagnostic cost
 comparison. The existing flat A/B cannot qualify the per-frame H1/H2 frontier

@@ -76,6 +76,34 @@ baseline or matrix is requested solely for this reporting change. All target
 upload/coverage, diagnostic overhead, pacing, retention and qualification gates
 remain in [the handoff](NEXT_TASK.md). **M1 remains blocked; no profile qualified.**
 
+## October 6 target startup repetitions
+
+Two short startup reports from the current candidate's actual HD 620 executable
+and PCK were reviewed. Both complete with no integration failures and preserve
+qualification false. Their build identity and binary hashes match the verified
+player. Raw frame/diagnostic accounting, native phase/lifetime totals, histogram
+metrics, ticks, finalization timing, 585 retained stage partitions and 260 eligible
+CSV interval joins reconcile. Both traces stop at 64 N1 intervals, without
+overflow, invalid/dropped spans or unmatched render signals.
+
+The historical 184.252 ms stall did not recur. A smaller early warm-up hitch
+recurs in both fresh launches, with almost all of its interval inside the
+render-signal bracket. Neither shortened prepared N1 route has a raw normal
+deadline miss. This observes a recurring early rendering/wait-stage delay;
+it does not establish shader compilation, driver waits or background activity
+as its cause. Viewport result origins, CPU service time and physical presentation
+remain unavailable. The later full-route N1 maxima lie outside the retained
+startup-stage window; they retain raw latency evidence only.
+
+No mesh uploads/deletions occur in measured warm-up/N1; some generation/data
+queue activity occurs later, separate from the early hitch samples. Preparation
+and retirement retain individual-operation budget exceedances and are not
+silently relabelled as gameplay. Full callback wall fractions do not establish
+causal diagnostic overhead. Detailed target report identities and measurements
+remain private. These two ten-second routes do not qualify the full M1 workload,
+heavy coverage, pacing, overhead or retention. No additional full baseline or
+matrix is requested solely for this review; follow [NEXT_TASK.md](NEXT_TASK.md).
+
 ## Previous Windows candidate: separate shader conversion evidence
 
 The October 4 increment adds a separate conversion-only coverage verdict and

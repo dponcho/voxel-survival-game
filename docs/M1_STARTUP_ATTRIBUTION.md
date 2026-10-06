@@ -80,3 +80,14 @@ retained payload, reconcile its clocks/previous diagnostic durations against
 saved frame CSVs and match native phase identities. The release integration also
 executes the short route. Headless checks establish data integrity; target
 rendering, overhead and the historical hitch's cause remain unverified.
+
+## October 6 repetition outcome
+
+Two current-build target reports now establish that a smaller early warm-up
+delay repeats inside the render-signal bracket, while the historical 184.252 ms
+stall does not recur. Both shortened prepared N1 routes have no raw deadline
+misses. The retained stage clocks reconcile to saved CSVs, with no lost or
+invalid spans. This localizes the observed delay without establishing its
+driver/shader/OS cause. Completed short repetitions do not qualify startup
+overhead, physical pacing or the full M1 workload. Detailed measurements remain
+private; [evidence](M1_EVIDENCE.md) records the bounded conclusion.
