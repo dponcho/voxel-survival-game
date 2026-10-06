@@ -73,6 +73,8 @@ Independent cases exercise workload mismatches, missing coverage, partitions,
 failed budgets, stability and the 1% boundary. Debug/release smoke runs execute
 real H1/H2 quartets with shortened one-second routes, then read the saved JSON and
 reconcile both callback partitions, native phases, edit events and frontier CSV.
+Cloud-only smoke output roots retain all raw CSV/edit/JSON evidence with the
+existing Actions evidence artifact. Normal target reports stay local/private.
 Smoke cannot qualify overhead, target rendering, physical pacing or HD 620.
 
 The smallest target check is one baseline-profile run of this menu choice,

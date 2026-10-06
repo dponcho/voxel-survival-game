@@ -122,6 +122,7 @@ var workload_contract: Dictionary = {}
 var command_hash: int = 0
 var route_checkpoints: Array[Dictionary] = []
 var switched_callback_usec: int = 0
+var smoke_report_root: String = ""
 
 func _open_reports(suffix: String = "") -> void:
 	csv_bytes = 0
@@ -238,6 +239,7 @@ func _ready() -> void:
 	RenderingServer.frame_post_draw.connect(_startup_render_finished)
 	for argument: String in OS.get_cmdline_user_args():
 		if argument == "--m1-smoke": test_mode = true
+		if argument.begins_with("--m1-report-root="): smoke_report_root = argument.get_slice("=", 1)
 		if argument.begins_with("--render-size="): render_size = int(argument.get_slice("=", 1))
 		if argument.begins_with("--workers="): workers = int(argument.get_slice("=", 1))
 		if argument.begins_with("--benchmark-mode="): mode = argument.get_slice("=", 1)
@@ -271,6 +273,8 @@ func _ready() -> void:
 		"display": DisplayServer.get_name(), "refresh_hz": DisplayServer.screen_get_refresh_rate()})
 	var stamp: String = Time.get_datetime_string_from_system().replace(":", "-")
 	report_dir = "user://diagnostics/M1-%s-%d-%d-%d" % [stamp, render_size, workers, OS.get_process_id()]
+	if test_mode and not smoke_report_root.is_empty():
+		report_dir = smoke_report_root.path_join(report_dir.get_file())
 	DirAccess.make_dir_recursive_absolute(report_dir)
 	_make_ui()
 	_make_scene()
@@ -412,6 +416,9 @@ func _start_scenario() -> void:
 	detail_label.text = "Fixed 1280 × 720 • visual radius 96 m • data radius 128 m\nTemporary engine fixtures; no player world is touched."
 	actor_instances.multimesh.visible_instance_count = int(scenario["actors"])
 	rain.visible = workload == "H2"
+	if HeavyAB.active(scenario):
+		actor_phase = 0.0
+		_tick_proxies(0.0)
 	var paced: bool = scenario["id"] == "paced"
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if paced else DisplayServer.VSYNC_DISABLED)
 	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), not str(scenario["id"]).begins_with("AB-off-"))
@@ -444,8 +451,10 @@ func _scan_frontier() -> Dictionary:
 func _capture_workload_contract() -> Dictionary:
 	var scenario: Dictionary = scenarios[scenario_index]
 	var window: Vector2i = DisplayServer.window_get_size()
+	var generator: CairnFixture = terrain.generator
+	var bounds: AABB = terrain.bounds
 	return {"version": "m1-heavy-frontier-ab-1", "workload": _workload_id(),
-		"fixture": int(scenario["fixture"]), "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+		"fixture": generator.fixture, "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
 		"actors": actor_instances.multimesh.visible_instance_count, "edit_rate": float(scenario["rate"]),
 		"rain_instances": rain.multimesh.instance_count if rain.visible else 0,
 		"autosave_interval_s": 1.0 if _workload_id() == "H2" else null,
@@ -455,7 +464,7 @@ func _capture_workload_contract() -> Dictionary:
 		"resolution": [1280, 720], "reported_window": [window.x, window.y], "render_scale": 1.0,
 		"render_block": terrain.mesh_block_size, "workers": VoxelEngine.get_thread_count(),
 		"visual_radius": viewer.view_distance, "data_radius": data_viewer.view_distance,
-		"terrain_bounds": [-4096, -16, -4096, 8192, 48, 8192], "triangle_colliders": terrain.generate_collisions,
+		"terrain_bounds": [bounds.position.x, bounds.position.y, bounds.position.z, bounds.size.x, bounds.size.y, bounds.size.z], "triangle_colliders": terrain.generate_collisions,
 		"camera_fov": camera.fov, "camera_far": camera.far, "fog": Frontier.fog_configuration(benchmark_environment, camera.far),
 		"native_policy": {"frame_usec": 2000, "frame_upload_bytes": 1048576, "single_upload_bytes": 262144,
 			"terrain_jobs": 64, "mesh_results": 16, "mesh_result_bytes": 33554432},

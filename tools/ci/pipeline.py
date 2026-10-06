@@ -165,7 +165,8 @@ def prepare():
         if "SCRIPT ERROR:" in output or "ERROR:" in output:
             raise RuntimeError("Export reported errors")
         self_test(destination / "Cairn.exe", mode + "-self-test", ROOT)
-        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke"],
+        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke",
+                      "--m1-report-root=" + str(REPORTS / (mode + "-m1-raw"))],
                      mode + "-m1-smoke", timeout=300)
         if "CAIRN_M1_SMOKE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
             # A native assertion can log an error without changing the process
@@ -175,7 +176,8 @@ def prepare():
                                    if "ERROR:" in line or "SCRIPT ERROR:" in line)
             print("\n".join(errors)[:8000], flush=True)
             raise RuntimeError("M1 scenario integration failed")
-        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke", "--benchmark-mode=heavy-ab"],
+        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke", "--benchmark-mode=heavy-ab",
+                      "--m1-report-root=" + str(REPORTS / (mode + "-m1-heavy-ab-raw"))],
                      mode + "-m1-heavy-ab-smoke", timeout=300)
         if "CAIRN_M1_SMOKE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
             raise RuntimeError("M1 heavy A/B integration failed")

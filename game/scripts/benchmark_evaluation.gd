@@ -136,14 +136,15 @@ static func heavy_workload_failures(selected: Array[Dictionary], workload: Strin
 			failures.append("Heavy fixtures/settings or route evidence differ")
 		if int(report.get("simulation_ticks", -1)) != ticks or int(report.get("actor_ticks", -1)) != ticks * actors or int(contract.get("physics_hz", -1)) != 60:
 			failures.append("Heavy ticks/actor activity do not match the fixed workload")
-		if contract.get("resolution") != [1280, 720] or contract.get("visual_radius") != 96 or contract.get("data_radius") != 128 or contract.get("render_scale") != 1.0 or contract.get("triangle_colliders") != false or contract.get("max_physics_steps") != 4 or not contract.get("render_block") in [16, 32] or not contract.get("workers") in [1, 2]:
+		var resolution: Array = contract.get("resolution", [])
+		if resolution.size() != 2 or int(resolution[0]) != 1280 or int(resolution[1]) != 720 or contract.get("visual_radius") != 96 or contract.get("data_radius") != 128 or contract.get("render_scale") != 1.0 or contract.get("triangle_colliders") != false or contract.get("max_physics_steps") != 4 or not contract.get("render_block") in [16, 32] or not contract.get("workers") in [1, 2]:
 			failures.append("Heavy profile changed resolution/radii/worker/admission settings")
-		if contract.get("native_policy") != {"frame_usec": 2000, "frame_upload_bytes": 1048576, "single_upload_bytes": 262144, "terrain_jobs": 64, "mesh_results": 16, "mesh_result_bytes": 33554432}:
-			# JSON numbers decode as floats; compare policy values numerically below.
-			var policy: Dictionary = contract.get("native_policy", {})
-			for key: String in ["frame_usec", "frame_upload_bytes", "single_upload_bytes", "terrain_jobs", "mesh_results", "mesh_result_bytes"]:
-				var expected: int = {"frame_usec": 2000, "frame_upload_bytes": 1048576, "single_upload_bytes": 262144, "terrain_jobs": 64, "mesh_results": 16, "mesh_result_bytes": 33554432}[key]
-				if int(policy.get(key, -1)) != expected: failures.append("Heavy native admission policy differs")
+		# Compare JSON-decoded numeric values, not dictionaries' numeric types.
+		var policy: Dictionary = contract.get("native_policy", {})
+		var required_policy: Dictionary = {"frame_usec": 2000, "frame_upload_bytes": 1048576,
+			"single_upload_bytes": 262144, "terrain_jobs": 64, "mesh_results": 16, "mesh_result_bytes": 33554432}
+		for key: String in required_policy:
+			if int(policy.get(key, -1)) != int(required_policy[key]): failures.append("Heavy native admission policy differs")
 		if contract.get("actors") != actors or contract.get("fixture") != 1 or contract.get("rain_instances") != (256 if workload == "H2" else 0) or contract.get("edit_rate") != (4.0 if workload == "H2" else 0.0):
 			failures.append("Heavy scenario is not the required fixture/actors/edits/rain")
 		if int(report.get("accepted_proxy_edits", -1)) != (ticks / 15 if workload == "H2" else 0) or int(report.get("proxy_autosaves", -1)) != (ticks / 60 if workload == "H2" else 0) or int(report.get("rejected_proxy_edits", -1)) != 0:

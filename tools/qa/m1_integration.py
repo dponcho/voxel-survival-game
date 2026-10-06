@@ -31,10 +31,11 @@ if __name__ == "__main__":
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
     for render_size, workers in [(16, 1), (32, 2), (16, 2)]:
         check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
-               f"--render-size={render_size}", f"--workers={workers}"],
+               f"--render-size={render_size}", f"--workers={workers}",
+               "--m1-report-root=" + str(REPORTS / f"m1-release-{render_size}-{workers}-raw")],
               f"m1-release-{render_size}-{workers}", "CAIRN_M1_SMOKE=")
     check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
-           "--benchmark-mode=startup"], "m1-startup-release", "CAIRN_M1_SMOKE=")
+           "--benchmark-mode=startup", "--m1-report-root=" + str(REPORTS / "m1-startup-raw")], "m1-startup-release", "CAIRN_M1_SMOKE=")
     check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
-           "--benchmark-mode=heavy-ab"], "m1-heavy-ab-release", "CAIRN_M1_SMOKE=")
+           "--benchmark-mode=heavy-ab", "--m1-report-root=" + str(REPORTS / "m1-heavy-ab-raw")], "m1-heavy-ab-release", "CAIRN_M1_SMOKE=")
     check_fog_render()

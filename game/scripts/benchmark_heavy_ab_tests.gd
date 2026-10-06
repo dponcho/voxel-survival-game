@@ -120,6 +120,10 @@ static func verify() -> Array[String]:
 			var result: Dictionary = Evaluation.heavy_diagnostic_ab(_phases(workload, test["usec"]), false, false)
 			if result["workloads"][workload]["outcome"] != test["outcome"] or result["qualified"] or result["total_overhead"]["outcome"] != "inconclusive" or result["total_overhead"]["added_fraction"] != null:
 				failures.append("Heavy cost classification or shared-overhead scope is incorrect")
+		var decoded: Array[Dictionary] = []
+		for report: Dictionary in JSON.parse_string(JSON.stringify(_phases(workload))): decoded.append(report)
+		if Evaluation.heavy_diagnostic_ab(decoded, false, false)["workloads"][workload]["outcome"] != "passed":
+			failures.append("JSON numeric types changed heavy comparison eligibility")
 		for label: String in ["missing", "reordered", "fixture", "radius", "workers", "cap", "ticks", "actors", "route", "probe off", "probe on", "unavailable", "zero coverage", "coverage failure", "operation failure", "stall", "block drift", "repeat drift", "threshold overlap", "overflow", "storage", "edits"]:
 			var phases: Array[Dictionary] = _phases(workload)
 			match label:
