@@ -57,15 +57,40 @@ background-process cause, CPU service and physical presentation remain unverifie
 No further startup reproduction is requested solely for that completed review.
 The heavy comparison does not qualify startup instrumentation overhead.
 
-**Single next evidence task:** run this candidate once on the HD 620 using
-**32³ render blocks • 1 worker (baseline)** and **Compare heavy-route probe cost
-(~7 min + loading)**, keeping the game visible on AC power. Keep the complete
-report folder privately, including failed/inconclusive results. Review actual
-fixture/route/tick/edit/storage parity, off/on dispatch, unavailable coverage,
-CSV/phase/edit reconciliation, callback/finalization/I/O scope and stability
-before requesting any longer repeat or full matrix. A stable switched-probe
-result still leaves shared diagnostic overhead unqualified. Do not request
-another full matrix before this evidence is trustworthy.
+The first exact-build HD 620 matched heavy comparison was reviewed October 6.
+It completes with matching fixture/profile/route/actor/edit/storage contracts,
+fixed ticks, command fingerprints and probe dispatch. Disabled coverage remains
+unavailable. Raw callback partitions, native phase/lifetime operation evidence,
+frame histograms/timing blocks, edit events/latencies, file-I/O/finalization and
+analytic/renderer-model counts independently reconcile. No evidence-integrity
+failure was found. All shortened heavy routes retain zero raw deadline misses;
+this does not qualify the required full heavy workloads or physical pacing.
+
+Both switched-cost verdicts remain **inconclusive**: every repeat fails the
+existing within-phase stability rule, enabled H2 repeats also fail repeat
+stability, and all enabled routes retain coverage failures. One measured H2 upload
+also exceeds the individual-operation limit. Preparation/retirement operation
+exceedances and a warm-up deadline miss remain separate, unwaived evidence.
+Supported desktop conversion-model alarms retain nonzero transmittance; visible
+pixels and the underlying readiness/scheduling/driver causes remain unverified.
+Shared total overhead remains inconclusive with a null causal estimate. Detailed
+target measurements, report identities and raw reports stay private.
+
+**Single next implementation task:** isolate and correct the recurring mesh-readiness
+gap at the existing fog frontier. Use the private reviewed alarms to build a
+bounded deterministic cloud boundary-crossing replay, inspect required-region
+geometry and actual demand/admission/submission state, and correct the demonstrated
+cause. Preserve the conservative analytic gate, separate conversion model,
+unavailable coverage, 96/128 m radii, fixtures/routes/actors/edits/ticks, worker and
+admission caps, operation evidence and all acceptance thresholds. Do not silence
+the alarms by widening fog, weakening required coverage or excluding failures.
+Keep timing instability, the recorded upload failure and shared diagnostic
+controls as unresolved gates. Any runtime correction needs matching cloud checks
+and a verified portable Windows candidate before a focused target confirmation.
+
+No further laptop run is requested solely for this review. Another full baseline
+or matrix is premature; first resolve the bounded coverage correction and retain
+the original cost/stability verdicts. Startup attribution/review remains complete.
 
 Unresolved M1 gates include pacing, conservative heavy coverage, recorded upload/
 terrain limits, unstable flat A/B, total diagnostic overhead, allocation/deferred

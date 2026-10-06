@@ -55,7 +55,8 @@ activity, four H2 accepted edits and one storage write, identical contracts/comm
 fingerprints/checkpoints, zero off scan dispatches and one on dispatch per callback.
 Their workload-equivalence and probe-switch verdicts are verified; overhead is
 inconclusive because smoke is short. Shared total overhead remains inconclusive
-with a null causal estimate. The actual release target run remains outstanding.
+with a null causal estimate. The first release target check was subsequently
+reviewed below; its cost verdicts remain inconclusive.
 
 Both 16³ profiles still fail analytic H1/H2 coverage and H2 edit latency; all four
 coverage alarms and two latency failures remain in saved reports. Every heavy
@@ -89,11 +90,50 @@ remain a separate artifact and were not downloaded for this verification.
 | Native evidence ZIP SHA-256 | `87032cbde78f14fc8766f36833d79c4938804bddded6f41740828a7e2fd2b7d2` |
 
 Startup investigation/report review is complete; its wall spans do not establish
-shader, driver or background-process causation. The smallest next target check is
-one baseline-profile run of the new heavy comparison, retaining the complete
-report folder privately. Review measurement integrity and stability before any
-longer repeat/full matrix. **M1 remains blocked; no target profile qualified.**
+shader, driver or background-process causation. The first baseline-profile target
+check has been reviewed below; measurement
+integrity verifies while cost/stability/coverage gates remain unresolved. No
+additional repeat/full matrix is requested solely for that review. **M1 remains
+blocked; no target profile qualified.**
 Follow [NEXT_TASK.md](NEXT_TASK.md).
+
+## October 6 first matched heavy-route target review
+
+The actual HD 620 baseline-profile report from build
+`2216a08bc97676d772e41dee57d6c3bac824be54` matches the verified executable/PCK
+hashes. It completes without integration failures. Both matched quartets preserve
+actual fixture/profile settings, route/camera intent, actors/rain, fixed ticks,
+accepted edits and storage workload. The off path dispatches no frontier scan
+and retains unavailable coverage; the on path dispatches per measured callback,
+including final edit settlement. Shared operation/edit/CSV/render/safety evidence
+remains enabled.
+
+An independent raw-file audit reconciles callback switched/shared/final totals,
+phase and lifetime operation counters/bytes/maxima, native interval boundaries,
+frame histograms/percentiles/deadlines, five-second blocks/partial blocks, edit
+events/latency bins, acknowledgement frames, proxy storage endpoint and combined
+finalization scope. Analytic fog and the independently reconstructed supported
+desktop truncating-half projection reproduce the saved counts and worst samples.
+There are no missing/drop/overflow/invalid-partition or invalid-GPU findings.
+Detailed target measurements, report names/hashes and raw files remain private.
+
+All shortened heavy routes have no raw heavy deadline misses. Both switched-cost
+comparisons nevertheless remain **inconclusive**: within-phase timing is unstable,
+enabled H2 repetitions also violate repeat stability, every enabled heavy route
+fails conservative coverage and one H2 measured upload exceeds its individual
+operation limit. Preparation/retirement exceedances and a warm-up deadline miss
+remain separately attributed to their phases, without a causal explanation or
+waiver. The conversion-only model retains nonzero transmittance for the alarms;
+these are conservative regions, not verified visible pixels. Neither a favorable
+mean ratio nor passing raw reconciliation establishes the 1% overhead requirement.
+Shared total diagnostic overhead remains inconclusive with a null causal estimate.
+
+The report supports measurement integrity and repeatable readiness investigation;
+it does not qualify full H1/H2 workloads, pacing, retention or M1. No additional
+laptop baseline, heavy repeat or full matrix is requested solely for this review.
+Next isolate/correct the existing fog-frontier readiness gap in bounded cloud
+replay, preserving all workload/budget/coverage/stability requirements. Follow
+[NEXT_TASK.md](NEXT_TASK.md). **M1 remains blocked; no target profile qualified.**
 
 ## Previous Windows candidate: bounded startup attribution
 

@@ -69,6 +69,12 @@ frame/operation CSVs and edit events. Keep failed/inconclusive results too.
 This bounded check does not certify M1 or require another full matrix.
 Read the [measurement scope](M1_HEAVY_DIAGNOSTIC_AB.md).
 
+The first exact-build baseline-profile heavy check has now been reviewed.
+Workload/switch/raw-evidence integrity verifies; timing instability, coverage and
+an individual upload failure keep both overhead verdicts inconclusive. No further
+laptop run is requested solely for that review. Follow [NEXT_TASK.md](NEXT_TASK.md)
+before a new candidate or any repeat/matrix.
+
 ## Automatic baseline: about 24 minutes plus preparation
 
 Plug the target laptop into AC power. Use your normal Windows power setting and

@@ -95,5 +95,22 @@ partitions, native operation counters, unavailable off coverage and accepted edi
 events. Workload equivalence and switching are verified; smoke overhead and total
 shared overhead remain inconclusive. All four existing profiles ran; their 16³
 coverage/edit-latency failures remain. Exact portable identity/checksum and raw
-cloud artifact provenance are in [M1_EVIDENCE.md](M1_EVIDENCE.md). No HD 620 heavy
-comparison has been reviewed for this candidate.
+cloud artifact provenance are in [M1_EVIDENCE.md](M1_EVIDENCE.md). The first exact-build HD 620
+comparison has now been reviewed; see the target-review status below.
+
+## First target review
+
+The October 6 baseline-profile target check completes with independently verified
+workload equivalence, probe switching and raw saved-report reconciliation.
+Disabled coverage remains unavailable; shared traces, callback partitions, phase
+closure, edit settlement and I/O/finalization retain their scope and bounds. The
+short heavy routes have no raw deadline misses.
+
+Both overhead comparisons remain inconclusive under the unchanged rules: timing
+is unstable, enabled coverage fails, and one H2 upload exceeds its individual
+operation limit. Shared total overhead still has no uninstrumented control. The
+separate supported shader-conversion model retains alarms; pixel visibility and
+causation remain unverified. Preparation/retirement budget exceedances and a
+warm-up deadline miss remain unwaived. Detailed target measurements and reports
+stay private. No additional target repeat/full matrix is requested solely for
+this review. Follow [NEXT_TASK.md](NEXT_TASK.md) for the bounded cloud correction.
