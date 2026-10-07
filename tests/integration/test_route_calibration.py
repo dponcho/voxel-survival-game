@@ -154,6 +154,13 @@ class RouteCalibrationTests(unittest.TestCase):
                          diagnostic_heavy_ab=dict(workloads={k:dict(outcome='not_run') for k in ['H1','H2']}))
             target=folder/'summary.json';target.write_text(json.dumps(summary))
             self.assertEqual(reconcile_folder(folder)['raw_frames'],104)
+            rounded=copy.deepcopy(summary)
+            rounded['scenarios'][1]['route_calibration']['bins'][0]['mean_usec'] += 1e-9
+            target.write_text(json.dumps(rounded))
+            reconcile_folder(folder)
+            rounded['scenarios'][1]['route_calibration']['bins'][0]['mean_usec'] += .001
+            target.write_text(json.dumps(rounded))
+            with self.assertRaises(ValueError): reconcile_folder(folder)
             # Losing the final callback and merging retirement both break saved evidence.
             bad=copy.deepcopy(summary);bad['scenarios'][1]['diagnostic_accounting']['last_callback_usec']=0
             target.write_text(json.dumps(bad))

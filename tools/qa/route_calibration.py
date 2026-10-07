@@ -6,6 +6,7 @@ decision or legacy classification is replaced by this supplementary assessment.
 import csv
 from fractions import Fraction
 import json
+import math
 from pathlib import Path
 
 VERSION = 'm1-route-calibration-1'
@@ -208,7 +209,14 @@ def reconcile_folder(folder):
             for a, e in zip(phase['route_calibration']['bins'], bins):
                 require(all(a[k] == v for k,v in e.items()), 'raw route/callback/terminal ledger mismatch')
                 require(a['status'] == ('measured' if e['samples'] else 'unavailable'), 'missing bin treated as available')
-                require(a['mean_usec'] == (e['usec']/e['samples'] if e['samples'] else None), 'missing bin treated as zero')
+                if e['samples']:
+                    # Godot JSON rounds fractional means. Integer totals remain
+                    # exact; this tolerance only covers serialization (<1e-8 us
+                    # for these means), not the unchanged 1% cost requirement.
+                    require(type(a['mean_usec']) in (int,float) and math.isclose(
+                        a['mean_usec'], e['usec']/e['samples'], rel_tol=1e-12, abs_tol=1e-9), 'saved bin mean does not reconcile')
+                else:
+                    require(a['mean_usec'] is None, 'missing bin treated as zero')
             labels = [p['phase'] for p in saved['operation_phases'] if p['scenario'] == phase['id']]
             require(labels == ['preparation', 'overhead_diagnostic', 'retirement'], 'phase boundaries merged')
             a, dose = phase['diagnostic_accounting'], phase['route_calibration']['closure_dose']
