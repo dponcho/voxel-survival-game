@@ -116,6 +116,15 @@ class RouteCalibrationTests(unittest.TestCase):
                 for p in phases():
                     p['id']=p['id'].replace('H1',workload);p['workload']=workload
                     p['actor_ticks']=1800*(24 if workload=='H2' else 12)
+                    p['accepted_proxy_edits']=120 if workload=='H2' else 0
+                    p['proxy_autosaves']=30 if workload=='H2' else 0
+                    p['travelled_distance_m']=195
+                    p['workload_contract'].update(fixture=1,actors=24 if workload=='H2' else 12,
+                                                 rain_instances=256 if workload=='H2' else 0,edit_rate=4 if workload=='H2' else 0,
+                                                 resolution=[1280,720],render_scale=1,workers=1,render_block=32,
+                                                 physics_hz=60,max_physics_steps=4,triangle_colliders=False,
+                                                 native_policy=dict(frame_usec=2000,frame_upload_bytes=1048576,single_upload_bytes=262144,
+                                                                    terrain_jobs=64,mesh_results=16,mesh_result_bytes=33554432))
                     p['raw_frames']=p['id']+'-frames.csv'
                     a=p['diagnostic_accounting'];a['callbacks']=13;a['callback_usec']=a['shared_usec']=260;a['last_callback_usec']=20
                     p['samples']=13
@@ -138,9 +147,9 @@ class RouteCalibrationTests(unittest.TestCase):
             root=dict(version='m1-route-calibration-1',qualified=False,legacy_authoritative=True,threshold=.01,
                       hardware_noise_calibrated=False,shared_overhead=dict(outcome='inconclusive',added_fraction=None),workloads={})
             for workload in ['H1','H2']:
-                status, detail=assess([p for p in records if p['workload']==workload],workload,short=True)
+                status, detail=assess([p for p in records if p['workload']==workload],workload)
                 root['workloads'][workload]=dict(status=status,qualified=False,**detail)
-            summary=dict(benchmark_mode='calibration',completed=True,qualified=False,integration_failures=[],test_mode=True,
+            summary=dict(benchmark_mode='calibration',completed=True,qualified=False,integration_failures=[],test_mode=False,
                          route_calibration=root,scenarios=[dict(id='warmup',workload='warmup')]+records,operation_phases=operations,
                          diagnostic_heavy_ab=dict(workloads={k:dict(outcome='not_run') for k in ['H1','H2']}))
             target=folder/'summary.json';target.write_text(json.dumps(summary))
@@ -150,6 +159,9 @@ class RouteCalibrationTests(unittest.TestCase):
             target.write_text(json.dumps(bad))
             with self.assertRaises(ValueError): reconcile_folder(folder)
             bad=copy.deepcopy(summary);bad['operation_phases'][5]['phase']='overhead_diagnostic'
+            target.write_text(json.dumps(bad))
+            with self.assertRaises(ValueError): reconcile_folder(folder)
+            bad=copy.deepcopy(summary);bad['scenarios'][1]['workload_contract']['native_policy']['frame_usec']=1000
             target.write_text(json.dumps(bad))
             with self.assertRaises(ValueError): reconcile_folder(folder)
 

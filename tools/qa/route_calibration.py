@@ -150,6 +150,37 @@ def reconcile_folder(folder):
     frames = 0
     for workload in ['H1', 'H2']:
         phases = [p for p in saved['scenarios'] if p.get('workload') == workload]
+        require(len(phases) == 4, 'missing saved workload quartet')
+        reference = phases[0]['workload_contract']
+        ticks = 60 if saved['test_mode'] else 1800
+        actors = 24 if workload == 'H2' else 12
+        for index, phase in enumerate(phases):
+            contract = phase['workload_contract']
+            require(phase['id'] == f'CAL-{workload}-{ORDER[index]}' and contract == reference
+                    and contract['fixture'] == 1 and contract['actors'] == actors
+                    and contract['rain_instances'] == (256 if workload == 'H2' else 0)
+                    and contract['edit_rate'] == (4 if workload == 'H2' else 0)
+                    and contract['resolution'] == [1280,720] and contract['render_scale'] == 1
+                    and contract['visual_radius'] == 96 and contract['data_radius'] == 128
+                    and contract['workers'] in [1,2] and contract['render_block'] in [16,32]
+                    and contract['physics_hz'] == 60 and contract['max_physics_steps'] == 4
+                    and contract['triangle_colliders'] is False, 'saved calibration workload/profile changed')
+            for key, value in {'frame_usec':2000,'frame_upload_bytes':1048576,'single_upload_bytes':262144,
+                               'terrain_jobs':64,'mesh_results':16,'mesh_result_bytes':33554432}.items():
+                require(contract['native_policy'][key] == value, 'saved native admission policy changed')
+            require(phase['simulation_ticks'] == ticks and phase['actor_ticks'] == actors*ticks
+                    and phase['accepted_proxy_edits'] == (ticks//15 if workload == 'H2' else 0)
+                    and phase['proxy_autosaves'] == (ticks//60 if workload == 'H2' else 0)
+                    and phase['rejected_proxy_edits'] == phase['readiness_stops'] == 0
+                    and phase['travelled_distance_m'] >= 6.5*ticks/60-1
+                    and phase['operation_phase']['tracing'] is True, 'saved actual workload activity differs')
+            require(all(phase['workload_evidence'][k] == phases[0]['workload_evidence'][k]
+                        for k in ['command_hash','route_checkpoints']), 'saved command schedules differ')
+            require(phase['frontier_enabled'] is False and phase['diagnostic_accounting']['switched_calls'] == 0
+                    and phase['diagnostic_accounting']['switched_usec'] == 0
+                    and phase['fog_frontier']['status'] == 'unavailable'
+                    and phase['fog_frontier']['minimum_frontier_distance_m'] is None
+                    and phase['fog_frontier']['exposed_samples'] is None, 'saved switch or unavailable coverage changed')
         status, detail = assess(phases, workload, saved['test_mode'], False)
         reconcile_decision(saved['route_calibration']['workloads'][workload], status, detail)
         for phase in phases:
