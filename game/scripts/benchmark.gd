@@ -18,6 +18,7 @@ const SCENARIOS: Array[Dictionary] = [
 var scenarios: Array[Dictionary] = SCENARIOS.duplicate(true)
 const HeavyAB = preload("res://scripts/benchmark_heavy_ab.gd")
 const Calibration = preload("res://scripts/benchmark_calibration.gd")
+const FixedWork = preload("res://scripts/benchmark_fixed_work.gd")
 var calibration := Calibration.new()
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
@@ -31,6 +32,8 @@ var startup := Startup.new()
 var end_requested: bool = false
 var finish_reason: String = ""
 var writer_drain_usec: int = 0
+var writer_drain_begin_usec: int = 0
+var writer_drain_end_usec: int = 0
 var reports_open: bool = false
 var finishing: bool = false
 var probe: CairnProbe = CairnProbe.new()
@@ -214,10 +217,12 @@ func _close_phase() -> Dictionary:
 func _close_reports() -> void:
 	if not reports_open: return
 	var drain_start: int = Time.get_ticks_usec()
+	writer_drain_begin_usec = drain_start
 	if not await Diagnostics.drain_pending(_flush_pending_reports, _has_pending_reports, sink.has_failed, get_tree().process_frame):
 		report_io_failed = true
 	sink.finish()
-	writer_drain_usec = Time.get_ticks_usec() - drain_start
+	writer_drain_end_usec = Time.get_ticks_usec()
+	writer_drain_usec = writer_drain_end_usec - drain_start
 	reports_open = false
 	if not raw_lines.is_empty() or not operation_lines.is_empty() or not edit_lines.is_empty() or sink.has_failed(): report_io_failed = true
 	raw_lines.clear()
@@ -875,6 +880,7 @@ func _end_scenario() -> void:
 		_drain_edit_events()
 	var edit_trace: Dictionary = probe.edit_trace_snapshot() if edit_trace_active else {"status": "not_run"}
 	var measured_phase: Dictionary = _close_phase()
+	var native_phase_closed_usec: int = Time.get_ticks_usec()
 	# Join/flush while explicitly outside gameplay, before retirement can add work.
 	await _close_reports()
 	if cancelled:
@@ -988,7 +994,10 @@ func _end_scenario() -> void:
 			if histogram[i] > 0: bins.append([i, histogram[i]])
 		report["interval_histogram_10usec"] = bins
 	# Final combined serialization/file hashing has its own measured lifecycle below.
-	if Calibration.active(scenario): report["route_calibration"] = calibration.snapshot()
+	if Calibration.active(scenario):
+		report["route_calibration"] = calibration.snapshot()
+		report["fixed_work_boundaries"] = {"native_phase_closed_usec": native_phase_closed_usec,
+			"writer_drain_begin_usec": writer_drain_begin_usec, "writer_drain_end_usec": writer_drain_end_usec}
 	report["diagnostic_accounting"] = diagnostics.snapshot(Time.get_ticks_usec(), writer_drain_usec)
 	reports.append(report)
 	if mode == "explore":
@@ -1093,6 +1102,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["diagnostic_heavy_ab"] = Evaluation.heavy_diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["route_calibration"] = Calibration.evaluate(reports, test_mode, not integration_failures.is_empty())
+	summary["fixed_work_sensitivity"] = FixedWork.evaluate(reports, test_mode, not integration_failures.is_empty())
 	if mode == "calibration": summary["scope"] = "supplementary route-matched null/closure sensitivity controls; no legacy or target qualification"
 	summary["diagnostic_accounting"] = {
 		"unit": "elapsed monotonic wall microseconds; neither CPU service nor additive with overlapping worker/GPU time",

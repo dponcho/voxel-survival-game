@@ -12,7 +12,7 @@ const HEADER: String = "frame,tick,interval_usec,entry_usec,callback_begin_usec,
 func _initialize() -> void:
 	call_deferred("_run")
 
-func _phase(workload: String, label: String, index: int, directory: String, failures: Array[String]) -> Dictionary:
+static func _phase(workload: String, label: String, index: int, directory: String, failures: Array[String], closure_usec: int = 1000, injected_dose: int = -1) -> Dictionary:
 	var phase: Dictionary = Cases._phases(workload)[index]
 	phase["id"] = "CAL-" + workload + "-" + Calibration.ORDER[index]
 	phase["frontier_enabled"] = false
@@ -40,6 +40,9 @@ func _phase(workload: String, label: String, index: int, directory: String, fail
 			if section == 6: duration += 500
 		if label == "ack-duration" and index in [2, 3] and section == 6: duration += 500
 		if label == "stall" and index == 1 and section == 0: duration += 300000
+		if label == "route-drift" and index == 3:
+			if section == 0: duration += 100000
+			if section == 1: duration -= 100000
 		for position: int in range(count):
 			# Integer quotient/remainder preserves each main section's exact duration.
 			var interval: int = int(duration / count) + (1 if position < duration % count else 0)
@@ -68,9 +71,10 @@ func _phase(workload: String, label: String, index: int, directory: String, fail
 	var dose: int = 0 if label == "null" or index not in [1, 2] else Calibration.DOSE_USEC
 	var drain_begin: int = measured_end + 200
 	var dose_begin: int = drain_begin + 400 + 100
-	var end: int = measured_end + 1000 + dose
-	if index in [1, 2]:
-		ledger.dose = {"requested_usec": Calibration.DOSE_USEC, "start_usec": measured_end - 1 if label == "dose-overlap" and index == 1 else dose_begin,
+	if injected_dose >= 0: dose = injected_dose if index in [1, 2] else 0
+	var end: int = measured_end + closure_usec + dose
+	if index in [1, 2] and (injected_dose != 0):
+		ledger.dose = {"requested_usec": Calibration.DOSE_USEC if injected_dose < 0 else injected_dose, "start_usec": measured_end - 1 if label == "dose-overlap" and index == 1 else dose_begin,
 			"end_usec": dose_begin + dose, "elapsed_usec": dose}
 	phase["samples"] = frame
 	phase["wall_seconds"] = float(elapsed) / 1000000.0

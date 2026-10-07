@@ -2,6 +2,11 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+In progress October 7: the separate fixed-work elapsed/count assessor and its
+predeclared controls are implemented; cloud/candidate verification is pending.
+Read [M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md). Existing
+assessments/thresholds/qualification remain unchanged; no target run is requested.
+
 Completed October 7: **cloud endpoint/last-edit-settlement and callback-count
 precision validation**, code `501d572e84cd90480d81c27abb6e27ad34799222`. Read
 [M1_ENDPOINT_PRECISION.md](M1_ENDPOINT_PRECISION.md). [CI 37677486748](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748) passed

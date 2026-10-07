@@ -6,6 +6,7 @@ from fog_render_probe import run as check_fog_render
 from diagnostic_method_validation import validate as validate_method
 from route_calibration import validate_controls, reconcile_folder
 from endpoint_precision import reconcile_saved as reconcile_precision
+from fixed_work import reconcile_saved as reconcile_fixed, reconcile_runtime
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -53,6 +54,14 @@ if __name__ == "__main__":
     (REPORTS / "m1-endpoint-precision-validation.json").write_text(json.dumps(
         reconcile_precision(REPORTS / "m1-endpoint-precision-controls.json", precision_raw), indent=2), encoding="utf-8")
     print("endpoint/count clocks and authoritative verdicts independently reconciled", flush=True)
+    fixed_raw = REPORTS / "m1-fixed-work-raw"
+    fixed_raw.mkdir(exist_ok=True)
+    check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
+           "--script", "res://scripts/benchmark_fixed_work_tests.gd", "--", "--fixed-output=" + str(fixed_raw)],
+          "m1-fixed-work-controls", "CAIRN_FIXED_WORK=", 60)
+    (REPORTS / "m1-fixed-work-validation.json").write_text(json.dumps(
+        reconcile_fixed(REPORTS / "m1-fixed-work-controls.json", fixed_raw), indent=2), encoding="utf-8")
+    print("fixed-work durations/counts and exact boundaries independently reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
@@ -74,4 +83,6 @@ if __name__ == "__main__":
         raise RuntimeError("Calibration smoke folder missing or duplicated")
     (REPORTS / "m1-route-calibration-saved.json").write_text(
         json.dumps(reconcile_folder(folders[0].parent), indent=2), encoding="utf-8")
+    (REPORTS / "m1-fixed-work-saved.json").write_text(
+        json.dumps(reconcile_runtime(folders[0].parent), indent=2), encoding="utf-8")
     check_fog_render()

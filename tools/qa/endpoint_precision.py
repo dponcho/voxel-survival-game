@@ -37,6 +37,9 @@ def model(label, index):
         durations[6] += 500
     if label == 'ack-duration' and index in (2, 3): durations[6] += 500
     if label == 'stall' and index == 1: durations[0] += 300000
+    if label == 'route-drift' and index == 3:
+        durations[0] += 100000
+        durations[1] -= 100000
     n = sum(counts)
     callback_end = 1000200 + sum(durations) + 7 + 30 + n % 7
     dose = 0 if label == 'null' or index not in (1, 2) else 600000

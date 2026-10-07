@@ -184,3 +184,14 @@ Static regressions expand independent clocks and reject corrupt rows, lost tails
 changed phase/I/O scope, waived operation failures, altered decisions and bounds.
 These checks do not qualify HD 620 precision, per-frame CPU/GPU sensitivity or
 shared instrumentation overhead. See [docs/M1_ENDPOINT_PRECISION.md](docs/M1_ENDPOINT_PRECISION.md).
+
+### Experimental fixed-work elapsed/count controls
+
+`benchmark_fixed_work_tests.gd` adds 44 clock controls, retaining the old sixteen
+method, 26 route and 28 endpoint controls. `tools/qa/fixed_work.py` independently
+reconciles exact duration thresholds, count cancellation, terminal/acknowledgement
+uncertainty, phase/drain/dose scope, unavailable/null values and saved raw rows.
+Existing release calibration smoke also checks the supplementary saved assessor
+and external combined finalization. Bounds: 176 CSVs/64 MiB, 3 MiB control JSON,
+60-second clock command; no new runtime queue. All legacy assessments and
+qualification flags remain authoritative. See [M1_FIXED_WORK_SENSITIVITY.md](docs/M1_FIXED_WORK_SENSITIVITY.md).
