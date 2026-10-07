@@ -4,7 +4,8 @@ This bounded follow-up characterizes the existing supplementary route instrument
 It changes no runtime workload, estimator, assessment rule, 1% threshold, world/
 save semantics or historical verdict. M1 remains blocked; no profile is qualified.
 All parameters below are independent synthetic software clocks, not private target
-measurements. Pinned-engine and candidate results will be recorded after Actions.
+measurements. [CI 37677486748](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748) and the downloaded candidate verify the controls;
+cloud success does not qualify HD 620.
 
 ## Predeclared controls
 
@@ -74,6 +75,36 @@ per-frame sample array is introduced. Actions caps the clock command at 60 secon
 Static regressions independently expand clocks and reject lost/corrupt final rows,
 changed callback partitions, boundary/ack/drain/I/O scope, waived failure, altered
 verdicts, passing zeros and oversized/incomplete evidence.
+
+## Executed results — October 7 UTC
+
+[CI 37677486748](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748) passed all three jobs at code `501d572e84cd90480d81c27abb6e27ad34799222`, exported as
+`c1c4f87de6268044ddc4a61955f3fa0556643d2d`. All 42 Python regressions, five native sanitizer suites, matching-engine
+checks, 28 precision controls, sixteen old method controls, 26 old route controls,
+existing actual runtime/profile/smoke checks, saved raw reconciliation and portable/
+offline audits passed. Independent downloaded reconciliation checks 928,417 bytes
+of control JSON, 112 raw CSVs, 112 modeled phases and 168,596 rows. Report storage,
+all raw hashes and precision arithmetic reproduce the Actions validation exactly.
+See [M1_EVIDENCE.md](M1_EVIDENCE.md) for exact artifacts/checksums and runtime counts.
+
+These values are synthetic clock results, not target observations:
+
+| Control | Observation | Authoritative supplementary status |
+| --- | --- | --- |
+| Null | Zero raw effect, stable repeats; known-positive dose absent | Inconclusive |
+| Positive | 600 ms adds about 1.99858% complete-window time and time per callback | Controls resolved, qualification false |
+| Endpoint redistribution | Terminal mean repeat variation 2.46914%; full-window delta zero; unscaled terminal delta about 0.00166549% of full time | Inconclusive; terminal guard retained |
+| Acknowledgement drift | Same terminal variation; full-window duration increases about 0.00166549% | Inconclusive; terminal guard retained |
+| Callback-count masking | Full time +1.99857%, callback count +1.99468%, time per callback only +0.00381114% | Inconclusive; raw effect below limit |
+| Count drift / failed / missing / unavailable / stalled / overlapping dose / I/O failure | Their respective guards fail; unavailable precision remains null | Inconclusive |
+
+The endpoint case shows a guard sensitivity issue without claiming the changed
+bucket's raw delta is a causal cost. The acknowledgement case adds real modeled
+wall duration, and its small complete-trial contribution is independently retained.
+The count case demonstrates a denominator cancellation: known closure delay alone
+cannot validate per-frame sensitivity with unequal callback counts. This arithmetic
+does not attribute real-target changes to noise, render service, driver or process.
+No current tolerance or verdict is changed. All terminal evidence is retained.
 
 ## Remaining scope
 

@@ -5,7 +5,87 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: supplementary route-matched calibration
+## Current Windows candidate: cloud endpoint/count precision
+
+The October 7 bounded increment adds 28 cloud-only H1/H2 clock controls using the
+production calibration/diagnostic ledgers and evaluator, persisted raw CSV and
+independent exact aggregates/streamed reconciliation. It separates endpoint
+redistribution, modeled acknowledgement-duration drift, complete-trial
+callback-count drift and known closure-cost masking. All terminal rows, final
+callbacks, timing blocks, closure/drain/I/O scope and preparation/measurement/
+retirement boundaries are retained. The native phase closes before writer drain
+and dose; the full diagnostic window still includes both. Actual gameplay,
+workloads, probe switching, native/world/save behavior and the 1% rules are
+unchanged. Read [M1_ENDPOINT_PRECISION.md](M1_ENDPOINT_PRECISION.md).
+
+[CI 37677486748](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748) passed all three jobs, completed `2026-10-07T20:09:20Z`:
+42 Python regressions (nine new precision checks), five native sanitizer suites,
+exact cached editor/debug/release requalification, matching-editor import/export,
+28 new software controls and independent saved-row oracle, all sixteen legacy
+method and 26 route-control expectations unchanged, streaming/collision/edit/
+eviction/cancellation, all four profiles, startup/heavy/calibration release smoke,
+saved-report reconciliation, DLL audit and two fresh offline extractions. Static
+job `112988204336`, native job `112988414246`
+and export job `112988817451` all passed. No engine was
+installed, compiled or executed locally.
+
+The 928,417-byte saved precision JSON and 112 retained modeled
+phases/168,596 raw rows reproduce the independent oracle and saved validation.
+Normal known-cost controls resolve; the null case retains a zero raw effect but
+fails the existing known-positive dose guard. Endpoint and acknowledgement cases
+retain their terminal repeat failures despite a tiny complete-window contribution.
+The count-masking case retains a below-limit raw time-per-callback effect and an
+inconclusive known-positive decision even though full-window duration increases
+above 1%. Failed, incomplete, unavailable, stalled and unstable controls remain
+inconclusive. This characterizes precision; it adopts no successor policy, changes
+no saved target verdict and qualifies neither per-frame CPU/GPU nor shared total
+overhead. Detailed target data remains private.
+
+The earlier [CI 37677134115](https://github.com/dponcho/voxel-survival-game/actions/runs/37677134115)
+also passed. Its synthetic lifecycle placed drain after dose and included closure
+inside its modeled native phase. The bounded follow-up aligns both with the actual
+production harness before candidate verification. Use the corrected candidate
+below; the earlier prototype supplied no target qualification.
+
+Independent downloaded review verifies GitHub archive digests, ZIP CRC/path safety,
+portable checksum/size, x64 PE, every PCK entry's MD5 against the pinned pack
+format, outer/inner/PCK build identity, native pins/template hashes and
+8 native/game/offline self-test reports. All ten actual smoke folders complete
+with no integration failures and qualification false: 98 scenarios,
+284 native phases, 37,306 operation rows, 12,868 frame rows
+and 94 edit events. Phase counters/bytes/maxima, previous/final callbacks,
+full/partial blocks, writer drain and combined finalization reconcile. Actual
+calibration saved reconciliation retains 1,171 heavy frame rows,
+unavailable later sections and inconclusive hardware precision. Both 16³ profiles
+retain analytic coverage and H2 edit-latency failures; all heavy smoke overhead
+verdicts stay inconclusive. OpenGL readback remains unavailable. Previous target
+upload/phase-budget failures remain unwaived. Cloud success is not HD 620 qualification.
+
+[Windows player 11508552310](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748/artifacts/11508552310) expires `2026-11-06T20:08:54Z`.
+[Export evidence 11507753214](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748/artifacts/11507753214) and
+[native evidence 11508366174](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748/artifacts/11508366174) preserve raw cloud provenance.
+Symbols remain separate and were not downloaded. Code `501d572e84cd90480d81c27abb6e27ad34799222` and exported
+merge/build `c1c4f87de6268044ddc4a61955f3fa0556643d2d` have identical Git trees; native inputs are unchanged.
+
+| Identity | Verified value |
+| --- | --- |
+| Precision code commit | `501d572e84cd90480d81c27abb6e27ad34799222` |
+| Exported merge / build ID | `c1c4f87de6268044ddc4a61955f3fa0556643d2d` |
+| Native key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Portable ZIP SHA-256 | `64a875d6a82c76c27e0953170e5e1432abaeac742c874f45013eafd46e642072` |
+| Portable ZIP bytes | `30026666` |
+| Outer player archive SHA-256 | `74fa9235626e35bbe1b6735a4bd9ad9e9e045c16804433014a243d6f6e4443c3` |
+| Executable SHA-256 | `9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35` |
+| PCK SHA-256 | `bd98cf6b42ea82c70db539996da853d61dae34f8f661b6aad4a7d5524bccc073` |
+| Export evidence ZIP SHA-256 | `89cbf80427d067433cf8067dc9501cb30ab6c8e0483a660b074d5723f38b9312` |
+| Native evidence ZIP SHA-256 | `8b28408be9e6f803e49412209547a5bf52449818f08b6ba93a5c7b04baa67bb1` |
+
+**No new target check is needed for this cloud-only increment.** The next bounded
+correction is supplementary fixed-work elapsed/count sensitivity, with independent
+controls and all existing verdicts authoritative. No target repeat or full matrix
+is requested until the proposed instrument is trustworthy. M1 remains blocked.
+
+## Previous Windows candidate: supplementary route-matched calibration
 
 The October 7 UTC increment adds **Calibrate heavy-route measurements (~7 min +
 loading)**. Each actual H1/H2 quartet is reference/closure/closure/reference,

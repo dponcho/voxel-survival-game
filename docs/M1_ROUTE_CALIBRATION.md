@@ -138,14 +138,20 @@ shows observed closure sensitivity without resolving the declared hardware
 calibration. Preparation/retirement operation exceedances and warm-up deadline
 misses remain unwaived; no causal driver/shader/OS attribution is established.
 
-The next bounded task is cloud endpoint/last-edit-settlement precision validation,
-including unequal callback counts and an independent exact raw-row oracle. Keep
-every terminal/acknowledgement interval, final callback, complete-window and I/O
-cost. Characterize the terminal guard and its contribution to full-trial error;
-do not trim it, raise tolerances, replace authoritative rules or retroactively
-pass this report. Any experimental successor remains supplementary until separately
-validated. Per-frame CPU/GPU sensitivity and total shared diagnostics remain
-separate gaps. Read [NEXT_TASK.md](NEXT_TASK.md).
+Cloud endpoint/count precision validation is complete in [CI 37677486748](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748).
+The production ledger/evaluator, independent exact aggregates and saved-CSV oracle
+retain all 28 declared controls and expose terminal-guard sensitivity and callback-
+count cancellation. Detailed synthetic results and bounds are in
+[M1_ENDPOINT_PRECISION.md](M1_ENDPOINT_PRECISION.md). No current rule, 1% threshold,
+private target measurement or saved verdict changed; no shared/per-frame overhead
+qualification is established.
 
-No further target run or full matrix is requested now. The current portable
-candidate and acceptance requirements are unchanged; M1 remains blocked.
+The next bounded correction is a supplementary fixed-work elapsed/count sensitivity
+assessor with its own null/positive/invalid controls, preserving every endpoint row,
+phase/I/O cost and all authoritative decisions. It must explicitly distinguish
+closure wall sensitivity from per-frame CPU/GPU and shared total overhead. Read
+[NEXT_TASK.md](NEXT_TASK.md).
+
+No further target run or full matrix is requested now. The new verified candidate
+contains cloud precision controls; it does not resolve HD 620 qualification.
+M1 remains blocked.
