@@ -5,7 +5,109 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: measurement-method controls
+## Current Windows candidate: supplementary route-matched calibration
+
+The October 7 UTC increment adds **Calibrate heavy-route measurements (~7 min +
+loading)**. Each actual H1/H2 quartet is reference/closure/closure/reference,
+using the same heavy fixtures, route, actors/rain, edits/storage, resolution,
+radii, fixed ticks, workers, native admission caps and safety behavior. All four
+repeats keep the frontier probe off and shared instrumentation on. Disabled
+coverage remains unavailable/null. The positive control yields a requested
+600,000 µs closure delay after gameplay/edit settlement, native phase closure
+and full writer drain; actual delay and overshoot are retained inside the complete
+trial window. Seven bounded aggregate sections retain terminal/acknowledgement
+rows and reconcile to raw CSV. No new queue, worker, world/save or native semantics.
+
+This tests repeatability and sensitivity to added closure wall time. It does not
+calibrate per-frame CPU/GPU critical-path effects, establish frontier-probe cost
+or qualify shared total overhead. The minimal harness brackets are separately
+scoped observations, with no causal overhead estimate. The supplementary
+conservative envelope retains the 1% requirement; it never replaces legacy
+classifications or stability rules. No target profile is qualified. Read
+[M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
+
+Code `84de20f35853ec79d658660ac1418fc82bc47a58` is exported in synthetic merge/
+build `6d25fe9b8bee88c0c78bed72573706672bd2f16e`; Git trees match exactly.
+[CI 37556502450](https://github.com/dponcho/voxel-survival-game/actions/runs/37556502450) passed all three jobs October 7 UTC, completed
+`2026-10-07T01:35:20Z`. Static job `112585407016` passed 33 Python regressions and
+five native sanitizer suites. Native job `112585512324` reused the exact cache
+and independently requalified editor/debug/release registrations. Export job
+`112585759059` passed matching-editor import, 26 new clock controls and the
+independent exact-rational oracle, actual calibration preparation/route/tick-end/
+zero-dispatch observations, existing runtime/evaluation checks, streaming/
+collision/edit/eviction/cancellation, all four profiles, startup smoke, debug/
+release heavy smoke, actual release calibration, saved CSV reconciliation, DLL
+audit and two fresh offline extractions (including a space/Unicode path).
+No engine was installed, compiled or run locally.
+
+The 26 controls cover H1/H2 stationary and perfectly repeated varying routes,
+incomplete/reordered/stalled/failed workloads, matching-section drift, unavailable
+sections, contract mismatch, missing/overlapping doses, shortened smoke and I/O
+failure. They use hypothetical eligible workload contracts and modeled clocks,
+rather than executing thirty-second terrain/actor routes. The 711,422-byte
+saved report reproduces the independent oracle. Both valid modeled shapes resolve
+the known above-limit closure control; invalid cases remain inconclusive.
+All sixteen earlier legacy method controls still pass their declared expectations,
+including the varying-route counterexample that leaves the legacy general method
+unvalidated. No existing report is retroactively passed.
+
+Attempts [37555721834](https://github.com/dponcho/voxel-survival-game/actions/runs/37555721834)
+and [37556123803](https://github.com/dponcho/voxel-survival-game/actions/runs/37556123803)
+completed the controls and actual release calibration, then failed independent
+saved-report reconciliation because it compared JSON-rounded fractional means
+with exact floating equality. The bounded correction accepts serialization
+roundoff only (relative 1e-12, absolute 1e-9 µs), keeps integer totals exact and
+rejects meaningful mean alteration. The first failed-run raw CSV also reconciles
+through the corrected reader. Neither failed run supplies a verified player
+candidate; no 1% threshold or stability rule was weakened.
+
+Independent downloaded-archive review verifies all three digests against GitHub,
+ZIP CRCs/path safety, portable checksum/size, inner/outer build identity, x64 PE/
+PCK, pinned native manifest/template hashes and eight native/game/offline self-test
+reports. All ten raw smoke folders complete with qualification false and no
+integration failures: 98 scenarios, 284 native
+phases, 37,327 operation rows, 12,873 frame rows and
+94 edit events. Callback partitions and final callbacks, full/partial
+timing blocks, native phase/lifetime counters, bytes/maxima, phase boundaries,
+writer drain, closure and combined finalization/file-I/O evidence reconcile.
+
+All three existing heavy smoke reports still verify matched workload equivalence
+and off/on switching, and remain inconclusive. The actual calibration release
+smoke reconciles 1,174 heavy frame rows, both
+quartets, requested/actual delay scope, command schedules and native admission
+caps. Short routes and unavailable later route sections remain inconclusive;
+cloud smoke does not calibrate target noise. Flat off CSV/tracing remains
+explicitly disabled/unavailable. Both 16³ profiles retain H1/H2 analytic coverage
+failures and H2 edit-latency failures. Headless shader-model decisions remain
+inconclusive; OpenGL readback is unavailable. Private target upload/phase-budget
+failures remain unwaived. Cloud success is not HD 620 qualification.
+
+Download [Windows player 11454954432](https://github.com/dponcho/voxel-survival-game/actions/runs/37556502450/artifacts/11454954432), expiry `2026-11-06T01:34:55Z`.
+Separate [export evidence 11455403992](https://github.com/dponcho/voxel-survival-game/actions/runs/37556502450/artifacts/11455403992),
+[native evidence 11455027996](https://github.com/dponcho/voxel-survival-game/actions/runs/37556502450/artifacts/11455027996) and [symbols 11454904506](https://github.com/dponcho/voxel-survival-game/actions/runs/37556502450/artifacts/11454904506)
+retain provenance. Symbols were not downloaded for verification.
+
+| Identity | Verified value |
+| --- | --- |
+| Calibration code commit | `84de20f35853ec79d658660ac1418fc82bc47a58` |
+| Exported merge / game build ID | `6d25fe9b8bee88c0c78bed72573706672bd2f16e` |
+| Native source key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Outer player archive SHA-256 | `6cebecc8f21856272167ccf1ebded45e219140e301c9c2835d807388f10a8d69` |
+| Portable ZIP SHA-256 | `441ea7d6f556ef6f720d963fdbe51d1cdfc10b70405ecf9000f17efa57279c79` |
+| Portable ZIP bytes | `30020482` |
+| Executable SHA-256 | `9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35` |
+| PCK SHA-256 | `cd0151fc1bbe8324bf35e5afefc26465a21b758c0f7bdceec6c24b2cf16e4ab3` |
+| Export evidence ZIP SHA-256 | `54711ce7a1acac2501520cf9faf073a32aa93f1bc2035b5de83a7c46606227b4` |
+| Native evidence ZIP SHA-256 | `141ee754db74df5d7c54a606e01b9939abea41de652a60d049758e796ceac142` |
+
+The smallest target action is one **32³ / one-worker** run of the calibration
+menu in this exact candidate, foreground-visible on AC power, retaining the
+complete folder privately. Review reconciliation, null repeatability and positive
+closure sensitivity before requesting more target work. No new full baseline
+or profile matrix is requested. Per-frame sensitivity and shared total overhead
+remain separate gaps; a closure control cannot qualify them. M1 remains blocked.
+
+## Previous Windows candidate: measurement-method controls
 
 The October 6 validation adds cloud-only injected-clock controls through the
 production diagnostic ledger and heavy evaluator, plus a closed-form independent

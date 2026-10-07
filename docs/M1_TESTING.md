@@ -59,6 +59,16 @@ These short runs provide timing evidence, not performance qualification. A clean
 repeat cannot identify the cause of the historical hitch. See
 [startup timing semantics and limits](M1_STARTUP_ATTRIBUTION.md).
 
+## Focused measurement calibration: about 7 minutes plus preparation
+
+When requested, select **32³ render blocks • 1 worker (baseline)** and
+**Calibrate heavy-route measurements (~7 min + loading)**. Keep the foreground
+visible on AC power and retain the complete report folder privately. This is
+one H1/H2 null/closure calibration, not a profile matrix or qualification run.
+The positive delay happens after gameplay. Review
+[the declared control scope](M1_ROUTE_CALIBRATION.md) before interpreting it as
+frontier-probe or total diagnostic overhead.
+
 ## Targeted heavy cost check: about 7 minutes plus preparation
 
 Select **32³ render blocks • 1 worker (baseline)**, then **Compare heavy-route

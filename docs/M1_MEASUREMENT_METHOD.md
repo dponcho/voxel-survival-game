@@ -106,3 +106,7 @@ null/positive, incomplete/unstable/failed-workload and saved-report tests, the p
 cloud checks and a verified portable Windows candidate before a focused target
 calibration. No additional target baseline, repeat or full matrix is requested
 solely for the completed method review. M1 remains blocked; no profile qualified.
+
+The supplementary runtime implementation is described in
+[M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md). It remains an experiment and
+does not adopt a replacement qualification policy.
