@@ -19,7 +19,7 @@ There are fourteen controls per workload: null, positive, endpoint redistributio
 acknowledgement-duration drift, count masking, count drift, missing, reordered,
 stall, failed actor activity, failed individual upload, unavailable terminal data,
 I/O failure and dose overlap. The ordinary positive control adds 600,000 µs only
-after measurement and before modeled writer drain. The null case injects zero;
+after measurement, modeled native phase closure and writer drain. The null case injects zero;
 its complete-window effect is zero and its repeats stable, but the production
 assessor correctly remains inconclusive because its known-positive dose guard
 requires the declared 600,000 µs. No separate null qualification rule is adopted.
@@ -49,7 +49,9 @@ Every raw row saves integer tick/interval/entry timestamps, current callback beg
 end, previous callback frame/shared/switched cost, nested writer cost and ledger
 tail. The last callback is independently reconciled. Seven aggregate bins, full/
 partial timing blocks, setup/measurement/finalization, dose, writer drain and three
-modeled native-phase boundaries are retained. Overlapping callback/I/O/ledger
+modeled native-phase boundaries are retained. The native measurement phase closes
+before writer drain and dose; their costs remain in the complete diagnostic
+window, outside that native phase and before retirement. Overlapping callback/I/O/ledger
 brackets are not summed. Injected file-write clocks are explicitly a model: actual
 disk service, causal file-I/O cost and native operation rows are unavailable here.
 Existing actual smoke operation CSVs, full report finalization and file-I/O evidence

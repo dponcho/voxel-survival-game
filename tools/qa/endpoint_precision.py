@@ -149,16 +149,17 @@ def reconcile_phase(folder, p, label, index, workload):
         require(all(saved[k]==v for k,v in raw.items()), 'raw section does not reconcile')
         require(saved['status']==('measured' if raw['samples'] else 'unavailable'), 'unavailable section became passing zero')
         require(math.isclose(saved['mean_usec'],raw['usec']/raw['samples'],rel_tol=1e-12,abs_tol=1e-9) if raw['samples'] else saved['mean_usec'] is None, 'saved section mean mismatch')
-    begin=expected['callback_end']+2+200; dose=expected['dose']
+    measured_end=expected['callback_end']+2
+    begin=measured_end+700; dose=expected['dose']
     positive=index in (1,2)
     require(ledger['closure_dose']==dict(requested_usec=600000 if positive else 0,start_usec=(expected['callback_end']+1 if label=='dose-overlap' and index==1 else begin) if positive else None,
                                        end_usec=begin+dose if positive else None,elapsed_usec=dose), 'declared dose/fault mismatch')
     require(clock==dict(scope='modeled wall clocks; not terrain, disk or CPU measurements',interval_begin_usec=1000200,
                         endpoint_entry_usec=endpoint,ack_begin_usec=ack_begin,ack_end_usec=expected['callback_end']+2 if ack_begin is not None else None,
                         dose_begin_usec=begin if positive else None,dose_end_usec=begin+dose if positive else None,
-                        writer_drain_begin_usec=begin+dose+100,writer_drain_end_usec=begin+dose+500,callback_write_usec=count*8,
+                        native_phase_close_usec=measured_end+100,writer_drain_begin_usec=measured_end+200,writer_drain_end_usec=measured_end+600,callback_write_usec=count*8,
                         file_io_causal_usec=None,phases=[dict(phase='preparation',begin_usec=998000,end_usec=1000000),
-                            dict(phase='overhead_diagnostic',begin_usec=1000000,end_usec=expected['end']),
+                            dict(phase='overhead_diagnostic',begin_usec=1000000,end_usec=measured_end+100),
                             dict(phase='retirement',begin_usec=expected['end'],end_usec=expected['end']+2000)],
                         native_operations='unavailable: clock-only controls'), 'saved phase/ack/drain/I/O scope mismatch')
     with path.open('rb') as stream:

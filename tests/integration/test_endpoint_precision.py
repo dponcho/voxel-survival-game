@@ -56,7 +56,7 @@ def fixture(folder,label,index,workload="H1"):
            last_callback_end_usec=m['callback_end'],maximum_callback_usec=36,switched_calls=0,switched_usec=0,
            last_switched_usec=0,finalization_usec=1002+m['dose'],writer_drain_usec=400,
            invalid_partition=False,overflow=False,blocks=blocks,partial_block=dict(samples=block_n,usec=block_usec))
-    end=m['callback_end']+2;begin=end+200;dose=m['dose']
+    end=m['callback_end']+2;begin=end+700;dose=m['dose']
     p.update(samples=frame,wall_seconds=sum(durations)/1e6,measurement_end_usec=end,raw_frames=name,diagnostic_accounting=a)
     p['route_calibration'].update(bins=bins,harness_bracket_usec=frame*2,
         closure_dose=dict(requested_usec=600000 if index in (1,2) else 0,start_usec=(end-1 if label=='dose-overlap' and index==1 else begin) if index in (1,2) else None,
@@ -64,9 +64,9 @@ def fixture(folder,label,index,workload="H1"):
     p['precision_clock']=dict(scope='modeled wall clocks; not terrain, disk or CPU measurements',interval_begin_usec=1000200,
         endpoint_entry_usec=endpoint,ack_begin_usec=ack_begin,ack_end_usec=end if ack_begin is not None else None,
         dose_begin_usec=begin if index in (1,2) else None,dose_end_usec=begin+dose if index in (1,2) else None,
-        writer_drain_begin_usec=begin+dose+100,writer_drain_end_usec=begin+dose+500,
+        native_phase_close_usec=end+100,writer_drain_begin_usec=end+200,writer_drain_end_usec=end+600,
         callback_write_usec=frame*8,file_io_causal_usec=None,phases=[dict(phase='preparation',begin_usec=998000,end_usec=1000000),
-            dict(phase='overhead_diagnostic',begin_usec=1000000,end_usec=m['end']),
+            dict(phase='overhead_diagnostic',begin_usec=1000000,end_usec=end+100),
             dict(phase='retirement',begin_usec=m['end'],end_usec=m['end']+2000)],native_operations='unavailable: clock-only controls')
     if label=='failed-workload' and index==1: p['actor_ticks']-=1
     if label=='failed-operation' and index==1:

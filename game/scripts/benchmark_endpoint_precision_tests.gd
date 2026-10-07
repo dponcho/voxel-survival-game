@@ -66,8 +66,8 @@ func _phase(workload: String, label: String, index: int, directory: String, fail
 	file.close()
 	var measured_end: int = timing.last_callback_end_usec + 2
 	var dose: int = 0 if label == "null" or index not in [1, 2] else Calibration.DOSE_USEC
-	var dose_begin: int = measured_end + 200
-	var drain_begin: int = dose_begin + dose + 100
+	var drain_begin: int = measured_end + 200
+	var dose_begin: int = drain_begin + 400 + 100
 	var end: int = measured_end + 1000 + dose
 	if index in [1, 2]:
 		ledger.dose = {"requested_usec": Calibration.DOSE_USEC, "start_usec": measured_end - 1 if label == "dose-overlap" and index == 1 else dose_begin,
@@ -81,10 +81,10 @@ func _phase(workload: String, label: String, index: int, directory: String, fail
 	phase["precision_clock"] = {"scope": "modeled wall clocks; not terrain, disk or CPU measurements", "interval_begin_usec": 1000200,
 		"endpoint_entry_usec": endpoint, "ack_begin_usec": ack_begin, "ack_end_usec": measured_end if ack_begin != null else null,
 		"dose_begin_usec": dose_begin if index in [1, 2] else null, "dose_end_usec": dose_begin + dose if index in [1, 2] else null,
-		"writer_drain_begin_usec": drain_begin, "writer_drain_end_usec": drain_begin + 400,
+		"native_phase_close_usec": measured_end + 100, "writer_drain_begin_usec": drain_begin, "writer_drain_end_usec": drain_begin + 400,
 		"callback_write_usec": frame * 8, "file_io_causal_usec": null,
 		"phases": [{"phase": "preparation", "begin_usec": 998000, "end_usec": 1000000},
-			{"phase": "overhead_diagnostic", "begin_usec": 1000000, "end_usec": end},
+			{"phase": "overhead_diagnostic", "begin_usec": 1000000, "end_usec": measured_end + 100},
 			{"phase": "retirement", "begin_usec": end, "end_usec": end + 2000}],
 		"native_operations": "unavailable: clock-only controls"}
 	if label == "failed-workload" and index == 1: phase["actor_ticks"] -= 1
