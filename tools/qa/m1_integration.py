@@ -4,6 +4,7 @@ import subprocess
 from pathlib import Path
 from fog_render_probe import run as check_fog_render
 from diagnostic_method_validation import validate as validate_method
+from route_calibration import validate_controls, reconcile_folder
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -35,6 +36,14 @@ if __name__ == "__main__":
     (REPORTS / "m1-diagnostic-method-validation.json").write_text(json.dumps(method, indent=2), encoding="utf-8")
     print("diagnostic method controls reconciled; heavy method remains unvalidated", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
+           "--script", "res://scripts/benchmark_calibration_tests.gd"],
+          "m1-route-calibration-controls", "CAIRN_ROUTE_CONTROLS=", 60)
+    route_controls = json.loads((REPORTS / "m1-route-calibration-controls.json").read_text(encoding="utf-8"))
+    if (REPORTS / "m1-route-calibration-controls.json").stat().st_size > 1024 * 1024:
+        raise RuntimeError("Route control report exceeds 1 MiB")
+    (REPORTS / "m1-route-calibration-validation.json").write_text(
+        json.dumps(validate_controls(route_controls), indent=2), encoding="utf-8")
+    check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
     for render_size, workers in [(16, 1), (32, 2), (16, 2)]:
@@ -46,4 +55,13 @@ if __name__ == "__main__":
            "--benchmark-mode=startup", "--m1-report-root=" + str(REPORTS / "m1-startup-raw")], "m1-startup-release", "CAIRN_M1_SMOKE=")
     check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
            "--benchmark-mode=heavy-ab", "--m1-report-root=" + str(REPORTS / "m1-heavy-ab-raw")], "m1-heavy-ab-release", "CAIRN_M1_SMOKE=")
+    raw_root = REPORTS / "m1-route-calibration-raw"
+    check([ROOT / "dist/player/Cairn.exe", "--headless", "--", "--m1-smoke",
+           "--benchmark-mode=calibration", "--m1-report-root=" + str(raw_root)],
+          "m1-route-calibration-release", "CAIRN_M1_SMOKE=")
+    folders = list(raw_root.glob("*/summary.json"))
+    if len(folders) != 1:
+        raise RuntimeError("Calibration smoke folder missing or duplicated")
+    (REPORTS / "m1-route-calibration-saved.json").write_text(
+        json.dumps(reconcile_folder(folders[0].parent), indent=2), encoding="utf-8")
     check_fog_render()

@@ -118,7 +118,7 @@ static func heavy_diagnostic_ab(reports: Array[Dictionary], short_run: bool, io_
 		result["workloads"][workload] = comparison
 	return result
 
-static func heavy_workload_failures(selected: Array[Dictionary], workload: String, short_run: bool) -> Array[String]:
+static func heavy_workload_failures(selected: Array[Dictionary], workload: String, short_run: bool, probe_pattern: Array[bool] = [false, true, true, false]) -> Array[String]:
 	var failures: Array[String] = []
 	if selected.is_empty(): return failures
 	if selected.size() != 4: return ["Incomplete matched heavy quartet"]
@@ -131,7 +131,7 @@ static func heavy_workload_failures(selected: Array[Dictionary], workload: Strin
 		var contract: Dictionary = report.get("workload_contract", {})
 		var evidence: Dictionary = report.get("workload_evidence", {})
 		var accounting: Dictionary = report.get("diagnostic_accounting", {})
-		var enabled: bool = i == 1 or i == 2
+		var enabled: bool = probe_pattern[i]
 		if report.get("workload") != workload or contract != reference or evidence.is_empty():
 			failures.append("Heavy fixtures/settings or route evidence differ")
 		if int(report.get("simulation_ticks", -1)) != ticks or int(report.get("actor_ticks", -1)) != ticks * actors or int(contract.get("physics_hz", -1)) != 60:

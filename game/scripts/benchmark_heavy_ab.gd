@@ -18,7 +18,7 @@ static func scenarios(warmup: Dictionary) -> Array[Dictionary]:
 	return result
 
 static func active(scenario: Dictionary) -> bool:
-	return str(scenario.get("id", "")).begins_with("AB-H")
+	return str(scenario.get("id", "")).begins_with("AB-H") or str(scenario.get("id", "")).begins_with("CAL-H")
 
 static func workload(scenario: Dictionary) -> String:
 	return str(scenario.get("workload", scenario["id"]))

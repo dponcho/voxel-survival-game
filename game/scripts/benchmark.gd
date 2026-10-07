@@ -17,6 +17,8 @@ const SCENARIOS: Array[Dictionary] = [
 ]
 var scenarios: Array[Dictionary] = SCENARIOS.duplicate(true)
 const HeavyAB = preload("res://scripts/benchmark_heavy_ab.gd")
+const Calibration = preload("res://scripts/benchmark_calibration.gd")
+var calibration := Calibration.new()
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
 const Diagnostics = preload("res://scripts/benchmark_diagnostics.gd")
@@ -244,8 +246,8 @@ func _ready() -> void:
 		if argument.begins_with("--workers="): workers = int(argument.get_slice("=", 1))
 		if argument.begins_with("--benchmark-mode="): mode = argument.get_slice("=", 1)
 		if argument.begins_with("--matrix-index="): matrix_index = int(argument.get_slice("=", 1))
-	if mode == "heavy-ab":
-		scenarios = HeavyAB.scenarios(SCENARIOS[0])
+	if mode in ["heavy-ab", "calibration"]:
+		scenarios = Calibration.scenarios(SCENARIOS[0]) if mode == "calibration" else HeavyAB.scenarios(SCENARIOS[0])
 		startup.stop(Time.get_ticks_usec(), "startup trace not run in the separate heavy comparison")
 		_disconnect_startup_signals()
 	if mode == "matrix":
@@ -523,6 +525,7 @@ func _begin_measurement() -> void:
 	command_hash = 0
 	route_checkpoints.clear()
 	diagnostics = Diagnostics.new()
+	calibration = Calibration.new()
 	frontier = Frontier.new()
 	frontier.configure_renderer_model({"godot_commit": build_info.get("godot_commit", ""),
 		"rendering_method": initial_machine["renderer"], "rendering_driver": initial_machine["rendering_driver"],
@@ -535,7 +538,7 @@ func _begin_measurement() -> void:
 	var label: String = "gameplay"
 	if id == "warmup": label = "warmup"
 	elif id == "paced": label = "paced_diagnostic"
-	elif id.begins_with("AB-"): label = "overhead_diagnostic"
+	elif id.begins_with("AB-") or Calibration.active(scenarios[scenario_index]): label = "overhead_diagnostic"
 	_begin_phase(label, not id.begins_with("AB-off-"))
 	next_proxy_save = 1.0
 	proxy_saves = 0
@@ -695,6 +698,10 @@ func _process(_delta: float) -> void:
 	if measured:
 		# Includes row formatting, batch submission, live UI and the final callback.
 		diagnostics.record_callback(begin, Time.get_ticks_usec(), switched_callback_usec)
+		if Calibration.active(scenarios[scenario_index]):
+			var ledger_begin: int = Time.get_ticks_usec()
+			calibration.record_callback(diagnostics.last_callback_usec)
+			calibration.harness_usec += Time.get_ticks_usec() - ledger_begin
 		measurement_usec = diagnostics.callback_usec
 		if not finish_reason.is_empty(): _finish("failed", finish_reason)
 		elif end_requested: _complete_scenario_if_ready(Time.get_ticks_usec())
@@ -756,6 +763,10 @@ func _process_frame(now: int) -> void:
 		return
 	var frame_ms: float = float(now - last_frame_usec) / 1000.0
 	diagnostics.record_interval(now - last_frame_usec)
+	if Calibration.active(scenarios[scenario_index]):
+		var ledger_begin: int = Time.get_ticks_usec()
+		calibration.record_interval(simulation_ticks, now - last_frame_usec)
+		calibration.harness_usec += Time.get_ticks_usec() - ledger_begin
 	last_frame_usec = now
 	elapsed_wall += frame_ms / 1000.0
 	sample_count += 1
@@ -870,6 +881,21 @@ func _end_scenario() -> void:
 		_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 		return
 	var scenario: Dictionary = scenarios[scenario_index]
+	if Calibration.active(scenario) and int(scenario.get("closure_dose_usec", 0)) > 0:
+		# Known wall-cost control after gameplay, phase closure and writer drain.
+		# Yield existing frames, never spin or block a measured gameplay callback.
+		var dose_begin: int = Time.get_ticks_usec()
+		var requested: int = int(scenario["closure_dose_usec"])
+		var attempts: int = 0
+		while Time.get_ticks_usec() - dose_begin < requested and not cancelled and attempts < 10000:
+			attempts += 1
+			await get_tree().process_frame
+		var dose_end: int = Time.get_ticks_usec()
+		calibration.dose = {"requested_usec": requested, "start_usec": dose_begin,
+			"end_usec": dose_end, "elapsed_usec": dose_end - dose_begin}
+		if cancelled:
+			_finish("cancelled", "Cancelled by user; partial calibration cannot qualify M1")
+			return
 	var id: String = scenario["id"]
 	var heavy: bool = _workload_id().begins_with("H")
 	if id.begins_with("AB-off-"):
@@ -955,13 +981,14 @@ func _end_scenario() -> void:
 		report["workload_evidence"] = {"command_hash": command_hash, "route_checkpoints": route_checkpoints.duplicate(true),
 			"player_end": [player.x, player.y, player.z], "due_edits": next_edit - 1}
 	report.merge(Evaluation.scenario_result(true, hard_failure, reasons))
-	if id.begins_with("AB-"):
+	if id.begins_with("AB-") or Calibration.active(scenario):
 		# Same bounded timing evidence in both modes, including the baseline distribution.
 		var bins: Array[Array] = []
 		for i: int in range(histogram.size()):
 			if histogram[i] > 0: bins.append([i, histogram[i]])
 		report["interval_histogram_10usec"] = bins
 	# Final combined serialization/file hashing has its own measured lifecycle below.
+	if Calibration.active(scenario): report["route_calibration"] = calibration.snapshot()
 	report["diagnostic_accounting"] = diagnostics.snapshot(Time.get_ticks_usec(), writer_drain_usec)
 	reports.append(report)
 	if mode == "explore":
@@ -1020,7 +1047,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	await _close_reports()
 	if test_mode:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
-		if mode != "heavy-ab": integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
+		if mode not in ["heavy-ab", "calibration"]: integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	var fog_configuration: Dictionary = Frontier.fog_configuration(benchmark_environment, camera.far)
@@ -1065,6 +1092,8 @@ func _finish_report(outcome: String, message: String) -> void:
 	summary["configuration"]["fog"] = fog_configuration
 	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["diagnostic_heavy_ab"] = Evaluation.heavy_diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
+	summary["route_calibration"] = Calibration.evaluate(reports, test_mode, not integration_failures.is_empty())
+	if mode == "calibration": summary["scope"] = "supplementary route-matched null/closure sensitivity controls; no legacy or target qualification"
 	summary["diagnostic_accounting"] = {
 		"unit": "elapsed monotonic wall microseconds; neither CPU service nor additive with overlapping worker/GPU time",
 		"scenario": "measurement setup through last callback, phase close, full writer drain and report construction; excludes preparation/retirement",
