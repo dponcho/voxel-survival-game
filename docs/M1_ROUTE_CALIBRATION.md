@@ -123,13 +123,29 @@ meaningful mean alterations. This is not a change to the 1% cost or legacy
 stability rules. The actual first failed-run CSV subsequently reconciled through
 the corrected reader; neither failed run supplies a verified Windows candidate.
 
-## Smallest target check
+## Exact-build target review and next step
 
-Using the verified candidate linked in [M1_EVIDENCE.md](M1_EVIDENCE.md), run this
-one menu choice once at **32³ / one worker**, on AC power with the foreground game
-visible, and retain its complete report folder privately. No new full baseline
-or profile matrix is needed. Review raw reconciliation, null repeatability and
-positive sensitivity before further target requests. An inconclusive result is
-useful evidence of the instrument's current precision; it is not permission to
-trim unstable sections or weaken the 1% cost requirement. Existing coverage,
-upload/phase-budget and shared-overhead failures remain separate M1 gates.
+The initial focused baseline target check was completed and reviewed October 7.
+Identity, workload/switch equivalence and raw saved-report accounting reconcile;
+no evidence-integrity failure was found. Coverage stays unavailable/null. Detailed
+target measurements and raw report identity remain private.
+
+H1 retains whole-trial and main-section repeat drift plus a measured upload-budget
+failure. H2's raw complete-window positive envelope is above the 1% limit and its
+six main section pairs satisfy the repeat guard, but its terminal/edit-settlement
+bucket fails repeatability. Both saved statuses remain inconclusive. H2 therefore
+shows observed closure sensitivity without resolving the declared hardware
+calibration. Preparation/retirement operation exceedances and warm-up deadline
+misses remain unwaived; no causal driver/shader/OS attribution is established.
+
+The next bounded task is cloud endpoint/last-edit-settlement precision validation,
+including unequal callback counts and an independent exact raw-row oracle. Keep
+every terminal/acknowledgement interval, final callback, complete-window and I/O
+cost. Characterize the terminal guard and its contribution to full-trial error;
+do not trim it, raise tolerances, replace authoritative rules or retroactively
+pass this report. Any experimental successor remains supplementary until separately
+validated. Per-frame CPU/GPU sensitivity and total shared diagnostics remain
+separate gaps. Read [NEXT_TASK.md](NEXT_TASK.md).
+
+No further target run or full matrix is requested now. The current portable
+candidate and acceptance requirements are unchanged; M1 remains blocked.

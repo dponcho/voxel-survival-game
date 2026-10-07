@@ -100,12 +100,36 @@ retain provenance. Symbols were not downloaded for verification.
 | Export evidence ZIP SHA-256 | `54711ce7a1acac2501520cf9faf073a32aa93f1bc2035b5de83a7c46606227b4` |
 | Native evidence ZIP SHA-256 | `141ee754db74df5d7c54a606e01b9939abea41de652a60d049758e796ceac142` |
 
-The smallest target action is one **32³ / one-worker** run of the calibration
-menu in this exact candidate, foreground-visible on AC power, retaining the
-complete folder privately. Review reconciliation, null repeatability and positive
-closure sensitivity before requesting more target work. No new full baseline
-or profile matrix is requested. Per-frame sensitivity and shared total overhead
-remain separate gaps; a closure control cannot qualify them. M1 remains blocked.
+## Exact-build target calibration review — October 7
+
+The focused baseline calibration was supplied and reviewed. Build, executable/
+PCK identity, profile and both ordered workload quartets match the candidate.
+Fixed simulation/actor activity, route/command evidence, edits/storage, radii,
+worker count, native admission caps and zero switched dispatches reconcile.
+Coverage remains unavailable/null. Independent streamed raw review reconciles
+frame clocks/order, histograms/percentiles/deadline misses, previous/final
+callbacks, timing blocks, native phase counters/bytes/maxima/lifetime deltas,
+edit events and dose/drain/report-finalization scope. No evidence-integrity
+failure was found. Detailed measurements and raw report identity remain private.
+
+Both supplementary outcomes stay **inconclusive**. H1 has whole-trial and
+matching-main-section repeat drift, and a measured individual-upload failure.
+H2's raw complete-window envelope identifies the known above-limit closure cost;
+its six main route section pairs satisfy the repeat guard. Its small terminal/
+last-edit-settlement section still fails repeatability, so it does not resolve
+hardware calibration. Every terminal row and final callback remains included.
+The scoped preparation/retirement upload/deletion exceedances and warm-up raw
+deadline misses remain separate evidence. Causation by shader, driver, OS or
+background process is unverified.
+
+These results support a bounded cloud endpoint/acknowledgement precision
+investigation before another target request. Preserve all current verdicts and
+the 1% requirement. Do not trim the terminal bucket or adopt a new classifier to
+make this report pass. Per-frame sensitivity, total shared diagnostics and
+existing enabled-frontier/operation failures remain unresolved. No new laptop
+repeat or full matrix is requested now. See [NEXT_TASK.md](NEXT_TASK.md).
+This is a documentation-only review; the verified player above is unchanged.
+M1 remains blocked; no profile qualified.
 
 ## Previous Windows candidate: measurement-method controls
 

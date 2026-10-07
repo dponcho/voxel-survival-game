@@ -59,9 +59,10 @@ Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b8
 Downloaded archives/CRCs/checksums, x64 PE/PCK, identities, native registrations
 and raw reports reconcile. [Evidence](M1_EVIDENCE.md) retains provenance and
 earlier candidates. Target measurements and raw reports stay private.
-The existing target report belongs to the earlier
-`2216a08bc97676d772e41dee57d6c3bac824be54` build; this candidate has no
-exact-build target calibration report.
+The earlier frontier comparison belongs to build
+`2216a08bc97676d772e41dee57d6c3bac824be54`. The exact-build target
+calibration for the current candidate was reviewed October 7; its detailed
+measurements and raw identity remain private.
 
 The startup investigation and two exact-build HD 620 short repetitions are
 complete. The historical stall did not recur; smaller early warm-up hitches
@@ -101,32 +102,50 @@ not physical target A/A or a qualification result. Matched private target analys
 also retains between-repeat mismatches; a successor cannot retroactively pass the
 existing report. The legacy rule and recorded verdicts remain authoritative.
 
-**Next focused action:** one baseline-profile run of
-**Calibrate heavy-route measurements (~7 min + loading)**, retaining the complete
-report privately. The supplementary route-matched experiment has been implemented:
-two identical frontier-off reference repeats and two repeats with a separately
-timed, requested 600,000 µs closure wall delay on each H1/H2 route. Matching
-simulation sections retain terminal/edit-settlement rows. Whole-trial estimates
-retain setup, callbacks, writer drain, closure and I/O. Software controls resolve
-perfectly repeated varying routes and reject missing/stalled/unstable/failed
-inputs; actual target precision remains unverified. Read
-[M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
+**Focused target calibration reviewed October 7:** the report matches the
+current candidate and baseline profile, completes both ordered H1/H2 quartets,
+and preserves fixed ticks, fixtures, routes, actors, edits/storage, command
+fingerprints, admission caps and disabled probe behavior. Independent raw review
+reconciles all frames, native phases/lifetime deltas, callback partitions/final
+callbacks, histograms/timing blocks, edit events, dose/drain/finalization and I/O
+scope. No evidence-integrity failure was found. Disabled coverage remains
+unavailable/null; target details stay private.
 
-This is a sensitivity experiment, not an adopted replacement classifier or a
-frontier/total-overhead qualification. The legacy decisions and 1% requirement
-remain authoritative. The added ledger's observed brackets and still-shared
-instrumentation remain separately scoped, with no uninstrumented control or
-causal total-overhead estimate. Closure sensitivity cannot establish per-frame
-CPU/GPU critical-path effects. No target baseline or full matrix is requested.
+Both supplementary decisions remain **inconclusive**. H1 has whole-trial and
+matching-main-section drift plus a measured upload-budget failure. H2's raw
+complete-window envelope identifies the above-limit closure effect, and its six
+main route section pairs satisfy the repeat guard, but its retained terminal/
+last-edit-settlement section fails. The H2 observation is useful sensitivity
+evidence, not resolved hardware calibration. Preparation/retirement operation
+exceedances and warm-up raw deadline misses remain separate, unwaived evidence.
+Driver, shader and background-process causation remain unknown. Legacy decisions
+and the 1% requirement are unchanged; shared total overhead is still null/
+inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
-**Single next implementation task after that focused review:** use the null/
-positive outcome to select the smallest next calibration correction. Independently
-reconcile every raw row and phase first. If repeats are unstable, diagnose matching
-route/terminal drift without trimming it or weakening the 1% requirement. If the
-whole-window control resolves, the next bounded experiment must calibrate per-frame
-sensitivity before proposing any qualification-policy adoption. Keep all workload
-requirements, unavailable coverage and failing operation evidence. Do not declare
-heavy overhead or M1 qualified from a closure control.
+**Single next implementation task:** extend the cloud measurement-method
+validation with endpoint/last-edit-settlement precision controls and unequal
+callback counts. Use the production ledger/evaluator plus independent exact
+aggregate and saved-CSV oracles. Predeclare null, known closure cost, endpoint
+alignment drift, actual acknowledgement-duration drift, complete-trial callback
+count drift and real failed-workload/operation cases. Preserve all terminal/
+acknowledgement rows, complete-window costs, callbacks, writer drain, file I/O,
+preparation/gameplay/retirement and current saved verdicts.
+
+The observable result is a verified account of the instrument's precision:
+separate the existing terminal-bucket guard from the terminal remainder's
+contribution to the complete-trial estimate, and show when callback-count drift
+can conceal the known positive cost. Keep the 1% requirement and all current
+assessment rules authoritative. This task characterizes precision; it must not
+drop/reweight terminal rows, raise tolerances, retroactively pass this report or
+adopt a successor qualification policy. Any new experimental assessor remains
+supplementary and needs independent null/positive/invalid controls before use.
+Per-frame CPU/GPU sensitivity and shared total overhead remain separate later
+gaps. Runtime changes require pinned cloud checks and a verified portable
+Windows candidate; cloud success is not target qualification.
+
+**No new target-side action is needed now.** Do not repeat the unchanged
+calibration or request another baseline/profile matrix before these cloud
+precision controls and any proposed bounded correction are trustworthy.
 
 The recurring frontier readiness gap and recorded H2 upload remain separate
 workload corrections: use the private alarms for a deterministic cloud boundary
