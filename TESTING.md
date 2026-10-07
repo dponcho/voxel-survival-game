@@ -157,3 +157,30 @@ Pause the application for a long interval, then resume. Do not simulate thousand
 Use `passed`, `failed`, `inconclusive` and `not_run`. Include a command/CI run and artifact identity for executed checks. Fix implementation failures before expanding the affected system. Preserve failing seeds and reports as compact regression fixtures where they identify a real bug.
 
 Cloud-only success is reported as **cloud passed; target performance unverified**. Without a target-hardware report, the project may ship a clearly labelled experimental candidate for the user to run, but it must not claim the hard performance requirements are achieved.
+
+### Cloud endpoint/count precision controls
+
+`benchmark_endpoint_precision_tests.gd` uses the production route ledger,
+diagnostic ledger and evaluator with injected clocks. It saves bounded CSV rows
+for 28 H1/H2 controls, including null/known closure, endpoint redistribution,
+acknowledgement duration, callback-count masking/drift, missing/reordered/stalled
+workloads, failed actor activity/individual upload, unavailable terminal data,
+I/O failure and overlapping dose. It executes no target or terrain measurement.
+
+`tools/qa/endpoint_precision.py` independently checks closed-form integer totals,
+streams each saved CSV, and reconciles previous/final callbacks, timing blocks,
+seven route bins, acknowledgement markers, nested callback writes, writer drain,
+closure dose and preparation/measurement/retirement boundaries. It checks saved
+production decisions using the existing exact-rational oracle. Supplemental
+duration/count decomposition and unscaled terminal contributions are descriptive
+only. A null quartet deliberately cannot satisfy the production known-positive
+dose guard. Missing data stays unavailable/null; no terminal rows are trimmed.
+
+Actions enforces 1 MiB control JSON, 112 fixed raw CSV files totaling at most
+32 MiB, and a 60-second injected-clock command timeout. The runtime ledger still
+has seven bins and no retained per-frame array or new queue. The existing sixteen
+method controls, 26 route controls, thresholds and verdicts remain unchanged.
+Static regressions expand independent clocks and reject corrupt rows, lost tails,
+changed phase/I/O scope, waived operation failures, altered decisions and bounds.
+These checks do not qualify HD 620 precision, per-frame CPU/GPU sensitivity or
+shared instrumentation overhead. See [docs/M1_ENDPOINT_PRECISION.md](docs/M1_ENDPOINT_PRECISION.md).

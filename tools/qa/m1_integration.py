@@ -5,6 +5,7 @@ from pathlib import Path
 from fog_render_probe import run as check_fog_render
 from diagnostic_method_validation import validate as validate_method
 from route_calibration import validate_controls, reconcile_folder
+from endpoint_precision import reconcile_saved as reconcile_precision
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -43,6 +44,15 @@ if __name__ == "__main__":
         raise RuntimeError("Route control report exceeds 1 MiB")
     (REPORTS / "m1-route-calibration-validation.json").write_text(
         json.dumps(validate_controls(route_controls), indent=2), encoding="utf-8")
+    precision_raw = REPORTS / "m1-endpoint-precision-raw"
+    precision_raw.mkdir(exist_ok=True)
+    check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
+           "--script", "res://scripts/benchmark_endpoint_precision_tests.gd", "--",
+           "--precision-output=" + str(precision_raw)],
+          "m1-endpoint-precision-controls", "CAIRN_ENDPOINT_PRECISION=", 60)
+    (REPORTS / "m1-endpoint-precision-validation.json").write_text(json.dumps(
+        reconcile_precision(REPORTS / "m1-endpoint-precision-controls.json", precision_raw), indent=2), encoding="utf-8")
+    print("endpoint/count clocks and authoritative verdicts independently reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
