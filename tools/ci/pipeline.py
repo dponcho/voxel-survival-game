@@ -150,7 +150,7 @@ def prepare():
         raise RuntimeError("Project import reported errors")
     # Check each new dependency directly: a derived benchmark test can otherwise
     # report only an unresolved base class and hide the originating parse error.
-    for script in ("benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "benchmark"):
+    for script in ("benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "benchmark"):
         output = run([editor, "--headless", "--path", game, "--check-only", "--script",
                       "res://scripts/" + script + ".gd"], "parse-" + script, timeout=60)
         if "SCRIPT ERROR:" in output or "ERROR:" in output:

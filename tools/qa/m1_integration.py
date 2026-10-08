@@ -9,6 +9,7 @@ from endpoint_precision import reconcile_saved as reconcile_precision
 from fixed_work import reconcile_saved as reconcile_fixed, reconcile_runtime
 from cpu_dose import reconcile_saved as reconcile_cpu, reconcile_runtime as reconcile_cpu_runtime, scope as cpu_scope
 from frame_slack import reconcile_saved as reconcile_frame, reconcile_runtime as reconcile_frame_runtime, scope as frame_scope
+from frontier_boundary import reconcile as reconcile_frontier
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -98,6 +99,16 @@ if __name__ == "__main__":
         (REPORTS / ("m1-frame-slack-" + suffix + "-validation.json")).write_text(json.dumps(
             reconcile_frame_runtime(runtime_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
     print("Owned cycles, slack/count controls and actual final CPU successors reconciled", flush=True)
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        frontier_raw = REPORTS / ("m1-frontier-boundary-" + suffix + "-raw")
+        frontier_raw.mkdir(exist_ok=True)
+        command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
+        check(command + ["--", "--frontier-boundary-replay", "--frontier-output=" + str(frontier_raw)],
+              "m1-frontier-boundary-" + suffix, "CAIRN_FRONTIER_BOUNDARY=", 600)
+        (REPORTS / ("m1-frontier-boundary-" + suffix + "-validation.json")).write_text(json.dumps(
+            reconcile_frontier(frontier_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
+    print("Public missing boundary reproduced; prepared native meshes and handover reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)

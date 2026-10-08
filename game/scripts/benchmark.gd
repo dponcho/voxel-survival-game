@@ -21,6 +21,8 @@ const Calibration = preload("res://scripts/benchmark_calibration.gd")
 const FixedWork = preload("res://scripts/benchmark_fixed_work.gd")
 const CpuDose = preload("res://scripts/benchmark_cpu_dose.gd")
 const FrameSlack = preload("res://scripts/benchmark_frame_slack.gd")
+const FrontierPreparation = preload("res://scripts/m1_frontier_preparation.gd")
+var frontier_preparation: RefCounted
 var calibration := Calibration.new()
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
@@ -406,6 +408,9 @@ func _create_terrain(fixture: int) -> void:
 	data_viewer.requires_collisions = false
 	data_viewer.position = player
 	add_child(data_viewer)
+	if FrontierPreparation.supported(render_size, _workload_id(), mode):
+		frontier_preparation = FrontierPreparation.new()
+		frontier_preparation.start(self, player)
 
 func _start_scenario() -> void:
 	state = "loading"
@@ -473,6 +478,7 @@ func _capture_workload_contract() -> Dictionary:
 		"resolution": [1280, 720], "reported_window": [window.x, window.y], "render_scale": 1.0,
 		"render_block": terrain.mesh_block_size, "workers": VoxelEngine.get_thread_count(),
 		"visual_radius": viewer.view_distance, "data_radius": data_viewer.view_distance,
+		"frontier_preparation": FrontierPreparation.metadata(frontier_preparation != null),
 		"terrain_bounds": [bounds.position.x, bounds.position.y, bounds.position.z, bounds.size.x, bounds.size.y, bounds.size.z], "triangle_colliders": terrain.generate_collisions,
 		"camera_fov": camera.fov, "camera_far": camera.far, "fog": Frontier.fog_configuration(benchmark_environment, camera.far),
 		"native_policy": {"frame_usec": 2000, "frame_upload_bytes": 1048576, "single_upload_bytes": 262144,
@@ -733,6 +739,8 @@ func _complete_scenario_if_ready(now: int) -> void:
 	_end_scenario()
 
 func _process_frame(now: int) -> void:
+	if frontier_preparation != null and state in ["running", "acknowledging"]:
+		frontier_preparation.advance_process(player)
 	if edit_trace_active:
 		probe.tick_edit_trace()
 		_drain_edit_events()
@@ -1015,6 +1023,9 @@ func _end_scenario() -> void:
 		terrain.queue_free()
 		viewer.queue_free()
 		data_viewer.queue_free()
+		if frontier_preparation != null:
+			frontier_preparation.dispose()
+			frontier_preparation = null
 		state = "draining"
 		loading_started = Time.get_ticks_msec()
 		status_label.text = "Finishing scenario and retiring terrain resources…"
@@ -1048,6 +1059,9 @@ func _finish(outcome: String, message: String) -> void:
 	if test_mode: get_tree().quit(0 if outcome == "completed" and integration_failures.is_empty() else 1)
 
 func _finish_report(outcome: String, message: String) -> void:
+	if frontier_preparation != null:
+		frontier_preparation.dispose()
+		frontier_preparation = null
 	startup.stop(Time.get_ticks_usec(), "benchmark ended before interval window filled")
 	_disconnect_startup_signals()
 	if edit_trace_active:
