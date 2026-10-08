@@ -210,3 +210,19 @@ This verifies software sensitivity and CPU placement, never CPU service,
 hardware precision, GPU cost or shared overhead. Ordinary benchmark smoke must
 retain CPU sensitivity `not_run`; all old control expectations stay unchanged.
 See [M1_CPU_DOSE_SENSITIVITY.md](docs/M1_CPU_DOSE_SENSITIVITY.md).
+
+### Experimental frame-boundary/slack controls
+
+`benchmark_frame_slack_tests.gd` retains 30 modeled quartets/120 CSV phases,
+bounded at 2 MiB JSON, 2 MiB raw and 60 seconds. The rational/raw oracle validates
+owned callback-to-successor cycles, exact 1% boundaries, slack/count masking,
+final-only dose, endpoint uncertainty and every missing/failed/unstable guard.
+An internal application probe runs 256 native-hash bodies plus eight closing
+anchors in both editor and release, with temporary 100-fps limiter/restoration.
+Bounds: 4 KiB input, 8,192 updates per dose, 32 pending rows and 2 MiB/60 seconds
+per invocation. Every digest, engine-frame successor, last body, exclusive cycle,
+callback/anchor/drain/controller gap and external finalization reconciles.
+Ordinary smokes retain `frame_slack_sensitivity: not_run`; old controls remain.
+These are software placement checks, with actual effect envelopes descriptive;
+CPU service, GPU/presentation, hardware precision and shared overhead stay null.
+See [M1_FRAME_SLACK_SENSITIVITY.md](docs/M1_FRAME_SLACK_SENSITIVITY.md).

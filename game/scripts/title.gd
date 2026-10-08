@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--frame-slack-probe" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/benchmark_frame_slack_runtime.gd").new())
+		return
 	if "--cpu-dose-probe" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/benchmark_cpu_dose_runtime.gd").new())
 		return

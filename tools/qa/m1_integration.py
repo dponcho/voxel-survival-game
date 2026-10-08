@@ -8,6 +8,7 @@ from route_calibration import validate_controls, reconcile_folder
 from endpoint_precision import reconcile_saved as reconcile_precision
 from fixed_work import reconcile_saved as reconcile_fixed, reconcile_runtime
 from cpu_dose import reconcile_saved as reconcile_cpu, reconcile_runtime as reconcile_cpu_runtime, scope as cpu_scope
+from frame_slack import reconcile_saved as reconcile_frame, reconcile_runtime as reconcile_frame_runtime, scope as frame_scope
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -80,6 +81,23 @@ if __name__ == "__main__":
         (REPORTS / ("m1-cpu-dose-" + suffix + "-validation.json")).write_text(json.dumps(
             reconcile_cpu_runtime(runtime_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
     print("CPU clock thresholds, count/wait/route masking and real native callback placement reconciled", flush=True)
+    frame_raw = REPORTS / "m1-frame-slack-raw"
+    frame_raw.mkdir(exist_ok=True)
+    check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
+           "--script", "res://scripts/benchmark_frame_slack_tests.gd", "--", "--frame-output=" + str(frame_raw)],
+          "m1-frame-slack-controls", "CAIRN_FRAME_SLACK_CONTROLS=", 60)
+    (REPORTS / "m1-frame-slack-validation.json").write_text(json.dumps(
+        reconcile_frame(REPORTS / "m1-frame-slack-controls.json", frame_raw), indent=2), encoding="utf-8")
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        runtime_raw = REPORTS / ("m1-frame-slack-" + suffix + "-raw")
+        runtime_raw.mkdir(exist_ok=True)
+        command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
+        check(command + ["--", "--frame-slack-probe", "--frame-output=" + str(runtime_raw)],
+              "m1-frame-slack-" + suffix, "CAIRN_FRAME_SLACK_RUNTIME=", 60)
+        (REPORTS / ("m1-frame-slack-" + suffix + "-validation.json")).write_text(json.dumps(
+            reconcile_frame_runtime(runtime_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
+    print("Owned cycles, slack/count controls and actual final CPU successors reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
@@ -106,6 +124,9 @@ if __name__ == "__main__":
     for summary_path in REPORTS.glob("m1-*-raw/*/summary.json"):
         saved = json.loads(summary_path.read_text(encoding="utf-8"))
         cpu_scope(saved["cpu_dose_sensitivity"], not_run=True)
+        frame_scope(saved["frame_slack_sensitivity"], not_run=True)
         if any("cpu_dose_accounting" in p for p in saved["scenarios"]):
             raise RuntimeError("Ordinary gameplay/calibration unexpectedly ran a CPU dose")
+        if any("frame_slack_accounting" in p for p in saved["scenarios"]):
+            raise RuntimeError("Ordinary gameplay/calibration unexpectedly ran a frame dose")
     check_fog_render()

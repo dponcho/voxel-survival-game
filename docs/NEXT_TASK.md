@@ -2,6 +2,12 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+In progress October 8 UTC: experimental frame-boundary/slack validation,
+30 predeclared controls and bounded real editor/release native probes. Cloud
+execution and candidate verification are pending. Read
+[M1_FRAME_SLACK_SENSITIVITY.md](M1_FRAME_SLACK_SENSITIVITY.md). Existing workloads,
+assessments, thresholds and qualification flags remain; no target run is requested.
+
 Completed October 8 UTC: **experimental per-callback CPU dose instrument
 validation**, implementation `eb3f52b351d1361374c4b8741305047d581bd43d`.
 Read [M1_CPU_DOSE_SENSITIVITY.md](M1_CPU_DOSE_SENSITIVITY.md).
