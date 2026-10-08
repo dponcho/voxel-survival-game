@@ -1,0 +1,402 @@
+{
+  "passed": true,
+  "frame_controls": 30,
+  "frame_phases": 120,
+  "frame_control_rows": 3856,
+  "frame_json_bytes": 678187,
+  "frame_raw_bytes": 272269,
+  "frame_runtime": {
+    "editor": {
+      "passed": true,
+      "body_callbacks": 256,
+      "closing_anchor_callbacks": 8,
+      "native_hash_digests_verified": true,
+      "final_body_successors_verified": true,
+      "complete_probe_window_usec": 3239532,
+      "unallocated_phase_gap_usec": 515,
+      "groups": [
+        {
+          "effects": {
+            "body_effect": {
+              "classification": "above_limit",
+              "lower_fraction": 6.62714636140638,
+              "upper_fraction": 6.69762684124386
+            },
+            "cycle_effect": {
+              "classification": "inconclusive",
+              "lower_fraction": -1.25001171885986e-05,
+              "upper_fraction": 0.0662237312532695
+            }
+          },
+          "kind": "limiter_slack",
+          "observations": [
+            {
+              "body_usec": 2446,
+              "callbacks": 32,
+              "cycle_usec": 300119,
+              "dose_usec": 0
+            },
+            {
+              "body_usec": 18813,
+              "callbacks": 32,
+              "cycle_usec": 319993,
+              "dose_usec": 16179
+            },
+            {
+              "body_usec": 18656,
+              "callbacks": 32,
+              "cycle_usec": 319994,
+              "dose_usec": 16167
+            },
+            {
+              "body_usec": 2444,
+              "callbacks": 32,
+              "cycle_usec": 319997,
+              "dose_usec": 0
+            }
+          ],
+          "status": "descriptive; cloud scheduling and limiter state not causal attribution"
+        },
+        {
+          "effects": {
+            "body_effect": {
+              "classification": "above_limit",
+              "lower_fraction": 255.919232307077,
+              "upper_fraction": 265.738065587381
+            },
+            "cycle_effect": {
+              "classification": "above_limit",
+              "lower_fraction": 1.00984384228602,
+              "upper_fraction": 1.01545244870075
+            }
+          },
+          "kind": "beyond_limiter",
+          "observations": [
+            {
+              "body_usec": 2409,
+              "callbacks": 32,
+              "cycle_usec": 319997,
+              "dose_usec": 0
+            },
+            {
+              "body_usec": 642555,
+              "callbacks": 32,
+              "cycle_usec": 643147,
+              "dose_usec": 640153
+            },
+            {
+              "body_usec": 642572,
+              "callbacks": 32,
+              "cycle_usec": 643144,
+              "dose_usec": 640158
+            },
+            {
+              "body_usec": 2501,
+              "callbacks": 32,
+              "cycle_usec": 319108,
+              "dose_usec": 0
+            }
+          ],
+          "status": "descriptive; cloud scheduling and limiter state not causal attribution"
+        }
+      ],
+      "qualified": false,
+      "cpu_service_usec": null,
+      "shared_causal_overhead": null
+    },
+    "release": {
+      "passed": true,
+      "body_callbacks": 256,
+      "closing_anchor_callbacks": 8,
+      "native_hash_digests_verified": true,
+      "final_body_successors_verified": true,
+      "complete_probe_window_usec": 3239474,
+      "unallocated_phase_gap_usec": 389,
+      "groups": [
+        {
+          "effects": {
+            "body_effect": {
+              "classification": "above_limit",
+              "lower_fraction": 6.62874743326489,
+              "upper_fraction": 6.67929188966653
+            },
+            "cycle_effect": {
+              "classification": "inconclusive",
+              "lower_fraction": -6.25013672174079e-06,
+              "upper_fraction": 0.0662510495941569
+            }
+          },
+          "kind": "limiter_slack",
+          "observations": [
+            {
+              "body_usec": 2429,
+              "callbacks": 32,
+              "cycle_usec": 300116,
+              "dose_usec": 0
+            },
+            {
+              "body_usec": 18576,
+              "callbacks": 32,
+              "cycle_usec": 319999,
+              "dose_usec": 16174
+            },
+            {
+              "body_usec": 18653,
+              "callbacks": 32,
+              "cycle_usec": 319991,
+              "dose_usec": 16169
+            },
+            {
+              "body_usec": 2435,
+              "callbacks": 32,
+              "cycle_usec": 319993,
+              "dose_usec": 0
+            }
+          ],
+          "status": "descriptive; cloud scheduling and limiter state not causal attribution"
+        },
+        {
+          "effects": {
+            "body_effect": {
+              "classification": "above_limit",
+              "lower_fraction": 265.862126245847,
+              "upper_fraction": 268.782535684299
+            },
+            "cycle_effect": {
+              "classification": "above_limit",
+              "lower_fraction": 1.00999706244492,
+              "upper_fraction": 1.01546709951148
+            }
+          },
+          "kind": "beyond_limiter",
+          "observations": [
+            {
+              "body_usec": 2382,
+              "callbacks": 32,
+              "cycle_usec": 319994,
+              "dose_usec": 0
+            },
+            {
+              "body_usec": 642604,
+              "callbacks": 32,
+              "cycle_usec": 643194,
+              "dose_usec": 640194
+            },
+            {
+              "body_usec": 642622,
+              "callbacks": 32,
+              "cycle_usec": 643187,
+              "dose_usec": 640224
+            },
+            {
+              "body_usec": 2408,
+              "callbacks": 32,
+              "cycle_usec": 319129,
+              "dose_usec": 0
+            }
+          ],
+          "status": "descriptive; cloud scheduling and limiter state not causal attribution"
+        }
+      ],
+      "qualified": false,
+      "cpu_service_usec": null,
+      "shared_causal_overhead": null
+    }
+  },
+  "real_frame_body_callbacks": 512,
+  "real_frame_anchor_callbacks": 16,
+  "cpu_controls": 54,
+  "cpu_phases": 216,
+  "cpu_rows": 327444,
+  "cpu_json_bytes": 2528558,
+  "cpu_raw_bytes": 23514168,
+  "cpu_runtime": {
+    "editor": {
+      "passed": true,
+      "real_callbacks": 128,
+      "native_hash_digests_verified": true,
+      "body_effect": {
+        "classification": "above_limit",
+        "lower_fraction": 6.35403481012658,
+        "upper_fraction": 6.51271699636657
+      },
+      "qualified": false,
+      "cpu_service_usec": null,
+      "shared_causal_overhead": null
+    },
+    "release": {
+      "passed": true,
+      "real_callbacks": 128,
+      "native_hash_digests_verified": true,
+      "body_effect": {
+        "classification": "above_limit",
+        "lower_fraction": 6.54051863857374,
+        "upper_fraction": 6.64162561576355
+      },
+      "qualified": false,
+      "cpu_service_usec": null,
+      "shared_causal_overhead": null
+    }
+  },
+  "real_cpu_callbacks": 256,
+  "build": {
+    "engine_inputs": "11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "game_commit": "62a8da6e8d1fc9b81195b6b6707d1b4bba3c446b",
+    "milestone": "M1",
+    "native_source_key": "11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d",
+    "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619",
+    "target_performance": "not_run",
+    "renderer": "gl_compatibility",
+    "engine_binaries": {
+      "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+      "editor.exe": "a3fdc470731d425f7e99fb1c6415faacde1073e57ff2848f1d03c5f2f5bc4c3c",
+      "template_debug.exe": "b59e30726ea1c6d3195bad78df9b7c2b157b2e2f4676dd2db34980d77918d5d8",
+      "template_release.exe": "9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35"
+    }
+  },
+  "portable_sha256": "673d82bdd74c1d745e95a5aa3e5738037cf4621328c59ab3312064355cb9564d",
+  "portable_bytes": 30079503,
+  "exe_sha256": "9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35",
+  "pck_sha256": "6e22bb2cdf4783031ebb00c1aa95cef6e9b4cc6187158a3fe130f2ec1e56a4ba",
+  "pck_entries": 66,
+  "player_archive_sha256": "b48d75b5467891e53321d21c2f21bbe22417ea10c00d8ff63147f70ede468203",
+  "evidence_archive_sha256": "af649f1bcb7781c60fa82678ef1e29a8d5256b9682580d42b61f3015922ad59b",
+  "fixed_controls": 44,
+  "fixed_phases": 176,
+  "fixed_rows": 264852,
+  "fixed_json_bytes": 1765195,
+  "fixed_raw_bytes": 15133996,
+  "precision_controls": 28,
+  "precision_rows": 168596,
+  "smoke_folders": 10,
+  "scenarios": 98,
+  "native_phases": 284,
+  "operation_rows": 37340,
+  "frame_rows": 12877,
+  "edit_events": 94,
+  "target_qualified": false,
+  "milestone": "M1",
+  "task": "experimental_owned_callback_cycle_and_cpu_slack_validation",
+  "status": "cloud_passed_target_unverified",
+  "evidence_scope": "public_cloud_only",
+  "implementation_commit": "14581835677bf0bb403fb35a8b58d90eaf6e0595",
+  "initial_implementation_commit": "993ffdc0dfc0cb60ec0af0cf696ebc5f517552d6",
+  "implementation_and_export_tree": "5a35b2281b956c0b65752c764ed37e0f21603618",
+  "ci": {
+    "run_id": 37804090619,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619",
+    "completed_at": "2026-10-08T16:12:24Z",
+    "conclusion": "success",
+    "jobs": {
+      "static": 113408094883,
+      "windows / native / native-binaries": 113408530338,
+      "windows / export-and-test": 113409016450
+    },
+    "python_regressions": 70,
+    "native_sanitizer_suites": 5,
+    "legacy_method_controls": 16,
+    "route_controls": 26,
+    "fresh_offline_extractions": 2
+  },
+  "artifacts": {
+    "player": {
+      "id": 11563412804,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11563412804",
+      "archive_bytes": 29976762,
+      "archive_sha256": "b48d75b5467891e53321d21c2f21bbe22417ea10c00d8ff63147f70ede468203",
+      "expires_at": "2026-11-07T16:11:49Z"
+    },
+    "export_evidence": {
+      "id": 11562713891,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11562713891",
+      "archive_bytes": 16119899,
+      "archive_sha256": "af649f1bcb7781c60fa82678ef1e29a8d5256b9682580d42b61f3015922ad59b",
+      "expires_at": "2026-11-07T16:12:17Z"
+    },
+    "native_evidence": {
+      "id": 11563176227,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11563176227",
+      "archive_bytes": 12526,
+      "archive_sha256": "df5a2290be141265342928815a4ff825c27688be24a73abd9f1aa21f508264e1",
+      "expires_at": "2027-01-06T15:50:54Z"
+    }
+  },
+  "checks": {
+    "native_game_offline_selftest_reports": 8,
+    "pe_imports_independently_reconciled": 38,
+    "native_inputs_and_template_hashes": true,
+    "archive_crc_and_safe_paths": true,
+    "artifact_and_portable_digests": true,
+    "x64_pe": true,
+    "all_pck_entry_md5_and_build_identity": true,
+    "frame_exact_arithmetic_classifications_and_nulls": true,
+    "frame_phase_boundaries_and_streamed_saved_rows": true,
+    "actual_native_hash_body_cycle_and_successor_placement": true,
+    "actual_callback_anchor_drain_controller_and_report_windows": true,
+    "actual_probe_exported_identity": true,
+    "ordinary_benchmark_frame_dose_not_run": true,
+    "old_control_expectations_preserved": true,
+    "actual_native_frame_edit_and_finalization_reconciliation": true
+  },
+  "bounds": {
+    "control_reports": 30,
+    "raw_files": 120,
+    "json_bytes_max": 2097152,
+    "raw_bytes_max": 2097152,
+    "clock_command_timeout_seconds": 60,
+    "runtime_body_callbacks_per_invocation": 256,
+    "runtime_closing_anchor_callbacks_per_invocation": 8,
+    "runtime_pending_rows_max": 32,
+    "runtime_buffer_bytes": 4096,
+    "runtime_hash_updates_per_dose_max": 8192,
+    "runtime_distinct_error_messages_max": 11,
+    "runtime_evidence_bytes_max": 2097152,
+    "runtime_command_timeout_seconds": 60
+  },
+  "failed_attempts": [
+    {
+      "run_id": 37801519338,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37801519338",
+      "candidate": false,
+      "cause": "Duplicate de variable in frame observation scope prevented script loading. First two runs exposed only unresolved benchmark base class; third direct editor parse check identified originating error. Corrected variable name; direct parser checks retained."
+    },
+    {
+      "run_id": 37801991626,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37801991626",
+      "candidate": false,
+      "cause": "Duplicate de variable in frame observation scope prevented script loading. First two runs exposed only unresolved benchmark base class; third direct editor parse check identified originating error. Corrected variable name; direct parser checks retained."
+    },
+    {
+      "run_id": 37802839475,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37802839475",
+      "candidate": false,
+      "cause": "Duplicate de variable in frame observation scope prevented script loading. First two runs exposed only unresolved benchmark base class; third direct editor parse check identified originating error. Corrected variable name; direct parser checks retained."
+    }
+  ],
+  "preceding_corrected_run": {
+    "run_id": 37803676081,
+    "conclusion": "success",
+    "candidate": false,
+    "scope": "Same observations and controls before final bounded error-message storage correction"
+  },
+  "qualification_policy_changed": false,
+  "hardware_noise_calibrated": false,
+  "cpu_service_usec": null,
+  "causal_per_frame_cpu_gpu_probe_cost": null,
+  "causal_shared_total_diagnostic_overhead": null,
+  "target_side_action_now": "none",
+  "remaining_uncertainty": [
+    "HD 620 noise and qualification",
+    "CPU service, GPU overlap/sensitivity and physical presentation",
+    "causal frontier cost and shared total diagnostic overhead",
+    "existing workload and operation failures remain unwaived"
+  ],
+  "actual_calibration": {
+    "callbacks": 1318,
+    "legacy_and_fixed_work_decisions": "inconclusive",
+    "later_sections": "unavailable",
+    "combined_finalization": "external_not_allocated"
+  }
+}

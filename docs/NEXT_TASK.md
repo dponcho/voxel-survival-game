@@ -2,11 +2,43 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
-In progress October 8 UTC: experimental frame-boundary/slack validation,
-30 predeclared controls and bounded real editor/release native probes. Cloud
-execution and candidate verification are pending. Read
-[M1_FRAME_SLACK_SENSITIVITY.md](M1_FRAME_SLACK_SENSITIVITY.md). Existing workloads,
-assessments, thresholds and qualification flags remain; no target run is requested.
+Completed October 8 UTC: **experimental frame-boundary and CPU-slack
+software validation**. Read [M1_FRAME_SLACK_SENSITIVITY.md](M1_FRAME_SLACK_SENSITIVITY.md).
+[CI 37804090619](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619) passed all three jobs: 70 Python regressions,
+five native sanitizer suites, exact matching-engine checks, 30 modeled controls,
+real editor/release probes, every existing method/route/endpoint/fixed-work/CPU
+expectation, runtime/profile/smoke checks, DLL audit and two fresh offline
+extractions. Independent downloaded review reconciles 120 modeled
+phases/3,856 rows, 678,187 JSON bytes and
+272,269 raw bytes, within the predeclared 2 MiB limits.
+All 512 actual body callbacks and 16 closing anchors reproduce native
+digests and reconcile engine-frame successors, exclusive partitions, complete
+callbacks, drain/controller gaps and external finalization. Both probes retain
+placement verification, qualification false and unavailable/null causal costs.
+Actual effects remain descriptive; cloud noise does not receive a passing verdict.
+
+All ten ordinary smoke folders retain frame/CPU dose `not_run`, no dose ledgers,
+no integration failures and qualification false. Independent review reconciles
+98 scenarios/284 native phases, 37,340 operation rows,
+12,877 frame rows and 94 edit events. Existing 54 CPU controls/
+216 phases/327,444 rows and 256 real CPU callbacks,
+44 fixed-work controls/176 phases/264,852 rows and 28 endpoint
+controls/168,596 rows reconcile unchanged. All sixteen method and
+26 route controls remain. Actual shortened calibration remains inconclusive;
+16³ heavy coverage/edit alarms and operation failures remain unwaived. Hosted
+OpenGL readback remains unavailable. No engine was installed, compiled or run locally.
+
+Current [Windows player 11563412804](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11563412804) expires
+`2026-11-07T16:11:49Z`. Exact exported merge/build: `62a8da6e8d1fc9b81195b6b6707d1b4bba3c446b`.
+Portable ZIP SHA-256: `673d82bdd74c1d745e95a5aa3e5738037cf4621328c59ab3312064355cb9564d`; bytes: `30079503`.
+Implementation `14581835677bf0bb403fb35a8b58d90eaf6e0595` and exported build share tree `5a35b2281b956c0b65752c764ed37e0f21603618`.
+Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
+Archive/PE/PCK identity, all 66 PCK entry MD5s, pinned native templates,
+eight native/game/offline self-test reports and all 38 PE imports independently verify.
+Full public provenance is in [the verification record](evidence/m1-frame-slack-cloud-2026-10-08.json).
+
+No target run or download is requested now. CPU service, GPU/presentation,
+HD 620 noise and shared diagnostic overhead remain unverified.
 
 Completed October 8 UTC: **experimental per-callback CPU dose instrument
 validation**, implementation `eb3f52b351d1361374c4b8741305047d581bd43d`.
@@ -21,7 +53,7 @@ and all 256 real callbacks/native hash digests. Ten ordinary smoke folders retai
 CPU dose `not_run`, no CPU ledger and qualification false; 98 scenarios/284 native
 phases and their raw operation/frame/edit/finalization evidence reconcile.
 
-Current [Windows player 11524461668](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524461668)
+Previous CPU-body [Windows player 11524461668](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524461668)
 expires `2026-11-07T02:23:20Z`. Exact exported merge/build ID:
 `549d2aa9e5c88ab34e0baeba35f208bea98a3706`. Portable ZIP SHA-256:
 `4f30808cb91b4ff8d9642e4897c6aa7fac4dbbf7c55d1a5183f27e4453a85b09`.
@@ -222,46 +254,36 @@ inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
 ## Next bounded step
 
-**Recommended single next implementation task:** cloud-only frame-boundary and
-CPU-slack sensitivity validation. Extend the existing bounded application probe
-with a defensible serialized frame observation, verified against pinned process,
-render sync/draw and wait boundaries. Predeclare CPU work absorbed by existing
-slack and CPU work that extends the observed frame, including exact null/below/
-at/above-1%, threshold overlap, count/composition drift and missing/incomplete/
-stalled/failed/I/O controls. Preserve every callback, endpoint, body/dose bracket,
-complete duration and external finalization; do not sum overlapping spans.
-Independently reconcile the saved frame/body/dose clocks and classify when a
-body-span change identifies a frame effect and when attribution is unavailable.
-Use clock controls plus actual bounded native CPU work in matching editor and
-packaged release, and produce a verified portable candidate.
+**Recommended single next implementation task:** deterministic cloud replay of
+one demonstrated moving-frontier readiness gap, followed by the smallest cause
+correction that the replay proves. Begin with the existing public 16³ H1/H2 cloud
+alarms and preserve their fixture, route/camera, 96 m fog boundary, required-region
+geometry, revisions, worker/admission/submission caps and confirmed-empty rules.
+Inspect demand/admission/submission state at the boundary; distinguish a geometry
+or readiness-accounting defect from genuinely late submitted meshes. Capture a
+bounded failing fixture before changing behaviour, then independently check the
+corrected replay and existing frontier/operation/edit tests in matching editor
+and packaged release, with a verified portable candidate.
 
-The observable result is trustworthy software validation of a frame observation
-and its slack limitation. The completed body-span instrument proves native work
-inside callbacks; it does not resolve the whole engine frame critical path.
-OS CPU service, GPU overlap/sensitivity, physical presentation, HD 620 noise and
-shared instrumentation overhead remain separate unavailable quantities. Preserve
-existing workload contracts and ordinary gameplay/calibration behaviour.
-Cloud/headless success stays distinct from HD 620 qualification.
+The completed fixed-work, callback-body and owned-cycle increments validate
+software observations and expose count/wait/slack masking. They do not establish
+OS CPU service, GPU overlap/sensitivity, physical presentation, HD 620 noise or
+shared instrumentation overhead. Those gaps remain open; a cloud readiness
+correction cannot qualify timing or diagnostic overhead. The earlier priority on
+measurement-method software controls is complete for these bounded instruments.
+No replacement qualification policy has been adopted.
 
 All legacy/current assessments and the 1% requirement remain authoritative;
-qualification flags stay false. Do not adopt a replacement policy, retroactively
-pass target reports, relax workload/operation/coverage guards or infer total
-diagnostic overhead from an elapsed-duration ratio. Policy adoption is a separate
-decision; no such decision was made by the completed fixed-work increment.
+qualification flags stay false. Do not retroactively pass target reports, widen
+fog, weaken coverage, suppress operation failures, change workload contracts or
+trim samples. Retain the recorded H2 upload as a separate unresolved operation
+failure; do not assume a frontier correction resolves it. Change no world/save
+semantics and do not expand content into M2.
 
-**No new target-side action is needed now.** Do not repeat the unchanged
-calibration or request another baseline/profile matrix. The fixed-work and
-callback-body corrections and their cloud controls are trustworthy, but do not
-resolve whole-frame sensitivity,
-hardware noise or shared overhead. Startup investigation and target-report reviews
-remain complete.
-
-The recurring frontier readiness gap and recorded H2 upload remain separate
-workload corrections: use the private alarms for a deterministic cloud boundary
-replay, inspect required-region geometry and demand/admission/submission state,
-and correct the demonstrated cause. Do not widen fog, weaken coverage, suppress
-operation failures or trim samples. Timing instability and shared total overhead
-remain unresolved. Startup attribution/review remains complete.
+**No new target-side action is needed now.** Do not request another unchanged
+calibration or baseline/profile matrix. Use existing public cloud evidence for
+the bounded replay; detailed target measurements and raw identities remain
+private. Startup investigation and target-report reviews remain complete.
 
 Unresolved M1 gates include pacing, conservative heavy coverage, recorded upload/
 terrain limits, unstable flat A/B, total diagnostic overhead, allocation/deferred
@@ -269,7 +291,7 @@ renderer accounting, retention, profile comparison and qualification repeats.
 Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
 semantics or workload requirement changed; M2 remains gated.
 
-Read `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+Read `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
 and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_MEASUREMENT_METHOD.md`,
 `docs/M1_ROUTE_CALIBRATION.md`, `docs/M1_FOG_FRONTIER.md`,
 `docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/

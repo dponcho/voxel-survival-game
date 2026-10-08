@@ -5,7 +5,82 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: experimental CPU dose instrument
+## Current Windows candidate: experimental frame-boundary/slack instrument
+
+The October 8 UTC increment adds an experimental owned process-callback entry
+through successor-entry wall observation alongside the completed CPU-body and
+fixed-work instruments. Every body owns its entire cycle, including the final
+successor supplied by a closing anchor. Body, callback remainder and outside-
+callback span form an exclusive partition; nested costs are not summed.
+Thirty controls expose native work absorbed by modeled slack, exact 1% boundaries,
+final-only dose, count/composition drift and unavailable/failed/unstable evidence.
+Ordinary gameplay and calibration execute no dose and retain all legacy assessments,
+1% thresholds, qualification flags, workloads, native/world/save semantics and safety.
+Read [M1_FRAME_SLACK_SENSITIVITY.md](M1_FRAME_SLACK_SENSITIVITY.md).
+
+[CI 37804090619](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619) passed all three jobs: 70 Python regressions,
+five native sanitizer suites, exact matching-engine checks, 30 modeled controls,
+real editor/release probes, every existing method/route/endpoint/fixed-work/CPU
+expectation, runtime/profile/smoke checks, DLL audit and two fresh offline
+extractions. Independent downloaded review reconciles 120 modeled
+phases/3,856 rows, 678,187 JSON bytes and
+272,269 raw bytes, within the predeclared 2 MiB limits.
+All 512 actual body callbacks and 16 closing anchors reproduce native
+digests and reconcile engine-frame successors, exclusive partitions, complete
+callbacks, drain/controller gaps and external finalization. Both probes retain
+placement verification, qualification false and unavailable/null causal costs.
+Actual effects remain descriptive; cloud noise does not receive a passing verdict.
+
+All ten ordinary smoke folders retain frame/CPU dose `not_run`, no dose ledgers,
+no integration failures and qualification false. Independent review reconciles
+98 scenarios/284 native phases, 37,340 operation rows,
+12,877 frame rows and 94 edit events. Existing 54 CPU controls/
+216 phases/327,444 rows and 256 real CPU callbacks,
+44 fixed-work controls/176 phases/264,852 rows and 28 endpoint
+controls/168,596 rows reconcile unchanged. All sixteen method and
+26 route controls remain. Actual shortened calibration remains inconclusive;
+16³ heavy coverage/edit alarms and operation failures remain unwaived. Hosted
+OpenGL readback remains unavailable. No engine was installed, compiled or run locally.
+
+Actual native effect envelopes (relative wall-span change; descriptive):
+
+| Probe | Body envelope | Owned-cycle envelope | Cycle classification |
+| --- | --- | --- | --- |
+| editor, limiter_slack | 662.715% to 669.763% | -0.001% to 6.622% | inconclusive |
+| editor, beyond_limiter | 25591.923% to 26573.807% | 100.984% to 101.545% | above_limit |
+| release, limiter_slack | 662.875% to 667.929% | -0.001% to 6.625% | inconclusive |
+| release, beyond_limiter | 26586.213% to 26878.254% | 101.000% to 101.547% | above_limit |
+
+Both small-dose cycle envelopes cross zero and remain inconclusive. The large
+native dose extends the observed cycle in both builds. The exact modeled slack
+control retains zero cycle effect with a 50% body increase. Neither observation
+calibrates 1% hardware noise or estimates frontier/shared causal cost. Stalls and
+all individual observations remain in saved evidence.
+
+Three failed attempts (37801519338, 37801991626, 37802839475) stopped
+at script loading. Direct matching-editor parse checks exposed a duplicate `de`
+variable in the observation scope; its rename corrected the cause. Parser
+preflights remain. Corrected run 37803676081 passed; the current candidate also
+includes bounded distinct error-message storage. Failed attempts are not candidates.
+
+[Windows player 11563412804](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11563412804) expires
+`2026-11-07T16:11:49Z`. Exact exported merge/build: `62a8da6e8d1fc9b81195b6b6707d1b4bba3c446b`.
+Portable ZIP SHA-256: `673d82bdd74c1d745e95a5aa3e5738037cf4621328c59ab3312064355cb9564d`; bytes: `30079503`.
+Implementation `14581835677bf0bb403fb35a8b58d90eaf6e0595` and exported build share tree `5a35b2281b956c0b65752c764ed37e0f21603618`.
+Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
+Archive/PE/PCK identity, all 66 PCK entry MD5s, pinned native templates,
+eight native/game/offline self-test reports and all 38 PE imports independently verify.
+Full public provenance is in [the verification record](evidence/m1-frame-slack-cloud-2026-10-08.json).
+
+[Export evidence 11562713891](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11562713891) and
+[native evidence 11563176227](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11563176227) retain raw provenance.
+Symbols remain separate and were not downloaded. Export job completed
+`2026-10-08T16:12:24Z`. CPU service, GPU overlap/sensitivity,
+physical presentation, HD 620 noise, frontier causal cost and shared total
+overhead remain unavailable/unverified. An owned cycle is not rendered fps.
+**No target-side action is needed now.** M1 remains blocked; no profile qualified.
+
+## Previous Windows candidate: experimental CPU dose instrument
 
 The October 8 UTC increment adds a bounded per-callback CPU dose assessor and
 separate cloud-only native hashing probe. Its estimand is mean synchronous
