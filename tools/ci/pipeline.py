@@ -148,6 +148,13 @@ def prepare():
     output = run([editor, "--headless", "--path", game, "--import"], "editor-import", timeout=300)
     if "SCRIPT ERROR:" in output or "ERROR:" in output:
         raise RuntimeError("Project import reported errors")
+    # Check each new dependency directly: a derived benchmark test can otherwise
+    # report only an unresolved base class and hide the originating parse error.
+    for script in ("benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "benchmark"):
+        output = run([editor, "--headless", "--path", game, "--check-only", "--script",
+                      "res://scripts/" + script + ".gd"], "parse-" + script, timeout=60)
+        if "SCRIPT ERROR:" in output or "ERROR:" in output:
+            raise RuntimeError("Direct frame/benchmark parser check reported errors")
     # Run the title/self-test through the matching editor, then both actual export templates.
     self_test(editor, "editor-self-test", game)
     output = run([editor, "--headless", "--path", game, "--script", "res://scripts/m1_native_tests.gd"],
