@@ -22,4 +22,5 @@ public:
     Dictionary edit_trace_snapshot() const;
     Array take_edit_events();
     Dictionary sample_frontier(Object *terrain, Object *camera, AABB surface_bounds) const;
+    Dictionary sample_mesh_blocks(Object *terrain, Array coordinates) const;
 };

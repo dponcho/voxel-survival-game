@@ -240,3 +240,21 @@ settlement/drain limits and a 600-second command deadline. The independent
 saved-report/source/geometry oracle and mutation tests supplement, never replace,
 existing frontier/operation/edit/evaluation and profile smokes. See
 [M1_FRONTIER_BOUNDARY_REPLAY.md](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
+
+### Concurrent edit during the next frontier handover
+
+Matching editor/release each run eight actual native cases at the public second
+16³ +X boundary: stationary, transfer, cancellation requested before acquisition
+and during overlapping ownership, each with one/two workers and one accepted
+border edit. The independent saved oracle checks both current edit revisions,
+actual resource identities and `1 -> 2 -> 1` visual references, next-column
+submission, preserved confirmed-empty coverage, cancelled/completed terminal
+source, native drain and unchanged 200 ms acknowledgement / 750 µs operation
+guards. Collection close never becomes native acknowledgement. All 24 native
+preparation/transfer/retirement phases reconcile with streamed operation rows.
+Bounds are 160 observations, ten observed blocks per row (native API maximum
+16), 1 MiB summary, 20,000 operation rows / 8 MiB, 60-second settlement/drain
+and 600-second command deadline. Null/invalid/oversized/malformed/duplicate and
+absent-block native controls, exact saved sums/peaks/phase closures and Python
+mutation regressions supplement all earlier controls. See
+[M1_FRONTIER_EDIT_HANDOVER.md](docs/M1_FRONTIER_EDIT_HANDOVER.md).

@@ -135,6 +135,14 @@ preparation/submission/retirement work remains accounted. This narrow fixture
 policy is not a general-world streaming solution or target qualification. See
 [the bounded replay](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
 
+A second visual-only viewer of an already submitted region retains its current
+desired revision, including while an accepted edit replacement is in flight.
+First loads, `post_edit` invalidation and collision-viewer combinations retain
+their existing scheduling. A cloud-only bounded observer copies resource IDs,
+viewer counts and desired/last-submitted revisions without retaining resources
+or reading GPU buffers; ordinary callbacks do not invoke it. See
+[the concurrent-edit replay](docs/M1_FRONTIER_EDIT_HANDOVER.md).
+
 Edits are validated commands: reach, inventory, collision, bounds, readiness and complexity admission. A successful command assigns a revision, changes voxel/inventory state consistently, marks affected border meshes and lighting, and queues its persistence payload. Coalesce repeated edits to the same chunk. Main-thread reads/edits must not wait behind a long worker-held spatial lock; use short snapshots, retry/try-lock paths or narrowly scoped native adaptation where required.
 
 Never discard unsaved state during eviction. Once its complete transaction is durably journalled, in-memory chunk data may be evicted even if snapshot compaction is pending. Reload reconstructs the snapshot plus all later committed records. Bound mesh destruction as well as creation; releasing hundreds of buffers at once is not free.

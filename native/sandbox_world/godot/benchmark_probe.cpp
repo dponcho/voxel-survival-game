@@ -4,6 +4,7 @@
 #include "modules/voxel/terrain/fixed_lod/voxel_terrain.h"
 #include "scene/3d/camera_3d.h"
 #include "core/object/class_db.h"
+#include "core/os/thread.h"
 #ifdef WINDOWS_ENABLED
 #include <windows.h>
 #include <psapi.h>
@@ -23,6 +24,37 @@ void CairnProbe::_bind_methods() {
     ClassDB::bind_method(D_METHOD("edit_trace_snapshot"), &CairnProbe::edit_trace_snapshot);
     ClassDB::bind_method(D_METHOD("take_edit_events"), &CairnProbe::take_edit_events);
     ClassDB::bind_method(D_METHOD("sample_frontier", "terrain", "camera", "surface_bounds"), &CairnProbe::sample_frontier);
+    ClassDB::bind_method(D_METHOD("sample_mesh_blocks", "terrain", "coordinates"), &CairnProbe::sample_mesh_blocks);
+}
+
+Dictionary CairnProbe::sample_mesh_blocks(Object *terrain_object, Array coordinates) const {
+    Dictionary d;
+    d["status"] = "unavailable";
+    d["reason"] = "requires a live fixture terrain, main thread and 1..16 distinct Vector3i coordinates";
+    d["blocks"] = Variant();
+    d["probe_usec"] = Variant();
+    auto *terrain = Object::cast_to<zylann::voxel::VoxelTerrain>(terrain_object);
+    if (!Thread::is_main_thread() || terrain == nullptr || !terrain->is_inside_tree() ||
+            coordinates.size() < 1 || coordinates.size() > 16) return d;
+    for (int i = 0; i < coordinates.size(); ++i) {
+        if (coordinates[i].get_type() != Variant::VECTOR3I) return d;
+        for (int j = 0; j < i; ++j) if (coordinates[i] == coordinates[j]) return d;
+    }
+    const uint64_t start = OS::get_singleton()->get_ticks_usec();
+    Array blocks;
+    for (int i = 0; i < coordinates.size(); ++i) {
+        const Vector3i coordinate = coordinates[i];
+        Dictionary block = terrain->get_cairn_mesh_observation(coordinate);
+        Array position;
+        position.push_back(coordinate.x); position.push_back(coordinate.y); position.push_back(coordinate.z);
+        block["block"] = position;
+        blocks.push_back(block);
+    }
+    d["status"] = "measured";
+    d["reason"] = "";
+    d["blocks"] = blocks;
+    d["probe_usec"] = int64_t(OS::get_singleton()->get_ticks_usec() - start);
+    return d;
 }
 
 Dictionary CairnProbe::sample_frontier(Object *terrain_object, Object *camera_object, AABB surface_bounds) const {

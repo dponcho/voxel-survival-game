@@ -10,6 +10,7 @@ from fixed_work import reconcile_saved as reconcile_fixed, reconcile_runtime
 from cpu_dose import reconcile_saved as reconcile_cpu, reconcile_runtime as reconcile_cpu_runtime, scope as cpu_scope
 from frame_slack import reconcile_saved as reconcile_frame, reconcile_runtime as reconcile_frame_runtime, scope as frame_scope
 from frontier_boundary import reconcile as reconcile_frontier
+from frontier_edit import reconcile as reconcile_frontier_edit
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -116,6 +117,9 @@ if __name__ == "__main__":
         command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
         check(command + ["--", "--frontier-edit-replay", "--frontier-edit-output=" + str(edit_raw)],
               "m1-frontier-edit-" + suffix, "CAIRN_FRONTIER_EDIT=", 600)
+        (REPORTS / ("m1-frontier-edit-" + suffix + "-validation.json")).write_text(json.dumps(
+            reconcile_frontier_edit(edit_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
+    print("Concurrent seam edit revisions, actual mesh references, cancellation and phase operations reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
