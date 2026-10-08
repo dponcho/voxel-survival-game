@@ -212,8 +212,11 @@ def validate(report,folder):
         equal(c['assessment']['workloads'][workload],oracle)
         require(bool(c['assessment']['workloads'][workload]['reasons'])==(expected=='inconclusive'),'guard reasons lost')
         require(c['assessment']['workloads']['H2' if workload=='H1' else 'H1']['status']=='not_run','absent workload fabricated')
-        status,detail=legacy_assess(phases,workload,io_failed=c['io_failed'])
-        legacy_scope(c['legacy_assessment']);reconcile_decision(c['legacy_assessment']['workloads'][workload],status,detail)
+        if label=='null':
+            require(c['legacy_assessment'] is None,'zero-dose null must not invoke the legacy known-positive path')
+        else:
+            status,detail=legacy_assess(phases,workload,io_failed=c['io_failed'])
+            legacy_scope(c['legacy_assessment']);reconcile_decision(c['legacy_assessment']['workloads'][workload],status,detail)
         if label=='at':require(oracle['duration_effect']['classification']=='above_limit' and oracle['duration_effect']['lower_fraction']==.01,'exact 1% boundary lost')
         if label=='below':require(oracle['duration_effect']['classification']=='below_limit','below boundary changed')
         if label=='count-mask':require(oracle['duration_effect']['lower_fraction']>.01 and max(v['time_per_callback_added_fraction'] for v in oracle['count_duration_decomposition'])<.01,'callback counts concealed closure duration')

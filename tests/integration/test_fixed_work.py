@@ -129,6 +129,40 @@ class FixedWorkTests(unittest.TestCase):
             p=fixture(folder,'at',1);p['diagnostic_accounting']['end_usec']+=1
             with self.assertRaises(ValueError):reconcile_control_phase(folder,p,'at',1,'H1')
 
+    def test_saved_control_registry_bounds_and_legacy_null_semantics(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);controls=[]
+            def root():
+                return dict(version=VERSION,experimental=True,qualified=False,legacy_authoritative=True,threshold=.01,
+                    hardware_noise_calibrated=False,per_frame_probe_cost=None,shared_causal_overhead=None,
+                    combined_report_finalization=dict(status='external_record',file='report-finalization.json',allocated_to_trials=False),workloads={})
+            for workload in ('H1','H2'):
+                for label in LABELS:
+                    all_phases=[fixture(folder,label,i,workload) for i in range(4)]
+                    p=all_phases.copy();omitted=[]
+                    if label=='missing':omitted.append(p.pop())
+                    if label=='reordered':p.reverse()
+                    declared,_=dose_for(label,0)
+                    oracle=assess(p,workload,io_failed=label=='io-failed',declared=declared)
+                    assessment=root();assessment['declared_dose_usec']=declared
+                    assessment['workloads'][workload]=dict(**oracle,reasons=['guard'] if oracle['status']=='inconclusive' else [])
+                    assessment['workloads']['H2' if workload=='H1' else 'H1']=dict(status='not_run')
+                    legacy=None
+                    if label!='null':
+                        status,detail=legacy_assess(p,workload,io_failed=label=='io-failed')
+                        legacy=dict(version='m1-route-calibration-1',qualified=False,legacy_authoritative=True,threshold=.01,
+                                    hardware_noise_calibrated=False,shared_overhead=dict(outcome='inconclusive',added_fraction=None),
+                                    workloads={workload:dict(status=status,qualified=False,**(detail or {}))})
+                    controls.append(dict(name=workload+'/'+label,workload=workload,expected=oracle['status'],io_failed=label=='io-failed',
+                        declared_dose_usec=declared,phases=p,omitted_phases=omitted,assessment=assessment,legacy_assessment=legacy))
+            report=dict(schema=1,passed=True,failures=[],scope='synthetic fixed-work closure controls; no target qualification',controls=controls)
+            self.assertEqual(validate(report,folder)['raw_rows'],264852)
+            for mutate in [lambda q:q['controls'].pop(),lambda q:q['controls'][0].__setitem__('legacy_assessment',{}),
+                           lambda q:q['controls'][0]['assessment'].__setitem__('shared_causal_overhead',0),
+                           lambda q:q['controls'][1]['assessment']['workloads']['H1']['observations'][0].__setitem__('elapsed_usec',0)]:
+                bad=copy.deepcopy(report);mutate(bad)
+                with self.assertRaises(ValueError):validate(bad,folder)
+
     def test_instability_remains_inconclusive_and_short_io_controls_do_not_qualify(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp)

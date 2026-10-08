@@ -52,6 +52,6 @@ func _run() -> void:
 			if Fixed.evaluate(decoded, false, label == "io-failed", requested) != assessment: failures.append("Fixed-work saved decision changed")
 			controls.append({"name": workload + "/" + label, "workload": workload, "io_failed": label == "io-failed",
 				"declared_dose_usec": requested, "expected": expected, "phases": phases, "omitted_phases": omitted,
-				"assessment": assessment, "legacy_assessment": Calibration.evaluate(phases, false, label == "io-failed")})
+				"assessment": assessment, "legacy_assessment": null if label == "null" else Calibration.evaluate(phases, false, label == "io-failed")})
 	print("CAIRN_FIXED_WORK=" + JSON.stringify({"schema": 1, "scope": "synthetic fixed-work closure controls; no target qualification", "passed": failures.is_empty(), "failures": failures, "controls": controls}))
 	quit(0 if failures.is_empty() else 1)
