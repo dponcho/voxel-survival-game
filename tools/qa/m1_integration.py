@@ -109,6 +109,13 @@ if __name__ == "__main__":
         (REPORTS / ("m1-frontier-boundary-" + suffix + "-validation.json")).write_text(json.dumps(
             reconcile_frontier(frontier_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
     print("Public missing boundary reproduced; prepared native meshes and handover reconciled", flush=True)
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        edit_raw = REPORTS / ("m1-frontier-edit-" + suffix + "-raw")
+        edit_raw.mkdir(exist_ok=True)
+        command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
+        check(command + ["--", "--frontier-edit-replay", "--frontier-edit-output=" + str(edit_raw)],
+              "m1-frontier-edit-" + suffix, "CAIRN_FRONTIER_EDIT=", 600)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)

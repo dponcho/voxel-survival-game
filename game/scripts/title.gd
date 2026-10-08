@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--frontier-edit-replay" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_frontier_edit_runtime.gd").new())
+		return
 	if "--frontier-boundary-replay" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_frontier_boundary_runtime.gd").new())
 		return
