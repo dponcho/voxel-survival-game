@@ -81,13 +81,21 @@ func check_sampler_controls() -> void:
 		elif sample["status"] != "unavailable" or sample["blocks"] != null or sample["probe_usec"] != null:
 			fail("Unavailable native mesh observation became a passing zero")
 
+func check_drain_bounds(native: Dictionary) -> void:
+	for key: String in ["generation_jobs", "mesh_jobs", "result_jobs", "main_jobs", "retired_meshes", "retired_high_water", "overloads"]:
+		peaks[key] = maxi(int(peaks.get(key, 0)), int(native[key]))
+	if int(native["retired_meshes"]) > 768 or int(native["retired_high_water"]) > 768 or int(native["overloads"]) > 0:
+		fail("Edit handover drain exceeded existing retirement/admission bounds")
+
 func drain() -> bool:
 	for frame: int in range(3):
 		await get_tree().process_frame
 		pump()
+		check_drain_bounds(probe.snapshot())
 	var begin: int = Time.get_ticks_msec()
 	while Time.get_ticks_msec() - begin < 60000:
 		var n: Dictionary = probe.snapshot()
+		check_drain_bounds(n)
 		if int(n["generation_jobs"]) + int(n["mesh_jobs"]) + int(n["result_jobs"]) + int(n["main_jobs"]) + int(n["retired_meshes"]) == 0: return true
 		await get_tree().process_frame
 		pump()

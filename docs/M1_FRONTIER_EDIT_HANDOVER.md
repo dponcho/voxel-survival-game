@@ -55,7 +55,8 @@ revision is recorded only after actual visual replacement, including confirmed
 empty. Its extra per-block 64-bit field is bounded by the existing resident
 limit (4 KiB for 512 blocks); shared instrumentation overhead is still unmeasured.
 Null terrain, empty/oversized/malformed/duplicate requests and an absent block
-exercise unavailable/null semantics. No resource or revision absence passes.
+exercise unavailable/null semantics. Missing blocks and revisions cannot pass;
+confirmed-empty submissions intentionally have no mesh resource identity.
 
 Final acceptance checks require the original accepted edit revisions to remain
 unchanged through transfer, all four old submitted resources to remain owned,

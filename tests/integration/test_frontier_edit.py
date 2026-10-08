@@ -91,8 +91,8 @@ def report():
                          targets=[dict(block=c, revision=600+COORDINATES.index(c), submitted=not cancellation) for c in TARGETS])
             cases.append(dict(name=f'{mode}-{workers}', mode=mode, workers=workers, accepted=True, settled=True, concurrent=True,
                 drained=True, nodes_freed=True, released_preparation_viewers=4, begin_usec=base+10, cleanup_begin_usec=base+302, end_usec=base+502,
-                rows=rows, phases=phases, peaks=dict(resident_mesh=511, resident_data=867, retired_meshes=0, overloads=0),
-                final_native={k:0 for k in ('generation_jobs','mesh_jobs','result_jobs','main_jobs','retired_meshes')},
+                rows=rows, phases=phases, peaks=dict(resident_mesh=511, resident_data=867, retired_meshes=0, retired_high_water=0, overloads=0),
+                final_native={k:0 for k in ('generation_jobs','mesh_jobs','result_jobs','main_jobs','retired_meshes','retired_high_water','overloads')},
                 events=[event], trace=trace(0,outcome,False), before_trace_stop=trace(0,outcome), trace_stop_usec=base+501,
                 trace_stop_end_usec=base+501, terminal_source='native',
                 policy=dict(viewer_count=4, required_visual_radius_m=96, data_radius_m=128), edit_evaluation='passed', operation_evaluation='passed',
@@ -111,8 +111,31 @@ def report():
 def save(folder, summary, operations):
     encoded = ''.join(json.dumps(row)+'\n' for row in operations)
     summary['operation_rows'], summary['operation_bytes'] = len(operations), len(encoded.encode())
-    (folder/'operations.jsonl').write_text(encoded)
-    (folder/'summary.json').write_text(json.dumps(summary))
+    # The runtime writes exact UTF-8 bytes, including LF, on Windows too.
+    (folder/'operations.jsonl').write_bytes(encoded.encode('utf-8'))
+    # Godot sorts Dictionary keys; their insertion order is not evidence.
+    (folder/'summary.json').write_text(json.dumps(summary, sort_keys=True), encoding='utf-8')
+
+
+def scale_clocks(summary, operations, factor):
+    for case in summary['cases']:
+        for key in ('begin_usec', 'cleanup_begin_usec', 'end_usec', 'trace_stop_usec', 'trace_stop_end_usec'):
+            case[key] *= factor
+        for row in case['rows']:
+            row['usec'] *= factor
+        for phase in case['phases']:
+            for key in ('begin_before_usec', 'begin_usec', 'end_before_usec', 'end_usec'):
+                phase[key] *= factor
+        for event in case['events']:
+            for key in ('accepted_usec', 'end_usec', 'latency_usec'):
+                event[key] *= factor
+        for t in [case['trace'], case['before_trace_stop'], case['cancellation_trace']] + [r['edit_trace'] for r in case['rows']]:
+            if t.get('submitted'):
+                t['max_usec'] = case['events'][0]['latency_usec']
+                t['p95_upper_usec'] = (t['max_usec']//1000+1)*1000
+    for row in operations:
+        row['start_usec'] *= factor
+        row['end_usec'] *= factor
 
 
 class FrontierEdit(unittest.TestCase):
@@ -143,7 +166,9 @@ class FrontierEdit(unittest.TestCase):
                     duration=event['latency_usec']
                     c['trace']=trace(0,'submitted',False)
                     c['before_trace_stop']=trace(0,'submitted')
-                    for t in (c['trace'],c['before_trace_stop']): t['max_usec']=duration
+                    for t in (c['trace'],c['before_trace_stop']):
+                        t['max_usec']=duration
+                        t['p95_upper_usec']=(duration//1000+1)*1000
                 save(folder,s,raw)
                 self.assertTrue(reconcile(folder,s['build'])['passed'])
                 c['terminal_source']='native' if kind=='collection_stop' else 'collection_stop'
@@ -172,9 +197,11 @@ class FrontierEdit(unittest.TestCase):
             'missing-zero': lambda s: s['sampler_controls']['missing_block']['blocks'][0].update(desired_revision=0),
             'absent-observation': lambda s: s['cases'][0]['rows'][0].update(meshes=unavailable()),
             'ack-duration': lambda s: s['cases'][0]['events'][0].update(latency_usec=200001),
+            'ack-histogram': lambda s: s['cases'][0]['trace'].update(p95_upper_usec=0),
             'failed-workload': lambda s: s.update(passed=False,failures=['lost edit']),
             'qualified': lambda s: s.update(qualified=True),
             'bounds': lambda s: s['cases'][0]['peaks'].update(resident_mesh=513),
+            'drain-high-water': lambda s: s['cases'][0]['final_native'].update(retired_high_water=769),
         }
         with tempfile.TemporaryDirectory() as temp:
             folder=Path(temp)
@@ -188,7 +215,8 @@ class FrontierEdit(unittest.TestCase):
     def test_750_guard_exact_rows_phase_closure_and_io(self):
         for duration in (749,750,751):
             summary, operations=report()
-            value=dict(count=1,bytes=1024,usec=duration,max_usec=duration,max_bytes=1024,max_start_usec=1001,max_kind=1)
+            scale_clocks(summary,operations,40)
+            value=dict(count=1,bytes=1024,usec=duration,max_usec=duration,max_bytes=1024,max_start_usec=40001,max_kind=1)
             operations[0]['upload']=value.copy()
             phase=summary['cases'][0]['phases'][0]
             phase['native'].update(upload=value.copy(),peak_frame_operation_usec=duration,peak_frame_upload_bytes=1024)
@@ -200,10 +228,13 @@ class FrontierEdit(unittest.TestCase):
                 save(folder,summary,operations)
                 result=reconcile(folder,summary['build'])
                 self.assertEqual(bool(result['failed_operation_phases']), duration>750)
-                for kind in ('aggregate','phase-end','reordered','missing','io','guard'):
+                for kind in ('aggregate','phase-end','crossed-clock','reordered','missing','io','guard'):
                     bad,raw=copy.deepcopy(summary),copy.deepcopy(operations)
                     if kind=='aggregate': bad['cases'][0]['phases'][0]['native']['upload']['count']=2
                     if kind=='phase-end': raw[0]['phase_boundary']=False
+                    if kind=='crossed-clock':
+                        raw[0]['upload']['max_start_usec']=raw[0]['end_usec']-duration+1
+                        bad['cases'][0]['phases'][0]['native']['upload']['max_start_usec']=raw[0]['upload']['max_start_usec']
                     if kind=='reordered': raw.reverse()
                     if kind=='missing': raw.pop()
                     if kind=='guard': bad['cases'][0]['phases'][0]['operation_evaluation']='failed' if duration<=750 else 'passed'
@@ -214,20 +245,21 @@ class FrontierEdit(unittest.TestCase):
         # The largest individual operation has the first tie's identity, not
         # the sum of both frames or the last equal-duration operation.
         summary, operations=report()
+        scale_clocks(summary,operations,40)
         first=operations[0]
         second=copy.deepcopy(first)
-        first.update(end_usec=1010,phase_boundary=False)
-        second.update(start_usec=1010,native_frame=2)
-        first['upload']=dict(count=1,bytes=512,usec=250,max_usec=250,max_bytes=512,max_start_usec=1001,max_kind=1)
-        second['upload']=dict(count=2,bytes=1024,usec=500,max_usec=250,max_bytes=512,max_start_usec=1011,max_kind=1)
+        first.update(end_usec=40400,phase_boundary=False)
+        second.update(start_usec=40400,native_frame=2)
+        first['upload']=dict(count=1,bytes=512,usec=250,max_usec=250,max_bytes=512,max_start_usec=40001,max_kind=1)
+        second['upload']=dict(count=2,bytes=1024,usec=500,max_usec=250,max_bytes=512,max_start_usec=40401,max_kind=1)
         operations.insert(1,second)
         phase=summary['cases'][0]['phases'][0]['native']
-        phase.update(frames=2,upload=dict(count=3,bytes=1536,usec=750,max_usec=250,max_bytes=512,max_start_usec=1001,max_kind=1),
+        phase.update(frames=2,upload=dict(count=3,bytes=1536,usec=750,max_usec=250,max_bytes=512,max_start_usec=40001,max_kind=1),
                      peak_frame_operation_usec=500,peak_frame_upload_bytes=1024)
         with tempfile.TemporaryDirectory() as temp:
             folder=Path(temp)
             save(folder,summary,operations)
             self.assertTrue(reconcile(folder,summary['build'])['passed'])
-            phase['upload']['max_start_usec']=1011
+            phase['upload']['max_start_usec']=40401
             save(folder,summary,operations)
             with self.assertRaises(RuntimeError): reconcile(folder,summary['build'])

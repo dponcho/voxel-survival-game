@@ -130,7 +130,8 @@ def reconcile_operations(folder, summary):
                 require(all(type(v) in (int, float) and int(v) == v and v >= 0 for v in value.values()), 'Invalid operation integers')
                 if value['count']:
                     require(value['max_kind'] in ((1,) if kind == 'upload' else (2, 3))
-                            and row['start_usec'] <= value['max_start_usec'] <= row['end_usec']
+                            and row['start_usec'] <= value['max_start_usec']
+                            and value['max_start_usec'] + value['max_usec'] <= row['end_usec']
                             and value['max_usec'] <= value['usec'], 'Operation maximum outside its row')
                 else:
                     require(all(v == 0 for v in value.values()), 'Empty operation became a measured nonzero')
@@ -186,6 +187,10 @@ def reconcile(folder, build, *, characterization=False):
         require(all(case['final_native'][k] == 0 for k in ('generation_jobs', 'mesh_jobs', 'result_jobs', 'main_jobs', 'retired_meshes')), 'Native work not drained')
         require(case['peaks']['resident_mesh'] <= 512 and case['peaks']['resident_data'] <= 8192
                 and case['peaks']['retired_meshes'] <= 768 and case['peaks']['overloads'] == 0, 'Transient envelope exceeded')
+        if not characterization:
+            require(case['peaks']['retired_meshes'] <= case['peaks']['retired_high_water'] <= 768
+                    and case['final_native']['retired_high_water'] <= case['peaks']['retired_high_water']
+                    and case['final_native']['overloads'] == 0, 'Retirement high-water evidence lost or exceeded')
         previous, engine, observations = case['begin_usec'], -1, []
         for i, row in enumerate(case['rows']):
             require(previous <= row['usec'] <= case['cleanup_begin_usec'] and row['engine_frame'] >= engine, 'Seam row chronology changed')
@@ -238,7 +243,9 @@ def reconcile(folder, build, *, characterization=False):
         require(trace[event['outcome']] == 1 and case['edit_evaluation'] == ('failed' if characterization and mode != 'stationary' else 'passed'), 'Edit outcome failure hidden')
         require(all(t['revision'] > 0 and type(t['submitted']) is bool for t in event['targets']), 'Missing affected revision')
         if event['outcome'] == 'submitted':
-            require(all(t['submitted'] for t in event['targets']) and trace['max_usec'] == event['latency_usec'], 'Incomplete exact revision acknowledgement')
+            require(all(t['submitted'] for t in event['targets']) and trace['max_usec'] == event['latency_usec']
+                    and trace['p95_upper_usec'] == (event['latency_usec']//1000+1)*1000,
+                    'Incomplete exact revision acknowledgement')
             submitted.append(case['name'])
         if cancellation:
             cancellations.append({'case': case['name'], 'outcome': event['outcome']})
@@ -305,7 +312,7 @@ def reconcile(folder, build, *, characterization=False):
             and all(summary['missing_input'][k] is None for k in ('fog_clearance_m', 'fog_boundary_m', 'fog_transmittance')), 'Missing frontier became passing zero')
     if not characterization:
         controls = summary['sampler_controls']
-        require(list(controls) == ['null_terrain', 'empty_request', 'oversized_request', 'malformed_request', 'duplicate_request', 'missing_block'], 'Missing observer controls')
+        require(set(controls) == {'null_terrain', 'empty_request', 'oversized_request', 'malformed_request', 'duplicate_request', 'missing_block'}, 'Missing observer controls')
         for key, sample in controls.items():
             if key != 'missing_block':
                 unavailable(sample)
