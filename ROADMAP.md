@@ -44,6 +44,11 @@ October 8 cloud increment: the first 16³ moving-frontier gap now has a verified
 baseline/corrected native replay and a bounded four-viewer preparation fix.
 [Evidence and next step](docs/M1_FRONTIER_BOUNDARY_REPLAY.md) retain M1 blocked,
 no qualified target profile and separate unresolved operation/timing gates.
+The second-boundary concurrent-edit follow-up now verifies actual resources,
+accepted revisions, transfer/cancellation and complete drain in editor/release;
+it fixes a demonstrated redundant-viewer supersession. See
+[the bounded handover evidence](docs/M1_FRONTIER_EDIT_HANDOVER.md). Continuous
+production H2 travel and target qualification remain open.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

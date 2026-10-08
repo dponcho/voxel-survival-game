@@ -5,7 +5,57 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: first 16³ frontier-boundary correction
+## Current Windows candidate: concurrent border-edit handover
+
+The second public 16³ +X boundary now has a verified concurrent-edit replay and
+a narrow native correction. Characterization demonstrated that acquisition by
+a second visual viewer rescheduled an already loaded block, advanced its desired
+revision and superseded the sole accepted edit. The correction retains that
+revision for this redundant visual-only acquisition. Initial loads, actual edits,
+collision combinations, required geometry/fog, radii, actors/storage, simulation,
+worker/admission caps, safety and qualification policy retain their paths.
+Read [M1_FRONTIER_EDIT_HANDOVER.md](M1_FRONTIER_EDIT_HANDOVER.md).
+
+[CI 37838887842](https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842)
+passed all three jobs: 76 Python regressions, five native sanitizer suites,
+matching-engine checks, editor/release handover and earlier first-boundary replays,
+every existing control/runtime/profile/smoke, DLL audit and two fresh offline
+extractions. Independent downloaded review verifies sixteen cases/204 stage rows/
+2,200 block observations and all 48 phases/7,446 operation rows. Current accepted
+revisions, actual `1 -> 2 -> 1` references, stable unedited resources, next-column
+submission, confirmed-empty/null semantics and complete drain reconcile. Early
+cancellation closes the collection after drain; overlap cases complete native
+submission before deferred deletion. Their terminal sources remain explicit.
+All replay edit/operation guards pass: maximum upload/deletion 175/514 µs editor,
+116/488 µs release, unchanged 750 µs threshold. Peak mesh/data 511/867,
+retirement high-water 287, overloads zero. This is a bounded correctness result.
+
+Ten ordinary folders/98 scenarios/284 phases independently reconcile 37,351
+operation rows, 12,873 frame rows and 94 edits. All 42 heavy work-unit records and
+available exact contracts match the previous candidate. All existing modeled
+controls, native CPU/frame callbacks and first-boundary expectations remain.
+Short 16³ H1/H2 coverage stays at zero exposed samples; H2 still fails existing
+edit-latency and diagnostic-cost guards, and calibration stays inconclusive.
+The ordinary 32³/two-worker `AB-off-2` retirement retains an 841 µs deletion
+over the unchanged 750 µs limit; cloud functional success does not waive it.
+Hosted OpenGL readback is unavailable. The recorded target H2 upload failure and
+full-route/timing/overhead/retention gates remain unresolved; M1 stays blocked.
+
+[Windows player 11577910752](https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842/artifacts/11577910752)
+exports build `f0131627e5928c36fe310d27790605562cc895a1`; latest implementation
+`df57421ee9814fb367f603f64a545f385f852fe3` shares tree
+`648547042d45c1359e5e0ecef863048515e2da29`. Portable ZIP SHA-256:
+`29aab174e747eced9fc1b9ea800f08f2a1a4d6b9d050f255c4a24883444062a1`;
+30,104,208 bytes. Archive/PE/PCK, 72 entry MD5s, templates, eight self-tests and
+38 imports independently verify. New native key:
+`25581a8d31f5a500c585135069db3a143ac7edc69d984601768910f10ce53348`;
+fresh source build and native qualification are recorded in CI 37821509437.
+The preceding characterization failure, Windows fixture byte-count failure and
+stale reader-key failure remain documented; none is a candidate. See
+[the exact public record](evidence/m1-frontier-edit-cloud-2026-10-08.json).
+No local engine run or new target action occurred.
+
+## Previous Windows candidate: first 16³ frontier-boundary correction
 
 The bounded four-viewer preparation correction is implemented in
 `7c103af1c16d328b113a7c3cbf3666b20d630990`. It addresses genuinely late visual

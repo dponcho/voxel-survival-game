@@ -1,5 +1,14 @@
 # M1 fog/frontier evidence
 
+October 8 concurrent-edit follow-up: the second +X handover now preserves the
+sole accepted border edit's current revisions and actual visual references.
+Sixteen editor/release cases reconcile transfer, completion/cancellation and
+complete native drain, with unchanged coverage and timing guards. The narrow
+native fix skips redundant scheduling for a second visual-only owner of an
+already loaded block. See [M1_FRONTIER_EDIT_HANDOVER.md](M1_FRONTIER_EDIT_HANDOVER.md).
+Continuous production H2 travel, target pixels/timing and shared overhead remain
+unverified; no target action is requested now.
+
 October 8: the first public 16³ H1/H2 boundary is corrected by four fixed
 preparation viewers, not a readiness/fog change. Matching editor/release replay
 reproduces the baseline missing alarm and verifies submitted coverage through

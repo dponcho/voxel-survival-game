@@ -2,6 +2,48 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+Completed October 8 UTC: **concurrent accepted border edit during the second
+16³ +X preparation/base handover**, latest implementation
+`df57421ee9814fb367f603f64a545f385f852fe3`. Read
+[M1_FRONTIER_EDIT_HANDOVER.md](M1_FRONTIER_EDIT_HANDOVER.md).
+Characterization reproduced non-edit supersession by a redundant second visual
+owner; the narrow native correction preserves the accepted desired revision.
+Initial loads, actual edits, collision combinations and all world/save/gameplay/
+workload/safety paths and thresholds retain their requirements.
+
+[CI 37838887842](https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842)
+passed all three jobs: 76 Python regressions, five native sanitizer suites,
+matching-engine checks, editor/release replays, every prior control/runtime/
+profile/smoke, DLL audit and two fresh offline extractions. Independent review
+reconciles sixteen cases/204 stage rows/2,200 block observations and all
+48 phases/7,446 operation rows. Both current edit revisions, actual mesh IDs and
+`1 -> 2 -> 1` references, next-column submission, explicit cancellation source
+and complete drain verify. All replay 200 ms/750 µs guards pass; resident mesh/
+data peaks remain 511/867, retirement high-water 287 and overloads zero.
+
+Ten ordinary folders/98 scenarios/284 phases reconcile with 37,351 operation
+rows, 12,873 frame rows and 94 edits. All 42 heavy work-unit records and available
+exact route/actor/edit/storage contracts match the previous candidate. Earlier
+control expectations and false qualification flags remain. Short 16³ H1/H2
+coverage stays at zero exposed samples; H2 still fails edit-latency and diagnostic-
+cost guards, shortened calibration stays inconclusive, and OpenGL readback is
+unavailable. Ordinary 32³/two-worker `AB-off-2` retirement also retains an
+841 µs deletion over the unchanged 750 µs limit. This is a bounded correctness
+result, not a full route or target pass.
+
+Current [Windows player 11577910752](https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842/artifacts/11577910752)
+expires `2026-11-07T20:37:34Z`. Exact exported merge/build:
+`f0131627e5928c36fe310d27790605562cc895a1`; implementation/build tree:
+`648547042d45c1359e5e0ecef863048515e2da29`. Portable ZIP SHA-256:
+`29aab174e747eced9fc1b9ea800f08f2a1a4d6b9d050f255c4a24883444062a1`;
+30,104,208 bytes. New native key:
+`25581a8d31f5a500c585135069db3a143ac7edc69d984601768910f10ce53348`.
+Source-built editor/debug/release in CI 37821509437, exact fresh qualification
+and downloaded archive/PE/PCK/72 entry MD5/template/eight self-test/38 import
+checks verify. Failed characterization, Windows fixture and stale-reader attempts
+remain documented. See [the public record](evidence/m1-frontier-edit-cloud-2026-10-08.json).
+No engine ran locally. **No new target-side action is needed now.**
+
 Completed October 8 UTC: **first 16³ moving-frontier boundary correction**,
 implementation `7c103af1c16d328b113a7c3cbf3666b20d630990`. Read
 [M1_FRONTIER_BOUNDARY_REPLAY.md](M1_FRONTIER_BOUNDARY_REPLAY.md).
@@ -23,7 +65,7 @@ frame rows and 94 edit events. Old controls and qualification flags remain;
 shortened calibration stays inconclusive. The recorded target H2 upload failure
 is a separate unresolved gate.
 
-Current [Windows player 11566261601](https://github.com/dponcho/voxel-survival-game/actions/runs/37811968141/artifacts/11566261601)
+Previous first-boundary [Windows player 11566261601](https://github.com/dponcho/voxel-survival-game/actions/runs/37811968141/artifacts/11566261601)
 expires `2026-11-07T17:03:19Z`. Exact exported merge/build:
 `fcc317863e32e6787430880b493b53541fe0db9f`; implementation/build tree:
 `803e845a251c657097582ce4e524d85e47ce89f6`. Portable ZIP SHA-256:
@@ -285,17 +327,22 @@ inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
 ## Next bounded step
 
-**Recommended single next implementation task:** extend the native 16³ replay to
-the next +X column handover with one concurrent accepted border-edit replacement.
-Check actual mesh references and all affected current revisions through the
-base/preparation transfer, cancellation and drain. Preserve the fixture, route/
-camera, 96 m fog, required geometry, simulation, workers/caps, confirmed-empty
-rules and existing 200 ms acknowledgement/750 µs operation guards. Use a bounded
-public cloud fixture, independent saved reconciliation, editor/release checks
-and a verified candidate; change behaviour only if a demonstrated failure needs
-a smallest cause correction. This validates a material new interaction of the
-four-viewer policy; it is not a request for another full profile matrix or a
-claim that the whole moving route is now qualified.
+**Recommended single next implementation task:** a bounded continuous native
+16³ H2 travel replay across several preparation columns, through at least the
+two following +X handovers. Use the existing benchmark's fixed 60 Hz route,
+actor/rain proxies, due-edit schedule and proxy-storage commands. Do not replace
+that work with a sequence of teleported, settled single-edit scenes. Verify
+submitted coverage and accepted current revisions while old/new demand, edits
+and retirement overlap; retain the H2 edit failures and phase-local operation
+guards as failures if they recur. Preserve the fixture/camera, 96 m fog and
+required geometry, 128 m data envelope, workers/caps, simulation, collision and
+safety rules, confirmed-empty semantics and 200 ms/750 µs thresholds. Predeclare
+the finite tick/row/file/queue envelope, retain every operation/terminal row and
+independently reconcile saved work units, actual resources/revisions and drain
+in editor/release. Produce a verified portable candidate and change behaviour
+only for a demonstrated cause. The current isolated single-edit result does not
+establish this sustained interaction or full-route qualification; no target
+profile matrix is requested.
 
 The completed fixed-work, callback-body and owned-cycle increments validate
 software observations and expose count/wait/slack masking. They do not establish
@@ -323,7 +370,7 @@ renderer accounting, retention, profile comparison and qualification repeats.
 Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
 semantics or workload requirement changed; M2 remains gated.
 
-Read `docs/M1_FRONTIER_BOUNDARY_REPLAY.md`, `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+Read `docs/M1_FRONTIER_EDIT_HANDOVER.md`, `docs/M1_FRONTIER_BOUNDARY_REPLAY.md`, `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
 and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_MEASUREMENT_METHOD.md`,
 `docs/M1_ROUTE_CALIBRATION.md`, `docs/M1_FOG_FRONTIER.md`,
 `docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/
