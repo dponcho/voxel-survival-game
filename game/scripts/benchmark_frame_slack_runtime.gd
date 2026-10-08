@@ -51,9 +51,9 @@ class CycleProbe extends Node:
 		frame += 1
 		var begin: int = Time.get_ticks_usec()
 		var common := HashingContext.new()
-		if common.start(HashingContext.HASH_SHA256) != OK: controller.failures.append("Frame baseline hash start failed")
+		if common.start(HashingContext.HASH_SHA256) != OK: controller.record_failure("Frame baseline hash start failed")
 		for update: int in range(8):
-			if common.update(buffer) != OK: controller.failures.append("Frame baseline hash failed")
+			if common.update(buffer) != OK: controller.record_failure("Frame baseline hash failed")
 		var baseline_digest: String = common.finish().hex_encode()
 		var request: int = (500 if phase < 4 else 20000) if phase % 4 in [1, 2] else 0
 		var ds: Variant = null
@@ -63,13 +63,13 @@ class CycleProbe extends Node:
 		if request > 0:
 			ds = Time.get_ticks_usec()
 			var hash := HashingContext.new()
-			if hash.start(HashingContext.HASH_SHA256) != OK: controller.failures.append("Frame dose hash start failed")
+			if hash.start(HashingContext.HASH_SHA256) != OK: controller.record_failure("Frame dose hash start failed")
 			while updates < 8192 and (updates == 0 or Time.get_ticks_usec() - int(ds) < request):
-				if hash.update(buffer) != OK: controller.failures.append("Frame dose hash failed")
+				if hash.update(buffer) != OK: controller.record_failure("Frame dose hash failed")
 				updates += 1
 			digest = hash.finish().hex_encode()
 			de = Time.get_ticks_usec()
-			if int(de) - int(ds) < request or int(de) - int(ds) > 100000: controller.failures.append("Frame dose outside bounded request")
+			if int(de) - int(ds) < request or int(de) - int(ds) > 100000: controller.record_failure("Frame dose outside bounded request")
 		var end: int = Time.get_ticks_usec()
 		var tick: int = 1800 if frame > 28 else mini(5, int((frame - 1) * 6 / 28)) * 300 + 1
 		rows.append({"frame": frame, "tick": tick, "engine_frame": engine_frame, "entry_usec": entry,
@@ -83,11 +83,11 @@ class CycleProbe extends Node:
 		var db: int = Time.get_ticks_usec()
 		var name: String = "cycle-" + str(phase) + ".jsonl"
 		var file := FileAccess.open(controller.directory.path_join(name), FileAccess.WRITE)
-		if file == null: controller.failures.append("Frame rows open failed")
+		if file == null: controller.record_failure("Frame rows open failed")
 		else:
 			for row: Dictionary in rows: file.store_line(JSON.stringify(row))
 			file.flush()
-			if file.get_error() != OK: controller.failures.append("Frame rows write failed")
+			if file.get_error() != OK: controller.record_failure("Frame rows write failed")
 			file.close()
 		var de: int = Time.get_ticks_usec()
 		var report: Dictionary = {"index": phase, "samples": frame, "completed": true, "work_units_valid": true,
@@ -102,6 +102,10 @@ class CycleProbe extends Node:
 		phase += 1
 		if phase < 8: _begin()
 		else: controller.complete(trials)
+
+# Error storage stays bounded too: callers use only the fixed messages below.
+func record_failure(message: String) -> void:
+	if not failures.has(message): failures.append(message)
 
 func _ready() -> void: call_deferred("_run")
 
@@ -145,20 +149,20 @@ func complete(trials: Array[Dictionary]) -> void:
 		"cpu_service_usec": null, "gpu_cost": null, "physical_presentation": null, "causal_probe_cost": null, "shared_causal_overhead": null,
 		"scope": "real callback-entry cycles, engine limiter and native CPU placement; no terrain workload or target precision"}
 	var file := FileAccess.open(directory.path_join("summary.json"), FileAccess.WRITE)
-	if file == null: failures.append("Frame summary open failed")
+	if file == null: record_failure("Frame summary open failed")
 	else:
 		file.store_string(JSON.stringify(report))
 		file.flush()
-		if file.get_error() != OK: failures.append("Frame summary write failed")
+		if file.get_error() != OK: record_failure("Frame summary write failed")
 		file.close()
 	var final_end: int = Time.get_ticks_usec()
 	file = FileAccess.open(directory.path_join("report-finalization.json"), FileAccess.WRITE)
-	if file == null: failures.append("Frame finalization open failed")
+	if file == null: record_failure("Frame finalization open failed")
 	else:
 		file.store_string(JSON.stringify({"start_usec": final_begin, "end_usec": final_end, "elapsed_usec": final_end - final_begin,
 			"allocated_to_trials": false, "scope": "combined construction/write and limiter restore; excludes terminal record write and exit"}))
 		file.flush()
-		if file.get_error() != OK: failures.append("Frame finalization write failed")
+		if file.get_error() != OK: record_failure("Frame finalization write failed")
 		file.close()
 	print("CAIRN_FRAME_SLACK_RUNTIME=" + JSON.stringify(report))
 	get_tree().quit(0 if failures.is_empty() else 1)
