@@ -84,5 +84,5 @@ inside 96 m. Four prepared cells stay submitted, with stable resources/revisions
 this does not cover every newly demanded lateral cell. Diagnostic cost also fails
 the existing 1% guard. The new bounded lateral observer records this distinction
 in subsequent editor/release runs; it does not change scheduling or suppress the
-alarm. Peak mesh/data remains 511/867 and retirement high-water 2. All native work
+alarm. Peak mesh/data remains 511/867 and travel retirement high-water 2 (285 including final terrain retirement). All native work
 drains. The observed coverage failure is separate from target H2 upload evidence.

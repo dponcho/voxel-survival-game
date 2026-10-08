@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools/qa'))
-from frontier_travel import cells, coordinates, observations, operation_reasons, operations, positions, single
+from frontier_travel import cells, coordinates, observations, operation_reasons, operations, positions, single, retirement_guard, JOBS
 
 
 def fixture():
@@ -144,3 +144,12 @@ class FrontierTravel(unittest.TestCase):
                         writer=csv.DictWriter(stream,fieldnames=raw[0]);writer.writeheader()
                         if rows[0]: writer.writerow(rows[0])
                     with self.subTest(duration=duration,kind=kind),self.assertRaises(RuntimeError): operations(root,bad,g)
+
+    def test_final_retirement_high_water_and_drain_are_not_travel_peaks(self):
+        native=dict(overloads=0,retired_high_water=285,**{key:0 for key in JOBS})
+        retirement_guard(native,drained=True)
+        for key,value in [('overloads',1),('retired_high_water',769),('retired_meshes',1),('result_jobs',1),('mesh_jobs',1)]:
+            bad=dict(native);bad[key]=value
+            with self.subTest(key=key),self.assertRaises(RuntimeError): retirement_guard(bad,drained=True)
+        native['retired_meshes']=2
+        retirement_guard(native)

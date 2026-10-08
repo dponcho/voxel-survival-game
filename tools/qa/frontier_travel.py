@@ -37,6 +37,13 @@ def coordinates(player):
     return [[x-1, y, z] for x, y, z in current] + current + [[x, 0, 0] for x in (-1, 0, 1, 2, 3, 4)] + [[0, 1, 0]]
 
 
+def retirement_guard(native, drained=False):
+    require(native['overloads'] == 0 and 0 <= native['retired_meshes'] <= native['retired_high_water'] <= 768,
+            'Complete retirement envelope exceeded')
+    if drained:
+        require(all(native[k] == 0 for k in JOBS), 'Native work not fully drained')
+
+
 def operation_reasons(phase):
     return [f'Individual {kind} exceeded 0.75 ms' for kind in ('upload', 'deletion') if phase[kind]['max_usec'] > 750]
 
@@ -197,6 +204,7 @@ def observations(path):
                         require(block['state'] in ('visible', 'confirmed_empty') and block['mesh_viewers'] >= 1,
                                 'Prepared handover lost submitted coverage')
             n, terrain = row['native'], row['terrain']
+            retirement_guard(n)
             require(n['overloads'] == 0 and n['retired_meshes'] <= n['retired_high_water'] <= 768
                     and terrain['resident_mesh'] <= 512 and terrain['resident_data'] <= 8192, 'Native resident/retirement envelope exceeded')
             maximum_mesh = max(maximum_mesh, terrain['resident_mesh'])
@@ -218,10 +226,12 @@ def reconcile(folder, build, workers):
     folder = Path(folder)
     meta = json.loads((folder/'travel-summary.json').read_text())
     saved = json.loads((folder/'summary.json').read_text())
+    retirement_guard(meta['final_native'], drained=True)
     require(meta['version'] == 'm1-frontier-travel-1' and meta['passed'] is True and not meta['failures']
             and meta['qualified'] is False and meta['target_performance'] == 'not_run'
             and meta['build'] == saved['build'] == build and meta['drained'] is True
-            and all(meta['final_native'][k] == 0 for k in JOBS), 'Failed/incomplete/unqualified-build travel evidence')
+            and all(meta['final_native'][k] == 0 for k in JOBS)
+            and meta['final_native']['overloads'] == 0 and meta['final_native']['retired_high_water'] <= 768, 'Failed/incomplete/unqualified-build travel evidence')
     require(meta['ticks'] == TICKS and meta['row_cap'] == 4096 and meta['byte_cap'] == 33554432,
             'Observation bounds changed')
     require(saved['completed'] and not saved['qualified'] and not saved['integration_failures']
@@ -245,7 +255,8 @@ def reconcile(folder, build, workers):
     path = folder/'travel-observations.jsonl'
     obs = observations(path)
     require(meta['rows'] == obs['rows'] and meta['bytes'] == path.stat().st_size
-            and report['workload_evidence']['command_hash'] == obs['command_hash'], 'Saved observation totals mismatch')
+            and report['workload_evidence']['command_hash'] == obs['command_hash']
+            and obs['retired_high_water'] <= meta['final_native']['retired_high_water'], 'Saved observation totals mismatch')
     events = [json.loads(line) for line in (folder/report['edit_visibility_events']).read_text().splitlines()]
     require(len(events) == 40 and sorted(e['id'] for e in events) == list(range(1,41)), 'Missing/duplicated terminal edit event')
     outcomes = {k: 0 for k in OUTCOMES}
@@ -322,4 +333,5 @@ def reconcile(folder, build, workers):
         observation_sha256=hashlib.sha256(path.read_bytes()).hexdigest(), operation_rows=operation_rows,
         frame_rows=count, exposed_samples=exposed, lateral_exposed_observations=obs['lateral_exposed'], failed_operation_phases=failed,
         edit_latency_failed=latency_failed, scenario_evaluation=report['evaluation'], reasons=report['reasons'],
-        resident_mesh=obs['resident_mesh'], resident_data=obs['resident_data'], retired_high_water=obs['retired_high_water'])
+        resident_mesh=obs['resident_mesh'], resident_data=obs['resident_data'], travel_retired_high_water=obs['retired_high_water'],
+        retired_high_water=meta['final_native']['retired_high_water'])
