@@ -1,0 +1,175 @@
+{
+  "passed": true,
+  "cpu_controls": 54,
+  "cpu_phases": 216,
+  "cpu_rows": 327444,
+  "cpu_json_bytes": 2528558,
+  "cpu_raw_bytes": 23514168,
+  "cpu_runtime": {
+    "editor": {
+      "passed": true,
+      "real_callbacks": 128,
+      "native_hash_digests_verified": true,
+      "body_effect": {
+        "classification": "above_limit",
+        "lower_fraction": 3.63698934280639,
+        "upper_fraction": 3.70810810810811
+      },
+      "qualified": false,
+      "cpu_service_usec": null,
+      "shared_causal_overhead": null
+    },
+    "release": {
+      "passed": true,
+      "real_callbacks": 128,
+      "native_hash_digests_verified": true,
+      "body_effect": {
+        "classification": "above_limit",
+        "lower_fraction": 3.68009850011193,
+        "upper_fraction": 3.69103139013453
+      },
+      "qualified": false,
+      "cpu_service_usec": null,
+      "shared_causal_overhead": null
+    }
+  },
+  "real_cpu_callbacks": 256,
+  "build": {
+    "engine_inputs": "11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "game_commit": "549d2aa9e5c88ab34e0baeba35f208bea98a3706",
+    "milestone": "M1",
+    "native_source_key": "11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d",
+    "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172",
+    "target_performance": "not_run",
+    "renderer": "gl_compatibility",
+    "engine_binaries": {
+      "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+      "editor.exe": "a3fdc470731d425f7e99fb1c6415faacde1073e57ff2848f1d03c5f2f5bc4c3c",
+      "template_debug.exe": "b59e30726ea1c6d3195bad78df9b7c2b157b2e2f4676dd2db34980d77918d5d8",
+      "template_release.exe": "9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35"
+    }
+  },
+  "portable_sha256": "4f30808cb91b4ff8d9642e4897c6aa7fac4dbbf7c55d1a5183f27e4453a85b09",
+  "portable_bytes": 30058281,
+  "exe_sha256": "9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35",
+  "pck_sha256": "1f483290ed8ca7987c678170fbdb67d5a1089414e95873e51785e5507d839bbd",
+  "pck_entries": 60,
+  "player_archive_sha256": "17a0b76b4afb1d23f60ab18c9ed65e14c92c56474d461c83a58d4c21ead65790",
+  "evidence_archive_sha256": "670cd23f39f26ef851d8376a9f4adb3a4025dd3bd138165129acac082ceb1a91",
+  "fixed_controls": 44,
+  "fixed_phases": 176,
+  "fixed_rows": 264852,
+  "fixed_json_bytes": 1765195,
+  "fixed_raw_bytes": 15133996,
+  "precision_controls": 28,
+  "precision_rows": 168596,
+  "smoke_folders": 10,
+  "scenarios": 98,
+  "native_phases": 284,
+  "operation_rows": 37362,
+  "frame_rows": 12871,
+  "edit_events": 94,
+  "target_qualified": false,
+  "milestone": "M1",
+  "task": "experimental_per_callback_cpu_dose_instrument_validation",
+  "status": "cloud_passed_target_unverified",
+  "evidence_scope": "public_cloud_only",
+  "implementation_commit": "eb3f52b351d1361374c4b8741305047d581bd43d",
+  "initial_implementation_commit": "b6ed4c36fbcafad1a88230e7516540a27094db78",
+  "implementation_and_export_tree": "a453cd8d6fc55b94f00232727b86c69c6a034f6d",
+  "ci": {
+    "run_id": 37716691172,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172",
+    "completed_at": "2026-10-08T02:23:54Z",
+    "conclusion": "success",
+    "jobs": {
+      "static": 113114657417,
+      "windows / native / native-binaries": 113114858841,
+      "windows / export-and-test": 113115083897
+    },
+    "python_regressions": 62,
+    "native_sanitizer_suites": 5,
+    "legacy_method_controls": 16,
+    "route_controls": 26,
+    "fresh_offline_extractions": 2
+  },
+  "artifacts": {
+    "player": {
+      "id": 11524461668,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524461668",
+      "archive_bytes": 29955385,
+      "archive_sha256": "17a0b76b4afb1d23f60ab18c9ed65e14c92c56474d461c83a58d4c21ead65790",
+      "expires_at": "2026-11-07T02:23:20Z"
+    },
+    "export_evidence": {
+      "id": 11524422779,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524422779",
+      "archive_bytes": 15955914,
+      "archive_sha256": "670cd23f39f26ef851d8376a9f4adb3a4025dd3bd138165129acac082ceb1a91",
+      "expires_at": "2026-11-07T02:23:46Z"
+    },
+    "native_evidence": {
+      "id": 11524271519,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524271519",
+      "archive_bytes": 12518,
+      "archive_sha256": "6c0f3b59813415ef98fd0a19882f4caf8ff59b258e4a543136fb08017d75cb52",
+      "expires_at": "2027-01-06T02:12:02Z"
+    }
+  },
+  "checks": {
+    "native_game_offline_selftest_reports": 8,
+    "pe_imports_independently_reconciled": 38,
+    "native_inputs_and_template_hashes": true,
+    "archive_crc_and_safe_paths": true,
+    "artifact_and_portable_digests": true,
+    "x64_pe": true,
+    "all_pck_entry_md5_and_build_identity": true,
+    "cpu_exact_arithmetic_classifications_and_nulls": true,
+    "cpu_phase_boundaries_and_streamed_saved_rows": true,
+    "actual_native_hash_and_callback_placement": true,
+    "actual_cpu_probe_exported_identity": true,
+    "ordinary_benchmark_cpu_dose_not_run": true,
+    "old_control_expectations_preserved": true,
+    "actual_native_frame_edit_and_finalization_reconciliation": true
+  },
+  "bounds": {
+    "control_reports": 54,
+    "raw_files": 216,
+    "raw_bytes_max": 67108864,
+    "json_bytes_max": 4194304,
+    "clock_command_timeout_seconds": 60,
+    "runtime_callbacks_per_invocation": 128,
+    "runtime_pending_rows_max": 32,
+    "runtime_buffer_bytes": 4096,
+    "runtime_hash_updates_per_callback_max": 512,
+    "runtime_evidence_bytes_max": 1048576,
+    "runtime_command_timeout_seconds": 60
+  },
+  "actual_calibration": {
+    "frame_rows": 1174,
+    "legacy_and_fixed_work_decisions": "inconclusive",
+    "later_sections": "unavailable",
+    "combined_finalization": "external_not_allocated"
+  },
+  "failed_attempt": {
+    "run_id": 37715669693,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37715669693",
+    "cause": "Release template ignored --script under pinned path-override guard; probe timed out without reports. Corrected ordinary application entry uses --cpu-dose-probe; native build flags/key unchanged.",
+    "candidate": false
+  },
+  "render_probe": "unavailable_hosted_opengl",
+  "qualification_policy_changed": false,
+  "hardware_noise_calibrated": false,
+  "cpu_service_usec": null,
+  "causal_per_frame_cpu_gpu_probe_cost": null,
+  "causal_shared_total_diagnostic_overhead": null,
+  "target_side_action_now": "none",
+  "remaining_uncertainty": [
+    "HD 620 hardware noise and qualification",
+    "whole-frame CPU critical path and GPU overlap/sensitivity",
+    "shared instrumentation overhead",
+    "existing workload and operation failures remain unwaived"
+  ]
+}

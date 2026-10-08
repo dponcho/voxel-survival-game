@@ -5,7 +5,98 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: experimental fixed-work sensitivity
+## Current Windows candidate: experimental CPU dose instrument
+
+The October 8 UTC increment adds a bounded per-callback CPU dose assessor and
+separate cloud-only native hashing probe. Its estimand is mean synchronous
+callback body **wall span**, including an injected native CPU bracket, at matched
+route positions. Entry intervals, complete trial duration, count and final
+callbacks remain separately observable. CPU service, whole-frame CPU/GPU critical
+path, frontier probe causal cost and shared total overhead remain unavailable/null.
+Ordinary benchmarks record `cpu_dose_sensitivity.status: not_run` and execute no
+dose or CPU ledger. Gameplay, fixtures, routes, actors, edits/storage, radii,
+resolution, workers/admission, ticks, safety and world/save semantics are unchanged.
+Read [M1_CPU_DOSE_SENSITIVITY.md](M1_CPU_DOSE_SENSITIVITY.md).
+
+[CI 37716691172](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172)
+passed all three jobs; the export job completed `2026-10-08T02:23:54Z`:
+62 Python regressions, five native sanitizer suites, exact cached editor/debug/
+release requalification, matching import/export, 54 new modeled controls,
+actual native CPU probes in editor and packaged release, all sixteen method/
+26 route/28 endpoint/44 fixed-work control expectations unchanged, existing
+streaming/collision/edit/eviction/cancellation/profile/startup/heavy/calibration
+checks, DLL audit and two fresh firewall-isolated offline extractions. Static
+job `113114657417`, native job `113114858841` and export job `113115083897`
+all passed. All engine execution and native sanitizer/build checks stayed in
+GitHub Actions; no engine was installed, compiled or run locally.
+
+The first attempt [37715669693](https://github.com/dponcho/voxel-survival-game/actions/runs/37715669693)
+passed the new clock controls and editor probe, but the release template ignored
+`--script` under the pinned path-override guard. Its probe timed out without a
+report. The correction invokes the normal application through internal
+`--cpu-dose-probe`, without changing native build flags or the source key.
+The failed attempt is not the candidate; missing evidence never passed as zero.
+
+Independent downloaded review verifies archive digests/CRC/path safety, portable
+checksum/size, x64 PE, all 60 PCK entry MD5s and outer/inner/PCK identity, native
+pins/template hashes, eight native/game/offline self-test reports, and the actual
+PE import table against all 38 saved DLL names and permitted Windows APIs.
+All 54 controls reconcile exactly across 216 modeled phases/327,444 CSV rows.
+Saved JSON is 2,528,558 bytes and raw CSV totals 23,514,168 bytes, within the
+4 MiB/64 MiB bounds. Exact null/below/at/above/overlap, wait/count masking, route
+mix, endpoint/acknowledgement and all missing/failed/incomplete/stalled/I/O/drift
+controls retain their predeclared outcomes. Unavailable measurements stay null.
+
+All 256 actual editor/release callbacks reproduce their SHA-256 digests from saved
+native update counts and reconcile body/dose/complete-callback clocks, previous/
+final rows, phase writes/drain and external combined finalization. Each probe
+keeps at most 32 pending rows, 4 KiB input and 512 updates per callback, with
+1 MiB evidence and a 60-second command cap. Both retain `placement_verified`,
+qualification false and null causal/CPU-service/GPU/shared estimates. These are
+large-dose main-thread placement checks, not 1% hardware calibration, executed
+1,800-tick terrain workloads or a total-frame critical-path measurement.
+
+All ten ordinary smoke folders retain CPU dose `not_run`, no CPU ledger, complete
+reports, no integration failures and qualification false. Independent review
+reconciles 98 scenarios, 284 native phases, 37,362 operation rows, 12,871 frame
+rows and 94 edit events, including phase counters/bytes/maxima, previous/final
+callbacks, blocks and external finalization. The unchanged fixed-work controls
+still reconcile 176 phases/264,852 rows, and endpoint controls 168,596 rows.
+Actual shortened calibration retains 1,174 callbacks, unavailable later sections
+and inconclusive legacy and fixed-work results. Existing 16³ heavy coverage/
+edit failures remain; hosted OpenGL readback is unavailable. Historical target
+upload/phase failures are unwaived. M1 remains blocked and HD 620 unqualified.
+
+[Windows player 11524461668](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524461668)
+expires `2026-11-07T02:23:20Z`.
+[Export evidence 11524422779](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524422779) and
+[native evidence 11524271519](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524271519)
+retain raw provenance. Symbols remain separate and were not downloaded.
+Implementation and exported merge/build have the same tree
+`a453cd8d6fc55b94f00232727b86c69c6a034f6d`; native inputs are unchanged.
+The [independent verification record](evidence/m1-cpu-dose-cloud-2026-10-08.json)
+contains only public cloud results. Detailed target measurements and raw identities
+remain private.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation commit | `eb3f52b351d1361374c4b8741305047d581bd43d` |
+| Exported merge / build ID | `549d2aa9e5c88ab34e0baeba35f208bea98a3706` |
+| Native key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Portable ZIP SHA-256 | `4f30808cb91b4ff8d9642e4897c6aa7fac4dbbf7c55d1a5183f27e4453a85b09` |
+| Portable ZIP bytes | `30058281` |
+| Outer player archive SHA-256 | `17a0b76b4afb1d23f60ab18c9ed65e14c92c56474d461c83a58d4c21ead65790` |
+| Executable SHA-256 | `9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35` |
+| PCK SHA-256 | `1f483290ed8ca7987c678170fbdb67d5a1089414e95873e51785e5507d839bbd` |
+| Export evidence ZIP SHA-256 | `670cd23f39f26ef851d8376a9f4adb3a4025dd3bd138165129acac082ceb1a91` |
+| Native evidence ZIP SHA-256 | `6c0f3b59813415ef98fd0a19882f4caf8ff59b258e4a543136fb08017d75cb52` |
+
+**No target-side action is needed now.** Callback-span software validation is
+complete; whole-frame CPU/GPU sensitivity, hardware noise and shared overhead
+remain separate gaps. No assessment, 1% threshold, qualification flag or saved
+target verdict changes. See [NEXT_TASK.md](NEXT_TASK.md).
+
+## Previous Windows candidate: experimental fixed-work sensitivity
 
 The October 8 UTC bounded increment adds `fixed_work_sensitivity` alongside the
 unchanged calibration and legacy assessments. It observes complete measurement-

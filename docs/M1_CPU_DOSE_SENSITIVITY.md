@@ -134,4 +134,44 @@ external finalization accounting plus exact exported build identity. Formal orch
 nonzero exit, missing reports and I/O failures. Ordinary benchmark smoke must
 retain CPU sensitivity `not_run` and contain no CPU dose ledger.
 
-Cloud execution and candidate provenance are pending.
+## Verified cloud result, October 8 UTC
+
+Implementation `eb3f52b351d1361374c4b8741305047d581bd43d` is published on
+`codex/m1-engine-proof`. [CI 37716691172](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172)
+passed all three jobs, with the last job completed `2026-10-08T02:23:54Z`:
+62 Python regressions, five native sanitizer suites, matching editor/debug/release
+qualification, all 54 new controls, unchanged sixteen method/26 route/28 endpoint/
+44 fixed-work controls, actual editor and packaged-release CPU probes, existing
+runtime/profile/calibration checks, DLL audit and two fresh offline extractions.
+No engine was installed, compiled or run locally.
+
+Independent downloaded verification reconciles all 216 modeled phases and
+327,444 rows against exact totals and saved classifications. Control JSON is
+2,528,558 bytes; raw CSV totals 23,514,168 bytes, within the declared limits.
+All 256 actual editor/release callbacks independently reproduce their native
+SHA-256 digests, dose/body/complete-callback spans, previous/final rows, drain and
+external combined finalization. Both probes retain `placement_verified`, false
+qualification and null CPU service/GPU/causal/shared estimates. Their large
+500 µs dose observations do not validate 1% hardware resolution.
+
+The first attempt [37715669693](https://github.com/dponcho/voxel-survival-game/actions/runs/37715669693)
+passed the clock controls and editor probe, then failed because the pinned release
+template clears `--script` under its path-override guard. The release probe timed
+out with no report. The correction uses the normal application entry and internal
+`--cpu-dose-probe` flag; native flags and source key are unchanged. The failed
+attempt is not a candidate, and its missing measurement was never a passing zero.
+
+The [Windows player 11524461668](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524461668)
+expires `2026-11-07T02:23:20Z`. Exact exported merge/build ID:
+`549d2aa9e5c88ab34e0baeba35f208bea98a3706`. Portable ZIP SHA-256:
+`4f30808cb91b4ff8d9642e4897c6aa7fac4dbbf7c55d1a5183f27e4453a85b09`.
+Implementation and export have the same tree
+`a453cd8d6fc55b94f00232727b86c69c6a034f6d`. Downloaded archives, every PCK entry,
+embedded identities, native templates, eight self-test reports and saved ordinary
+smoke evidence verify. Read [M1_EVIDENCE.md](M1_EVIDENCE.md) and the
+[public cloud verification record](evidence/m1-cpu-dose-cloud-2026-10-08.json).
+
+This bounded instrument validation is complete. Whole-frame CPU critical-path
+and GPU sensitivity, hardware noise and shared instrumentation overhead remain
+unverified. Existing target/workload/operation failures and every qualification
+flag remain authoritative. **No target-side action is needed now.**

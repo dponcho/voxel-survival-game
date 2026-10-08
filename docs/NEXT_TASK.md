@@ -2,10 +2,38 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
-In progress October 8 UTC: the cloud-only per-callback CPU dose instrument and
-54 predeclared controls are implemented; cloud/candidate verification is pending.
-Read [M1_CPU_DOSE_SENSITIVITY.md](M1_CPU_DOSE_SENSITIVITY.md). Existing workloads,
-assessments, thresholds and qualification flags remain; no target run is requested.
+Completed October 8 UTC: **experimental per-callback CPU dose instrument
+validation**, implementation `eb3f52b351d1361374c4b8741305047d581bd43d`.
+Read [M1_CPU_DOSE_SENSITIVITY.md](M1_CPU_DOSE_SENSITIVITY.md).
+[CI 37716691172](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172)
+passed all three jobs: 62 Python regressions, five native sanitizer suites,
+matching-engine checks, 54 new controls, every existing method/route/endpoint/
+fixed-work expectation, actual editor and release native CPU probes, existing
+runtime/profile/calibration checks, DLL audit and two fresh offline extractions.
+Independent downloaded verification reconciles 216 modeled phases/327,444 rows
+and all 256 real callbacks/native hash digests. Ten ordinary smoke folders retain
+CPU dose `not_run`, no CPU ledger and qualification false; 98 scenarios/284 native
+phases and their raw operation/frame/edit/finalization evidence reconcile.
+
+Current [Windows player 11524461668](https://github.com/dponcho/voxel-survival-game/actions/runs/37716691172/artifacts/11524461668)
+expires `2026-11-07T02:23:20Z`. Exact exported merge/build ID:
+`549d2aa9e5c88ab34e0baeba35f208bea98a3706`. Portable ZIP SHA-256:
+`4f30808cb91b4ff8d9642e4897c6aa7fac4dbbf7c55d1a5183f27e4453a85b09`.
+Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
+Archive/PE/PCK/build identity, all native templates, eight self-test reports and
+saved raw evidence independently verify. Full provenance and the failed release
+CLI attempt/correction are in [M1_EVIDENCE.md](M1_EVIDENCE.md). No target run or
+download is requested now.
+
+The new estimand is mean synchronous callback body wall span at matched route
+positions. Entry intervals, complete duration/count, endpoints and I/O remain
+separate. Exact controls expose wait/count masking and reject changed route
+composition; complete-window, body/main-section instability and failed work/
+operation/evidence guards remain visible. Missing measurements stay unavailable/
+null. A real native hash confirms serialized callback placement, with bounded
+storage and queues. This validates the body instrument; CPU service, whole-frame
+CPU/GPU critical path, hardware noise and shared total diagnostic overhead remain
+unverified. All existing assessors, 1% thresholds and qualification flags remain.
 
 Completed October 8 UTC: **experimental fixed-work elapsed/count sensitivity**,
 implementation `34a92122704faa9953036dd4aee4995ed6e9f6c9`. Read
@@ -18,7 +46,7 @@ extractions. Independent downloaded verification reconciles 176 modeled phases
 and 264,852 rows, plus ten actual smoke folders/98 scenarios/284 native phases.
 All existing assessments, thresholds and qualification flags are preserved.
 
-Current [Windows player 11520043769](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520043769)
+Previous fixed-work [Windows player 11520043769](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520043769)
 expires `2026-11-07T00:32:47Z`. Exact exported merge/build ID:
 `23a5615f8f29cffa739da8cb8447d26c2e43bcaf`. Portable ZIP SHA-256:
 `7d0c3d08f68fa2b9c7f4ab5ba7b7fa91d1f74fd321d155b0af14a83b4f2e56fd`.
@@ -188,22 +216,26 @@ inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
 ## Next bounded step
 
-**Recommended single next implementation task:** cloud-only per-frame CPU
-critical-path dose sensitivity validation. Predeclare bounded null and
-below/at/above-1% CPU-dose controls, threshold overlap, unequal callback counts,
-repeat drift and missing/failed/incomplete/stalled/I/O guards. Preserve exact
-workloads and all endpoint/native/I/O evidence. Independently reconcile the
-injected CPU bracket, frame intervals, complete duration and counts against saved
-rows; demonstrate which observed quantity identifies the dose and when causal
-attribution remains unavailable. Verify placement against pinned engine source.
-Keep any new observation experimental alongside all existing assessors and
-produce a cloud-verified portable candidate if runtime code changes.
+**Recommended single next implementation task:** cloud-only frame-boundary and
+CPU-slack sensitivity validation. Extend the existing bounded application probe
+with a defensible serialized frame observation, verified against pinned process,
+render sync/draw and wait boundaries. Predeclare CPU work absorbed by existing
+slack and CPU work that extends the observed frame, including exact null/below/
+at/above-1%, threshold overlap, count/composition drift and missing/incomplete/
+stalled/failed/I/O controls. Preserve every callback, endpoint, body/dose bracket,
+complete duration and external finalization; do not sum overlapping spans.
+Independently reconcile the saved frame/body/dose clocks and classify when a
+body-span change identifies a frame effect and when attribution is unavailable.
+Use clock controls plus actual bounded native CPU work in matching editor and
+packaged release, and produce a verified portable candidate.
 
-The observable result is trustworthy software validation for a per-frame CPU
-instrument, with explicit limitations. Fixed-work closure duration cannot supply
-that validation. Render throughput, GPU overlap/sensitivity, hardware noise and a
-sufficient shared-instrumentation control remain separate gaps. Cloud/headless
-success stays distinct from HD 620 evidence.
+The observable result is trustworthy software validation of a frame observation
+and its slack limitation. The completed body-span instrument proves native work
+inside callbacks; it does not resolve the whole engine frame critical path.
+OS CPU service, GPU overlap/sensitivity, physical presentation, HD 620 noise and
+shared instrumentation overhead remain separate unavailable quantities. Preserve
+existing workload contracts and ordinary gameplay/calibration behaviour.
+Cloud/headless success stays distinct from HD 620 qualification.
 
 All legacy/current assessments and the 1% requirement remain authoritative;
 qualification flags stay false. Do not adopt a replacement policy, retroactively
@@ -212,8 +244,9 @@ diagnostic overhead from an elapsed-duration ratio. Policy adoption is a separat
 decision; no such decision was made by the completed fixed-work increment.
 
 **No new target-side action is needed now.** Do not repeat the unchanged
-calibration or request another baseline/profile matrix. The fixed-work correction
-and its cloud controls are trustworthy, but do not resolve per-frame sensitivity,
+calibration or request another baseline/profile matrix. The fixed-work and
+callback-body corrections and their cloud controls are trustworthy, but do not
+resolve whole-frame sensitivity,
 hardware noise or shared overhead. Startup investigation and target-report reviews
 remain complete.
 
@@ -230,7 +263,7 @@ renderer accounting, retention, profile comparison and qualification repeats.
 Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
 semantics or workload requirement changed; M2 remains gated.
 
-Read `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+Read `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
 and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_MEASUREMENT_METHOD.md`,
 `docs/M1_ROUTE_CALIBRATION.md`, `docs/M1_FOG_FRONTIER.md`,
 `docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/
