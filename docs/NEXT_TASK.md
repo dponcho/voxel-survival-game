@@ -2,10 +2,35 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
-In progress October 7: the separate fixed-work elapsed/count assessor and its
-predeclared controls are implemented; cloud/candidate verification is pending.
-Read [M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md). Existing
-assessments/thresholds/qualification remain unchanged; no target run is requested.
+Completed October 8 UTC: **experimental fixed-work elapsed/count sensitivity**,
+implementation `34a92122704faa9953036dd4aee4995ed6e9f6c9`. Read
+[M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md).
+[CI 37707455386](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386)
+passed all three jobs: 52 Python regressions, five native sanitizer suites,
+matching-engine checks, 44 new controls, every existing method/route/endpoint
+control, runtime/profile/calibration smoke, DLL audit and two fresh offline
+extractions. Independent downloaded verification reconciles 176 modeled phases
+and 264,852 rows, plus ten actual smoke folders/98 scenarios/284 native phases.
+All existing assessments, thresholds and qualification flags are preserved.
+
+Current [Windows player 11520043769](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520043769)
+expires `2026-11-07T00:32:47Z`. Exact exported merge/build ID:
+`23a5615f8f29cffa739da8cb8447d26c2e43bcaf`. Portable ZIP SHA-256:
+`7d0c3d08f68fa2b9c7f4ab5ba7b7fa91d1f74fd321d155b0af14a83b4f2e56fd`.
+Native key remains `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d`.
+Archive/PE/PCK/build identity, native registrations and raw evidence independently
+verify; full provenance is in [M1_EVIDENCE.md](M1_EVIDENCE.md). No target run or
+download is requested now.
+
+The complete-duration estimand retains all 1,800-tick measurement windows,
+terminal/final callbacks, closure/drain/file-I/O and scenario finalization. Combined
+finalization stays separately recorded without allocation or overlapping sums.
+Terminal uncertainty uses complete-trial units. Duration/count decomposition
+exposes the closure effect despite callback-count masking. Missing evidence stays
+unavailable/null; failed work/operations, complete/main drift and evidence faults
+remain visible. This is experimental software sensitivity, not a replacement
+qualification policy or a per-frame CPU/GPU/shared overhead estimate. The real
+shortened calibration remains inconclusive; HD 620 noise is uncalibrated.
 
 Completed October 7: **cloud endpoint/last-edit-settlement and callback-count
 precision validation**, code `501d572e84cd90480d81c27abb6e27ad34799222`. Read
@@ -17,7 +42,7 @@ DLL audit and two fresh offline extractions. Independent downloaded review
 reconciles 112 modeled phases/168,596 rows plus ten actual smoke folders,
 98 scenarios and 284 native phases. All failures/qualification limits remain.
 
-Current [Windows player 11508552310](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748/artifacts/11508552310) expires
+Previous endpoint-precision [Windows player 11508552310](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748/artifacts/11508552310) expires
 `2026-11-06T20:08:54Z`. Exact exported merge/build ID:
 `c1c4f87de6268044ddc4a61955f3fa0556643d2d`. Portable `Cairn-windows-x86_64.zip` SHA-256:
 `64a875d6a82c76c27e0953170e5e1432abaeac742c874f45013eafd46e642072`. Native key remains
@@ -158,35 +183,34 @@ inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
 ## Next bounded step
 
-**Single next implementation task:** implement a supplementary fixed-work
-elapsed/count sensitivity assessor alongside the current calibration assessment.
-Use the complete measurement-setup-through-report wall window for matched 1,800-
-tick workloads, separately retain callback count/time-per-callback, terminal/
-acknowledgement contributions and every phase/I/O cost. Predeclare exact null,
-known closure, endpoint redistribution, actual acknowledgement duration, unequal
-counts and invalid/failed/stalled controls. Independently prove that count changes
-cannot hide the declared closure effect in its duration observation, and that
-terminal uncertainty is reported in complete-trial units without trimming rows.
-Keep missing precision unavailable/null and storage bounded.
+**Recommended single next implementation task:** cloud-only per-frame CPU
+critical-path dose sensitivity validation. Predeclare bounded null and
+below/at/above-1% CPU-dose controls, threshold overlap, unequal callback counts,
+repeat drift and missing/failed/incomplete/stalled/I/O guards. Preserve exact
+workloads and all endpoint/native/I/O evidence. Independently reconcile the
+injected CPU bracket, frame intervals, complete duration and counts against saved
+rows; demonstrate which observed quantity identifies the dose and when causal
+attribution remains unavailable. Verify placement against pinned engine source.
+Keep any new observation experimental alongside all existing assessors and
+produce a cloud-verified portable candidate if runtime code changes.
 
-This assessor remains an experiment: all legacy/current saved assessments and the
-1% requirement stay authoritative; every qualification flag remains false. Do
-not adopt a replacement policy, retroactively pass the target report, relax any
-workload/operation/coverage guard or call a fixed-work duration ratio a per-frame
-probe cost. Distinguish fixed-work closure sensitivity, render callback throughput,
-CPU/GPU critical-path sensitivity and shared instrumentation explicitly. Give the
-experimental assessor independent threshold/null/positive/invalid/saved-report
-checks and a pinned cloud candidate when runtime code changes. A qualification
-policy adoption is a separate decision after those controls are trustworthy.
+The observable result is trustworthy software validation for a per-frame CPU
+instrument, with explicit limitations. Fixed-work closure duration cannot supply
+that validation. Render throughput, GPU overlap/sensitivity, hardware noise and a
+sufficient shared-instrumentation control remain separate gaps. Cloud/headless
+success stays distinct from HD 620 evidence.
 
-The observable result is a trustworthy supplementary elapsed/count observation
-and bounded uncertainty account; not a qualified profile or total-overhead pass.
-Per-frame CPU/GPU dose sensitivity and a sufficient shared-instrumentation control
-remain later gaps. Cloud/headless success stays distinct from HD 620 evidence.
+All legacy/current assessments and the 1% requirement remain authoritative;
+qualification flags stay false. Do not adopt a replacement policy, retroactively
+pass target reports, relax workload/operation/coverage guards or infer total
+diagnostic overhead from an elapsed-duration ratio. Policy adoption is a separate
+decision; no such decision was made by the completed fixed-work increment.
 
 **No new target-side action is needed now.** Do not repeat the unchanged
-calibration or request another baseline/profile matrix before the proposed bounded
-correction and its controls are trustworthy. The current precision controls are complete.
+calibration or request another baseline/profile matrix. The fixed-work correction
+and its cloud controls are trustworthy, but do not resolve per-frame sensitivity,
+hardware noise or shared overhead. Startup investigation and target-report reviews
+remain complete.
 
 The recurring frontier readiness gap and recorded H2 upload remain separate
 workload corrections: use the private alarms for a deterministic cloud boundary
@@ -201,7 +225,7 @@ renderer accounting, retention, profile comparison and qualification repeats.
 Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
 semantics or workload requirement changed; M2 remains gated.
 
-Read `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+Read `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
 and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_MEASUREMENT_METHOD.md`,
 `docs/M1_ROUTE_CALIBRATION.md`, `docs/M1_FOG_FRONTIER.md`,
 `docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/

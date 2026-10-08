@@ -5,7 +5,92 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: cloud endpoint/count precision
+## Current Windows candidate: experimental fixed-work sensitivity
+
+The October 8 UTC bounded increment adds `fixed_work_sensitivity` alongside the
+unchanged calibration and legacy assessments. It observes complete measurement-
+setup-through-scenario-report wall duration for matched 1,800-tick workloads,
+retains callback count/time-per-callback separately, and expresses terminal/
+acknowledgement uncertainty in complete-trial units. Every endpoint row and final
+callback remains; preparation/measurement/retirement, native phase closure,
+writer drain, callback/file-I/O and combined report finalization evidence is
+preserved. Overlapping brackets are not added or allocated across repeats.
+Fixtures, routes, actors, edits/storage, resolution/radii, workers/admission caps,
+probe switching, gameplay/safety, native/world/save semantics and the 1% rules
+are unchanged. Read [M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md).
+
+[CI 37707455386](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386)
+passed all three jobs, completed `2026-10-08T00:33:11Z`: 52 Python regressions,
+five native sanitizer suites, exact cached editor/debug/release requalification,
+matching-editor import/export, 44 fixed-work software controls and independent
+saved-row oracle, all sixteen legacy method/26 route/28 endpoint expectations,
+streaming/collision/edit/eviction/cancellation, all four profiles, startup/heavy/
+calibration release smoke and saved-report reconciliation, DLL audit and two
+fresh firewall-isolated offline extractions. Static job `113085112006`, native
+job `113085256870` and export job `113085546047` all passed. No engine was
+installed, compiled or executed locally.
+
+The first attempt [37684349942](https://github.com/dponcho/voxel-survival-game/actions/runs/37684349942)
+failed formal checks because the new zero-dose fixture called the legacy
+known-positive path with a null dose timestamp. The corrected wrapper skips only
+that optional legacy call for the new null control. Production legacy code and
+all established control expectations remain unchanged; the failed attempt is
+not the current candidate.
+
+Independent downloaded review verifies archive digests/CRC/path safety, portable
+checksum/size, x64 PE, all 54 PCK entry MD5s against the pinned pack format,
+outer/inner/PCK build identity, unchanged native pins/template hashes and eight
+native/game/offline self-test reports. All 44 controls reconcile exactly across
+176 modeled phases/264,852 saved CSV rows. Saved JSON is 1,765,195 bytes and raw
+CSV totals 15,133,996 bytes, within the 3 MiB/64 MiB limits. Null, exact threshold,
+endpoint redistribution, acknowledgement drift and unequal-count controls retain
+their declared outcomes; callback count cannot hide the above-limit duration
+effect. Complete/main instability, failed workloads/operations and missing/
+reordered/stalled/phase/I/O guards remain visible. Unavailable values stay null.
+The old 28 endpoint controls still reconcile all 168,596 rows.
+
+All ten actual smoke folders complete with no integration failures and
+qualification false: 98 scenarios, 284 native phases, 37,330 operation rows,
+12,871 frame rows and 94 edit events. Native counters/bytes/maxima, interval/
+callback partitions, final rows, timing blocks, edit evidence and external
+combined finalization reconcile. Actual shortened calibration retains 1,173 raw
+frames, unavailable later bins and inconclusive legacy and experimental results.
+Both 16³ profiles retain analytic coverage and H2 edit-latency failures; heavy
+overhead stays inconclusive. Hosted OpenGL readback is unavailable. Target upload/
+phase-budget failures remain unwaived; no historical verdict is retroactively
+passed. Fixed-work sensitivity does not establish per-frame CPU/GPU probe cost,
+render throughput or shared total diagnostic overhead. Hardware noise remains
+uncalibrated and M1 blocked; cloud success is not HD 620 qualification.
+
+[Windows player 11520043769](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520043769)
+expires `2026-11-07T00:32:47Z`.
+[Export evidence 11520791841](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520791841) and
+[native evidence 11520516452](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520516452)
+retain raw cloud provenance. Symbols remain separate and were not downloaded.
+Implementation and exported merge/build have the identical Git tree
+`fb85f86f11bf493212f1411ce5cf641547a58b9b`; native inputs are unchanged.
+The [independent verification record](evidence/m1-fixed-work-cloud-2026-10-08.json)
+contains only public cloud evidence; detailed target reports remain private.
+
+| Identity | Verified value |
+| --- | --- |
+| Implementation commit | `34a92122704faa9953036dd4aee4995ed6e9f6c9` |
+| Exported merge / build ID | `23a5615f8f29cffa739da8cb8447d26c2e43bcaf` |
+| Native key | `11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d` |
+| Portable ZIP SHA-256 | `7d0c3d08f68fa2b9c7f4ab5ba7b7fa91d1f74fd321d155b0af14a83b4f2e56fd` |
+| Portable ZIP bytes | `30038073` |
+| Outer player archive SHA-256 | `ddca827f79cb26f45f6d1d4a95a5e57cbce754a46104601b09877c206e748c28` |
+| Executable SHA-256 | `9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35` |
+| PCK SHA-256 | `243be0a1b1f9acbfa4678a5e3e83411a497f8ca88ddb704f599d496a716983d0` |
+| Export evidence ZIP SHA-256 | `1e94418328364326e46a197a35343b8bfcdb91fc7f1108d23e20f8b2e97ea789` |
+| Native evidence ZIP SHA-256 | `00c3201379129f5c4c117b602c9e0ae9cf0c4ee4871bf147e4df77a659eaed77` |
+
+**No target-side run or download is required now.** The bounded assessor and
+its cloud controls are complete; qualification-policy adoption, per-frame
+CPU/GPU sensitivity and shared instrumentation remain separate work. See the
+[handoff](NEXT_TASK.md) for the next bounded recommendation.
+
+## Previous Windows candidate: cloud endpoint/count precision
 
 The October 7 bounded increment adds 28 cloud-only H1/H2 clock controls using the
 production calibration/diagnostic ledgers and evaluator, persisted raw CSV and
@@ -80,10 +165,10 @@ merge/build `c1c4f87de6268044ddc4a61955f3fa0556643d2d` have identical Git trees;
 | Export evidence ZIP SHA-256 | `89cbf80427d067433cf8067dc9501cb30ab6c8e0483a660b074d5723f38b9312` |
 | Native evidence ZIP SHA-256 | `8b28408be9e6f803e49412209547a5bf52449818f08b6ba93a5c7b04baa67bb1` |
 
-**No new target check is needed for this cloud-only increment.** The next bounded
-correction is supplementary fixed-work elapsed/count sensitivity, with independent
-controls and all existing verdicts authoritative. No target repeat or full matrix
-is requested until the proposed instrument is trustworthy. M1 remains blocked.
+At this earlier handoff, the next bounded correction was supplementary fixed-work
+elapsed/count sensitivity. It is now cloud verified in the current candidate
+above, with all existing verdicts authoritative. No target repeat or full matrix
+is requested. M1 remains blocked.
 
 ## Previous Windows candidate: supplementary route-matched calibration
 

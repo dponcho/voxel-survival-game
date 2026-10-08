@@ -146,12 +146,15 @@ count cancellation. Detailed synthetic results and bounds are in
 private target measurement or saved verdict changed; no shared/per-frame overhead
 qualification is established.
 
-The next bounded correction is a supplementary fixed-work elapsed/count sensitivity
-assessor with its own null/positive/invalid controls, preserving every endpoint row,
-phase/I/O cost and all authoritative decisions. It must explicitly distinguish
-closure wall sensitivity from per-frame CPU/GPU and shared total overhead. Read
-[NEXT_TASK.md](NEXT_TASK.md).
+The supplementary fixed-work elapsed/count assessor is now implemented and cloud
+verified in [CI 37707455386](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386).
+Its 44 null/positive/invalid controls and independent raw reconciliation preserve
+every endpoint row, phase/I/O cost and all authoritative decisions. Complete
+duration and terminal uncertainty use complete-trial units; callback count stays
+separate. It remains experimental and distinguishes closure wall sensitivity from
+per-frame CPU/GPU and shared total overhead. Read
+[M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md) and [NEXT_TASK.md](NEXT_TASK.md).
 
 No further target run or full matrix is requested now. The new verified candidate
-contains cloud precision controls; it does not resolve HD 620 qualification.
+contains the experimental assessor and cloud controls; it does not resolve HD 620 qualification.
 M1 remains blocked.

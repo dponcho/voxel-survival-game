@@ -114,3 +114,12 @@ hardware noise or establish critical-path frontier, CPU/GPU or shared diagnostic
 cost. Any proposed successor still needs its own predeclared null/positive/invalid
 controls and a separate adoption decision. No new target run or full matrix is
 requested for cloud-only precision controls.
+
+The bounded supplementary correction is now cloud verified: the experimental
+fixed-work assessor observes complete elapsed duration separately from callback
+count and reports terminal uncertainty in complete-trial units. Its 44 controls
+independently reconcile 176 phases and 264,852 saved rows; count changes cannot
+hide the injected closure effect in the duration observation. Existing endpoint
+controls, assessments, thresholds and target verdicts remain unchanged. Read
+[M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md). It establishes neither
+per-frame CPU/GPU probe cost nor total shared diagnostic overhead.

@@ -137,5 +137,47 @@ are distinct quantities: a duration ratio establishes neither per-frame probe co
 nor total diagnostic overhead. Their causal estimates remain null; hardware noise
 is uncalibrated. Cloud/headless success cannot qualify HD 620.
 
-Execution results and candidate provenance will be recorded after cloud verification.
-No new target-side run or full matrix is requested for this bounded correction.
+## Executed cloud verification
+
+Implementation `34a92122704faa9953036dd4aee4995ed6e9f6c9` passed
+[CI 37707455386](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386),
+completed `2026-10-08T00:33:11Z`. All three jobs passed: 52 Python regressions,
+five native sanitizer suites, exact editor/debug/release requalification,
+matching-engine import/export, all 44 fixed-work controls, the independent
+saved-row oracle, existing sixteen method/26 route/28 endpoint controls, real
+runtime/profile/calibration smoke, DLL audit and two fresh offline extractions.
+No engine was installed, compiled or run locally.
+
+Independent downloaded verification reconciles all 176 modeled phases and
+264,852 saved rows. The control JSON is 1,765,195 bytes; raw CSV totals
+15,133,996 bytes, within the predeclared bounds. Exact-at-1%, null, endpoint,
+acknowledgement, unequal-count, complete/main drift and every invalid guard retain
+their declared outcomes. The above-limit duration remains visible in the count-
+masking case even though time per callback is below 1%. Existing control
+expectations and production assessments are unchanged.
+
+The first attempt, [CI 37684349942](https://github.com/dponcho/voxel-survival-game/actions/runs/37684349942),
+correctly failed formal checks: its new true-zero-dose fixture also called the
+legacy known-positive assessor, which tried to cast a null dose timestamp. The
+corrected test wrapper omits only that optional legacy assessment for the new
+zero-dose control. It changes neither production legacy code nor any established
+null/positive control expectation. The successful candidate contains this fix.
+
+All ten actual cloud smoke folders complete without integration failures.
+Independent review reconciles 98 scenarios, 284 native phases, 37,330 operation
+rows, 12,871 frame rows and 94 edit events. The shortened real calibration retains
+1,173 raw frames, explicit unavailable later bins and inconclusive legacy and
+experimental decisions. Its combined finalization stays external; it is not
+allocated to the repeats. Both 16³ profiles retain their coverage and H2 edit-
+latency failures; target upload/phase-budget failures remain unwaived. Hosted
+OpenGL readback is unavailable. These results qualify no target profile.
+
+The verified [Windows player 11520043769](https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520043769)
+exports build `23a5615f8f29cffa739da8cb8447d26c2e43bcaf`, with the same Git tree
+as the implementation. Portable ZIP SHA-256:
+`7d0c3d08f68fa2b9c7f4ab5ba7b7fa91d1f74fd321d155b0af14a83b4f2e56fd`.
+Archive, x64 PE, all PCK entry checksums, build identities, native pins, saved
+evidence and offline self-tests independently verify; full provenance is in
+[M1_EVIDENCE.md](M1_EVIDENCE.md) and the
+[cloud verification record](evidence/m1-fixed-work-cloud-2026-10-08.json).
+No new target-side run, download or full matrix is requested for this correction.
