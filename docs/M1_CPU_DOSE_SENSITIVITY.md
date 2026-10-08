@@ -88,7 +88,7 @@ no growing sample queue. Existing sixteen method, 26 route, 28 endpoint and
 
 ## Real native CPU callback placement
 
-A separate cloud-only `SceneTree` probe runs 32 actual `Node._process` callbacks
+A separate cloud-only application probe runs 32 actual `Node._process` callbacks
 per repeat, reference/positive/positive/reference, in the matching editor and
 exported release. Every callback hashes eight 4 KiB blocks as common work.
 Positive callbacks synchronously call native SHA-256 update on the same 4 KiB
@@ -110,7 +110,7 @@ native work and serialized callback placement, not 1% hardware resolution.
 
 Pinned-source verification:
 
-- [Main loop](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/main/main.cpp): process callbacks precede rendering sync/draw and frame delay; `--script` is available in release.
+- [Main loop](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/main/main.cpp): process callbacks precede rendering sync/draw and frame delay. Template path-override guards can clear `--script`; the probe uses the ordinary project entry with `--cpu-dose-probe` instead.
 - [HashingContext](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/core/crypto/hashing_context.cpp): `start`, `update` and `finish` synchronously invoke native crypto.
 - [CryptoCore](https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/core/crypto/crypto_core.cpp): SHA-256 uses synchronous mbedTLS start/update/finish, with no worker, yield or I/O.
 
@@ -130,7 +130,7 @@ phase/drain/acknowledgement/finalization and every declared guard. It independen
 checks classifications and saved assessor null semantics. The real-probe reader
 recomputes every digest from the saved update count with Python SHA-256, checks
 that all native work lies inside its body, and reconciles actual callback and
-external finalization accounting. Formal orchestration rejects script errors,
+external finalization accounting plus exact exported build identity. Formal orchestration rejects script errors,
 nonzero exit, missing reports and I/O failures. Ordinary benchmark smoke must
 retain CPU sensitivity `not_run` and contain no CPU dose ledger.
 

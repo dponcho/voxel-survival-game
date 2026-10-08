@@ -214,12 +214,17 @@ def reconcile_saved(path,folder):
     return dict(passed=True,controls=len(seen),modeled_phases=len(raw),raw_rows=sum(x['rows'] for x in raw),raw_files=raw,qualified=False,policy_changed=False,cpu_service_usec=None,shared_causal_overhead=None)
 
 
-def reconcile_runtime(folder):
+def reconcile_runtime(folder, expected_build=None):
     folder=Path(folder);require(sum(p.stat().st_size for p in folder.iterdir())<1024*1024,'CPU runtime evidence exceeds 1 MiB')
     r=json.loads((folder/'summary.json').read_text(encoding='utf-8'));require(r['passed'] is True and r['failures']==[] and r['status']=='placement_verified'
         and r['qualified'] is False and r['experimental'] is True and r['max_callbacks']==128 and r['buffer_bytes']==4096 and r['max_hash_updates_per_callback']==512,
         'native CPU placement failed or bounds changed')
     require(all(r[k] is None for k in ('cpu_service_usec','causal_probe_cost','gpu_cost','shared_causal_overhead')),'runtime wall time promoted to causal qualification')
+    require(isinstance(r.get('build'),dict) and r['build'].get('godot_commit')=='ed1daf0bf001b61586d9930840f2f1394092c079'
+            and r['build'].get('voxel_commit')=='2ac9f5f8a8219bf499314cc0fad54ffc47df908f'
+            and r['build'].get('native_source_key')=='11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d'
+            and len(r['build'].get('game_commit',''))==40,'CPU probe build identity unavailable')
+    if expected_build is not None:require(r['build']==expected_build,'CPU probe differs from exported build')
     require(len(r['trials'])==4 and {p.name for p in folder.iterdir()}=={'summary.json','report-finalization.json',*(f'callback-{i}.jsonl' for i in range(4))},'CPU runtime evidence missing/extra')
     buffer=bytes([90])*4096;baseline=hashlib.sha256(buffer*8).hexdigest();obs=[];all_rows=0;prior_end=0
     for i,t in enumerate(r['trials']):

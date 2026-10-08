@@ -75,10 +75,10 @@ if __name__ == "__main__":
         runtime_raw = REPORTS / ("m1-cpu-dose-" + suffix + "-raw")
         runtime_raw.mkdir(exist_ok=True)
         command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
-        check(command + ["--script", "res://scripts/benchmark_cpu_dose_runtime.gd", "--", "--cpu-output=" + str(runtime_raw)],
+        check(command + ["--", "--cpu-dose-probe", "--cpu-output=" + str(runtime_raw)],
               "m1-cpu-dose-" + suffix, "CAIRN_CPU_DOSE_RUNTIME=", 60)
         (REPORTS / ("m1-cpu-dose-" + suffix + "-validation.json")).write_text(json.dumps(
-            reconcile_cpu_runtime(runtime_raw), indent=2), encoding="utf-8")
+            reconcile_cpu_runtime(runtime_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
     print("CPU clock thresholds, count/wait/route masking and real native callback placement reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],

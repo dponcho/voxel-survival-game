@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--cpu-dose-probe" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/benchmark_cpu_dose_runtime.gd").new())
+		return
 	if "--benchmark" in OS.get_cmdline_user_args() or "--m1-smoke" in OS.get_cmdline_user_args():
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/benchmark.tscn")
 		return

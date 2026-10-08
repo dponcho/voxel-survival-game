@@ -86,6 +86,8 @@ def runtime_fixture(folder):
                 last_shared_usec=prev,last_callback_usec=prev,last_callback_end_usec=cbend,maximum_callback_usec=prev,blocks=[],partial_block=dict(samples=32,usec=64000),invalid_partition=False,overflow=False)))
         obs.append(dict(body_usec=32*body,dose_usec=32*request,callbacks=32));start=end+100
     report=dict(schema=1,passed=True,failures=[],status='placement_verified',qualified=False,experimental=True,max_callbacks=128,buffer_bytes=4096,max_hash_updates_per_callback=512,
+        build=dict(godot_commit='ed1daf0bf001b61586d9930840f2f1394092c079',voxel_commit='2ac9f5f8a8219bf499314cc0fad54ffc47df908f',
+                   native_source_key='11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d',game_commit='f'*40),
         cpu_service_usec=None,causal_probe_cost=None,gpu_cost=None,shared_causal_overhead=None,trials=trials,observations=obs,body_effect=body_effect(obs))
     (folder/'summary.json').write_text(json.dumps(report))
     (folder/'report-finalization.json').write_text(json.dumps(dict(start_usec=start,end_usec=start+500,elapsed_usec=500,allocated_to_trials=False)))
@@ -174,8 +176,9 @@ class CpuDoseTests(unittest.TestCase):
 
     def test_real_native_digest_and_callback_drain_finalization_reader(self):
         with tempfile.TemporaryDirectory() as tmp:
-            folder=Path(tmp);runtime_fixture(folder);out=reconcile_runtime(folder)
+            folder=Path(tmp);report=runtime_fixture(folder);out=reconcile_runtime(folder,report['build'])
             self.assertEqual(out['real_callbacks'],128);self.assertTrue(out['native_hash_digests_verified']);self.assertFalse(out['qualified'])
+            with self.assertRaises(ValueError):reconcile_runtime(folder,dict(report['build'],game_commit='0'*40))
             path=folder/'callback-1.jsonl';original=path.read_text();rows=[json.loads(x) for x in original.splitlines()]
             for key,value in [('hash_sha256','0'*64),('dose_begin_usec',0),('complete_callback_end_usec',0),('previous_callback_usec',0),('hash_updates',0)]:
                 bad=copy.deepcopy(rows);bad[-1][key]=value;path.write_text(''.join(json.dumps(x)+'\n' for x in bad))

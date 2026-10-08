@@ -1,4 +1,4 @@
-extends SceneTree
+extends Node
 
 # Cloud-only main-loop placement probe. No terrain workload or target qualification.
 const CPU = preload("res://scripts/benchmark_cpu_dose.gd")
@@ -95,17 +95,17 @@ class CallbackProbe extends Node:
 		if phase < 4: _begin()
 		else: controller.complete(trials)
 
-func _initialize() -> void: call_deferred("_run")
+func _ready() -> void: call_deferred("_run")
 
 func _run() -> void:
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--cpu-output="): directory = argument.trim_prefix("--cpu-output=")
 	if directory.is_empty():
-		quit(1)
+		get_tree().quit(1)
 		return
 	var probe := CallbackProbe.new()
 	probe.controller = self
-	root.add_child(probe)
+	add_child(probe)
 
 func complete(trials: Array[Dictionary]) -> void:
 	var final_begin: int = Time.get_ticks_usec()
@@ -118,6 +118,7 @@ func complete(trials: Array[Dictionary]) -> void:
 			dose += b["dose_usec"]
 		observations.append({"body_usec": body, "dose_usec": dose, "callbacks": trial["callbacks"]})
 	var report: Dictionary = {"schema": 1, "passed": failures.is_empty(), "failures": failures,
+		"build": JSON.parse_string(FileAccess.get_file_as_string("res://build_info.json")),
 		"status": "placement_verified" if failures.is_empty() else "failed", "qualified": false, "experimental": true,
 		"scope": "real synchronous native SHA256 callback placement; not hardware precision or matched terrain workload",
 		"body_effect": CPU.effect(observations), "observations": observations, "trials": trials,
@@ -141,4 +142,4 @@ func complete(trials: Array[Dictionary]) -> void:
 		if file.get_error() != OK: failures.append("CPU finalization flush failed")
 		file.close()
 	print("CAIRN_CPU_DOSE_RUNTIME=" + JSON.stringify(report))
-	quit(0 if failures.is_empty() else 1)
+	get_tree().quit(0 if failures.is_empty() else 1)
