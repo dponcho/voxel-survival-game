@@ -19,6 +19,7 @@ var scenarios: Array[Dictionary] = SCENARIOS.duplicate(true)
 const HeavyAB = preload("res://scripts/benchmark_heavy_ab.gd")
 const Calibration = preload("res://scripts/benchmark_calibration.gd")
 const FixedWork = preload("res://scripts/benchmark_fixed_work.gd")
+const CpuDose = preload("res://scripts/benchmark_cpu_dose.gd")
 var calibration := Calibration.new()
 const PLAYER_BOX := AABB(Vector3(-0.3, 0.0, -0.3), Vector3(0.6, 1.8, 0.6))
 const Evaluation = preload("res://scripts/benchmark_evaluation.gd")
@@ -1102,6 +1103,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["diagnostic_heavy_ab"] = Evaluation.heavy_diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["route_calibration"] = Calibration.evaluate(reports, test_mode, not integration_failures.is_empty())
+	summary["cpu_dose_sensitivity"] = CpuDose.not_run()
 	summary["fixed_work_sensitivity"] = FixedWork.evaluate(reports, test_mode, not integration_failures.is_empty())
 	if mode == "calibration": summary["scope"] = "supplementary route-matched null/closure sensitivity controls; no legacy or target qualification"
 	summary["diagnostic_accounting"] = {

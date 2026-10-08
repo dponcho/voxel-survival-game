@@ -2,6 +2,11 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+In progress October 8 UTC: the cloud-only per-callback CPU dose instrument and
+54 predeclared controls are implemented; cloud/candidate verification is pending.
+Read [M1_CPU_DOSE_SENSITIVITY.md](M1_CPU_DOSE_SENSITIVITY.md). Existing workloads,
+assessments, thresholds and qualification flags remain; no target run is requested.
+
 Completed October 8 UTC: **experimental fixed-work elapsed/count sensitivity**,
 implementation `34a92122704faa9953036dd4aee4995ed6e9f6c9`. Read
 [M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md).

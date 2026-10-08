@@ -7,6 +7,7 @@ from diagnostic_method_validation import validate as validate_method
 from route_calibration import validate_controls, reconcile_folder
 from endpoint_precision import reconcile_saved as reconcile_precision
 from fixed_work import reconcile_saved as reconcile_fixed, reconcile_runtime
+from cpu_dose import reconcile_saved as reconcile_cpu, reconcile_runtime as reconcile_cpu_runtime, scope as cpu_scope
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -62,6 +63,23 @@ if __name__ == "__main__":
     (REPORTS / "m1-fixed-work-validation.json").write_text(json.dumps(
         reconcile_fixed(REPORTS / "m1-fixed-work-controls.json", fixed_raw), indent=2), encoding="utf-8")
     print("fixed-work durations/counts and exact boundaries independently reconciled", flush=True)
+    cpu_raw = REPORTS / "m1-cpu-dose-raw"
+    cpu_raw.mkdir(exist_ok=True)
+    check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
+           "--script", "res://scripts/benchmark_cpu_dose_tests.gd", "--", "--cpu-output=" + str(cpu_raw)],
+          "m1-cpu-dose-controls", "CAIRN_CPU_DOSE_CONTROLS=", 60)
+    (REPORTS / "m1-cpu-dose-validation.json").write_text(json.dumps(
+        reconcile_cpu(REPORTS / "m1-cpu-dose-controls.json", cpu_raw), indent=2), encoding="utf-8")
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        runtime_raw = REPORTS / ("m1-cpu-dose-" + suffix + "-raw")
+        runtime_raw.mkdir(exist_ok=True)
+        command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
+        check(command + ["--script", "res://scripts/benchmark_cpu_dose_runtime.gd", "--", "--cpu-output=" + str(runtime_raw)],
+              "m1-cpu-dose-" + suffix, "CAIRN_CPU_DOSE_RUNTIME=", 60)
+        (REPORTS / ("m1-cpu-dose-" + suffix + "-validation.json")).write_text(json.dumps(
+            reconcile_cpu_runtime(runtime_raw), indent=2), encoding="utf-8")
+    print("CPU clock thresholds, count/wait/route masking and real native callback placement reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
@@ -85,4 +103,9 @@ if __name__ == "__main__":
         json.dumps(reconcile_folder(folders[0].parent), indent=2), encoding="utf-8")
     (REPORTS / "m1-fixed-work-saved.json").write_text(
         json.dumps(reconcile_runtime(folders[0].parent), indent=2), encoding="utf-8")
+    for summary_path in REPORTS.glob("m1-*-raw/*/summary.json"):
+        saved = json.loads(summary_path.read_text(encoding="utf-8"))
+        cpu_scope(saved["cpu_dose_sensitivity"], not_run=True)
+        if any("cpu_dose_accounting" in p for p in saved["scenarios"]):
+            raise RuntimeError("Ordinary gameplay/calibration unexpectedly ran a CPU dose")
     check_fog_render()

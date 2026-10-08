@@ -195,3 +195,18 @@ Existing release calibration smoke also checks the supplementary saved assessor
 and external combined finalization. Bounds: 176 CSVs/64 MiB, 3 MiB control JSON,
 60-second clock command; no new runtime queue. All legacy assessments and
 qualification flags remain authoritative. See [M1_FIXED_WORK_SENSITIVITY.md](docs/M1_FIXED_WORK_SENSITIVITY.md).
+
+### Experimental per-callback CPU dose controls
+
+`benchmark_cpu_dose_tests.gd` adds 54 clock controls/216 saved phases, bounded at
+4 MiB JSON, 64 MiB raw CSV and 60 seconds. The independent rational/streamed
+oracle verifies exact threshold/null semantics, count/wait/route-mix masking,
+body/window drift, all guard faults and previous/final callbacks. A separate
+native SHA-256 `Node._process` probe executes 128 real callbacks each in the
+matching editor and exported release; every digest, body/dose span, writer drain
+and external finalization is independently reconciled. Bounds: 4 KiB buffer,
+512 updates per dose, 32 pending rows, 1 MiB evidence/60 seconds per invocation.
+This verifies software sensitivity and CPU placement, never CPU service,
+hardware precision, GPU cost or shared overhead. Ordinary benchmark smoke must
+retain CPU sensitivity `not_run`; all old control expectations stay unchanged.
+See [M1_CPU_DOSE_SENSITIVITY.md](docs/M1_CPU_DOSE_SENSITIVITY.md).
