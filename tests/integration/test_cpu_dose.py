@@ -179,6 +179,17 @@ class CpuDoseTests(unittest.TestCase):
             folder=Path(tmp);report=runtime_fixture(folder);out=reconcile_runtime(folder,report['build'])
             self.assertEqual(out['real_callbacks'],128);self.assertTrue(out['native_hash_digests_verified']);self.assertFalse(out['qualified'])
             with self.assertRaises(ValueError):reconcile_runtime(folder,dict(report['build'],game_commit='0'*40))
+            rebuilt=copy.deepcopy(report)
+            rebuilt['build']['native_source_key']='a'*64
+            summary_path=folder/'summary.json'
+            summary_path.write_text(json.dumps(rebuilt))
+            self.assertEqual(reconcile_runtime(folder,rebuilt['build']),out)
+            with self.assertRaises(ValueError):reconcile_runtime(folder,report['build'])
+            with self.assertRaises(ValueError):reconcile_runtime(folder)
+            rebuilt['build']['native_source_key']=''
+            summary_path.write_text(json.dumps(rebuilt))
+            with self.assertRaises(ValueError):reconcile_runtime(folder,rebuilt['build'])
+            summary_path.write_text(json.dumps(report))
             path=folder/'callback-1.jsonl';original=path.read_text();rows=[json.loads(x) for x in original.splitlines()]
             for key,value in [('hash_sha256','0'*64),('dose_begin_usec',0),('complete_callback_end_usec',0),('previous_callback_usec',0),('hash_updates',0)]:
                 bad=copy.deepcopy(rows);bad[-1][key]=value;path.write_text(''.join(json.dumps(x)+'\n' for x in bad))

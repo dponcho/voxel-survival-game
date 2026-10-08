@@ -220,6 +220,7 @@ def digest(updates):
 
 def reconcile_runtime(folder,expected_build=None):
     folder=Path(folder);files=list(folder.iterdir())
+    expected_key = expected_build['native_source_key'] if expected_build is not None else '11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d'
     require(len(files)==10 and all(p.is_file() for p in files) and sum(p.stat().st_size for p in files)<=2*1024*1024,'native frame evidence missing/unbounded')
     r=json.loads((folder/'summary.json').read_text());require(r['schema']==1 and r['version']==VERSION and r['passed'] is True and r['failures']==[]
         and r['status']=='placement_verified' and r['qualified'] is False and r['experimental'] is True,'native frame placement failed')
@@ -229,7 +230,8 @@ def reconcile_runtime(folder,expected_build=None):
         'unmeasured frame costs promoted to passing zeros')
     build=r['build'];require(build['godot_commit']=='ed1daf0bf001b61586d9930840f2f1394092c079'
         and build['voxel_commit']=='2ac9f5f8a8219bf499314cc0fad54ffc47df908f'
-        and build['native_source_key']=='11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d'
+        and build['native_source_key']==expected_key
+        and isinstance(expected_key,str) and len(expected_key)==64 and all(c in '0123456789abcdef' for c in expected_key)
         and len(build['game_commit'])==40 and (expected_build is None or build==expected_build),'native frame build identity mismatch')
     require(len(r['trials'])==8 and len(r['groups'])==2,'native frame quartet missing')
     observations=[];prior_end=prior_engine=-1;rows_total=0;anchor_total=0;baseline=digest(8)

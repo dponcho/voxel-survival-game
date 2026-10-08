@@ -148,6 +148,17 @@ class FrameSlackTests(unittest.TestCase):
             folder=Path(tmp);r=native_fixture(folder);o=reconcile_runtime(folder,r['build'])
             self.assertEqual(o['body_callbacks'],256);self.assertEqual(o['closing_anchor_callbacks'],8);self.assertTrue(o['final_body_successors_verified'])
             with self.assertRaises(ValueError):reconcile_runtime(folder,dict(r['build'],game_commit='0'*40))
+            rebuilt=copy.deepcopy(r)
+            rebuilt['build']['native_source_key']='a'*64
+            summary_path=folder/'summary.json'
+            summary_path.write_text(json.dumps(rebuilt))
+            self.assertEqual(reconcile_runtime(folder,rebuilt['build']),o)
+            with self.assertRaises(ValueError):reconcile_runtime(folder,r['build'])
+            with self.assertRaises(ValueError):reconcile_runtime(folder)
+            rebuilt['build']['native_source_key']=''
+            summary_path.write_text(json.dumps(rebuilt))
+            with self.assertRaises(ValueError):reconcile_runtime(folder,rebuilt['build'])
+            summary_path.write_text(json.dumps(r))
             path=folder/'cycle-1.jsonl';original=path.read_text();rows=[json.loads(x) for x in original.splitlines()]
             for key,value in [('hash_sha256','0'*64),('next_entry_usec',0),('successor_engine_frame',0),('dose_end_usec',0),('baseline_updates',7)]:
                 bad=copy.deepcopy(rows);bad[-1][key]=value;path.write_text(''.join(json.dumps(x)+'\n' for x in bad))
