@@ -100,8 +100,8 @@ static func observation(p: Dictionary) -> Dictionary:
 		if last.get("dose_begin_usec") != null or last.get("dose_end_usec") != null: return unavailable
 	else:
 		var ds: int = Fixed.integer(last, "dose_begin_usec")
-		var de: int = Fixed.integer(last, "dose_end_usec")
-		if ds < Fixed.integer(last, "body_begin_usec") or de > Fixed.integer(last, "body_end_usec") or de - ds < requested: return unavailable
+		var dose_end: int = Fixed.integer(last, "dose_end_usec")
+		if ds < Fixed.integer(last, "body_begin_usec") or dose_end > Fixed.integer(last, "body_end_usec") or dose_end - ds < requested: return unavailable
 	if Fixed.integer(b, "measurement_begin_usec") != start or Fixed.integer(b, "preparation_begin_usec") < 0 or Fixed.integer(b, "preparation_begin_usec") > start or Fixed.integer(b, "retirement_begin_usec") != end or Fixed.integer(b, "retirement_end_usec") < end or Fixed.integer(p, "acknowledgement_usec") < 0 or Fixed.integer(p, "acknowledgement_usec") > end - start or Fixed.integer(anchor, "previous_callback_usec") != Fixed.integer(a, "last_callback_usec") or lc - le != Fixed.integer(a, "last_callback_usec"): return unavailable
 	out.merge({"complete_duration_usec": end - start, "closing_anchor_usec": ac - ae, "last_cycle_usec": ln - le})
 	return out
