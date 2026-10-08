@@ -40,6 +40,11 @@ M0's source lock, scripts and workflow YAML are implementation deliverables. The
 
 ## 4. M1: architecture kill gate
 
+October 8 cloud increment: the first 16³ moving-frontier gap now has a verified
+baseline/corrected native replay and a bounded four-viewer preparation fix.
+[Evidence and next step](docs/M1_FRONTIER_BOUNDARY_REPLAY.md) retain M1 blocked,
+no qualified target profile and separate unresolved operation/timing gates.
+
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 
 Compare the stock 32³ render path with 16³ render blocks and one versus two terrain workers. Keep the same resolution, scene and view distance. Record cost attribution: generation, meshing, upload, deletion, draw submission, collision and GPU work.

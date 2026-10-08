@@ -1,5 +1,13 @@
 # M1 fog/frontier evidence
 
+October 8: the first public 16³ H1/H2 boundary is corrected by four fixed
+preparation viewers, not a readiness/fog change. Matching editor/release replay
+reproduces the baseline missing alarm and verifies submitted coverage through
+base handover; an unprepared gap still fails. Ordinary short cloud H1/H2 smokes
+have zero exposed samples for both worker counts. This does not certify full
+routes, H2 operations, pixels or HD 620. See
+[the bounded replay and exact candidate](M1_FRONTIER_BOUNDARY_REPLAY.md).
+
 Schema 5 adds H1/H2 required-region coverage to the existing bounded frame CSV.
 The native probe inspects render regions intersecting the current camera frustum
 and the fixture surface envelope Y [-16,7). This covers fixture 1 and H2's

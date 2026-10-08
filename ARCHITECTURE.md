@@ -127,6 +127,14 @@ These are project requirements. They are not all stock Voxel Tools settings. M1 
 
 Keep safety data resident around the player, independent of whether a GPU mesh exists. Movement checks a swept readiness volume. If necessary data is missing, halt movement at the last safe boundary and prioritize recovery. Ordinary 6.5 m/s traversal must not routinely hit that boundary; the streaming benchmark checks throughput as well as fps. Teleports and world loads use an explicit loading state until their safety region is ready.
 
+The M1 16³ heavy-route first-boundary experiment adds four fixed preparation
+viewers inside the existing data halo; base required geometry and safety stay
+unchanged. At most 511 resident regions fit the existing 512 cap. A one-process
+pose latch preserves native mesh references during base-viewer handover; all
+preparation/submission/retirement work remains accounted. This narrow fixture
+policy is not a general-world streaming solution or target qualification. See
+[the bounded replay](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
+
 Edits are validated commands: reach, inventory, collision, bounds, readiness and complexity admission. A successful command assigns a revision, changes voxel/inventory state consistently, marks affected border meshes and lighting, and queues its persistence payload. Coalesce repeated edits to the same chunk. Main-thread reads/edits must not wait behind a long worker-held spatial lock; use short snapshots, retry/try-lock paths or narrowly scoped native adaptation where required.
 
 Never discard unsaved state during eviction. Once its complete transaction is durably journalled, in-memory chunk data may be evicted even if snapshot compaction is pending. Reload reconstructs the snapshot plus all later committed records. Bound mesh destruction as well as creation; releasing hundreds of buffers at once is not free.

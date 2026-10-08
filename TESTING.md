@@ -226,3 +226,17 @@ Ordinary smokes retain `frame_slack_sensitivity: not_run`; old controls remain.
 These are software placement checks, with actual effect envelopes descriptive;
 CPU service, GPU/presentation, hardware precision and shared overhead stay null.
 See [M1_FRAME_SLACK_SENSITIVITY.md](docs/M1_FRAME_SLACK_SENSITIVITY.md).
+
+### First moving-frontier boundary replay
+
+Matching editor and packaged release each run four actual native baseline/
+corrected cases (16³, one/two workers) from the hashed public first-alarm seed.
+Baseline must reproduce missing submitted geometry inside 96 m; corrected must
+already be submitted and retain unchanged scan coverage through reference
+handover. A new unprepared gap still fails, missing inputs remain null, and
+native cancellation/drain and existing bounds remain visible. Each invocation
+retains 80 observations, capped at 128 rows/1 MiB, with per-case 60-second
+settlement/drain limits and a 600-second command deadline. The independent
+saved-report/source/geometry oracle and mutation tests supplement, never replace,
+existing frontier/operation/edit/evaluation and profile smokes. See
+[M1_FRONTIER_BOUNDARY_REPLAY.md](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).

@@ -5,7 +5,40 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: experimental frame-boundary/slack instrument
+## Current Windows candidate: first 16³ frontier-boundary correction
+
+The bounded four-viewer preparation correction is implemented in
+`7c103af1c16d328b113a7c3cbf3666b20d630990`. It addresses genuinely late visual
+demand at the first public +X boundary, without changing the 96 m required scan/
+fog, 128 m data envelope, native caps, gameplay or qualification policy.
+[CI 37811968141](https://github.com/dponcho/voxel-survival-game/actions/runs/37811968141)
+passed all three jobs: 73 Python regressions, five native sanitizer suites,
+matching-engine checks, native editor/release replay, every existing control,
+runtime/profile/operation/edit tests, DLL audit and two fresh offline extractions.
+Independent downloaded reconciliation verifies eight cases/160 observations,
+baseline missing alarms, submitted corrected targets, reference handover,
+confirmed-empty/null semantics, retained unprepared failures and complete drain.
+Peak meshes are 511 versus baseline 507; data remains 867 and overloads zero.
+
+Ordinary one-second 16³ cloud H1/H2 alarms change from 11/23 to zero for both
+worker counts with the same simulation/actor ticks, edits and proxy saves. This
+is not full-route or target qualification. All ten smoke folders/98 scenarios/
+284 native phases reconcile, including 37,390 operation rows, 12,883 frame rows,
+94 edit events and complete terminal accounting. Existing control expectations
+and all false qualification flags remain; actual calibration stays inconclusive.
+H2's recorded target upload failure and other target gates remain separate.
+
+[Windows player 11566261601](https://github.com/dponcho/voxel-survival-game/actions/runs/37811968141/artifacts/11566261601)
+exports build `fcc317863e32e6787430880b493b53541fe0db9f`; build and implementation
+share tree `803e845a251c657097582ce4e524d85e47ce89f6`. Portable ZIP SHA-256:
+`b39bbe798c7eb7b464bc8f7593cae9e7027a94af0752413e091291daaeb11735`;
+30,090,870 bytes. Archive/PE/PCK identities, all 70 entry MD5s, native templates,
+eight self-test reports and 38 PE imports independently verify. Native key is
+unchanged. No local engine run or new target action occurred. Read
+[M1_FRONTIER_BOUNDARY_REPLAY.md](M1_FRONTIER_BOUNDARY_REPLAY.md) and
+[the exact public verification record](evidence/m1-frontier-boundary-cloud-2026-10-08.json).
+
+## Previous Windows candidate: experimental frame-boundary/slack instrument
 
 The October 8 UTC increment adds an experimental owned process-callback entry
 through successor-entry wall observation alongside the completed CPU-body and

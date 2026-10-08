@@ -1,5 +1,14 @@
 # Performance contract
 
+The M1 first-boundary correction adds four fixed 1 m preparation viewers only
+to the 16³ +X heavy fixture routes. Required visual geometry/fog remains 96 m;
+data remains 128 m. The worst resident mesh envelope is 511 under the existing
+512 cap; workers, admission/results, upload and safety budgets below are
+unchanged. Preparation is shared by probe-off/on and calibration, and its real
+native/callback/retirement cost is retained. It is not a full-route performance
+pass or a 32³/general-world policy. See
+[M1_FRONTIER_BOUNDARY_REPLAY.md](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
+
 Design baseline: 2026-09-05. The [September 25 target reports](docs/M1_TARGET_REVIEW.md) were reviewed on 2026-09-26; **no profile is qualified yet**. All numbers below remain requirements, admission limits or initial engineering allocations. The Java-style product-direction change does not relax these gates. Settings become a certified profile only after the exported Windows build passes on the specified machine.
 
 ## 1. Fixed target and meaning of a pass

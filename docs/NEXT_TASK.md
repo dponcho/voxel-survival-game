@@ -2,6 +2,37 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+Completed October 8 UTC: **first 16³ moving-frontier boundary correction**,
+implementation `7c103af1c16d328b113a7c3cbf3666b20d630990`. Read
+[M1_FRONTIER_BOUNDARY_REPLAY.md](M1_FRONTIER_BOUNDARY_REPLAY.md).
+[CI 37811968141](https://github.com/dponcho/voxel-survival-game/actions/runs/37811968141)
+passed all three jobs: 73 Python regressions, five native sanitizer suites,
+matching-engine checks, actual editor/release replay, every existing software
+control/runtime/profile/smoke, DLL audit and two fresh offline extractions.
+Independent review reconciles eight native cases/160 observations. Baseline
+reproduces the missing-region alarm; four fixed preparation viewers provide
+submitted meshes through base handover. Corrected cases peak at 511 meshes
+(baseline 507), with unchanged 867 data blocks, no overloads and complete drain.
+Unprepared gaps still fail and missing inputs remain null.
+
+Ordinary one-second 16³ cloud smokes change H1's 11 and H2's 23 exposed samples
+to zero for both worker counts, preserving simulation/actor ticks, edits and
+proxy saves. This is not a full route or target pass. All ten ordinary folders/
+98 scenarios/284 native phases reconcile with 37,390 operation rows, 12,883
+frame rows and 94 edit events. Old controls and qualification flags remain;
+shortened calibration stays inconclusive. The recorded target H2 upload failure
+is a separate unresolved gate.
+
+Current [Windows player 11566261601](https://github.com/dponcho/voxel-survival-game/actions/runs/37811968141/artifacts/11566261601)
+expires `2026-11-07T17:03:19Z`. Exact exported merge/build:
+`fcc317863e32e6787430880b493b53541fe0db9f`; implementation/build tree:
+`803e845a251c657097582ce4e524d85e47ce89f6`. Portable ZIP SHA-256:
+`b39bbe798c7eb7b464bc8f7593cae9e7027a94af0752413e091291daaeb11735`;
+bytes: `30090870`. Native key is unchanged. Archive/PE/PCK, all 70 entry MD5s,
+native templates, eight self-tests and 38 PE imports independently verify.
+See [the public record](evidence/m1-frontier-boundary-cloud-2026-10-08.json).
+No engine ran locally. **No new target-side action is needed now.**
+
 Completed October 8 UTC: **experimental frame-boundary and CPU-slack
 software validation**. Read [M1_FRAME_SLACK_SENSITIVITY.md](M1_FRAME_SLACK_SENSITIVITY.md).
 [CI 37804090619](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619) passed all three jobs: 70 Python regressions,
@@ -28,7 +59,7 @@ controls/168,596 rows reconcile unchanged. All sixteen method and
 16³ heavy coverage/edit alarms and operation failures remain unwaived. Hosted
 OpenGL readback remains unavailable. No engine was installed, compiled or run locally.
 
-Current [Windows player 11563412804](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11563412804) expires
+Previous frame/slack [Windows player 11563412804](https://github.com/dponcho/voxel-survival-game/actions/runs/37804090619/artifacts/11563412804) expires
 `2026-11-07T16:11:49Z`. Exact exported merge/build: `62a8da6e8d1fc9b81195b6b6707d1b4bba3c446b`.
 Portable ZIP SHA-256: `673d82bdd74c1d745e95a5aa3e5738037cf4621328c59ab3312064355cb9564d`; bytes: `30079503`.
 Implementation `14581835677bf0bb403fb35a8b58d90eaf6e0595` and exported build share tree `5a35b2281b956c0b65752c764ed37e0f21603618`.
@@ -254,16 +285,17 @@ inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
 ## Next bounded step
 
-**Recommended single next implementation task:** deterministic cloud replay of
-one demonstrated moving-frontier readiness gap, followed by the smallest cause
-correction that the replay proves. Begin with the existing public 16³ H1/H2 cloud
-alarms and preserve their fixture, route/camera, 96 m fog boundary, required-region
-geometry, revisions, worker/admission/submission caps and confirmed-empty rules.
-Inspect demand/admission/submission state at the boundary; distinguish a geometry
-or readiness-accounting defect from genuinely late submitted meshes. Capture a
-bounded failing fixture before changing behaviour, then independently check the
-corrected replay and existing frontier/operation/edit tests in matching editor
-and packaged release, with a verified portable candidate.
+**Recommended single next implementation task:** extend the native 16³ replay to
+the next +X column handover with one concurrent accepted border-edit replacement.
+Check actual mesh references and all affected current revisions through the
+base/preparation transfer, cancellation and drain. Preserve the fixture, route/
+camera, 96 m fog, required geometry, simulation, workers/caps, confirmed-empty
+rules and existing 200 ms acknowledgement/750 µs operation guards. Use a bounded
+public cloud fixture, independent saved reconciliation, editor/release checks
+and a verified candidate; change behaviour only if a demonstrated failure needs
+a smallest cause correction. This validates a material new interaction of the
+four-viewer policy; it is not a request for another full profile matrix or a
+claim that the whole moving route is now qualified.
 
 The completed fixed-work, callback-body and owned-cycle increments validate
 software observations and expose count/wait/slack masking. They do not establish
@@ -291,7 +323,7 @@ renderer accounting, retention, profile comparison and qualification repeats.
 Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
 semantics or workload requirement changed; M2 remains gated.
 
-Read `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+Read `docs/M1_FRONTIER_BOUNDARY_REPLAY.md`, `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
 and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_MEASUREMENT_METHOD.md`,
 `docs/M1_ROUTE_CALIBRATION.md`, `docs/M1_FOG_FRONTIER.md`,
 `docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/
