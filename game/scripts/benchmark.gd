@@ -1072,7 +1072,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	await _close_reports()
 	if test_mode:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
-		if mode not in ["heavy-ab", "calibration"]: integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
+		if mode not in ["heavy-ab", "calibration", "travel-replay"]: integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	var fog_configuration: Dictionary = Frontier.fog_configuration(benchmark_environment, camera.far)

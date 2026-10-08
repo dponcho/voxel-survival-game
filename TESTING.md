@@ -258,3 +258,13 @@ and 600-second command deadline. Null/invalid/oversized/malformed/duplicate and
 absent-block native controls, exact saved sums/peaks/phase closures and Python
 mutation regressions supplement all earlier controls. See
 [M1_FRONTIER_EDIT_HANDOVER.md](docs/M1_FRONTIER_EDIT_HANDOVER.md).
+
+### Continuous H2 travel replay
+
+The cloud editor/release each run the production 600-tick H2 route with one/two
+workers through four +X handovers. Independent saved evidence checks all movement,
+actor/rain/edit/storage commands, actual resource ownership and current revisions,
+all terminal frames/edits/native phases, operation guards and complete drain.
+Storage and time limits, negative controls and scope are predeclared in
+[M1_FRONTIER_TRAVEL.md](docs/M1_FRONTIER_TRAVEL.md). Failed timing guards remain
+failures; functional cloud completion does not qualify a target profile.

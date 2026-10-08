@@ -11,6 +11,7 @@ from cpu_dose import reconcile_saved as reconcile_cpu, reconcile_runtime as reco
 from frame_slack import reconcile_saved as reconcile_frame, reconcile_runtime as reconcile_frame_runtime, scope as frame_scope
 from frontier_boundary import reconcile as reconcile_frontier
 from frontier_edit import reconcile as reconcile_frontier_edit
+from frontier_travel import reconcile as reconcile_travel
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -120,6 +121,20 @@ if __name__ == "__main__":
         (REPORTS / ("m1-frontier-edit-" + suffix + "-validation.json")).write_text(json.dumps(
             reconcile_frontier_edit(edit_raw, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8"))), indent=2), encoding="utf-8")
     print("Concurrent seam edit revisions, actual mesh references, cancellation and phase operations reconciled", flush=True)
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        for workers in (1, 2):
+            name = f"m1-frontier-travel-{suffix}-{workers}"
+            raw = REPORTS / (name + "-raw")
+            command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
+            check(command + ["--", "--frontier-travel-replay", f"--workers={workers}",
+                             "--m1-report-root=" + str(raw)], name, "CAIRN_FRONTIER_TRAVEL=", 600)
+            folders = list(raw.glob("*/travel-summary.json"))
+            if len(folders) != 1:
+                raise RuntimeError("Missing or duplicated continuous travel report")
+            result = reconcile_travel(folders[0].parent, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8")), workers)
+            (REPORTS / (name + "-validation.json")).write_text(json.dumps(result, indent=2), encoding="utf-8")
+    print("Continuous production H2 travel, work/revisions/resources and complete phase guards reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)

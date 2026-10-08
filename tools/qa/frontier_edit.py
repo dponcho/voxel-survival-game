@@ -49,10 +49,10 @@ def unavailable(sample):
             and isinstance(sample['reason'], str) and bool(sample['reason']), 'Unavailable meshes became passing zeros')
 
 
-def mesh_map(sample):
+def mesh_map(sample, coordinates=COORDINATES):
     require(sample['status'] == 'measured' and sample['reason'] == '' and type(sample['probe_usec']) in (int, float)
             and sample['probe_usec'] >= 0 and int(sample['probe_usec']) == sample['probe_usec'], 'Missing native mesh observation')
-    require([r['block'] for r in sample['blocks']] == COORDINATES, 'Missing/reordered native block observations')
+    require([r['block'] for r in sample['blocks']] == coordinates, 'Missing/reordered native block observations')
     result = {}
     for block in sample['blocks']:
         position = tuple(block['block'])
