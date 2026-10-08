@@ -88,7 +88,7 @@ def assess(phases,declared,final_only=False,io_failed=False):
     if any(o['status']!='measured' for o in obs):return out
     out.update(effects(obs))
     valid=not io_failed and all(p['index']==i and p['completed'] is True and p['work_units_valid'] is True
-        and p['operation_evaluation']!='failed' and p['samples']==32 and p['frame_slack_accounting']['stalled'] is False for i,p in enumerate(phases))
+        and p.get('operation_evaluation')=='inconclusive' and p['samples']==32 and p['frame_slack_accounting']['stalled'] is False for i,p in enumerate(phases))
     for i,o in enumerate(obs):
         request=declared if i in (1,2) else 0
         valid &= request>=0 and o['dose_usec']>=request*(1 if final_only else o['callbacks']) and (request!=0 or o['dose_usec']==0)

@@ -123,12 +123,12 @@ static func evaluate(phases: Array[Dictionary], declared: int, final_only: bool 
 		var p: Dictionary = phases[index]
 		var o: Dictionary = observation(p)
 		root["observations"].append(o)
-		if p.get("index") != index or not p.get("completed", false) or p.get("work_units_valid") != true or p.get("operation_evaluation") == "failed" or p.get("samples") != 32 or p.get("frame_slack_accounting", {}).get("stalled", true): reasons.append("Incomplete, reordered, changed, stalled or failed work")
+		if p.get("index") != index or not p.get("completed", false) or p.get("work_units_valid") != true or p.get("operation_evaluation") != "inconclusive" or p.get("samples") != 32 or p.get("frame_slack_accounting", {}).get("stalled", true): reasons.append("Incomplete, reordered, changed, stalled or failed work")
 		if o["status"] != "measured": reasons.append("Unavailable cycle/endpoint/phase evidence")
 	if io_failed: reasons.append("Failed saved evidence")
 	for o: Dictionary in root["observations"]:
 		if o["status"] != "measured": return root
-	root.merge(effects(root["observations"]))
+	root.merge(effects(root["observations"]), true)
 	for index: int in range(4):
 		var o: Dictionary = root["observations"][index]
 		var request: int = declared if index in [1, 2] else 0

@@ -115,6 +115,9 @@ class FrameSlackTests(unittest.TestCase):
                 o=observation(fixture(Path(tmp),label,1));self.assertEqual(o['status'],'unavailable');self.assertTrue(all(v is None for k,v in o.items() if k!='status'))
             for label in ('body-drift','main-body-drift','cycle-drift','main-cycle-drift','window-drift','stall','failed-operation','failed-workload'):
                 o=assess([fixture(Path(tmp),label,i) for i in range(4)],400);self.assertEqual(o['status'],'inconclusive')
+            p=[fixture(Path(tmp),'above',i) for i in range(4)]
+            for value in (None,'unavailable','failed'):
+                p[1]['operation_evaluation']=value;self.assertEqual(assess(p,400)['status'],'inconclusive')
 
     def test_raw_successor_final_body_and_ledger_corruption_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
