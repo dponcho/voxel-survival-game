@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools/qa'))
-from frontier_travel import coordinates, observations, operation_reasons, operations, positions, single
+from frontier_travel import cells, coordinates, observations, operation_reasons, operations, positions, single
 
 
 def fixture():
@@ -44,7 +44,8 @@ def fixture():
             actors=24*tick,actor_phase=tick/60,rain=256,accepted=accepted,rejected=0,next_edit=accepted+1,
             saves=tick//60,next_save=tick//60+1,command_hash=fingerprint,readiness_stops=0,
             native=dict(overloads=0,retired_meshes=0,retired_high_water=100),terrain=dict(resident_mesh=511,resident_data=867),
-            trace=trace,meshes=sample(coordinates(player)),edit_attempt=attempt))
+            trace=trace,preparation_positions=[[16*x+8,16*y+8,16*z+8] for x,y,z in cells(player)],
+            meshes=sample(coordinates(player)),lateral=sample([[cells(player)[0][0]-1,y,-1] for y in (-1,0)]),edit_attempt=attempt))
     return result
 
 
@@ -67,7 +68,7 @@ class FrontierTravel(unittest.TestCase):
         good=fixture()
         with tempfile.TemporaryDirectory() as directory:
             path=Path(directory)/'rows.jsonl'
-            for kind in ('missing','reorder','stalled','actors','rain','save','due','fingerprint','revision','resource','ownership','null','bounds','overflow','io'):
+            for kind in ('missing','reorder','stalled','actors','rain','save','due','fingerprint','revision','resource','stale-mesh','ownership','release','empty','preparation','null','bounds','overflow','io'):
                 bad=copy.deepcopy(good)
                 row=bad[203]
                 if kind=='missing': bad.pop()
@@ -80,9 +81,20 @@ class FrontierTravel(unittest.TestCase):
                 if kind=='fingerprint': row['command_hash']+=1
                 if kind=='revision': row['meshes']['blocks'][8]['desired_revision']+=1
                 if kind=='resource': row['meshes']['blocks'][0]['mesh_id']='9007199254740993'
+                if kind=='stale-mesh':
+                    r=bad[14];prior=bad[13]
+                    for b in r['meshes']['blocks']:
+                        if b['block'] in ([-1,0,0],[0,0,0]):
+                            b['mesh_id']=next(v['mesh_id'] for v in prior['meshes']['blocks'] if v['block']==b['block'])
                 if kind=='ownership':
                     for r in bad:
                         for b in r['meshes']['blocks']: b['mesh_viewers']=1
+                if kind=='release':
+                    for r in bad:
+                        for b in r['meshes']['blocks']:
+                            if b['block'][0]==8 and r['tick']>=204: b['mesh_viewers']=2
+                if kind=='empty': row['meshes']['blocks'][-1]['desired_revision']+=1
+                if kind=='preparation': row['preparation_positions'][0][0]+=32
                 if kind=='null': row['meshes']=dict(status='unavailable',reason='missing',blocks=None,probe_usec=None)
                 if kind=='bounds': row['native']['retired_high_water']=769
                 if kind=='overflow': row['trace']['overflow']=1

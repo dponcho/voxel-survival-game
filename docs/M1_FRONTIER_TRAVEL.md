@@ -23,7 +23,9 @@ acknowledgement callback. The bounded native observer samples fifteen distinct
 cells: old/current frontier columns, all six cells affected by the three production
 edit locations (x=0/32/64), and a confirmed-empty control. Every edit attempt has
 before/after desired/submitted revisions and a monotonic acceptance bracket.
-Resource identities remain exact decimal strings. No mesh reference survives the
+A second two-cell native call observes the newly demanded lateral `z=-1` rows
+after the first cloud run exposed pending coverage there. Resource identities
+remain exact decimal strings. No mesh reference survives the
 observer. Missing cells/measurements stay null/unavailable, never ready zeros.
 
 Acceptance requires all 600 ticks, 14,400 actor updates, 40 accepted edits and ten
@@ -35,8 +37,8 @@ H2 edit/coverage/operation failures remain visible. Functional evidence integrit
 is separate from those measured guards and from hardware qualification.
 
 Bounds per process: 4,096 observer rows / 32 MiB, each below 32 KiB, streamed
-synchronously without an added worker or queue. At most fifteen native cells per
-row (API maximum sixteen); two per edit-attempt snapshot. The existing native
+synchronously without an added worker or queue. At most fifteen primary and two lateral cells per row, in separate bounded calls
+(API maximum sixteen per call); two per edit-attempt snapshot. The existing native
 64-record ring, disk 64-item/64 KiB queue, 128 operation-row buffer, 64 pending/
 128 terminal edit limits, 64 MiB frame/operation files and 8 MiB edit file remain.
 The independent reader additionally caps total operation rows at 100,000. Existing
@@ -58,3 +60,29 @@ and replay expectations remain required.
 
 Verification is pending cloud execution. M1 remains blocked, HD 620 is unqualified,
 and no new target-side run or download is requested.
+
+
+## First cloud attempt
+
+CI 37859891722 at implementation `39dde208f257cbd8e91fd97adc38f491d69d27b8`
+passed 80 Python regressions, five sanitizer suites, native qualification, all
+parse checks, earlier controls and replays. Its first actual editor/one-worker
+600-tick H2 run completed; the new independent reader then failed because it
+compared Godot's 15-digit serialized yaw against the full float32 decimal exactly.
+The correction allows only 1e-12 radians of serialization roundoff, with unchanged
+route, native and timing gates. No approved candidate was produced by this run.
+
+Downloaded evidence artifact `11586241096` is 15,470,349 bytes, SHA-256
+`649ef6824a312749f2bf421d366fb7364699c29c2740b9de6a6842dc3eb6c995`.
+The corrected reader independently reconciles 600 ticks, 14,400 actor updates,
+40 current submitted edits, ten proxy saves, all four actual `1 -> 2 -> 1`
+handovers, 1,254 observations (6,148,012 bytes), 1,905 operation rows and 1,452
+frame rows. No edit-duration or operation guard fails in this first run.
+Nevertheless 23 measured coverage rows fail: lateral cells `(7..10, -1/0, -1)`
+remain pending after base acquisition while their conservative distance falls
+inside 96 m. Four prepared cells stay submitted, with stable resources/revisions;
+this does not cover every newly demanded lateral cell. Diagnostic cost also fails
+the existing 1% guard. The new bounded lateral observer records this distinction
+in subsequent editor/release runs; it does not change scheduling or suppress the
+alarm. Peak mesh/data remains 511/867 and retirement high-water 2. All native work
+drains. The observed coverage failure is separate from target H2 upload evidence.

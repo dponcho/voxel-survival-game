@@ -79,10 +79,11 @@ func _observe(stage: String) -> void:
 		"readiness_stops": readiness_stops, "preparation_positions": preparations,
 		"native": probe.snapshot(), "terrain": terrain.get_statistics(),
 		"trace": probe.edit_trace_snapshot(), "meshes": probe.sample_mesh_blocks(terrain, coordinates),
+		"lateral": probe.sample_mesh_blocks(terrain, [Vector3i(current[0].x - 1, -1, -1), Vector3i(current[0].x - 1, 0, -1)]),
 		"edit_attempt": edit_attempt if stage == "physics" else {}}
 	var encoded: String = JSON.stringify(row) + "\n"
 	var size: int = encoded.to_utf8_buffer().size()
-	if observations == null or observation_rows >= OBSERVATION_CAP or observation_bytes + size > OBSERVATION_BYTES:
+	if size >= 32768 or observations == null or observation_rows >= OBSERVATION_CAP or observation_bytes + size > OBSERVATION_BYTES:
 		observation_failure = true
 		return
 	observations.store_string(encoded)

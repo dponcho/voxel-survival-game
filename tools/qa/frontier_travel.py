@@ -81,6 +81,11 @@ def operations(folder, saved, guards):
             largest = max(candidates or values, key=lambda v: v['max_usec'])
             for key in ('count', 'bytes', 'usec'):
                 require(phase[kind][key] == sum(v[key] for v in values), 'Operation aggregate mismatch')
+            if kind == 'deletion':
+                tied = next((r for r in rows if r['deletion_count'] and r['deletion_max_usec'] == largest['max_usec']), rows[0])
+                require(phase[kind]['max_kind'] == tied['deletion_max_kind'], 'Deletion first-tie kind mismatch')
+            else:
+                require(phase[kind]['max_kind'] == (1 if candidates else 0), 'Upload kind mismatch')
             for key in ('max_usec', 'max_bytes', 'max_start_usec'):
                 require(phase[kind][key] == largest[key], 'Operation maximum/first tie mismatch')
             require(phase['native_end'][kind+'_usec']-phase['native_start'][kind+'_usec'] == phase[kind]['usec'],
@@ -100,6 +105,7 @@ def observations(path):
     ownership, resources, boundaries, edited_resources = {}, {}, [], {}
     count, maximum_mesh, maximum_data, maximum_retired = 0, 0, 0, 0
     terminal = None
+    lateral_exposed = 0
     with path.open(encoding='utf-8') as stream:
         for line in stream:
             require(len(line.encode()) < 32768, 'Oversized observation row')
@@ -113,7 +119,7 @@ def observations(path):
                     and -14 < row['player'][1] <= 8 and row['readiness_stops'] == 0, 'Continuous route stalled or changed')
             target = single(10 + single(6.5*tick/60))
             require(abs(row['target'][0]-target) < 1e-6 and row['target'][1:] == [8, 10]
-                    and row['yaw'] == single(-math.pi/2)
+                    and abs(row['yaw']-single(-math.pi/2)) < 1e-12
                     and abs(row['camera'][0]-row['player'][0]) < 1e-6
                     and abs(row['camera'][1]-single(row['player'][1]+single(1.65))) < 1e-6
                     and row['camera'][2] == 10, 'Camera/route target changed')
@@ -121,6 +127,18 @@ def observations(path):
                     and abs(row['actor_phase']-tick/60) < 1e-10, 'Actor/rain work changed')
             require(row['saves'] == tick//60 and row['next_save'] == tick//60+1, 'Missing proxy storage command')
             mapping = mesh_map(row['meshes'], coordinates(row['player']))
+            empty = mapping[(0, 1, 0)]
+            require(empty['state'] == 'confirmed_empty' and empty['mesh_id'] is None
+                    and empty['desired_revision'] == empty['submitted_revision'], 'Confirmed-empty control changed')
+            current_cells = cells(row['player'])
+            lateral_coords = [[current_cells[0][0]-1,y,-1] for y in (-1,0)]
+            lateral = mesh_map(row['lateral'], lateral_coords)
+            for cell, block in lateral.items():
+                distance = math.sqrt(sum(max(16*c-p, p-16*(c+1), 0)**2 for c,p in zip(cell,row['camera'])))
+                if block['state'] not in ('visible','confirmed_empty') and distance < 96:
+                    lateral_exposed += 1
+            allowed = [[[16*(x-shift)+8, 16*y+8, 16*z+8] for x,y,z in current_cells] for shift in (0,1)]
+            require(row['preparation_positions'] in allowed, 'Preparation viewers escaped old/new columns')
             for cell in ((x, 0, 0) for x in (-1, 0, 1, 2, 3, 4)):
                 block = mapping[cell]
                 require(block['state'] in ('visible', 'confirmed_empty'), 'Edited resident lost submitted geometry')
@@ -132,6 +150,8 @@ def observations(path):
                             'Non-edit superseded an accepted revision')
                     if block['submitted_revision'] == old['submitted_revision']:
                         require(block['mesh_id'] == old['mesh_id'], 'Resource replaced without actual new submission')
+                    elif block['has_mesh'] and old['has_mesh']:
+                        require(block['mesh_id'] != old['mesh_id'], 'New submitted revision retained stale mesh identity')
                 edited_resources[cell] = block
             trace = row['trace']
             require(trace['accepted'] == row['accepted'] == len(accepted)+(int(bool(row['edit_attempt']) and row['edit_attempt']['accepted']) if row['stage']=='physics' else 0)
@@ -165,9 +185,11 @@ def observations(path):
                 require(row['accepted'] == tick//15, 'Required due edit did not finish its scheduled tick')
             for cell, block in mapping.items():
                 if cell[0] in (7, 8, 9, 10) and cell[1] in (-1, 0):
-                    ownership.setdefault(cell, set()).add(block['mesh_viewers'])
+                    history = ownership.setdefault(cell, [])
+                    if not history or history[-1] != block['mesh_viewers']: history.append(block['mesh_viewers'])
                     if block['state'] in ('visible', 'confirmed_empty'):
                         identity = (block['mesh_id'], block['desired_revision'], block['submitted_revision'])
+                        require(block['desired_revision'] == block['submitted_revision'], 'Unedited handover is not current')
                         if cell in resources: require(resources[cell] == identity, 'Unedited handover resource/revision changed')
                         resources[cell] = identity
                     # Once prepared, a handover may not lose submitted ownership.
@@ -185,11 +207,11 @@ def observations(path):
             'Incomplete continuous H2 workload')
     for column in (7, 8, 9, 10):
         group = [(column, y, z) for z in (0, 1) for y in (-1, 0)]
-        require(all(ownership.get(cell, set()) >= {1, 2} for cell in group), 'Missing actual overlapping viewer ownership')
+        require(all(ownership.get(cell, [])[-3:] == [1, 2, 1] for cell in group), 'Missing actual 1-to-2-to-1 viewer handover')
         boundaries.append(next(t['tick'] for t in ticks if t['player'][0] > (column-6)*16))
     require(boundaries == [56, 204, 351, 499], 'Continuous handovers did not reach both following columns')
     return dict(rows=count, ticks=ticks, edits=accepted, command_hash=fingerprint, terminal=terminal,
-                handover_ticks=boundaries, resident_mesh=maximum_mesh, resident_data=maximum_data, retired_high_water=maximum_retired)
+                handover_ticks=boundaries, lateral_exposed=lateral_exposed, resident_mesh=maximum_mesh, resident_data=maximum_data, retired_high_water=maximum_retired)
 
 
 def reconcile(folder, build, workers):
@@ -209,8 +231,11 @@ def reconcile(folder, build, workers):
     for key, expected in dict(workload='H2', fixture=1, actors=24, edit_rate=4, rain_instances=256,
         autosave_interval_s=1, route_origin=[10,8,10], seconds=10, physics_hz=60, max_physics_steps=4,
         resolution=[1280,720], render_scale=1, render_block=16, workers=workers, visual_radius=96,
+        camera_fov=75, camera_far=96, terrain_bounds=[-4096,-16,-4096,8192,48,8192],
         data_radius=128, triangle_colliders=False, edit_trace=True, operation_trace=True, render_queries=True).items():
         require(c[key] == expected, 'Changed H2 contract: '+key)
+    require(c['fog'] == dict(enabled=True,mode='depth',density=1,height_density=0,begin_m=16,end_m=96,curve=1)
+            and c['frontier_preparation']['viewer_count'] == 4 and c['frontier_preparation']['viewer_radius_m'] == 1, 'Changed fog/preparation geometry')
     require(c['native_policy'] == dict(frame_usec=2000, frame_upload_bytes=1048576, single_upload_bytes=262144,
         terrain_jobs=64, mesh_results=16, mesh_result_bytes=33554432), 'Changed admission caps')
     require(report['id'] == ID and report['simulation_ticks'] == TICKS and report['actor_ticks'] == TICKS*24
@@ -229,7 +254,7 @@ def reconcile(folder, build, workers):
         edit = obs['edits'][event['id']]
         require(event['voxel'] == edit['voxel'] and edit['begin'] <= event['accepted_usec'] <= edit['end']
                 and event['latency_usec'] == event['end_usec']-event['accepted_usec'] >= 0, 'Edit acceptance/terminal clock mismatch')
-        require({tuple(t['block']):t['revision'] for t in event['targets']} == edit['revisions'], 'Original accepted revisions changed')
+        require(len(event['targets']) == 2 and {tuple(t['block']):t['revision'] for t in event['targets']} == edit['revisions'], 'Original accepted revisions changed')
         require(event['outcome'] in OUTCOMES, 'Invalid terminal outcome')
         outcomes[event['outcome']] += 1
         if event['outcome'] == 'submitted': latencies.append(event['latency_usec'])
@@ -247,6 +272,10 @@ def reconcile(folder, build, workers):
     trace = report['edit_visibility']
     require(all(trace[k] == v for k,v in outcomes.items()) and trace['pending'] == trace['queued'] == trace['overflow'] == 0,
             'Edit terminal counters incomplete')
+    maximum = max(latencies, default=0)
+    p95 = (sorted(latencies)[math.ceil(len(latencies)*.95)-1]//1000+1)*1000 if latencies else 0
+    require(trace['accepted'] == 40 and trace['enabled'] is False and trace['max_usec'] == maximum
+            and trace['p95_upper_usec'] == p95, 'Saved edit duration/collection aggregate mismatch')
     latency_failed = bool(latencies) and (max(latencies) > 200000 or (sorted(latencies)[math.ceil(len(latencies)*.95)-1]//1000+1)*1000 > 100000)
     require(('Edit visibility exceeded the 100/200 ms limits' in report['reasons']) == latency_failed,
             'Edit duration guard suppressed')
@@ -271,12 +300,17 @@ def reconcile(folder, build, workers):
             require(int(row['diagnostic_usec']) == int(row['diagnostic_shared_usec'])+int(row['diagnostic_switched_usec']), 'Callback partition mismatch')
             require(row['frontier_status'] == 'measured' and float(row['fog_boundary_m']) == 96, 'Unavailable coverage/fog changed')
             exposed += int(float(row['frontier_distance_m']) < 96)
+    require(count > 0 and float(row['simulation_s']) == 10
+            and a['last_callback_end_usec'] <= report['measurement_end_usec'] <= a['end_usec'], 'Final callback/terminal boundary missing')
     require(count == a['callbacks'] == report['samples'] and all(a[k] == v for k,v in totals.items())
             and abs(intervals-report['wall_seconds']*1e6) <= 1, 'Complete callbacks/intervals missing')
     require(a['shared_usec']+a['switched_usec'] == a['callback_usec'] and not a['overflow'] and not a['invalid_partition']
             and a['end_usec']-a['start_usec'] == a['elapsed_usec']
             and 0 <= a['writer_drain_usec'] <= a['finalization_usec'] == a['end_usec']-a['last_callback_end_usec'],
             'Complete diagnostic/finalization partition mismatch')
+    require(('Diagnostic callback wall time reached 1%; A/B qualification required' in report['reasons'])
+            == (100*a['callback_usec'] >= intervals), 'Diagnostic guard suppressed')
+    require(all(reason in report['reasons'] for reason in operation_reasons(report['operation_phase'])), 'Gameplay operation failure hidden')
     require(report['fog_frontier']['exposed_samples'] == exposed
             and ('Required mesh coverage is unready before fog obscures it' in report['reasons']) == bool(exposed), 'Coverage failure hidden')
     final = json.loads((folder/'report-finalization.json').read_text())
@@ -286,6 +320,6 @@ def reconcile(folder, build, workers):
         ticks=TICKS, actor_ticks=TICKS*24, edits=outcomes, proxy_saves=10,
         handover_ticks=obs['handover_ticks'], observations=obs['rows'], observation_bytes=path.stat().st_size,
         observation_sha256=hashlib.sha256(path.read_bytes()).hexdigest(), operation_rows=operation_rows,
-        frame_rows=count, exposed_samples=exposed, failed_operation_phases=failed,
+        frame_rows=count, exposed_samples=exposed, lateral_exposed_observations=obs['lateral_exposed'], failed_operation_phases=failed,
         edit_latency_failed=latency_failed, scenario_evaluation=report['evaluation'], reasons=report['reasons'],
         resident_mesh=obs['resident_mesh'], resident_data=obs['resident_data'], retired_high_water=obs['retired_high_water'])
