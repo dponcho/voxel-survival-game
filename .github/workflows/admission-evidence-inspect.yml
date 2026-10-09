@@ -48,4 +48,4 @@ jobs:
                       previous[c]=value
               result=dict(folder=str(folder),admissions=[dict(block=list(c),events=v) for c,v in sorted(selected.items())],observations=[dict(block=list(c),events=v) for c,v in sorted(observations.items())])
               print('CAIRN_ADMISSION_INSPECT='+json.dumps(result,separators=(',',':')),flush=True)
-                    PY
+          PY
