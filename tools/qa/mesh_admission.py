@@ -81,22 +81,26 @@ def lateral_boundaries(rows, admissions):
     Submission is a bracket, not an invented exact timestamp. A first inside
     observation that is ready alone cannot prove readiness before entry.
     """
-    history = {c:dict(last_outside=None,first_inside=None,first_ready=None,last_unready=None) for c in admissions}
+    history = {c:dict(last_outside=None,first_inside=None,first_ready=None,last_unready=None,first_observation=None) for c in admissions}
     for row in rows:
         coordinates = [b['block'] for b in row['lateral']['blocks']]
         for cell,block in mesh_map(row['lateral'],coordinates).items():
             if cell not in history: continue
             h, admitted = history[cell], admissions[cell]
-            require(block['desired_revision'] is not None and int(block['desired_revision']) == int(admitted['desired_revision']),
-                    'Lateral request changed revision between admission and observation')
+            if block['state'] == 'missing':
+                require(row['usec'] < admitted['start_usec'], 'Lateral block missing after actual admission')
+            else:
+                require(block['desired_revision'] is not None and int(block['desired_revision']) == int(admitted['desired_revision']),
+                        'Lateral request changed revision between admission and observation')
             ready = block['state'] in ('visible','confirmed_empty')
             if ready:
                 require(block['desired_revision'] == block['submitted_revision'], 'Stale lateral submission reported current')
             distance_squared = urgency([*cell,3,0,None],[single(p) for p in row['camera']],16)[1]
             item = dict(row=row['row'],tick=row['tick'],usec=row['usec'],state=block['state'],
                 distance_squared=distance_squared,current=ready,mesh_id=block['mesh_id'],
-                desired_revision=str(int(block['desired_revision'])),
+                desired_revision=str(int(block['desired_revision'])) if block['desired_revision'] is not None else None,
                 submitted_revision=str(int(block['submitted_revision'])) if block['submitted_revision'] is not None else None)
+            if h['first_observation'] is None: h['first_observation'] = item
             if ready and h['first_ready'] is None:
                 require(admitted['end_usec'] <= item['usec'], 'Submission observed before its actual admission')
                 h['first_ready'] = dict(observation=item,
@@ -111,7 +115,7 @@ def lateral_boundaries(rows, admissions):
         inside,outside,ready = h['first_inside'],h['last_outside'],h['first_ready']
         before = False if not inside['current'] else True if outside['current'] else None
         result.append(dict(block=list(cell),admission=admissions[cell],last_outside=outside,first_inside=inside,
-            first_submission=ready,submitted_before_entry=before,
+            first_observation=h['first_observation'],first_submission=ready,submitted_before_entry=before,
             submission_window_usec=None if ready is None else [ready['after_usec'],ready['observation']['usec']]))
     return result
 

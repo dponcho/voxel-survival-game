@@ -81,4 +81,4 @@ change is proposed. The 1%, p95 100 ms/max 200 ms edit and 750 µs operation lim
 remain. Full/repeated routes, the 15-second reversal, target pixels and HD 620
 performance remain unverified. M1 stays blocked; no new target action is needed.
 
-Verification pending cloud execution; no measured correction is claimed.
+Initial saved editor/one-worker inspection retains the tick-56 pre-admission missing block with all null identities. Later desired/admitted/submitted identities match exactly. The reader now accepts that known missing state only before actual admission and retains it in the witness; missing-after-admission and non-null revision mismatches still fail. The complete four-pair verification remains pending.

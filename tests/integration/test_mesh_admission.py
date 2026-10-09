@@ -113,4 +113,23 @@ class MeshAdmissionTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):verify_record(row,True)
 
 
+    def test_pre_admission_missing_revision_remains_null(self):
+        from frontier_edit import NULL_FIELDS
+        missing=dict(block=[7,0,-1],state='missing',**{k:None for k in NULL_FIELDS})
+        current=dict(block=[7,0,-1],state='visible',loaded=True,visible=True,has_mesh=True,
+            mesh_id='2001',mesh_viewers=1,collision_viewers=0,queued_update=False,
+            desired_revision=102,submitted_revision=102)
+        def sample(i,x,t,b):
+            return dict(row=i,tick=i,usec=t,camera=[x,1.65,10],
+                lateral=dict(status='measured',reason='',probe_usec=1,blocks=[b]))
+        admissions={(7,0,-1):dict(desired_revision='102',start_usec=100,end_usec=200)}
+        rows=[sample(1,16,90,missing),sample(2,16,300,current),sample(3,17,400,current)]
+        result=lateral_boundaries(rows,admissions)[0]
+        self.assertIsNone(result['first_observation']['desired_revision'])
+        self.assertIsNone(result['first_observation']['submitted_revision'])
+        self.assertIs(result['submitted_before_entry'],True)
+        rows[0]['usec']=201
+        with self.assertRaises(RuntimeError):lateral_boundaries(rows,admissions)
+
+
 if __name__=='__main__':unittest.main()

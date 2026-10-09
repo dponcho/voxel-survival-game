@@ -1,7 +1,6 @@
 name: Inspect saved admission evidence
 on:
-  pull_request:
-    paths: ['.github/workflows/admission-evidence-inspect.yml']
+  workflow_dispatch:
 permissions:
   contents: read
   actions: read
