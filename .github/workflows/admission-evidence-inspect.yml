@@ -24,8 +24,9 @@ jobs:
           python - <<'PY'
           import json,math
           from pathlib import Path
-          root=Path('build/failed-admission/reports')
-          for folder in root.glob('m1-mesh-admission-*-raw/*'):
+          folders=[p.parent for p in Path('build/failed-admission').rglob('mesh-admission-summary.json')]
+          assert folders, 'Missing saved admission evidence'
+          for folder in folders:
               if not (folder/'mesh-admission.jsonl').exists():continue
               selected={}
               for line in (folder/'mesh-admission.jsonl').read_text().splitlines():

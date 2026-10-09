@@ -80,6 +80,7 @@ jobs:
           run-id: '37861287881'
           github-token: ${{ github.token }}
           path: build/previous-evidence
+          merge-multiple: true
       - name: Independently verify downloaded candidate and complete saved admission evidence
         run: python tools/qa/mesh_admission_candidate_audit.py
       - name: Upload separate symbols
