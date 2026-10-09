@@ -1,0 +1,51 @@
+name: Inspect saved admission evidence
+on:
+  pull_request:
+    paths: ['.github/workflows/admission-evidence-inspect.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  saved-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.10'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: '11592739001'
+          run-id: '37869341867'
+          github-token: ${{ github.token }}
+          path: build/failed-admission
+      - name: Inspect exact initial and current lateral revisions
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          root=Path('build/failed-admission/reports')
+          for folder in root.glob('m1-mesh-admission-*-raw/*'):
+              if not (folder/'mesh-admission.jsonl').exists():continue
+              selected={}
+              for line in (folder/'mesh-admission.jsonl').read_text().splitlines():
+                  r=json.loads(line)
+                  if r['phase']!=2:continue
+                  for i in r['order'][:r['admitted']]:
+                      p=r['pending'][i];c=tuple(p[:3])
+                      if c[0] in (7,8,9,10) and c[1] in (-1,0) and c[2]==-1:
+                          selected.setdefault(c,[]).append(dict(row=r['row'],start=r['start_usec'],end=r['end_usec'],desired=p[4],submitted=p[5],flags=p[3],rank=i))
+              observations={};previous={}
+              for line in (folder/'travel-observations.jsonl').read_text().splitlines():
+                  r=json.loads(line)
+                  for b in r['lateral']['blocks']:
+                      c=tuple(b['block'])
+                      if c not in selected:continue
+                      d=sum(max(16*x-p,p-16*(x+1),0)**2 for x,p in zip(c,r['camera']))
+                      value=(b['desired_revision'],b['submitted_revision'],b['state'],d<96**2)
+                      if previous.get(c)!=value:
+                          observations.setdefault(c,[]).append(dict(row=r['row'],tick=r['tick'],usec=r['usec'],desired=b['desired_revision'],submitted=b['submitted_revision'],state=b['state'],inside=d<96**2,mesh_id=b['mesh_id']))
+                      previous[c]=value
+              result=dict(folder=str(folder),admissions=[dict(block=list(c),events=v) for c,v in sorted(selected.items())],observations=[dict(block=list(c),events=v) for c,v in sorted(observations.items())])
+              print('CAIRN_ADMISSION_INSPECT='+json.dumps(result,separators=(',',':')),flush=True)
+                    PY
