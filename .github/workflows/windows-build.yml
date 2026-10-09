@@ -62,6 +62,26 @@ jobs:
             dist/BUILD_INFO.json
           if-no-files-found: error
           retention-days: 30
+      - name: Download published player for independent verification
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-windows-x86_64-${{ github.sha }}
+          path: build/published-player
+      - name: Download native qualification evidence for independent verification
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-native-evidence-${{ github.sha }}
+          path: build/native-qualification-evidence
+      - name: Download the preceding public cloud contract baseline once
+        if: ${{ hashFiles('docs/evidence/m1-frontier-travel-contracts-2026-10-09.json') == '' }}
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: '11587222038'
+          run-id: '37861287881'
+          github-token: ${{ github.token }}
+          path: build/previous-evidence
+      - name: Independently verify downloaded candidate and complete saved admission evidence
+        run: python tools/qa/mesh_admission_candidate_audit.py
       - name: Upload separate symbols
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
