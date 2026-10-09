@@ -23,4 +23,8 @@ public:
     Array take_edit_events();
     Dictionary sample_frontier(Object *terrain, Object *camera, AABB surface_bounds) const;
     Dictionary sample_mesh_blocks(Object *terrain, Array coordinates) const;
+    bool set_mesh_admission(Object *terrain, bool priority, Vector3 origin, bool trace);
+    void begin_mesh_admission_trace();
+    Dictionary mesh_admission_snapshot() const;
+    Array take_mesh_admission_frames();
 };

@@ -5,6 +5,7 @@
 #include "../core/edit_visibility.h"
 #include "../core/mesh_batch.h"
 #include "../core/viewer_demand.h"
+#include "../core/mesh_admission.h"
 #include "modules/voxel/util/math/box3i.h"
 #include <atomic>
 #include <cstdint>
@@ -23,6 +24,7 @@ inline uint32_t byte_budget = 512 * 1024, time_budget = 1000;
 inline bool shutting_down = false;
 inline OperationMetrics operations;
 inline EditVisibility edit_visibility;
+inline MeshAdmissionTrace mesh_admission;
 inline zylann::Box3i viewer_demand_box(Vector3 position, Vector3i radius, int block_size,
         const zylann::Box3i &bounds) {
     Vector3i first, last;

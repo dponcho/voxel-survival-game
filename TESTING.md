@@ -268,3 +268,13 @@ all terminal frames/edits/native phases, operation guards and complete drain.
 Storage and time limits, negative controls and scope are predeclared in
 [M1_FRONTIER_TRAVEL.md](docs/M1_FRONTIER_TRAVEL.md). Failed timing guards remain
 failures; functional cloud completion does not qualify a target profile.
+
+### Native pending-mesh admission comparison
+
+Eight additional fresh 600-tick H2 processes compare FIFO/priority in editor/
+release with one/two workers. Six native sanitizer suites include an independent
+geometric-minimum/FIFO/trace-bound test. Saved readers verify every pending vector,
+actual admission permutation, four-task budget, phase boundaries and complete
+matched travel evidence. Coverage and operation/diagnostic failures remain
+visible. Bounds and stopping conditions are predeclared in
+[M1_MESH_ADMISSION.md](docs/M1_MESH_ADMISSION.md).

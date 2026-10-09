@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--frontier-admission-replay" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_frontier_admission_runtime.gd").new())
+		return
 	if "--frontier-travel-replay" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_frontier_travel_runtime.gd").new())
 		return

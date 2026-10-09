@@ -47,6 +47,10 @@ jobs:
         run: |
           c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_viewer_demand.cpp -o /tmp/cairn-viewer-demand-test
           /tmp/cairn-viewer-demand-test
+      - name: Bounded mesh admission selection with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_mesh_admission.cpp -o /tmp/cairn-mesh-admission-test
+          /tmp/cairn-mesh-admission-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml

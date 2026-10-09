@@ -12,6 +12,7 @@ from frame_slack import reconcile_saved as reconcile_frame, reconcile_runtime as
 from frontier_boundary import reconcile as reconcile_frontier
 from frontier_edit import reconcile as reconcile_frontier_edit
 from frontier_travel import reconcile as reconcile_travel
+from mesh_admission import compare as compare_mesh_admission
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -135,6 +136,24 @@ if __name__ == "__main__":
             result = reconcile_travel(folders[0].parent, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8")), workers)
             (REPORTS / (name + "-validation.json")).write_text(json.dumps(result, indent=2), encoding="utf-8")
     print("Continuous production H2 travel, work/revisions/resources and complete phase guards reconciled", flush=True)
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        for workers in (1, 2):
+            folders = []
+            for policy in ("fifo", "priority"):
+                name = f"m1-mesh-admission-{suffix}-{workers}-{policy}"
+                raw = REPORTS / (name + "-raw")
+                command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
+                flags = ["--mesh-admission-priority"] if policy == "priority" else []
+                check(command + ["--", "--frontier-admission-replay", f"--workers={workers}",
+                                 "--m1-report-root=" + str(raw)] + flags, name, "CAIRN_MESH_ADMISSION=", 600)
+                found = list(raw.glob("*/mesh-admission-summary.json"))
+                if len(found) != 1:
+                    raise RuntimeError("Missing or duplicated native admission report")
+                folders.append(found[0].parent)
+            comparison = compare_mesh_admission(*folders, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8")), workers)
+            (REPORTS / f"m1-mesh-admission-{suffix}-{workers}-validation.json").write_text(json.dumps(comparison,indent=2),encoding="utf-8")
+    print("Native FIFO/priority selection and complete matched H2 evidence independently reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)

@@ -31,6 +31,7 @@ public:
     uint64_t phase = 0, dropped = 0, frames = 0;
     uint64_t peak_frame_usec = 0, peak_frame_upload_bytes = 0;
     bool tracing = false;
+    uint64_t active_phase() const { return active ? phase : 0; }
 
     void begin_frame(uint64_t now) {
         seal(now, false);

@@ -25,6 +25,58 @@ void CairnProbe::_bind_methods() {
     ClassDB::bind_method(D_METHOD("take_edit_events"), &CairnProbe::take_edit_events);
     ClassDB::bind_method(D_METHOD("sample_frontier", "terrain", "camera", "surface_bounds"), &CairnProbe::sample_frontier);
     ClassDB::bind_method(D_METHOD("sample_mesh_blocks", "terrain", "coordinates"), &CairnProbe::sample_mesh_blocks);
+    ClassDB::bind_method(D_METHOD("set_mesh_admission", "terrain", "priority", "origin", "trace"), &CairnProbe::set_mesh_admission);
+    ClassDB::bind_method(D_METHOD("begin_mesh_admission_trace"), &CairnProbe::begin_mesh_admission_trace);
+    ClassDB::bind_method(D_METHOD("mesh_admission_snapshot"), &CairnProbe::mesh_admission_snapshot);
+    ClassDB::bind_method(D_METHOD("take_mesh_admission_frames"), &CairnProbe::take_mesh_admission_frames);
+}
+
+bool CairnProbe::set_mesh_admission(Object *object, bool priority, Vector3 origin, bool trace) {
+    auto *terrain = Object::cast_to<zylann::voxel::VoxelTerrain>(object);
+    if (!Thread::is_main_thread() || terrain == nullptr || !terrain->is_inside_tree() ||
+            terrain->get_global_transform() != Transform3D() || !origin.is_finite() ||
+            terrain->get_mesh_block_size() != 16 || terrain->get_generate_collisions()) return false;
+    terrain->set_cairn_mesh_admission(priority, origin, trace);
+    return true;
+}
+void CairnProbe::begin_mesh_admission_trace() { cairn::mesh_admission.reset(); }
+Dictionary CairnProbe::mesh_admission_snapshot() const {
+    const auto &s = cairn::mesh_admission;
+    Dictionary d;
+    d["enabled"] = s.enabled; d["recorded"] = int64_t(s.recorded); d["popped"] = int64_t(s.popped);
+    d["dropped"] = int64_t(s.dropped); d["queued"] = int64_t(s.queued());
+    d["high_water"] = int64_t(s.high_water); d["max_pending"] = int64_t(s.max_pending);
+    d["record_cap"] = int64_t(s.CAPACITY); d["pending_cap"] = int64_t(cairn::MESH_PENDING_CAP);
+    d["fixed_storage_bytes"] = int64_t(sizeof(s));
+    return d;
+}
+Array CairnProbe::take_mesh_admission_frames() {
+    Array result;
+    while (const auto *r = cairn::mesh_admission.pop()) {
+        Dictionary d;
+        d["row"] = int64_t(r->row); d["phase"] = int64_t(r->phase);
+        d["start_usec"] = int64_t(r->start_usec); d["end_usec"] = int64_t(r->end_usec);
+        d["decision_usec"] = int64_t(r->decision_usec);
+        Array origin; for (double value : r->origin) origin.push_back(value);
+        d["origin"] = origin; d["side"] = int(r->side); d["priority"] = r->priority; d["valid"] = r->valid;
+        d["pending_count"] = int(r->count); d["admitted"] = int(r->admitted);
+        d["jobs_before"] = int(r->jobs_before); d["jobs_after"] = int(r->jobs_after);
+        Array pending, order, loads;
+        if (r->valid) for (size_t i = 0; i < r->count; ++i) {
+            const auto &c = r->pending[i];
+            Array item;
+            item.push_back(c.x); item.push_back(c.y); item.push_back(c.z); item.push_back(int(c.flags));
+            item.push_back(c.desired ? Variant(String::num_uint64(c.desired)) : Variant());
+            item.push_back(c.submitted ? Variant(String::num_uint64(c.submitted)) : Variant());
+            pending.push_back(item); order.push_back(int(r->order[i]));
+        }
+        for (size_t i = 0; i < r->admitted && i < cairn::MESH_PENDING_CAP; ++i) loads.push_back(int(r->loads[i]));
+        d["pending"] = r->valid ? Variant(pending) : Variant();
+        d["order"] = r->valid ? Variant(order) : Variant();
+        d["loads"] = r->valid ? Variant(loads) : Variant();
+        result.push_back(d);
+    }
+    return result;
 }
 
 Dictionary CairnProbe::sample_mesh_blocks(Object *terrain_object, Array coordinates) const {
