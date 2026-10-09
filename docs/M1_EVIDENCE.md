@@ -5,7 +5,64 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: concurrent border-edit handover
+## Current Windows candidate: continuous H2 travel replay
+
+The new cloud-only replay continuously executes production H2 movement, actor/
+rain, due-edit and proxy-storage methods for 600 fixed 60 Hz ticks across four
+16³ +X handovers. It adds bounded resource/revision/ownership observations and an
+independent saved-report reader, with unchanged scheduling, world/save semantics,
+fixture/camera/fog/radii, workers/caps, safety and qualification thresholds.
+Read [M1_FRONTIER_TRAVEL.md](M1_FRONTIER_TRAVEL.md).
+
+[CI 37861287881](https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881)
+passed all three jobs, completed `2026-10-09T00:10:41Z`: 81 Python regressions,
+five sanitizer suites, matching-engine checks, all four editor/release one/two-
+worker continuous runs, every earlier control/replay/runtime/profile/smoke, DLL
+audit and two fresh offline extractions. Independent downloaded verification
+reconciles 5,018 observation rows/27,163,457 bytes, twelve native phases/7,620
+operation rows, 5,810 frame rows and 160 original submitted edit events. All four
+actual `1 -> 2 -> 1` handovers, prepared resources/current revisions, exact work
+units, terminal callbacks, writer drain and combined finalization verify; 21
+mutations of saved evidence are rejected. Mesh/data peaks remain 511/867,
+retirement high-water two during travel and 285 including final terrain retirement,
+with zero overloads and complete drain. Replay edit/operation guards pass.
+
+All four travel scenario evaluations still **fail** coverage and diagnostic cost.
+They retain 23/23 editor and 22/22 release coverage alarms. At tick 61, lateral
+`(7, -1/0, -1)` cells have one visual owner and queued updates but null submitted
+revisions/resources inside 96 m; this recurs at columns 8/9/10. The four prepared
+Z=0/1 cells stay current and submitted. Pending-vector selection occurs before
+worker priority and is a concrete next hypothesis to characterize, not a proven
+causal fix. Conservative region alarms do not establish exposed pixels. The
+synchronous observer contributes to measured wall/callback costs and does not
+qualify instrumentation overhead or HD 620 timing.
+
+Ten ordinary folders/98 scenarios/284 phases independently reconcile 37,345
+operation rows, 12,872 frame rows and 94 edits. All 42 heavy work-unit records
+and available exact contracts match the previous candidate. Existing controls,
+legacy/current assessors and false qualification flags remain. Short 16³ H1/H2
+has zero coverage alarms; H2 still fails edit-latency/diagnostic guards and shortened
+calibration stays inconclusive. Ordinary retirement deletions of 871 µs (release
+heavy warm-up), 955 µs (release R1) and 1,320 µs (heavy `AB-H2-on-2`) exceed the
+unchanged 750 µs limit and remain visible. OpenGL readback stays unavailable.
+Target upload failures and full-route/timing/overhead/retention gates remain open.
+
+[Windows player 11587137036](https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881/artifacts/11587137036)
+expires `2026-11-08T00:10:16Z`; exported merge/build:
+`7f37595af6bb8d30191770c644a2b9ea5da80c92`. Implementation
+`abb94bf4a4eecf6de0bd9bc68f37ae261c9c9cf4` shares build tree
+`5d3877168732610f3d418f30411d66ba59389875`. Portable ZIP SHA-256:
+`c58afe5aa3178212c438ca02202f695e344d41605e36f8dd00d5e68d1a8e4ba2`;
+30,110,198 bytes. Downloaded archive sizes/digests/CRC/paths, x64 PE/PCK/all 74
+entry MD5s, native manifest/templates, eight self-tests and 38 PE imports verify.
+Native key remains `25581a8d31f5a500c585135069db3a143ac7edc69d984601768910f10ce53348`,
+matching the fresh source-built editor/debug/release from CI 37821509437.
+The initial reader serialization failure and two successful workflow attempts
+remain in [the public record](evidence/m1-frontier-travel-cloud-2026-10-09.json).
+No engine ran locally. Follow [NEXT_TASK.md](NEXT_TASK.md) for the bounded
+pending-admission experiment; **no new target-side action is needed now**.
+
+## Previous Windows candidate: concurrent border-edit handover
 
 The second public 16³ +X boundary now has a verified concurrent-edit replay and
 a narrow native correction. Characterization demonstrated that acquisition by

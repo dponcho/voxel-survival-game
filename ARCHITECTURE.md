@@ -143,6 +143,14 @@ viewer counts and desired/last-submitted revisions without retaining resources
 or reading GPU buffers; ordinary callbacks do not invoke it. See
 [the concurrent-edit replay](docs/M1_FRONTIER_EDIT_HANDOVER.md).
 
+The cloud-only continuous 600-tick H2 replay reuses production commands and
+independently verifies resource/revision/ownership histories, terminal accounting
+and full drain through four handovers. Prepared Z=0/1 cells remain submitted,
+while lateral Z=-1 cells are still queued when their conservative distance falls
+inside 96 m. Pending native admission order requires a bounded causal experiment;
+this replay does not change it, widen demand or qualify full-route/target timing.
+See [continuous travel evidence](docs/M1_FRONTIER_TRAVEL.md).
+
 Edits are validated commands: reach, inventory, collision, bounds, readiness and complexity admission. A successful command assigns a revision, changes voxel/inventory state consistently, marks affected border meshes and lighting, and queues its persistence payload. Coalesce repeated edits to the same chunk. Main-thread reads/edits must not wait behind a long worker-held spatial lock; use short snapshots, retry/try-lock paths or narrowly scoped native adaptation where required.
 
 Never discard unsaved state during eviction. Once its complete transaction is durably journalled, in-memory chunk data may be evicted even if snapshot compaction is pending. Reload reconstructs the snapshot plus all later committed records. Bound mesh destruction as well as creation; releasing hundreds of buffers at once is not free.

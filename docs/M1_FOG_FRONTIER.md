@@ -124,6 +124,18 @@ opacity or target throughput. The finite analytic boundary leaves genuine
 inside-boundary readiness failures observable; target rendering and moving-frontier
 qualification remain outstanding.
 
+The October 9 [continuous H2 replay](M1_FRONTIER_TRAVEL.md) goes beyond the earlier
+one-second 16³ smoke and isolated handovers. All four ten-second editor/release
+one/two-worker runs retain coverage failures: `(7..10, -1/0, -1)` lateral cells
+are pending with queued updates and null submitted resources/revisions inside
+96 m. The four prepared Z=0/1 cells remain submitted through actual ownership
+transfer. The first raw alarm occurs at tick 61, 1.016667 simulation seconds;
+all 600 ticks/40 edits/ten saves and full native drain reconcile. This is evidence
+of conservative readiness failure, not rendered exposed pixels. Fog, radius,
+scan/evaluation rules and qualification flags remain unchanged; pending-admission
+order is the next bounded hypothesis. Full/repeated routes and target pixels/
+throughput remain unverified.
+
 The separate schema 6 [matched heavy comparison](M1_HEAVY_DIAGNOSTIC_AB.md)
 now exercises this exact scan on H1/H2 routes. Its off mode dispatches no scan;
 coverage is explicitly unavailable, not a passing zero. Its cost scope does not

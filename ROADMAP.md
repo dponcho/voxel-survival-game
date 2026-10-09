@@ -47,8 +47,12 @@ no qualified target profile and separate unresolved operation/timing gates.
 The second-boundary concurrent-edit follow-up now verifies actual resources,
 accepted revisions, transfer/cancellation and complete drain in editor/release;
 it fixes a demonstrated redundant-viewer supersession. See
-[the bounded handover evidence](docs/M1_FRONTIER_EDIT_HANDOVER.md). Continuous
-production H2 travel and target qualification remain open.
+[the bounded handover evidence](docs/M1_FRONTIER_EDIT_HANDOVER.md). October 9 adds
+an independently verified 600-tick continuous production H2 replay in editor/
+release with one/two workers. Four handovers and all forty edits complete, while
+lateral queued meshes still fail conservative coverage beyond the earlier short
+smoke. [Continuous evidence and the next admission experiment](docs/M1_FRONTIER_TRAVEL.md)
+retain those failures; full/repeated travel and target qualification remain open.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

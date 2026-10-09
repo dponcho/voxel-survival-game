@@ -2,6 +2,56 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+Completed October 9 UTC: **bounded continuous native 16³ H2 travel replay**,
+implementation `abb94bf4a4eecf6de0bd9bc68f37ae261c9c9cf4`. Read
+[M1_FRONTIER_TRAVEL.md](M1_FRONTIER_TRAVEL.md). The replay subclasses the production
+benchmark for 600 fixed ticks through four +X handovers, with the same motion,
+actors/rain, due edits, proxy storage and safety behavior. It adds bounded cloud
+observation and an independent reader; scheduling, world/save semantics, fixtures,
+fog/radii/caps and qualification requirements remain unchanged.
+
+[CI 37861287881](https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881)
+passed all three jobs: 81 Python regressions, five native sanitizer suites,
+matching-engine checks, editor/release with one/two workers, every earlier
+control/replay/runtime/profile/smoke, DLL audit and two fresh offline extractions.
+Independent downloaded review reconciles 5,018 observations (27,163,457 bytes),
+all twelve phases/7,620 operation rows and 5,810 frame rows; 21 mutations of actual
+saved evidence are rejected. Each run completes 600 ticks, 14,400 actor updates,
+40 current submitted edits and ten saves, with all four `1 -> 2 -> 1` handovers,
+stable prepared resources/revisions, no supersession/cancellation and full drain.
+Replay edit/operation guards pass; mesh/data peaks are 511/867, travel retirement
+high-water two, complete retirement high-water 285 and overloads zero.
+
+**All four travel scenario evaluations still fail** conservative coverage and
+the unchanged diagnostic-cost guard. Coverage alarms are 23/23 editor and 22/22
+release. The first alarm is tick 61, just beyond the earlier one-second smoke:
+lateral `(7, -1/0, -1)` cells are queued, have a base visual owner, null submitted
+revisions/resources and lie inside 96 m. This recurs at columns 8/9/10 while the
+four prepared Z=0/1 cells stay submitted. Pinned pending-vector/admission order is
+a candidate mechanism requiring the next measured experiment, not a proven fix.
+The synchronous observer perturbs timing and cannot qualify diagnostic overhead.
+
+Ten ordinary folders/98 scenarios/284 phases reconcile 37,345 operation rows,
+12,872 frame rows and 94 edits. All 42 heavy work-unit records and available exact
+contracts match the preceding candidate. Existing control expectations and false
+qualification flags remain. Ordinary short 16³ H1/H2 still has zero coverage
+alarms; H2 retains edit-latency/diagnostic failures and shortened calibration stays
+inconclusive. Three ordinary retirement deletions exceed 750 µs (871/955/1,320 µs)
+and remain unwaived. Recorded target upload failures, rendered pixels and full
+route/target timing/overhead qualification remain open.
+
+Current [Windows player 11587137036](https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881/artifacts/11587137036)
+expires `2026-11-08T00:10:16Z`. Exported merge/build:
+`7f37595af6bb8d30191770c644a2b9ea5da80c92`; build/implementation tree:
+`5d3877168732610f3d418f30411d66ba59389875`. Portable ZIP SHA-256:
+`c58afe5aa3178212c438ca02202f695e344d41605e36f8dd00d5e68d1a8e4ba2`;
+30,110,198 bytes. Native key remains
+`25581a8d31f5a500c585135069db3a143ac7edc69d984601768910f10ce53348`.
+Archive/PE/PCK/all 74 entry MD5s/template/eight self-test/38 import checks verify.
+The initial serialization failure and subsequent successful runs remain in
+[the public record](evidence/m1-frontier-travel-cloud-2026-10-09.json).
+No engine ran locally. **No new target-side action is needed now.**
+
 Completed October 8 UTC: **concurrent accepted border edit during the second
 16³ +X preparation/base handover**, latest implementation
 `df57421ee9814fb367f603f64a545f385f852fe3`. Read
@@ -31,7 +81,7 @@ unavailable. Ordinary 32³/two-worker `AB-off-2` retirement also retains an
 841 µs deletion over the unchanged 750 µs limit. This is a bounded correctness
 result, not a full route or target pass.
 
-Current [Windows player 11577910752](https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842/artifacts/11577910752)
+Previous [Windows player 11577910752](https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842/artifacts/11577910752)
 expires `2026-11-07T20:37:34Z`. Exact exported merge/build:
 `f0131627e5928c36fe310d27790605562cc895a1`; implementation/build tree:
 `648547042d45c1359e5e0ecef863048515e2da29`. Portable ZIP SHA-256:
@@ -327,22 +377,29 @@ inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
 ## Next bounded step
 
-**Recommended single next implementation task:** a bounded continuous native
-16³ H2 travel replay across several preparation columns, through at least the
-two following +X handovers. Use the existing benchmark's fixed 60 Hz route,
-actor/rain proxies, due-edit schedule and proxy-storage commands. Do not replace
-that work with a sequence of teleported, settled single-edit scenes. Verify
-submitted coverage and accepted current revisions while old/new demand, edits
-and retirement overlap; retain the H2 edit failures and phase-local operation
-guards as failures if they recur. Preserve the fixture/camera, 96 m fog and
-required geometry, 128 m data envelope, workers/caps, simulation, collision and
-safety rules, confirmed-empty semantics and 200 ms/750 µs thresholds. Predeclare
-the finite tick/row/file/queue envelope, retain every operation/terminal row and
-independently reconcile saved work units, actual resources/revisions and drain
-in editor/release. Produce a verified portable candidate and change behaviour
-only for a demonstrated cause. The current isolated single-edit result does not
-establish this sustained interaction or full-route qualification; no target
-profile matrix is requested.
+**Recommended single next implementation task:** characterize and, only for a
+demonstrated cause, correct native pending-mesh admission order for the lateral
+`(7..10, -1/0, -1)` cells exposed by the continuous 16³ H2 replay. Pinned fixed-LOD
+source consumes the pending vector in insertion order; the project stops at four
+admitted/result tasks and retains the suffix, before worker priority can apply.
+Observe bounded pending rank/admission/submission boundaries and compare unchanged
+versus corrected scheduling using the same 600 ticks in editor/release with
+one/two workers. The stopping point is current submitted coverage of these cells
+before they enter 96 m, or an explicit retained failure identifying the next
+cause. Preserve all four handovers, exact movement/actors/rain/due edits/storage,
+accepted current revisions, retirement/drain and every earlier control.
+
+Keep preparation at four viewers, the 512 resident cap, 96 m fog/required geometry,
+128 m data envelope, native admission limits, collision/safety rules,
+confirmed-empty semantics and 200 ms/750 µs thresholds. Do not widen fog, add
+viewers, bypass caps or trim alarms. A priority experiment must preserve genuine
+edit/operation/diagnostic failures; it cannot qualify throughput, per-frame probe
+cost or shared total overhead. Predeclare finite trace/storage/queue bounds,
+verify unfamiliar APIs against the pin, retain every terminal operation/frame/edit
+and independently reconcile saved evidence. Produce a verified cloud/portable
+candidate. Ten seconds does not cover the 15-second reversal or full/repeated
+routes; do not expand the matrix or request a target run before this correction
+and its controls are trustworthy.
 
 The completed fixed-work, callback-body and owned-cycle increments validate
 software observations and expose count/wait/slack masking. They do not establish
@@ -370,7 +427,7 @@ renderer accounting, retention, profile comparison and qualification repeats.
 Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
 semantics or workload requirement changed; M2 remains gated.
 
-Read `docs/M1_FRONTIER_EDIT_HANDOVER.md`, `docs/M1_FRONTIER_BOUNDARY_REPLAY.md`, `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+Read `docs/M1_FRONTIER_TRAVEL.md` and its public failure seeds, `docs/M1_FRONTIER_EDIT_HANDOVER.md`, `docs/M1_FRONTIER_BOUNDARY_REPLAY.md`, `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
 and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_MEASUREMENT_METHOD.md`,
 `docs/M1_ROUTE_CALIBRATION.md`, `docs/M1_FOG_FRONTIER.md`,
 `docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/
