@@ -2,6 +2,59 @@
 
 Branch: `codex/m1-engine-proof`. Milestone: **M1 blocked; no target profile qualified**.
 
+Completed October 9 UTC: **experimental native pending-admission correction**,
+latest implementation `f79f4ecd2748a3b5d67afd8f4dea6a1e6fad288e`. Read
+[M1_MESH_ADMISSION.md](M1_MESH_ADMISSION.md). The matched 600-tick H2 experiment
+demonstrates FIFO admitting farther fresh regions before nearer lateral cells.
+The opt-in native correction prioritizes current loaded edit replacements, then
+nearest missing visuals, retaining FIFO ties and every existing cap and work unit.
+Preparation/retirement and ordinary production paths retain FIFO; the correction
+remains experimental.
+
+[CI 37878551633](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633)
+passed all three jobs: 88 Python regressions, six sanitizer suites, matching
+editor/debug/release checks, eight FIFO/priority trials, all prior controls/
+replays/runtime/profile checks, DLL audit and two fresh offline extractions.
+Independent Actions review downloads the published ZIP, checks byte round-trip,
+CRC/paths, PE/PCK/all 76 entry MD5s/native identity/eight self-tests/38 imports,
+then reconciles saved evidence and rejects all 26 mutations.
+
+FIFO retains 23/24 editor and 22/24 release coverage alarms; priority has **zero
+coverage alarms and zero lateral unready observations in all four runs**.
+All 32 priority lateral-cell witnesses are current before 96 m entry; original
+pending ranks 15/16 become selected ranks 1/0. Every run preserves 600 ticks,
+14,400 actor updates, 40 current submitted edits, ten saves, four actual
+`1 -> 2 -> 1` handovers, stable prepared resources and full drain. Edit/operation
+guards pass in these trials. The eight trials reconcile 15,177 native admission
+records/24,737,695 bytes, 10,036 observations/54,343,565 bytes, all 24 native
+phases/15,238 operation rows and 11,617 frame rows. Maximum pending is 459;
+mesh/data peaks remain 511/867, complete retirement high-water 285 and overloads
+zero. Priority scenario evaluations remain **inconclusive** under the unchanged
+diagnostic-cost guard; FIFO evaluations remain failed. No target qualifies.
+
+Ten ordinary folders/98 scenarios/284 phases reconcile 37,345 operation rows
+and 94 edits. All 42 preceding heavy work-unit/configuration/available exact
+contracts match; a durable public baseline removes future artifact-expiry
+dependency. Ordinary short 16³ H1/H2 has zero coverage alarms; H2 still fails
+edit-latency/diagnostic guards. An ordinary debug `AB-on-1` preparation deletion
+of 786 µs exceeds 750 µs and remains visible. Historical target upload failures,
+full/repeated routes, physical pixels/presentation and shared/per-frame causal
+overhead remain unresolved. Observers/sorting/file I/O perturb wall time.
+
+Current [Windows player 11593794161](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633/artifacts/11593794161)
+expires `2026-11-08T03:40:21Z`. Exported merge/build:
+`41527690339ba965bbc36a126fc790522bb0e9f3`; implementation/build tree:
+`09d85f59b37e715e5f9a925693d222fa33ab0bec`. Portable ZIP SHA-256:
+`ec2cd5d89774173ff55072362cafc6b3fde253d6b86547bc5c3a29078735ac4f`; 30,127,069 bytes.
+Native key: `b45c169f391a4af65b5b4157dc1cc112b7dbd1ddd8b5fb2f85cf529bf694f502`, source-built and qualified in
+CI 37869341867; final CI reuses and independently verifies the same binaries.
+The initial reader rejected a legitimate pre-admission missing/null block;
+saved inspection established exact later revision matches, and a new control
+rejects missing-after-admission. Failed/superseded attempts and the executor
+disconnect/cloud audit recovery remain in
+[the public record](evidence/m1-mesh-admission-cloud-2026-10-09.json).
+No engine ran locally. **No new target-side action is needed now.**
+
 Completed October 9 UTC: **bounded continuous native 16³ H2 travel replay**,
 implementation `abb94bf4a4eecf6de0bd9bc68f37ae261c9c9cf4`. Read
 [M1_FRONTIER_TRAVEL.md](M1_FRONTIER_TRAVEL.md). The replay subclasses the production
@@ -40,7 +93,7 @@ inconclusive. Three ordinary retirement deletions exceed 750 µs (871/955/1,320 
 and remain unwaived. Recorded target upload failures, rendered pixels and full
 route/target timing/overhead qualification remain open.
 
-Current [Windows player 11587137036](https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881/artifacts/11587137036)
+Previous [Windows player 11587137036](https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881/artifacts/11587137036)
 expires `2026-11-08T00:10:16Z`. Exported merge/build:
 `7f37595af6bb8d30191770c644a2b9ea5da80c92`; build/implementation tree:
 `5d3877168732610f3d418f30411d66ba59389875`. Portable ZIP SHA-256:
@@ -377,29 +430,25 @@ inconclusive. Read [M1_ROUTE_CALIBRATION.md](M1_ROUTE_CALIBRATION.md).
 
 ## Next bounded step
 
-**Recommended single next implementation task:** characterize and, only for a
-demonstrated cause, correct native pending-mesh admission order for the lateral
-`(7..10, -1/0, -1)` cells exposed by the continuous 16³ H2 replay. Pinned fixed-LOD
-source consumes the pending vector in insertion order; the project stops at four
-admitted/result tasks and retains the suffix, before worker priority can apply.
-Observe bounded pending rank/admission/submission boundaries and compare unchanged
-versus corrected scheduling using the same 600 ticks in editor/release with
-one/two workers. The stopping point is current submitted coverage of these cells
-before they enter 96 m, or an explicit retained failure identifying the next
-cause. Preserve all four handovers, exact movement/actors/rain/due edits/storage,
-accepted current revisions, retirement/drain and every earlier control.
+**Recommended single next implementation task:** verify the opt-in native
+admission correction through the original H2 15-second direction reversal in a
+bounded 20-second/1,200-tick comparison. Keep the completed 600-tick controls;
+add matched FIFO/priority editor/release runs with one/two workers. Execute the
+existing route/camera, 24 actors/rain, 80 due edits and 20 proxy saves; independently
+verify all current accepted revisions, ownership/resources, queues, native phase
+closure, terminal callbacks, writer drain and combined finalization. The stopping
+point is continuous submitted coverage through reversal within the existing
+envelope, or an explicit retained failure identifying the next cause.
 
 Keep preparation at four viewers, the 512 resident cap, 96 m fog/required geometry,
-128 m data envelope, native admission limits, collision/safety rules,
-confirmed-empty semantics and 200 ms/750 µs thresholds. Do not widen fog, add
-viewers, bypass caps or trim alarms. A priority experiment must preserve genuine
-edit/operation/diagnostic failures; it cannot qualify throughput, per-frame probe
-cost or shared total overhead. Predeclare finite trace/storage/queue bounds,
-verify unfamiliar APIs against the pin, retain every terminal operation/frame/edit
-and independently reconcile saved evidence. Produce a verified cloud/portable
-candidate. Ten seconds does not cover the 15-second reversal or full/repeated
-routes; do not expand the matrix or request a target run before this correction
-and its controls are trustworthy.
+128 m data envelope, workers/admission limits, collision/safety behavior and every
+100/200 ms, 750 µs and 1% threshold. Predeclare finite evidence bounds and retain
+missing/unavailable values as null. Preserve existing assessments and all earlier
+control expectations. Use the experimentally validated priority path; ordinary
+production remains FIFO pending its bounded scope/retention proof. Do not widen
+fog, add viewers, bypass caps, change world/save semantics, trim alarms or replace
+the full workload. Produce a verified cloud/portable candidate; do not expand to
+a full/repeated profile matrix or request a target run in this increment.
 
 The completed fixed-work, callback-body and owned-cycle increments validate
 software observations and expose count/wait/slack masking. They do not establish
@@ -427,7 +476,7 @@ renderer accounting, retention, profile comparison and qualification repeats.
 Rain remains an M1 proxy defect deferred to M5. No acceptance threshold, world/save
 semantics or workload requirement changed; M2 remains gated.
 
-Read `docs/M1_FRONTIER_TRAVEL.md` and its public failure seeds, `docs/M1_FRONTIER_EDIT_HANDOVER.md`, `docs/M1_FRONTIER_BOUNDARY_REPLAY.md`, `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
+Read `docs/M1_MESH_ADMISSION.md`, its independent Actions audit and public cloud record, `docs/M1_FRONTIER_TRAVEL.md` and its public failure seeds, `docs/M1_FRONTIER_EDIT_HANDOVER.md`, `docs/M1_FRONTIER_BOUNDARY_REPLAY.md`, `docs/M1_FRAME_SLACK_SENSITIVITY.md`, `docs/M1_CPU_DOSE_SENSITIVITY.md`, `docs/M1_FIXED_WORK_SENSITIVITY.md`, `docs/M1_ENDPOINT_PRECISION.md`, `AGENTS.md`, the active M1 roadmap, relevant `ARCHITECTURE.md`, `PERFORMANCE.md`
 and `TESTING.md`, `docs/M1_HEAVY_DIAGNOSTIC_AB.md`, `docs/M1_MEASUREMENT_METHOD.md`,
 `docs/M1_ROUTE_CALIBRATION.md`, `docs/M1_FOG_FRONTIER.md`,
 `docs/M1_OPERATION_DIAGNOSTICS.md`, `docs/M1_STARTUP_ATTRIBUTION.md`, the benchmark/

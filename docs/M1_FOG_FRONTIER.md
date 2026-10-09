@@ -133,8 +133,16 @@ transfer. The first raw alarm occurs at tick 61, 1.016667 simulation seconds;
 all 600 ticks/40 edits/ten saves and full native drain reconcile. This is evidence
 of conservative readiness failure, not rendered exposed pixels. Fog, radius,
 scan/evaluation rules and qualification flags remain unchanged; pending-admission
-order is the next bounded hypothesis. Full/repeated routes and target pixels/
-throughput remain unverified.
+order was the next bounded hypothesis. The subsequent [opt-in native admission
+experiment](M1_MESH_ADMISSION.md) demonstrates the selection cause: unchanged FIFO
+admits farther fresh regions first and retains 23/24/22/24 coverage alarms;
+priority selects the nearer lateral requests and has zero alarms/unready lateral
+observations in all four matched 600-tick runs. All 32 current submissions precede
+96 m entry. Initial pre-admission missing identities stay null. Demand, fog,
+radii, caps and qualification policy remain unchanged; ordinary production keeps
+FIFO. This is a bounded software correction, with instrumentation-perturbed wall
+timing, not target pixels/throughput. Full/repeated routes and reversal remain
+unverified.
 
 The separate schema 6 [matched heavy comparison](M1_HEAVY_DIAGNOSTIC_AB.md)
 now exercises this exact scan on H1/H2 routes. Its off mode dispatches no scan;

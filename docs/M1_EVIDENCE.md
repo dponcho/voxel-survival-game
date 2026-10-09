@@ -5,7 +5,62 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: continuous H2 travel replay
+## Current Windows candidate: experimental native admission correction
+
+Completed October 9 UTC: **experimental native pending-admission correction**,
+latest implementation `f79f4ecd2748a3b5d67afd8f4dea6a1e6fad288e`. Read
+[M1_MESH_ADMISSION.md](M1_MESH_ADMISSION.md). The matched 600-tick H2 experiment
+demonstrates FIFO admitting farther fresh regions before nearer lateral cells.
+The opt-in native correction prioritizes current loaded edit replacements, then
+nearest missing visuals, retaining FIFO ties and every existing cap and work unit.
+Preparation/retirement and ordinary production paths retain FIFO; the correction
+remains experimental.
+
+[CI 37878551633](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633)
+passed all three jobs: 88 Python regressions, six sanitizer suites, matching
+editor/debug/release checks, eight FIFO/priority trials, all prior controls/
+replays/runtime/profile checks, DLL audit and two fresh offline extractions.
+Independent Actions review downloads the published ZIP, checks byte round-trip,
+CRC/paths, PE/PCK/all 76 entry MD5s/native identity/eight self-tests/38 imports,
+then reconciles saved evidence and rejects all 26 mutations.
+
+FIFO retains 23/24 editor and 22/24 release coverage alarms; priority has **zero
+coverage alarms and zero lateral unready observations in all four runs**.
+All 32 priority lateral-cell witnesses are current before 96 m entry; original
+pending ranks 15/16 become selected ranks 1/0. Every run preserves 600 ticks,
+14,400 actor updates, 40 current submitted edits, ten saves, four actual
+`1 -> 2 -> 1` handovers, stable prepared resources and full drain. Edit/operation
+guards pass in these trials. The eight trials reconcile 15,177 native admission
+records/24,737,695 bytes, 10,036 observations/54,343,565 bytes, all 24 native
+phases/15,238 operation rows and 11,617 frame rows. Maximum pending is 459;
+mesh/data peaks remain 511/867, complete retirement high-water 285 and overloads
+zero. Priority scenario evaluations remain **inconclusive** under the unchanged
+diagnostic-cost guard; FIFO evaluations remain failed. No target qualifies.
+
+Ten ordinary folders/98 scenarios/284 phases reconcile 37,345 operation rows
+and 94 edits. All 42 preceding heavy work-unit/configuration/available exact
+contracts match; a durable public baseline removes future artifact-expiry
+dependency. Ordinary short 16³ H1/H2 has zero coverage alarms; H2 still fails
+edit-latency/diagnostic guards. An ordinary debug `AB-on-1` preparation deletion
+of 786 µs exceeds 750 µs and remains visible. Historical target upload failures,
+full/repeated routes, physical pixels/presentation and shared/per-frame causal
+overhead remain unresolved. Observers/sorting/file I/O perturb wall time.
+
+Current [Windows player 11593794161](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633/artifacts/11593794161)
+expires `2026-11-08T03:40:21Z`. Exported merge/build:
+`41527690339ba965bbc36a126fc790522bb0e9f3`; implementation/build tree:
+`09d85f59b37e715e5f9a925693d222fa33ab0bec`. Portable ZIP SHA-256:
+`ec2cd5d89774173ff55072362cafc6b3fde253d6b86547bc5c3a29078735ac4f`; 30,127,069 bytes.
+Native key: `b45c169f391a4af65b5b4157dc1cc112b7dbd1ddd8b5fb2f85cf529bf694f502`, source-built and qualified in
+CI 37869341867; final CI reuses and independently verifies the same binaries.
+The initial reader rejected a legitimate pre-admission missing/null block;
+saved inspection established exact later revision matches, and a new control
+rejects missing-after-admission. Failed/superseded attempts and the executor
+disconnect/cloud audit recovery remain in
+[the public record](evidence/m1-mesh-admission-cloud-2026-10-09.json).
+No engine ran locally. **No new target-side action is needed now.**
+
+## Previous Windows candidate: continuous H2 travel replay
 
 The new cloud-only replay continuously executes production H2 movement, actor/
 rain, due-edit and proxy-storage methods for 600 fixed 60 Hz ticks across four

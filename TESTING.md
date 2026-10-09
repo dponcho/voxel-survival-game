@@ -278,3 +278,14 @@ actual admission permutation, four-task budget, phase boundaries and complete
 matched travel evidence. Coverage and operation/diagnostic failures remain
 visible. Bounds and stopping conditions are predeclared in
 [M1_MESH_ADMISSION.md](docs/M1_MESH_ADMISSION.md).
+
+The independent post-package audit downloads the published player and verifies
+byte round-trip, inner ZIP CRC/paths, PE/PCK/entry MD5/native identity, eight
+self-test reports and imports. It re-reads all saved trial/control evidence,
+compares the 42 ordinary heavy contracts with a durable public baseline, and
+rejects 26 mutations of actual saved reports. Pre-admission missing/null block
+observations remain valid missing states; missing-after-admission and non-null
+revision changes fail. CI 37878551633 verifies 88 Python regressions, six
+sanitizer suites and all eight matched admission runs. The on-demand inspection
+workflow is retained for explicit review of the original failing cloud evidence;
+it is not an automatic qualification check. Engine execution stays in Actions.

@@ -81,4 +81,72 @@ change is proposed. The 1%, p95 100 ms/max 200 ms edit and 750 µs operation lim
 remain. Full/repeated routes, the 15-second reversal, target pixels and HD 620
 performance remain unverified. M1 stays blocked; no new target action is needed.
 
-Initial saved editor/one-worker inspection retains the tick-56 pre-admission missing block with all null identities. Later desired/admitted/submitted identities match exactly. The reader now accepts that known missing state only before actual admission and retains it in the witness; missing-after-admission and non-null revision mismatches still fail. The complete four-pair verification remains pending.
+## Verified cloud result — October 9, 2026
+
+[CI 37878551633](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633)
+passes all three jobs, completed `2026-10-09T03:41:25Z`: 88 Python regressions,
+six native sanitizer suites, matching editor/debug/release qualification and all
+existing checks. The fresh native source build is CI 37869341867. The independent
+audit runs in Actions after the editing executor disconnect, downloads the actual
+published player, checks byte round-trip, inner ZIP CRC/paths, all 76 PCK entry
+MD5s, PE/native identity, eight self-tests and 38 DLL imports, and reconciles all
+saved controls/trials. All 26 actual saved-evidence mutations are rejected.
+
+| Engine / workers | FIFO coverage alarms | FIFO lateral unready observations | Priority alarms / lateral unready | Priority submitted before entry |
+| --- | ---: | ---: | ---: | ---: |
+| Editor / 1 | 23 | 37 | 0 / 0 | 8 / 8 |
+| Editor / 2 | 24 | 40 | 0 / 0 | 8 / 8 |
+| Release / 1 | 22 | 37 | 0 / 0 | 8 / 8 |
+| Release / 2 | 24 | 38 | 0 / 0 | 8 / 8 |
+
+Each FIFO trial independently demonstrates farther-before-closer admission for
+all eight lateral cells. Priority moves their actual original ranks 15/16 to
+selected ranks 1/0. All 32 priority witnesses have current submission before the
+last outside and first inside samples; all 32 FIFO entry samples are unready.
+This demonstrates the bounded selection cause/correction. Submission times remain
+brackets; no physical-presentation timestamp is invented.
+
+The first physics observation at each handover precedes native block creation.
+Its state is genuinely missing and all identities are null. The initial reader
+incorrectly demanded a revision there. Saved inspection proves every later
+desired/admitted/submitted identity matches; the corrected reader retains that
+initial null observation and accepts it only before admission. Missing after
+admission, changed revisions, stale submission, failed work/operations, lost clocks,
+I/O evidence and unavailable origins still fail. The new control covers both
+sides of this boundary. Failed attempts remain in the public record.
+
+Every trial retains 600 ticks, 14,400 actor updates, 40 submitted original edits,
+ten saves, all four handovers and complete drain. Eight trials reconcile
+15,177 native records / 24,737,695 bytes, 10,036 observation rows / 54,343,565 bytes,
+24 native phases / 15,238 operation rows and 11,617 frame rows. Pending peaks at
+459; mesh/data peaks are 511/867, travel retirement high-water two, complete
+retirement high-water 285 and overloads zero. No closed-phase gap records occur in
+these saved runs; the reader retains and separately validates such rows when
+present. No edit or operation guard fails in the eight trials. Selection-span
+maxima range 9–28 µs across modes; those observations exclude trace formatting,
+copying and file I/O and do not estimate CPU service or total instrumentation cost.
+
+Priority scenario assessments remain inconclusive because the 1% diagnostic
+guard is unresolved; FIFO remains failed for coverage plus diagnostic cost.
+Ordinary production stays FIFO. Ten ordinary folders / 98 scenarios / 284 phases
+reconcile 37,345 operation rows and 94 edits; all 42 preceding heavy work records,
+configuration and available exact contracts match the durable public baseline.
+A 786 µs debug `AB-on-1` preparation deletion remains over the 750 µs threshold.
+Short 16³ H2 still retains edit-latency/diagnostic failures. Every earlier method,
+route, endpoint, fixed-work, CPU, frame, boundary and concurrent-edit expectation
+and false qualification flag remains.
+
+[Windows player 11593794161](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633/artifacts/11593794161) expires
+`2026-11-08T03:40:21Z`; exported build
+`41527690339ba965bbc36a126fc790522bb0e9f3`; latest implementation
+`f79f4ecd2748a3b5d67afd8f4dea6a1e6fad288e` shares tree
+`09d85f59b37e715e5f9a925693d222fa33ab0bec`. Portable ZIP: 30,127,069 bytes;
+SHA-256 `ec2cd5d89774173ff55072362cafc6b3fde253d6b86547bc5c3a29078735ac4f`.
+See [the exact public record](evidence/m1-mesh-admission-cloud-2026-10-09.json) and
+[the durable ordinary contract baseline](evidence/m1-frontier-travel-contracts-2026-10-09.json).
+
+The prototype correction is experimental. Full/repeated routes and the 15-second
+reversal are not yet tested with it; target pixels, driver behavior, HD 620 timing,
+per-frame CPU/GPU sensitivity and shared causal overhead remain unverified.
+M1 remains blocked, M2 gated and no target profile qualified. No new target-side
+run/download is requested. No engine ran locally.

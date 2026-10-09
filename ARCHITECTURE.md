@@ -151,6 +151,19 @@ inside 96 m. Pending native admission order requires a bounded causal experiment
 this replay does not change it, widen demand or qualify full-route/target timing.
 See [continuous travel evidence](docs/M1_FRONTIER_TRAVEL.md).
 
+The opt-in native 16³ H2 admission experiment now demonstrates that insertion
+order admits farther fresh meshes before nearer lateral coverage. During measured
+gameplay it orders current loaded replacements first, then never-submitted
+visuals by closed-box distance to the actual camera, with FIFO ties/remaining
+work. Loading, retirement and ordinary production retain FIFO. It reorders the
+existing vector within 512 candidates and the unchanged concurrent four-task
+guard; a 64-record/2 MiB native trace and bounded streamed evidence verify actual
+selection, current revisions and pre-entry submission. The four matched 600-tick
+priority runs have no conservative coverage alarm, with no change to demand,
+world/save semantics, workers or qualification policy. This experimental result
+does not establish reversal/full-route/target timing or shared instrumentation
+cost. See [native admission evidence](docs/M1_MESH_ADMISSION.md).
+
 Edits are validated commands: reach, inventory, collision, bounds, readiness and complexity admission. A successful command assigns a revision, changes voxel/inventory state consistently, marks affected border meshes and lighting, and queues its persistence payload. Coalesce repeated edits to the same chunk. Main-thread reads/edits must not wait behind a long worker-held spatial lock; use short snapshots, retry/try-lock paths or narrowly scoped native adaptation where required.
 
 Never discard unsaved state during eviction. Once its complete transaction is durably journalled, in-memory chunk data may be evicted even if snapshot compaction is pending. Reload reconstructs the snapshot plus all later committed records. Bound mesh destruction as well as creation; releasing hundreds of buffers at once is not free.

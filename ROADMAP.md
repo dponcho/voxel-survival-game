@@ -54,6 +54,15 @@ lateral queued meshes still fail conservative coverage beyond the earlier short
 smoke. [Continuous evidence and the next admission experiment](docs/M1_FRONTIER_TRAVEL.md)
 retain those failures; full/repeated travel and target qualification remain open.
 
+The bounded opt-in admission follow-up now verifies a native FIFO selection
+cause and priority correction in four matched editor/release one/two-worker
+600-tick trials: FIFO has 23/24/22/24 coverage alarms; priority has zero, with all
+32 lateral cells currently submitted before 96 m entry. Work, caps, accepted
+revisions and retirement remain exact. Production stays FIFO while the correction
+is experimental; diagnostic, operation, full-route and target gates remain open.
+[Admission evidence](docs/M1_MESH_ADMISSION.md) and [the next bounded reversal
+check](docs/NEXT_TASK.md) keep M1 blocked and M2 gated.
+
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 
 Compare the stock 32³ render path with 16³ render blocks and one versus two terrain workers. Keep the same resolution, scene and view distance. Record cost attribution: generation, meshing, upload, deletion, draw submission, collision and GPU work.
