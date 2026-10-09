@@ -1,0 +1,22 @@
+[
+  {
+    "path": "terrain/fixed_lod/voxel_mesh_block_vt.h",
+    "old": "\tuint64_t cairn_revision = 0;",
+    "replacement": "\tuint64_t cairn_revision = 0;\n\t// Read-only M1 evidence: revision represented by the last submitted visual mesh.\n\tuint64_t cairn_submitted_revision = 0;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.h",
+    "old": "\tint get_cairn_mesh_state(Vector3i block_pos) const;",
+    "replacement": "\tint get_cairn_mesh_state(Vector3i block_pos) const;\n\tDictionary get_cairn_mesh_observation(Vector3i block_pos) const;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "int VoxelTerrain::get_cairn_mesh_state(Vector3i block_pos) const {",
+    "replacement": "Dictionary VoxelTerrain::get_cairn_mesh_observation(Vector3i block_pos) const {\n\tDictionary d;\n\td[\"state\"] = \"missing\";\n\tfor (const char *key : {\"loaded\", \"visible\", \"has_mesh\", \"mesh_id\", \"mesh_viewers\", \"collision_viewers\", \"queued_update\", \"desired_revision\", \"submitted_revision\"}) d[key] = Variant();\n\tconst VoxelMeshBlockVT *block = _mesh_map.get_block(block_pos);\n\tif (block == nullptr) return d;\n\tstatic const char *states[] = {\"missing\", \"pending\", \"hidden\", \"visible\", \"confirmed_empty\"};\n\td[\"state\"] = states[get_cairn_mesh_state(block_pos)];\n\td[\"loaded\"] = block->is_loaded;\n\td[\"visible\"] = block->is_visible();\n\td[\"has_mesh\"] = block->has_mesh();\n\td[\"mesh_viewers\"] = block->mesh_viewers.get();\n\td[\"collision_viewers\"] = block->collision_viewers.get();\n\td[\"queued_update\"] = block->is_in_update_list;\n\tif (block->cairn_revision != 0) d[\"desired_revision\"] = int64_t(block->cairn_revision);\n\tif (block->cairn_submitted_revision != 0) d[\"submitted_revision\"] = int64_t(block->cairn_submitted_revision);\n\t// Copy only the decimal object identity. No arrays/GPU readback and no Mesh\n\t// reference survives this synchronous main-thread call.\n\tconst Ref<Mesh> mesh = block->get_mesh();\n\tif (mesh.is_valid()) d[\"mesh_id\"] = String::num_uint64(uint64_t(mesh->get_instance_id()));\n\treturn d;\n}\n\nint VoxelTerrain::get_cairn_mesh_state(Vector3i block_pos) const {"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\tblock->set_visible(block->mesh_viewers.get() > 0);",
+    "replacement": "\t// Record only after the actual visual replacement (including confirmed empty).\n\tif (ob.visual_was_required) block->cairn_submitted_revision = ob.cairn_revision;\n\tblock->set_visible(block->mesh_viewers.get() > 0);"
+  }
+]

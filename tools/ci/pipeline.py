@@ -17,183 +17,46 @@ import time
 import urllib.request
 import zipfile
 
-ROOT = Path(__file__).resolve().parents[2]
-LOCK = ROOT / "build/dependencies.lock.json"
-BUNDLE = ROOT / "build/engine-bundle"
-REPORTS = ROOT / "reports"
-
-
-def read_json(path):
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def write_json(path, value):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
-
-
-def digest(path):
-    with path.open("rb") as stream:
-        return hashlib.file_digest(stream, "sha256").hexdigest()
+from build_support import (ROOT, LOCK, BUNDLE, REPORTS, read_json, write_json, digest,
+                           run, download, extract, stage_source, copy_licenses)
 
 
 def input_hash(root=ROOT):
     h = hashlib.sha256()
-    paths = [root / "build/dependencies.lock.json"]
-    for folder in ["native", "build/config", "build/patches", "tools/ci"]:
+    paths = [root / "build/dependencies.lock.json", root / "build/config/windows.json",
+             root / "tools/ci/engine_recipe.py", root / "tools/ci/build_support.py"]
+    for folder in ["native", "build/patches"]:
         paths.extend(p for p in (root / folder).rglob("*")
                      if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc")
-    for path in sorted(paths):
+    for path in sorted(paths, key=lambda item: item.relative_to(root).as_posix()):
         h.update(path.relative_to(root).as_posix().encode() + b"\0")
         h.update(path.read_bytes() + b"\0")
     return h.hexdigest()
 
 
-def run(args, label, cwd=ROOT, timeout=300, env=None):
-    REPORTS.mkdir(exist_ok=True)
-    args = [str(arg) for arg in args]
-    started = time.monotonic()
-    log = REPORTS / (label + ".log")
-    print(f"Running {label}", flush=True)
-    with log.open("w", encoding="utf-8") as output:
-        output.write(json.dumps(args) + "\n")
-        output.flush()
-        try:
-            result = subprocess.run(args, cwd=cwd, env=env, stdout=output,
-                                    stderr=subprocess.STDOUT, timeout=timeout, check=False)
-            code = result.returncode
-        except subprocess.TimeoutExpired:
-            code = -1
-            output.write("\nTIMEOUT\n")
-    with (REPORTS / "commands.jsonl").open("a", encoding="utf-8") as output:
-        output.write(json.dumps({"command": args, "label": label, "exit_code": code,
-                                 "seconds": round(time.monotonic() - started, 3)}) + "\n")
-    if code:
-        print(log.read_text(encoding="utf-8", errors="replace")[-18000:])
-        raise RuntimeError(f"{label} failed with exit code {code}")
-    return log.read_text(encoding="utf-8", errors="replace")
-
-
-def download(spec, name):
-    dest = ROOT / "build/downloads" / name
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    if not dest.exists() or digest(dest) != spec["sha256"]:
-        partial = dest.with_suffix(dest.suffix + ".partial")
-        with urllib.request.urlopen(spec["url"], timeout=120) as source, partial.open("wb") as target:
-            shutil.copyfileobj(source, target)
-        if digest(partial) != spec["sha256"]:
-            raise RuntimeError(f"Integrity failure: {name}")
-        partial.replace(dest)
-    return dest
-
-
-def extract(archive, destination):
-    destination.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(archive) as zipped:
-        for item in zipped.infolist():
-            name = item.filename.replace("\\", "/")
-            target = (destination / name).resolve()
-            if not target.is_relative_to(destination.resolve()) or ":" in name:
-                raise RuntimeError("Archive path escapes extraction directory")
-            if (item.external_attr >> 16) & 0o170000 == 0o120000:
-                raise RuntimeError("Archive symlinks are not supported")
-        zipped.extractall(destination)
-
-
-def stage_source(spec, name, target):
-    marker = target / ".cairn-source-sha256"
-    if marker.exists() and marker.read_text() == spec["sha256"]:
-        return
-    if target.exists():
-        raise RuntimeError(f"Unrecognized staged source at {target}; use a fresh cloud workspace")
-    archive = download(spec, name + ".zip")
-    with tempfile.TemporaryDirectory(dir=ROOT / "build") as temp:
-        extract(archive, Path(temp))
-        children = list(Path(temp).iterdir())
-        if len(children) != 1 or not children[0].is_dir():
-            raise RuntimeError("Expected a single source archive root")
-        shutil.copytree(children[0], target)
-    marker.write_text(spec["sha256"])
+def legacy_identity(root=ROOT):
+    """One explicit migration, never a fuzzy restore of unrelated native code."""
+    path = root / "build/native-cache-migration.json"
+    if path.exists():
+        migration = read_json(path)
+        if migration["native_key"] == input_hash(root):
+            return migration["legacy_engine_inputs"]
+    return None
 
 
 def setup():
-    if os.environ.get("GITHUB_ACTIONS") != "true" or os.name != "nt":
-        raise RuntimeError("Development setup/build runs only on Windows GitHub Actions")
-    lock = read_json(LOCK)
-    if sys.version.split()[0] != lock["python"]:
-        raise RuntimeError("Python version differs from dependency lock")
-    compiler = ROOT / "build/toolchain" / lock["compiler"]["version"]
-    if not compiler.exists():
-        extract(download(lock["compiler"], "compiler.zip"), compiler.parent)
-    wheel = download(lock["scons"], "scons-4.9.1-py3-none-any.whl")
-    run([sys.executable, "-m", "pip", "install", "--no-deps", "--no-index", str(wheel)], "setup-scons")
-    compiler_bin = compiler / "bin"
-    with open(os.environ["GITHUB_PATH"], "a", encoding="utf-8") as stream:
-        stream.write(str(compiler_bin) + "\n")
-    with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as stream:
-        stream.write("CAIRN_COMPILER=" + str(compiler) + "\n")
-    text = run([compiler_bin / "clang++.exe", "--version"], "compiler-identity")
-    write_json(REPORTS / "toolchain.json", {"compiler": text, "python": sys.version,
-               "compiler_archive_sha256": lock["compiler"]["sha256"],
-               "runner_image": os.environ.get("ImageVersion", "unknown")})
-
-
-def copy_licenses(source, destination):
-    for path in source.rglob("*"):
-        if path.is_file() and any(word in path.name.lower() for word in ["license", "licence", "copyright", "copying", "notice"]):
-            target = destination / path.relative_to(source)
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(path, target)
+    from engine_recipe import setup as install_toolchain
+    install_toolchain()
 
 
 def build():
-    if os.environ.get("GITHUB_ACTIONS") != "true":
-        raise RuntimeError("Compilation belongs in GitHub Actions")
-    lock = read_json(LOCK)
-    config = read_json(ROOT / "build/config/windows.json")
-    engine = ROOT / "engine-src"
-    stage_source(lock["godot"], "godot", engine)
-    stage_source(lock["voxel"], "voxel", engine / "modules/voxel")
-    module = engine / "modules/sandbox_world"
-    shutil.copytree(ROOT / "native/sandbox_world", module, dirs_exist_ok=True)
-    identity = {"engine_inputs": input_hash(), "godot_commit": lock["godot"]["commit"],
-                "voxel_commit": lock["voxel"]["commit"]}
-    (module / "build_identity.gen.h").write_text(
-        "#pragma once\n" + "\n".join(f'#define CAIRN_{key.upper()} "{value}"'
-                                    for key, value in identity.items()) + "\n", encoding="utf-8")
-    patches = sorted((ROOT / "build/patches").rglob("*.patch"))
-    if patches:
-        raise RuntimeError("Downstream patches require an explicit application and verification step")
-    BUNDLE.mkdir(parents=True, exist_ok=True)
-    for target in config["targets"]:
-        run([sys.executable, "-m", "SCons", *config["flags"], f"target={target}",
-             "mingw_prefix=" + os.environ["CAIRN_COMPILER"], f'-j{config["jobs"]}'],
-            "build-" + target, cwd=engine, timeout=15000)
-        candidates = [p for p in (engine / "bin").glob(f"godot.windows.{target}.x86_64*.exe")
-                      if not p.name.endswith(".console.exe")]
-        if len(candidates) != 1:
-            raise RuntimeError(f"Ambiguous {target} output: {candidates}")
-        shutil.copy2(candidates[0], BUNDLE / (target + ".exe"))
-    symbols = BUNDLE / "symbols"
-    symbols.mkdir(exist_ok=True)
-    for path in (engine / "bin").iterdir():
-        if path.suffix in [".debug", ".debugsymbols", ".pdb"]:
-            shutil.copy2(path, symbols / path.name)
-    if not list(symbols.iterdir()):
-        raise RuntimeError("Separate symbols were not produced")
-    copy_licenses(engine, BUNDLE / "LICENSES/godot")
-    # The compiler's static C/C++ runtime notices also travel with the game.
-    copy_licenses(Path(os.environ["CAIRN_COMPILER"]), BUNDLE / "LICENSES/llvm-mingw")
-    manifest = {**identity, "lock": lock, "config": config,
-                "toolchain": read_json(REPORTS / "toolchain.json"),
-                "files": {p.relative_to(BUNDLE).as_posix(): digest(p)
-                          for p in sorted(BUNDLE.rglob("*")) if p.is_file() and p.name != "manifest.json"}}
-    write_json(BUNDLE / "manifest.json", manifest)
+    from engine_recipe import build as compile_engine
+    compile_engine()
 
 
 def verify_bundle():
     manifest = read_json(BUNDLE / "manifest.json")
-    if manifest["engine_inputs"] != input_hash():
+    if manifest["engine_inputs"] != input_hash() and (not legacy_identity() or manifest["engine_inputs"] != legacy_identity()):
         raise RuntimeError("Stale engine bundle")
     expected = set(manifest["files"])
     actual = {p.relative_to(BUNDLE).as_posix() for p in BUNDLE.rglob("*")
@@ -222,7 +85,7 @@ def is_system_dll(name):
 
 
 def audit(directory):
-    inspector = Path(os.environ["CAIRN_COMPILER"]) / "bin/llvm-readobj.exe"
+    inspector = BUNDLE / "audit-tools/llvm-readobj.exe"
     inventory = {p.name.lower(): p for p in directory.iterdir() if p.suffix.lower() in [".exe", ".dll"]}
     result = {}
     for name, path in inventory.items():
@@ -260,7 +123,7 @@ def self_test(executable, label, cwd, offline=False):
         if len(records) != 1 or "SCRIPT ERROR:" in output or "ERROR:" in output:
             raise RuntimeError(f"{label}: missing self-test report or engine error; see log")
         report = json.loads(records[0])
-        if not report.get("passed") or report.get("identity", {}).get("engine_inputs") != input_hash():
+        if not report.get("passed") or report.get("identity", {}).get("engine_inputs") != read_json(BUNDLE / "manifest.json")["engine_inputs"]:
             raise RuntimeError(f"{label}: self-test identity or result failed")
         if report.get("game_commit") != os.environ["GITHUB_SHA"]:
             raise RuntimeError("Game pack belongs to another commit")
@@ -275,7 +138,8 @@ def prepare():
     for kind in ["debug", "release"]:
         shutil.copy2(BUNDLE / ("template_" + kind + ".exe"), templates / ("windows_" + kind + ".exe"))
     info = {key: manifest[key] for key in ["engine_inputs", "godot_commit", "voxel_commit"]}
-    info.update({"game_commit": os.environ["GITHUB_SHA"], "milestone": "M0",
+    info.update({"game_commit": os.environ["GITHUB_SHA"], "milestone": "M1",
+                 "native_source_key": input_hash(),
                  "ci_run": f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{os.environ["GITHUB_RUN_ID"]}',
                  "target_performance": "not_run", "renderer": "gl_compatibility",
                  "engine_binaries": {key: value for key, value in manifest["files"].items() if key.endswith(".exe")}})
@@ -284,8 +148,19 @@ def prepare():
     output = run([editor, "--headless", "--path", game, "--import"], "editor-import", timeout=300)
     if "SCRIPT ERROR:" in output or "ERROR:" in output:
         raise RuntimeError("Project import reported errors")
+    # Check each new dependency directly: a derived benchmark test can otherwise
+    # report only an unresolved base class and hide the originating parse error.
+    for script in ("benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "m1_frontier_edit_runtime", "m1_frontier_travel_runtime", "m1_frontier_admission_runtime", "benchmark"):
+        output = run([editor, "--headless", "--path", game, "--check-only", "--script",
+                      "res://scripts/" + script + ".gd"], "parse-" + script, timeout=60)
+        if "SCRIPT ERROR:" in output or "ERROR:" in output:
+            raise RuntimeError("Direct frame/benchmark parser check reported errors")
     # Run the title/self-test through the matching editor, then both actual export templates.
     self_test(editor, "editor-self-test", game)
+    output = run([editor, "--headless", "--path", game, "--script", "res://scripts/m1_native_tests.gd"],
+                 "m1-native-mesher-tests", timeout=120)
+    if "CAIRN_M1_NATIVE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
+        raise RuntimeError("M1 native mesher tests failed")
     dist = ROOT / "dist"
     player = dist / "player"
     player.mkdir(parents=True, exist_ok=True)
@@ -297,6 +172,22 @@ def prepare():
         if "SCRIPT ERROR:" in output or "ERROR:" in output:
             raise RuntimeError("Export reported errors")
         self_test(destination / "Cairn.exe", mode + "-self-test", ROOT)
+        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke",
+                      "--m1-report-root=" + str(REPORTS / (mode + "-m1-raw"))],
+                     mode + "-m1-smoke", timeout=300)
+        if "CAIRN_M1_SMOKE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
+            # A native assertion can log an error without changing the process
+            # exit code. Surface unique diagnostics in the Actions log as well
+            # as retaining the full scenario log in the evidence artifact.
+            errors = dict.fromkeys(line for line in output.splitlines()
+                                   if "ERROR:" in line or "SCRIPT ERROR:" in line)
+            print("\n".join(errors)[:8000], flush=True)
+            raise RuntimeError("M1 scenario integration failed")
+        output = run([destination / "Cairn.exe", "--headless", "--", "--m1-smoke", "--benchmark-mode=heavy-ab",
+                      "--m1-report-root=" + str(REPORTS / (mode + "-m1-heavy-ab-raw"))],
+                     mode + "-m1-heavy-ab-smoke", timeout=300)
+        if "CAIRN_M1_SMOKE=" not in output or "SCRIPT ERROR:" in output or "ERROR:" in output:
+            raise RuntimeError("M1 heavy A/B integration failed")
     write_json(player / "BUILD_INFO.json", info)
     shutil.copytree(BUNDLE / "LICENSES", player / "LICENSES", dirs_exist_ok=True)
     shutil.copy2(ROOT / "distribution/README.txt", player / "README.txt")
@@ -305,12 +196,67 @@ def prepare():
         raise RuntimeError("Missing or invalid Godot PCK")
 
 
+def qualify():
+    """Prove native registrations in all three binaries before caching them.
+
+    Gameplay import/tests remain mandatory after this gate. A script defect must
+    not discard hours of already qualified native compilation.
+    """
+    manifest = verify_bundle()
+    project = ROOT / "build/native-qualification"
+    project.mkdir(parents=True, exist_ok=True)
+    (project / "project.godot").write_text(
+        'config_version=5\n[application]\nrun/main_scene="res://check.tscn"\n'
+        '[rendering]\nrenderer/rendering_method="gl_compatibility"\n', encoding="utf-8")
+    (project / "check.tscn").write_text(
+        '[gd_scene load_steps=2 format=3]\n[ext_resource type="Script" path="res://check.gd" id="1"]\n'
+        '[node name="NativeQualification" type="Node"]\nscript=ExtResource("1")\n', encoding="utf-8")
+    identity = {key: manifest[key] for key in ["engine_inputs", "godot_commit", "voxel_commit"]}
+    script = '''extends Node
+func _ready() -> void:
+    var errors: Array[String] = []
+    for name_value: String in ["VoxelTerrain", "VoxelMesherBlocky", "VoxelBoxMover", "SandboxWorld", "CairnFixture", "CairnMesher", "CairnProbe", "CairnReportSink"]:
+        if not ClassDB.can_instantiate(name_value): errors.append(name_value)
+    if not errors.is_empty():
+        push_error(str(errors))
+        get_tree().quit(1)
+        return
+    var entry: RefCounted = ClassDB.instantiate("SandboxWorld")
+    var identity: Dictionary = entry.call("get_build_identity")
+    var expected: Dictionary = EXPECTED
+    if identity != expected: errors.append("Native identity mismatch")
+    var terrain: Node3D = ClassDB.instantiate("VoxelTerrain")
+    terrain.set("generate_collisions", false)
+    terrain.set("mesher", ClassDB.instantiate("VoxelMesherBlocky"))
+    add_child(terrain)
+    await get_tree().process_frame
+    terrain.queue_free()
+    await get_tree().process_frame
+    print("CAIRN_SELF_TEST=" + JSON.stringify({"passed": errors.is_empty(), "errors": errors, "identity": identity, "game_commit": GAME_COMMIT}))
+    get_tree().quit(0 if errors.is_empty() else 1)
+'''.replace("EXPECTED", json.dumps(identity)).replace("GAME_COMMIT", json.dumps(os.environ["GITHUB_SHA"]))
+    (project / "check.gd").write_text(script, encoding="utf-8")
+    preset = (ROOT / "game/export_presets.cfg").read_text(encoding="utf-8")
+    for mode in ["debug", "release"]:
+        preset = preset.replace(f"../build/templates/windows_{mode}.exe", f"../engine-bundle/template_{mode}.exe")
+    (project / "export_presets.cfg").write_text(preset, encoding="utf-8")
+    editor = BUNDLE / "editor.exe"
+    run([editor, "--headless", "--path", project, "--import"], "qualification-import")
+    self_test(editor, "qualification-editor", project)
+    for mode in ["debug", "release"]:
+        target = project / mode / "Cairn.exe"
+        target.parent.mkdir(exist_ok=True)
+        run([editor, "--headless", "--path", project, "--export-" + mode,
+             "Windows Portable", target], "qualification-export-" + mode)
+        self_test(target, "qualification-" + mode, ROOT)
+
+
 def package():
     verify_bundle()
     dist = ROOT / "dist"
     player = dist / "player"
     info = read_json(player / "BUILD_INFO.json")
-    if info["game_commit"] != os.environ["GITHUB_SHA"] or info["engine_inputs"] != input_hash():
+    if info["game_commit"] != os.environ["GITHUB_SHA"] or info["engine_inputs"] != read_json(BUNDLE / "manifest.json")["engine_inputs"] or info["native_source_key"] != input_hash():
         raise RuntimeError("Prepared distribution is stale")
     audit(player)
     package_path = dist / "Cairn-windows-x86_64.zip"
@@ -334,21 +280,25 @@ def package():
     write_json(REPORTS / "candidate.json", {**info, "status": "cloud_passed_target_unverified",
                "artifact_sha256": digest(package_path), "artifact_bytes": package_path.stat().st_size,
                "render_smoke": "not_run: hosted Windows OpenGL availability is not guaranteed",
-               "cold_cache": os.environ.get("CAIRN_CACHE_HIT") != "true"})
+               "fog_conversion_probe": read_json(REPORTS / "m1-fog-render.json"),
+               "cold_cache": os.environ.get("CAIRN_NATIVE_SOURCE") == "built",
+               "native_bundle_source": os.environ.get("CAIRN_NATIVE_SOURCE", "unknown")})
     shutil.make_archive(str(dist / "Cairn-symbols"), "zip", BUNDLE / "symbols")
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["key", "setup", "build", "verify", "prepare", "package"])
+    parser.add_argument("command", choices=["key", "setup", "build", "verify", "qualify", "prepare", "package"])
     args = parser.parse_args()
     if args.command == "key":
-        value = "windows-m0-" + input_hash()
+        value = "windows-native-v2-" + input_hash()
         print(value)
         with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
             output.write("key=" + value + "\n")
+            output.write("artifact=Cairn-native-" + value + "\n")
+            output.write("legacy_key=" + ("windows-m0-" + legacy_identity() if legacy_identity() else "") + "\n")
     else:
-        {"setup": setup, "build": build, "verify": verify_bundle,
+        {"setup": setup, "build": build, "verify": verify_bundle, "qualify": qualify,
          "prepare": prepare, "package": package}[args.command]()
 
 

@@ -1,6 +1,6 @@
 # Roadmap
 
-Design baseline: 2026-09-05. Status: planning complete; implementation has not started in this document package. No milestone below is marked achieved. This is an evidence-gated sequence, not a calendar or an estimate that an LLM can finish the game in one pass.
+Design baseline: 2026-09-05; core Java-style product requirements revised 2026-09-26. This is an evidence-gated sequence, not a calendar. Current implementation status is recorded separately: [M1 cloud evidence](docs/M1_EVIDENCE.md) and [target review](docs/M1_TARGET_REVIEW.md). M1 is blocked on qualification corrections; the supplied target reports do not authorize progression to M2.
 
 ## 1. Delivery rule
 
@@ -18,10 +18,10 @@ The product scope is [GAME_DESIGN.md](GAME_DESIGN.md). Implement the architectur
 | **M1 — Target-machine engine proof** | Flat terrain and representative terrain stress fixtures; bounded streaming/meshing; 16-vs-32 render-chunk comparison; one-vs-two terrain-worker experiment; voxel-box movement; metrics and automated benchmark | Actual HD 620 release-build report passes the initial normal/heavy frame gates and memory ceilings; queues plateau; no collision holes; oversize uploads/geometry are bounded |
 | **M2 — Deterministic editable world** | Native seeded regions, caves/deposits, safe spawn, cross-chunk structures; validated edit admission; mesh seams; sunlight/emissive data-to-shader prototype | Windows/Linux golden output matches under reordered/cancelled generation; boundary edits and light removal/reload tests pass; real-world route still fits M1 budgets |
 | **M3 — Durable persistence** | Atomic terrain/inventory/player transactions; chunk snapshots, replay, recovery, version guards, three rotating backups and save UI | Crash/kill/disk-error tests preserve all committed state and never duplicate items; eviction/reload and old-world fixtures pass; saving does not break frame gates |
-| **M4 — First playable survival slice** | One region; mining, placement, tools, inventory, hand crafting, workstation, food, a hostile creature, death/recovery, save/quit and first-session guidance | A fresh world supports gather → craft → build → survive → save → relaunch; transactions remain correct through death/crafting; ordinary-play benchmark passes |
-| **M5 — Complete systemic survival** | Bounded creature AI, farming, cooking, workstation catch-up, weather/exposure, local water behaviour, day/night and finished lighting | All scheduled systems obey budgets; loaded/unloaded state is consistent; no unbounded simulation; night/rain/combat/edit/save combined scenario passes |
-| **M6 — Complete progression and content** | Four regions, three workstation families, three landmark families, five creature roles, original assets/audio, cairn progression, final expedition and continuing sandbox | Scripted traversal proves progression reachability; a full playthrough reaches the ending and continues; no essential placeholders; asset/recipe/licence checks pass |
-| **M7 — Product hardening** | World manager, free-build mode, settings/remapping/accessibility, save restore, portable-data mode, diagnostics, polished onboarding | Clean-path/upgrade/input/focus tests pass; 30-minute traversal, 2-hour soak and dense-construction scenarios meet gates; no save loss or sustained memory growth |
+| **M4 — First playable survival slice** | One region; Java-style movement/mining/placement, tool tiers/durability, 9+27 inventory, 2×2/3×3 grid crafting, furnace, hunger/food, bed, hostile creature, transactional death drops, save/quit and first-session guidance | A fresh world supports gather → craft → build → survive → save → relaunch; transactions remain correct through death/crafting; ordinary-play benchmark passes |
+| **M5 — Complete systemic survival** | Bounded creature AI/breeding, farming/hydration, cooking, loaded-area furnace/crop ticking, armour/combat/shields, weather, local water/lava and falling blocks, sleep/day/night and finished lighting | All scheduled systems obey budgets; loaded/unloaded state is consistent; no unbounded simulation; night/rain/combat/edit/save combined scenario passes |
+| **M6 — Complete core progression and content** | Four regions, crafting table/furnace, three landmark families, at least five creature roles, full scoped building set and wood/stone/metal progression, original assets/audio and open-ended play | Scripted traversal proves core progression and building/food reachability; a full survival playthrough continues freely; Java core behaviour/visual comparisons and asset/recipe/licence checks pass |
+| **M7 — Product hardening** | World manager, Creative-style free-build catalogue/flight, settings/remapping/accessibility, save restore, portable-data mode, diagnostics, polished onboarding | Clean-path/upgrade/input/focus tests pass; 30-minute traversal, 2-hour soak and dense-construction scenarios meet gates; no save loss or sustained memory growth |
 | **M8 — 1.0 release candidate** | Final candidate ZIP, notices, release notes, checksums, retained build inputs and exact-build evidence | All scoped systems complete; three target-machine qualification runs pass; cloud gates green; previous saves migrate safely; release uses the exact validated package |
 
 ## 3. M0: first implementation task
@@ -39,6 +39,29 @@ When a repository is connected, implement this task before gameplay:
 M0's source lock, scripts and workflow YAML are implementation deliverables. They do not exist merely because they are specified here. A supplied repository/authorized GitHub connection is needed to run that pipeline; do not invent a successful action run or a download URL.
 
 ## 4. M1: architecture kill gate
+
+October 8 cloud increment: the first 16³ moving-frontier gap now has a verified
+baseline/corrected native replay and a bounded four-viewer preparation fix.
+[Evidence and next step](docs/M1_FRONTIER_BOUNDARY_REPLAY.md) retain M1 blocked,
+no qualified target profile and separate unresolved operation/timing gates.
+The second-boundary concurrent-edit follow-up now verifies actual resources,
+accepted revisions, transfer/cancellation and complete drain in editor/release;
+it fixes a demonstrated redundant-viewer supersession. See
+[the bounded handover evidence](docs/M1_FRONTIER_EDIT_HANDOVER.md). October 9 adds
+an independently verified 600-tick continuous production H2 replay in editor/
+release with one/two workers. Four handovers and all forty edits complete, while
+lateral queued meshes still fail conservative coverage beyond the earlier short
+smoke. [Continuous evidence and the next admission experiment](docs/M1_FRONTIER_TRAVEL.md)
+retain those failures; full/repeated travel and target qualification remain open.
+
+The bounded opt-in admission follow-up now verifies a native FIFO selection
+cause and priority correction in four matched editor/release one/two-worker
+600-tick trials: FIFO has 23/24/22/24 coverage alarms; priority has zero, with all
+32 lateral cells currently submitted before 96 m entry. Work, caps, accepted
+revisions and retirement remain exact. Production stays FIFO while the correction
+is experimental; diagnostic, operation, full-route and target gates remain open.
+[Admission evidence](docs/M1_MESH_ADMISSION.md) and [the next bounded reversal
+check](docs/NEXT_TASK.md) keep M1 blocked and M2 gated.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 
@@ -64,7 +87,7 @@ If CI fails, repair the failure before layering on another feature. A claimed mi
 
 ## 6. Scope and regression control
 
-Do not schedule multiplayer, modding, mechanical contraptions, moving voxel structures, advanced water or longer view distances while a 1.0 gate is open. Their cost includes persistence, tests and performance, not only a visible prototype.
+The user selected Java Edition as the core reference and deferred automation circuits, enchanting, brewing, additional dimensions and boss progression until after 1.0. Multiplayer, modding, moving voxel structures, general-purpose fluids and longer view distances remain outside 1.0. Implement [the core reference contract](docs/JAVA_CORE_REFERENCE.md) first, without bypassing M1 or expanding the hardware envelope.
 
 Keep the last accepted build and its test fixture worlds available. Generator upgrades, ID-map changes and save migrations require explicit compatibility evidence. A rollback may restore the previous executable, but it must not overwrite worlds already migrated by a newer build; offer recovery from the retained backup.
 

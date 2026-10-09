@@ -1,6 +1,6 @@
 # Architecture
 
-Design baseline: 2026-09-05. Status: implementation specification, not a tested engine. [GAME_DESIGN.md](GAME_DESIGN.md) owns product scope; [PERFORMANCE.md](PERFORMANCE.md) owns budgets; [TESTING.md](TESTING.md) owns evidence requirements.
+Design baseline: 2026-09-05; gameplay-state requirements clarified 2026-09-26. Status: implementation specification; qualification is tracked in milestone evidence. [GAME_DESIGN.md](GAME_DESIGN.md) owns product scope; [PERFORMANCE.md](PERFORMANCE.md) owns budgets; [TESTING.md](TESTING.md) owns evidence requirements.
 
 ## 1. Engine decision
 
@@ -127,6 +127,43 @@ These are project requirements. They are not all stock Voxel Tools settings. M1 
 
 Keep safety data resident around the player, independent of whether a GPU mesh exists. Movement checks a swept readiness volume. If necessary data is missing, halt movement at the last safe boundary and prioritize recovery. Ordinary 6.5 m/s traversal must not routinely hit that boundary; the streaming benchmark checks throughput as well as fps. Teleports and world loads use an explicit loading state until their safety region is ready.
 
+The M1 16³ heavy-route first-boundary experiment adds four fixed preparation
+viewers inside the existing data halo; base required geometry and safety stay
+unchanged. At most 511 resident regions fit the existing 512 cap. A one-process
+pose latch preserves native mesh references during base-viewer handover; all
+preparation/submission/retirement work remains accounted. This narrow fixture
+policy is not a general-world streaming solution or target qualification. See
+[the bounded replay](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
+
+A second visual-only viewer of an already submitted region retains its current
+desired revision, including while an accepted edit replacement is in flight.
+First loads, `post_edit` invalidation and collision-viewer combinations retain
+their existing scheduling. A cloud-only bounded observer copies resource IDs,
+viewer counts and desired/last-submitted revisions without retaining resources
+or reading GPU buffers; ordinary callbacks do not invoke it. See
+[the concurrent-edit replay](docs/M1_FRONTIER_EDIT_HANDOVER.md).
+
+The cloud-only continuous 600-tick H2 replay reuses production commands and
+independently verifies resource/revision/ownership histories, terminal accounting
+and full drain through four handovers. Prepared Z=0/1 cells remain submitted,
+while lateral Z=-1 cells are still queued when their conservative distance falls
+inside 96 m. Pending native admission order requires a bounded causal experiment;
+this replay does not change it, widen demand or qualify full-route/target timing.
+See [continuous travel evidence](docs/M1_FRONTIER_TRAVEL.md).
+
+The opt-in native 16³ H2 admission experiment now demonstrates that insertion
+order admits farther fresh meshes before nearer lateral coverage. During measured
+gameplay it orders current loaded replacements first, then never-submitted
+visuals by closed-box distance to the actual camera, with FIFO ties/remaining
+work. Loading, retirement and ordinary production retain FIFO. It reorders the
+existing vector within 512 candidates and the unchanged concurrent four-task
+guard; a 64-record/2 MiB native trace and bounded streamed evidence verify actual
+selection, current revisions and pre-entry submission. The four matched 600-tick
+priority runs have no conservative coverage alarm, with no change to demand,
+world/save semantics, workers or qualification policy. This experimental result
+does not establish reversal/full-route/target timing or shared instrumentation
+cost. See [native admission evidence](docs/M1_MESH_ADMISSION.md).
+
 Edits are validated commands: reach, inventory, collision, bounds, readiness and complexity admission. A successful command assigns a revision, changes voxel/inventory state consistently, marks affected border meshes and lighting, and queues its persistence payload. Coalesce repeated edits to the same chunk. Main-thread reads/edits must not wait behind a long worker-held spatial lock; use short snapshots, retry/try-lock paths or narrowly scoped native adaptation where required.
 
 Never discard unsaved state during eviction. Once its complete transaction is durably journalled, in-memory chunk data may be evicted even if snapshot compaction is pending. Reload reconstructs the snapshot plus all later committed records. Bound mesh destruction as well as creation; releasing hundreds of buffers at once is not free.
@@ -135,7 +172,7 @@ Never discard unsaved state during eviction. Once its complete transaction is du
 
 Start with `VoxelTerrain`, `VoxelMesherBlocky`, shared `VoxelBlockyLibrary` resources, hidden-face removal and frustum culling. **The stock blocky mesher does not do greedy meshing.** Its vertex ambient occlusion is useful, but it is not the game's full sunlight/emissive-light system. [Blocky meshing](https://voxel-tools.readthedocs.io/en/latest/blocky_terrain/).
 
-Keep at most three terrain material families: opaque, cutout and water. Empty surfaces create no draw calls. Prefer opaque geometry for leaves and small plants where it remains attractive; keep cutout coverage bounded. Use a minimal atlas shader, no normal maps or real-time shadows on the target preset, and linear/distance fog. Use ordinary frustum/backface/hidden-face culling first; dynamic occluder baking is not part of the initial implementation.
+Keep at most three terrain material families: opaque/emissive, cutout and water. The core block set includes stairs/slabs and bounded water/lava/falling-block behaviour; collision shapes, orientation and fluid/light state must remain data-driven with no node per voxel. Empty surfaces create no draw calls. Prefer opaque geometry for leaves and small plants where it remains attractive; keep cutout coverage bounded. Use a minimal atlas shader, no normal maps or real-time shadows on the target preset, and linear/distance fog. Use ordinary frustum/backface/hidden-face culling first; dynamic occluder baking is not part of the initial implementation.
 
 The project owns a native light field and the shader/mesh attribute path that consumes it. Implement this explicitly in M2/M5; do not assume the upstream mesher automatically reads a custom light channel. Seed skylight from bounded column summaries, propagate at most 15 intensity levels, and propagate removals as well as additions. Persist/reconstruct boundary conditions so load order cannot leave lighting seams. Changing time of day changes a shader multiplier, not every chunk mesh.
 
@@ -169,6 +206,8 @@ Logical schema:
 | `state_snapshots` | Player, inventory, entities, containers and progression at an identified sequence |
 
 Journal authoritative after-values and explicit IDs, including all sides of inventory/world changes. Replaying must not call a recipe RNG or generation function to rediscover an outcome. Commit coupled state changes atomically. A block removed and its item awarded are one logical transaction. Snapshots are acceleration data; transactions after their incorporated sequence remain recoverable. Prune journal prefixes only after every affected snapshot and the pruning watermark are committed consistently.
+
+The Java-style core contract uses nine hotbar plus twenty-seven backpack slots, armour/offhand slots, 2×2/3×3 crafting grids and input/fuel/output furnace state. Grid consumption/output, tool durability, death inventory clearing plus item-drop creation, pickup and drop expiry all use the transaction model above. Unloaded crops/furnaces pause; loaded-time item expiry never advances from the system clock. Drop-cap saturation retains bounded authoritative pending contents instead of deleting inventory. The core reference is a behaviour contract, not Minecraft save or protocol compatibility.
 
 Target a durable batch at least once per second in active play. Distinguish visible changes from durable changes in diagnostics. The 2-second/8-MiB pending ceiling pauses new mutations if the writer stalls. Save and Quit waits asynchronously for a barrier covering all accepted commands and the final player state, then closes cleanly. On failure, keep the session recoverable and show the problem rather than claiming success.
 

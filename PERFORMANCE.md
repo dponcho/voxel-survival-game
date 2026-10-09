@@ -1,6 +1,15 @@
 # Performance contract
 
-Design baseline: 2026-09-05. **No performance result has been measured for this project.** Every number below is a requirement, admission limit or initial engineering allocation. Settings become a certified profile only after the exported Windows build passes on the specified machine.
+The M1 first-boundary correction adds four fixed 1 m preparation viewers only
+to the 16³ +X heavy fixture routes. Required visual geometry/fog remains 96 m;
+data remains 128 m. The worst resident mesh envelope is 511 under the existing
+512 cap; workers, admission/results, upload and safety budgets below are
+unchanged. Preparation is shared by probe-off/on and calibration, and its real
+native/callback/retirement cost is retained. It is not a full-route performance
+pass or a 32³/general-world policy. See
+[M1_FRONTIER_BOUNDARY_REPLAY.md](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
+
+Design baseline: 2026-09-05. The [September 25 target reports](docs/M1_TARGET_REVIEW.md) were reviewed on 2026-09-26; **no profile is qualified yet**. All numbers below remain requirements, admission limits or initial engineering allocations. The Java-style product-direction change does not relax these gates. Settings become a certified profile only after the exported Windows build passes on the specified machine.
 
 ## 1. Fixed target and meaning of a pass
 
@@ -32,6 +41,7 @@ No finite benchmark proves every possible operating-system event or construction
 | Resolution / scale | 1280 × 720 / 1.0 |
 | Display pacing | 60-Hz target; uncapped/VSync-off only for workload diagnosis |
 | Visual radius | 96 m, six 16-voxel data-chunk widths |
+| M1 distance fog | Compatibility depth fog, begin 16 m / opaque end 96 m, density 1 / curve 1; rendered target boundary unverified |
 | Data prefetch radius | 128 m plus the measured required halo |
 | Data / render block | 16³ / 32³; compare 16³ render blocks in M1 |
 | Terrain CPU workers | One on this 4-logical-thread machine |
