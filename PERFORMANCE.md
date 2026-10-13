@@ -9,6 +9,13 @@ native/callback/retirement cost is retained. It is not a full-route performance
 pass or a 32³/general-world policy. See
 [M1_FRONTIER_BOUNDARY_REPLAY.md](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
 
+The experimental opt-in admission priority is independently verified in matched
+600/1,200-tick cloud H2 comparisons, including the original camera turn at tick
+900, with the same resident/work/safety limits. Ordinary production retains
+FIFO; diagnostic and target performance requirements below are unchanged.
+Traced elapsed timing does not estimate per-frame or shared causal overhead.
+See [M1_FRONTIER_REVERSAL.md](docs/M1_FRONTIER_REVERSAL.md).
+
 Design baseline: 2026-09-05. The [September 25 target reports](docs/M1_TARGET_REVIEW.md) were reviewed on 2026-09-26; **no profile is qualified yet**. All numbers below remain requirements, admission limits or initial engineering allocations. The Java-style product-direction change does not relax these gates. Settings become a certified profile only after the exported Windows build passes on the specified machine.
 
 ## 1. Fixed target and meaning of a pass

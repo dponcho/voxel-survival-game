@@ -145,8 +145,14 @@ SHA-256 `ec2cd5d89774173ff55072362cafc6b3fde253d6b86547bc5c3a29078735ac4f`.
 See [the exact public record](evidence/m1-mesh-admission-cloud-2026-10-09.json) and
 [the durable ordinary contract baseline](evidence/m1-frontier-travel-contracts-2026-10-09.json).
 
-The prototype correction is experimental. Full/repeated routes and the 15-second
-reversal are not yet tested with it; target pixels, driver behavior, HD 620 timing,
+The prototype correction is experimental. The October 9 result covered only
+600 ticks; its subsequent October 13 [bounded camera-reversal proof](M1_FRONTIER_REVERSAL.md)
+now verifies 1,200 ticks, the original camera turn at tick 900 with outward motion
+unchanged, all eighty original edits and eight handovers in each priority run.
+All four priority runs retain zero coverage alarms before/after and all sixteen
+lateral witnesses submitted before 96 m entry. Actual outside-96 m eviction,
+FIFO coverage/edit failures and one FIFO timeout remain. Ordinary untraced
+priority, full/repeated routes, target pixels, driver behavior, HD 620 timing,
 per-frame CPU/GPU sensitivity and shared causal overhead remain unverified.
 M1 remains blocked, M2 gated and no target profile qualified. No new target-side
 run/download is requested. No engine ran locally.

@@ -141,8 +141,15 @@ observations in all four matched 600-tick runs. All 32 current submissions prece
 96 m entry. Initial pre-admission missing identities stay null. Demand, fog,
 radii, caps and qualification policy remain unchanged; ordinary production keeps
 FIFO. This is a bounded software correction, with instrumentation-perturbed wall
-timing, not target pixels/throughput. Full/repeated routes and reversal remain
-unverified.
+timing, not target pixels/throughput. The October 13 [camera-reversal comparison](M1_FRONTIER_REVERSAL.md)
+adds eight 1,200-tick processes while preserving outward motion and the exact
+tick-900 camera turn. All four priority runs retain zero alarms before/after,
+all eighty original edits submitted and all 64 lateral submissions before 96 m
+entry. FIFO retains 36/38/37/36 pre-turn alarms, zero post-turn alarms, four
+edit-duration failures and one timeout. Outside-96 m edited-cell eviction is
+actually observed with last submitted identities and subsequent missing/null
+states. This bounds the traced opt-in scope; ordinary untraced priority,
+full/repeated routes, target pixels/timing and causal overhead remain unverified.
 
 The separate schema 6 [matched heavy comparison](M1_HEAVY_DIAGNOSTIC_AB.md)
 now exercises this exact scan on H1/H2 routes. Its off mode dispatches no scan;

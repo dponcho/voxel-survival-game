@@ -5,7 +5,70 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: experimental native admission correction
+## Current Windows candidate: bounded original H2 camera reversal
+
+Completed October 13 UTC: **opt-in native admission priority through the original
+H2 camera reversal**, implementation `51be24a6a45690b536f23c3f3ddccfdabd5fe567`.
+Read [M1_FRONTIER_REVERSAL.md](M1_FRONTIER_REVERSAL.md). Eight fresh FIFO/priority
+editor/release one/two-worker processes execute 1,200 fixed ticks. The camera
+turns at tick 900; outward 6.5 m/s motion continues. Every pair retains exact
+work/configuration/commands, 28,800 actor updates, 80 accepted due edits, 20 saves
+and eight actual ownership handovers. Four preparation viewers, 96/128 m radii,
+512 mesh cap, admission/worker limits, safety and world/save semantics remain.
+The correction remains experimental and opt-in; ordinary production keeps FIFO.
+
+[CI 38333317049](https://github.com/dponcho/voxel-survival-game/actions/runs/38333317049)
+passed all three jobs on the first attempt: 91 Python regressions, six sanitizer
+suites, matching-engine qualifications, all eight new processes, every earlier
+control/replay/runtime/profile check, DLL audit and two fresh offline extractions.
+Independent published-download review verifies byte round-trip, CRC/paths, all
+78 PCK entry MD5s, native/build identity, eight self-tests and 38 PE imports. It
+reconciles the complete saved evidence and rejects all 26 earlier plus twelve
+new mutations. A separate read-only downloaded-file audit reproduces all numeric,
+classification, phase and witness fields; only the expected OS missing-file
+exception text/temporary path differs. No engine or compiler ran locally.
+
+Priority has **zero coverage alarms before and after the camera turn, zero
+lateral unready observations and all 80 original edits submitted in all four
+runs**. All 64 lateral witnesses are current before 96 m entry. Edit and operation
+guards pass; priority assessments remain **inconclusive** under the unchanged 1%
+diagnostic guard. FIFO retains 36/38/37/36 coverage alarms, all before the turn,
+and fails edit-duration guards in every run. Its post-turn coverage is also zero.
+Editor/two-worker FIFO retains one timed-out original edit at `[96, 6, 13]`,
+201,272 microseconds, with revisions 850/851 unsubmitted; this is not suppressed.
+
+The eight new trials reconcile 26,770 native records / 28,419,106 bytes,
+20,148 observations / 128,681,342 bytes, all 24 native phases / 26,826 operation
+rows and 23,211 frame rows. Each evidence file stays within 4,096 rows / 32 MiB;
+maximum pending is 460, mesh/data peaks 511/867, travel retirement high-water two,
+complete retirement high-water 287 and overloads zero, with full drain.
+Previously ready edited cells are actually evicted outside 96 m; last ready
+identities and subsequent missing/null states are retained without holding
+resources. All callbacks, terminal intervals, acknowledgement, native closure,
+writer drain and combined report finalization remain.
+
+Ten ordinary folders / 98 scenarios / 284 phases reconcile 37,349 operation rows,
+14,321 scenario samples and 94 edits. All 42 preceding heavy work/configuration/
+available exact contracts match the durable public baseline. Ordinary short
+16³ H2 still fails edit/diagnostic guards. No ordinary operation exceedance occurs
+in this run; historical cloud/target failures remain unwaived. The original
+600-tick comparisons and all earlier control expectations/qualification flags
+remain. Full/repeated routes, ordinary untraced priority, physical presentation,
+HD 620 timing and shared/per-frame causal diagnostic overhead are still open.
+Instrumented cloud timing does not qualify these gates. **M1 remains blocked.**
+
+Current [Windows player 11783674763](https://github.com/dponcho/voxel-survival-game/actions/runs/38333317049/artifacts/11783674763)
+expires `2026-11-12T02:01:01Z`. Exported merge/build:
+`439398d6be1f06f1fd15e7c80daf76bb669ccc8b`; implementation/build tree:
+`b1af2634f746ec1e93f8ced3750d4a22cdc45e84`. Portable ZIP SHA-256:
+`5c49e34a1d041c41f349f52273ceb16c3de8f7662fbd2ea40d63fa0812be36ff`;
+30,127,996 bytes. Native key is unchanged:
+`b45c169f391a4af65b5b4157dc1cc112b7dbd1ddd8b5fb2f85cf529bf694f502`, source-built in
+CI 37869341867 and freshly requalified here. Exact artifacts, saved witnesses and
+preserved failures are in [the public record](evidence/m1-frontier-reversal-cloud-2026-10-13.json).
+**No new target-side action is needed now.**
+
+## Previous Windows candidate: experimental native admission correction
 
 Completed October 9 UTC: **experimental native pending-admission correction**,
 latest implementation `f79f4ecd2748a3b5d67afd8f4dea6a1e6fad288e`. Read
@@ -46,7 +109,7 @@ of 786 µs exceeds 750 µs and remains visible. Historical target upload failure
 full/repeated routes, physical pixels/presentation and shared/per-frame causal
 overhead remain unresolved. Observers/sorting/file I/O perturb wall time.
 
-Current [Windows player 11593794161](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633/artifacts/11593794161)
+Previous [Windows player 11593794161](https://github.com/dponcho/voxel-survival-game/actions/runs/37878551633/artifacts/11593794161)
 expires `2026-11-08T03:40:21Z`. Exported merge/build:
 `41527690339ba965bbc36a126fc790522bb0e9f3`; implementation/build tree:
 `09d85f59b37e715e5f9a925693d222fa33ab0bec`. Portable ZIP SHA-256:

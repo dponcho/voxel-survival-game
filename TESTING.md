@@ -301,3 +301,15 @@ missing states remain null. The post-package audit re-reads all saved trials,
 coverage windows and terminal accounting, and rejects twelve further mutations
 of actual reversal/retention/evidence guards. Limits and stopping conditions are
 predeclared in [M1_FRONTIER_REVERSAL.md](docs/M1_FRONTIER_REVERSAL.md).
+
+CI 38333317049 passes all three jobs, 91 Python regressions, six native sanitizer
+suites, every prior check and the eight new processes. Published-download and
+separate read-only saved audits verify all arithmetic/classification/phase/
+witness fields, 78 PCK MD5s, eight self-tests and 38 imports; the preserved missing-
+file mutation's OS exception text/temporary path is the sole environment
+difference. All 26 older and twelve new saved mutations are rejected. Priority
+has zero actual coverage alarms before/after the camera turn and all eighty
+original edits submitted in each run. FIFO's four edit-duration failures and one
+timeout remain. Evidence-reader success does not imply a passing scenario;
+priority assessments remain inconclusive under the unchanged diagnostic guard.
+No local engine execution or HD 620 qualification is claimed.

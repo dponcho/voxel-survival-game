@@ -160,9 +160,13 @@ existing vector within 512 candidates and the unchanged concurrent four-task
 guard; a 64-record/2 MiB native trace and bounded streamed evidence verify actual
 selection, current revisions and pre-entry submission. The four matched 600-tick
 priority runs have no conservative coverage alarm, with no change to demand,
-world/save semantics, workers or qualification policy. This experimental result
-does not establish reversal/full-route/target timing or shared instrumentation
-cost. See [native admission evidence](docs/M1_MESH_ADMISSION.md).
+world/save semantics, workers or qualification policy. The subsequent matched
+1,200-tick experiment also retains current coverage through the original tick-900
+camera turn, all eighty edits and eight handovers, recording legitimate outside-
+96 m eviction without retaining resources. Both remain opt-in cloud experiments;
+ordinary untraced priority, full/repeated routes, target timing and shared
+instrumentation cost remain unverified. See [native admission evidence](docs/M1_MESH_ADMISSION.md)
+and [camera-reversal evidence](docs/M1_FRONTIER_REVERSAL.md).
 
 Edits are validated commands: reach, inventory, collision, bounds, readiness and complexity admission. A successful command assigns a revision, changes voxel/inventory state consistently, marks affected border meshes and lighting, and queues its persistence payload. Coalesce repeated edits to the same chunk. Main-thread reads/edits must not wait behind a long worker-held spatial lock; use short snapshots, retry/try-lock paths or narrowly scoped native adaptation where required.
 

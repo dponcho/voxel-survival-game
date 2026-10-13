@@ -58,4 +58,86 @@ throughput nor per-frame CPU/GPU critical-path cost, shared diagnostic overhead,
 physical presentation or HD 620 qualification. No replacement assessment policy
 is adopted. M1 remains blocked; no new target-side action is needed now.
 
-Cloud verification pending; no measured reversal outcome is claimed.
+## Verified October 13 cloud result
+
+Implementation `51be24a6a45690b536f23c3f3ddccfdabd5fe567` and exported merge/build
+`439398d6be1f06f1fd15e7c80daf76bb669ccc8b` share tree
+`b1af2634f746ec1e93f8ced3750d4a22cdc45e84`.
+[CI 38333317049](https://github.com/dponcho/voxel-survival-game/actions/runs/38333317049)
+passed all three jobs on its first attempt: 91 Python regressions, six native
+sanitizer suites, matching editor/debug/release qualification, all eight new
+processes, every preceding control/replay/runtime/profile check, DLL audit and
+two fresh offline extractions. The exact source-built native binaries are reused
+under unchanged key
+`b45c169f391a4af65b5b4157dc1cc112b7dbd1ddd8b5fb2f85cf529bf694f502`.
+No engine or compiler ran locally.
+
+| Engine / workers | FIFO coverage before / after camera turn | FIFO lateral unready observations | Priority coverage before / after | Priority lateral unready | Priority current before 96 m entry |
+| --- | --- | --- | --- | --- | --- |
+| Editor / 1 | 36 / 0 | 77 | 0 / 0 | 0 | 16 / 16 |
+| Editor / 2 | 38 / 0 | 81 | 0 / 0 | 0 | 16 / 16 |
+| Release / 1 | 37 / 0 | 79 | 0 / 0 | 0 | 16 / 16 |
+| Release / 2 | 36 / 0 | 77 | 0 / 0 | 0 | 16 / 16 |
+
+The camera reverses exactly at tick 900 while outward motion continues to
+`[139.99847412109375, 0.0010000000474974513, 10]` (float32). Each pair retains
+exact work/configuration/command evidence: 1,200 ticks, 28,800 actor updates,
+80 accepted due edits, 20 saves and eight actual `1 -> 2 -> 1` handovers at
+ticks 56/204/351/499/647/794/942/1090. All 64 priority lateral witnesses are
+currently submitted before entry, including columns 13/14 requested after the
+camera turns. FIFO's retained alarms all precede the turn; its post-turn scan
+also reports zero. The result does not establish a FIFO camera-turn failure.
+
+Priority submits all original 80 edit identities per run, with no supersession,
+cancellation, timeout or unavailable outcomes, and passes the existing edit and
+operation guards. Its submitted-edit maximum latencies are
+42,094/42,060/42,121/41,974 microseconds; these instrumented cloud observations
+do not estimate target performance or causal overhead. FIFO fails the edit
+duration guard in all four runs. Editor/two-worker FIFO additionally retains
+edit 53 at voxel `[96, 6, 13]`, timed out after 201,272 microseconds with both
+current requested revisions 850/851 still unsubmitted. Its terminal report has
+79 submitted plus one timeout; the reader preserves that failure. Every run's
+operation guard passes. Every priority scenario remains **inconclusive**, solely
+under the unchanged diagnostic-cost guard; FIFO scenarios remain failed.
+
+Three previously ready edited cells per run, `[-1, 0, 0]`, `[0, 0, 0]` and
+`[1, 0, 0]`, are actually evicted outside 96 m. Last submitted identities and
+the subsequent native missing/null observations are retained. The observer does
+not retain resources or treat missing as air. Loss inside required geometry and
+fabricated non-null missing identities are rejected. Mesh/data peaks remain
+511/867, travel retirement high-water two, complete retirement high-water 287,
+and overloads zero, with full native drain.
+
+The eight trials reconcile **26,770 native admission records / 28,419,106 bytes,
+20,148 observations / 128,681,342 bytes, 24 native phases / 26,826 operation rows
+and 23,211 frame rows**. Maximum pending is 460. Each file stays below the
+predeclared 4,096-row/32 MiB limits; every callback, phase closure,
+acknowledgement, writer drain and combined finalization is retained. Published
+download review verifies portable byte round-trip, archive CRC/paths, all 78 PCK
+entry MD5s, exact native/build identities, eight native/game/offline self-tests
+and 38 PE imports. The independent saved reader rejects all 26 earlier mutations
+and twelve new mutations covering incomplete/camera/motion/tail/null/eviction/
+checkpoint/operation/I/O/phase/final-callback evidence. Three new Python tests
+also use an independent exact float32/integer command oracle and reject 21
+modeled faults; the original 600-tick case cannot be replaced by this case.
+
+Ten ordinary folders / 98 scenarios / 284 phases reconcile 37,349 operation rows,
+14,321 scenario samples and 94 edits. All 42 preceding heavy work/configuration/
+available exact contracts match the durable public baseline. Ordinary production
+still uses FIFO, and short 16³ H2 retains edit/diagnostic failures. No ordinary
+operation exceedance occurred in this run; earlier measured cloud/target
+operation failures remain historical and unwaived. Every prior assessment and
+control expectation remains. Headless OpenGL readback is still unavailable.
+
+[Windows player 11783674763](https://github.com/dponcho/voxel-survival-game/actions/runs/38333317049/artifacts/11783674763)
+expires `2026-11-12T02:01:01Z`. Portable ZIP: 30,127,996 bytes; SHA-256
+`5c49e34a1d041c41f349f52273ceb16c3de8f7662fbd2ea40d63fa0812be36ff`.
+See [the public verification record](evidence/m1-frontier-reversal-cloud-2026-10-13.json)
+for exact artifacts, saved witnesses, preserved failures and qualification flags.
+
+This verifies the opt-in, traced twenty-second scope. Ordinary priority without
+the replay observer/admission trace, full/repeated routes, physical pixels,
+HD 620 pacing, per-frame CPU/GPU sensitivity and shared diagnostic overhead remain
+unverified. The next bounded check exercises that ordinary untraced path with
+matched work and unchanged guards; it does not adopt a broader default policy.
+M1 remains blocked, M2 gated; **no new target-side action is needed now**.

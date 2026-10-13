@@ -60,8 +60,15 @@ cause and priority correction in four matched editor/release one/two-worker
 32 lateral cells currently submitted before 96 m entry. Work, caps, accepted
 revisions and retirement remain exact. Production stays FIFO while the correction
 is experimental; diagnostic, operation, full-route and target gates remain open.
-[Admission evidence](docs/M1_MESH_ADMISSION.md) and [the next bounded reversal
-check](docs/NEXT_TASK.md) keep M1 blocked and M2 gated.
+[Admission evidence](docs/M1_MESH_ADMISSION.md) is supplemented on October 13 by
+four matched 1,200-tick comparisons through the original tick-900 camera turn:
+priority has zero alarms before/after, all eighty edits submitted and all 64
+lateral witnesses current before 96 m entry. Legitimate eviction and complete
+drain remain visible; FIFO retains coverage/edit failures and one timeout.
+The traced opt-in result leaves ordinary untraced priority, full/repeated routes,
+diagnostic overhead and target qualification open. [Reversal evidence](docs/M1_FRONTIER_REVERSAL.md)
+and [the next bounded ordinary-path check](docs/NEXT_TASK.md) keep M1 blocked and
+M2 gated.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 
