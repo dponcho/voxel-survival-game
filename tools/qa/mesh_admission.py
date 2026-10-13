@@ -32,7 +32,7 @@ def urgency(item, origin, side):
     return category, squared if category == 1 else 0
 
 
-def verify_record(row, mode):
+def verify_record(row, mode, *, targets=CELLS):
     require(row['valid'] is True and type(row['priority']) is bool and type(row['side']) is int and row['side'] == 16
             and type(row['phase']) is int and row['phase'] in (0,1,2,3), 'Unavailable/native phase mismatch')
     require(type(row['pending_count']) is int and 0 <= row['pending_count'] <= 512
@@ -66,7 +66,7 @@ def verify_record(row, mode):
     if not row['priority'] and row['phase'] == 2:
         for i,c in enumerate(pending):
             cell = tuple(c[:3])
-            if cell not in CELLS or i in chosen or urgency(c,origin,16)[0] != 1: continue
+            if cell not in targets or i in chosen or urgency(c,origin,16)[0] != 1: continue
             farther = [j for j in chosen if urgency(pending[j],origin,16)[0] == 1
                        and urgency(pending[j],origin,16)[1] > urgency(c,origin,16)[1]]
             if farther: bypasses.append(dict(block=list(cell),desired_revision=str(c[4]),row=row['row'],
@@ -120,9 +120,10 @@ def lateral_boundaries(rows, admissions):
     return result
 
 
-def reconcile(folder, build, workers=1, priority=False):
+def reconcile(folder, build, workers=1, priority=False, *, reversal=False):
     folder = Path(folder)
-    t = travel(folder, build, workers)
+    t = travel(folder, build, workers, reversal=reversal)
+    targets = {(x,y,-1) for x in range(7,15) for y in (-1,0)} if reversal else CELLS
     meta = json.loads((folder/'mesh-admission-summary.json').read_text())
     require(meta['version'] == 'm1-mesh-admission-1' and meta['passed'] is True and meta['qualified'] is False
             and meta['target_performance'] == 'not_run' and meta['build'] == build and meta['priority'] is priority
@@ -154,7 +155,7 @@ def reconcile(folder, build, workers=1, priority=False):
             require(len(line.encode()) < 65536, 'Oversized admission row')
             row = json.loads(line);count += 1
             require(count <= 4096 and row['row'] == count and row['start_usec'] >= previous, 'Lost/reordered/stalled native selection record')
-            pending, chosen, skipped = verify_record(row,priority)
+            pending, chosen, skipped = verify_record(row,priority,targets=targets)
             previous = row['end_usec'];maximum = max(maximum,len(pending));admissions += len(chosen)
             decision_sum += row['decision_usec'];decision_max = max(decision_max,row['decision_usec'])
             brackets = [windows[row['phase']]] if row['phase'] else gaps
@@ -165,11 +166,11 @@ def reconcile(folder, build, workers=1, priority=False):
             if row['phase'] == 2:
                 for rank in chosen:
                     c = pending[rank];cell = tuple(c[:3])
-                    if cell in CELLS and not c[3] & 4:
+                    if cell in targets and not c[3] & 4:
                         initial.setdefault(cell,dict(block=list(cell),desired_revision=str(c[4]),row=count,
                             start_usec=row['start_usec'],end_usec=row['end_usec'],original_queue_rank=rank,
                             selected_rank=chosen.index(rank),origin=row['origin']))
-    require(count == meta['rows'] and maximum == snapshot['max_pending'] and set(initial) == CELLS,
+    require(count == meta['rows'] and maximum == snapshot['max_pending'] and set(initial) == targets,
             'Missing original lateral admissions or native trace totals')
     if priority: require(priority_changes > 0,'Priority experiment did not change actual native selection')
     require(meta['trace_finalization_end_usec'] >= meta['trace_finalization_begin_usec'] >= previous,
@@ -186,9 +187,9 @@ def reconcile(folder, build, workers=1, priority=False):
         shared_causal_overhead=None,per_frame_cpu_gpu_causal_cost=None)
 
 
-def compare(fifo_folder, priority_folder, build, workers):
-    fifo = reconcile(fifo_folder,build,workers,False)
-    priority = reconcile(priority_folder,build,workers,True)
+def compare(fifo_folder, priority_folder, build, workers, *, reversal=False):
+    fifo = reconcile(fifo_folder,build,workers,False,reversal=reversal)
+    priority = reconcile(priority_folder,build,workers,True,reversal=reversal)
     summaries = [json.loads((Path(p)/'summary.json').read_text())['scenarios'][0] for p in (fifo_folder,priority_folder)]
     require(summaries[0]['workload_contract'] == summaries[1]['workload_contract']
             and summaries[0]['workload_evidence'] == summaries[1]['workload_evidence'], 'Admission comparison changed workload commands')

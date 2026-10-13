@@ -12,11 +12,23 @@ var edit_attempt: Dictionary = {}
 var phase_guards: Array[Dictionary] = []
 var observation_failure: bool = false
 
+func _travel_ticks() -> int:
+	return TRAVEL_TICKS
+
+func _travel_id() -> String:
+	return "AB-H2-travel"
+
+func _boundary_ticks() -> Array[int]:
+	return [56, 204, 351, 499]
+
+func _extra_observation() -> Dictionary:
+	return {}
+
 func _ready() -> void:
 	test_mode = true
 	mode = "travel-replay"
 	render_size = 16
-	scenarios = [{"id": "AB-H2-travel", "workload": "H2", "seconds": 10.0,
+	scenarios = [{"id": _travel_id(), "workload": "H2", "seconds": _duration(),
 		"fixture": 1, "actors": 24, "rate": 4.0, "frontier_enabled": true}]
 	super._ready()
 	startup.stop(Time.get_ticks_usec(), "separate continuous H2 cloud replay")
@@ -25,7 +37,7 @@ func _ready() -> void:
 	if observations == null: observation_failure = true
 
 func _duration() -> float:
-	return float(TRAVEL_TICKS) / 60.0
+	return float(_travel_ticks()) / 60.0
 
 func _edit_border(tool: VoxelTool) -> bool:
 	var position_value := Vector3i(int(round(player.x / 32.0)) * 32, 6, int(floor(player.z)) + 3)
@@ -49,7 +61,7 @@ func _process_frame(now: int) -> void:
 	# Observe before the production callback can begin asynchronous closure.
 	if state in ["running", "acknowledging"]:
 		var boundary: bool = false
-		for tick: int in [56, 204, 351, 499]:
+		for tick: int in _boundary_ticks():
 			if absi(simulation_ticks - tick) <= 4: boundary = true
 		if observed_tick != simulation_ticks or boundary or state == "acknowledging":
 			_observe("process")
@@ -81,6 +93,7 @@ func _observe(stage: String) -> void:
 		"trace": probe.edit_trace_snapshot(), "meshes": probe.sample_mesh_blocks(terrain, coordinates),
 		"lateral": probe.sample_mesh_blocks(terrain, [Vector3i(current[0].x - 1, -1, -1), Vector3i(current[0].x - 1, 0, -1)]),
 		"edit_attempt": edit_attempt if stage == "physics" else {}}
+	row.merge(_extra_observation())
 	var encoded: String = JSON.stringify(row) + "\n"
 	var size: int = encoded.to_utf8_buffer().size()
 	if size >= 32768 or observations == null or observation_rows >= OBSERVATION_CAP or observation_bytes + size > OBSERVATION_BYTES:
@@ -115,7 +128,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	var result: Dictionary = {"version": "m1-frontier-travel-1", "build": build_info,
 		"passed": outcome == "completed" and integration_failures.is_empty(), "qualified": false,
 		"target_performance": "not_run", "failures": integration_failures,
-		"ticks": TRAVEL_TICKS, "row_cap": OBSERVATION_CAP, "byte_cap": OBSERVATION_BYTES,
+		"ticks": _travel_ticks(), "row_cap": OBSERVATION_CAP, "byte_cap": OBSERVATION_BYTES,
 		"rows": observation_rows, "bytes": observation_bytes, "phase_guards": phase_guards,
 		"drained": drained, "final_native": final_native,
 		"scope": "continuous production H2 commands; synchronous cloud observations perturb timing; no overhead/target qualification"}

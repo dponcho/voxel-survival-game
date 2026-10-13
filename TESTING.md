@@ -289,3 +289,15 @@ revision changes fail. CI 37878551633 verifies 88 Python regressions, six
 sanitizer suites and all eight matched admission runs. The on-demand inspection
 workflow is retained for explicit review of the original failing cloud evidence;
 it is not an automatic qualification check. Engine execution stays in Actions.
+
+### Bounded H2 camera reversal
+
+Eight additional FIFO/priority editor/release processes with one/two workers run
+1,200 fixed ticks on the original outward H2 route, with camera reversal at tick
+900, all 80 due edits and 20 saves. The existing 600-tick checks remain required.
+Independent controls check exact camera assignment/fingerprint, eight handovers,
+current edit/revision/resource evidence and legitimate outside-96 m eviction;
+missing states remain null. The post-package audit re-reads all saved trials,
+coverage windows and terminal accounting, and rejects twelve further mutations
+of actual reversal/retention/evidence guards. Limits and stopping conditions are
+predeclared in [M1_FRONTIER_REVERSAL.md](docs/M1_FRONTIER_REVERSAL.md).

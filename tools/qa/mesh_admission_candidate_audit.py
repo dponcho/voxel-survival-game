@@ -6,6 +6,7 @@ sys.path.insert(0,str(ROOT/'tools/ci'))
 from pipeline import input_hash
 from mesh_admission import compare,reconcile
 from frontier_travel import reconcile as travel
+from frontier_reversal import compare as reversal_compare, reconcile as reversal_reconcile
 from endpoint_precision import reconcile_saved as endpoint
 from fixed_work import reconcile_saved as fixed,reconcile_runtime as fixed_runtime
 from cpu_dose import reconcile_saved as cpu,reconcile_runtime as cpu_runtime,scope as cpu_scope
@@ -194,6 +195,41 @@ def mutations(folder,info,workers):
             else:raise RuntimeError('Saved mutation accepted: '+fault)
     return dict(passed=True,count=len(results),all_rejected=True,reasons=results)
 
+def reversal_mutations(folder,info):
+    faults=('incomplete','camera','motion','unavailable-tail','tail-alias','missing-inside','lost-eviction-null','lost-checkpoint','failed-operation-guard','io','native-phase','final-callback')
+    results={}
+    for fault in faults:
+        with tempfile.TemporaryDirectory(prefix='cairn-reversal-mutation-') as tmp:
+            d=Path(tmp);shutil.copytree(folder,d,dirs_exist_ok=True)
+            s=read(d/'summary.json')
+            if fault in ('incomplete','camera','motion','unavailable-tail','tail-alias','missing-inside','lost-eviction-null'):
+                p=d/'travel-observations.jsonl';rows=[json.loads(v) for v in p.read_text().splitlines()]
+                r=next(v for v in rows if v['stage']=='physics' and v['tick']==900)
+                if fault=='incomplete':rows.pop()
+                if fault=='camera':r['yaw']=-1.5707963705062866;r['camera_reversed']=False
+                if fault=='motion':r['player'][0]-=.216667
+                if fault=='unavailable-tail':r['edit_tail']=dict(status='unavailable',reason='missing',blocks=None,probe_usec=None)
+                if fault=='tail-alias':rows[0]['edit_tail']['blocks'][1]['mesh_id']='9007199254740993'
+                if fault=='missing-inside':r['edit_tail']['blocks'][0]['state']='missing'
+                if fault=='lost-eviction-null':
+                    block=next(b for v in rows for b in v['meshes']['blocks'] if b['state']=='missing' and v['tick']>900)
+                    block['submitted_revision']=1
+                p.write_text(''.join(json.dumps(v)+'\n' for v in rows));t=read(d/'travel-summary.json');t['bytes']=p.stat().st_size;(d/'travel-summary.json').write_text(json.dumps(t))
+            if fault=='lost-checkpoint':s['scenarios'][0]['workload_evidence']['route_checkpoints'].pop(1)
+            if fault=='final-callback':s['scenarios'][0]['diagnostic_accounting']['last_callback_usec']+=1
+            if fault=='failed-operation-guard':
+                p=d/'travel-summary.json';t=read(p);t['phase_guards'][0]['failures']=['fabricated guard'];p.write_text(json.dumps(t))
+            if fault=='io':
+                p=d/'mesh-admission-summary.json';t=read(p);t['bytes']+=1;p.write_text(json.dumps(t))
+            if fault=='native-phase':
+                p=d/'mesh-admission.jsonl';rows=[json.loads(v) for v in p.read_text().splitlines()];next(v for v in rows if v['phase']==2)['phase']=3
+                p.write_text(''.join(json.dumps(v)+'\n' for v in rows));m=read(d/'mesh-admission-summary.json');m['bytes']=p.stat().st_size;(d/'mesh-admission-summary.json').write_text(json.dumps(m))
+            (d/'summary.json').write_text(json.dumps(s))
+            try:reversal_reconcile(d,info,1,True)
+            except (RuntimeError,ValueError,TypeError,KeyError,OSError) as e:results[fault]=str(e)
+            else:raise RuntimeError('Saved reversal mutation accepted: '+fault)
+    return dict(passed=True,count=len(results),all_rejected=True,reasons=results)
+
 def audit():
     reports=ROOT/'reports';published=ROOT/'build/published-player'
     raw=(published/'Cairn-windows-x86_64.zip').read_bytes()
@@ -245,6 +281,16 @@ def audit():
             p=list((reports/(name+'-raw')).glob('*/travel-summary.json'));require(len(p)==1,'Missing prior continuous replay')
             v=travel(p[0].parent,info,workers);require(v==read(reports/(name+'-validation.json')),'Saved continuous replay')
             legacy[name]=v
+    reversal_trials={}
+    for label in ('editor','release'):
+        for workers in (1,2):
+            name='m1-frontier-reversal-'+label+'-'+str(workers);pair=[]
+            for mode in ('fifo','priority'):
+                files=list((reports/(name+'-'+mode+'-raw')).glob('*/mesh-admission-summary.json'))
+                require(len(files)==1,'Missing/duplicated camera-reversal trial');pair.append(files[0].parent)
+            v=reversal_compare(*pair,info,workers)
+            require(v==read(reports/(name+'-validation.json')),'Saved camera-reversal oracle differs')
+            reversal_trials[name]=v
     current,ordinary_result=ordinary(reports)
     baseline_path=ROOT/'docs/evidence/m1-frontier-travel-contracts-2026-10-09.json'
     if baseline_path.exists():baseline=read(baseline_path)
@@ -259,10 +305,12 @@ def audit():
     print('CAIRN_ORDINARY_BASELINE='+json.dumps(baseline,separators=(',',':')),flush=True)
     folder=next((reports/'m1-mesh-admission-release-1-priority-raw').glob('*/mesh-admission-summary.json')).parent
     mutation=mutations(folder,info,1)
+    reversal_folder=next((reports/'m1-frontier-reversal-release-1-priority-raw').glob('*/mesh-admission-summary.json')).parent
+    reversal_mutation=reversal_mutations(reversal_folder,info)
     result=dict(passed=True,qualified=False,target_performance='not_run',build=info,native_key=manifest['engine_inputs'],
         portable_sha256=sha(raw),portable_bytes=len(raw),exe_sha256=sha(z.read('Cairn.exe')),pck_sha256=sha(z.read('Cairn.pck')),
         pck_entries_md5_verified=len(entries),pe_imports_verified=len(dlls),self_tests_verified=len(tests),published_download_roundtrip=True,
-        native_manifest=manifest,admission=trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,
+        native_manifest=manifest,admission=trials,reversal=reversal_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,
         target_action_required_now=False,engine_run_locally=False,executor_recovery='independent read-only audit executed in Actions after workspace disconnect')
     (reports/'m1-mesh-admission-independent-audit.json').write_text(json.dumps(result,indent=2))
     print('CAIRN_INDEPENDENT_AUDIT='+json.dumps(result,separators=(',',':')),flush=True)
