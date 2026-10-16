@@ -272,7 +272,7 @@ func _finish_trial() -> void:
 	for phase: Dictionary in phases:
 		if not Evaluation.operation_failures(phase).is_empty(): operation_ok = false
 	var report: Dictionary = reports[-1] if not reports.is_empty() else {}
-	var resource_ok: bool = int(peaks.get("private_bytes", 0)) <= 2147483648 and int(peaks.get("working_set", 0)) <= 1610612736 and int(peaks.get("pool_voxel_total", 0)) <= 201326592
+	var resource_ok: bool = int(peaks.get("private_bytes", 0)) > 0 and int(peaks.get("private_bytes", 0)) <= 2147483648 and int(peaks.get("working_set", 0)) > 0 and int(peaks.get("working_set", 0)) <= 1610612736 and int(peaks.get("pool_voxel_total", 0)) <= 201326592
 	trial.merge({"valid": integration_failures.is_empty() and not report_io_failed and drained and operation_ok and resource_ok and route_clock.size() == 4 and simulation_ticks == TICKS and accepted_edits == 288 and rejected_edits == 0 and proxy_saves == 72 and actor_ticks == 103680 and readiness_stops == 0 and not policy_failed and int(report.get("fog_frontier", {}).get("exposed_samples", -1)) == 0 and report.get("fog_frontier", {}).get("evaluation", "") == "passed",
 		"route_clocks_usec": route_clock.duplicate(), "report": report, "phases": phases,
 		"closures": closure_spans.duplicate(true), "writer_drains": drain_spans.duplicate(true),

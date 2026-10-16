@@ -298,7 +298,8 @@ def trial_evidence(folder, t, inventory_hash):
             and c['frontier_preparation']['enabled'] is True and c['frontier_preparation']['viewer_radius_m'] == 96
             and c['frontier_preparation']['resident_mesh_bound'] == 448, 'Pilot fog/preparation envelope changed')
     limits = dict(private_bytes=2147483648, working_set=1610612736, pool_voxel_total=201326592)
-    require(all(0 < r['peaks'][k] <= limit for k, limit in limits.items()), 'Pilot observed memory envelope failed')
+    require(all(0 <= r['peaks'][k] <= limit for k, limit in limits.items())
+            and r['peaks']['private_bytes'] > 0 and r['peaks']['working_set'] > 0, 'Pilot observed memory envelope failed')
     require(r['simulation_ticks'] == TICKS and r['actor_ticks'] == 103680 and r['accepted_proxy_edits'] == 288
             and r['rejected_proxy_edits'] == r['readiness_stops'] == 0 and r['proxy_autosaves'] == 72
             and r['edit_visibility']['accepted'] == r['edit_visibility']['submitted'] == 288

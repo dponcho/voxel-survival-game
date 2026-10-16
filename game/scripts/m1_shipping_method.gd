@@ -90,4 +90,6 @@ static func evaluate(trials: Array, target: bool) -> Dictionary:
 	elif effect["lower"] >= LIMIT: result["outcome"] = "failed"
 	result["added_fraction"] = effect["point"]
 	result["target_gate_eligible_for_review"] = result["outcome"] == "passed" and target
+	if result["outcome"] == "passed": result["stop_decision"] = "Complete. Retain the exact-build reports for independent target review; M1 remains unqualified."
+	elif result["outcome"] == "failed": result["stop_decision"] = "Stop. Reduce the declared optional shipping inventory before another candidate; the 1% limit is unchanged."
 	return result
