@@ -143,6 +143,9 @@ def prepare():
                  "ci_run": f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{os.environ["GITHUB_RUN_ID"]}',
                  "target_performance": "not_run", "renderer": "gl_compatibility",
                  "engine_binaries": {key: value for key, value in manifest["files"].items() if key.endswith(".exe")}})
+    info["shipping_inventory_sha256"] = digest(game / "diagnostics/shipping_inventory.json")
+    info["shipping_sources_sha256"] = {name: digest(game / "scripts" / name) for name in
+        ("benchmark.gd", "m1_full_height_runtime.gd", "m1_shipping_runtime.gd", "m1_shipping_method.gd", "title.gd")}
     write_json(game / "build_info.json", info)
     editor = BUNDLE / "editor.exe"
     output = run([editor, "--headless", "--path", game, "--import"], "editor-import", timeout=300)
@@ -150,7 +153,7 @@ def prepare():
         raise RuntimeError("Project import reported errors")
     # Check each new dependency directly: a derived benchmark test can otherwise
     # report only an unresolved base class and hide the originating parse error.
-    for script in ("benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "m1_frontier_edit_runtime", "m1_frontier_travel_runtime", "m1_frontier_admission_runtime", "m1_frontier_reversal_runtime", "m1_full_height_runtime", "benchmark"):
+    for script in ("benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "m1_frontier_edit_runtime", "m1_frontier_travel_runtime", "m1_frontier_admission_runtime", "m1_frontier_reversal_runtime", "m1_full_height_runtime", "m1_shipping_method", "m1_shipping_method_tests", "m1_shipping_runtime", "benchmark"):
         output = run([editor, "--headless", "--path", game, "--check-only", "--script",
                       "res://scripts/" + script + ".gd"], "parse-" + script, timeout=60)
         if "SCRIPT ERROR:" in output or "ERROR:" in output:

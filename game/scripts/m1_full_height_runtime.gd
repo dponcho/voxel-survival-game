@@ -23,18 +23,25 @@ var policy_failed: bool = false
 var full_command_hash: int = 0
 
 func _ready() -> void:
+	_configure_experiment()
+	super._ready()
+	startup.stop(Time.get_ticks_usec(), "separate full-height movement experiment")
+	_disconnect_startup_signals()
+	if _full_height_observer_enabled():
+		observations = FileAccess.open(report_dir.path_join("full-height-observations.jsonl"), FileAccess.WRITE)
+		if observations == null: observation_failed = true
+	if render_size != 32 or workers != 1: integration_failures.append("Full-height proof requires 32-cube / one worker")
+
+func _configure_experiment() -> void:
 	test_mode = true
 	mode = "full-height"
 	render_size = 32
 	preparation_enabled = "--directional-preparation" in OS.get_cmdline_user_args()
 	scenarios = [{"id": FULL_ID, "workload": "H2", "seconds": 72.0,
 		"fixture": 3, "actors": 24, "rate": 4.0, "frontier_enabled": true}]
-	super._ready()
-	startup.stop(Time.get_ticks_usec(), "separate full-height movement experiment")
-	_disconnect_startup_signals()
-	observations = FileAccess.open(report_dir.path_join("full-height-observations.jsonl"), FileAccess.WRITE)
-	if observations == null: observation_failed = true
-	if render_size != 32 or workers != 1: integration_failures.append("Full-height proof requires 32-cube / one worker")
+
+func _full_height_observer_enabled() -> bool:
+	return true
 
 func _terrain_bounds() -> AABB:
 	return AABB(Vector3(-4096, -64, -4096), Vector3(8192, 256, 8192))
@@ -110,6 +117,10 @@ func _physics_step(delta: float) -> void:
 	_observe("physics")
 
 func _process_frame(now: int) -> void:
+	_advance_preparation()
+	super._process_frame(now)
+
+func _advance_preparation() -> void:
 	if state in ["running", "acknowledging"]:
 		if is_instance_valid(preparation):
 			# One process opportunity retains old ownership until the base viewer moves.
@@ -121,7 +132,6 @@ func _process_frame(now: int) -> void:
 			previous_pose = player
 			previous_tick = simulation_ticks
 		_policy(true)
-	super._process_frame(now)
 
 func _edit_border(tool: VoxelTool) -> bool:
 	# Eleven distinct coordinates cover both travel axes without raising the 64-edit overlay cap.
@@ -150,6 +160,7 @@ func _area(pose: Vector3, radius: float) -> AABB:
 	return AABB(pose - Vector3.ONE * radius, Vector3.ONE * radius * 2.0).intersection(_terrain_bounds())
 
 func _observe(stage: String) -> void:
+	if not _full_height_observer_enabled(): return
 	if observation_failed: return
 	var tool: VoxelTool = terrain.get_voxel_tool()
 	tool.channel = VoxelBuffer.CHANNEL_TYPE
@@ -205,6 +216,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	if observation_failed: integration_failures.append("Full-height observation I/O or bound failed")
 	if policy_failed: integration_failures.append("Full-height native priority policy rejected")
 	await super._finish_report(outcome, message)
+	if not _full_height_observer_enabled(): return
 	var final_native: Dictionary = probe.snapshot()
 	var drained: bool = true
 	for key: String in ["generation_jobs", "mesh_jobs", "result_jobs", "main_jobs", "retired_meshes"]:

@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--shipping-pilot" in OS.get_cmdline_user_args() or "--shipping-pilot-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_shipping_runtime.gd").new())
+		return
 	if "--full-height-check" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_full_height_runtime.gd").new())
 		return
@@ -55,6 +58,11 @@ func _ready() -> void:
 		profile.add_item(label)
 	$Margin/Content.add_child(profile)
 	$Margin/Content.move_child(profile, 5)
+	var pilot := Button.new()
+	pilot.text = "Run focused shipping diagnostic pilot (~12–18 min)"
+	pilot.pressed.connect(_launch_shipping_pilot)
+	$Margin/Content.add_child(pilot)
+	$Margin/Content.move_child(pilot, 6)
 	for entry: Array in [["Calibrate heavy-route measurements (~7 min + loading)", "calibration"], ["Compare heavy-route probe cost (~7 min + loading)", "heavy-ab"], ["Run startup timing check (~20 s + loading)", "startup"], ["Run performance check (~24 min)", "full"], ["Compare all four settings (~96 min)", "matrix"], ["Explore the terrain fixture", "explore"]]:
 		var button := Button.new()
 		button.text = entry[0]
@@ -65,6 +73,11 @@ func _ready() -> void:
 		var report: Dictionary = await _self_test()
 		print("CAIRN_SELF_TEST=" + JSON.stringify(report))
 		get_tree().quit(0 if report["passed"] else 1)
+
+func _launch_shipping_pilot() -> void:
+	# The pilot is fixed at 32-cube / one worker, never the profile dropdown.
+	if OS.create_process(OS.get_executable_path(), PackedStringArray(["--", "--shipping-pilot"])) > 0: get_tree().quit()
+	else: $Margin/Content/Result.text = "Could not start the focused diagnostic pilot."
 
 func _launch_benchmark(mode: String) -> void:
 	var sizes: Array[int] = [32, 16, 32, 16]

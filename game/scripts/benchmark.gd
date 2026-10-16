@@ -763,6 +763,7 @@ func _process_frame(now: int) -> void:
 			if cancelled:
 				_finish("cancelled", "Cancelled by user; partial result cannot qualify M1")
 				return
+			_scenario_drained()
 			scenario_index += 1
 			if scenario_index >= (2 if mode == "startup" else scenarios.size()):
 				_finish("completed", "Short startup timing check completed; only warmup and N1 ran" if mode == "startup" else "All applicable engine scenarios ran")
@@ -858,6 +859,9 @@ func _process_frame(now: int) -> void:
 	elif elapsed_wall > _duration() * 2.0 + 30.0 or sample_count > 500000:
 		finish_reason = "Scenario exceeded its wall-time or diagnostic sample bound"
 	elif scenario_elapsed >= _duration(): end_requested = true
+
+func _scenario_drained() -> void:
+	pass
 
 func _duration() -> float:
 	if mode == "explore": return 1800.0
@@ -1075,7 +1079,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	_close_phase()
 	state = "finished"
 	await _close_reports()
-	if test_mode:
+	if test_mode and _legacy_trace_validation_enabled():
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 		# These modes deliberately stop startup observation and do not claim startup smoke coverage.
 		if mode not in ["heavy-ab", "calibration", "travel-replay", "ordinary-admission", "full-height"]: integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
@@ -1125,10 +1129,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	summary["configuration"]["anti_aliasing"] = "disabled"
 	summary["configuration"]["fog_density"] = benchmark_environment.fog_density
 	summary["configuration"]["fog"] = fog_configuration
-	summary["shipping_diagnostic_qualification"] = {"policy": "m1-shipping-diagnostics-1", "outcome": "not_run",
-		"qualified": false, "threshold": 0.01, "added_fraction": null,
-		"reason": "shipping instrumentation inventory and focused target sensitivity pilot remain unverified",
-		"legacy_assessments": "historical/supplementary; unchanged verdicts do not qualify the prospective shipping configuration"}
+	summary["shipping_diagnostic_qualification"] = _shipping_qualification()
 	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["diagnostic_heavy_ab"] = Evaluation.heavy_diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["route_calibration"] = Calibration.evaluate(reports, test_mode, not integration_failures.is_empty())
@@ -1180,6 +1181,16 @@ func _finish_report(outcome: String, message: String) -> void:
 		else:
 			status_label.text = "Comparison stopped: the next setting could not start"
 			detail_label.text = "Keep this report. Return to the title and run the remaining settings individually."
-	if test_mode:
+	if test_mode and _legacy_trace_validation_enabled():
 		integration_failures.append_array(load("res://scripts/benchmark_heavy_ab_tests.gd").verify_saved(report_dir))
+	if test_mode:
 		print("CAIRN_M1_SMOKE=" + JSON.stringify(summary))
+
+func _legacy_trace_validation_enabled() -> bool:
+	return true
+
+func _shipping_qualification() -> Dictionary:
+	return {"policy": "m1-shipping-diagnostics-1", "outcome": "not_run",
+		"qualified": false, "threshold": 0.01, "added_fraction": null,
+		"reason": "shipping instrumentation inventory and focused target sensitivity pilot remain unverified",
+		"legacy_assessments": "historical/supplementary; unchanged verdicts do not qualify the prospective shipping configuration"}

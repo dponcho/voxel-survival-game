@@ -101,3 +101,37 @@ jobs:
             build/dependencies.lock.json
             build/config/
           retention-days: 30
+  shipping-pilot:
+    needs: [native, export-and-test]
+    runs-on: windows-2022
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.10'
+      - name: Download exact already-qualified native editor
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.native.outputs.artifact_id }}
+          run-id: ${{ needs.native.outputs.artifact_run_id }}
+          github-token: ${{ github.token }}
+          path: build/engine-bundle
+          merge-multiple: true
+      - name: Download published portable candidate
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-windows-x86_64-${{ github.sha }}
+          path: build/published-player
+      - name: Run finite shipping pilot and reconcile independent saved evidence
+        run: python tools/qa/shipping_pilot_ci.py
+      - name: Preserve focused pilot evidence even on failure
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Cairn-shipping-pilot-evidence-${{ github.sha }}
+          path: reports/
+          if-no-files-found: error
+          retention-days: 30

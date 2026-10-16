@@ -46,6 +46,12 @@ in [the adopted method](M1_REVIEW_RESPONSE.md#prospective-diagnostic-policy-adop
 Do not start another calibration family or an unchanged profile matrix by default.
 No new laptop action is requested now.
 
+Implementation of this bounded increment is in progress. The pre-execution
+[inventory, boundary, injection review and finite protocol](M1_SHIPPING_DIAGNOSTICS.md)
+are now declared. Cloud correctness, published-player checks and the independent
+saved audit must complete before a target handoff; do not treat authored modes or
+synthetic estimator controls as an overhead qualification.
+
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
 defect is fixed; all dedicated startup checks remain. This result advances the
