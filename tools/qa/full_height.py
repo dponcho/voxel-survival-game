@@ -81,9 +81,10 @@ def observations(path, enabled):
         require(row['command_hash']==fingerprint and row['actors']==24*tick
                 and row['accepted']==tick//15 and row['rejected']==row['readiness_stops']==0
                 and row['saves']==tick//60,'Full-height route/work/command fingerprint changed')
-        require(row['target']==goal and abs(row['yaw']-single((-math.pi/2,math.pi/2,math.pi)[leg(tick)]))<1e-12
+        require(all(abs(a-b)<1e-9 for a,b in zip(row['target'],goal))
+                and abs(row['yaw']-single((-math.pi/2,math.pi/2,math.pi)[leg(tick)]))<1e-12
                 and abs(row['camera'][0]-p[0])<1e-7 and abs(row['camera'][2]-p[2])<1e-7
-                and abs(row['camera'][1]-single(p[1]+single(1.65)))<1e-7,'Full-height camera/target changed')
+                and abs(row['camera'][1]-single(single(p[1])+single(1.65)))<1e-7,'Full-height camera/target changed')
         poses[tick]=p
         prep=row['preparation']; centers=prep['positions']
         require(len(centers)==int(enabled),'Full-height preparation viewer count changed')
@@ -92,8 +93,9 @@ def observations(path, enabled):
             require(0<=source<=decision<=tick and tick-source<=8 and source in poses
                     and prep['source_player']==poses[source] and prep['direction']==leg(min(TICKS,decision+1)),
                     'Preparation lost its bounded process handover or movement direction')
-            expected=[single(v+32*d) for v,d in zip(poses[source],DIRECTIONS[prep['direction']])]
-            require(centers==[expected],'Full-height preparation moved outside its declared demand')
+            expected=[single(single(v)+32*d) for v,d in zip(poses[source],DIRECTIONS[prep['direction']])]
+            require(all(abs(a-b)<1e-9 for a,b in zip(centers[0],expected)),
+                    'Full-height preparation moved outside its declared demand')
         terrain,native=row['terrain'],row['native']
         require(0<terrain['resident_mesh']<=(448 if enabled else 343) and 0<terrain['resident_data']<=8192,
                 'Full-height resident envelope exceeded')

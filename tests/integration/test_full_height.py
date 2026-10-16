@@ -65,7 +65,14 @@ def fixture(enabled):
 
 
 def save(path,rows):
-    path.write_text(''.join(json.dumps(row,separators=(',',':'))+'\n' for row in rows))
+    # Godot's default JSON formatter retains 15 significant decimal digits.
+    # Reconstruct float32 before arithmetic; parsed decimal floats need not be bit-equal.
+    def native_roundtrip(v):
+        if isinstance(v,float):return float(format(v,'.15g'))
+        if isinstance(v,list):return [native_roundtrip(x) for x in v]
+        if isinstance(v,dict):return {k:native_roundtrip(x) for k,x in v.items()}
+        return v
+    path.write_text(''.join(json.dumps(native_roundtrip(row),separators=(',',':'))+'\n' for row in rows))
 
 
 class FullHeight(unittest.TestCase):
