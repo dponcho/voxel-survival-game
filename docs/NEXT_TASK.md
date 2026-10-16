@@ -23,6 +23,12 @@ is [archived](archive/NEXT_TASK_2026-10-13.md); the adopted review decisions are
 
 ## Immediate work and adoption boundary
 
+The native full-height extension is published as `3256632`; its rebuild is CI
+`38918074711`. The complete fixture/route/readers are prepared with 100 passing
+Python regressions; matching engine, four runtime cases and candidate audit
+remain pending. Follow [the declared experiment](M1_FULL_HEIGHT.md). The staging
+native run alone does not validate the route or replace the latest candidate.
+
 Implement the full-height/directional fixture above as one bounded engine
 experiment. Include an interior altitude so world-bound clipping cannot replace
 full vertical demand. Preserve the existing routes and add actual player motion

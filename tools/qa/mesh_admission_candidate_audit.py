@@ -15,6 +15,7 @@ from route_calibration import validate_controls,reconcile_folder
 from diagnostic_method_validation import validate as method
 from ordinary_admission import compare as ordinary_compare
 from terrain_budget import reconcile_folder as terrain_folder
+from full_height import compare as full_height_compare, mutations as full_height_mutations
 from frontier_boundary import reconcile as boundary
 from frontier_edit import reconcile as edit
 
@@ -86,7 +87,7 @@ def ordinary(reports):
     records=[];details=[];phases=operation_rows=frames=events=scenarios=0;exceedances=[]
     for path in sorted(reports.rglob('summary.json')):
         s=read(path)
-        if 'scenarios' not in s or s.get('benchmark_mode') in ('travel-replay','ordinary-admission'):continue
+        if 'scenarios' not in s or s.get('benchmark_mode') in ('travel-replay','ordinary-admission','full-height'):continue
         require(s['completed'] and not s['qualified'] and not s['integration_failures'],'Incomplete ordinary report')
         cpu_scope(s['cpu_dose_sensitivity'],not_run=True);frame_scope(s['frame_slack_sensitivity'],not_run=True)
         folder=path.parent;relative=path.relative_to(reports).parts[0]
@@ -244,6 +245,7 @@ def audit():
     entries=pack(z.read('Cairn.pck'));embedded=[json.loads(v) for k,v in entries.items() if k.endswith('build_info.json') or k.endswith('BUILD_INFO.json')]
     require(embedded==[info],'PCK identity')
     require(any('m1_frontier_admission_runtime.' in k for k in entries),'New runtime missing')
+    require(any('m1_full_height_runtime.' in k for k in entries),'Full-height runtime missing')
     manifest=read(ROOT/'build/engine-bundle/manifest.json')
     require(manifest==read(ROOT/'build/native-qualification-evidence/build/engine-bundle/manifest.json'),'Native qualification manifest')
     require(manifest['engine_inputs']==input_hash()==info['native_source_key']==info['engine_inputs'],'Native source key')
@@ -304,6 +306,15 @@ def audit():
             v=ordinary_compare(*pair,info,workers)
             require(v==read(reports/(name+'-validation.json')),'Saved ordinary comparison differs')
             ordinary_trials[name]=v
+    full_height_trials={}
+    for label in ('editor','release'):
+        name=f'm1-full-height-{label}';pair=[]
+        for policy in ('baseline','prepared'):
+            files=list((reports/(name+'-'+policy+'-raw')).glob('*/full-height-summary.json'))
+            require(len(files)==1,'Missing full-height trial');pair.append(files[0].parent)
+        v=full_height_compare(*pair,info)
+        require(v==read(reports/(name+'-validation.json')),'Saved full-height comparison differs')
+        full_height_trials[name]=v
     current,ordinary_result=ordinary(reports)
     baseline_path=ROOT/'docs/evidence/m1-frontier-travel-contracts-2026-10-09.json'
     if baseline_path.exists():baseline=read(baseline_path)
@@ -320,10 +331,12 @@ def audit():
     mutation=mutations(folder,info,1)
     reversal_folder=next((reports/'m1-frontier-reversal-release-1-priority-raw').glob('*/mesh-admission-summary.json')).parent
     reversal_mutation=reversal_mutations(reversal_folder,info)
+    full_height_folder=next((reports/'m1-full-height-release-prepared-raw').glob('*/full-height-summary.json')).parent
+    full_height_mutation=full_height_mutations(full_height_folder,info)
     result=dict(passed=True,qualified=False,target_performance='not_run',build=info,native_key=manifest['engine_inputs'],
         portable_sha256=sha(raw),portable_bytes=len(raw),exe_sha256=sha(z.read('Cairn.exe')),pck_sha256=sha(z.read('Cairn.pck')),
         pck_entries_md5_verified=len(entries),pe_imports_verified=len(dlls),self_tests_verified=len(tests),published_download_roundtrip=True,
-        native_manifest=manifest,admission=trials,reversal=reversal_trials,ordinary_admission=ordinary_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,
+        native_manifest=manifest,admission=trials,reversal=reversal_trials,ordinary_admission=ordinary_trials,full_height=full_height_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,full_height_saved_mutations=full_height_mutation,
         target_action_required_now=False,engine_run_locally=False,executor_recovery='independent read-only audit executed in Actions after workspace disconnect')
     (reports/'m1-mesh-admission-independent-audit.json').write_text(json.dumps(result,indent=2))
     print('CAIRN_INDEPENDENT_AUDIT='+json.dumps(result,separators=(',',':')),flush=True)

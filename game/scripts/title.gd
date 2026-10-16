@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--full-height-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_full_height_runtime.gd").new())
+		return
 	if "--ordinary-admission-check" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_ordinary_admission_runtime.gd").new())
 		return

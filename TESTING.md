@@ -345,3 +345,16 @@ Published-download and separate read-only saved audits verify every comparison,
 four priority runs pass bounded acceptance; FIFO and broader operation failures
 remain visible. Target and shipping diagnostic qualification remain open. See
 [candidate, results and next task](docs/M1_ORDINARY_ADMISSION.md).
+
+### Full-height and real direction changes
+
+`--full-height-check` runs a separate 32³/one-worker native fixture over
+`Y[-64,192)` with its surface at Y=64. Editor/release each run baseline and
+`--directional-preparation` cases: 4,320 ticks, +X/-X/+Z actual movement, 288
+original edits, 72 proxy saves and 103,680 actor updates. The independent reader
+checks full initial demand, negative-coordinate demand arithmetic, the full
+command/position history, genuine edited-data/mesh eviction and reload, complete
+frame/edit/operation records and finalization. Corrupted observations and twelve
+post-package saved mutations must fail. The preceding 42 heavy contracts remain
+unchanged. Detailed bounds and stopping conditions are predeclared in
+[the full-height experiment](docs/M1_FULL_HEIGHT.md); runtime verification is pending.

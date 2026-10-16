@@ -16,6 +16,7 @@ from mesh_admission import compare as compare_mesh_admission
 from frontier_reversal import compare as compare_reversal
 from ordinary_admission import compare as compare_ordinary
 from terrain_budget import reconcile_folder as reconcile_terrain
+from full_height import compare as compare_full_height
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -193,6 +194,22 @@ if __name__ == "__main__":
             comparison = compare_ordinary(*folders, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8")), workers)
             (REPORTS / f"m1-ordinary-admission-{suffix}-{workers}-validation.json").write_text(json.dumps(comparison,indent=2),encoding="utf-8")
     print("Untraced ordinary H2 priority/FIFO, complete work, coverage, edits and terrain budgets reconciled", flush=True)
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        folders=[]
+        for policy in ("baseline","prepared"):
+            name=f"m1-full-height-{suffix}-{policy}"
+            raw=REPORTS/(name+"-raw")
+            command=[executable,"--headless","--path",ROOT/"game"] if suffix=="editor" else [executable,"--headless"]
+            flags=["--directional-preparation"] if policy=="prepared" else []
+            check(command+["--","--full-height-check","--workers=1","--m1-report-root="+str(raw)]+flags,
+                  name,"CAIRN_FULL_HEIGHT=",600)
+            found=list(raw.glob("*/full-height-summary.json"))
+            if len(found)!=1:raise RuntimeError("Missing or duplicated full-height report")
+            folders.append(found[0].parent)
+        comparison=compare_full_height(*folders,json.loads((ROOT/"dist/player/BUILD_INFO.json").read_text(encoding="utf-8")))
+        (REPORTS/f"m1-full-height-{suffix}-validation.json").write_text(json.dumps(comparison,indent=2),encoding="utf-8")
+    print("Full-height / actual movement reversal / cross-axis route and complete work reconciled",flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)

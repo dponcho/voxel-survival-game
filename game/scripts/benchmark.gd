@@ -372,12 +372,15 @@ func _make_instances(count: int, color: Color, size: Vector3) -> MultiMeshInstan
 	add_child(node)
 	return node
 
+func _terrain_bounds() -> AABB:
+	# The legacy slab remains identical in every existing comparison.
+	return AABB(Vector3(-4096, -16, -4096), Vector3(8192, 48, 8192))
+
 func _create_terrain(fixture: int) -> void:
 	terrain = VoxelTerrain.new()
 	terrain.mesh_block_size = render_size
 	terrain.generate_collisions = false
-	# Finite vertical fixture slab, identical in every comparison; not a new world limit.
-	terrain.bounds = AABB(Vector3(-4096, -16, -4096), Vector3(8192, 48, 8192))
+	terrain.bounds = _terrain_bounds()
 	terrain.max_view_distance = 128
 	var generator := CairnFixture.new()
 	generator.fixture = fixture
@@ -1075,7 +1078,7 @@ func _finish_report(outcome: String, message: String) -> void:
 	if test_mode:
 		integration_failures.append_array(load("res://scripts/benchmark_trace_tests.gd").verify(report_dir, operation_phases, reports))
 		# These modes deliberately stop startup observation and do not claim startup smoke coverage.
-		if mode not in ["heavy-ab", "calibration", "travel-replay", "ordinary-admission"]: integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
+		if mode not in ["heavy-ab", "calibration", "travel-replay", "ordinary-admission", "full-height"]: integration_failures.append_array(load("res://scripts/benchmark_startup_tests.gd").verify_saved(startup.snapshot(), report_dir, operation_phases, reports))
 	Engine.max_fps = 60
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	var fog_configuration: Dictionary = Frontier.fog_configuration(benchmark_environment, camera.far)
@@ -1086,7 +1089,8 @@ func _finish_report(outcome: String, message: String) -> void:
 		"message": message, "build": build_info, "machine": initial_machine,
 		"scenario_version": "m1-proxy-1", "fixture_version": "m1-integer-1", "test_mode": test_mode,
 		"configuration": {"resolution": [1280,720], "render_scale": 1.0, "render_block": render_size, "data_chunk": 16,
-			"workers": workers, "visual_radius": 96, "data_radius": 128, "fixture_y": [-16,32], "triangle_colliders": false},
+			"workers": workers, "visual_radius": 96, "data_radius": 128,
+			"fixture_y": [int(_terrain_bounds().position.y), int(_terrain_bounds().end.y)], "triangle_colliders": false},
 		"scenarios": reports, "operation_phases": operation_phases,
 		"operation_trace": {"clock": "process monotonic microseconds; join to frame callback_usec",
 			"frames": "native engine process intervals; phase boundaries split a frame without resetting admission",
