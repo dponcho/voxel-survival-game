@@ -167,12 +167,9 @@ def prepare():
     if "SCRIPT ERROR:" in output or "ERROR:" in output or len(markers) != 1:
         raise RuntimeError("Shipping method preflight failed")
     control = json.loads(markers[0])
-    if not control["passed"] or not control["fixed_work_dispatch"] or len(control["cases"]) != 24:
-        raise RuntimeError("Shipping method dispatch/control set failed")
     sys.path.insert(0, str(ROOT / "tools/qa"))
-    from shipping_diagnostics import compare_method, evaluate
-    for case in control["cases"]:
-        compare_method(case["assessment"], evaluate(case["trials"]))
+    from shipping_diagnostics import validate_method_controls
+    validate_method_controls(control)
     write_json(REPORTS / "shipping-method-preflight.json", control)
     # Run the title/self-test through the matching editor, then both actual export templates.
     self_test(editor, "editor-self-test", game)

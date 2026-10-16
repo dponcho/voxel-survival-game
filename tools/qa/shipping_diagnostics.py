@@ -18,6 +18,13 @@ from terrain_budget import reasons as operation_reasons, reconcile_folder as ter
 VERSION = 'm1-shipping-complete-trial-1'
 INVENTORY = 'm1-shipping-inventory-1'
 LIMIT = Fraction(1, 100)
+CONTROL_OUTCOMES = {
+    **{'shipping-'+str(v):outcome for v,outcome in
+       ((-1,'inconclusive'),(0,'passed'),(500000,'passed'),(999999,'passed'),(1000000,'failed'),(1500000,'failed'))},
+    'real-dose-absorbed-in-idle':'inconclusive', 'same-total-cancelled-route-drift':'inconclusive',
+    'terminal-uncertainty-overlap':'inconclusive', 'callback-count-is-not-denominator':'passed',
+    'repeatable-nonflat-route':'passed', **{'invalid-trial-'+str(i):'inconclusive' for i in range(13)}
+}
 FRAME_FIELDS = ('frame', 'entry_usec', 'interval_usec', 'tick', 'resident_mesh', 'resident_data',
                 'generation_jobs', 'mesh_jobs', 'result_jobs', 'retired_meshes', 'accepted',
                 'readiness_stops', 'coverage_alarms')
@@ -134,6 +141,21 @@ def compare_method(actual, expected):
         for key, value in expected['shipping'].items():
             require(math.isclose(actual['shipping'][key], float(value), rel_tol=1e-10, abs_tol=1e-12),
                     'Shipping effect envelope mismatch')
+
+
+def validate_method_controls(control):
+    require(control['passed'] is True and control['fixed_work_dispatch'] is True
+            and len(control['cases']) == 24 and control['qualified'] is False, 'Missing adopted method controls')
+    require([case['name'] for case in control['cases']] == list(CONTROL_OUTCOMES),
+            'Missing, duplicated or reordered adopted method controls')
+    references = (0,1,215999,216000,216001,216000000,216000001)
+    require(control['dose_request_vectors'] == [[v,math.ceil(Fraction(v,50*TICKS))] for v in references],
+            'Nominal positive dose integer ceiling mismatch')
+    for case in control['cases']:
+        compare_method(case['assessment'], evaluate(case['trials']))
+        require(case['assessment']['outcome'] == CONTROL_OUTCOMES[case['name']],
+                'Adopted method control failed its independent known outcome')
+    return dict(passed=True, cases=24, integer_request_vectors=len(references), qualified=False)
 
 
 def poses(path, trial):

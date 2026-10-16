@@ -53,5 +53,10 @@ func _initialize() -> void:
 		bad[i]["valid"] = false
 		cases.append({"name": "invalid-trial-" + str(i), "trials": bad})
 	for item: Dictionary in cases: item["assessment"] = Method.evaluate(item["trials"], false)
-	print("CAIRN_SHIPPING_METHOD=" + JSON.stringify({"passed": dispatch_ok, "qualified": false, "fixed_work_dispatch": dispatch_ok, "cases": cases}))
+	var requests: Array = []
+	for reference: int in [0, 1, 215999, 216000, 216001, 216000000, 216000001]:
+		requests.append([reference, Method.dose_request(reference)])
+	print("CAIRN_SHIPPING_METHOD=" + JSON.stringify({"passed": dispatch_ok, "qualified": false,
+		"scope": "synthetic method/dispatch regressions only; not runtime dose or target proof",
+		"dose_request_vectors": requests, "fixed_work_dispatch": dispatch_ok, "cases": cases}))
 	quit(0 if dispatch_ok else 1)

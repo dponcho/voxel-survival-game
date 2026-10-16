@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT/'tools/ci'))
 from pipeline import verify_bundle, extract, digest
 from m1_integration import check
 from mesh_admission_candidate_audit import pack
-from shipping_diagnostics import (reconcile, evaluate, compare_method, read, require, floating)
+from shipping_diagnostics import (reconcile, read, require, validate_method_controls)
 
 REPORTS = ROOT/'reports/shipping-pilot'
 INVENTORY_PATH = ROOT/'game/diagnostics/shipping_inventory.json'
@@ -151,10 +151,7 @@ def audit():
         records.append(dict(folder=path.parent.relative_to(REPORTS).as_posix(), **result))
     require(len(records) == 7, 'Missing editor/release modes or finite release pilot')
     controls = read(ROOT/'reports/shipping-method-controls.json')
-    require(controls['passed'] is True and controls['fixed_work_dispatch'] is True
-            and len(controls['cases']) == 24 and not controls['qualified'], 'Missing adopted method controls')
-    for item in controls['cases']:
-        compare_method(item['assessment'], evaluate(item['trials']))
+    validate_method_controls(controls)
     full = next(path.parent for path in REPORTS.rglob('shipping-pilot.json')
                 if not read(path)['single_mode'])
     faults = saved_mutations(full, build)

@@ -85,7 +85,7 @@ func _start_scenario() -> void:
 	trial["optional_setup"] = {"start_usec": optional_begin, "end_usec": Time.get_ticks_usec(), "enabled": _is_shipping()}
 	pose_bytes = 0
 	forensic_bytes = 0
-	dose_request_usec = int(ceil(float(positive_reference_usec) * 0.02 / float(TICKS))) if active_scenario["dose"] else 0
+	dose_request_usec = Method.dose_request(positive_reference_usec) if active_scenario["dose"] else 0
 	trial["dose"]["requested_tick_usec"] = dose_request_usec
 	if active_scenario["dose"] and (dose_request_usec <= 0 or dose_request_usec > 2000):
 		integration_failures.append("Positive dose request unavailable or above declared cap")

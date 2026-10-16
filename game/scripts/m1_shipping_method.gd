@@ -5,6 +5,10 @@ extends RefCounted
 const VERSION: String = "m1-shipping-complete-trial-1"
 const LIMIT: float = 0.01
 
+static func dose_request(reference_usec: int) -> int:
+	# Integer ceiling avoids rounding a whole-microsecond request upward.
+	return (reference_usec + 216000 - 1) / 216000
+
 static func envelope(trials: Array) -> Dictionary:
 	var result: Dictionary = {"valid": false, "lower": null, "upper": null, "point": null,
 		"matching_section_drift": null, "terminal_marker_uncertainty": null, "reason": "incomplete quartet"}
@@ -37,9 +41,11 @@ static func envelope(trials: Array) -> Dictionary:
 		for bi: int in [1, 2]:
 			marker = maxi(marker, int(trials[ai].get("marker_usec", 0)) + int(trials[bi].get("marker_usec", 0)))
 	var terminal: float = float(marker) / denominator
-	result.merge({"valid": true, "lower": minf(b1, b2) / maxf(a0, a3) - 1.0 - drift - terminal,
-		"upper": maxf(b1, b2) / denominator - 1.0 + drift + terminal,
-		"point": (b1 + b2) / (a0 + a3) - 1.0, "matching_section_drift": drift,
+	# Durations are integer microseconds exactly representable here. Subtract
+	# before division: ratio-minus-one can spuriously miss an exact dose overlap.
+	result.merge({"valid": true, "lower": (minf(b1, b2) - maxf(a0, a3)) / maxf(a0, a3) - drift - terminal,
+		"upper": (maxf(b1, b2) - denominator) / denominator + drift + terminal,
+		"point": (b1 + b2 - a0 - a3) / (a0 + a3), "matching_section_drift": drift,
 		"terminal_marker_uncertainty": terminal, "reason": "conservative complete-trial repeat envelope"}, true)
 	return result
 
@@ -61,7 +67,7 @@ static func controls(trials: Array) -> Dictionary:
 		var dose: Dictionary = trials[index]["dose"]
 		var reference: int = int(trials[5]["duration_usec"])
 		var actual: int = int(dose.get("actual_usec", 0))
-		var requested: int = int(ceil(float(reference) * 0.02 / 4320.0))
+		var requested: int = dose_request(reference)
 		doses_ok = doses_ok and int(dose.get("reference_usec", 0)) == reference and int(dose.get("requested_tick_usec", 0)) == requested and actual >= requested * 4320 and int(dose.get("ticks", 0)) == 4320 and bool(dose.get("valid", false))
 		dose_low = minf(dose_low, float(actual) / maxf(float(trials[5]["duration_usec"]), float(trials[8]["duration_usec"])))
 		dose_high = maxf(dose_high, float(actual) / minf(float(trials[5]["duration_usec"]), float(trials[8]["duration_usec"])))

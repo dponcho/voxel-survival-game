@@ -15,11 +15,11 @@ opt-in representative fixture modes, not a global production-policy selection.
 
 | Inventory | Bare | Shipping | Forensic companion |
 | --- | --- | --- | --- |
-| Collision/readiness, transaction revisions, native admission/enforcement clocks and complete terrain aggregates | on | on | on |
+| Collision/readiness, transaction revisions, native admission/enforcement clocks and whole-frame carry | on | on | on |
 | Identical priority policy, 96 m visuals, 128 m data and one bounded 32 m directional lead viewer | on | on | on |
 | Optional interval counters, one native/resource telemetry row per simulation second (72 maximum), bounded shipping summary write/flush | off | on | on |
 | Native operation CSV, renderer query/detail JSONL and live diagnostic labels | off | off | on |
-| Common external correctness observers: per-callback frontier/resource checks and CSV, edit submissions/ack, actual per-physics route/work/handover CSV, callback/phase/lifecycle clocks and complete report | on | on | on |
+| Common external correctness observers: native lifetime/phase aggregates, collision timers, per-callback frontier/resource checks and CSV, edit submissions/ack, per-physics route/work/handover CSV, callback/lifecycle clocks and complete report | on | on | on |
 | Admission selection trace and deep mesh-resource/vertical-voxel observer | off | off | off |
 
 The common external observers perturb all measured modes. Their setup, hashing,
@@ -93,6 +93,10 @@ largest off+on terminal-marker cost, divided by `min(A)`. Report the pooled
 complete-duration point effect, callback counts and raw sections separately.
 This conservative repeat envelope is **not a statistical confidence interval**.
 Neither callbacks nor physics ticks divide elapsed cost.
+The implementation subtracts exact whole-microsecond durations before division,
+and uses an integer ceiling for nominal dose requests. The independent exact-
+rational oracle rejects rounding-induced verdict changes; no epsilon relaxes the
+1% gate or the positive-control overlap.
 
 Null must contain zero with width below 1%; both quartets need matching-section
 drift below 1%. Positive must have a lower bound at/above 1%, an actual dose above

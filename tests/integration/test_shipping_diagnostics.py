@@ -6,7 +6,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'tools/qa'))
-from shipping_diagnostics import controls, envelope, evaluate, LIMIT
+from shipping_diagnostics import controls, envelope, evaluate, LIMIT, CONTROL_OUTCOMES, validate_method_controls, floating
 
 
 def fixture(shipping_cost=500000):
@@ -31,6 +31,33 @@ def fixture(shipping_cost=500000):
 
 
 class ShippingMethodTests(unittest.TestCase):
+    def test_saved_control_registry_vectors_and_decisions_are_authoritative(self):
+        cases = []
+        for name in CONTROL_OUTCOMES:
+            v = fixture(int(name.removeprefix('shipping-'))) if name.startswith('shipping-') else fixture()
+            if name == 'real-dose-absorbed-in-idle':
+                for i in (6,7):
+                    v[i]['duration_usec'] = v[5]['duration_usec']
+                    v[i]['sections_usec'] = v[5]['sections_usec'].copy()
+            elif name == 'same-total-cancelled-route-drift':
+                v[4]['sections_usec'][1] += 600000
+                v[4]['sections_usec'][2] -= 600000
+            elif name == 'terminal-uncertainty-overlap':
+                v = fixture(990000)
+                v[10]['marker_usec'] = 20000
+            elif name.startswith('invalid-trial-'):
+                v[int(name.removeprefix('invalid-trial-'))]['valid'] = False
+            cases.append(dict(name=name,trials=v,assessment=floating(evaluate(v))))
+        saved = dict(passed=True,qualified=False,fixed_work_dispatch=True,cases=cases,
+            dose_request_vectors=[[v,-(-v//216000)] for v in (0,1,215999,216000,216001,216000000,216000001)])
+        self.assertTrue(validate_method_controls(saved)['passed'])
+        for fault in ('duplicate','vector','decision'):
+            bad = copy.deepcopy(saved)
+            if fault == 'duplicate': bad['cases'][-1] = bad['cases'][0]
+            elif fault == 'vector': bad['dose_request_vectors'][-1][1] -= 1
+            else: bad['cases'][0]['assessment']['outcome'] = 'passed'
+            with self.subTest(fault=fault), self.assertRaises(RuntimeError): validate_method_controls(bad)
+
     def test_runtime_uses_existing_fixed_work_dispatch_and_preserves_native_inputs(self):
         root = Path(__file__).resolve().parents[2]
         runtime = (root/'game/scripts/m1_shipping_runtime.gd').read_text()

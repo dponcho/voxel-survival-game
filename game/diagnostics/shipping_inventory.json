@@ -5,7 +5,7 @@
     "collision/readiness checks and required data viewer",
     "edit transaction/revision integrity and fixed-work proxy autosaves",
     "native job/result/resident/payload admission limits",
-    "complete synchronous terrain enforcement clocks, whole-frame carry and lifetime/phase aggregates",
+    "complete synchronous terrain enforcement clocks and whole-frame carry",
     "geometric priority admission and one bounded directional preparation viewer"
   ],
   "shipping_optional": [
@@ -24,7 +24,7 @@
     "per-callback native/resource snapshots, caps, frontier scan/evaluation and bounded qualification CSV",
     "native lifetime/phase aggregates and operation-limit checks at closure (not raw operation tracing)",
     "accepted-edit-to-mesh-submission observer, event serialization, bounded writer and final acknowledgement",
-    "per-physics actual pose, command fingerprint, work counts, preparation handover and dose evidence CSV",
+    "per-physics collision elapsed timers, actual pose, command fingerprint, work counts, preparation handover and dose evidence CSV",
     "per-trial correctness report construction, serialization, hashing of trace files, flush and close"
   ],
   "outside_complete_trial_common_harness": [
