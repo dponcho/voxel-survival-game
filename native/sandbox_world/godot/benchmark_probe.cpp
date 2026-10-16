@@ -274,6 +274,13 @@ Dictionary CairnProbe::phase_snapshot() const {
     d["dropped_frames"] = int64_t(s.dropped); d["tracing"] = s.tracing;
     d["peak_frame_operation_usec"] = int64_t(s.peak_frame_usec);
     d["peak_frame_upload_bytes"] = int64_t(s.peak_frame_upload_bytes);
+    d["terrain_accounting_version"] = 2;
+    d["data_apply"] = operation_totals(s.data_apply);
+    d["data_apply_nested_usec"] = int64_t(s.data_apply_nested_usec);
+    d["peak_frame_terrain_usec"] = int64_t(s.peak_frame_terrain_usec);
+    d["peak_single_upload_bytes"] = int64_t(s.peak_single_upload_bytes);
+    d["terrain_time_overruns"] = int64_t(s.terrain_time_overruns);
+    d["terrain_upload_overruns"] = int64_t(s.terrain_upload_overruns);
     return d;
 }
 Dictionary CairnProbe::end_phase() {
@@ -289,6 +296,13 @@ Array CairnProbe::take_operation_frames() {
         d["start_usec"] = int64_t(frame.start_usec); d["end_usec"] = int64_t(frame.end_usec);
         d["phase_boundary"] = frame.phase_boundary;
         d["upload"] = operation_totals(frame.upload); d["deletion"] = operation_totals(frame.deletion);
+        d["data_apply"] = operation_totals(frame.data_apply);
+        d["data_apply_nested_usec"] = int64_t(frame.data_apply_nested_usec);
+        d["frame_terrain_usec"] = int64_t(frame.frame_terrain_usec);
+        d["frame_upload_bytes_total"] = int64_t(frame.frame_upload_bytes);
+        d["frame_single_upload_bytes"] = int64_t(frame.frame_single_upload_bytes);
+        d["frame_time_limit_usec"] = int64_t(frame.frame_time_limit_usec);
+        d["frame_upload_limit_bytes"] = int64_t(frame.frame_upload_limit_bytes);
         frames.push_back(d);
     }
     return frames;
@@ -298,6 +312,7 @@ void CairnProbe::configure(int workers, bool heavy) {
     if (workers >= 1 && workers <= 2 && workers != engine.get_thread_count()) engine.set_thread_count(workers);
     cairn::byte_budget = heavy ? 1024 * 1024 : 512 * 1024;
     cairn::time_budget = heavy ? 2000 : 1000;
+    cairn::operations.configure(cairn::time_budget, cairn::byte_budget);
     engine.set_main_thread_time_budget_usec(cairn::time_budget);
 }
 Dictionary CairnProbe::snapshot() const {

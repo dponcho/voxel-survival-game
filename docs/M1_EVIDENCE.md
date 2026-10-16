@@ -1,5 +1,11 @@
 # M1 engine experiment evidence
 
+Prepared October 16 review changes are **not yet cloud-validated**. Source
+publication is now explicitly approved; fresh native/engine checks and the new
+Windows candidate are pending. The latest verified pre-review candidate below is
+unchanged. See [review response](M1_REVIEW_RESPONSE.md) and the active
+[gate register](NEXT_TASK.md). All qualification flags remain false.
+
 Current milestone status: **blocked; target not qualified**. The original
 [five-run laptop review](M1_TARGET_REVIEW.md) and subsequent private exact-build
 reviews retain unresolved gates. The candidates below passed cloud checks;

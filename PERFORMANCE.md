@@ -178,3 +178,21 @@ Use release exports without an editor, debugger or diagnostic instrumentation th
 The built-in check performs a 3-minute warm-up followed by the scenario suite in TESTING.md. Certification uses three complete runs, including one after a fresh process launch and one following sustained gameplay. Preserve raw results, worst runs and settings. First-use shaders, new content and a cold-start path receive separate coverage; warm-up is not permission to hide repeatable first-encounter stutters.
 
 Changing the engine/driver path, mesher, worker count, rendering settings, world generator or content envelope invalidates the relevant baseline. Gameplay/UI changes run their affected scenarios. Work above these budgets returns to optimization before more content is layered on.
+
+## 9. Review-adopted accounting and diagnostic boundaries
+
+The synchronous terrain allowance includes uploads, resource destruction and
+completed-task application. A parent application bracket may contain upload/
+destruction hooks: charge the union once and retain the inclusive parent maximum.
+Per-native-frame time and payload allowances survive phase boundaries; changing
+phase names does not reset them. Check the largest payload independently of the
+slowest operation. Renderer-deferred work remains a separate unverified boundary.
+
+The below-1% diagnostic requirement prospectively applies to the declared optional
+instrumentation enabled in ordinary shipping play. Safety/readiness, admission
+and correctness safeguards remain operational in all controls. Explicit forensic
+traces have disclosed perturbation and cannot certify shipping frame timings.
+Shipping/forensic inventories and the focused null/positive pilot must exist
+before qualification. Legacy flatness-based reports stay historical/supplementary,
+with their old verdicts preserved. The successor shipping gate is not run.
+See [the finite method and its stop rule](docs/M1_REVIEW_RESPONSE.md).

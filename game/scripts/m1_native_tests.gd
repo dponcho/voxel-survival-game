@@ -74,6 +74,8 @@ func _check_evaluation() -> void:
 		failures.append("Phase boundary reset lifetime maxima")
 	probe.take_operation_frames()
 	# Deliberately large lifetime values cannot affect a quiet measured phase.
+	# The following synthetic legacy maxima control is separate from whole-frame v2 accounting.
+	phase.erase("terrain_accounting_version")
 	phase["native_start"] = {"upload_max_usec": 5000, "deletion_max_usec": 4000}
 	phase["native_end"] = phase["native_start"].duplicate()
 	phase["upload"]["max_usec"] = 750
@@ -90,6 +92,16 @@ func _check_evaluation() -> void:
 	if result["qualified"] or result["evaluation"] != "passed": failures.append("Passing measured subset falsely qualified M1")
 	phase["dropped_frames"] = 1
 	if evaluation.operation_failures(phase).size() != 3: failures.append("Dropped evidence was hidden")
+	var complete: Dictionary = {"upload": {"max_usec": 600}, "deletion": {"max_usec": 600},
+		"dropped_frames": 0, "terrain_accounting_version": 2, "data_apply": {"max_usec": 0},
+		"terrain_time_overruns": 1, "terrain_upload_overruns": 0, "peak_single_upload_bytes": 10}
+	if evaluation.operation_failures(complete) != ["Cumulative terrain frame time exceeded its 1/2 ms budget"]:
+		failures.append("Two legal operations concealed a cumulative terrain overrun")
+	complete["terrain_time_overruns"] = 0
+	complete["data_apply"]["max_usec"] = 751
+	if evaluation.operation_failures(complete) != ["Individual data application exceeded 0.75 ms"]:
+		failures.append("Data application was omitted from operation qualification")
+
 
 func _check_mesh(mesher: CairnMesher, buffer: VoxelBuffer, material: Material, expected: int, label: String) -> void:
 	var mesh: Mesh = mesher.build_mesh(buffer, [material])

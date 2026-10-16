@@ -1,6 +1,6 @@
 # Roadmap
 
-Design baseline: 2026-09-05; core Java-style product requirements revised 2026-09-26. This is an evidence-gated sequence, not a calendar. Current implementation status is recorded separately: [M1 cloud evidence](docs/M1_EVIDENCE.md) and [target review](docs/M1_TARGET_REVIEW.md). M1 is blocked on qualification corrections; the supplied target reports do not authorize progression to M2.
+Design baseline: 2026-09-05; core Java-style product requirements revised 2026-09-26. This is an evidence-gated sequence, not a calendar. Current implementation status is recorded separately: [M1 cloud evidence](docs/M1_EVIDENCE.md) and [target review](docs/M1_TARGET_REVIEW.md). M1 is blocked on qualification corrections; current evidence has not reached the representative target viability checkpoint described below.
 
 ## 1. Delivery rule
 
@@ -77,6 +77,31 @@ Compare the stock 32³ render path with 16³ render blocks and one versus two te
 If the contract fails, isolate the bottleneck and perform one bounded optimization experiment. Implement native greedy meshing or finer upload work only when evidence identifies its benefit. If upstream queue/admission/locking behaviour prevents compliance, patch the narrow integration point and test it. Replacing the entire voxel backend is the last escalation after a measured comparison.
 
 If no actual laptop report is available, M1 remains **target-unverified**. Cloud work may continue on deterministic generation and persistence correctness, but do not certify M1 or substantially expand content. Running the game's own automated check is sufficient; the user never installs a test harness or serves as a CI runner.
+
+### Review-adopted decision gates — October 16 UTC
+
+Before selecting a production profile, test full-height `Y[-64,192)` demand and
+actual travel reversal/cross-axis travel in a deterministic fixture. The existing
+slab is a bounded integration experiment, not that architecture qualification.
+The unchanged cuboid 16³ policy needs 2,197 interior render regions against a
+512 cap; 32³ needs 343. Arithmetic alone does not qualify the latter. Preserve
+existing outward routes, world height, 96/128 m radii and resource limits.
+
+Separate architecture viability from full qualification: only after a
+representative exact-build target candidate passes frame, coverage/readiness,
+edit, synchronous operation and resource gates may bounded M2 generation/M3
+persistence logic correctness proceed while M1 qualification continues against
+its frozen candidate. Existing slab/cloud evidence does not satisfy that
+checkpoint. M1 remains unqualified until all its remaining measurements and
+three complete runs pass. Real generation/storage integration requires relevant
+performance requalification. Content remains at its original milestone.
+
+The user-authorized independent review prospectively separates optional shipping
+diagnostics (<1% measured incremental cost) from explicit perturbing forensic
+modes and adopts a finite matched-route pilot, without changing prior reports or
+any threshold. See [review decisions](docs/M1_REVIEW_RESPONSE.md) and the active
+[gate register](docs/NEXT_TASK.md). An inconclusive pilot requires a declared
+policy decision; another instrument family is not the default next task.
 
 ## 5. Per-task completion contract
 

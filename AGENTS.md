@@ -18,7 +18,7 @@ These instructions describe the intended repository. In the initial six-document
 
 ## Before implementing a task
 
-1. Read this file, the active milestone and the relevant sections of ARCHITECTURE.md, PERFORMANCE.md and TESTING.md.
+1. Read this file and the active gate register in docs/NEXT_TASK.md, then the active milestone and relevant sections of ARCHITECTURE.md, PERFORMANCE.md and TESTING.md. Historical experiment documents are references, not a mandatory reread list.
 2. Inspect repository status, existing changes, dependency lock and available commands. Preserve unrelated work. Search with `rg`/`rg --files` first.
 3. State a bounded observable result and its acceptance checks. Choose the smallest complete increment that advances the milestone.
 4. Verify unfamiliar Godot/Voxel Tools APIs against the pinned source or its matching documentation. A proposed project interface is not an upstream API.

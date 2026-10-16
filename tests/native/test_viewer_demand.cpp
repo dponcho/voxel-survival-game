@@ -48,6 +48,15 @@ int main() {
         assert(int64_t(data_x.end - data_x.begin) * (data_x.end - data_x.begin) * 3 <= 8192);
     }
     BlockSpan out;
+    // Full-height architecture feasibility, not a slab-only profile selection.
+    for (int side : {16, 32}) {
+        BlockSpan x, y;
+        assert(cairn::viewer_block_span(10.125, 96, side, {-8192 / side, 8192 / side}, x));
+        assert(cairn::viewer_block_span(64.125, 96, side, {-64 / side, 192 / side}, y));
+        const int64_t demand = int64_t(x.end-x.begin)*(x.end-x.begin)*(y.end-y.begin);
+        assert(demand == (side == 16 ? 2197 : 343));
+        assert((demand <= 512) == (side == 32));
+    }
     assert(cairn::viewer_block_span(10.125, 96, 32, {-128, 128}, out));
     assert(out.begin == -3 && out.end == 4); // Regression: block +3 was never requested.
     assert(cairn::viewer_block_span(-0.125, 96, 32, {-128, 128}, out));

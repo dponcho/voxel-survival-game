@@ -49,5 +49,28 @@ int main() {
     assert(m.pop(f) && !m.pop(f));
     m.record_upload(10, 16001, 9000); // Closed phases cannot acquire late work.
     assert(m.upload.max_usec == 1);
-    std::cout << "M1 operation phase, frame, boundary, baseline and overflow checks passed\n";
+    cairn::OperationMetrics cumulative;
+    cumulative.begin_frame(0); cumulative.begin_phase(1, 1, true);
+    cumulative.record_upload(10, 2, 600); cumulative.end_phase(602);
+    assert(cumulative.pop(f) && f.frame_terrain_usec == 600);
+    cumulative.begin_phase(2, 603, true);
+    cumulative.configure(2000, 1024 * 1024); // Cannot enlarge this native frame's prior allowance.
+    cumulative.record_deletion(0, 604, 600, true); cumulative.end_phase(1204);
+    assert(cumulative.pop(f) && f.frame_terrain_usec == 1200 && f.frame_time_limit_usec == 1000);
+    assert(cumulative.terrain_time_overruns == 1 && cumulative.deletion.max_usec == 600);
+    cumulative.begin_frame(1205); cumulative.begin_phase(3, 1206, true);
+    cumulative.record_upload(300000, 1207, 100);
+    cumulative.record_upload(10, 1307, 600); cumulative.end_phase(1907);
+    assert(cumulative.upload.max_bytes == 10 && cumulative.peak_single_upload_bytes == 300000);
+    cairn::OperationMetrics nested;
+    nested.begin_frame(0); nested.begin_phase(1, 1, true);
+    nested.record_upload(10, 2, 150);
+    nested.record_data_apply(2, 900, 150); nested.end_phase(902);
+    assert(nested.pop(f) && f.frame_terrain_usec == 900 && f.data_apply.usec == 900);
+    assert(f.data_apply_nested_usec == 150 && nested.data_apply.max_usec == 900);
+    assert(nested.upload.usec + nested.data_apply.usec - nested.data_apply_nested_usec == 900);
+    assert(cairn::admit_terrain_operation(250, 1000) && !cairn::admit_terrain_operation(251, 1000));
+    assert(cairn::admit_terrain_operation(1250, 2000) && !cairn::admit_terrain_operation(1251, 2000));
+    assert(!cairn::admit_terrain_operation(UINT64_MAX, 1000));
+    std::cout << "M1 operation phase/frame, cumulative/data/nested/budget and overflow checks passed\n";
 }

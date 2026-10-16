@@ -45,7 +45,8 @@ def retirement_guard(native, drained=False):
 
 
 def operation_reasons(phase):
-    return [f'Individual {kind} exceeded 0.75 ms' for kind in ('upload', 'deletion') if phase[kind]['max_usec'] > 750]
+    from terrain_budget import reasons
+    return reasons(phase)
 
 
 def operations(folder, saved, guards):
@@ -54,12 +55,13 @@ def operations(folder, saved, guards):
             and [p['phase'] for p in phases] == ['preparation', 'overhead_diagnostic', 'retirement'], 'Missing/reordered native phases')
     require([g['id'] for g in guards] == [1, 2, 3], 'Missing phase guards')
     count, failed, previous_end = 0, [], -1
+    terrain_state = {}
     for phase, guard in zip(phases, guards):
         path = folder / phase['raw_operations']
         require(0 < path.stat().st_size <= 67108864, 'Missing/oversized operation file')
         with path.open(encoding='utf-8-sig', newline='') as stream:
             reader = csv.DictReader(stream)
-            require(len(reader.fieldnames) == 18, 'Malformed operation schema')
+            require(len(reader.fieldnames) in (18, 28), 'Malformed operation schema')
             rows = [{k: int(v) for k, v in row.items()} for row in reader]
         count += len(rows)
         require(count <= 100000 and len(rows) == phase['frames'] and rows and phase['tracing']
@@ -99,6 +101,8 @@ def operations(folder, saved, guards):
                     'Phase/lifetime delta mismatch')
         require(phase['peak_frame_operation_usec'] == max(r['upload_usec']+r['deletion_usec'] for r in rows)
                 and phase['peak_frame_upload_bytes'] == max(r['upload_bytes'] for r in rows), 'Operation peak mismatch')
+        from terrain_budget import reconcile_rows
+        reconcile_rows(rows, phase, terrain_state)
         reasons = operation_reasons(phase)
         require(guard['failures'] == reasons, 'Failed operation guard suppressed')
         if reasons: failed.append({'phase': phase['phase'], 'reasons': reasons})

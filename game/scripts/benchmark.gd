@@ -143,7 +143,7 @@ func _open_reports(suffix: String = "") -> void:
 	sink.start(report_dir + "/" + name)
 	reports_open = true
 	raw_lines.append("frame,wall_s,simulation_s,interval_ms,generation_jobs,mesh_jobs,result_jobs,pending_data,pending_mesh,private_bytes,working_set,draw_calls,triangles,accepted_edits,readiness_stops,callback_usec,render_cpu_ms,render_gpu_ms,diagnostic_usec,diagnostic_frame," + ",".join(Frontier.COLUMNS) + ",diagnostic_switched_usec,diagnostic_shared_usec")
-	operation_lines.append("native_frame,phase,start_usec,end_usec,phase_boundary,upload_count,upload_bytes,upload_usec,upload_max_usec,upload_max_bytes,upload_max_start_usec,deletion_count,deletion_bytes,deletion_usec,deletion_max_usec,deletion_max_bytes,deletion_max_start_usec,deletion_max_kind")
+	operation_lines.append("native_frame,phase,start_usec,end_usec,phase_boundary,upload_count,upload_bytes,upload_usec,upload_max_usec,upload_max_bytes,upload_max_start_usec,deletion_count,deletion_bytes,deletion_usec,deletion_max_usec,deletion_max_bytes,deletion_max_start_usec,deletion_max_kind,data_apply_count,data_apply_usec,data_apply_max_usec,data_apply_max_start_usec,data_apply_nested_usec,frame_terrain_usec,frame_upload_bytes_total,frame_time_limit_usec,frame_upload_limit_bytes,frame_single_upload_bytes")
 
 func _begin_phase(label: String, trace: bool = true) -> void:
 	phase_id += 1
@@ -162,10 +162,12 @@ func _drain_operation_frames() -> void:
 	for frame: Dictionary in probe.take_operation_frames():
 		var upload: Dictionary = frame["upload"]
 		var deletion: Dictionary = frame["deletion"]
-		operation_lines.append("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d" % [
+		operation_lines.append("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d" % [
 			frame["native_frame"], frame["phase"], frame["start_usec"], frame["end_usec"], int(frame["phase_boundary"]),
 			upload["count"], upload["bytes"], upload["usec"], upload["max_usec"], upload["max_bytes"], upload["max_start_usec"],
-			deletion["count"], deletion["bytes"], deletion["usec"], deletion["max_usec"], deletion["max_bytes"], deletion["max_start_usec"], deletion["max_kind"]])
+			deletion["count"], deletion["bytes"], deletion["usec"], deletion["max_usec"], deletion["max_bytes"], deletion["max_start_usec"], deletion["max_kind"],
+			frame["data_apply"]["count"], frame["data_apply"]["usec"], frame["data_apply"]["max_usec"], frame["data_apply"]["max_start_usec"],
+			frame["data_apply_nested_usec"], frame["frame_terrain_usec"], frame["frame_upload_bytes_total"], frame["frame_time_limit_usec"], frame["frame_upload_limit_bytes"], frame["frame_single_upload_bytes"]])
 		# Each submitted batch fits the existing sink's 64 KiB item limit.
 		if operation_lines.size() >= 64: _flush_operations()
 
@@ -1087,6 +1089,9 @@ func _finish_report(outcome: String, message: String) -> void:
 		"scenarios": reports, "operation_phases": operation_phases,
 		"operation_trace": {"clock": "process monotonic microseconds; join to frame callback_usec",
 			"frames": "native engine process intervals; phase boundaries split a frame without resetting admission",
+			"terrain_accounting_version": 2,
+			"terrain_time": "upload + deletion + inclusive completed-task application - nested upload/deletion; whole-frame carry survives phase changes",
+			"data_apply_kind": 4,
 			"payload": "conservative input layout: 64 bytes per unique vertex plus 4 per actual index; includes tangent reserve; excludes driver allocations; reference release has zero payload",
 			"deletion_kinds": {"2": "surface_remove", "3": "mesh_reference_release"},
 			"bounds": "64 native frame records; 128 pending CSV rows; 64 MiB per operation file; shared bounded disk worker",
@@ -1115,6 +1120,10 @@ func _finish_report(outcome: String, message: String) -> void:
 	summary["configuration"]["anti_aliasing"] = "disabled"
 	summary["configuration"]["fog_density"] = benchmark_environment.fog_density
 	summary["configuration"]["fog"] = fog_configuration
+	summary["shipping_diagnostic_qualification"] = {"policy": "m1-shipping-diagnostics-1", "outcome": "not_run",
+		"qualified": false, "threshold": 0.01, "added_fraction": null,
+		"reason": "shipping instrumentation inventory and focused target sensitivity pilot remain unverified",
+		"legacy_assessments": "historical/supplementary; unchanged verdicts do not qualify the prospective shipping configuration"}
 	summary["diagnostic_ab"] = Evaluation.diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["diagnostic_heavy_ab"] = Evaluation.heavy_diagnostic_ab(reports, test_mode, not integration_failures.is_empty())
 	summary["route_calibration"] = Calibration.evaluate(reports, test_mode, not integration_failures.is_empty())

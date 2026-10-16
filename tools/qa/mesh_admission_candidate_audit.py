@@ -13,6 +13,8 @@ from cpu_dose import reconcile_saved as cpu,reconcile_runtime as cpu_runtime,sco
 from frame_slack import reconcile_saved as frame,reconcile_runtime as frame_runtime,scope as frame_scope
 from route_calibration import validate_controls,reconcile_folder
 from diagnostic_method_validation import validate as method
+from ordinary_admission import compare as ordinary_compare
+from terrain_budget import reconcile_folder as terrain_folder
 from frontier_boundary import reconcile as boundary
 from frontier_edit import reconcile as edit
 
@@ -84,16 +86,17 @@ def ordinary(reports):
     records=[];details=[];phases=operation_rows=frames=events=scenarios=0;exceedances=[]
     for path in sorted(reports.rglob('summary.json')):
         s=read(path)
-        if 'scenarios' not in s or s.get('benchmark_mode')=='travel-replay':continue
+        if 'scenarios' not in s or s.get('benchmark_mode') in ('travel-replay','ordinary-admission'):continue
         require(s['completed'] and not s['qualified'] and not s['integration_failures'],'Incomplete ordinary report')
         cpu_scope(s['cpu_dose_sensitivity'],not_run=True);frame_scope(s['frame_slack_sensitivity'],not_run=True)
         folder=path.parent;relative=path.relative_to(reports).parts[0]
+        terrain_folder(folder,s)
         records.append(ordinary_record(relative,s));scenarios+=len(s['scenarios']);phases+=len(s['operation_phases'])
         groups={p['id']:[] for p in s['operation_phases']}
         for name in {p['raw_operations'] for p in s['operation_phases'] if p['tracing']}:
             previous=-1
             with (folder/name).open(encoding='utf-8-sig',newline='') as f:
-                reader=csv.DictReader(f);require(len(reader.fieldnames)==18,'Operation schema')
+                reader=csv.DictReader(f);require(len(reader.fieldnames) in (18,28),'Operation schema')
                 for v in reader:
                     r={k:int(n) for k,n in v.items()};operation_rows+=1
                     require(r['phase'] in groups and previous<=r['start_usec']<=r['end_usec'],'Native order/clock')
@@ -291,6 +294,16 @@ def audit():
             v=reversal_compare(*pair,info,workers)
             require(v==read(reports/(name+'-validation.json')),'Saved camera-reversal oracle differs')
             reversal_trials[name]=v
+    ordinary_trials={}
+    for label in ('editor','release'):
+        for workers in (1,2):
+            name=f'm1-ordinary-admission-{label}-{workers}';pair=[]
+            for mode in ('fifo','priority'):
+                files=list((reports/(name+'-'+mode+'-raw')).glob('*/ordinary-admission-summary.json'))
+                require(len(files)==1,'Missing ordinary-path trial');pair.append(files[0].parent)
+            v=ordinary_compare(*pair,info,workers)
+            require(v==read(reports/(name+'-validation.json')),'Saved ordinary comparison differs')
+            ordinary_trials[name]=v
     current,ordinary_result=ordinary(reports)
     baseline_path=ROOT/'docs/evidence/m1-frontier-travel-contracts-2026-10-09.json'
     if baseline_path.exists():baseline=read(baseline_path)
@@ -310,7 +323,7 @@ def audit():
     result=dict(passed=True,qualified=False,target_performance='not_run',build=info,native_key=manifest['engine_inputs'],
         portable_sha256=sha(raw),portable_bytes=len(raw),exe_sha256=sha(z.read('Cairn.exe')),pck_sha256=sha(z.read('Cairn.pck')),
         pck_entries_md5_verified=len(entries),pe_imports_verified=len(dlls),self_tests_verified=len(tests),published_download_roundtrip=True,
-        native_manifest=manifest,admission=trials,reversal=reversal_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,
+        native_manifest=manifest,admission=trials,reversal=reversal_trials,ordinary_admission=ordinary_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,
         target_action_required_now=False,engine_run_locally=False,executor_recovery='independent read-only audit executed in Actions after workspace disconnect')
     (reports/'m1-mesh-admission-independent-audit.json').write_text(json.dumps(result,indent=2))
     print('CAIRN_INDEPENDENT_AUDIT='+json.dumps(result,separators=(',',':')),flush=True)

@@ -145,11 +145,9 @@ def reconcile_operations(folder, summary):
             require(native[kind] == exact, 'Phase aggregate differs from complete saved operation rows')
         require(native['peak_frame_operation_usec'] == max(r['upload']['usec']+r['deletion']['usec'] for r in rows)
                 and native['peak_frame_upload_bytes'] == max(r['upload']['bytes'] for r in rows), 'Native frame peak mismatch')
-        reasons = []
-        if native['upload']['max_usec'] > 750:
-            reasons.append('Individual upload exceeded 0.75 ms')
-        if native['deletion']['max_usec'] > 750:
-            reasons.append('Individual deletion exceeded 0.75 ms')
+        from terrain_budget import reasons as terrain_reasons, reconcile_rows
+        reconcile_rows(rows, native)
+        reasons = terrain_reasons(native)
         require(phase['operation_failures'] == reasons and phase['operation_evaluation'] == ('failed' if reasons else 'passed'),
                 '750 us operation guard suppressed or changed')
         if reasons:

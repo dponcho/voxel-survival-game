@@ -61,7 +61,7 @@ inline void begin_frame() {
 inline bool admit_upload(uint32_t bytes) {
     if (shutting_down) return true; // Exit is not a gameplay frame; shutdown must drain.
     if (bytes > 256 * 1024) { ++overloads; return false; }
-    return frame_upload_bytes + bytes <= byte_budget && frame_upload_usec + 750 <= time_budget;
+    return frame_upload_bytes + bytes <= byte_budget && admit_terrain_operation(frame_upload_usec, time_budget);
 }
 inline void record_upload(uint32_t bytes, uint64_t start) {
     const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;
@@ -75,5 +75,14 @@ inline void record_deletion(uint32_t bytes, uint64_t start, bool surface) {
     deletion_usec += elapsed; frame_upload_usec += elapsed;
     deletion_max_usec = MAX(deletion_max_usec, elapsed);
     operations.record_deletion(bytes, start, elapsed, surface);
+}
+inline void record_data_apply(uint64_t start, uint64_t previous_charged_usec) {
+    const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;
+    const uint64_t nested = frame_upload_usec - previous_charged_usec;
+    if (nested > elapsed) ++overloads;
+    const uint64_t bounded_nested = MIN(nested, elapsed);
+    data_apply_usec += elapsed; data_apply_max_usec = MAX(data_apply_max_usec, elapsed);
+    frame_upload_usec += elapsed - bounded_nested;
+    operations.record_data_apply(start, elapsed, bounded_nested);
 }
 }

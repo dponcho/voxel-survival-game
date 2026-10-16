@@ -14,6 +14,8 @@ from frontier_edit import reconcile as reconcile_frontier_edit
 from frontier_travel import reconcile as reconcile_travel
 from mesh_admission import compare as compare_mesh_admission
 from frontier_reversal import compare as compare_reversal
+from ordinary_admission import compare as compare_ordinary
+from terrain_budget import reconcile_folder as reconcile_terrain
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "reports"
@@ -173,6 +175,24 @@ if __name__ == "__main__":
             comparison = compare_reversal(*folders, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8")), workers)
             (REPORTS / f"m1-frontier-reversal-{suffix}-{workers}-validation.json").write_text(json.dumps(comparison,indent=2),encoding="utf-8")
     print("Original H2 camera reversal, all 1200 ticks/work/current revisions, eviction and complete evidence reconciled", flush=True)
+    for executable, suffix in [(ROOT / "build/engine-bundle/editor.exe", "editor"),
+                               (ROOT / "dist/player/Cairn.exe", "release")]:
+        for workers in (1, 2):
+            folders = []
+            for policy in ("fifo", "priority"):
+                name = f"m1-ordinary-admission-{suffix}-{workers}-{policy}"
+                raw = REPORTS / (name + "-raw")
+                command = [executable, "--headless", "--path", ROOT / "game"] if suffix == "editor" else [executable, "--headless"]
+                flags = ["--mesh-admission-priority"] if policy == "priority" else []
+                check(command + ["--", "--ordinary-admission-check", f"--workers={workers}",
+                                 "--m1-report-root=" + str(raw)] + flags, name, "CAIRN_ORDINARY_ADMISSION=", 600)
+                found = list(raw.glob("*/ordinary-admission-summary.json"))
+                if len(found) != 1:
+                    raise RuntimeError("Missing or duplicated ordinary admission report")
+                folders.append(found[0].parent)
+            comparison = compare_ordinary(*folders, json.loads((ROOT / "dist/player/BUILD_INFO.json").read_text(encoding="utf-8")), workers)
+            (REPORTS / f"m1-ordinary-admission-{suffix}-{workers}-validation.json").write_text(json.dumps(comparison,indent=2),encoding="utf-8")
+    print("Untraced ordinary H2 priority/FIFO, complete work, coverage, edits and terrain budgets reconciled", flush=True)
     check([ROOT / "build/engine-bundle/editor.exe", "--headless", "--path", ROOT / "game",
            "--script", "res://scripts/m1_streaming_tests.gd"],
           "m1-streaming-collision-eviction-cancellation", "CAIRN_M1_STREAMING=", 600)
@@ -198,6 +218,9 @@ if __name__ == "__main__":
         json.dumps(reconcile_runtime(folders[0].parent), indent=2), encoding="utf-8")
     for summary_path in REPORTS.glob("m1-*-raw/*/summary.json"):
         saved = json.loads(summary_path.read_text(encoding="utf-8"))
+        if "operation_phases" in saved:
+            terrain = reconcile_terrain(summary_path.parent, saved)
+            (summary_path.parent / "terrain-budget-audit.json").write_text(json.dumps(terrain,indent=2),encoding="utf-8")
         cpu_scope(saved["cpu_dose_sensitivity"], not_run=True)
         frame_scope(saved["frame_slack_sensitivity"], not_run=True)
         if any("cpu_dose_accounting" in p for p in saved["scenarios"]):

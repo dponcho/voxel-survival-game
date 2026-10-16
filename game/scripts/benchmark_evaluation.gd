@@ -13,6 +13,11 @@ static func operation_failures(phase: Dictionary) -> Array[String]:
 	if int(phase["upload"]["max_usec"]) > 750: failures.append("Individual upload exceeded 0.75 ms")
 	if int(phase["deletion"]["max_usec"]) > 750: failures.append("Individual deletion exceeded 0.75 ms")
 	if int(phase["dropped_frames"]) > 0: failures.append("Native operation trace dropped frames")
+	if int(phase.get("terrain_accounting_version", 0)) >= 2:
+		if int(phase["data_apply"]["max_usec"]) > 750: failures.append("Individual data application exceeded 0.75 ms")
+		if int(phase["terrain_time_overruns"]) > 0: failures.append("Cumulative terrain frame time exceeded its 1/2 ms budget")
+		if int(phase["terrain_upload_overruns"]) > 0: failures.append("Cumulative frame upload payload exceeded its budget")
+		if int(phase["peak_single_upload_bytes"]) > 262144: failures.append("Individual upload payload exceeded 256 KiB")
 	return failures
 
 static func scenario_result(completed: bool, hard_failure: bool, reasons: Array[String]) -> Dictionary:

@@ -29,7 +29,7 @@ static func verify(directory: String, phases: Array[Dictionary], reports: Array[
 		while not file.eof_reached():
 			var fields: PackedStringArray = file.get_csv_line()
 			if fields.size() == 1 and fields[0].is_empty(): continue
-			if fields.size() != 18 or header.size() != 18:
+			if fields.size() != header.size() or not header.size() in [18, 28]:
 				failures.append("Malformed operation CSV row")
 				break
 			var row: Dictionary = {}

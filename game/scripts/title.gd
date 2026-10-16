@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--ordinary-admission-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_ordinary_admission_runtime.gd").new())
+		return
 	if "--frontier-reversal-replay" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_frontier_reversal_runtime.gd").new())
 		return

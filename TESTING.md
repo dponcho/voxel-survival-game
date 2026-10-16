@@ -313,3 +313,24 @@ original edits submitted in each run. FIFO's four edit-duration failures and one
 timeout remain. Evidence-reader success does not imply a passing scenario;
 priority assessments remain inconclusive under the unchanged diagnostic guard.
 No local engine execution or HD 620 qualification is claimed.
+
+### Ordinary admission and complete terrain budget review controls
+
+The ordinary check runs `--ordinary-admission-check` in fresh editor/release
+one/two-worker FIFO/priority processes, twenty seconds / 1,200 fixed ticks each.
+It inherits production route/camera/work and ordinary ledgers, disables admission
+tracing and travel/resource observation, preserves all 80 due edits / 20 proxy
+saves / 28,800 actor updates, and retains preparation/acknowledgement/retirement/
+writer/finalization accounting. Missing trace/resource fields are unavailable/null.
+Independent saved readers verify exact commands, original revision terminal
+events, measured coverage, complete frame/operation evidence and full drain.
+Integrity success and measured bounded acceptance are separate decisions.
+
+Terrain ledger v2 supplements the original eighteen CSV columns with data
+application and ten frame-budget columns. Native and independent controls cover
+two individually legal 600 µs operations exceeding a normal 1 ms allowance,
+application spans above 750 µs, nested-child union accounting, phase-split native
+frames, 512 KiB/1 MiB frame payload and independent 256 KiB individual payload.
+Legacy rows remain partial evidence. Full-height cuboid demand feasibility is
+checked before profile selection; actual vertical/directional runtime evidence
+is still required. No cloud timing certifies target throughput or deferred work.
