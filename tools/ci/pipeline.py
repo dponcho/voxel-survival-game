@@ -158,6 +158,22 @@ def prepare():
                       "res://scripts/" + script + ".gd"], "parse-" + script, timeout=60)
         if "SCRIPT ERROR:" in output or "ERROR:" in output:
             raise RuntimeError("Direct frame/benchmark parser check reported errors")
+    # Fail cheap dispatch/estimator defects before the long terrain suite. This
+    # is the same adopted control set, not another sensitivity experiment.
+    output = run([editor, "--headless", "--path", game, "--script",
+                  "res://scripts/m1_shipping_method_tests.gd"], "shipping-method-preflight", timeout=60)
+    markers = [line.split("CAIRN_SHIPPING_METHOD=", 1)[1] for line in output.splitlines()
+               if "CAIRN_SHIPPING_METHOD=" in line]
+    if "SCRIPT ERROR:" in output or "ERROR:" in output or len(markers) != 1:
+        raise RuntimeError("Shipping method preflight failed")
+    control = json.loads(markers[0])
+    if not control["passed"] or not control["fixed_work_dispatch"] or len(control["cases"]) != 24:
+        raise RuntimeError("Shipping method dispatch/control set failed")
+    sys.path.insert(0, str(ROOT / "tools/qa"))
+    from shipping_diagnostics import compare_method, evaluate
+    for case in control["cases"]:
+        compare_method(case["assessment"], evaluate(case["trials"]))
+    write_json(REPORTS / "shipping-method-preflight.json", control)
     # Run the title/self-test through the matching editor, then both actual export templates.
     self_test(editor, "editor-self-test", game)
     output = run([editor, "--headless", "--path", game, "--script", "res://scripts/m1_native_tests.gd"],
