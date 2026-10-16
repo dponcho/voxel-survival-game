@@ -35,7 +35,8 @@ bool CairnProbe::set_mesh_admission(Object *object, bool priority, Vector3 origi
     auto *terrain = Object::cast_to<zylann::voxel::VoxelTerrain>(object);
     if (!Thread::is_main_thread() || terrain == nullptr || !terrain->is_inside_tree() ||
             terrain->get_global_transform() != Transform3D() || !origin.is_finite() ||
-            terrain->get_mesh_block_size() != 16 || terrain->get_generate_collisions()) return false;
+            (terrain->get_mesh_block_size() != 16 && terrain->get_mesh_block_size() != 32) ||
+            terrain->get_generate_collisions()) return false;
     terrain->set_cairn_mesh_admission(priority, origin, trace);
     return true;
 }

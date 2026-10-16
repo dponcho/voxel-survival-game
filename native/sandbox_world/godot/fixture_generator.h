@@ -14,7 +14,7 @@ class CairnFixture : public zylann::voxel::VoxelGenerator {
 protected:
     static void _bind_methods();
 public:
-    void set_fixture(int value) { fixture = CLAMP(value, 0, 2); }
+    void set_fixture(int value) { fixture = CLAMP(value, 0, 3); }
     int get_fixture() const { return fixture; }
     bool try_edit(Object *terrain, Vector3i position, int value);
     Result generate_block(VoxelQueryData input) override;

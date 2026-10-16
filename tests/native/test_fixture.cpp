@@ -25,11 +25,11 @@ int main() {
     // negative coordinates. Reserve the worst-case six faces for every one of
     // the 64 allowed temporary edits, even if all affect the same render region.
     const int directions[6][3] = {{1,0,0},{-1,0,0},{0,1,0},{0,-1,0},{0,0,1},{0,0,-1}};
-    for (int fixture = 0; fixture < 3; ++fixture) {
+    for (int fixture = 0; fixture < 4; ++fixture) {
         int maximum_faces = 0;
         for (int origin_z = -576; origin_z < 0; origin_z += 32)
             for (int origin_x = -192; origin_x < 0; origin_x += 32)
-                for (int origin_y : {-32, 0}) {
+                for (int origin_y : {-64, -32, 0, 32, 64, 96, 128, 160}) {
                     int faces = 0;
                     for (int z = origin_z; z < origin_z + 32; ++z)
                         for (int x = origin_x; x < origin_x + 32; ++x)
@@ -43,5 +43,23 @@ int main() {
                 }
         std::cout << "Fixture " << fixture << " maximum region faces: " << maximum_faces << '\n';
     }
+    for (int x = -192; x <= 192; ++x) {
+        // Both actual movement axes have solid support at the interior altitude.
+        assert(cairn::fixture_voxel(x,63,10,3) == 2);
+        assert(cairn::fixture_voxel(x,64,10,3) == 0);
+        assert(cairn::fixture_voxel(10,63,x,3) == 2);
+        assert(cairn::fixture_voxel(10,64,x,3) == 0);
+    }
+    for (int x : {-33,-1,0,10,31,32,127}) for (int z : {-33,-1,0,10,31,32,127}) {
+        assert(cairn::fixture_voxel(x,-65,z,3) == 0);
+        assert(cairn::fixture_voxel(x,-64,z,3) == 1);
+        assert(cairn::fixture_voxel(x,192,z,3) == 0);
+    }
+    for (int y : {-48,-16,16,48}) {
+        assert(cairn::fixture_voxel(1,y,10,3) == 0);
+        assert(cairn::fixture_voxel(10,y,10,3) == 1);
+    }
+    assert(cairn::fixture_voxel(10,-32,10,3) == 1);
+    assert(cairn::fixture_voxel(10,40,10,3) == 1);
     std::cout << "M1 fixture coordinate, admission and upload-bound checks passed\n";
 }
