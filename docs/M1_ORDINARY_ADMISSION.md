@@ -5,6 +5,10 @@ performance remain unqualified.** Priority passes the bounded ordinary-path
 comparison below and remains opt-in pending representative-world and target
 evidence. No laptop action is requested now.
 
+The subsequent [full-height/directional follow-up](M1_FULL_HEIGHT.md) now has
+the latest verified candidate. The measurements below remain this increment's
+historical record; current next actions are in [NEXT_TASK.md](NEXT_TASK.md).
+
 ## Candidate and verification
 
 - Implementation: `5d4621f20f86481dae732dfc2de7e1829462644d`, following review

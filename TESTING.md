@@ -357,4 +357,7 @@ command/position history, genuine edited-data/mesh eviction and reload, complete
 frame/edit/operation records and finalization. Corrupted observations and twelve
 post-package saved mutations must fail. The preceding 42 heavy contracts remain
 unchanged. Detailed bounds and stopping conditions are predeclared in
-[the full-height experiment](docs/M1_FULL_HEIGHT.md); runtime verification is pending.
+[the full-height experiment](docs/M1_FULL_HEIGHT.md). Matching CI `38922744175`
+and the independent downloaded-file audit pass all four cases and reject all
+twelve new saved mutations (50 total with earlier controls). Both prepared
+cases pass bounded cloud acceptance; target performance remains unqualified.

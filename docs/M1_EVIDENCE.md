@@ -1,8 +1,9 @@
 # M1 engine experiment evidence
 
-October 16 review runtime changes are now **cloud-verified, target-unqualified**.
-The current candidate includes complete terrain accounting and the ordinary-path
-admission comparison. See [the exact evidence](M1_ORDINARY_ADMISSION.md),
+October 16 full-height/directional changes are now **cloud-verified, target-unqualified**.
+The current candidate adds actual movement reversal/cross-axis travel to the
+complete terrain accounting and ordinary-path admission comparison. See
+[the exact evidence](M1_FULL_HEIGHT.md),
 [review response](M1_REVIEW_RESPONSE.md) and active [gate register](NEXT_TASK.md).
 All target qualification flags remain false; measured failures remain retained.
 
@@ -11,7 +12,39 @@ Current milestone status: **blocked; target not qualified**. The original
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: ordinary admission and complete terrain accounting
+## Current Windows candidate: full height and actual movement reversal
+
+Implementation `5d84c4917878146ec4cba34c347157bccbc1d520`, exported build
+`4e028d5b1cf762596d2da809385c9135367acfa7`, CI
+[38922744175](https://github.com/dponcho/voxel-survival-game/actions/runs/38922744175).
+All three jobs pass: 100 Python regressions, six native sanitizer suites,
+matching editor/debug/release qualification, four fresh full-height cases,
+all prior integration/profile/control checks and offline extractions.
+
+The separate 32³/one-worker fixture spans `Y[-64,192)` at an interior altitude.
+Its 4,320-tick +X/-X/+Z route preserves 288 edits, 72 proxy saves and 103,680
+actor updates in every case. Both editor and release baselines retain 521 coverage
+alarms; both directional-preparation cases have zero, with all original edits
+submitted (56 ms p95, maximum below 98 ms). All twelve native phases pass,
+resident peaks are 392 meshes / 5,104 data blocks and edited data/meshes genuinely
+evict and reload. Priority/preparation remain opt-in; no profile is selected.
+
+The [Windows player](https://github.com/dponcho/voxel-survival-game/actions/runs/38922744175/artifacts/12062934427)
+has portable ZIP SHA-256
+`fe3db7bcf2b92ae7ffdab312d5ca7f2ca3a2c1e4082015d4699a7d2230be1fa8`.
+Published-download and separate read-only audits verify all 82 PCK MD5s,
+eight self-tests, 38 imports, complete saved comparisons and 50 rejected
+mutations. [Full results and identity](M1_FULL_HEIGHT.md) retain two current
+broader research operation failures and all historical failures. All 42 preceding
+heavy contracts are unchanged. Headless/forensic observations do not qualify
+HD 620 rendering, physical pacing or shipping diagnostic cost.
+
+Next implement the explicit shipping/forensic diagnostic inventory and focused
+null/known-positive pilot. No new laptop run is requested before that candidate
+and its reviewed measurement boundaries are ready. M1 and M2 progression remain
+gated by [NEXT_TASK.md](NEXT_TASK.md).
+
+## Previous Windows candidate: ordinary admission and complete terrain accounting
 
 Implementation `5d4621f20f86481dae732dfc2de7e1829462644d`, exported build
 `9de780dbcf80f769e66eab8590c8cec8f02cede1`, CI
@@ -32,7 +65,7 @@ Published-download and separate read-only audits verify 80 PCK MD5s, eight
 self-tests, 38 imports, all saved comparisons and 38 rejected mutations.
 [Full results and artifact identity](M1_ORDINARY_ADMISSION.md) record the limits
 and retained failures. Priority remains opt-in; no new laptop run is requested.
-Next is the bounded full-height/directional fixture, not another ordinary matrix.
+That checkpoint led to the full-height/directional fixture now completed above.
 
 ## Previous Windows candidate: bounded original H2 camera reversal
 

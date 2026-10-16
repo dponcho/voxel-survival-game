@@ -76,9 +76,15 @@ terrain guards and full drain. FIFO retains coverage/edit failures, and five
 broader phases retain operation-limit failures. The source-matched Windows
 candidate and independent audits are in
 [ordinary admission evidence](docs/M1_ORDINARY_ADMISSION.md). Priority stays
-opt-in; full-height/directional demand, diagnostics and target qualification
-remain open. The next task is the representative fixture in
-[the gate register](docs/NEXT_TASK.md).
+opt-in. That checkpoint led to the full-height/directional experiment, now
+completed in CI `38922744175`: both 32³/one-worker prepared cases have zero
+coverage alarms versus 521 in each baseline, all 288 edits submitted, actual
++X/-X/+Z movement, genuine edited-data/mesh reload and passing operation guards.
+Peaks are 392 meshes / 5,104 data within unchanged caps. No target profile is
+selected or qualified. [Full-height evidence](docs/M1_FULL_HEIGHT.md) gives the
+verified Windows candidate and retained broader failures. Next implement the
+shipping/forensic diagnostic inventory and focused pilot in
+[the gate register](docs/NEXT_TASK.md); no laptop action is requested yet.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

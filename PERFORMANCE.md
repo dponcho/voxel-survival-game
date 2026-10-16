@@ -23,6 +23,15 @@ failures are retained and target/diagnostic qualification remains open. See
 [ordinary evidence](docs/M1_ORDINARY_ADMISSION.md). No elapsed-time overhead
 estimate or requirement change follows from that comparison.
 
+The separate full-height `Y[-64,192)` 32³/one-worker cloud experiment now passes
+its prepared +X/-X/+Z movement case in editor and release: zero coverage alarms,
+all 288 edits submitted, all twelve native phases within their guards and full
+drain. Preparation peaks at 392 resident meshes / 5,104 data blocks under the
+unchanged caps and 96/128 m required radii. This is an opt-in fixture policy,
+not production profile selection or target timing/geometry/GPU qualification.
+See [the measured result](docs/M1_FULL_HEIGHT.md). Diagnostic inventory/pilot,
+target budgets and retained broader failures remain open.
+
 Design baseline: 2026-09-05. The [September 25 target reports](docs/M1_TARGET_REVIEW.md) were reviewed on 2026-09-26; **no profile is qualified yet**. All numbers below remain requirements, admission limits or initial engineering allocations. The Java-style product-direction change does not relax these gates. Settings become a certified profile only after the exported Windows build passes on the specified machine.
 
 ## 1. Fixed target and meaning of a pass
