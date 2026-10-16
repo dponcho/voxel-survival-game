@@ -65,10 +65,20 @@ four matched 1,200-tick comparisons through the original tick-900 camera turn:
 priority has zero alarms before/after, all eighty edits submitted and all 64
 lateral witnesses current before 96 m entry. Legitimate eviction and complete
 drain remain visible; FIFO retains coverage/edit failures and one timeout.
-The traced opt-in result leaves ordinary untraced priority, full/repeated routes,
-diagnostic overhead and target qualification open. [Reversal evidence](docs/M1_FRONTIER_REVERSAL.md)
-and [the next bounded ordinary-path check](docs/NEXT_TASK.md) keep M1 blocked and
-M2 gated.
+The October 13 traced result left ordinary untraced priority, full/repeated
+routes, diagnostic overhead and target qualification open.
+[Reversal evidence](docs/M1_FRONTIER_REVERSAL.md) records that stage; the
+[current gates](docs/NEXT_TASK.md) keep M1 blocked and M2 gated.
+
+October 16 closes that bounded ordinary-path cloud comparison: all four priority
+runs have zero coverage alarms, all eighty edits submitted, passing complete
+terrain guards and full drain. FIFO retains coverage/edit failures, and five
+broader phases retain operation-limit failures. The source-matched Windows
+candidate and independent audits are in
+[ordinary admission evidence](docs/M1_ORDINARY_ADMISSION.md). Priority stays
+opt-in; full-height/directional demand, diagnostics and target qualification
+remain open. The next task is the representative fixture in
+[the gate register](docs/NEXT_TASK.md).
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

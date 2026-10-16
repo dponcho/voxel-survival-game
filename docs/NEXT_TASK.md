@@ -14,31 +14,34 @@ is [archived](archive/NEXT_TASK_2026-10-13.md); the adopted review decisions are
 
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
-| Ordinary priority admission | Traced 20-second priority runs cover all required cells and 80 edits. Production remains FIFO. Untraced comparison is implemented in this increment; its cloud outcome must be recorded. | Eight matched 1,200-tick FIFO/priority editor/release one/two-worker processes using ordinary ledgers; no admission trace or replay observer. | Independent evidence integrity plus zero priority coverage alarms, all 80 original edits submitted within limits, caps and full drain. Preserve any failure; do not adopt priority globally from traced evidence. |
-| Complete synchronous terrain budget | Previous ledgers omitted data application and cumulative guards. V2 now records parent/child timing, frame carry and payload maxima and reserves 750 µs before another application. | Verify native/reader fault controls and fresh matching Windows candidate; inspect new actual overruns. | Two individually legal 600 µs operations must fail a normal 1 ms frame; nested intervals charged once; phase resets cannot hide work. A cloud pass still needs target proof. Renderer-deferred work stays unverified. |
-| Representative world demand / direction | Slab: 507 base 16³ regions, up to 511 with preparation. Full-height interior: 2,197 at 16³ versus 343 at 32³; cap 512. Existing preparation is +X/slab-specific. | One deterministic full-height fixture with real travel reversal and cross-axis travel; start with the arithmetically feasible 32³ candidate, without selecting it in advance. | Bound preparation/movement/eviction and zero missing required coverage/readiness stops within all caps. A failure leads to a narrow demand-policy correction or explicit profile/contract decision; no backend rewrite or height/radius reduction by default. |
+| Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant representative-world proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
+| Complete synchronous terrain budget | V2 and fault controls now pass matching native/editor/release and independent audits. All 24 ordinary phases pass; five broader phases retain individual application/upload/deletion or cumulative failures. | Preserve those failures and apply the complete ledger to the representative fixture and relevant target run; isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Representative world demand / direction | Slab: 507 base 16³ regions, up to 511 with preparation. Full-height interior: 2,197 at 16³ versus 343 at 32³; cap 512. Existing preparation is +X/slab-specific. | One deterministic full-height fixture at an interior altitude with real travel reversal and cross-axis travel; start with the arithmetically feasible 32³ candidate, without selecting it in advance. | Bound preparation/movement/eviction and zero missing required coverage/readiness stops within all caps. A failure leads to a narrow demand-policy correction or explicit profile/contract decision; no backend rewrite or height/radius reduction by default. |
 | Shipping diagnostic overhead <1% | Legacy flatness rule rejects repeatable varying routes; total shared overhead lacks a control. Synthetic estimator families are complete research evidence. | Implement one explicit shipping versus forensic inventory and the adopted matched fixed-work complete-trial method, then one null/known-positive target pilot. | Valid controls and an upper incremental-cost bound below 1% pass; lower bound at/above 1% fails; overlap/drift/unavailable evidence is inconclusive. On inconclusive, stop and choose a declared policy; do not start another calibration family. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After the representative candidate is ready, one relevant exact-build target comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
 ## Immediate work and adoption boundary
 
-Finish cloud verification of the ordinary-path comparison and complete terrain
-ledger; publish its actual candidate/evidence and choose the next action from
-observed failures. The source change does not itself close either gate.
+Implement the full-height/directional fixture above as one bounded engine
+experiment. Include an interior altitude so world-bound clipping cannot replace
+full vertical demand. Preserve the existing routes and add actual player motion
+reversal/cross-axis commands with independently checkable work and coordinates.
+Start with one worker and the feasible 32³ candidate; expand only against a
+demonstrated need. Retain all operation failures and isolate any blocking code
+path before expanding the experiment. No new laptop run is requested now.
 
-CI `38838162724` passed static/native checks and built the matching Windows
-binaries, then stopped on the first ordinary FIFO process: it incorrectly ran
-the six-phase startup validator after deliberately stopping startup observation.
-The mode-specific correction is prepared; all eight ordinary comparisons and
-the portable package/audit still need a successful cloud run. Preserve the first
-FIFO run's 37 coverage alarms and 125 ms edit p95 as failures, not harness errors.
+The completed ordinary proof and the five broader operation failures are in
+[M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
+defect is fixed; all dedicated startup checks remain. This result advances the
+bounded cloud proof, not M1 qualification.
 
-Priority remains opt-in during this proof. Preserve the four preparation viewers,
-512-region cap, 96 m required visuals/fog, 128 m data envelope, worker/job/resource
-limits, collision safety, exact H2 outward route/camera, 80 due edits and 20 proxy
-saves. Do not claim exact mesh resource/selection witnesses when their observers
-are disabled. The ordinary ledgers establish only their declared submission and
+Priority remains opt-in. Preserve the existing 16³ routes' four preparation
+viewers, exact H2 outward route/camera, 80 due edits and 20 proxy saves. The
+512-region cap, 96 m visuals/fog, 128 m data envelope, worker/job/resource limits
+and collision safety remain unchanged for the new fixture too. Declare any new
+preparation demand within those caps. Do not claim exact mesh resource/selection
+witnesses when their observers are disabled. The ordinary ledgers establish only their declared submission and
 coverage observations. No trace-disabled elapsed time is a causal overhead estimate.
 
 The full-height arithmetic is a feasibility rejection of the unchanged 16³ cuboid
@@ -65,18 +68,14 @@ this register. Survival gameplay stays at M4 and later.
 
 ## Evidence and verification routing
 
-The latest fully verified pre-review candidate is recorded in
-[M1_FRONTIER_REVERSAL.md](M1_FRONTIER_REVERSAL.md), CI `38333317049`, build
-`439398d6be1f06f1fd15e7c80daf76bb669ccc8b`. It does not contain the new accounting
-or ordinary-path changes. Do not offer it as their validation candidate.
-The review source changes are in this transaction; new validation remains pending
-until the actual native/editor/export/integration/audit jobs complete.
-
-The user explicitly approved publication and cloud checks on October 16 UTC.
-The earlier automatic-approval block is resolved. Local source preparation and
-97 Python regressions are complete; fresh native compilation, engine runs,
-candidate packaging and audit remain pending until their actual cloud results
-are recorded. Do not label the source changes runtime-verified before then.
+Latest cloud-verified implementation: `5d4621f20f86481dae732dfc2de7e1829462644d`,
+CI `38912228615`, exported build `9de780dbcf80f769e66eab8590c8cec8f02cede1`.
+It includes the review's complete terrain accounting and ordinary comparison.
+The [candidate/evidence record](M1_ORDINARY_ADMISSION.md) gives exact artifact
+links, digests, limits and retained failures. Matching native binaries were
+reused and requalified; 97 Python regressions, six native sanitizer suites,
+full integration/package checks and both saved audits pass. All target flags
+remain unqualified. The preceding candidate remains historical evidence.
 
 Run permanent pure logic regressions for affected logic. Native, scheduling and
 instrumentation changes retain full integration/package checks. Research controls

@@ -124,7 +124,7 @@ needs stage timing, ownership and a demonstrated equivalent coverage path.
 The active register is `NEXT_TASK.md`; the historical narrative is archived.
 The cloud candidate/evidence record is updated only after the actual checks run.
 
-## Prepared change validation and publication status
+## Cloud validation and publication status
 
 97 Python integration regressions passed in the cloud workspace, including the
 new cumulative/data/nested/phase/payload fault controls and command oracle.
@@ -132,11 +132,17 @@ Python compile checks and patch whitespace checks pass. The six focused new
 checks were also rerun after reader/audit edits. No engine, native compiler or
 Windows candidate was run locally.
 
-Source publication was initially blocked by automatic approval review. The user
-explicitly approved publishing these changes to the existing project branch and
-running cloud checks on October 16 UTC. That block is resolved. The connected
-GitHub integration publishes the prepared source with an expected-head lease;
-Git transport itself has no write credentials. Native compilation, GDScript/
-engine checks, the eight ordinary trials, portable packaging and saved artifact
-audit remain pending until their actual results are recorded. These source
-changes do not yet establish runtime correctness or qualify M1.
+The user approved publication/cloud checks on October 16 UTC. CI `38838162724`
+built and qualified the new native code, then exposed a mode-specific startup
+validator error. Implementation `5d4621f20f86481dae732dfc2de7e1829462644d`
+corrects that scope while retaining dedicated startup checks. CI `38912228615`
+passes all three jobs, the 97 Python regressions, six native sanitizer suites,
+all prior engine checks, all eight ordinary trials, portable/offline packaging
+and the published-download audit. A separate read-only saved audit agrees.
+
+All four ordinary priority runs pass bounded coverage/edit/operation acceptance;
+FIFO failures and five broader operation-limit failures remain recorded.
+Priority stays opt-in. The actual candidate, digests, full results and finite
+next action are in [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md).
+Shipping diagnostics, representative-world/target evidence and full M1
+qualification remain open; no new laptop action is requested yet.

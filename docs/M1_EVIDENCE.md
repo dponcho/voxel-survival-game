@@ -1,17 +1,40 @@
 # M1 engine experiment evidence
 
-Prepared October 16 review changes are **not yet cloud-validated**. Source
-publication is now explicitly approved; fresh native/engine checks and the new
-Windows candidate are pending. The latest verified pre-review candidate below is
-unchanged. See [review response](M1_REVIEW_RESPONSE.md) and the active
-[gate register](NEXT_TASK.md). All qualification flags remain false.
+October 16 review runtime changes are now **cloud-verified, target-unqualified**.
+The current candidate includes complete terrain accounting and the ordinary-path
+admission comparison. See [the exact evidence](M1_ORDINARY_ADMISSION.md),
+[review response](M1_REVIEW_RESPONSE.md) and active [gate register](NEXT_TASK.md).
+All target qualification flags remain false; measured failures remain retained.
 
 Current milestone status: **blocked; target not qualified**. The original
 [five-run laptop review](M1_TARGET_REVIEW.md) and subsequent private exact-build
 reviews retain unresolved gates. The candidates below passed cloud checks;
 none qualifies M1.
 
-## Current Windows candidate: bounded original H2 camera reversal
+## Current Windows candidate: ordinary admission and complete terrain accounting
+
+Implementation `5d4621f20f86481dae732dfc2de7e1829462644d`, exported build
+`9de780dbcf80f769e66eab8590c8cec8f02cede1`, CI
+[38912228615](https://github.com/dponcho/voxel-survival-game/actions/runs/38912228615).
+All three jobs pass, including 97 Python regressions, six native sanitizer
+suites, all prior checks and eight fresh ordinary-path processes. All four
+priority runs have zero coverage alarms, eighty submitted original edits,
+passing complete operation guards and full drain. FIFO retains 35–38 alarms
+and four timed-out edits. Five broader operation phases still fail limits;
+priority timing assessments remain inconclusive under the legacy diagnostic
+guard. Shipping diagnostics and target performance are unverified.
+
+The [Windows player](https://github.com/dponcho/voxel-survival-game/actions/runs/38912228615/artifacts/12052521294)
+contains the review runtime changes and corrected mode-specific startup
+validation. Portable ZIP SHA-256:
+`f993e2de3586f60ab2ec592b5e455754952edbc343bf1f998955a42e47f43584`.
+Published-download and separate read-only audits verify 80 PCK MD5s, eight
+self-tests, 38 imports, all saved comparisons and 38 rejected mutations.
+[Full results and artifact identity](M1_ORDINARY_ADMISSION.md) record the limits
+and retained failures. Priority remains opt-in; no new laptop run is requested.
+Next is the bounded full-height/directional fixture, not another ordinary matrix.
+
+## Previous Windows candidate: bounded original H2 camera reversal
 
 Completed October 13 UTC: **opt-in native admission priority through the original
 H2 camera reversal**, implementation `51be24a6a45690b536f23c3f3ddccfdabd5fe567`.
@@ -59,11 +82,11 @@ available exact contracts match the durable public baseline. Ordinary short
 16³ H2 still fails edit/diagnostic guards. No ordinary operation exceedance occurs
 in this run; historical cloud/target failures remain unwaived. The original
 600-tick comparisons and all earlier control expectations/qualification flags
-remain. Full/repeated routes, ordinary untraced priority, physical presentation,
-HD 620 timing and shared/per-frame causal diagnostic overhead are still open.
+remain. At that checkpoint, full/repeated routes, ordinary untraced priority,
+physical presentation, HD 620 timing and shared/per-frame causal diagnostic overhead were still open.
 Instrumented cloud timing does not qualify these gates. **M1 remains blocked.**
 
-Current [Windows player 11783674763](https://github.com/dponcho/voxel-survival-game/actions/runs/38333317049/artifacts/11783674763)
+Previous [Windows player 11783674763](https://github.com/dponcho/voxel-survival-game/actions/runs/38333317049/artifacts/11783674763)
 expires `2026-11-12T02:01:01Z`. Exported merge/build:
 `439398d6be1f06f1fd15e7c80daf76bb669ccc8b`; implementation/build tree:
 `b1af2634f746ec1e93f8ced3750d4a22cdc45e84`. Portable ZIP SHA-256:

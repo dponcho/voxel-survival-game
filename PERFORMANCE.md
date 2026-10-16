@@ -16,6 +16,13 @@ FIFO; diagnostic and target performance requirements below are unchanged.
 Traced elapsed timing does not estimate per-frame or shared causal overhead.
 See [M1_FRONTIER_REVERSAL.md](docs/M1_FRONTIER_REVERSAL.md).
 
+The October 16 ordinary-ledger comparison also passes bounded priority
+coverage/edit/operation checks in all four configurations with its admission
+trace and replay observer disabled. Production remains FIFO, broader operation
+failures are retained and target/diagnostic qualification remains open. See
+[ordinary evidence](docs/M1_ORDINARY_ADMISSION.md). No elapsed-time overhead
+estimate or requirement change follows from that comparison.
+
 Design baseline: 2026-09-05. The [September 25 target reports](docs/M1_TARGET_REVIEW.md) were reviewed on 2026-09-26; **no profile is qualified yet**. All numbers below remain requirements, admission limits or initial engineering allocations. The Java-style product-direction change does not relax these gates. Settings become a certified profile only after the exported Windows build passes on the specified machine.
 
 ## 1. Fixed target and meaning of a pass

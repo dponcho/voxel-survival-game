@@ -337,3 +337,11 @@ frames, 512 KiB/1 MiB frame payload and independent 256 KiB individual payload.
 Legacy rows remain partial evidence. Full-height cuboid demand feasibility is
 checked before profile selection; actual vertical/directional runtime evidence
 is still required. No cloud timing certifies target throughput or deferred work.
+
+CI `38912228615` passes all three jobs, 97 Python regressions, six native
+sanitizer suites, all prior engine checks and all eight ordinary processes.
+Published-download and separate read-only saved audits verify every comparison,
+80 PCK MD5s, eight self-tests, 38 imports and all 38 rejected mutations. All
+four priority runs pass bounded acceptance; FIFO and broader operation failures
+remain visible. Target and shipping diagnostic qualification remain open. See
+[candidate, results and next task](docs/M1_ORDINARY_ADMISSION.md).
