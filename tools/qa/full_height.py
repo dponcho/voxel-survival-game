@@ -75,6 +75,8 @@ def observations(path, enabled):
         previous_usec=row['usec']; p=row['player']; goal=target(tick)
         require(all(abs(a-b)<.01 for a,b in zip((p[0],p[2]),(goal[0],goal[2])))
                 and 63.99<=p[1]<=72.01,'Full-height actual movement stalled, reversed incorrectly or clipped')
+        if tick>=120:
+            require(64<=p[1]<=64.01,'Full-height player never settled onto voxel support')
         if row['stage']=='physics':
             fingerprint=command_hash(tick,fingerprint)
             if tick%15==0 and edit_position(tick)==[0,70,13]: origin_value=2 if origin_value==0 else 0
@@ -233,11 +235,15 @@ def reconcile(folder,build,enabled):
     require(final['start_usec']<=closing['start_usec']<=closing['end_usec']<=final['end_usec']
             and final['end_usec']-final['start_usec']==final['elapsed_usec']>0 and final['start_usec']>=a['end_usec'],
             'Full-height observer finalization outside complete timing boundary')
-    ready=exposed==0 and outcomes['submitted']==288 and p95<=100000 and edit['max_usec']<=200000 and not failed
+    limits=dict(resident_data=8192,resident_mesh=512,private_bytes=2147483648,working_set=1610612736,
+                gpu_resource_estimate_bytes=402653184,pool_voxel_total=201326592,draw_calls=400,triangles=450000)
+    resource_failures=[key for key,limit in limits.items() if r['peaks'].get(key,0)>limit]
+    ready=exposed==0 and outcomes['submitted']==288 and p95<=100000 and edit['max_usec']<=200000 and not failed and not resource_failures
     return dict(passed=True,qualified=False,target_performance='not_run',preparation_enabled=enabled,
         bounded_acceptance=ready,coverage_alarms=exposed,coverage_by_leg=coverage_by_leg,edits=outcomes,
         edit_p95_upper_usec=p95,edit_max_usec=edit['max_usec'],operation_rows=count,failed_operation_phases=failed,
-        terrain=terrain,frame_rows=len(frames),observation=obs,scenario_evaluation=r['evaluation'],reasons=r['reasons'])
+        terrain=terrain,frame_rows=len(frames),observation=obs,resource_limit_failures=resource_failures,
+        scenario_evaluation=r['evaluation'],reasons=r['reasons'])
 
 
 def compare(baseline,prepared,build):

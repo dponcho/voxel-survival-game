@@ -62,7 +62,7 @@ is rebuilding in CI `38918074711`; this staging run does not contain the route.
 The complete route's engine/export/candidate verification follows that build.
 100 Python regressions pass in the cloud workspace, including full-height and
 negative-coordinate demand, actual reversal/cross-axis work, data/mesh reload
-and seventeen corrupted-observation cases. Runtime results remain pending.
+and eighteen corrupted-observation cases. Runtime results remain pending.
 
 Each run retains 4,322 observer rows at most / 16 MiB, ordinary frame/edit
 ledgers, all three native phases and complete acknowledgement, writer drain and

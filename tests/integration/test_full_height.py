@@ -105,7 +105,7 @@ class FullHeight(unittest.TestCase):
 
     def test_lost_work_camera_only_reversal_slab_unbounded_viewer_and_missing_evidence_fail(self):
         rows=fixture(True)
-        faults=('missing-row','order','camera-only','no-cross-axis','height','slab','radius','direction',
+        faults=('missing-row','order','camera-only','no-cross-axis','height','hover','slab','radius','direction',
                 'work','save','hash','unavailable','nonnull-missing','lost-data-eviction','changed-reload','resident','retirement')
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'observations.jsonl'
@@ -116,6 +116,8 @@ class FullHeight(unittest.TestCase):
                 elif fault=='camera-only':bad[1441]['player'][0]=bad[1440]['player'][0]
                 elif fault=='no-cross-axis':bad[2881]['player'][2]=10
                 elif fault=='height':bad[40]['player'][1]=0
+                elif fault=='hover':
+                    bad[120]['player'][1]=72;bad[120]['camera'][1]=72+1.65
                 elif fault=='slab':bad[0]['vertical_voxels'][0][1]=0
                 elif fault=='radius':bad[100]['preparation']['positions'][0][0]+=32
                 elif fault=='direction':bad[1441]['preparation']['direction']=0
