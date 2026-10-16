@@ -7,12 +7,12 @@
 #include <vector>
 
 using namespace cairn;
-static double geometric_oracle(const MeshCandidate &c, const double *eye) {
+static double geometric_oracle(const MeshCandidate &c, const double *eye, int side = 16) {
     // Independent closed-box clamp; compare exact squared distances here.
     const int32_t coordinates[] = {c.x, c.y, c.z};
     double sum = 0;
     for (int a = 0; a < 3; ++a) {
-        const double lo = int64_t(coordinates[a]) * 16, hi = lo + 16;
+        const double lo = int64_t(coordinates[a]) * side, hi = lo + side;
         const double nearest = eye[a] < lo ? lo : (eye[a] > hi ? hi : eye[a]);
         sum += (nearest-eye[a]) * (nearest-eye[a]);
     }
@@ -26,32 +26,34 @@ int main() {
     phases.begin_phase(2,300,true); assert(phases.active_phase() == 2);
     phases.end_phase(400); assert(phases.active_phase() == 0 && phases.phase == 2);
     const double eye[] = {16.6083488464355, 1.65100002288818, 10};
+    const double full_eye[] = {165.998474121094, 65.6510009765625, 10};
     std::array<MeshCandidate, MESH_PENDING_CAP> candidates{};
     std::array<uint16_t, MESH_PENDING_CAP> order{};
     std::mt19937 rng(6109);
-    for (unsigned trial = 0; trial < 100; ++trial) {
+    for (int side : {16,32}) for (unsigned trial = 0; trial < 100; ++trial) {
+        const double *origin = side == 16 ? eye : full_eye;
         for (size_t i = 0; i < candidates.size(); ++i) {
             auto &c = candidates[i];
-            c.x = int(rng()%31)-15; c.y = int(rng()%3)-1; c.z = int(rng()%31)-15;
+            c.x = int(rng()%31)-15; c.y = side == 16 ? int(rng()%3)-1 : int(rng()%8)-2; c.z = int(rng()%31)-15;
             c.flags = 3 | (i%11==0 ? 4 : 0); c.desired = i+1; c.submitted = i%11==0 ? i : 0;
         }
-        assert(mesh_admission_order(candidates.data(), candidates.size(), eye, 16, true, order.data()));
+        assert(mesh_admission_order(candidates.data(), candidates.size(), origin, side, true, order.data()));
         std::vector<unsigned> seen(candidates.size());
         for (size_t j = 0; j < order.size(); ++j) {
             const size_t chosen = order[j]; assert(chosen < seen.size() && !seen[chosen]++);
-            assert(mesh_distance_squared(candidates[chosen],eye,16)==geometric_oracle(candidates[chosen],eye));
+            assert(mesh_distance_squared(candidates[chosen],origin,side)==geometric_oracle(candidates[chosen],origin,side));
             // Exhaustive independent minimum among all remaining requests.
             for (size_t i = 0; i < candidates.size(); ++i) if (!seen[i]) {
                 const bool ce = candidates[chosen].flags & 4, ie = candidates[i].flags & 4;
                 assert(ce || !ie);
                 if (ce == ie) {
-                    const double cd = ce ? 0 : geometric_oracle(candidates[chosen],eye);
-                    const double id = ie ? 0 : geometric_oracle(candidates[i],eye);
+                    const double cd = ce ? 0 : geometric_oracle(candidates[chosen],origin,side);
+                    const double id = ie ? 0 : geometric_oracle(candidates[i],origin,side);
                     assert(cd < id || (cd == id && chosen < i));
                 }
             }
         }
-        assert(mesh_admission_order(candidates.data(), candidates.size(), eye,16,false,order.data()));
+        assert(mesh_admission_order(candidates.data(), candidates.size(), origin,side,false,order.data()));
         for (size_t i = 0; i < order.size(); ++i) assert(order[i]==i);
     }
     for (auto &c : candidates) c = {7,0,-1,3,1,0};
