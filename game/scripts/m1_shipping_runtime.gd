@@ -266,6 +266,9 @@ func _finish_trial() -> void:
 	if _is_shipping():
 		if not _write_json(str(trial["id"]) + "-shipping.json", {"rows": shipping_rows, "interval_count": shipping_count,
 			"interval_sum_usec": shipping_sum_usec, "interval_max_usec": shipping_max_usec, "deadline_misses": shipping_misses}): report_io_failed = true
+		# Dispose optional retained telemetry inside its own trial, never in A3's
+		# next bare setup (which would charge switched cleanup to the reference).
+		shipping_rows.clear()
 	trial["optional_finalization"] = {"start_usec": shipping_begin, "end_usec": Time.get_ticks_usec(), "enabled": _is_shipping()}
 	var phases: Array = operation_phases.slice(phase_first)
 	var operation_ok: bool = phases.size() == 3

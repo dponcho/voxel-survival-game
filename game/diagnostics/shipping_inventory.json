@@ -11,7 +11,7 @@
   "shipping_optional": [
     "callback interval count, sum, maximum and deadline-miss counters",
     "one native/resource snapshot per completed simulation second; at most 72 telemetry rows",
-    "bounded shipping summary allocation, serialization, write, flush and close per trial"
+    "bounded shipping summary allocation, serialization, write, flush, close and retained telemetry disposal per trial"
   ],
   "forensic_additions": [
     "native per-operation frame trace, batching, CSV writer and drain for all three phases",
@@ -30,6 +30,7 @@
   "outside_complete_trial_common_harness": [
     "process launch, project import, common scene/UI initialization and one complete warm-up trial",
     "terminal timing marker write (separately clocked, never folded into optional cost)",
+    "bounded between-trial report retention/deep-copy and finite protocol selection; at most 13 trial records",
     "batch summary/identity hashing, independent-reader work, return-to-title UI and process exit"
   ],
   "disabled_in_all_pilot_modes": [

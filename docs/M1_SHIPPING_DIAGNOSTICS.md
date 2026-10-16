@@ -70,6 +70,9 @@ Each trial uses **one end minus start**, from before optional setup/fixture
 preparation through route end, final edit acknowledgement, native closure, all
 three writer drains, terrain/preparation retirement, optional telemetry summary
 serialization/flush/close and complete per-trial report serialization/flush/close.
+Optional retained telemetry is disposed before this end, not charged to the next
+bare trial's setup. Between-trial report retention/deep-copy and finite protocol
+selection are declared common external harness work, bounded to thirteen records.
 Separate setup, native close, writer drain and report spans remain evidence;
 overlapping spans are never added. Five disjoint sections partition the total:
 setup/preparation, +X, -X, +Z, and complete lifecycle tail. Repeat drift compares
