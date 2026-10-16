@@ -27,6 +27,13 @@ Finish cloud verification of the ordinary-path comparison and complete terrain
 ledger; publish its actual candidate/evidence and choose the next action from
 observed failures. The source change does not itself close either gate.
 
+CI `38838162724` passed static/native checks and built the matching Windows
+binaries, then stopped on the first ordinary FIFO process: it incorrectly ran
+the six-phase startup validator after deliberately stopping startup observation.
+The mode-specific correction is prepared; all eight ordinary comparisons and
+the portable package/audit still need a successful cloud run. Preserve the first
+FIFO run's 37 coverage alarms and 125 ms edit p95 as failures, not harness errors.
+
 Priority remains opt-in during this proof. Preserve the four preparation viewers,
 512-region cap, 96 m required visuals/fog, 128 m data envelope, worker/job/resource
 limits, collision safety, exact H2 outward route/camera, 80 due edits and 20 proxy

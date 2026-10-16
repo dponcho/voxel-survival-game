@@ -325,6 +325,9 @@ writer/finalization accounting. Missing trace/resource fields are unavailable/nu
 Independent saved readers verify exact commands, original revision terminal
 events, measured coverage, complete frame/operation evidence and full drain.
 Integrity success and measured bounded acceptance are separate decisions.
+This mode stops startup observation before gameplay, so it does not run the
+six-phase startup-smoke validator. Dedicated startup checks retain that validator;
+ordinary frame, edit, operation, drain and independent saved checks still run.
 
 Terrain ledger v2 supplements the original eighteen CSV columns with data
 application and ten frame-budget columns. Native and independent controls cover
