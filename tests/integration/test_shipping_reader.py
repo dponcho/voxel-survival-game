@@ -2,6 +2,7 @@
 import copy
 import csv
 import hashlib
+import math
 from pathlib import Path
 import sys
 import tempfile
@@ -88,6 +89,9 @@ class ShippingReaderTests(unittest.TestCase):
                 frontier_status='measured',fog_boundary_m=96,frontier_distance_m=96,fog_clearance_m=0,
                 frontier_checked_regions=100,frontier_ready_regions=100,frontier_unready_regions=0,
                 frontier_empty_regions=30,frontier_candidate_regions=100))
+            goal = target(tick)
+            values[-1].update(camera_x=goal[0],camera_y=65.651,camera_z=goal[2],
+                              camera_yaw=(-math.pi/2,math.pi/2,math.pi)[leg(tick)])
         trial = copy.deepcopy(self.trial)
         end = values[-1]['entry_usec']+20
         trial.update(callback_count=TICKS,callback_last_end_usec=end,
@@ -105,12 +109,13 @@ class ShippingReaderTests(unittest.TestCase):
             self.assertEqual(frames(p,trial)['rows'],TICKS)
 
     def test_missing_final_callback_coverage_cap_and_clock_fail(self):
-        for fault in ('missing','coverage','memory','catchup','clock'):
+        for fault in ('missing','coverage','memory','catchup','clock','camera'):
             values,trial = self.callback_fixture()
             if fault == 'missing': values.pop()
             elif fault == 'coverage': values[10]['frontier_distance_m'] = 95
             elif fault == 'memory': values[20]['resident_data'] = 8193
             elif fault == 'catchup': values[30]['tick'] += 5
+            elif fault == 'camera': values[1500]['camera_yaw'] = -math.pi/2
             else: values[-1]['entry_usec'] += 1
             fields = list(FRAME_FIELDS)+[k for k in values[0] if k not in FRAME_FIELDS]
             with self.subTest(fault=fault), tempfile.TemporaryDirectory() as d:

@@ -228,6 +228,12 @@ def frames(path, trial):
             ('checked_regions','ready_regions','unready_regions','empty_regions','candidate_regions')]
         require(0 < checked <= candidates <= 1024 and ready+unready == checked and 0 <= empty <= ready,
                 'Pilot frontier scan was truncated or invalid')
+        goal = target(r['tick'])
+        yaw = single((-math.pi/2,math.pi/2,math.pi)[leg(r['tick'])])
+        require(abs(float(row['camera_x'])-goal[0]) < .01 and abs(float(row['camera_z'])-goal[2]) < .01
+                and 65.64 <= float(row['camera_y']) <= 73.66
+                and (r['tick'] < 120 or 65.64 <= float(row['camera_y']) <= 65.66)
+                and abs(float(row['camera_yaw'])-yaw) < 1e-5, 'Pilot actual camera/view direction changed')
         previous, last_tick = r['entry_usec'], r['tick']
         maximum_mesh = max(maximum_mesh, r['resident_mesh'])
         maximum_data = max(maximum_data, r['resident_data'])
@@ -284,6 +290,8 @@ def trial_evidence(folder, t, inventory_hash):
     r, c = t['report'], t['report']['workload_contract']
     fixed = dict(version=VERSION, workload='H2', fixture=3, actors=24, edit_rate=4,
                  rain_instances=256, seconds=72, physics_hz=60, max_physics_steps=4,
+                 route_origin=[10,72,10], player_start=[10,72,10], autosave_interval_s=1,
+                 camera_fov=75, camera_far=96,
                  resolution=[1280,720], render_scale=1, render_block=32, workers=1,
                  visual_radius=96, data_radius=128, triangle_colliders=False,
                  terrain_bounds=[-4096,-64,-4096,8192,256,8192], admission_policy='priority',
