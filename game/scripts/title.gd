@@ -9,6 +9,7 @@ var profile: OptionButton
 
 func _ready() -> void:
 	if "--shipping-pilot" in OS.get_cmdline_user_args() or "--shipping-pilot-check" in OS.get_cmdline_user_args():
+		$Margin.hide()
 		add_child(load("res://scripts/m1_shipping_runtime.gd").new())
 		return
 	if "--full-height-check" in OS.get_cmdline_user_args():
@@ -53,6 +54,7 @@ func _ready() -> void:
 	$Margin/Content/Quit.pressed.connect(func() -> void: get_tree().quit())
 	$Margin/Content/Check.grab_focus()
 	$Margin/Content/Description.text = "Milestone 1 • Terrain and engine performance experiment"
+	$Margin/Content.add_theme_constant_override("separation", 8)
 	profile = OptionButton.new()
 	for label: String in ["32³ render blocks • 1 worker (baseline)", "16³ render blocks • 1 worker", "32³ render blocks • 2 workers", "16³ render blocks • 2 workers"]:
 		profile.add_item(label)

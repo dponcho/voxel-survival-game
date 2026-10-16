@@ -125,6 +125,17 @@ class ShippingMethodTests(unittest.TestCase):
         for t in v: t['marker_usec'] = 500000
         self.assertFalse(controls(v)['null_valid'])
 
+    def test_missing_or_negative_terminal_cost_cannot_narrow_range(self):
+        for marker in (-1, None):
+            v = fixture()
+            v[10]['marker_usec'] = marker
+            self.assertIsNone(envelope(v[9:13]))
+
+    def test_invalid_warmup_cannot_append_shipping_quartet(self):
+        v = fixture()
+        v[0]['valid'] = False
+        self.assertFalse(controls(v)['valid'])
+
     def test_unequal_repeat_totals_expand_range(self):
         v = fixture()[9:13]
         v[3]['sections_usec'][4] += 100000

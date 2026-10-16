@@ -12,7 +12,7 @@ import math
 from pathlib import Path
 import struct
 
-from full_height import TICKS, command_hash, target, leg, DIRECTIONS
+from full_height import TICKS, command_hash, target, leg, DIRECTIONS, edit_position
 from terrain_budget import reasons as operation_reasons, reconcile_folder as terrain_reconcile
 
 VERSION = 'm1-shipping-complete-trial-1'
@@ -47,9 +47,10 @@ def single(value):
 def envelope(trials):
     if len(trials) != 4:
         return None
-    if any(not t.get('valid') or not isinstance(t.get('duration_usec'), int)
+    if any(not t.get('valid') or type(t.get('duration_usec')) is not int
            or t['duration_usec'] <= 0 or len(t.get('sections_usec', [])) != 5
            or any(v < 0 for v in t['sections_usec'])
+           or type(t.get('marker_usec')) is not int or t['marker_usec'] < 0
            or sum(t['sections_usec']) != t['duration_usec'] for t in trials):
         return None
     a = [trials[i]['duration_usec'] for i in (0, 3)]
@@ -65,7 +66,7 @@ def envelope(trials):
 
 
 def controls(trials):
-    if len(trials) < 9:
+    if len(trials) < 9 or not all(t.get('valid') for t in trials[:9]):
         return dict(valid=False, null_valid=False, positive_valid=False)
     n, p = envelope(trials[1:5]), envelope(trials[5:9])
     if n is None or p is None:
@@ -212,16 +213,21 @@ def frames(path, trial):
         r = {k: int(row[k]) for k in FRAME_FIELDS}
         require(r['frame'] == index and trial['route_clocks_usec'][0] <= r['entry_usec'] <= trial['end_usec']
                 and r['interval_usec'] >= 0 and (previous is None or r['entry_usec']-previous == r['interval_usec'])
-                and last_tick <= r['tick'] <= TICKS, 'Pilot callback clock/tick changed')
+                and last_tick <= r['tick'] <= min(TICKS,last_tick+4), 'Pilot callback clock/tick/catch-up cap changed')
         require(0 < r['resident_mesh'] <= 512 and 0 < r['resident_data'] <= 8192
-                and r['generation_jobs']+r['mesh_jobs'] <= 64 and r['result_jobs'] <= 16
-                and r['retired_meshes'] <= 768 and r['readiness_stops'] == r['coverage_alarms'] == 0,
+                and 0 <= r['generation_jobs'] and 0 <= r['mesh_jobs'] and r['generation_jobs']+r['mesh_jobs'] <= 64
+                and 0 <= r['result_jobs'] <= 16 and 0 <= r['retired_meshes'] <= 768
+                and r['accepted'] == r['tick']//15 and r['readiness_stops'] == r['coverage_alarms'] == 0,
                 'Pilot observed coverage/readiness/resource envelope failed')
         # These values are the actual analytic scan, not inferred from the mode.
         require(row['frontier_status'] == 'measured' and float(row['fog_boundary_m']) == 96
                 and float(row['frontier_distance_m']) >= 96
                 and math.isclose(float(row['fog_clearance_m']), float(row['frontier_distance_m'])-96, abs_tol=1e-4),
                 'Pilot frontier evidence unavailable or exposed')
+        checked, ready, unready, empty, candidates = [int(row['frontier_'+v]) for v in
+            ('checked_regions','ready_regions','unready_regions','empty_regions','candidate_regions')]
+        require(0 < checked <= candidates <= 1024 and ready+unready == checked and 0 <= empty <= ready,
+                'Pilot frontier scan was truncated or invalid')
         previous, last_tick = r['entry_usec'], r['tick']
         maximum_mesh = max(maximum_mesh, r['resident_mesh'])
         maximum_data = max(maximum_data, r['resident_data'])
@@ -263,6 +269,8 @@ def trial_evidence(folder, t, inventory_hash):
                 'Native/writer closure outside complete trial')
     require(all(t['native_final'][k] == 0 for k in ('generation_jobs', 'mesh_jobs', 'result_jobs', 'main_jobs', 'retired_meshes')),
             'Pilot native queues did not drain')
+    require(t['native_final']['overloads'] == 0 and t['native_final']['retired_high_water'] <= 768,
+            'Pilot native admission/retirement ceiling failed')
     phases = t['phases']
     require([p['phase'] for p in phases] == ['preparation', 'overhead_diagnostic', 'retirement']
             and all(p['scenario'] == name and p['terrain_accounting_version'] == 2 and not operation_reasons(p) for p in phases),
@@ -286,6 +294,11 @@ def trial_evidence(folder, t, inventory_hash):
             and c['frontier_preparation']['lead_m'] == 32 and c['native_policy'] == dict(frame_usec=2000,
                 frame_upload_bytes=1048576, single_upload_bytes=262144, terrain_jobs=64,
                 mesh_results=16, mesh_result_bytes=33554432), 'Pilot workload/policy/configuration changed')
+    require(c['fog'] == dict(enabled=True,mode='depth',density=1,height_density=0,begin_m=16,end_m=96,curve=1)
+            and c['frontier_preparation']['enabled'] is True and c['frontier_preparation']['viewer_radius_m'] == 96
+            and c['frontier_preparation']['resident_mesh_bound'] == 448, 'Pilot fog/preparation envelope changed')
+    limits = dict(private_bytes=2147483648, working_set=1610612736, pool_voxel_total=201326592)
+    require(all(0 < r['peaks'][k] <= limit for k, limit in limits.items()), 'Pilot observed memory envelope failed')
     require(r['simulation_ticks'] == TICKS and r['actor_ticks'] == 103680 and r['accepted_proxy_edits'] == 288
             and r['rejected_proxy_edits'] == r['readiness_stops'] == 0 and r['proxy_autosaves'] == 72
             and r['edit_visibility']['accepted'] == r['edit_visibility']['submitted'] == 288
@@ -297,7 +310,26 @@ def trial_evidence(folder, t, inventory_hash):
             <= t['closures'][1]['start_usec'] <= t['writer_drains'][1]['end_usec'] <= t['end_usec'],
             'Pilot last-edit/native/report closure boundary changed')
     events = [json.loads(v) for v in (folder/r['edit_visibility_events']).read_text(encoding='utf-8-sig').splitlines()]
-    require(len(events) == 288 and all(e['outcome'] == 'submitted' for e in events), 'Missing/substituted edit-submission evidence')
+    require(len(events) == 288 and sorted(e['id'] for e in events) == list(range(1,289))
+            and all(e['outcome'] == 'submitted' for e in events), 'Missing/substituted edit-submission evidence')
+    revisions, latencies = {}, []
+    for event in sorted(events, key=lambda e:e['id']):
+        x,y,z = edit_position(event['id']*15)
+        require(event['voxel'] == [x,y,z] and t['route_clocks_usec'][0] <= event['accepted_usec'] <= event['end_usec'] <= r['measurement_end_usec']
+                and event['latency_usec'] == event['end_usec']-event['accepted_usec']
+                and [v['block'] for v in event['targets']] == [[x//32-1,y//32,z//32],[x//32,y//32,z//32]],
+                'Pilot original edit command/clock/border targets changed')
+        for value in event['targets']:
+            cell = tuple(value['block'])
+            require(value['submitted'] is True and value['revision'] > revisions.get(cell,0),
+                    'Pilot original mesh revision was not submitted')
+            revisions[cell] = value['revision']
+        latencies.append(event['latency_usec'])
+    p95 = (sorted(latencies)[math.ceil(.95*len(latencies))-1]//1000+1)*1000
+    require(r['edit_visibility']['max_usec'] == max(latencies) and r['edit_visibility']['p95_upper_usec'] == p95,
+            'Pilot original edit latency aggregate mismatch')
+    require(read(folder/(name+'-frames.csv.proxy.tmp')) == dict(proxy_tick=TICKS, accepted_edits=288, payload='x'*32768),
+            'Pilot final proxy-save work missing')
     pp = folder/(name+'-poses.csv')
     require(t['pose_sha256'] == sha(pp), 'Pilot physics evidence hash differs')
     observed_poses = poses(pp, t)

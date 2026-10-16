@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 import sys
 import tempfile
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'tools/ci'))
@@ -27,20 +28,21 @@ def save(path, value):
     path.write_text(json.dumps(value, indent=2), encoding='utf-8')
 
 
-def published_identity():
+def candidate_identity():
     published = ROOT/'build/published-player'
     archive = published/'Cairn-windows-x86_64.zip'
     info = read(published/'BUILD_INFO.json')
     expected = (published/'SHA256SUMS.txt').read_text().split()[0]
     require(digest(archive) == expected, 'Published pilot player ZIP SHA mismatch')
-    destination = ROOT/'build/shipping-pilot-player'
-    extract(archive, destination)
-    # The player ZIP is rooted at Cairn/ or directly, depending on the packager.
-    exes = list(destination.rglob('Cairn.exe'))
-    require(len(exes) == 1, 'Published pilot must have one portable executable')
-    player = exes[0].parent
-    require(read(player/'BUILD_INFO.json') == info, 'Published pilot build identity differs')
-    contents = pack((player/'Cairn.pck').read_bytes())
+    with zipfile.ZipFile(archive) as zipped:
+        names = zipped.namelist()
+        require(len(names) == len(set(names)) and zipped.testzip() is None
+                and all(not Path(n).is_absolute() and '..' not in Path(n).parts and ':' not in n and '\\' not in n for n in names),
+                'Published pilot ZIP paths/duplicates/CRC failed')
+        require(json.loads(zipped.read('BUILD_INFO.json')) == info, 'Published pilot build identity differs')
+        executable = zipped.read('Cairn.exe')
+        packed = zipped.read('Cairn.pck')
+    contents = pack(packed)
     require(contents['diagnostics/shipping_inventory.json'] == INVENTORY_PATH.read_bytes()
             and info['shipping_inventory_sha256'] == digest(INVENTORY_PATH), 'Published inventory mismatch')
     for name in ('m1_shipping_method.gd', 'm1_shipping_runtime.gd', 'm1_full_height_runtime.gd',
@@ -53,11 +55,21 @@ def published_identity():
                 and ('res://'+stem+'.gdc').encode() in contents[stem+'.gd.remap'],
                 'Published tokenized runtime/source identity mismatch: '+name)
     require(json.loads(contents['build_info.json']) == info
-            and digest(exes[0]) == info['engine_binaries']['template_release.exe'],
+            and hashlib.sha256(executable).hexdigest() == info['engine_binaries']['template_release.exe'],
             'Published pilot PCK/native-template identity differs')
-    save(REPORTS/'candidate-identity.json', dict(build=info, archive_sha256=expected,
-         executable_sha256=digest(exes[0]), pack_sha256=digest(player/'Cairn.pck'),
-         inventory_sha256=digest(INVENTORY_PATH), pck_entries=len(contents), qualified=False))
+    return dict(build=info, archive_sha256=expected,
+         executable_sha256=hashlib.sha256(executable).hexdigest(), pack_sha256=hashlib.sha256(packed).hexdigest(),
+         inventory_sha256=digest(INVENTORY_PATH), pck_entries=len(contents), qualified=False)
+
+
+def published_identity():
+    identity = candidate_identity()
+    save(REPORTS/'candidate-identity.json', identity)
+    destination = ROOT/'build/shipping-pilot-player'
+    extract(ROOT/'build/published-player/Cairn-windows-x86_64.zip', destination)
+    exes = list(destination.rglob('Cairn.exe'))
+    require(len(exes) == 1, 'Published pilot must have one portable executable')
+    info = identity['build']
     return exes[0], info
 
 
@@ -131,6 +143,7 @@ def saved_mutations(folder, build):
 
 def audit():
     identity = read(REPORTS/'candidate-identity.json')
+    require(identity == candidate_identity(), 'Saved pilot candidate record differs from downloaded ZIP/PCK')
     build = identity['build']
     records = []
     for path in sorted(REPORTS.rglob('shipping-pilot.json')):
@@ -138,7 +151,8 @@ def audit():
         records.append(dict(folder=path.parent.relative_to(REPORTS).as_posix(), **result))
     require(len(records) == 7, 'Missing editor/release modes or finite release pilot')
     controls = read(ROOT/'reports/shipping-method-controls.json')
-    require(len(controls['cases']) == 24 and not controls['qualified'], 'Missing adopted method controls')
+    require(controls['passed'] is True and controls['fixed_work_dispatch'] is True
+            and len(controls['cases']) == 24 and not controls['qualified'], 'Missing adopted method controls')
     for item in controls['cases']:
         compare_method(item['assessment'], evaluate(item['trials']))
     full = next(path.parent for path in REPORTS.rglob('shipping-pilot.json')

@@ -13,6 +13,7 @@ static func envelope(trials: Array) -> Dictionary:
 		if not bool(trial.get("valid", false)) or int(trial.get("duration_usec", 0)) <= 0:
 			result["reason"] = "missing work, operation, I/O or complete-boundary evidence"
 			return result
+		if int(trial.get("marker_usec", -1)) < 0: return result
 		var sections: Array = trial.get("sections_usec", [])
 		if sections.size() != 5: return result
 		var total: int = 0
@@ -45,6 +46,8 @@ static func envelope(trials: Array) -> Dictionary:
 static func controls(trials: Array) -> Dictionary:
 	var result: Dictionary = {"valid": false, "null": {}, "positive": {}, "reason": "controls not complete"}
 	if trials.size() < 9: return result
+	for index: int in range(9):
+		if not bool(trials[index].get("valid", false)): return result
 	var null_range: Dictionary = envelope(trials.slice(1, 5))
 	var positive_range: Dictionary = envelope(trials.slice(5, 9))
 	result["null"] = null_range
