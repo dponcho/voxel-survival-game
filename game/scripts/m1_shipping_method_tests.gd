@@ -19,6 +19,12 @@ func fixture(cost: int = 500000) -> Array:
 	return values
 
 func _initialize() -> void:
+	var runtime: Node = load("res://scripts/m1_shipping_runtime.gd").new()
+	runtime._configure_experiment()
+	var dispatch_ok: bool = runtime.scenarios.size() == 9
+	for scenario: Dictionary in runtime.scenarios:
+		dispatch_ok = dispatch_ok and load("res://scripts/benchmark_heavy_ab.gd").active(scenario)
+	runtime.free()
 	var cases: Array = []
 	for cost: int in [-1, 0, 500000, 999999, 1000000, 1500000]:
 		cases.append({"name": "shipping-" + str(cost), "trials": fixture(cost)})
@@ -47,5 +53,5 @@ func _initialize() -> void:
 		bad[i]["valid"] = false
 		cases.append({"name": "invalid-trial-" + str(i), "trials": bad})
 	for item: Dictionary in cases: item["assessment"] = Method.evaluate(item["trials"], false)
-	print("CAIRN_SHIPPING_METHOD=" + JSON.stringify({"passed": true, "qualified": false, "cases": cases}))
-	quit(0)
+	print("CAIRN_SHIPPING_METHOD=" + JSON.stringify({"passed": dispatch_ok, "qualified": false, "fixed_work_dispatch": dispatch_ok, "cases": cases}))
+	quit(0 if dispatch_ok else 1)

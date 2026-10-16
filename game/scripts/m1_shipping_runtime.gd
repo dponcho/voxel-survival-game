@@ -52,7 +52,7 @@ func _configure_experiment() -> void:
 		for index: int in range(4): _append_scenario(group, index, "bare", group == "positive" and index in [1, 2])
 
 func _append_scenario(group: String, index: int, diagnostic_mode: String, dose: bool = false) -> void:
-	scenarios.append({"id": "AB-pilot-%s-%d" % [group, index], "group": group, "index": index,
+	scenarios.append({"id": "AB-H2-pilot-%s-%d" % [group, index], "group": group, "index": index,
 		"diagnostic_mode": diagnostic_mode, "dose": dose, "workload": "H2", "seconds": 72.0,
 		"fixture": 3, "actors": 24, "rate": 4.0, "frontier_enabled": true})
 

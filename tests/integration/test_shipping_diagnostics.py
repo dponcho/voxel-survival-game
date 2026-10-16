@@ -31,6 +31,14 @@ def fixture(shipping_cost=500000):
 
 
 class ShippingMethodTests(unittest.TestCase):
+    def test_runtime_uses_existing_fixed_work_dispatch_and_preserves_native_inputs(self):
+        root = Path(__file__).resolve().parents[2]
+        runtime = (root/'game/scripts/m1_shipping_runtime.gd').read_text()
+        self.assertIn('"AB-H2-pilot-%s-%d"', runtime)
+        self.assertIn('"common_qualification_observer": true', runtime)
+        self.assertIn('func _scenario_drained()', runtime)
+        self.assertNotIn('OS.delay_', runtime)
+
     def test_sub_limit_complete_effect_passes(self):
         r = evaluate(fixture())
         self.assertEqual(r['outcome'], 'passed')
