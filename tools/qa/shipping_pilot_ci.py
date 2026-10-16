@@ -173,11 +173,19 @@ def run():
     from build_support import run as invoke
     imported = invoke([editor, '--headless', '--path', ROOT/'game', '--import'], 'shipping-editor-import', timeout=300)
     require('SCRIPT ERROR:' not in imported and 'ERROR:' not in imported, 'Shipping editor import failed')
+    early = ROOT/'build/export-source-evidence/build/shipping-preflight-raw'
+    saved = list(early.glob('*/shipping-pilot.json'))
+    require(len(saved) == 1, 'Missing/duplicated original editor preflight evidence')
+    # Same source/build/native identity; the independent reader rechecks every
+    # original row. This transfers one case, rather than adding another run.
+    reconcile(saved[0].parent, info, INVENTORY_PATH)
+    shutil.copytree(early, REPORTS/'editor-bare')
     check([editor, '--headless', '--path', ROOT/'game', '--script', 'res://scripts/m1_shipping_method_tests.gd'],
           'shipping-method-controls', 'CAIRN_SHIPPING_METHOD=', 60)
     for suffix, command in [('editor', [editor, '--headless', '--path', ROOT/'game']),
                             ('release', [executable, '--headless'])]:
         for mode in ('bare', 'shipping', 'forensic'):
+            if suffix == 'editor' and mode == 'bare': continue
             raw = REPORTS/(suffix+'-'+mode)
             check(command+['--', '--shipping-pilot-check', '--shipping-pilot-case='+mode,
                            '--m1-report-root='+str(raw)], 'shipping-'+suffix+'-'+mode, 'CAIRN_SHIPPING_PILOT=', 360)

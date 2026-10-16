@@ -100,6 +100,7 @@ jobs:
             build/engine-bundle/manifest.json
             build/dependencies.lock.json
             build/config/
+            build/shipping-preflight-raw/
           retention-days: 30
   shipping-pilot:
     needs: [native, export-and-test]
@@ -125,6 +126,11 @@ jobs:
         with:
           name: Cairn-windows-x86_64-${{ github.sha }}
           path: build/published-player
+      - name: Download the already-verified editor preflight evidence
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-evidence-${{ github.sha }}
+          path: build/export-source-evidence
       - name: Run finite shipping pilot and reconcile independent saved evidence
         run: python tools/qa/shipping_pilot_ci.py
       - name: Preserve focused pilot evidence even on failure

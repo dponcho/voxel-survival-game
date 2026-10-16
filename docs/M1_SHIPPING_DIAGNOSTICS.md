@@ -127,6 +127,14 @@ every actual pose/work row, callback, original edit submission, operation aggreg
 boundary/drain, telemetry switch and native dose digest. Saved-file mutations must
 be rejected. A second read-only downloaded-artifact audit precedes handoff.
 
+The prior complete export job took 1,808 s, including 1,262 s of terrain checks.
+Cheap dispatch/rational controls now run first; the existing 72 s editor/bare case
+also runs before that long suite and its original raw files are transferred into
+the final seven-folder audit. It is not an extra trial or a removed test. This
+moves about 80 s into the 35-minute export allowance (about 31.5 minutes total on
+the observed runner), removing the wait for the full suite before the first real
+pilot-path/reader check. All preceding suites remain; no native rebuild is added.
+
 The title has one focused pilot button, fixed at 32-cube/one worker regardless of
 the legacy dropdown. No installation, script entry or tools are required. Cancel
 preserves partial unqualified evidence; reports are never uploaded automatically.

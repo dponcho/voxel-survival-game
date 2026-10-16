@@ -168,9 +168,22 @@ def prepare():
         raise RuntimeError("Shipping method preflight failed")
     control = json.loads(markers[0])
     sys.path.insert(0, str(ROOT / "tools/qa"))
-    from shipping_diagnostics import validate_method_controls
+    from shipping_diagnostics import validate_method_controls, reconcile as reconcile_shipping
     validate_method_controls(control)
     write_json(REPORTS / "shipping-method-preflight.json", control)
+    # Move the existing editor/bare case ahead of the long terrain suite. Its
+    # original raw evidence is carried into the published-candidate pilot audit.
+    preflight = ROOT / "build/shipping-preflight-raw"
+    output = run([editor, "--headless", "--path", game, "--", "--shipping-pilot-check",
+                  "--shipping-pilot-case=bare", "--m1-report-root=" + str(preflight)],
+                 "shipping-runtime-preflight", timeout=360)
+    if "SCRIPT ERROR:" in output or "ERROR:" in output or "CAIRN_SHIPPING_PILOT=" not in output:
+        raise RuntimeError("Shipping fixed-work runtime preflight failed")
+    saved = list(preflight.glob("*/shipping-pilot.json"))
+    if len(saved) != 1:
+        raise RuntimeError("Missing or duplicated shipping runtime preflight")
+    write_json(REPORTS / "shipping-runtime-preflight-validation.json",
+               reconcile_shipping(saved[0].parent, info, game / "diagnostics/shipping_inventory.json"))
     # Run the title/self-test through the matching editor, then both actual export templates.
     self_test(editor, "editor-self-test", game)
     output = run([editor, "--headless", "--path", game, "--script", "res://scripts/m1_native_tests.gd"],
