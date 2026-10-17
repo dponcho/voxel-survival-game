@@ -2,8 +2,9 @@
 
 Protocol `m1-shipping-complete-trial-1`; inventory `m1-shipping-inventory-1`.
 This increment implements the adopted review policy. **M1 and target performance
-remain unqualified.** Implementation/cloud verification is pending in this
-pre-execution record; it is not a request for another laptop run.
+remain unqualified.** The inventory and finite cloud pilot are implemented.
+The completed pilot is **inconclusive**; the result below is not a request for
+another laptop run. The protocol text retains its predeclared requirements.
 
 ## Inventory and comparison
 
@@ -147,4 +148,71 @@ The old flatness/calibration outputs and historical failing evidence are unchang
 
 ## Result
 
-Pending cloud verification. No target run requested by this record.
+CI [38985239110](https://github.com/dponcho/voxel-survival-game/actions/runs/38985239110)
+used implementation `e208cbbbc9ded194d80e38a038a528ecf45b25a1` and exported build
+`5a5012534afdc64c444e148b2a4a92804650e570`. Static, qualified native binaries,
+export, all existing integration/package checks and the first downloaded-player
+audit passed. Six editor/release single-mode companions completed. The full
+release pilot completed its predeclared nine trials and did not append the
+shipping quartet because its controls were unusable.
+
+| Trial | Complete seconds | Process callbacks | Actual added work seconds | Measurement validity |
+| --- | ---: | ---: | ---: | --- |
+| Warm-up | 77.461136 | 10,441 | 0 | valid |
+| Null A0 | 77.762452 | 10,439 | 0 | operation limit failed |
+| Null B1 | 77.452278 | 10,440 | 0 | valid |
+| Null B2 | 77.761903 | 10,439 | 0 | valid |
+| Null A3 | 77.452110 | 10,439 | 0 | valid |
+| Positive A0 | 77.762781 | 10,439 | 0 | valid |
+| Positive B1 | 77.446024 | 10,438 | 1.605522 | operation limit failed |
+| Positive B2 | 77.756037 | 10,438 | 1.602053 | valid |
+| Positive A3 | 77.443335 | 10,438 | 0 | valid |
+
+Null A0 preparation had a **1,185 µs upload**; positive B1 retirement had a
+**1,041 µs deletion**, against the unchanged 750 µs limit. All other recorded
+per-trial checks passed, including 4,320 actual ticks, 288 submitted edits,
+72 saves, 103,680 actor updates, coverage/readiness, resources, closure and drain.
+These failures invalidate both control quartets. They are not waived as cloud
+noise, and the cloud observations do not establish a target-machine failure.
+
+The known-positive trials also demonstrate the expected sensitivity problem:
+about 1.60 s of independently verified native SHA work did not produce a similar
+whole-trial elapsed increase. The observed durations are descriptive only; the
+invalid control samples cannot support an overhead bound. Fixed 60 Hz route
+pacing can absorb added work inside idle time. There is no measured shipping
+effect, valid below-1% bound or target qualification.
+
+The original CI pilot job failed before its saved-file audit because it reused
+a helper that requires every measurement to pass. The subsequent **QA-only**
+correction separates evidence integrity from measurement validity: native
+failures must agree with all saved validity flags, remain listed as failures,
+and force an inconclusive estimate. Missing work, corrupt files, engine errors,
+unexpected exits and fabricated passes still fail verification. Cross-platform
+replay normalizes only the missing-file fault's `[WinError 2]`/`[Errno 2]` wording.
+It compares every other saved field exactly. The original failed CI remains red;
+no passing runtime result has been substituted.
+
+The original downloaded evidence and candidate are independently rechecked in
+Codex Cloud without executing an engine. Seven folders, all 24 method controls,
+50 preceding saved faults and 12 shipping saved faults are checked. The committed
+[saved audit record](evidence/m1-shipping-saved-audit-2026-10-17.json) retains
+the exact candidate, results, operation failures and reader identities. The QA
+correction changes no game/native source or inventory bytes and needs no new
+export or repeat of the runtime pilot.
+
+The retained portable candidate is
+[artifact 12082779545](https://github.com/dponcho/voxel-survival-game/actions/runs/38985239110/artifacts/12082779545):
+30,170,627 bytes; inner ZIP SHA256
+`3e9241c46edca867fc0ac0aa7306125a420539f18b80d96b54882c61eb88b175`.
+This is an inspected **unqualified research candidate**, not a target handoff.
+The immutable original pilot evidence is
+[artifact 12084093542](https://github.com/dponcho/voxel-survival-game/actions/runs/38985239110/artifacts/12084093542).
+
+**Stop calibration here.** The next task is a written policy decision on an
+observable cost that cannot be hidden by fixed-tick idle time, while retaining
+complete-lifecycle accounting and paced frame checks. Recommended direction:
+separate busy execution cost from elapsed player-visible impact. Adopting that
+would change the current complete-elapsed estimand and must be explicit before
+implementation. More identical repetitions do not resolve the demonstrated
+masking mechanism. Keep the 1% threshold and existing operation gates unchanged;
+do not implement another injection family or request a laptop pilot yet.

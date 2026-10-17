@@ -361,3 +361,30 @@ unchanged. Detailed bounds and stopping conditions are predeclared in
 and the independent downloaded-file audit pass all four cases and reject all
 twelve new saved mutations (50 total with earlier controls). Both prepared
 cases pass bounded cloud acceptance; target performance remains unqualified.
+
+### Shipping inventory and finite pilot
+
+`--shipping-pilot-check` exercises the declared bare/shipping/forensic inventories
+and the single finite null/known-positive protocol. The exact-rational reader
+checks complete boundaries, all original route/callback/edit/save/dose records,
+native phases and drains. Six editor/release single-mode companions and the
+nine-trial release pilot completed in CI `38985239110`. The pilot is inconclusive:
+two operation overruns invalidate controls; no shipping quartet or target run
+followed. Retain that failed CI and its original evidence.
+
+The saved reader separately reports `evidence_integrity`, `measurement_valid`
+and the overhead assessment. A complete, honestly recorded operation failure can
+pass evidence verification while remaining invalid for estimation. A mismatch
+between phase evidence and validity flags fails verification. So do missing work,
+incomplete boundaries, I/O failure, engine errors and unexpected process exits.
+The cloud launcher checks the saved records before accepting the expected exit
+code 1 of an inconclusive measurement. This does not relax operation thresholds.
+
+The QA-only follow-up reuses the original downloaded ZIP and reports. It runs
+pure Python regressions, seven-folder reconciliation, 12 saved corruption cases,
+and an isolated replay of all preceding evidence and 50 preceding saved faults;
+it executes no engine and does not repeat the runtime pilot. The independent
+Windows/Linux comparison normalizes only missing-file OS error wording. All
+verdicts, counters, hashes and other fields remain exact.
+See [the protocol/result](docs/M1_SHIPPING_DIAGNOSTICS.md) and its committed audit
+record. Another pilot requires the explicit finite policy decision in that result.

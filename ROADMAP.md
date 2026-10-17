@@ -82,9 +82,14 @@ coverage alarms versus 521 in each baseline, all 288 edits submitted, actual
 +X/-X/+Z movement, genuine edited-data/mesh reload and passing operation guards.
 Peaks are 392 meshes / 5,104 data within unchanged caps. No target profile is
 selected or qualified. [Full-height evidence](docs/M1_FULL_HEIGHT.md) gives the
-verified Windows candidate and retained broader failures. Next implement the
-shipping/forensic diagnostic inventory and focused pilot in
-[the gate register](docs/NEXT_TASK.md); no laptop action is requested yet.
+verified Windows candidate and retained broader failures. The shipping/forensic
+diagnostic inventory and focused pilot in [the gate register](docs/NEXT_TASK.md)
+are now implemented: CI
+`38985239110` completed the finite nine-trial pilot, with an inconclusive result
+and two retained operation overruns. The QA-only saved audit distinguishes verified
+evidence from invalid measurements. The [pilot result](docs/M1_SHIPPING_DIAGNOSTICS.md#result)
+stops calibration pending an explicit measurement-policy decision; no laptop
+action is requested. M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

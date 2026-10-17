@@ -210,5 +210,10 @@ and correctness safeguards remain operational in all controls. Explicit forensic
 traces have disclosed perturbation and cannot certify shipping frame timings.
 Shipping/forensic inventories and the focused null/positive pilot must exist
 before qualification. Legacy flatness-based reports stay historical/supplementary,
-with their old verdicts preserved. The successor shipping gate is not run.
+with their old verdicts preserved. The successor cloud pilot is implemented and
+inconclusive: its controls retain two operation-limit failures, and actual added
+work is masked in the paced complete-elapsed observation. Integrity verification
+does not qualify a failed measurement. No target pilot has run; stop repetitions
+until a measurement-policy decision is declared. See
+[the pilot result](docs/M1_SHIPPING_DIAGNOSTICS.md#result).
 See [the finite method and its stop rule](docs/M1_REVIEW_RESPONSE.md).

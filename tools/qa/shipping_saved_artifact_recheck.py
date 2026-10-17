@@ -26,7 +26,7 @@ def copy_exact(source, destination):
 def normalize(value):
     if isinstance(value,dict): return {k:normalize(v) for k,v in value.items()}
     if isinstance(value,list): return [normalize(v) for v in value]
-    if isinstance(value,str) and value.startswith('[Errno 2]'):
+    if isinstance(value,str) and value.startswith(('[Errno 2]', '[WinError 2]')):
         return '[Errno 2] missing-file mutation'
     return value
 

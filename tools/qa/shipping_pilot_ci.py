@@ -8,6 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import tempfile
 import zipfile
@@ -26,6 +27,32 @@ INVENTORY_PATH = ROOT/'game/diagnostics/shipping_inventory.json'
 def save(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2), encoding='utf-8')
+
+
+def check_pilot(command, name, timeout=360):
+    """A complete invalid measurement is auditable; crashes and lost work fail."""
+    path = ROOT/'reports'/(name+'.log')
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open('w', encoding='utf-8') as log:
+        result = subprocess.run([str(v) for v in command], cwd=ROOT,
+                                stdout=log, stderr=subprocess.STDOUT, timeout=timeout)
+    output = path.read_text(encoding='utf-8', errors='replace')
+    markers = [line.split('CAIRN_SHIPPING_PILOT=',1)[1] for line in output.splitlines()
+               if 'CAIRN_SHIPPING_PILOT=' in line]
+    require(len(markers) == 1 and 'SCRIPT ERROR:' not in output and 'ERROR:' not in output,
+            name+': missing/duplicated pilot result or engine error; see '+str(path))
+    report = json.loads(markers[0])
+    require(type(report['passed']) is bool and result.returncode == (0 if report['passed'] else 1),
+            name+': unexpected process exit')
+    folder = Path(report['report_dir']).resolve()
+    require(folder.is_relative_to(REPORTS.resolve()), name+': report escaped the pilot directory')
+    saved = read(folder/'shipping-pilot.json')
+    require(report['passed'] is saved['passed'] and report['qualified'] is False
+            and report['outcome'] == saved['assessment']['outcome']
+            and report['trials'] == len(saved['trials']), name+': console/saved result differs')
+    audited = reconcile(folder, read(REPORTS/'candidate-identity.json')['build'], INVENTORY_PATH)
+    save(ROOT/'reports'/(name+'.json'), dict(runtime=report, audit=audited))
+    print(name+': evidence verified; measurement '+str(audited['assessment']['outcome']), flush=True)
 
 
 def candidate_identity():
@@ -187,11 +214,11 @@ def run():
         for mode in ('bare', 'shipping', 'forensic'):
             if suffix == 'editor' and mode == 'bare': continue
             raw = REPORTS/(suffix+'-'+mode)
-            check(command+['--', '--shipping-pilot-check', '--shipping-pilot-case='+mode,
-                           '--m1-report-root='+str(raw)], 'shipping-'+suffix+'-'+mode, 'CAIRN_SHIPPING_PILOT=', 360)
-    check([executable, '--headless', '--', '--shipping-pilot-check',
+            check_pilot(command+['--', '--shipping-pilot-check', '--shipping-pilot-case='+mode,
+                                 '--m1-report-root='+str(raw)], 'shipping-'+suffix+'-'+mode)
+    check_pilot([executable, '--headless', '--', '--shipping-pilot-check',
            '--m1-report-root='+str(REPORTS/'release-pilot')],
-          'shipping-release-pilot', 'CAIRN_SHIPPING_PILOT=', 1500)
+          'shipping-release-pilot', 1500)
     audit()
 
 

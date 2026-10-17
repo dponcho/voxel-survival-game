@@ -281,6 +281,22 @@ def observation_record(name, mode, physical, callbacks):
     return dict(id=name, mode=mode, physics_rows=physics_rows, frame_rows=frame_rows, **p, **f)
 
 
+def operation_status(trial):
+    """Verify a reported limit failure without admitting it to the estimator."""
+    failures = [dict(phase=p['phase'], reasons=operation_reasons(p)) for p in trial['phases']
+                if operation_reasons(p)]
+    ok = not failures
+    checks = trial['checks']
+    expected = {'integration', 'io', 'drained', 'operations', 'resources', 'edits',
+                'route_clocks', 'ticks', 'accepted', 'rejected', 'saves', 'actors',
+                'readiness', 'policy', 'coverage'}
+    require(set(checks) == expected and all(v is True for k,v in checks.items() if k != 'operations'),
+            'Pilot has failed or missing non-operation work checks')
+    require(checks['operations'] is ok and trial['operation_ok'] is ok and trial['valid'] is ok,
+            'Pilot operation failure/validity flags disagree with native evidence')
+    return dict(measurement_valid=ok, operation_failures=failures)
+
+
 def trial_evidence(folder, t, inventory_hash):
     name = t['id']
     complete_path, boundary_path = folder/(name+'-complete.json'), folder/(name+'-boundary.json')
@@ -288,9 +304,9 @@ def trial_evidence(folder, t, inventory_hash):
     require(all(t[k] == v for k, v in complete.items()), 'Complete per-trial report differs from batch')
     require(all(t[k] == v for k, v in boundary.items() if k != 'complete_sha256')
             and boundary['complete_sha256'] == sha(complete_path), 'Complete boundary/report hash differs')
-    require(t['valid'] is True and t['io_failed'] is False and t['drained'] is True
-            and t['operation_ok'] is True and not t['integration_failures'] and t['inventory_sha256'] == inventory_hash,
-            'Failed/incomplete work, I/O, operation, inventory or drain evidence')
+    require(t['io_failed'] is False and t['drained'] is True
+            and not t['integration_failures'] and t['inventory_sha256'] == inventory_hash,
+            'Failed/incomplete work, I/O, inventory or drain evidence')
     clocks = [t['start_usec']]+t['route_clocks_usec']+[t['end_usec']]
     require(len(clocks) == 6 and all(b >= a for a, b in zip(clocks, clocks[1:]))
             and t['duration_usec'] == clocks[-1]-clocks[0] and t['duration_usec'] >= 72000000
@@ -312,8 +328,9 @@ def trial_evidence(folder, t, inventory_hash):
             'Pilot native admission/retirement ceiling failed')
     phases = t['phases']
     require([p['phase'] for p in phases] == ['preparation', 'overhead_diagnostic', 'retirement']
-            and all(p['scenario'] == name and p['terrain_accounting_version'] == 2 and not operation_reasons(p) for p in phases),
-            'Pilot complete native operation guards failed')
+            and all(p['scenario'] == name and p['terrain_accounting_version'] == 2 for p in phases),
+            'Pilot complete native operation phases missing or changed')
+    status = operation_status(t)
     forensic = t['diagnostic_mode'] == 'forensic'
     shipping = t['diagnostic_mode'] in ('shipping', 'forensic')
     require(t['raw_operation_trace'] is forensic and t['renderer_queries'] is forensic
@@ -391,7 +408,7 @@ def trial_evidence(folder, t, inventory_hash):
         require(len(detail) == observed_frames['rows'] and all('render_cpu_ms' in row and 'render_gpu_ms' in row for row in detail),
                 'Forensic renderer/detail trace did not run')
         terrain_reconcile(folder, {'operation_phases': phases})
-    return observation_record(name, t['diagnostic_mode'], observed_poses, observed_frames)
+    return dict(**observation_record(name, t['diagnostic_mode'], observed_poses, observed_frames), **status)
 
 
 def reconcile(folder, build, inventory_path):
@@ -401,7 +418,7 @@ def reconcile(folder, build, inventory_path):
     ih = sha(inventory_path)
     require(p['version'] == VERSION and p['build'] == s['build'] == build and p['inventory'] == inventory
             and inventory['version'] == INVENTORY and p['inventory_sha256'] == ih
-            and p['passed'] is True and not p['qualified'] and p['target_performance'] == 'not_run'
+            and not p['qualified'] and p['target_performance'] == 'not_run'
             and s['completed'] and not s['qualified'] and not s['integration_failures']
             and s['benchmark_mode'] == 'shipping-pilot', 'Pilot identity/inventory/completion mismatch')
     trials = p['trials']
@@ -420,8 +437,14 @@ def reconcile(folder, build, inventory_path):
                 'Pilot exceeded/missed its predeclared finite protocol')
         compare_method(p['assessment'], evaluate(trials))
     records = [trial_evidence(folder, t, ih) for t in trials]
+    measurement_valid = all(r['measurement_valid'] for r in records)
+    require(p['passed'] is measurement_valid, 'Pilot passed flag disagrees with independently verified work')
+    if not measurement_valid and not p['single_mode']:
+        require(p['assessment']['outcome'] == 'inconclusive',
+                'Failed native work was used to qualify the overhead estimate')
     require(s['scenarios'] == [t['report'] for t in trials] and s['operation_phases'] == [phase for t in trials for phase in t['phases']]
             and s['shipping_diagnostic_qualification'] == p['assessment'], 'Batch/legacy companion differs from complete trials')
-    return dict(passed=True, qualified=False, method=VERSION, trials=len(trials), records=records,
+    return dict(passed=True, evidence_integrity='verified', measurement_valid=measurement_valid,
+                qualified=False, method=VERSION, trials=len(trials), records=records,
                 assessment=floating(evaluate(trials)) if not p['single_mode'] else {'outcome':'not_run'},
                 target_performance='not_run')

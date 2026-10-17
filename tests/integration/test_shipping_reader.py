@@ -2,18 +2,119 @@
 import copy
 import csv
 import hashlib
+import json
 import math
 from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'tools/qa'))
-from shipping_diagnostics import FRAME_FIELDS, POSE_FIELDS, poses, frames, observation_record
+from shipping_diagnostics import FRAME_FIELDS, POSE_FIELDS, poses, frames, observation_record, operation_status
 from full_height import TICKS, target, command_hash, leg, DIRECTIONS
+import shipping_pilot_ci as pilot_ci
+from shipping_saved_artifact_recheck import normalize
 
 
 class ShippingReaderTests(unittest.TestCase):
+    def test_cross_platform_missing_file_faults_match_without_hiding_other_errors(self):
+        linux = {'missing': "[Errno 2] No such file or directory: '/tmp/a'"}
+        windows = {'missing': "[WinError 2] The system cannot find the file specified: 'C:\\Temp\\a'"}
+        self.assertEqual(normalize(linux), normalize(windows))
+        self.assertNotEqual(normalize({'missing':'[WinError 5] Access is denied'}), normalize(linux))
+        self.assertNotEqual(normalize({'missing':'checksum mismatch'}), normalize(linux))
+
+    def pilot_process(self, root, exit_code=1, engine_error=False):
+        folder = root/'shipping-pilot'/'trial'
+        folder.mkdir(parents=True)
+        report = dict(passed=False, qualified=False, outcome='inconclusive',
+                      report_dir=str(folder), trials=9)
+        (folder/'shipping-pilot.json').write_text(json.dumps(dict(passed=False, qualified=False,
+            assessment=dict(outcome='inconclusive'),trials=[{}]*9)))
+        (root/'shipping-pilot/candidate-identity.json').write_text(json.dumps(dict(build={})))
+        def run(command, **kwargs):
+            kwargs['stdout'].write(('SCRIPT ERROR: broken\n' if engine_error else '')+
+                                   'CAIRN_SHIPPING_PILOT='+json.dumps(report)+'\n')
+            from subprocess import CompletedProcess
+            return CompletedProcess(command,exit_code)
+        return run
+
+    def test_exit_one_requires_independently_verified_inconclusive_evidence(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            run=self.pilot_process(root/'reports')
+            audit=dict(assessment=dict(outcome='inconclusive'),measurement_valid=False)
+            with patch.object(pilot_ci,'ROOT',root), patch.object(pilot_ci,'REPORTS',root/'reports/shipping-pilot'), \
+                 patch.object(pilot_ci.subprocess,'run',side_effect=run), \
+                 patch.object(pilot_ci,'reconcile',return_value=audit) as reader:
+                pilot_ci.check_pilot(['fixture-only'],'fixture')
+                reader.assert_called_once()
+                saved=json.loads((root/'reports/fixture.json').read_text())
+                self.assertFalse(saved['runtime']['passed'])
+                self.assertFalse(saved['audit']['measurement_valid'])
+
+    def test_failed_independent_reader_still_fails_the_cloud_check(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            run=self.pilot_process(root/'reports')
+            with patch.object(pilot_ci,'ROOT',root), patch.object(pilot_ci,'REPORTS',root/'reports/shipping-pilot'), \
+                 patch.object(pilot_ci.subprocess,'run',side_effect=run), \
+                 patch.object(pilot_ci,'reconcile',side_effect=RuntimeError('missing final edit')):
+                with self.assertRaisesRegex(RuntimeError,'missing final edit'):
+                    pilot_ci.check_pilot(['fixture-only'],'fixture')
+
+    def test_crash_or_script_error_is_never_an_inconclusive_measurement(self):
+        for code,error in ((2,False),(1,True)):
+            with self.subTest(code=code,error=error), tempfile.TemporaryDirectory() as td:
+                root=Path(td)
+                run=self.pilot_process(root/'reports',code,error)
+                with patch.object(pilot_ci,'ROOT',root), patch.object(pilot_ci,'REPORTS',root/'reports/shipping-pilot'), \
+                     patch.object(pilot_ci.subprocess,'run',side_effect=run), \
+                     patch.object(pilot_ci,'reconcile') as reader:
+                    with self.assertRaises(RuntimeError): pilot_ci.check_pilot(['fixture-only'],'fixture')
+                    reader.assert_not_called()
+
+    def operation_fixture(self, maximum=750):
+        checks = dict.fromkeys(('integration','io','drained','operations','resources','edits',
+                               'route_clocks','ticks','accepted','rejected','saves','actors',
+                               'readiness','policy','coverage'), True)
+        return dict(valid=True, operation_ok=True, checks=checks,
+                    phases=[dict(phase='preparation', upload=dict(max_usec=maximum),
+                                 deletion=dict(max_usec=0), dropped_frames=0)])
+
+    def test_exact_limit_remains_valid(self):
+        self.assertTrue(operation_status(self.operation_fixture())['measurement_valid'])
+
+    def test_honestly_reported_overrun_is_auditable_but_invalid(self):
+        t = self.operation_fixture(751)
+        t.update(valid=False, operation_ok=False)
+        t['checks']['operations'] = False
+        result = operation_status(t)
+        self.assertFalse(result['measurement_valid'])
+        self.assertEqual(result['operation_failures'],
+                         [dict(phase='preparation',reasons=['Individual upload exceeded 0.75 ms'])])
+
+    def test_overrun_cannot_be_hidden_or_made_valid(self):
+        for maximum in (750,751):
+            for key in ('valid','operation_ok','operations'):
+                t = self.operation_fixture(maximum)
+                if maximum == 751:
+                    t.update(valid=False,operation_ok=False)
+                    t['checks']['operations'] = False
+                if key == 'operations': t['checks'][key] = not t['checks'][key]
+                else: t[key] = not t[key]
+                with self.subTest(maximum=maximum,key=key), self.assertRaises(RuntimeError):
+                    operation_status(t)
+
+    def test_incomplete_work_is_not_reclassified_as_an_auditable_timing_failure(self):
+        for key in self.operation_fixture()['checks']:
+            if key == 'operations': continue
+            t = self.operation_fixture(751)
+            t.update(valid=False,operation_ok=False)
+            t['checks']['operations'] = t['checks'][key] = False
+            with self.subTest(key=key), self.assertRaises(RuntimeError): operation_status(t)
+
     def test_physics_and_callback_populations_remain_distinct(self):
         p = dict(rows=4320, command_hash=123)
         f = dict(rows=1080, peak_mesh=392)
