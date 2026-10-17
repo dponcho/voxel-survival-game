@@ -208,11 +208,15 @@ This is an inspected **unqualified research candidate**, not a target handoff.
 The immutable original pilot evidence is
 [artifact 12084093542](https://github.com/dponcho/voxel-survival-game/actions/runs/38985239110/artifacts/12084093542).
 
-**Stop calibration here.** The next task is a written policy decision on an
+**Stop v1 calibration here.** The October 17
+[policy decision](M1_DIAGNOSTIC_COST_POLICY.md) now explicitly adopts raw
+whole-process CPU-cycle demand for the 1% optional-cost gate, with complete
+elapsed impact and operational gates retained separately. V2 is unimplemented;
+the immediate next increment is counter capability, not another pilot.
+The decision required by this result was a written policy on an
 observable cost that cannot be hidden by fixed-tick idle time, while retaining
 complete-lifecycle accounting and paced frame checks. Recommended direction:
-separate busy execution cost from elapsed player-visible impact. Adopting that
-would change the current complete-elapsed estimand and must be explicit before
-implementation. More identical repetitions do not resolve the demonstrated
-masking mechanism. Keep the 1% threshold and existing operation gates unchanged;
+separate busy execution cost from elapsed player-visible impact. That estimand
+change is now explicit in the linked decision. More identical repetitions do not
+resolve the demonstrated masking mechanism. Keep the 1% threshold and existing operation gates unchanged;
 do not implement another injection family or request a laptop pilot yet.

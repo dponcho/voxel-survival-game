@@ -210,10 +210,22 @@ and correctness safeguards remain operational in all controls. Explicit forensic
 traces have disclosed perturbation and cannot certify shipping frame timings.
 Shipping/forensic inventories and the focused null/positive pilot must exist
 before qualification. Legacy flatness-based reports stay historical/supplementary,
-with their old verdicts preserved. The successor cloud pilot is implemented and
+with their old verdicts preserved. The v1 successor cloud pilot is implemented and
 inconclusive: its controls retain two operation-limit failures, and actual added
 work is masked in the paced complete-elapsed observation. Integrity verification
 does not qualify a failed measurement. No target pilot has run; stop repetitions
 until a measurement-policy decision is declared. See
 [the pilot result](docs/M1_SHIPPING_DIAGNOSTICS.md#result).
-See [the finite method and its stop rule](docs/M1_REVIEW_RESPONSE.md).
+
+The October 17 [v2 decision](docs/M1_DIAGNOSTIC_COST_POLICY.md) now adopts
+incremental **whole-process raw CPU-cycle demand** as the optional inventory's
+below-1% upper-bound estimand, replacing complete elapsed duration for that cost
+gate. This is an explicit measured-quantity change, not a changed threshold or
+retroactive v1 pass. Complete elapsed lifecycle and all frame/pacing, edit,
+coverage/readiness, resource and operation gates remain separate requirements.
+Cycles are not CPU service seconds or GPU/presentation measurements. The scope is
+conditional on the declared common observers; unavailable work stays unavailable.
+V2 is not implemented/qualified. First verify native counter capability, then
+implement the declared finite controls with no automatic retry. M1 stays blocked.
+The linked v2 decision defines the current finite method and stop rule; the
+[v1 review](docs/M1_REVIEW_RESPONSE.md) remains historical evidence.

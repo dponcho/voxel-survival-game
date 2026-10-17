@@ -387,4 +387,16 @@ it executes no engine and does not repeat the runtime pilot. The independent
 Windows/Linux comparison normalizes only missing-file OS error wording. All
 verdicts, counters, hashes and other fields remain exact.
 See [the protocol/result](docs/M1_SHIPPING_DIAGNOSTICS.md) and its committed audit
-record. Another pilot requires the explicit finite policy decision in that result.
+record. The October 17 [v2 decision](docs/M1_DIAGNOSTIC_COST_POLICY.md) now selects
+raw process-cycle demand and defines the prospective finite sequence. Its first
+implementation increment verifies counter capability only: exact integer/raw
+decimal serialization, unavailable/failed counters, ordered read brackets and
+one bounded native hash/wait/joined-worker smoke per matching editor/release.
+The process counter must retain the exited worker's witnessed demand. A wait does not
+require zero process cycles because other threads can run. These checks establish
+capability, not sensitivity or a cost pass. Rebuild matching native templates,
+retain existing required correctness/package checks and produce a new candidate.
+Do not rerun v1 or start the v2 route pilot in that increment. V2's later controls
+require a whole-process null plus an in-route thread-cycle-witnessed positive,
+with exact interval arithmetic, all workload/operation guards and the declared
+9/13-trial stop. No target qualification follows from synthetic/CI controls.

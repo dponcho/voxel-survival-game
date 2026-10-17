@@ -49,6 +49,12 @@ explicit adoption decision has relevant regression and target evidence.
 
 ## Prospective diagnostic policy adopted by this review
 
+This section records the adopted v1 elapsed method and its original stop rule.
+After its inconclusive cloud pilot, the October 17
+[v2 measurement decision](M1_DIAGNOSTIC_COST_POLICY.md) prospectively replaces the
+cost estimand with whole-process CPU-cycle demand. Its implementation is pending;
+the v1 evidence and verdicts below are unchanged.
+
 The below-1% requirement applies to optional diagnostics enabled during ordinary
 shipping gameplay. Required collision/readiness, admission limits, transaction
 integrity and other operational safeguards remain active in both controls.

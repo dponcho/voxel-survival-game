@@ -88,8 +88,11 @@ are now implemented: CI
 `38985239110` completed the finite nine-trial pilot, with an inconclusive result
 and two retained operation overruns. The QA-only saved audit distinguishes verified
 evidence from invalid measurements. The [pilot result](docs/M1_SHIPPING_DIAGNOSTICS.md#result)
-stops calibration pending an explicit measurement-policy decision; no laptop
-action is requested. M1 remains blocked.
+stops v1 calibration. The October 17 [measurement-policy decision](docs/M1_DIAGNOSTIC_COST_POLICY.md)
+explicitly selects raw whole-process CPU-cycle demand for the unchanged 1% cost
+threshold while retaining separate elapsed/frame/operation evidence. Native
+counter capability is the next bounded increment; v2 is unimplemented and no
+laptop action is requested. M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

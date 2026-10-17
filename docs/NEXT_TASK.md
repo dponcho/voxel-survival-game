@@ -17,7 +17,7 @@ is [archived](archive/NEXT_TASK_2026-10-13.md); the adopted review decisions are
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
 | Complete synchronous terrain budget | V2 and fault controls pass matching native/editor/release and independent audits. All twelve full-height phases pass. Current CI retains two broader research deletion failures (753 / 794 µs); the five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Carry this opt-in case into the diagnostic pilot and relevant exact-build target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | Inventory, six real editor/release mode companions and the finite nine-trial cloud pilot are implemented in CI `38985239110`. Result inconclusive: null preparation upload 1,185 µs / positive retirement deletion 1,041 µs exceed 750 µs. About 1.60 s actual positive work is not resolved in paced whole-trial elapsed time. Saved integrity passes with measurement validity false. | Stop runtime repetitions. Prepare one explicit measurement-policy decision that addresses idle masking and retains complete closure and paced impact checks; declare any estimand change before implementation. | Keep the 1% and operation thresholds. No further injection family, target pilot or profile matrix until the decision names the observable quantity, boundaries, sensitivity test and finite sequence. |
+| Shipping diagnostic overhead <1% | V1 inventory/finite cloud pilot exists; CI `38985239110` is inconclusive with two operation failures and masked positive work. V2 policy now explicitly selects whole-process raw CPU-cycle demand for the existing 1% gate; complete elapsed/target impact stays separate. Counter support and v2 runtime are not implemented. | Implement only the bounded native counter-capability increment in [the adopted policy](M1_DIAGNOSTIC_COST_POLICY.md#next-bounded-implementation-and-completion), with matching editor/debug/release and a portable candidate. | No route-pilot repetition or v2 calibration in that counter task. Counter failure stops implementation there. Later v2 controls must resolve an above-limit positive; no automatic retries or threshold changes. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After the diagnostic inventory/pilot candidate is ready, one relevant exact-build target comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -43,14 +43,24 @@ folders, original candidate identity and saved corruption tests are audited from
 downloaded evidence without another engine run. The original failed CI remains
 historical evidence, not a green runtime pass.
 
-**Next bounded task: write and adopt one measurement-policy decision.** Recommend
-separating busy execution cost from player-visible elapsed impact so fixed-tick
-idle time cannot hide the sensitivity dose. This would change the present
-complete-elapsed estimand and must be declared explicitly, with lifecycle costs,
-common observers, an observable above-limit positive control and a finite stop.
-Do not implement a successor pilot before that decision. Additional identical
-repetitions do not repair this masking mechanism. Keep the below-1% and terrain
-operation gates unchanged. No new laptop action is requested now.
+**Measurement-policy decision adopted; implementation pending.**
+[The v2 decision](M1_DIAGNOSTIC_COST_POLICY.md) explicitly changes the optional
+1% cost estimand from whole-trial elapsed time to whole-process raw CPU-cycle
+demand, retaining the complete lifecycle, shared observers and independent
+elapsed/frame/operation gates. Raw cycles are not converted into seconds.
+The failed v1 measurements and old executable inventory remain unchanged.
+
+**Next bounded task: implement native counter capability only.** Add the proposed
+dedicated process/thread-cycle observation to `CairnProbe`, with availability,
+errors, paired counter/wall brackets and exact decimal-string records. Verify
+integer/failure handling and one bounded editor/release hash/wait/joined-worker smoke; compile
+new matching editor/debug/release templates in Actions and export a source-matched
+portable candidate. These are new proposed project interfaces, not existing
+upstream APIs. Keep the native budget clocks and ordinary snapshots unchanged.
+Do not implement or run the v2 route/positive pilot in this capability increment.
+Do not repeat the historical v1 pilot. Counter unavailability/contradiction stops
+there. After capability passes, a separate increment may implement the declared
+v2 inventory, interval reader and finite sequence. No laptop action is requested.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
@@ -76,9 +86,12 @@ The user-authorized review adopts the below-1% gate for optional diagnostics in
 ordinary shipping play, with separate perturbing forensic modes and an explicitly
 inventoried incremental-cost estimand. The legacy classifier outputs and historical
 verdicts remain intact; they do not certify the successor method. The shipping
-configuration is implemented as opt-in fixture modes. The cloud sensitivity pilot
-is inconclusive; the target sensitivity pilot has not run.
-See [the exact method and stop rule](M1_REVIEW_RESPONSE.md#prospective-diagnostic-policy-adopted-by-this-review).
+configuration is implemented as opt-in v1 fixture modes. The cloud sensitivity
+pilot is inconclusive; the target sensitivity pilot has not run. The October 17
+[v2 decision](M1_DIAGNOSTIC_COST_POLICY.md) prospectively replaces only the cost
+estimand/method; its counter implementation and sensitivity evidence are pending.
+The [v1 method/stop rule](M1_REVIEW_RESPONSE.md#prospective-diagnostic-policy-adopted-by-this-review)
+remains historical, with its outcomes preserved.
 
 A separate architecture-viability checkpoint may permit bounded M2 generator/M3
 persistence correctness after a representative exact-build target profile passes
