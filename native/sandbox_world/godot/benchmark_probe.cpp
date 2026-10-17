@@ -11,6 +11,8 @@
 #endif
 
 void CairnProbe::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("cpu_cycle_observation"), &CairnProbe::cpu_cycle_observation);
+    ClassDB::bind_method(D_METHOD("cpu_cycle_capability_smoke"), &CairnProbe::cpu_cycle_capability_smoke);
     ClassDB::bind_method(D_METHOD("snapshot"), &CairnProbe::snapshot);
     ClassDB::bind_method(D_METHOD("machine"), &CairnProbe::machine);
     ClassDB::bind_method(D_METHOD("configure", "workers", "heavy"), &CairnProbe::configure);

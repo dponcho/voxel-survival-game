@@ -8,6 +8,10 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--cpu-cycle-capability" in OS.get_cmdline_user_args():
+		$Margin.hide()
+		add_child(load("res://scripts/m1_cpu_cycle_capability.gd").new())
+		return
 	if "--shipping-pilot" in OS.get_cmdline_user_args() or "--shipping-pilot-check" in OS.get_cmdline_user_args():
 		$Margin.hide()
 		add_child(load("res://scripts/m1_shipping_runtime.gd").new())

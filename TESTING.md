@@ -396,6 +396,10 @@ The process counter must retain the exited worker's witnessed demand. A wait doe
 require zero process cycles because other threads can run. These checks establish
 capability, not sensitivity or a cost pass. Rebuild matching native templates,
 retain existing required correctness/package checks and produce a new candidate.
+The counter-only implementation and exact evidence checks are documented in
+[M1_CPU_CYCLE_CAPABILITY.md](docs/M1_CPU_CYCLE_CAPABILITY.md). The reusable workflow
+defaults `historical_v1_pilot` to false, preserving v1's pure checks/entry points
+without repeating the completed runtime pilot during this increment.
 Do not rerun v1 or start the v2 route pilot in that increment. V2's later controls
 require a whole-process null plus an in-route thread-cycle-witnessed positive,
 with exact interval arithmetic, all workload/operation guards and the declared

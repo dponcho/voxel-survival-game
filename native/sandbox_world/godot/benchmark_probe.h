@@ -9,6 +9,8 @@ class CairnProbe : public RefCounted {
 protected:
     static void _bind_methods();
 public:
+    Dictionary cpu_cycle_observation() const;
+    Dictionary cpu_cycle_capability_smoke() const;
     Dictionary snapshot() const;
     Dictionary machine() const;
     void configure(int workers, bool heavy);

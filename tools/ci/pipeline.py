@@ -146,6 +146,11 @@ def prepare():
     info["shipping_inventory_sha256"] = digest(game / "diagnostics/shipping_inventory.json")
     info["shipping_sources_sha256"] = {name: digest(game / "scripts" / name) for name in
         ("benchmark.gd", "m1_full_height_runtime.gd", "m1_shipping_runtime.gd", "m1_shipping_method.gd", "title.gd")}
+    info["cpu_cycle_capability"] = {
+        "schema": "cairn-cpu-cycle-capability-1",
+        "runtime_sha256": digest(game / "scripts/m1_cpu_cycle_capability.gd"),
+        "probe_sha256": digest(ROOT / "native/sandbox_world/godot/cpu_cycle_probe.cpp"),
+        "core_sha256": digest(ROOT / "native/sandbox_world/core/cycle_observation.h")}
     write_json(game / "build_info.json", info)
     editor = BUNDLE / "editor.exe"
     output = run([editor, "--headless", "--path", game, "--import"], "editor-import", timeout=300)
@@ -153,7 +158,7 @@ def prepare():
         raise RuntimeError("Project import reported errors")
     # Check each new dependency directly: a derived benchmark test can otherwise
     # report only an unresolved base class and hide the originating parse error.
-    for script in ("benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "m1_frontier_edit_runtime", "m1_frontier_travel_runtime", "m1_frontier_admission_runtime", "m1_frontier_reversal_runtime", "m1_full_height_runtime", "m1_shipping_method", "m1_shipping_method_tests", "m1_shipping_runtime", "benchmark"):
+    for script in ("m1_cpu_cycle_capability", "benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "m1_frontier_edit_runtime", "m1_frontier_travel_runtime", "m1_frontier_admission_runtime", "m1_frontier_reversal_runtime", "m1_full_height_runtime", "m1_shipping_method", "m1_shipping_method_tests", "m1_shipping_runtime", "benchmark"):
         output = run([editor, "--headless", "--path", game, "--check-only", "--script",
                       "res://scripts/" + script + ".gd"], "parse-" + script, timeout=60)
         if "SCRIPT ERROR:" in output or "ERROR:" in output:
@@ -171,19 +176,20 @@ def prepare():
     from shipping_diagnostics import validate_method_controls, reconcile as reconcile_shipping
     validate_method_controls(control)
     write_json(REPORTS / "shipping-method-preflight.json", control)
-    # Move the existing editor/bare case ahead of the long terrain suite. Its
-    # original raw evidence is carried into the published-candidate pilot audit.
-    preflight = ROOT / "build/shipping-preflight-raw"
-    output = run([editor, "--headless", "--path", game, "--", "--shipping-pilot-check",
-                  "--shipping-pilot-case=bare", "--m1-report-root=" + str(preflight)],
-                 "shipping-runtime-preflight", timeout=360)
-    if "SCRIPT ERROR:" in output or "ERROR:" in output or "CAIRN_SHIPPING_PILOT=" not in output:
-        raise RuntimeError("Shipping fixed-work runtime preflight failed")
-    saved = list(preflight.glob("*/shipping-pilot.json"))
-    if len(saved) != 1:
-        raise RuntimeError("Missing or duplicated shipping runtime preflight")
-    write_json(REPORTS / "shipping-runtime-preflight-validation.json",
-               reconcile_shipping(saved[0].parent, info, game / "diagnostics/shipping_inventory.json"))
+    # The completed v1 experiment is historical. Preserve its entry points and
+    # pure implementation/reader controls; repeat runtime trials only explicitly.
+    if os.environ.get("CAIRN_HISTORICAL_V1_PILOT") == "true":
+        preflight = ROOT / "build/shipping-preflight-raw"
+        output = run([editor, "--headless", "--path", game, "--", "--shipping-pilot-check",
+                      "--shipping-pilot-case=bare", "--m1-report-root=" + str(preflight)],
+                     "shipping-runtime-preflight", timeout=360)
+        if "SCRIPT ERROR:" in output or "ERROR:" in output or "CAIRN_SHIPPING_PILOT=" not in output:
+            raise RuntimeError("Shipping fixed-work runtime preflight failed")
+        saved = list(preflight.glob("*/shipping-pilot.json"))
+        if len(saved) != 1:
+            raise RuntimeError("Missing or duplicated shipping runtime preflight")
+        write_json(REPORTS / "shipping-runtime-preflight-validation.json",
+                   reconcile_shipping(saved[0].parent, info, game / "diagnostics/shipping_inventory.json"))
     # Run the title/self-test through the matching editor, then both actual export templates.
     self_test(editor, "editor-self-test", game)
     output = run([editor, "--headless", "--path", game, "--script", "res://scripts/m1_native_tests.gd"],
