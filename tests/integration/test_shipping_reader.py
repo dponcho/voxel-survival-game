@@ -9,11 +9,19 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'tools/qa'))
-from shipping_diagnostics import FRAME_FIELDS, POSE_FIELDS, poses, frames
+from shipping_diagnostics import FRAME_FIELDS, POSE_FIELDS, poses, frames, observation_record
 from full_height import TICKS, target, command_hash, leg, DIRECTIONS
 
 
 class ShippingReaderTests(unittest.TestCase):
+    def test_physics_and_callback_populations_remain_distinct(self):
+        p = dict(rows=4320, command_hash=123)
+        f = dict(rows=1080, peak_mesh=392)
+        result = observation_record('trial', 'bare', p, f)
+        self.assertEqual((result['physics_rows'], result['frame_rows']), (4320,1080))
+        self.assertNotIn('rows', result)
+        self.assertEqual((p['rows'], f['rows']), (4320,1080))
+
     @classmethod
     def setUpClass(cls):
         cls.pose_rows = []

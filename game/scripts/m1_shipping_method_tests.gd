@@ -24,6 +24,21 @@ func _initialize() -> void:
 	var dispatch_ok: bool = runtime.scenarios.size() == 9
 	for scenario: Dictionary in runtime.scenarios:
 		dispatch_ok = dispatch_ok and load("res://scripts/benchmark_heavy_ab.gd").active(scenario)
+	runtime.simulation_ticks = 4320
+	runtime.full_command_hash = 17
+	runtime.previous_tick = 4320
+	runtime.source_tick = 4320
+	runtime.preparation_direction = 2
+	runtime.preparation_decision_tick = 4320
+	runtime.previous_pose = Vector3(10,64,166)
+	runtime.source_pose = Vector3(10,64,166)
+	runtime._reset_route_state()
+	var reset: Dictionary = {"tick": runtime.simulation_ticks, "leg": runtime._leg(runtime.simulation_ticks),
+		"command_hash": runtime.full_command_hash, "previous_tick": runtime.previous_tick,
+		"source_tick": runtime.source_tick, "direction": runtime.preparation_direction,
+		"decision_tick": runtime.preparation_decision_tick,
+		"previous_pose": [runtime.previous_pose.x,runtime.previous_pose.y,runtime.previous_pose.z],
+		"source_pose": [runtime.source_pose.x,runtime.source_pose.y,runtime.source_pose.z]}
 	runtime.free()
 	var cases: Array = []
 	for cost: int in [-1, 0, 500000, 999999, 1000000, 1500000]:
@@ -58,5 +73,5 @@ func _initialize() -> void:
 		requests.append([reference, Method.dose_request(reference)])
 	print("CAIRN_SHIPPING_METHOD=" + JSON.stringify({"passed": dispatch_ok, "qualified": false,
 		"scope": "synthetic method/dispatch regressions only; not runtime dose or target proof",
-		"dose_request_vectors": requests, "fixed_work_dispatch": dispatch_ok, "cases": cases}))
+		"dose_request_vectors": requests, "route_reset": reset, "fixed_work_dispatch": dispatch_ok, "cases": cases}))
 	quit(0 if dispatch_ok else 1)

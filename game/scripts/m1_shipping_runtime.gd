@@ -66,6 +66,7 @@ func _is_shipping() -> bool: return active_scenario.get("diagnostic_mode", "bare
 func _start_scenario() -> void:
 	active_scenario = scenarios[scenario_index].duplicate(true)
 	var begin: int = Time.get_ticks_usec()
+	_reset_route_state()
 	trial = {"id": active_scenario["id"], "group": active_scenario["group"], "index": active_scenario["index"],
 		"diagnostic_mode": active_scenario["diagnostic_mode"], "dose_enabled": active_scenario["dose"],
 		"start_usec": begin, "inventory_sha256": FileAccess.get_sha256(INVENTORY), "valid": false,
@@ -122,7 +123,9 @@ func _close_reports() -> void:
 	await super._close_reports()
 	drain_spans.append({"start_usec": begin, "end_usec": Time.get_ticks_usec()})
 
-func _begin_measurement() -> void:
+func _reset_route_state() -> void:
+	# Preparation calls _sync_pose too: discard the preceding trial's final leg.
+	simulation_ticks = 0
 	full_command_hash = 0
 	previous_pose = FULL_ORIGIN
 	previous_tick = 0
@@ -130,6 +133,9 @@ func _begin_measurement() -> void:
 	source_tick = 0
 	preparation_direction = 0
 	preparation_decision_tick = 0
+
+func _begin_measurement() -> void:
+	_reset_route_state()
 	await super._begin_measurement()
 	route_clock.append(Time.get_ticks_usec())
 	status_label.text = "Focused pilot • %s • %s • trial %d" % [active_scenario["group"], active_scenario["diagnostic_mode"], scenario_index + 1]

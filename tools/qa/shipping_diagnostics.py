@@ -151,6 +151,9 @@ def validate_method_controls(control):
     references = (0,1,215999,216000,216001,216000000,216000001)
     require(control['dose_request_vectors'] == [[v,math.ceil(Fraction(v,50*TICKS))] for v in references],
             'Nominal positive dose integer ceiling mismatch')
+    require(control['route_reset'] == dict(tick=0,leg=0,command_hash=0,previous_tick=0,source_tick=0,
+                direction=0,decision_tick=0,previous_pose=[10,72,10],source_pose=[10,72,10]),
+            'A preceding trial leaked its route/camera/preparation state')
     for case in control['cases']:
         compare_method(case['assessment'], evaluate(case['trials']))
         require(case['assessment']['outcome'] == CONTROL_OUTCOMES[case['name']],
@@ -270,6 +273,14 @@ def frames(path, trial):
     return dict(rows=len(rows), peak_mesh=maximum_mesh, peak_data=maximum_data, interval_usec=total_interval)
 
 
+def observation_record(name, mode, physical, callbacks):
+    # Both observers have a rows field: retain the two distinct populations.
+    p, f = dict(physical), dict(callbacks)
+    physics_rows, frame_rows = p.pop('rows'), f.pop('rows')
+    require(not p.keys() & f.keys(), 'Overlapping physics/callback observation schema')
+    return dict(id=name, mode=mode, physics_rows=physics_rows, frame_rows=frame_rows, **p, **f)
+
+
 def trial_evidence(folder, t, inventory_hash):
     name = t['id']
     complete_path, boundary_path = folder/(name+'-complete.json'), folder/(name+'-boundary.json')
@@ -380,7 +391,7 @@ def trial_evidence(folder, t, inventory_hash):
         require(len(detail) == observed_frames['rows'] and all('render_cpu_ms' in row and 'render_gpu_ms' in row for row in detail),
                 'Forensic renderer/detail trace did not run')
         terrain_reconcile(folder, {'operation_phases': phases})
-    return dict(id=name, mode=t['diagnostic_mode'], **observed_poses, **observed_frames)
+    return observation_record(name, t['diagnostic_mode'], observed_poses, observed_frames)
 
 
 def reconcile(folder, build, inventory_path):

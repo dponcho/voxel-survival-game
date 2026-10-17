@@ -49,12 +49,15 @@ class ShippingMethodTests(unittest.TestCase):
                 v[int(name.removeprefix('invalid-trial-'))]['valid'] = False
             cases.append(dict(name=name,trials=v,assessment=floating(evaluate(v))))
         saved = dict(passed=True,qualified=False,fixed_work_dispatch=True,cases=cases,
+            route_reset=dict(tick=0,leg=0,command_hash=0,previous_tick=0,source_tick=0,
+                             direction=0,decision_tick=0,previous_pose=[10,72,10],source_pose=[10,72,10]),
             dose_request_vectors=[[v,-(-v//216000)] for v in (0,1,215999,216000,216001,216000000,216000001)])
         self.assertTrue(validate_method_controls(saved)['passed'])
-        for fault in ('duplicate','vector','decision'):
+        for fault in ('duplicate','vector','decision','stale-route'):
             bad = copy.deepcopy(saved)
             if fault == 'duplicate': bad['cases'][-1] = bad['cases'][0]
             elif fault == 'vector': bad['dose_request_vectors'][-1][1] -= 1
+            elif fault == 'stale-route': bad['route_reset']['tick'] = 4320
             else: bad['cases'][0]['assessment']['outcome'] = 'passed'
             with self.subTest(fault=fault), self.assertRaises(RuntimeError): validate_method_controls(bad)
 

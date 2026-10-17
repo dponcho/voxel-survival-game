@@ -125,7 +125,11 @@ inventory, exercises all three real modes with matching editor and release, then
 runs the single finite release pilot. An independent saved-file reader reconciles
 every actual pose/work row, callback, original edit submission, operation aggregate,
 boundary/drain, telemetry switch and native dose digest. Saved-file mutations must
-be rejected. A second read-only downloaded-artifact audit precedes handoff.
+be rejected. A second read-only downloaded-artifact audit precedes handoff. It runs in an
+isolated Linux job after the Windows checks: download the published candidate,
+original export/native/pilot evidence, verify the transferred editor files byte
+for byte and reproduce all saved verdicts, counters and mutations without an
+engine or compiler. This also preserves verification through an executor disconnect.
 
 The prior complete export job took 1,808 s, including 1,262 s of terrain checks.
 Cheap dispatch/rational controls now run first; the existing 72 s editor/bare case
