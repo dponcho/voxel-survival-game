@@ -185,6 +185,15 @@ func _physics_step(delta: float) -> void:
 
 func _process_frame(now: int) -> void:
 	if state not in ["running", "acknowledging"]:
+		if state == "draining":
+			var tail: Dictionary = probe.snapshot()
+			# Upstream main_jobs does not describe every retained resource/result.
+			# Keep this native phase open until all declared work actually drains.
+			if int(tail.get("retired_meshes", -1)) != 0 or int(tail.get("result_jobs", -1)) != 0:
+				if _is_forensic(): _drain_operation_frames()
+				if Time.get_ticks_msec() - loading_started > 180000:
+					_finish("failed", "Pilot result/retirement queues did not drain within three minutes")
+				return
 		super._process_frame(now)
 		return
 	_advance_preparation()
@@ -286,6 +295,12 @@ func _finish_trial() -> void:
 	var edits_ok: bool = int(visibility.get("accepted", -1)) == 288 and int(visibility.get("submitted", -1)) == 288 and int(visibility.get("p95_upper_usec", -1)) > 0 and int(visibility.get("p95_upper_usec", -1)) <= 100000 and int(visibility.get("max_usec", -1)) >= 0 and int(visibility.get("max_usec", -1)) <= 200000
 	for key: String in ["pending", "queued", "overflow", "superseded", "cancelled", "timeout", "unavailable"]:
 		edits_ok = edits_ok and int(visibility.get(key, -1)) == 0
+	trial["checks"] = {"integration": integration_failures.is_empty(), "io": not report_io_failed,
+		"drained": drained, "operations": operation_ok, "resources": resource_ok, "edits": edits_ok,
+		"route_clocks": route_clock.size() == 4, "ticks": simulation_ticks == TICKS,
+		"accepted": accepted_edits == 288, "rejected": rejected_edits == 0, "saves": proxy_saves == 72,
+		"actors": actor_ticks == 103680, "readiness": readiness_stops == 0, "policy": not policy_failed,
+		"coverage": int(report.get("fog_frontier", {}).get("exposed_samples", -1)) == 0 and report.get("fog_frontier", {}).get("evaluation", "") == "passed"}
 	trial.merge({"valid": integration_failures.is_empty() and not report_io_failed and drained and operation_ok and resource_ok and edits_ok and route_clock.size() == 4 and simulation_ticks == TICKS and accepted_edits == 288 and rejected_edits == 0 and proxy_saves == 72 and actor_ticks == 103680 and readiness_stops == 0 and not policy_failed and int(report.get("fog_frontier", {}).get("exposed_samples", -1)) == 0 and report.get("fog_frontier", {}).get("evaluation", "") == "passed",
 		"route_clocks_usec": route_clock.duplicate(), "report": report, "phases": phases,
 		"closures": closure_spans.duplicate(true), "writer_drains": drain_spans.duplicate(true),
@@ -345,5 +360,15 @@ func _finish_report(outcome: String, message: String) -> void:
 	if not passed: integration_failures.append("Shipping pilot work/boundary/operation/I/O control failed")
 	status_label.text = "Shipping diagnostic pilot: " + str(pilot_result["outcome"])
 	detail_label.text = "Keep the complete report folder. M1 remains unqualified.\n" + str(pilot_result["stop_decision"])
+	if not passed:
+		var failed: Array = []
+		for value: Dictionary in trials:
+			if value["valid"]: continue
+			var phase_failures: Array = []
+			for phase: Dictionary in value.get("phases", []):
+				phase_failures.append({"phase": phase["phase"], "failures": Evaluation.operation_failures(phase)})
+			failed.append({"id": value["id"], "checks": value.get("checks", {}), "native_final": value.get("native_final", {}),
+				"phase_failures": phase_failures, "integration_failures": value.get("integration_failures", [])})
+		print("CAIRN_SHIPPING_FAILURE=" + JSON.stringify(failed))
 	print("CAIRN_SHIPPING_PILOT=" + JSON.stringify({"passed": passed and integration_failures.is_empty(),
 		"qualified": false, "outcome": pilot_result["outcome"], "report_dir": report_dir, "trials": trials.size()}))
