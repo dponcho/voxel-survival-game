@@ -2,7 +2,8 @@
 
 Implementation of the counter-only increment in
 [the adopted diagnostic-cost decision](M1_DIAGNOSTIC_COST_POLICY.md#next-bounded-implementation-and-completion).
-**Cloud verification and matching Windows candidate pending. M1 remains blocked.**
+**Source prepared in `441d0cd`; matching Windows verification/candidate pending.
+M1 remains blocked.**
 
 ## Bounded implementation
 
@@ -50,7 +51,37 @@ seconds, GPU/driver/presentation cost or target performance. No laptop action.
 
 ## Result
 
+Publication of the prepared commit to the existing `codex/m1-engine-proof`
+branch was rejected by automatic approval review, which requires direct
+publication authorization rather than recovered prior authorization. The
+destination was verified as the same public `dponcho/voxel-survival-game`
+repository; no repository visibility change or alternative destination is used.
+No push or new Actions/native/candidate result is claimed.
+
+Completed in the Codex Cloud workspace against the prepared source:
+
+- All 141 Python integration/reader regressions pass (91.088 s), including six
+  new counter-reader tests and synthetic saved-failure checks.
+- All seven engine-independent native suites pass with AddressSanitizer and
+  UndefinedBehaviorSanitizer. LeakSanitizer cannot inspect `/proc` in this
+  workspace sandbox, so those workspace runs set `ASAN_OPTIONS=detect_leaks=0`;
+  the required Actions sanitizer commands retain their normal settings.
+- Owned Python compile checks, modified workflow YAML parsing, documentation
+  links/anchors and `git diff --check` pass. The existing probe implementation
+  changes only by adding the two bindings/declarations; ordinary snapshots and
+  terrain budget clocks remain unchanged.
+
+These are logic/static checks. Neither Godot/Windows compilation nor real
+counter/hash/wait/worker capability has run for this source. The open PR's
+remote head was independently confirmed still at `1cbf609e408911b22e283245d8a58aeb6843edbe`.
+
 Pending exact-build Actions verification and portable artifact audit. The next
 task may implement v2 inventory/interval readers and the declared finite sequence
 only after capability passes. If counters are unavailable or contradictory,
 retain the error and stop that implementation path.
+
+API contracts checked against the pinned Godot `core/os/thread.h`,
+`core/crypto/crypto_core.h` and `core/string/ustring.h`, plus Microsoft's
+[process-cycle](https://learn.microsoft.com/en-us/windows/win32/api/realtimeapiset/nf-realtimeapiset-queryprocesscycletime)
+and [thread-cycle](https://learn.microsoft.com/en-us/windows/win32/api/realtimeapiset/nf-realtimeapiset-querythreadcycletime)
+documentation. Raw cycles remain distinct from elapsed time.

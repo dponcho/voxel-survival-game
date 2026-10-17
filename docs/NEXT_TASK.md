@@ -17,7 +17,7 @@ is [archived](archive/NEXT_TASK_2026-10-13.md); the adopted review decisions are
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
 | Complete synchronous terrain budget | V2 and fault controls pass matching native/editor/release and independent audits. All twelve full-height phases pass. Current CI retains two broader research deletion failures (753 / 794 µs); the five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Carry this opt-in case into the diagnostic pilot and relevant exact-build target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V1 inventory/finite cloud pilot exists; CI `38985239110` is inconclusive with two operation failures and masked positive work. V2 policy now explicitly selects whole-process raw CPU-cycle demand for the existing 1% gate; complete elapsed/target impact stays separate. Counter support and v2 runtime are not implemented. | Implement only the bounded native counter-capability increment in [the adopted policy](M1_DIAGNOSTIC_COST_POLICY.md#next-bounded-implementation-and-completion), with matching editor/debug/release and a portable candidate. | No route-pilot repetition or v2 calibration in that counter task. Counter failure stops implementation there. Later v2 controls must resolve an above-limit positive; no automatic retries or threshold changes. |
+| Shipping diagnostic overhead <1% | V1 inventory/finite cloud pilot exists; CI `38985239110` is inconclusive with two operation failures and masked positive work. V2 selects whole-process raw CPU-cycle demand for the unchanged 1% gate. Counter-only source is prepared in `441d0cd`, but publication/Windows verification are blocked; there is no new counter-qualified candidate. | Publish the prepared bounded counter increment after the publication block is resolved; compile matching editor/debug/release in Actions, run its one-smoke-per-binary capability check and verify the portable candidate. [Implementation/status](M1_CPU_CYCLE_CAPABILITY.md). | No route-pilot repetition or v2 calibration. Counter failure stops there. Later v2 controls must resolve an above-limit positive; no automatic retries or threshold changes. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After the diagnostic inventory/pilot candidate is ready, one relevant exact-build target comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -43,15 +43,15 @@ folders, original candidate identity and saved corruption tests are audited from
 downloaded evidence without another engine run. The original failed CI remains
 historical evidence, not a green runtime pass.
 
-**Measurement-policy decision adopted; implementation pending.**
+**Measurement-policy decision adopted; counter source prepared, Windows proof pending.**
 [The v2 decision](M1_DIAGNOSTIC_COST_POLICY.md) explicitly changes the optional
 1% cost estimand from whole-trial elapsed time to whole-process raw CPU-cycle
 demand, retaining the complete lifecycle, shared observers and independent
 elapsed/frame/operation gates. Raw cycles are not converted into seconds.
 The failed v1 measurements and old executable inventory remain unchanged.
 
-**Next bounded task: implement native counter capability only.** Add the proposed
-dedicated process/thread-cycle observation to `CairnProbe`, with availability,
+**Next bounded task: finish native counter capability only.** The prepared source
+adds a dedicated process/thread-cycle observation to `CairnProbe`, with availability,
 errors, paired counter/wall brackets and exact decimal-string records. Verify
 integer/failure handling and one bounded editor/release hash/wait/joined-worker smoke; compile
 new matching editor/debug/release templates in Actions and export a source-matched
@@ -61,6 +61,15 @@ Do not implement or run the v2 route/positive pilot in this capability increment
 Do not repeat the historical v1 pilot. Counter unavailability/contradiction stops
 there. After capability passes, a separate increment may implement the declared
 v2 inventory, interval reader and finite sequence. No laptop action is requested.
+
+The counter source and focused exact-integer/failure controls are now prepared
+locally in `441d0cd`. Automatic approval review rejected publication to the
+existing branch, including a retry after repository/previous-authorization
+checks. No push, Actions counter run, matching new binaries or new portable
+artifact is claimed. Resolve that publication authorization, then finish the
+remaining checks in [the counter record](M1_CPU_CYCLE_CAPABILITY.md). Keep the
+current candidate/evidence identities below historical and unchanged. Do not
+advance to the v2 runtime or request a laptop test from source-only evidence.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
