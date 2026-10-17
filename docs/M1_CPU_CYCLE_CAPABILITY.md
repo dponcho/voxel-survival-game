@@ -2,7 +2,7 @@
 
 Implementation of the counter-only increment in
 [the adopted diagnostic-cost decision](M1_DIAGNOSTIC_COST_POLICY.md#next-bounded-implementation-and-completion).
-**Source prepared in `441d0cd`; matching Windows verification/candidate pending.
+**Source published in `8f1bc66` / `1841e4c`; matching Windows verification/candidate pending.
 M1 remains blocked.**
 
 ## Bounded implementation
@@ -51,12 +51,22 @@ seconds, GPU/driver/presentation cost or target performance. No laptop action.
 
 ## Result
 
-Publication of the prepared commit to the existing `codex/m1-engine-proof`
-branch was rejected by automatic approval review, which requires direct
-publication authorization rather than recovered prior authorization. The
-destination was verified as the same public `dponcho/voxel-survival-game`
-repository; no repository visibility change or alternative destination is used.
-No push or new Actions/native/candidate result is claimed.
+The user directly approved publication on October 17 after the initial automatic
+approval block. The source is now published to the existing
+`codex/m1-engine-proof` branch as `8f1bc66` / `1841e4c`. The authenticated GitHub
+connection produced commit metadata different from the prepared local commits
+`441d0cd` / `ed402a5`, but both tree hashes were checked exactly before the ref
+advanced: `c199c10c1633501a1de0b7cb5cae494e26858d74` and
+`7c94f4beec836c969fae1b4d0829bd39a1ab8dbe`.
+
+[CI `39073452514`](https://github.com/dponcho/voxel-survival-game/actions/runs/39073452514)
+has passed all 141 Python regressions and seven native sanitizer suites with
+their normal Actions settings. It is compiling a new matching native bundle
+under source key
+`2045ec77931e23130c773d1c2e2645ce6a925b1eccc1e8f8347df7758e50faf3`.
+Continue that run rather than dispatching another. Windows capability and
+portable candidate checks remain pending; no new counter-qualified artifact is
+claimed yet.
 
 Completed in the Codex Cloud workspace against the prepared source:
 
@@ -72,8 +82,8 @@ Completed in the Codex Cloud workspace against the prepared source:
   terrain budget clocks remain unchanged.
 
 These are logic/static checks. Neither Godot/Windows compilation nor real
-counter/hash/wait/worker capability has run for this source. The open PR's
-remote head was independently confirmed still at `1cbf609e408911b22e283245d8a58aeb6843edbe`.
+counter/hash/wait/worker capability has run for this source yet. The open PR's
+source-bearing head is now `1841e4c17cc91bfa10e5b24e1aec8fbdd3c5eb91`.
 
 Pending exact-build Actions verification and portable artifact audit. The next
 task may implement v2 inventory/interval readers and the declared finite sequence
