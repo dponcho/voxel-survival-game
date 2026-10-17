@@ -1,0 +1,6 @@
+{
+  "legacy_engine_inputs": "f90df9f55adb77e131cd1f575a50caded0e8fbd17f5b0f96877e7884320197b1",
+  "source_commit": "fe5cadc2876fc5a889c72b097373f544f4ed9fff",
+  "native_key": "6adda08d3b832e3e5c40a41fd5b7bcd527bd2d1d6b274cd37b039a2371b61d7f",
+  "reason": "Exact native sources, source archives, compiler, flags and function bodies retained while separating packaging from compilation. The existing embedded engine identity is preserved."
+}

@@ -1,6 +1,6 @@
 # Testing and build verification
 
-Design baseline: 2026-09-05. Status: required test plan; no tests or game builds were executed as part of writing these documents. References to scripts and application flags below are interfaces to implement in M0 and subsequent milestones.
+Design baseline: 2026-09-05; Java core and target-report requirements revised 2026-09-26. Status: required test plan; executed results are recorded in milestone evidence. References to scripts and application flags below are interfaces to implement in M0 and subsequent milestones.
 
 ## 1. Evidence levels
 
@@ -59,6 +59,21 @@ Missing data must never become air in collision or mining. Inventory is charged 
 
 Instantiate every shipping scene and content family through tests or a content-validation scene. Parsing only the main script does not validate all resources. Use warning/error policy appropriate to owned code; retain upstream warnings separately instead of suppressing meaningful project failures.
 
+Review animated presentation in motion over several cycles and during movement,
+turns, edits and transitions. Check repetition, synchronized resets, popping,
+flicker and input responsiveness as well as still images. Record deliberate
+visual compromises with their scope and replacement milestone; the M1 rain
+proxy's synchronized appearance remains a deferred M5 defect, not a passed
+weather-quality check. An optimization needs a measured benefit and preserved
+behaviour, including these motion checks when relevant. No overall test-pass
+percentage can override a failed correctness or performance gate.
+
+### Core Java-style behaviour checks
+
+Use [the core reference contract](docs/JAVA_CORE_REFERENCE.md) for movement/sneak ledges, target reach, block hardness/tool drops/durability, stairs/slab collision, 9+27 inventory/armour/offhand, shaped/shapeless 2×2/3×3 crafting and recipe-book assistance. Test furnace input/fuel/output transactions, hunger/saturation/regen, bed obstruction/respawn, death-drop expiry in loaded simulation time, bounded cap saturation without item loss, farming/breeding, local water/lava and falling-block borders. Unloaded crop/furnace work must stay paused. Verify Creative-style flight/instant breaking/catalogue independently of survival consumption.
+
+Compare original rendered block materials, silhouettes, held tools, hotbar/grid and interaction feedback at 720p against the intended reference. Record intentional differences; a matching interface label is not behaviour or visual proof. Automation circuits, enchanting, brewing, extra dimensions and boss progression are post-1.0 and are not exit tests for core 1.0.
+
 ## 5. Persistence fault injection
 
 Use temporary worlds and a deterministic driver. Inject failure before/after transaction append, commit, snapshot write, pruning watermark, backup and migration. The cloud process controller can terminate the game at declared test hooks; this is never performed against a player's saves.
@@ -110,6 +125,8 @@ Run the suite uncapped for deadline capacity, then a paced diagnostic pass for d
 
 Use monotonic high-resolution timing. Measure application frame intervals and engine phases directly, with asynchronous GPU timers only where supported; never block waiting for a GPU query. A missing GPU metric is `unavailable`, not zero. An engine frame callback is not proof of physical scanout time: label presentation estimates accurately. If pacing remains ambiguous, retain “inconclusive” rather than overstating the measurement.
 
+Phase attribution is mandatory: label preparation, measured gameplay, paced diagnostics and retirement separately. Retain lifetime counters as context, but assess individual-operation limits using phase-local maxima and bounded per-frame payload/time records. Subtracting cumulative maxima is invalid. Include enough event context to distinguish native work, diagnostic work, renderer work and unavailable OS/driver attribution. Completion text must not imply a passing evaluation. Preserve first-use failures and raw paced misses. Missing measurements and unstable A/B comparisons remain inconclusive. These requirements address the [September 25 target review](docs/M1_TARGET_REVIEW.md) without relaxing any gate.
+
 Each report contains:
 
 | Field group | Required data |
@@ -140,3 +157,250 @@ Pause the application for a long interval, then resume. Do not simulate thousand
 Use `passed`, `failed`, `inconclusive` and `not_run`. Include a command/CI run and artifact identity for executed checks. Fix implementation failures before expanding the affected system. Preserve failing seeds and reports as compact regression fixtures where they identify a real bug.
 
 Cloud-only success is reported as **cloud passed; target performance unverified**. Without a target-hardware report, the project may ship a clearly labelled experimental candidate for the user to run, but it must not claim the hard performance requirements are achieved.
+
+### Cloud endpoint/count precision controls
+
+`benchmark_endpoint_precision_tests.gd` uses the production route ledger,
+diagnostic ledger and evaluator with injected clocks. It saves bounded CSV rows
+for 28 H1/H2 controls, including null/known closure, endpoint redistribution,
+acknowledgement duration, callback-count masking/drift, missing/reordered/stalled
+workloads, failed actor activity/individual upload, unavailable terminal data,
+I/O failure and overlapping dose. It executes no target or terrain measurement.
+
+`tools/qa/endpoint_precision.py` independently checks closed-form integer totals,
+streams each saved CSV, and reconciles previous/final callbacks, timing blocks,
+seven route bins, acknowledgement markers, nested callback writes, writer drain,
+closure dose and preparation/measurement/retirement boundaries. It checks saved
+production decisions using the existing exact-rational oracle. Supplemental
+duration/count decomposition and unscaled terminal contributions are descriptive
+only. A null quartet deliberately cannot satisfy the production known-positive
+dose guard. Missing data stays unavailable/null; no terminal rows are trimmed.
+
+Actions enforces 1 MiB control JSON, 112 fixed raw CSV files totaling at most
+32 MiB, and a 60-second injected-clock command timeout. The runtime ledger still
+has seven bins and no retained per-frame array or new queue. The existing sixteen
+method controls, 26 route controls, thresholds and verdicts remain unchanged.
+Static regressions expand independent clocks and reject corrupt rows, lost tails,
+changed phase/I/O scope, waived operation failures, altered decisions and bounds.
+These checks do not qualify HD 620 precision, per-frame CPU/GPU sensitivity or
+shared instrumentation overhead. See [docs/M1_ENDPOINT_PRECISION.md](docs/M1_ENDPOINT_PRECISION.md).
+
+### Experimental fixed-work elapsed/count controls
+
+`benchmark_fixed_work_tests.gd` adds 44 clock controls, retaining the old sixteen
+method, 26 route and 28 endpoint controls. `tools/qa/fixed_work.py` independently
+reconciles exact duration thresholds, count cancellation, terminal/acknowledgement
+uncertainty, phase/drain/dose scope, unavailable/null values and saved raw rows.
+Existing release calibration smoke also checks the supplementary saved assessor
+and external combined finalization. Bounds: 176 CSVs/64 MiB, 3 MiB control JSON,
+60-second clock command; no new runtime queue. All legacy assessments and
+qualification flags remain authoritative. See [M1_FIXED_WORK_SENSITIVITY.md](docs/M1_FIXED_WORK_SENSITIVITY.md).
+
+### Experimental per-callback CPU dose controls
+
+`benchmark_cpu_dose_tests.gd` adds 54 clock controls/216 saved phases, bounded at
+4 MiB JSON, 64 MiB raw CSV and 60 seconds. The independent rational/streamed
+oracle verifies exact threshold/null semantics, count/wait/route-mix masking,
+body/window drift, all guard faults and previous/final callbacks. A separate
+native SHA-256 `Node._process` probe executes 128 real callbacks each in the
+matching editor and exported release; every digest, body/dose span, writer drain
+and external finalization is independently reconciled. Bounds: 4 KiB buffer,
+512 updates per dose, 32 pending rows, 1 MiB evidence/60 seconds per invocation.
+This verifies software sensitivity and CPU placement, never CPU service,
+hardware precision, GPU cost or shared overhead. Ordinary benchmark smoke must
+retain CPU sensitivity `not_run`; all old control expectations stay unchanged.
+See [M1_CPU_DOSE_SENSITIVITY.md](docs/M1_CPU_DOSE_SENSITIVITY.md).
+
+### Experimental frame-boundary/slack controls
+
+`benchmark_frame_slack_tests.gd` retains 30 modeled quartets/120 CSV phases,
+bounded at 2 MiB JSON, 2 MiB raw and 60 seconds. The rational/raw oracle validates
+owned callback-to-successor cycles, exact 1% boundaries, slack/count masking,
+final-only dose, endpoint uncertainty and every missing/failed/unstable guard.
+An internal application probe runs 256 native-hash bodies plus eight closing
+anchors in both editor and release, with temporary 100-fps limiter/restoration.
+Bounds: 4 KiB input, 8,192 updates per dose, 32 pending rows and 2 MiB/60 seconds
+per invocation. Every digest, engine-frame successor, last body, exclusive cycle,
+callback/anchor/drain/controller gap and external finalization reconciles.
+Ordinary smokes retain `frame_slack_sensitivity: not_run`; old controls remain.
+These are software placement checks, with actual effect envelopes descriptive;
+CPU service, GPU/presentation, hardware precision and shared overhead stay null.
+See [M1_FRAME_SLACK_SENSITIVITY.md](docs/M1_FRAME_SLACK_SENSITIVITY.md).
+
+### First moving-frontier boundary replay
+
+Matching editor and packaged release each run four actual native baseline/
+corrected cases (16³, one/two workers) from the hashed public first-alarm seed.
+Baseline must reproduce missing submitted geometry inside 96 m; corrected must
+already be submitted and retain unchanged scan coverage through reference
+handover. A new unprepared gap still fails, missing inputs remain null, and
+native cancellation/drain and existing bounds remain visible. Each invocation
+retains 80 observations, capped at 128 rows/1 MiB, with per-case 60-second
+settlement/drain limits and a 600-second command deadline. The independent
+saved-report/source/geometry oracle and mutation tests supplement, never replace,
+existing frontier/operation/edit/evaluation and profile smokes. See
+[M1_FRONTIER_BOUNDARY_REPLAY.md](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
+
+### Concurrent edit during the next frontier handover
+
+Matching editor/release each run eight actual native cases at the public second
+16³ +X boundary: stationary, transfer, cancellation requested before acquisition
+and during overlapping ownership, each with one/two workers and one accepted
+border edit. The independent saved oracle checks both current edit revisions,
+actual resource identities and `1 -> 2 -> 1` visual references, next-column
+submission, preserved confirmed-empty coverage, cancelled/completed terminal
+source, native drain and unchanged 200 ms acknowledgement / 750 µs operation
+guards. Collection close never becomes native acknowledgement. All 24 native
+preparation/transfer/retirement phases reconcile with streamed operation rows.
+Bounds are 160 observations, ten observed blocks per row (native API maximum
+16), 1 MiB summary, 20,000 operation rows / 8 MiB, 60-second settlement/drain
+and 600-second command deadline. Null/invalid/oversized/malformed/duplicate and
+absent-block native controls, exact saved sums/peaks/phase closures and Python
+mutation regressions supplement all earlier controls. See
+[M1_FRONTIER_EDIT_HANDOVER.md](docs/M1_FRONTIER_EDIT_HANDOVER.md).
+
+### Continuous H2 travel replay
+
+The cloud editor/release each run the production 600-tick H2 route with one/two
+workers through four +X handovers. Independent saved evidence checks all movement,
+actor/rain/edit/storage commands, actual resource ownership and current revisions,
+all terminal frames/edits/native phases, operation guards and complete drain.
+Storage and time limits, negative controls and scope are predeclared in
+[M1_FRONTIER_TRAVEL.md](docs/M1_FRONTIER_TRAVEL.md). Failed timing guards remain
+failures; functional cloud completion does not qualify a target profile.
+
+### Native pending-mesh admission comparison
+
+Eight additional fresh 600-tick H2 processes compare FIFO/priority in editor/
+release with one/two workers. Six native sanitizer suites include an independent
+geometric-minimum/FIFO/trace-bound test. Saved readers verify every pending vector,
+actual admission permutation, four-task budget, phase boundaries and complete
+matched travel evidence. Coverage and operation/diagnostic failures remain
+visible. Bounds and stopping conditions are predeclared in
+[M1_MESH_ADMISSION.md](docs/M1_MESH_ADMISSION.md).
+
+The independent post-package audit downloads the published player and verifies
+byte round-trip, inner ZIP CRC/paths, PE/PCK/entry MD5/native identity, eight
+self-test reports and imports. It re-reads all saved trial/control evidence,
+compares the 42 ordinary heavy contracts with a durable public baseline, and
+rejects 26 mutations of actual saved reports. Pre-admission missing/null block
+observations remain valid missing states; missing-after-admission and non-null
+revision changes fail. CI 37878551633 verifies 88 Python regressions, six
+sanitizer suites and all eight matched admission runs. The on-demand inspection
+workflow is retained for explicit review of the original failing cloud evidence;
+it is not an automatic qualification check. Engine execution stays in Actions.
+
+### Bounded H2 camera reversal
+
+Eight additional FIFO/priority editor/release processes with one/two workers run
+1,200 fixed ticks on the original outward H2 route, with camera reversal at tick
+900, all 80 due edits and 20 saves. The existing 600-tick checks remain required.
+Independent controls check exact camera assignment/fingerprint, eight handovers,
+current edit/revision/resource evidence and legitimate outside-96 m eviction;
+missing states remain null. The post-package audit re-reads all saved trials,
+coverage windows and terminal accounting, and rejects twelve further mutations
+of actual reversal/retention/evidence guards. Limits and stopping conditions are
+predeclared in [M1_FRONTIER_REVERSAL.md](docs/M1_FRONTIER_REVERSAL.md).
+
+CI 38333317049 passes all three jobs, 91 Python regressions, six native sanitizer
+suites, every prior check and the eight new processes. Published-download and
+separate read-only saved audits verify all arithmetic/classification/phase/
+witness fields, 78 PCK MD5s, eight self-tests and 38 imports; the preserved missing-
+file mutation's OS exception text/temporary path is the sole environment
+difference. All 26 older and twelve new saved mutations are rejected. Priority
+has zero actual coverage alarms before/after the camera turn and all eighty
+original edits submitted in each run. FIFO's four edit-duration failures and one
+timeout remain. Evidence-reader success does not imply a passing scenario;
+priority assessments remain inconclusive under the unchanged diagnostic guard.
+No local engine execution or HD 620 qualification is claimed.
+
+### Ordinary admission and complete terrain budget review controls
+
+The ordinary check runs `--ordinary-admission-check` in fresh editor/release
+one/two-worker FIFO/priority processes, twenty seconds / 1,200 fixed ticks each.
+It inherits production route/camera/work and ordinary ledgers, disables admission
+tracing and travel/resource observation, preserves all 80 due edits / 20 proxy
+saves / 28,800 actor updates, and retains preparation/acknowledgement/retirement/
+writer/finalization accounting. Missing trace/resource fields are unavailable/null.
+Independent saved readers verify exact commands, original revision terminal
+events, measured coverage, complete frame/operation evidence and full drain.
+Integrity success and measured bounded acceptance are separate decisions.
+This mode stops startup observation before gameplay, so it does not run the
+six-phase startup-smoke validator. Dedicated startup checks retain that validator;
+ordinary frame, edit, operation, drain and independent saved checks still run.
+
+Terrain ledger v2 supplements the original eighteen CSV columns with data
+application and ten frame-budget columns. Native and independent controls cover
+two individually legal 600 µs operations exceeding a normal 1 ms allowance,
+application spans above 750 µs, nested-child union accounting, phase-split native
+frames, 512 KiB/1 MiB frame payload and independent 256 KiB individual payload.
+Legacy rows remain partial evidence. Full-height cuboid demand feasibility is
+checked before profile selection; actual vertical/directional runtime evidence
+is still required. No cloud timing certifies target throughput or deferred work.
+
+CI `38912228615` passes all three jobs, 97 Python regressions, six native
+sanitizer suites, all prior engine checks and all eight ordinary processes.
+Published-download and separate read-only saved audits verify every comparison,
+80 PCK MD5s, eight self-tests, 38 imports and all 38 rejected mutations. All
+four priority runs pass bounded acceptance; FIFO and broader operation failures
+remain visible. Target and shipping diagnostic qualification remain open. See
+[candidate, results and next task](docs/M1_ORDINARY_ADMISSION.md).
+
+### Full-height and real direction changes
+
+`--full-height-check` runs a separate 32³/one-worker native fixture over
+`Y[-64,192)` with its surface at Y=64. Editor/release each run baseline and
+`--directional-preparation` cases: 4,320 ticks, +X/-X/+Z actual movement, 288
+original edits, 72 proxy saves and 103,680 actor updates. The independent reader
+checks full initial demand, negative-coordinate demand arithmetic, the full
+command/position history, genuine edited-data/mesh eviction and reload, complete
+frame/edit/operation records and finalization. Corrupted observations and twelve
+post-package saved mutations must fail. The preceding 42 heavy contracts remain
+unchanged. Detailed bounds and stopping conditions are predeclared in
+[the full-height experiment](docs/M1_FULL_HEIGHT.md). Matching CI `38922744175`
+and the independent downloaded-file audit pass all four cases and reject all
+twelve new saved mutations (50 total with earlier controls). Both prepared
+cases pass bounded cloud acceptance; target performance remains unqualified.
+
+### Shipping inventory and finite pilot
+
+`--shipping-pilot-check` exercises the declared bare/shipping/forensic inventories
+and the single finite null/known-positive protocol. The exact-rational reader
+checks complete boundaries, all original route/callback/edit/save/dose records,
+native phases and drains. Six editor/release single-mode companions and the
+nine-trial release pilot completed in CI `38985239110`. The pilot is inconclusive:
+two operation overruns invalidate controls; no shipping quartet or target run
+followed. Retain that failed CI and its original evidence.
+
+The saved reader separately reports `evidence_integrity`, `measurement_valid`
+and the overhead assessment. A complete, honestly recorded operation failure can
+pass evidence verification while remaining invalid for estimation. A mismatch
+between phase evidence and validity flags fails verification. So do missing work,
+incomplete boundaries, I/O failure, engine errors and unexpected process exits.
+The cloud launcher checks the saved records before accepting the expected exit
+code 1 of an inconclusive measurement. This does not relax operation thresholds.
+
+The QA-only follow-up reuses the original downloaded ZIP and reports. It runs
+pure Python regressions, seven-folder reconciliation, 12 saved corruption cases,
+and an isolated replay of all preceding evidence and 50 preceding saved faults;
+it executes no engine and does not repeat the runtime pilot. The independent
+Windows/Linux comparison normalizes only missing-file OS error wording. All
+verdicts, counters, hashes and other fields remain exact.
+See [the protocol/result](docs/M1_SHIPPING_DIAGNOSTICS.md) and its committed audit
+record. The October 17 [v2 decision](docs/M1_DIAGNOSTIC_COST_POLICY.md) now selects
+raw process-cycle demand and defines the prospective finite sequence. Its first
+implementation increment verifies counter capability only: exact integer/raw
+decimal serialization, unavailable/failed counters, ordered read brackets and
+one bounded native hash/wait/joined-worker smoke per matching editor/release.
+The process counter must retain the exited worker's witnessed demand. A wait does not
+require zero process cycles because other threads can run. These checks establish
+capability, not sensitivity or a cost pass. Rebuild matching native templates,
+retain existing required correctness/package checks and produce a new candidate.
+The counter-only implementation and exact evidence checks are documented in
+[M1_CPU_CYCLE_CAPABILITY.md](docs/M1_CPU_CYCLE_CAPABILITY.md). The reusable workflow
+defaults `historical_v1_pilot` to false, preserving v1's pure checks/entry points
+without repeating the completed runtime pilot during this increment.
+Do not rerun v1 or start the v2 route pilot in that increment. V2's later controls
+require a whole-process null plus an in-route thread-cycle-witnessed positive,
+with exact interval arithmetic, all workload/operation guards and the declared
+9/13-trial stop. No target qualification follows from synthetic/CI controls.

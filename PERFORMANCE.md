@@ -1,6 +1,38 @@
 # Performance contract
 
-Design baseline: 2026-09-05. **No performance result has been measured for this project.** Every number below is a requirement, admission limit or initial engineering allocation. Settings become a certified profile only after the exported Windows build passes on the specified machine.
+The M1 first-boundary correction adds four fixed 1 m preparation viewers only
+to the 16³ +X heavy fixture routes. Required visual geometry/fog remains 96 m;
+data remains 128 m. The worst resident mesh envelope is 511 under the existing
+512 cap; workers, admission/results, upload and safety budgets below are
+unchanged. Preparation is shared by probe-off/on and calibration, and its real
+native/callback/retirement cost is retained. It is not a full-route performance
+pass or a 32³/general-world policy. See
+[M1_FRONTIER_BOUNDARY_REPLAY.md](docs/M1_FRONTIER_BOUNDARY_REPLAY.md).
+
+The experimental opt-in admission priority is independently verified in matched
+600/1,200-tick cloud H2 comparisons, including the original camera turn at tick
+900, with the same resident/work/safety limits. Ordinary production retains
+FIFO; diagnostic and target performance requirements below are unchanged.
+Traced elapsed timing does not estimate per-frame or shared causal overhead.
+See [M1_FRONTIER_REVERSAL.md](docs/M1_FRONTIER_REVERSAL.md).
+
+The October 16 ordinary-ledger comparison also passes bounded priority
+coverage/edit/operation checks in all four configurations with its admission
+trace and replay observer disabled. Production remains FIFO, broader operation
+failures are retained and target/diagnostic qualification remains open. See
+[ordinary evidence](docs/M1_ORDINARY_ADMISSION.md). No elapsed-time overhead
+estimate or requirement change follows from that comparison.
+
+The separate full-height `Y[-64,192)` 32³/one-worker cloud experiment now passes
+its prepared +X/-X/+Z movement case in editor and release: zero coverage alarms,
+all 288 edits submitted, all twelve native phases within their guards and full
+drain. Preparation peaks at 392 resident meshes / 5,104 data blocks under the
+unchanged caps and 96/128 m required radii. This is an opt-in fixture policy,
+not production profile selection or target timing/geometry/GPU qualification.
+See [the measured result](docs/M1_FULL_HEIGHT.md). Diagnostic inventory/pilot,
+target budgets and retained broader failures remain open.
+
+Design baseline: 2026-09-05. The [September 25 target reports](docs/M1_TARGET_REVIEW.md) were reviewed on 2026-09-26; **no profile is qualified yet**. All numbers below remain requirements, admission limits or initial engineering allocations. The Java-style product-direction change does not relax these gates. Settings become a certified profile only after the exported Windows build passes on the specified machine.
 
 ## 1. Fixed target and meaning of a pass
 
@@ -32,6 +64,7 @@ No finite benchmark proves every possible operating-system event or construction
 | Resolution / scale | 1280 × 720 / 1.0 |
 | Display pacing | 60-Hz target; uncapped/VSync-off only for workload diagnosis |
 | Visual radius | 96 m, six 16-voxel data-chunk widths |
+| M1 distance fog | Compatibility depth fog, begin 16 m / opaque end 96 m, density 1 / curve 1; rendered target boundary unverified |
 | Data prefetch radius | 128 m plus the measured required halo |
 | Data / render block | 16³ / 32³; compare 16³ render blocks in M1 |
 | Terrain CPU workers | One on this 4-logical-thread machine |
@@ -161,3 +194,38 @@ Use release exports without an editor, debugger or diagnostic instrumentation th
 The built-in check performs a 3-minute warm-up followed by the scenario suite in TESTING.md. Certification uses three complete runs, including one after a fresh process launch and one following sustained gameplay. Preserve raw results, worst runs and settings. First-use shaders, new content and a cold-start path receive separate coverage; warm-up is not permission to hide repeatable first-encounter stutters.
 
 Changing the engine/driver path, mesher, worker count, rendering settings, world generator or content envelope invalidates the relevant baseline. Gameplay/UI changes run their affected scenarios. Work above these budgets returns to optimization before more content is layered on.
+
+## 9. Review-adopted accounting and diagnostic boundaries
+
+The synchronous terrain allowance includes uploads, resource destruction and
+completed-task application. A parent application bracket may contain upload/
+destruction hooks: charge the union once and retain the inclusive parent maximum.
+Per-native-frame time and payload allowances survive phase boundaries; changing
+phase names does not reset them. Check the largest payload independently of the
+slowest operation. Renderer-deferred work remains a separate unverified boundary.
+
+The below-1% diagnostic requirement prospectively applies to the declared optional
+instrumentation enabled in ordinary shipping play. Safety/readiness, admission
+and correctness safeguards remain operational in all controls. Explicit forensic
+traces have disclosed perturbation and cannot certify shipping frame timings.
+Shipping/forensic inventories and the focused null/positive pilot must exist
+before qualification. Legacy flatness-based reports stay historical/supplementary,
+with their old verdicts preserved. The v1 successor cloud pilot is implemented and
+inconclusive: its controls retain two operation-limit failures, and actual added
+work is masked in the paced complete-elapsed observation. Integrity verification
+does not qualify a failed measurement. No target pilot has run; stop repetitions
+until a measurement-policy decision is declared. See
+[the pilot result](docs/M1_SHIPPING_DIAGNOSTICS.md#result).
+
+The October 17 [v2 decision](docs/M1_DIAGNOSTIC_COST_POLICY.md) now adopts
+incremental **whole-process raw CPU-cycle demand** as the optional inventory's
+below-1% upper-bound estimand, replacing complete elapsed duration for that cost
+gate. This is an explicit measured-quantity change, not a changed threshold or
+retroactive v1 pass. Complete elapsed lifecycle and all frame/pacing, edit,
+coverage/readiness, resource and operation gates remain separate requirements.
+Cycles are not CPU service seconds or GPU/presentation measurements. The scope is
+conditional on the declared common observers; unavailable work stays unavailable.
+V2 is not implemented/qualified. First verify native counter capability, then
+implement the declared finite controls with no automatic retry. M1 stays blocked.
+The linked v2 decision defines the current finite method and stop rule; the
+[v1 review](docs/M1_REVIEW_RESPONSE.md) remains historical evidence.

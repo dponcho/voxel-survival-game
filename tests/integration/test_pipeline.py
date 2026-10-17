@@ -2,10 +2,12 @@
 import importlib.util
 from pathlib import Path
 import tempfile
+import sys
 import unittest
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools/ci"))
 spec = importlib.util.spec_from_file_location("pipeline", ROOT / "tools/ci/pipeline.py")
 pipeline = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pipeline)
@@ -40,12 +42,16 @@ class PackagingTests(unittest.TestCase):
             root = Path(temp)
             (root / "build/config").mkdir(parents=True)
             (root / "native").mkdir()
+            (root / "tools/ci").mkdir(parents=True)
             (root / "build/dependencies.lock.json").write_text("{}")
+            (root / "build/config/windows.json").write_text("{}")
+            (root / "tools/ci/engine_recipe.py").write_text("recipe")
+            (root / "tools/ci/build_support.py").write_text("support")
             original = pipeline.input_hash(root)
             (root / "native/module.cpp").write_text("new native source")
             native = pipeline.input_hash(root)
             self.assertNotEqual(original, native)
-            (root / "build/config/flags.json").write_text("new compiler flags")
+            (root / "build/config/windows.json").write_text("new compiler flags")
             self.assertNotEqual(native, pipeline.input_hash(root))
 
     def test_space_unicode_extraction_preserves_bytes(self):
