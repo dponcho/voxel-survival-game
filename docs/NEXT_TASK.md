@@ -10,6 +10,16 @@ records only when the active defect requires them. The full preceding narrative
 is [archived](archive/NEXT_TASK_2026-10-13.md); the adopted review decisions are in
 [M1_REVIEW_RESPONSE.md](M1_REVIEW_RESPONSE.md).
 
+**V2 implementation is in flight.** Runtime source `7153ee46cb42ae925e08d48b2973d12adf4c58ee`
+is building in [CI `39088740702`](https://github.com/dponcho/voxel-survival-game/actions/runs/39088740702)
+under native key `9a92d280a853f8982e65a44b27c5ded11b7888883fb132686b5fd3acd31922cd`.
+The one v2 cloud sequence is already requested in that run; do not start another
+if this task is resumed. Static 157 Python tests and eight native sanitizer
+suites pass; matching binary/export/runtime checks and the bounded sequence are
+pending. The live CI default is now off to prevent an unrelated later push from
+repeating it. Finish and audit that exact run before making the next decision.
+[Implementation and boundary contract](M1_SHIPPING_CPU_CYCLES.md).
+
 ## Outstanding gates
 
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
@@ -17,7 +27,7 @@ is [archived](archive/NEXT_TASK_2026-10-13.md); the adopted review decisions are
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
 | Complete synchronous terrain budget | V2 and fault controls pass matching native/editor/release and independent audits. All twelve full-height phases pass. Counter-candidate CI `39073452514` retains two broader preparation deletion failures (1,025 / 810 µs); the earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Carry this opt-in case into the diagnostic pilot and relevant exact-build target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V1 CI `38985239110` remains inconclusive. The adopted v2 policy selects raw process-cycle demand for the unchanged 1% gate. Counter capability, new matching binaries and a portable candidate now pass CI `39073452514`; v2 inventory/dose/readers/pilot remain unimplemented. [Proof and candidate](M1_CPU_CYCLE_CAPABILITY.md). | Implement v2 under its new identifiers and the adopted complete-lifecycle/interval protocol; run only its one finite cloud sequence after pure controls pass. | At most 9 / 13 trials. Any unavailable/contradictory counter, failed control/work/I/O/operation guard or unresolved drift stops with its exact prefix and an inconclusive result. No retry, threshold/profile change or target run by default. |
+| Shipping diagnostic overhead <1% | V1 CI `38985239110` remains inconclusive. The adopted v2 policy selects raw process-cycle demand for the unchanged 1% gate. Counter capability, new matching binaries and a portable candidate now pass CI `39073452514`; v2 inventory/dose/readers are published; matching verification and its already-declared pilot are pending CI `39088740702`. [Proof and candidate](M1_CPU_CYCLE_CAPABILITY.md). | Implement v2 under its new identifiers and the adopted complete-lifecycle/interval protocol; run only its one finite cloud sequence after pure controls pass. | At most 9 / 13 trials. Any unavailable/contradictory counter, failed control/work/I/O/operation guard or unresolved drift stops with its exact prefix and an inconclusive result. No retry, threshold/profile change or target run by default. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After the diagnostic inventory/pilot candidate is ready, one relevant exact-build target comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -60,9 +70,9 @@ editor/debug/release binaries and a portable candidate passed full required
 integration/package checks and downloaded Windows/Linux audits. No v1/v2 route
 pilot ran. Read [the exact proof and artifact](M1_CPU_CYCLE_CAPABILITY.md).
 
-**Next bounded task: implement the adopted v2 method and its finite cloud pilot.**
+**Current bounded task: verify the published v2 method and its one finite cloud pilot.**
 Use policy `m1-shipping-diagnostics-2` and method `m1-shipping-cpu-cycles-1`,
-preserving the old v1 inventory, entry points, hashes and verdicts. Add the v2
+preserving the old v1 inventory, entry points, hashes and verdicts. The published source adds the v2
 executable inventory, native in-route SHA cycle dose and exact-rational readers
 defined in [the policy](M1_DIAGNOSTIC_COST_POLICY.md). Keep whole-process bounds,
 shared boundary brackets, all five matching sections, complete setup/writer/

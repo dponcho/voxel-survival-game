@@ -76,6 +76,7 @@ def saved_faults(folder, build):
                 else: rows[0]['updates'] += 1
                 path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
                 t['dose_sha256'] = sha(path)
+                t['dose_bytes'] = path.stat().st_size
             elif label in ('missing-final-physics','missing-final-callback','missing-edit-ack'):
                 suffix = {'missing-final-physics':'-poses.csv','missing-final-callback':'-frames.csv',
                           'missing-edit-ack':'-frames.csv.edits.jsonl'}[label]

@@ -64,4 +64,4 @@ jobs:
     uses: ./.github/workflows/windows-build.yml
     with:
       cold: false
-      shipping_cycles_pilot: true
+      shipping_cycles_pilot: false

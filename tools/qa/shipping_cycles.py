@@ -58,6 +58,55 @@ def boundary(value):
     return tuple(map(uint, expected))
 
 
+def raw_observation(value):
+    """Validate honest failed/unavailable observations without inventing cycles."""
+    require(value['schema'] == 'cairn-cpu-cycle-observation-1'
+            and value['process_api'] == 'QueryProcessCycleTime' and value['thread_api'] == 'QueryThreadCycleTime'
+            and value['platform'] in ('windows','unsupported'), 'Unknown raw counter observation')
+    if value['platform'] == 'windows': uint(value['thread_id'])
+    else: require(value['thread_id'] is None, 'Unsupported platform invented thread identity')
+    reads = value['reads']
+    require(len(reads) == 4 and [r['kind'] for r in reads] == ['process_lo','thread_lo','thread_hi','process_hi'],
+            'Missing/changed raw counter order')
+    clock_ok, previous = True, 0
+    for r in reads:
+        require(type(r['available']) is bool and type(r['success']) is bool and type(r['error']) is int
+                and 0 <= r['error'] < 2**32, 'Malformed raw availability/error')
+        good = r['available'] and r['success'] and r['error'] == 0
+        if good: uint(r['cycles'])
+        else: require(r['cycles'] is None, 'Failed counter replaced by zero or poisoned output')
+        begin, end = uint(r['wall_before_usec']), uint(r['wall_after_usec'])
+        clock_ok &= previous <= begin <= end
+        previous = end
+    if not all(r['available'] for r in reads): status = 'unavailable'
+    elif not all(r['success'] and r['error'] == 0 for r in reads): status = 'failed'
+    elif not clock_ok or uint(reads[0]['cycles']) > uint(reads[3]['cycles']) or uint(reads[1]['cycles']) > uint(reads[2]['cycles']): status = 'contradictory'
+    else: status = 'measured'
+    require(value['status'] == status, 'Raw native status disagrees with counters/errors')
+    return status
+
+
+def retained_partition(boundaries):
+    """An unavailable final boundary stops estimation, yet its error is auditable."""
+    require(len(boundaries) == 6 and [b['label'] for b in boundaries] == LABELS, 'Missing shared boundaries')
+    for b in boundaries:
+        require(type(b['snapshot']) is dict and 'generation_jobs' in b['snapshot']
+                and type(b['wall_usec']) is int and b['wall_usec'] >= 0, 'Missing common boundary snapshot/wall')
+        raw_observation(b['before'])
+        raw_observation(b['after'])
+        try:
+            sequence([b['before'],b['after']])
+        except RuntimeError:
+            require(b['bounds'] == [], 'Failed boundary invented successful bounds')
+        else:
+            require(b['bounds'] == [b['before']['reads'][0]['cycles'], b['after']['reads'][3]['cycles']],
+                    'Boundary raw endpoints changed')
+    try:
+        return partition(boundaries)
+    except RuntimeError:
+        return {}
+
+
 def partition(boundaries):
     require(len(boundaries) == 6 and [b['label'] for b in boundaries] == LABELS, 'Missing/shared section boundary')
     values = [boundary(b) for b in boundaries]
@@ -258,7 +307,8 @@ def validate_method_controls(report, build):
     work_record(report['native_zero'], '0', False)
     witness = work_record(report['native_positive'], '1', True)
     sequence([report['native_zero']['end'], report['native_positive']['start']])
-    require(len(report['native_rejected']) == 4 and all(v['passed'] is False and v['reason'] == 'invalid request or thread'
+    require([v['request_cycles'] for v in report['native_rejected']] == ['', '00', '-1', '18446744073709551616']
+            and all(v['passed'] is False and v['reason'] == 'invalid request or thread'
             for v in report['native_rejected']), 'Native invalid decimal request accepted')
     return dict(passed=True, method_cases=len(expected), exact_request_vectors=len(refs), boundary_cases=5,
                 native_positive_cycles=list(map(str, witness)), qualified=False)
@@ -336,6 +386,11 @@ def dose_evidence(folder, t, partial=False):
     updates = 0
     all_passed = True
     previous = None
+    with (folder/(t['id']+'-poses.csv')).open(encoding='utf-8-sig', newline='') as f:
+        physical = list(csv.DictReader(f))
+    require(len(physical) == count, 'Cycle/physics populations differ')
+    last_physical = t.get('route_clocks_usec', [t['start_usec']])[0] if not partial else t['start_usec']
+    boundary_chain = t['cycle_boundaries'] if not partial and t.get('cycle') else []
     for tick, w in enumerate(rows, 1):
         require(w['tick'] == tick and w['request_cycles'] == t['dose']['requested_tick_cycles'],
                 'Dose request changed after B1 or detached from real ticks')
@@ -345,6 +400,14 @@ def dose_evidence(folder, t, partial=False):
             if previous is not None:
                 sequence([previous, w['start']])
             previous = w['end']
+            now = int(physical[tick-1]['usec'])
+            require(int(physical[tick-1]['tick']) == tick and last_physical <= uint(w['wall_start_usec'])
+                    <= uint(w['wall_end_usec']) <= now, 'Native SHA witness moved outside its real physics tick')
+            if boundary_chain:
+                start_index = 1+(tick-1)//1440
+                sequence([boundary_chain[start_index]['after'], w['start']])
+                sequence([w['end'], boundary_chain[start_index+1]['before']])
+            last_physical = now
             if t['dose_enabled']:
                 for i in (0,1): total[i] += bounds[i]
                 updates += w['updates']
@@ -352,6 +415,8 @@ def dose_evidence(folder, t, partial=False):
             # A failed native control is retained, never admitted to estimation.
             require(partial and tick == count and t['dose']['valid'] is False
                     and w.get('reason') != 'measured', 'Unlabelled or ignored native failure')
+            raw_observation(w['start'])
+            raw_observation(w['end'])
             all_passed = False
     d = t['dose']
     require(d['valid'] is all_passed and d['ticks'] == (count if t['dose_enabled'] else 0)
@@ -399,16 +464,23 @@ def trial_evidence(folder, t, inventory_hash):
     require(saved_boundary['complete_sha256'] == sha(cp), 'Complete v2 report hash differs')
     require(all(t.get(k) == v for k, v in saved_boundary.items() if k not in ('complete_sha256','cycle')),
             'Post-flush cycle boundary differs from saved terminal marker')
-    expected = partition(t['cycle_boundaries'])
+    expected = retained_partition(t['cycle_boundaries'])
     require(saved_boundary['cycle'] == expected, 'Marker changed shared partition')
     marker = t['marker_cycles']
-    sequence([t['cycle_boundaries'][-1]['after'], marker['start'], marker['end']])
-    marker_bounds = demand(marker['start'], marker['end'], 'process')
+    raw_observation(marker['start'])
+    raw_observation(marker['end'])
+    try:
+        sequence([marker['start'], marker['end']])
+        marker_bounds = list(map(str, demand(marker['start'], marker['end'], 'process')))
+    except RuntimeError:
+        marker_bounds = []
+    if expected and marker_bounds: sequence([t['cycle_boundaries'][-1]['after'], marker['start']])
     require(t['end_usec'] <= t['marker_start_usec'] <= t['marker_end_usec']
             and uint(marker['start']['reads'][3]['wall_after_usec']) <= t['marker_start_usec']
             and t['marker_end_usec'] <= uint(marker['end']['reads'][0]['wall_before_usec']),
             'Terminal marker write escaped measured cycle bounds')
-    expected['marker'] = list(map(str, marker_bounds))
+    cycle_ok = bool(expected)
+    if expected: expected['marker'] = marker_bounds
     require(t['cycle'] == expected, 'V2 raw boundary intervals/midpoint partition differ')
     clocks = [b['wall_usec'] for b in t['cycle_boundaries']]
     require(clocks == [t['start_usec']]+t['route_clocks_usec']+[t['end_usec']]
@@ -417,16 +489,17 @@ def trial_evidence(folder, t, inventory_hash):
     dose = dose_evidence(folder, t)
     checks = derive_checks(t)
     require(t['pre_boundary_checks'] == checks, 'Work/operation guard flags differ from saved evidence')
-    checks.update(cycles=True, dose=dose['witness_valid'], marker=True)
+    checks.update(cycles=cycle_ok, dose=dose['witness_valid'], marker=bool(marker_bounds))
     require(t['checks'] == checks and t['valid'] is all(checks.values()) and t['operation_ok'] is checks['operations']
             and t['drained'] is checks['drained'], 'Invalid work/counter/operation guards used as a valid measurement')
     shared = {}
-    if all(v for k,v in checks.items() if k != 'operations'):
+    if all(v for k,v in checks.items() if k not in ('operations','cycles','dose','marker')):
         # Reuse the unchanged common fixed-work, pose, frame, edit, resource and
         # lifecycle verifier. Its old wall-dose columns stay explicitly zero;
         # the native v2 JSONL above is the only positive witness.
         view = copy.deepcopy(t)
         view['checks'] = {k:v for k,v in checks.items() if k not in ('cycles','dose','marker')}
+        view['valid'] = view['checks']['operations']
         view['dose_enabled'] = False
         view['dose'] = dict(actual_usec=0, hash_updates=0, ticks=0, requested_tick_usec=0)
         shared = common_trial_evidence(folder, view, inventory_hash, method_version=VERSION, verify_saved_boundary=False)

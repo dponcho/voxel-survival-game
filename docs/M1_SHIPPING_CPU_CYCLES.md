@@ -2,7 +2,10 @@
 
 Policy `m1-shipping-diagnostics-2`; method `m1-shipping-cpu-cycles-1`.
 This implements [the adopted decision](M1_DIAGNOSTIC_COST_POLICY.md).
-Build/runtime verification is pending for this source revision. M1 and the
+Runtime source `7153ee46cb42ae925e08d48b2973d12adf4c58ee` is building in
+[CI `39088740702`](https://github.com/dponcho/voxel-survival-game/actions/runs/39088740702).
+Static 157 Python checks and eight native sanitizer suites pass. Matching
+binary/export/API controls and the already-requested finite route sequence are pending. M1 and the
 shipping cost gate remain unqualified. No laptop action is requested.
 
 ## Executable scope and boundaries

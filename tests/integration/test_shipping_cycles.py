@@ -1,13 +1,38 @@
 """Exact v2 thresholds, correlated section uncertainty and finite stop controls."""
 import copy
+import csv
 from fractions import Fraction
+import hashlib
+import json
 import sys
 from pathlib import Path
 import unittest
+import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'tools/qa'))
 import shipping_cycles as v2
 from test_shipping_diagnostics import fixture as old_fixture
+from test_cpu_cycle_capability import boundary as raw_counter
+
+
+def boundaries():
+    result = []
+    for i, label in enumerate(v2.LABELS):
+        before = raw_counter(1000*i, (1<<63)+10000*i, 10000*i)
+        after = raw_counter(1000*i+100, (1<<63)+10000*i+2000, 10000*i+2000)
+        result.append(dict(label=label,before=before,after=after,wall_usec=1000*i+200,
+                           snapshot=dict(generation_jobs=0),bounds=[before['reads'][0]['cycles'],after['reads'][3]['cycles']]))
+    return result
+
+
+def native_work(wall=0, cycles=0, request='1'):
+    return dict(schema='cairn-cpu-cycle-dose-1',request_cycles=request,enabled=request!='0',passed=True,reason='measured',
+                bytes_per_update=4096,update_cap=512,wall_cap_usec='50000',error=0,capped=False,
+                counter_failed=False,hash_failed=False,updates=1 if request!='0' else 0,
+                reached=request!='0',digest=hashlib.sha256(b'Z'*4096).hexdigest() if request!='0' else None,
+                start=raw_counter(wall+1,(1<<63)+cycles,(1<<63)+cycles),
+                end=raw_counter(wall+30,(1<<63)+cycles+300,(1<<63)+cycles+300),
+                wall_start_usec=str(wall),wall_end_usec=str(wall+40))
 
 
 def fixture(cost=500000):
@@ -24,6 +49,60 @@ def fixture(cost=500000):
 
 
 class CycleMethodTests(unittest.TestCase):
+    def test_shared_raw_bounds_preserve_correlated_uncertainty(self):
+        p = v2.partition(boundaries())
+        self.assertEqual(p['complete'], ['47999','52001'])
+        self.assertEqual(p['midpoint'], '50000')
+        self.assertEqual(sum(map(int,p['section_midpoints'])), 50000)
+        self.assertNotEqual(sum(int(s[0]) for s in p['sections']), int(p['complete'][0]))
+
+    def test_honest_failed_counter_is_retained_without_a_passing_zero(self):
+        b = boundaries()
+        b[-1]['after']['status'] = 'failed'
+        b[-1]['after']['reads'][0].update(success=False,error=6,cycles=None)
+        b[-1]['bounds'] = []
+        self.assertEqual(v2.retained_partition(b), {})
+        b[-1]['after']['reads'][0]['cycles'] = '0'
+        with self.assertRaises(RuntimeError): v2.retained_partition(b)
+
+    def test_raw_status_shape_and_unsigned_types_cannot_be_forged(self):
+        for field, value in (('cycles', 9007199254740993),('success',1),('error',True)):
+            o = raw_counter(0,2**63,2**63)
+            o['reads'][0][field] = value
+            with self.assertRaises(RuntimeError): v2.raw_observation(o)
+        o['status'] = 'failed'
+        with self.assertRaises(RuntimeError): v2.raw_observation(o)
+
+    def test_native_work_hash_caps_and_failed_calls(self):
+        self.assertEqual(v2.work_record(native_work(),'1',True),(299,301))
+        for key,value in (('updates',512),('digest','0'*64),('capped',True),('counter_failed',True),
+                          ('hash_failed',True),('error',6),('reached',False),('wall_end_usec','50001')):
+            work = native_work()
+            work[key] = value
+            with self.subTest(key=key), self.assertRaises(RuntimeError): v2.work_record(work,'1',True)
+        self.assertEqual(v2.work_record(native_work(request='0'),'0',False),(299,301))
+
+    def test_native_witness_must_stay_inside_its_original_tick(self):
+        with tempfile.TemporaryDirectory() as td:
+            folder = Path(td)
+            t = dict(id='partial',ticks=2,dose_rows=2,start_usec=0,dose_enabled=False,
+                     cycle_boundaries=[],dose=dict(valid=True,ticks=0,cycles=['0','0'],hash_updates=0,requested_tick_cycles='0'))
+            with (folder/'partial-poses.csv').open('w') as f:
+                f.write('tick,usec\n1,150\n2,250\n')
+            work = [native_work(100,0,'0'),native_work(200,1000,'0')]
+            for i,w in enumerate(work,1):
+                w['tick'] = i
+                w['cycles'] = ['299','301']
+            def save():
+                path = folder/'partial-cycles.jsonl'
+                path.write_text(''.join(json.dumps(w)+'\n' for w in work))
+                t.update(dose_bytes=path.stat().st_size,dose_sha256=v2.sha(path))
+            save()
+            self.assertEqual(v2.dose_evidence(folder,t,partial=True)['rows'],2)
+            work[0]['wall_end_usec'] = '160'
+            save()
+            with self.assertRaises(RuntimeError): v2.dose_evidence(folder,t,partial=True)
+
     def protocol(self):
         values = fixture()
         for t, (group, index, mode, dose) in zip(values, v2.expected_protocol()):
