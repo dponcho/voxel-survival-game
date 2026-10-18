@@ -11,6 +11,13 @@
 #endif
 
 void CairnProbe::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("observer_start", "path"), &CairnProbe::observer_start);
+    ClassDB::bind_method(D_METHOD("observer_section", "section"), &CairnProbe::observer_section);
+    ClassDB::bind_method(D_METHOD("observer_begin", "slot", "units", "bytes"), &CairnProbe::observer_begin, DEFVAL(1), DEFVAL(0));
+    ClassDB::bind_method(D_METHOD("observer_end", "token"), &CairnProbe::observer_end);
+    ClassDB::bind_method(D_METHOD("observer_status"), &CairnProbe::observer_status);
+    ClassDB::bind_method(D_METHOD("observer_finish"), &CairnProbe::observer_finish);
+    ClassDB::bind_method(D_METHOD("observer_controls", "path"), &CairnProbe::observer_controls);
     ClassDB::bind_method(D_METHOD("cpu_cycle_observation"), &CairnProbe::cpu_cycle_observation);
     ClassDB::bind_method(D_METHOD("cpu_cycle_capability_smoke"), &CairnProbe::cpu_cycle_capability_smoke);
     ClassDB::bind_method(D_METHOD("cpu_cycle_dose", "requested_cycles"), &CairnProbe::cpu_cycle_dose);

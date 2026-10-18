@@ -59,6 +59,10 @@ jobs:
         run: |
           c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_cycle_dose.cpp -o /tmp/cairn-cycle-dose-test
           /tmp/cairn-cycle-dose-test
+      - name: Bounded observer ownership and raw-span controls with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_observer_ledger.cpp -o /tmp/cairn-observer-test
+          /tmp/cairn-observer-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml

@@ -3,12 +3,24 @@
 #include "core/math/aabb.h"
 #include "core/variant/dictionary.h"
 #include "core/variant/array.h"
+#include <memory>
+namespace cairn { class ObserverLedger; }
 
 class CairnProbe : public RefCounted {
     GDCLASS(CairnProbe, RefCounted);
+    std::shared_ptr<cairn::ObserverLedger> observer;
+    String observer_path;
 protected:
     static void _bind_methods();
 public:
+    bool observer_start(const String &path);
+    void observer_section(int section);
+    int64_t observer_begin(int slot, int64_t units, int64_t bytes);
+    void observer_end(int64_t token);
+    Dictionary observer_status() const;
+    Dictionary observer_finish();
+    Dictionary observer_controls(const String &path);
+    std::shared_ptr<cairn::ObserverLedger> observer_recorder() const { return observer; }
     Dictionary cpu_cycle_observation() const;
     Dictionary cpu_cycle_capability_smoke() const;
     Dictionary cpu_cycle_dose(const String &requested_cycles) const;
