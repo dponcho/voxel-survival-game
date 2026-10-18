@@ -19,6 +19,14 @@ strict below-1% limits. The sequence stopped before positive/shipping quartets.
 No shipping-cost estimate or qualification follows. Do not repeat the pilot.
 [Result, exact candidate and saved next decision](M1_SHIPPING_CPU_CYCLES.md).
 
+**Saved null review complete; prospective observer-attribution prerequisite
+chosen.** The raw null range cannot both include zero and remain below 1% width
+under any symmetric drift/marker expansion. All five trials have matching
+recorded native work; saved spans do not isolate the cause. The
+[review and finite next implementation](M1_SHIPPING_NULL_REVIEW.md) preserve
+the failed result and select bounded common-observer attribution before another
+cost qualification attempt. No engine ran for the review.
+
 ## Outstanding gates
 
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
@@ -26,7 +34,7 @@ No shipping-cost estimate or qualification follows. Do not repeat the pilot.
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
 | Complete synchronous terrain budget | V2 and fault controls pass matching native/editor/release and independent audits. All twelve full-height phases pass. Latest CI `39088740702` has no observed broader operation failures and all fifteen v2 phases pass. Counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence; target/deferred budgets remain open. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 inventory, native dose, exact readers and matching candidate are implemented. CI `39088740702` completed warm-up + null quartet with all work guards passing, but null width 2.850549401% and section drift 1.073468789% fail controls. V1 remains historical/inconclusive. | Review the saved five-section variation and common observers; choose an explicit prospective measurement/repetition design retaining the 1% limit and complete lifecycle. | Current sequence is stopped. Positive/shipping quartets were not run. No automatic retry, longer/profile-matrix trial, correction, threshold change or target action. |
+| Shipping diagnostic overhead <1% | V2 inventory, native dose, exact readers and matching candidate are implemented. CI `39088740702` completed warm-up + null quartet with all work guards passing, but null width 2.850549401% and section drift 1.073468789% fail controls. Saved review is complete; zero containment and <1% width are incompatible for this raw quartet. V1 remains historical/inconclusive. | Implement the declared bounded native common-observer attribution ledger and separate opt-in mode. After controls and matching binaries/package checks, one cloud process of warm-up + at most four bare attribution trials; see the decision below. | Current v2 sequence remains stopped. The new probe stops at five regardless of null usability, or at the first failed guard. No positive request, shipping estimate, retry, correction, threshold change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -90,18 +98,42 @@ validity and the 1% cost gate remain unqualified. All original files and fourtee
 new saved faults are audited; no engine ran during rechecks. Read
 [the result and exact evidence](M1_SHIPPING_CPU_CYCLES.md).
 
-**Next bounded task: review the saved null-control limitation and make a
-prospective measurement/repetition decision.** Use the five shared section
-records and common observer inventory to isolate what variation the method
-can distinguish. Off-pair complete totals nearly match while their conservative
-section differences sum to 1.041155260%; the on-pair sum is 1.073468789%.
-Preparation and all three route legs contribute. Do not remove setup/tail,
-normalize by callbacks, add overlapping thread/process totals, convert cycles
-to time, fit a correction or discard an outlier. Keep the 1% requirement,
-32³/one-worker work/settings and all operational limits. Any subsequent runtime
-sequence needs an explicit prospective decision; this task authorizes no retry,
-new injection family, longer/profile matrix or laptop action. Use
-**GPT-6.1 Sol Max**. The live CI pilot input defaults to false.
+**Completed saved-review task.** The new reader verifies the original artifact's
+75 raw files and reproduces its audit exactly. The raw null range is
+[-1.132009550%, -0.451778109%]; including zero by symmetric expansion needs at
+least 0.451778109%, while strict width <1% allows less than 0.159884280%.
+Narrower counter brackets or reducing drift just below its separate 1% limit
+cannot rescue this quartet. More than 99% of the section drift sums is already
+present in midpoint differences. All five trials have identical recorded native
+generation/meshing/upload counts and bytes, while preparation phase frames vary
+777–824. Existing nested zero-request witnesses cover only the native call;
+total shared-observer CPU cost and the cause of variation remain unavailable.
+The [review, exact record and decision](M1_SHIPPING_NULL_REVIEW.md) retain all
+measurements and prohibit a fitted correction, section removal, callback
+normalization, cycle/time conversion or adding thread totals to process demand.
+
+**Next bounded task: implement the common-observer attribution prerequisite**
+`m1-shipping-observer-attribution-1`, following the full
+[prospective design and acceptance checks](M1_SHIPPING_NULL_REVIEW.md#prospective-decision).
+Add a separate opt-in mode/inventory and bounded native ledger for preparation,
+callback observer groups, per-tick witness/evidence handling, report closure and
+the existing writer, retaining exact raw spans, errors, ownership and full drain.
+This is perturbing attribution evidence, not a shipping-cost estimator. Preserve
+all v1/v2 IDs, readers and verdicts, the same 1% requirement, complete lifecycle,
+32³/one-worker route/work/settings and operational limits. Native changes need a
+new source key, matching editor/debug/release binaries and a portable candidate.
+
+After the ledger/fault controls and required integration/package checks pass,
+permit one predeclared cloud release process: one warm-up plus four bare
+attribution trials, 32 MiB additional trace cap per trial and 1,500 s process
+timeout. Stop at the first failed guard, retain the partial prefix and never
+retry or pad. Stop at five even if its descriptive null becomes usable; never
+create a positive request or append positive/shipping trials. Independently
+reconcile spans, nesting, thread identity, worker exit, counts, bytes and all
+original work/operation guards. Keep cost inconclusive, qualification false and
+target not run. Review the result before any observer refactor or new cost
+sequence. This probe is not yet implemented or run; no laptop action or M2
+expansion follows. Use **GPT-6.1 Sol Max**. Both live pilot inputs stay false.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
@@ -132,6 +164,9 @@ pilot is inconclusive; the target sensitivity pilot has not run. The October 17
 [v2 decision](M1_DIAGNOSTIC_COST_POLICY.md) prospectively replaces only the cost
 estimand/method; v2 is implemented with an inconclusive five-trial null result; positive
 sensitivity and shipping-cost qualification remain unverified.
+The October 18 [saved review](M1_SHIPPING_NULL_REVIEW.md) retains that method and
+threshold and selects a separate finite observer-attribution prerequisite;
+it does not authorize another shipping qualification sequence.
 The [v1 method/stop rule](M1_REVIEW_RESPONSE.md#prospective-diagnostic-policy-adopted-by-this-review)
 remains historical, with its outcomes preserved.
 
@@ -152,10 +187,15 @@ Native key: `9a92d280a853f8982e65a44b27c5ded11b7888883fb132686b5fd3acd31922cd`.
 30,222,870-byte inner ZIP, SHA-256
 `3e884fecd26b6b406943904fd1d197ca9789467f19bbcf6a3a64f2df3a21a57b`.
 [Committed full trial/evidence record](evidence/m1-shipping-cpu-cycles-cloud-2026-10-18.json).
+[Saved null review](evidence/m1-shipping-cycles-null-review-2026-10-18.json)
+verifies all 75 original files and reproduces that audit without an engine.
+All 64 affected shipping-method/reader regressions pass, including eight new
+review tests for exact range feasibility, cancellation, work counters and
+raw-file integrity; the original readers remain unchanged.
 157 Actions Python tests, eight native sanitizer suites, both matching v2 API/
 method controls, both counter capability smokes, required integration/offline
-checks, eight self-tests and 100 PCK entries pass. Current QA passes 162 Python
-tests and exactly reproduces downloaded Windows/Linux results without an engine.
+checks, eight self-tests and 100 PCK entries pass. The preceding QA passed 162
+Python tests and exactly reproduced downloaded Windows/Linux results without an engine.
 All 50 prior + 24 counter + 14 v2 saved faults are rejected. The latest candidate
 has no broader operation overruns; current 16³ release H2 edit p95 remains failed
 at 166 / 173 ms, and full-height baselines retain 520 alarms each. Prepared cases

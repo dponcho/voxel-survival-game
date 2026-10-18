@@ -231,8 +231,11 @@ passes new matching binaries, portable/integration checks and independent v2
 readers. The five-trial null prefix passes work/operation guards, but range width
 2.850549401% and matching-section drift 1.073468789% fail the strict below-1%
 controls. Positive/shipping quartets were not run, and no shipping-cost estimate
-is available. [The saved result](docs/M1_SHIPPING_CPU_CYCLES.md) requires an explicit
-prospective measurement/repetition decision before another pilot. Counter/API
-capability and evidence integrity do not qualify sensitivity or cost. M1 stays blocked.
+is available. [The saved review and decision](docs/M1_SHIPPING_NULL_REVIEW.md)
+retain this failed result and select a separate bounded common-observer
+attribution prerequisite before another qualification sequence. Its future bare
+probe cannot create a positive request, append shipping trials or qualify cost.
+Counter/API capability and evidence integrity do not qualify sensitivity or cost.
+M1 stays blocked.
 The linked v2 decision defines the current finite method and stop rule; the
 [v1 review](docs/M1_REVIEW_RESPONSE.md) remains historical evidence.

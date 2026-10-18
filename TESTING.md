@@ -446,6 +446,21 @@ rechecks launch no engine. Runtime tests were not repeated for QA/prose changes.
 
 The native key, matching binary hashes, exact ZIP and all original trial records
 are in [the v2 result](docs/M1_SHIPPING_CPU_CYCLES.md) and its committed evidence.
-The live `shipping_cycles_pilot` input defaults to false. Review saved null
-variation and make a prospective measurement/repetition decision before any new
-sequence. No target qualification, laptop action or M2 expansion follows.
+The live `shipping_cycles_pilot` input defaults to false. The
+[saved review and prospective decision](docs/M1_SHIPPING_NULL_REVIEW.md) now verify
+all 75 raw files and reproduce the original audit without an engine. Its new
+reader decomposes width and section cancellation with exact rational arithmetic,
+compares recorded native work and retains nested witness scopes. Eight new pure
+tests cover incompatible zero/width requirements, strict boundaries, cancellation,
+invalid trials, work counters, raw tampering and escaping links. No runtime suite
+is repeated for this QA/review-only increment.
+
+The chosen next implementation is a separate bounded native observer-attribution
+ledger and opt-in mode with its own inventory. After native fault controls and
+matching binaries/integration/package checks, its one predeclared cloud process
+may complete at most warm-up + four bare trials. Trace overflow or any failed
+guard stops the prefix. Stop after five regardless of descriptive null usability;
+no positive request or shipping continuation. Independent span/nesting/thread/
+worker-exit/count/byte audits are required. This probe is not yet implemented
+or run. Cost remains inconclusive and all original limits apply. No target
+qualification, laptop action or M2 expansion follows.

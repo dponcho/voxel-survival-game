@@ -16,6 +16,12 @@ retains all evidence; the decision and numerical limits below are unchanged.
 The staged authorization text records the original two implementation boundaries;
 [the current register](NEXT_TASK.md) supplies the next saved-evidence decision.
 
+The October 18 [saved review and prospective attribution decision](M1_SHIPPING_NULL_REVIEW.md)
+is now complete. It retains this policy, method, 1% limit and failed measurements.
+It selects a separate bounded common-observer attribution prerequisite, with no
+positive/shipping continuation or laptop action; that probe is not yet implemented
+or run. The original adopted method below is unchanged.
+
 ## Decision and requirement change
 
 Apply the existing **below-1% upper-bound rule to incremental whole-process

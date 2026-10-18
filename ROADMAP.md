@@ -98,9 +98,13 @@ exact readers and the one finite sequence now pass implementation/integrity chec
 in CI `39088740702` with a new matching Windows candidate. Warm-up plus the null
 quartet pass all work/operation guards, but the null width is 2.850549401% and
 matching-section drift 1.073468789%, failing their below-1% controls. The sequence
-stopped before positive/shipping quartets. [V2 result and next decision](docs/M1_SHIPPING_CPU_CYCLES.md)
-require a saved-evidence review and prospective measurement/repetition decision,
-with no automatic retry or laptop action. M1 remains blocked.
+stopped before positive/shipping quartets. The
+[saved null review and decision](docs/M1_SHIPPING_NULL_REVIEW.md) are now complete:
+the raw quartet cannot meet zero containment and strict <1% width together, and
+recorded native work matches while common observer attribution is incomplete.
+The next task implements a separate bounded observer-attribution prerequisite,
+with at most one five-trial bare cloud probe and no shipping continuation,
+automatic retry or laptop action. M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

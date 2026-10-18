@@ -103,13 +103,16 @@ profile or production scheduling policy.
 
 ## Next bounded action
 
-Review these saved null records and shared observers, then make an explicit
-prospective measurement/repetition decision that retains the 1% limit and
-complete lifecycle. Preparation and all three route legs contribute to the
-observed drift. The cause is not isolated by this pilot. No automatic retry,
-longer trial, fitted correction, profile matrix or laptop action follows.
-Production remains FIFO, priority opt-in, and M2/content expansion remains gated.
-Use GPT-6.1 Sol Max; the live CI pilot input defaults to false.
+The [saved review and prospective decision](M1_SHIPPING_NULL_REVIEW.md) are now
+complete. The raw null range cannot satisfy zero containment and strict <1%
+width under any symmetric expansion; equal recorded native work does not isolate
+the source of variation. The chosen next task is a separate bounded native
+common-observer attribution ledger, then at most one five-trial bare cloud probe
+after its implementation/identity checks. It cannot continue into positive or
+shipping trials or estimate cost. The v2 method, complete lifecycle, 1% limit and
+failed result remain unchanged. Production remains FIFO, priority opt-in, and
+M2/content expansion stays gated. No unchanged retry, fitted correction, profile
+matrix or laptop action follows. Use GPT-6.1 Sol Max; live pilot inputs stay false.
 
 ## Executable scope and boundaries
 
