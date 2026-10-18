@@ -69,3 +69,4 @@ jobs:
     with:
       cold: false
       shipping_cycles_pilot: false
+      shipping_observer_pilot: true

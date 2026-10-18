@@ -1,0 +1,91 @@
+{
+  "version": "m1-shipping-observer-inventory-1",
+  "policy": "m1-shipping-diagnostics-2",
+  "operational_always_on": [
+    "collision/readiness checks and required data viewer",
+    "edit transaction/revision integrity and fixed-work proxy autosaves",
+    "native job/result/resident/payload admission limits",
+    "complete synchronous terrain enforcement clocks and whole-frame carry",
+    "geometric priority admission and one bounded directional preparation viewer"
+  ],
+  "shipping_optional": [],
+  "common_external_qualification_observers": [
+    "monotonic whole-trial, lifecycle, matching-route-section, callback and zero-request witness clocks",
+    "fixed-work interval histogram and callback accounting including the last callback",
+    "per-callback native/resource snapshots, caps, frontier scan/evaluation and bounded qualification CSV",
+    "native lifetime/phase aggregates and operation-limit checks at closure (not raw operation tracing)",
+    "accepted-edit-to-mesh-submission observer, event serialization, bounded writer and final acknowledgement",
+    "per-physics collision elapsed timers, actual pose, command fingerprint, work counts, preparation handover and dose evidence CSV",
+    "per-trial correctness report construction, serialization, hashing of trace files, flush and close",
+    "Ordered native process/current-thread cycle reads around each shared boundary snapshot; unsigned decimal serialization and exact interval arithmetic",
+    "Native per-real-tick cycle witness, bounded cycle JSONL write/flush/close in every arm; no arm requests SHA work; no observer subtraction",
+    "Perturbing native observer spans in this separate mode; thread endpoints, bounded binary trace, final drain and independently audited ownership. No subtraction or calibration claim."
+  ],
+  "outside_complete_trial_common_harness": [
+    "process launch, project import, common scene/UI initialization and one complete warm-up trial",
+    "Terminal boundary marker write with process-cycle and wall brackets, conservatively expanding both comparison arms; subsequent marker evidence recording is common batch reporting",
+    "bounded between-trial report retention/deep-copy and finite protocol selection; at most 5 trial records; shared boundary interval assembly, terminal evidence retention and exact-rational decisions",
+    "batch summary/identity hashing, independent-reader work, return-to-title UI and process exit"
+  ],
+  "disabled_in_all_pilot_modes": [
+    "native admission selection trace",
+    "deep full-height mesh-resource/vertical-voxel JSONL observer",
+    "legacy calibration/flatness classifiers as qualification decisions"
+  ],
+  "mode_switches": {
+    "bare": {
+      "shipping_optional": false,
+      "forensic_additions": false,
+      "observer_attribution": true
+    }
+  },
+  "estimand": "Perturbing common-observer attribution only. No incremental shipping cost, sensitivity, CPU-seconds or target qualification.",
+  "boundary": "One start/end subtraction: before optional setup and fixture preparation through 4320 fixed physics ticks, final edit acknowledgement, native phase closure, writer drain, terrain/preparation retirement, optional summary serialization/flush/close and complete per-trial report serialization/flush/close. Nested spans are evidence, not additive costs.",
+  "protocol": {
+    "version": "m1-shipping-observer-attribution-1",
+    "warmup_trials": 1,
+    "bare_trials": 4,
+    "maximum_trials": 5,
+    "process_timeout_seconds": 1500,
+    "trace_cap_bytes": 33554432,
+    "automatic_retry": false,
+    "positive_request_created": false,
+    "shipping_continuation": false,
+    "stop_rule": "Stop at first work/counter/span/I/O/operation/resource failure; retain partial prefix. Always stop by five, independent of descriptive null usability."
+  },
+  "method": "m1-shipping-observer-attribution-1",
+  "attribution": {
+    "format": "cairn-observer-ledger-1; 40-byte header and 192-byte little-endian records",
+    "slots": {
+      "1": "preparation_queries",
+      "2": "callback_queries",
+      "3": "frontier",
+      "4": "callback_output",
+      "5": "native_witness",
+      "6": "tick_output",
+      "7": "report_close",
+      "8": "worker_lifetime",
+      "9": "worker_qualification",
+      "10": "worker_proxy",
+      "11": "worker_flush",
+      "12": "boundary_snapshot"
+    },
+    "thread_identity": "OS thread id plus unique lane per worker incarnation; lane 1 is main; the captured worker lifetime excludes bootstrap/teardown outside its in-thread endpoints, which remain in complete process demand",
+    "raw_reads": "Four current-thread stamps per span: begin API entry/exit, end API entry/exit. Each retains success/availability/error and enclosing wall bracket. Binary null payload is explicitly flagged, never a measured zero.",
+    "ownership": "Full=end_exit-begin_entry; body=end_entry-begin_exit; bookkeeping=full-body. Exclusive body subtracts direct children full spans once, on the same lane. Root/child costs are never double-added to process demand.",
+    "section": "0 preparation, 1 +X, 2 -X, 3 +Z, 4 lifecycle tail; worker records retain start/end and submission sections. Crossing workers are separate, never assigned wholly to one section.",
+    "emission": "Raw spans remain in a bounded native buffer; one declared final drain serializes, flushes and closes the binary trace before the complete process boundary. Raw process/thread emission brackets are separate perturbation evidence.",
+    "unattributed": "Ledger setup, scope return/dispatch outside stamps, final accounting/hashes, final boundary, whole engine/terrain workers and renderer-deferred work are not isolated by these thread spans. All in-process work remains inside complete process cost. No residual is called observer-free or corrected.",
+    "cadence": "Native witness 4320 spans; tick output 4320 unit-bearing spans plus 3 zero-unit pose handover spans. Callback output/queries/frontier each once per gameplay/acknowledgement callback. Preparation queries once per loading callback. Four intermediate boundary snapshots. Writer lifetimes include file close before exit; queue writes distinguish qualification and proxy work.",
+    "byte_counts": "The raw byte field is reserved zero for main/flush/lifetime scopes, reported as unavailable rather than measured zero. Writer qualification/proxy scopes retain actual UTF-8 payload bytes; whole-trial raw files and existing pose/cycle counts retain main output sizes."
+  },
+  "reference_shipping_inventory": {
+    "version": "m1-shipping-inventory-2",
+    "file": "shipping_cycles_inventory.json"
+  },
+  "original_forensic_additions_disabled": [
+    "native per-operation frame trace, batching, CSV writer and drain for all three phases",
+    "per-callback asynchronous renderer CPU/GPU queries and detailed JSONL write/flush",
+    "per-30-callback live diagnostic labels"
+  ]
+}

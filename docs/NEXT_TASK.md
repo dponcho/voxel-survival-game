@@ -4,6 +4,15 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
+**Observer-attribution implementation in progress.** Native checkpoint
+`e97dcd76b0eb9df6a7e174b9ab77e9cdf99a7788` is building matching binaries in
+[CI 39163145683](https://github.com/dponcho/voxel-survival-game/actions/runs/39163145683).
+Its static checks and all nine native sanitizer suites pass. The separate
+mode/reader/launcher are implemented; matching API/package checks and the one
+finite attribution process are still pending. Read
+[the implementation and exact ownership boundaries](M1_SHIPPING_OBSERVER_ATTRIBUTION.md).
+No attribution runtime result or laptop action is claimed yet.
+
 Read this register, `AGENTS.md`, active M1 in `ROADMAP.md`, and the relevant
 contract sections in `PERFORMANCE.md` / `TESTING.md`. Read historical experiment
 records only when the active defect requires them. The full preceding narrative
@@ -132,8 +141,9 @@ create a positive request or append positive/shipping trials. Independently
 reconcile spans, nesting, thread identity, worker exit, counts, bytes and all
 original work/operation guards. Keep cost inconclusive, qualification false and
 target not run. Review the result before any observer refactor or new cost
-sequence. This probe is not yet implemented or run; no laptop action or M2
-expansion follows. Use **GPT-6.1 Sol Max**. Both live pilot inputs stay false.
+sequence. This probe's implementation is staged; matching API/package checks and
+the one process remain pending. No laptop action or M2 expansion follows. Use
+**GPT-6.1 Sol Max**. The historical v1/v2 pilot inputs stay false.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator

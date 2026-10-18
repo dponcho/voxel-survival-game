@@ -11,6 +11,9 @@ on:
       shipping_cycles_pilot:
         type: boolean
         default: false
+      shipping_observer_pilot:
+        type: boolean
+        default: false
   workflow_dispatch:
     inputs:
       cold:
@@ -23,6 +26,10 @@ on:
         default: false
       shipping_cycles_pilot:
         description: Explicit one-shot v2 cycle sequence; never retry an inconclusive pilot
+        type: boolean
+        default: false
+      shipping_observer_pilot:
+        description: One attribution-only warm-up and four bare trials; no continuation or retry
         type: boolean
         default: false
 permissions:
@@ -215,6 +222,69 @@ jobs:
           path: |
             reports/shipping-cycles-downloaded-recheck.json
             reports/cycles-saved-recheck.log
+          if-no-files-found: error
+          retention-days: 30
+  shipping-observer-pilot:
+    if: ${{ inputs.shipping_observer_pilot }}
+    needs: [export-and-test, counter-artifact-recheck]
+    runs-on: windows-2022
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.10'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-windows-x86_64-${{ github.sha }}
+          path: build/published-player
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-evidence-${{ github.sha }}
+          path: build/downloaded-export-evidence
+      - name: Run only the declared attribution prefix; retain every early stop
+        run: python tools/qa/shipping_observer_ci.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: Cairn-shipping-observer-pilot-${{ github.sha }}
+          path: reports/shipping-observer-pilot/
+          if-no-files-found: error
+          retention-days: 30
+  shipping-observer-saved-recheck:
+    needs: [export-and-test, shipping-observer-pilot]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.10'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-windows-x86_64-${{ github.sha }}
+          path: build/published-player
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-evidence-${{ github.sha }}
+          path: build/downloaded-export-evidence
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: Cairn-shipping-observer-pilot-${{ github.sha }}
+          path: build/downloaded-observer-pilot
+      - name: Reproduce observer identity, raw spans, ownership, worker retention and stop without an engine
+        run: python tools/qa/shipping_observer_saved_recheck.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: Cairn-shipping-observer-saved-recheck-${{ github.sha }}
+          path: |
+            reports/shipping-observer-downloaded-recheck.json
+            reports/observer-saved-recheck.log
           if-no-files-found: error
           retention-days: 30
   shipping-pilot:

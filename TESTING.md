@@ -461,6 +461,26 @@ matching binaries/integration/package checks, its one predeclared cloud process
 may complete at most warm-up + four bare trials. Trace overflow or any failed
 guard stops the prefix. Stop after five regardless of descriptive null usability;
 no positive request or shipping continuation. Independent span/nesting/thread/
-worker-exit/count/byte audits are required. This probe is not yet implemented
-or run. Cost remains inconclusive and all original limits apply. No target
+worker-exit/count/byte audits are required. Implementation is staged; matching
+API/probe verification remains pending. Cost remains inconclusive and all original limits apply. No target
 qualification, laptop action or M2 expansion follows.
+
+### Common-observer attribution prerequisite
+
+The separate `--shipping-observer-check` verifies nested raw spans, real UTF-8
+qualification/proxy writes, a joined writer's retained cycle witness and three
+failed API controls in each matching editor/release. The native core has a ninth
+sanitizer suite for fixed-format unsigned serialization, ownership, nesting,
+caps, counters, section errors and worker incarnations. The new independent
+Python reader verifies bounded 192-byte raw records and charges nested spans
+once. Its pure regressions reject false owners, missing/reversed/failed spans,
+thread-ID reuse errors and finite-prefix violations.
+
+The opt-in Actions attribution job is separate from both stopped v1/v2 pilots.
+It permits at most warm-up plus four bare trials and has no positive/shipping
+continuation. Before launch it verifies the exact portable candidate, source/
+inventory/native identity and both API controls, and writes its prospective
+declaration. Every original work/operation guard remains active. Twenty saved
+semantic corruptions and a separate downloaded Linux replay execute no engine.
+Read [scope, perturbation and acceptance](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md).
+This prerequisite cannot qualify cost, the HD 620 or M1.
