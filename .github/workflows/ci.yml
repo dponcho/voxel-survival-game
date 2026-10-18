@@ -55,8 +55,13 @@ jobs:
         run: |
           c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_cycle_observation.cpp -o /tmp/cairn-cycle-observation-test
           /tmp/cairn-cycle-observation-test
+      - name: Bounded native cycle dose and hard-cap controls with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_cycle_dose.cpp -o /tmp/cairn-cycle-dose-test
+          /tmp/cairn-cycle-dose-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml
     with:
       cold: false
+      shipping_cycles_pilot: true

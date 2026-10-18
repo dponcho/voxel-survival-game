@@ -1,5 +1,6 @@
 #include "benchmark_probe.h"
 #include "../core/cycle_observation.h"
+#include "../core/cycle_dose.h"
 #include "core/crypto/crypto_core.h"
 #include "core/os/os.h"
 #include "core/os/thread.h"
@@ -109,6 +110,51 @@ Dictionary hash_record(const HashWork &w) {
 } // namespace
 
 Dictionary CairnProbe::cpu_cycle_observation() const { return record(observation()); }
+
+Dictionary CairnProbe::cpu_cycle_dose(const String &requested_cycles) const {
+    Dictionary d;
+    d["schema"] = "cairn-cpu-cycle-dose-1";
+    d["request_cycles"] = requested_cycles;
+    d["bytes_per_update"] = int64_t(4096);
+    d["update_cap"] = int64_t(512); d["wall_cap_usec"] = "50000";
+    d["passed"] = false; d["enabled"] = requested_cycles != "0";
+    uint64_t request = 0;
+    if (!Thread::is_main_thread() || !cairn::parse_cycle_decimal(requested_cycles.utf8().get_data(), request)) {
+        d["reason"] = "invalid request or thread"; return d;
+    }
+    const uint64_t begin = wall();
+    const auto start = observation();
+    d["start"] = record(start);
+    cairn::CycleDose work;
+    int error = OK;
+    uint8_t digest[32] = {};
+    if (request && !std::strcmp(start.status(), "measured")) {
+        uint8_t bytes[4096]; std::memset(bytes, 90, sizeof(bytes));
+        CryptoCore::SHA256Context hash;
+        error = hash.start();
+        if (error == OK) {
+            work = cairn::cycle_dose(request, start.reads[2].value.cycles, begin,
+                    [] { return thread_value(); }, wall, [&] {
+                        error = hash.update(bytes, sizeof(bytes)); return error == OK;
+                    });
+            if (error == OK) error = hash.finish(digest);
+        }
+    }
+    d["updates"] = int64_t(work.updates); d["error"] = error;
+    d["reached"] = work.reached; d["capped"] = work.capped;
+    d["counter_failed"] = work.counter_failed; d["hash_failed"] = work.hash_failed;
+    d["digest"] = request ? Variant(String::hex_encode_buffer(digest, sizeof(digest))) : Variant();
+    const auto end = observation(); // Includes hash finish and positive-only loop/counter work.
+    const uint64_t finish = wall();
+    d["end"] = record(end); d["wall_start_usec"] = decimal(begin); d["wall_end_usec"] = decimal(finish);
+    const bool counters = !std::strcmp(start.status(), "measured") && !std::strcmp(end.status(), "measured") &&
+            end.reads[1].value.cycles >= start.reads[2].value.cycles;
+    const bool dose = !request || (work.reached && !work.capped && !work.counter_failed && !work.hash_failed &&
+            end.reads[1].value.cycles - start.reads[2].value.cycles >= request);
+    d["passed"] = counters && dose && error == OK && finish >= begin && finish - begin <= 50000;
+    d["reason"] = bool(d["passed"]) ? "measured" : "counter, hash, request or hard-cap failure";
+    return d;
+}
 
 Dictionary CairnProbe::cpu_cycle_capability_smoke() const {
     Dictionary d;

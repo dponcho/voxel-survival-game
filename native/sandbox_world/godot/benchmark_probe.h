@@ -11,6 +11,7 @@ protected:
 public:
     Dictionary cpu_cycle_observation() const;
     Dictionary cpu_cycle_capability_smoke() const;
+    Dictionary cpu_cycle_dose(const String &requested_cycles) const;
     Dictionary snapshot() const;
     Dictionary machine() const;
     void configure(int workers, bool heavy);

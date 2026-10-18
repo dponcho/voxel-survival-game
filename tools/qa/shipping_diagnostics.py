@@ -297,13 +297,14 @@ def operation_status(trial):
     return dict(measurement_valid=ok, operation_failures=failures)
 
 
-def trial_evidence(folder, t, inventory_hash):
+def trial_evidence(folder, t, inventory_hash, *, method_version=VERSION, verify_saved_boundary=True):
     name = t['id']
     complete_path, boundary_path = folder/(name+'-complete.json'), folder/(name+'-boundary.json')
     complete, boundary = read(complete_path), read(boundary_path)
-    require(all(t[k] == v for k, v in complete.items()), 'Complete per-trial report differs from batch')
-    require(all(t[k] == v for k, v in boundary.items() if k != 'complete_sha256')
-            and boundary['complete_sha256'] == sha(complete_path), 'Complete boundary/report hash differs')
+    if verify_saved_boundary:
+        require(all(t[k] == v for k, v in complete.items()), 'Complete per-trial report differs from batch')
+        require(all(t[k] == v for k, v in boundary.items() if k != 'complete_sha256')
+                and boundary['complete_sha256'] == sha(complete_path), 'Complete boundary/report hash differs')
     require(t['io_failed'] is False and t['drained'] is True
             and not t['integration_failures'] and t['inventory_sha256'] == inventory_hash,
             'Failed/incomplete work, I/O, inventory or drain evidence')
@@ -338,7 +339,7 @@ def trial_evidence(folder, t, inventory_hash):
             and t['optional_setup']['enabled'] is shipping and t['optional_finalization']['enabled'] is shipping,
             'Actual runtime mode switches differ from the inventory')
     r, c = t['report'], t['report']['workload_contract']
-    fixed = dict(version=VERSION, workload='H2', fixture=3, actors=24, edit_rate=4,
+    fixed = dict(version=method_version, workload='H2', fixture=3, actors=24, edit_rate=4,
                  rain_instances=256, seconds=72, physics_hz=60, max_physics_steps=4,
                  route_origin=[10,72,10], player_start=[10,72,10], autosave_interval_s=1,
                  camera_fov=75, camera_far=96,

@@ -19,6 +19,7 @@ from full_height import compare as full_height_compare, mutations as full_height
 from frontier_boundary import reconcile as boundary
 from frontier_edit import reconcile as edit
 from cpu_cycle_capability import saved_audit as counter_saved_audit
+from shipping_cycles import verify_metadata as cycles_metadata, saved_controls as cycles_saved_controls
 
 def require(ok,message):
     if not ok:raise RuntimeError(message)
@@ -255,6 +256,8 @@ def audit():
         core_sha256=sha((ROOT/'native/sandbox_world/core/cycle_observation.h').read_bytes())), 'CPU capability source identity')
     counter_capability=counter_saved_audit(reports,info)
     require(counter_capability==read(reports/'cpu-cycle-capability-audit.json'),'Counter saved audit differs')
+    cycles_metadata(info,entries,ROOT)
+    cycle_controls=cycles_saved_controls(reports,info)
     manifest=read(ROOT/'build/engine-bundle/manifest.json')
     require(manifest==read(ROOT/'build/native-qualification-evidence/build/engine-bundle/manifest.json'),'Native qualification manifest')
     require(manifest['engine_inputs']==input_hash()==info['native_source_key']==info['engine_inputs'],'Native source key')
@@ -346,7 +349,7 @@ def audit():
         portable_sha256=sha(raw),portable_bytes=len(raw),exe_sha256=sha(z.read('Cairn.exe')),pck_sha256=sha(z.read('Cairn.pck')),
         pck_entries_md5_verified=len(entries),pe_imports_verified=len(dlls),self_tests_verified=len(tests),published_download_roundtrip=True,
         native_manifest=manifest,admission=trials,reversal=reversal_trials,ordinary_admission=ordinary_trials,full_height=full_height_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,full_height_saved_mutations=full_height_mutation,
-        counter_capability=counter_capability,
+        counter_capability=counter_capability, shipping_cycle_controls=cycle_controls,
         target_action_required_now=False,engine_run_locally=False,executor_recovery='independent read-only audit executed in Actions after workspace disconnect')
     (reports/'m1-mesh-admission-independent-audit.json').write_text(json.dumps(result,indent=2))
     print('CAIRN_INDEPENDENT_AUDIT='+json.dumps(result,separators=(',',':')),flush=True)
