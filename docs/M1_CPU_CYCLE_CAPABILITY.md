@@ -2,8 +2,8 @@
 
 Implementation of the counter-only increment in
 [the adopted diagnostic-cost decision](M1_DIAGNOSTIC_COST_POLICY.md#next-bounded-implementation-and-completion).
-**Source published in `8f1bc66` / `1841e4c`; matching Windows verification/candidate pending.
-M1 remains blocked.**
+**Cloud capability and source-matched Windows candidate verified in CI
+`39073452514`. M1 remains blocked; no target profile or diagnostic cost qualified.**
 
 ## Bounded implementation
 
@@ -51,44 +51,77 @@ seconds, GPU/driver/presentation cost or target performance. No laptop action.
 
 ## Result
 
-The user directly approved publication on October 17 after the initial automatic
-approval block. The source is now published to the existing
-`codex/m1-engine-proof` branch as `8f1bc66` / `1841e4c`. The authenticated GitHub
-connection produced commit metadata different from the prepared local commits
-`441d0cd` / `ed402a5`, but both tree hashes were checked exactly before the ref
-advanced: `c199c10c1633501a1de0b7cb5cae494e26858d74` and
-`7c94f4beec836c969fae1b4d0829bd39a1ab8dbe`.
-
 [CI `39073452514`](https://github.com/dponcho/voxel-survival-game/actions/runs/39073452514)
-has passed all 141 Python regressions and seven native sanitizer suites with
-their normal Actions settings. It is compiling a new matching native bundle
-under source key
+completed successfully on October 18 UTC. Source implementation is
+`8f1bc6636d4a2ff2fc716a24263557c591af44ed`, verification head
+`1841e4c17cc91bfa10e5b24e1aec8fbdd3c5eb91`, exported PR-merge build
+`b3ae6b70579507088522b8a16f483c65b0489e96`. Native source key:
 `2045ec77931e23130c773d1c2e2645ce6a925b1eccc1e8f8347df7758e50faf3`.
-Continue that run rather than dispatching another. Windows capability and
-portable candidate checks remain pending; no new counter-qualified artifact is
-claimed yet.
 
-Completed in the Codex Cloud workspace against the prepared source:
+Both bounded fixtures passed once, with no retry. The labelled 20 ms wait and
+both 4 MiB hashes completed. Every hash has 1,024 successful 4,096-byte updates
+and independent SHA-256
+`e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121`.
+The real invalid-handle calls preserve Win32 error 6 and null cycle values.
+Native decimal strings at 2^53+1, 2^63 and UINT64_MAX survive the engine JSON
+round-trip. All observed counters and wall brackets are ordered/nondecreasing.
 
-- All 141 Python integration/reader regressions pass (91.088 s), including six
-  new counter-reader tests and synthetic saved-failure checks.
-- All seven engine-independent native suites pass with AddressSanitizer and
-  UndefinedBehaviorSanitizer. LeakSanitizer cannot inspect `/proc` in this
-  workspace sandbox, so those workspace runs set `ASAN_OPTIONS=detect_leaks=0`;
-  the required Actions sanitizer commands retain their normal settings.
-- Owned Python compile checks, modified workflow YAML parsing, documentation
-  links/anchors and `git diff --check` pass. The existing probe implementation
-  changes only by adding the two bindings/declarations; ordinary snapshots and
-  terrain budget clocks remain unchanged.
+| Binary | Fixture elapsed (µs) | Enclosing process lower bound (raw cycles) | Exited worker upper bound (raw cycles) | Saved faults rejected |
+| --- | ---: | ---: | ---: | ---: |
+| Editor | 55,111 | 41,505,155 | 40,843,240 | 12 |
+| Release | 55,887 | 41,830,882 | 41,154,511 | 12 |
 
-These are logic/static checks. Neither Godot/Windows compilation nor real
-counter/hash/wait/worker capability has run for this source yet. The open PR's
-source-bearing head is now `1841e4c17cc91bfa10e5b24e1aec8fbdd3c5eb91`.
+In both cases the enclosing process lower bound covers the independently
+witnessed worker upper bound after join. These are capability observations;
+they do not infer timer resolution, convert cycles to seconds, compare the two
+binaries' CPU cost, or establish 1% sensitivity.
 
-Pending exact-build Actions verification and portable artifact audit. The next
-task may implement v2 inventory/interval readers and the declared finite sequence
-only after capability passes. If counters are unavailable or contradictory,
-retain the error and stop that implementation path.
+All four active jobs passed: 141 Python regressions (55.981 s in Linux CI),
+seven native ASan/UBSan suites with normal Actions settings, new editor/debug/
+release compilation and individual qualification, editor import/parse and both
+exports, the existing integration/profile suite, dependency/PE audit and fresh
+offline extractions. The downloaded Windows audit verified eight self-tests,
+91 PCK entries and all 50 preceding saved corruption cases, plus the 24 new
+counter faults. The Linux job reproduced the downloaded candidate and saved
+audits without executing an engine. Codex Cloud independently checked artifact
+digests, ZIP/PE/PCK/native identity and both exact saved counter audits too.
+
+Native compilation took 2,680.391 / 1,873.063 / 1,806.281 s for editor/debug/
+release. The [qualified native bundle](https://github.com/dponcho/voxel-survival-game/actions/runs/39073452514/artifacts/12118359302)
+is reusable only under this exact native key. Source pins, flags, world/save
+compatibility, ordinary snapshots and terrain budget clocks are unchanged.
+
+### Portable candidate and evidence
+
+[Windows player artifact `12119108758`](https://github.com/dponcho/voxel-survival-game/actions/runs/39073452514/artifacts/12119108758)
+contains `Cairn-windows-x86_64.zip`, `BUILD_INFO.json` and `SHA256SUMS.txt`.
+The inner portable ZIP is 30,178,896 bytes, SHA-256
+`ded598c70f1698d21ceba1ec37999b91f8d9c174f41a5f373a727deaaf64a937`.
+Its release executable SHA-256 is
+`723f26e568b33e702a584280c5792f88d39f31195da8ef594ba01cf4084437ef`,
+identical to the qualified release template.
+
+The [committed evidence](evidence/m1-cpu-cycle-capability-cloud-2026-10-18.json)
+retains both raw capability records, exact independent audits, source/binary/
+artifact identities, build timings and retained failures. Original artifacts:
+[native qualification](https://github.com/dponcho/voxel-survival-game/actions/runs/39073452514/artifacts/12119065898),
+[complete Windows evidence](https://github.com/dponcho/voxel-survival-game/actions/runs/39073452514/artifacts/12119437269),
+[downloaded Linux recheck](https://github.com/dponcho/voxel-survival-game/actions/runs/39073452514/artifacts/12118793570).
+
+The standard full-height prepared cases retain zero coverage alarms, all 288
+submitted edits and passing operation phases in editor/release; their baselines
+retain 520 coverage alarms each. Broader research preparation retains deletion
+overruns of 1,025 / 810 µs, and the 16³ one/two-worker H2 alternatives retain
+edit-latency failures. Historical failures and legacy inconclusive diagnostic
+verdicts remain unchanged. Cloud correctness/integrity is distinct from those
+failed measurements and target qualification.
+
+The historical v1 runtime pilot/preflight was skipped; no v2 route or positive
+pilot ran. This completes only the counter-capability increment. The separate
+next task may implement the v2 inventory, native in-route cycle dose, exact
+interval readers and the policy's finite 9/13-trial sequence. Counter, control,
+work, I/O or operation failure must retain its completed prefix and stop that
+sequence. No laptop action is requested by this result.
 
 API contracts checked against the pinned Godot `core/os/thread.h`,
 `core/crypto/crypto_core.h` and `core/string/ustring.h`, plus Microsoft's

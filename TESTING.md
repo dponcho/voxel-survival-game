@@ -400,6 +400,12 @@ The counter-only implementation and exact evidence checks are documented in
 [M1_CPU_CYCLE_CAPABILITY.md](docs/M1_CPU_CYCLE_CAPABILITY.md). The reusable workflow
 defaults `historical_v1_pilot` to false, preserving v1's pure checks/entry points
 without repeating the completed runtime pilot during this increment.
+CI `39073452514` passes all 141 Python regressions, seven native sanitizer
+suites, matching binary qualification, both bounded capability smokes, existing
+integration/offline package checks and downloaded Windows/Linux audits. Each
+smoke rejects 12 saved counter corruptions; all 50 preceding saved faults remain
+checked. Raw records, hashes and retained broader failures are in the linked
+counter evidence record. No cost sensitivity or target qualification follows.
 Do not rerun v1 or start the v2 route pilot in that increment. V2's later controls
 require a whole-process null plus an in-route thread-cycle-witnessed positive,
 with exact interval arithmetic, all workload/operation guards and the declared

@@ -225,7 +225,10 @@ retroactive v1 pass. Complete elapsed lifecycle and all frame/pacing, edit,
 coverage/readiness, resource and operation gates remain separate requirements.
 Cycles are not CPU service seconds or GPU/presentation measurements. The scope is
 conditional on the declared common observers; unavailable work stays unavailable.
-V2 is not implemented/qualified. First verify native counter capability, then
-implement the declared finite controls with no automatic retry. M1 stays blocked.
+V2 is not implemented/qualified. Native counter capability now passes
+[its bounded cloud checks](docs/M1_CPU_CYCLE_CAPABILITY.md) with matching binaries
+and a verified portable candidate. Implement the declared v2 finite controls
+next, with no automatic retry. Counter capability is not a 1% sensitivity or
+cost pass. M1 stays blocked.
 The linked v2 decision defines the current finite method and stop rule; the
 [v1 review](docs/M1_REVIEW_RESPONSE.md) remains historical evidence.

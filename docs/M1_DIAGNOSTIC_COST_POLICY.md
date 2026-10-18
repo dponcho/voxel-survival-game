@@ -1,9 +1,14 @@
 # Diagnostic cost decision — October 17, 2026
 
-**Adopted for the next implementation. Not implemented or qualified.**
+**V2 cost method adopted; route implementation and qualification pending.**
 Policy `m1-shipping-diagnostics-2`; proposed method `m1-shipping-cpu-cycles-1`.
 This is the explicit measurement-policy decision required by the completed
 [inconclusive pilot](M1_SHIPPING_DIAGNOSTICS.md#result). M1 remains blocked.
+
+The counter-only prerequisite is now [cloud-verified with matching Windows
+binaries and a portable candidate](M1_CPU_CYCLE_CAPABILITY.md) in CI
+`39073452514`. The v2 inventory, in-route cycle dose, interval reader and finite
+route pilot remain unimplemented; the decision and all limits below are unchanged.
 
 ## Decision and requirement change
 
