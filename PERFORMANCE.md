@@ -225,10 +225,14 @@ retroactive v1 pass. Complete elapsed lifecycle and all frame/pacing, edit,
 coverage/readiness, resource and operation gates remain separate requirements.
 Cycles are not CPU service seconds or GPU/presentation measurements. The scope is
 conditional on the declared common observers; unavailable work stays unavailable.
-V2 is not implemented/qualified. Native counter capability now passes
-[its bounded cloud checks](docs/M1_CPU_CYCLE_CAPABILITY.md) with matching binaries
-and a verified portable candidate. Implement the declared v2 finite controls
-next, with no automatic retry. Counter capability is not a 1% sensitivity or
-cost pass. M1 stays blocked.
+V2 is implemented and remains unqualified. Native counter capability passes
+[its bounded checks](docs/M1_CPU_CYCLE_CAPABILITY.md); CI `39088740702` now also
+passes new matching binaries, portable/integration checks and independent v2
+readers. The five-trial null prefix passes work/operation guards, but range width
+2.850549401% and matching-section drift 1.073468789% fail the strict below-1%
+controls. Positive/shipping quartets were not run, and no shipping-cost estimate
+is available. [The saved result](docs/M1_SHIPPING_CPU_CYCLES.md) requires an explicit
+prospective measurement/repetition decision before another pilot. Counter/API
+capability and evidence integrity do not qualify sensitivity or cost. M1 stays blocked.
 The linked v2 decision defines the current finite method and stop rule; the
 [v1 review](docs/M1_REVIEW_RESPONSE.md) remains historical evidence.

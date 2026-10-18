@@ -117,11 +117,13 @@ verdicts remain unchanged. Cloud correctness/integrity is distinct from those
 failed measurements and target qualification.
 
 The historical v1 runtime pilot/preflight was skipped; no v2 route or positive
-pilot ran. This completes only the counter-capability increment. The separate
-next task may implement the v2 inventory, native in-route cycle dose, exact
-interval readers and the policy's finite 9/13-trial sequence. Counter, control,
-work, I/O or operation failure must retain its completed prefix and stop that
-sequence. No laptop action is requested by this result.
+pilot ran in this counter-only increment. Its separate successor now implements
+the v2 inventory, native dose and exact readers under another native key and
+matching candidate. [That finite result](M1_SHIPPING_CPU_CYCLES.md) completed five
+valid trials and stopped at unresolved null controls in CI `39088740702`.
+Neither later quartet ran. The capability evidence above remains historical and
+unchanged. No pilot retry or laptop action is requested by either result; read
+[the current next decision](NEXT_TASK.md).
 
 API contracts checked against the pinned Godot `core/os/thread.h`,
 `core/crypto/crypto_core.h` and `core/string/ustring.h`, plus Microsoft's

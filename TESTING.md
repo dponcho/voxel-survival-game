@@ -410,3 +410,42 @@ Do not rerun v1 or start the v2 route pilot in that increment. V2's later contro
 require a whole-process null plus an in-route thread-cycle-witnessed positive,
 with exact interval arithmetic, all workload/operation guards and the declared
 9/13-trial stop. No target qualification follows from synthetic/CI controls.
+
+### V2 cycle-demand method and finite pilot
+
+`--shipping-cycles-check` runs 28 pure rational-method cases, eight unsigned
+request vectors, five shared-boundary/failure controls, and one zero/one bounded
+positive native SHA API check plus four rejected requests per matching editor/
+release. `m1_cycle_exact.gd` keeps raw counters and rational cross products as
+canonical decimal strings. The independent `shipping_cycles.py` reader uses
+integers and `Fraction`; no floating-point value selects a CPU gate outcome.
+Native loop tests cover exact requests, failed/decreasing counters, SHA failure,
+512-update and 50 ms hard caps. Ordinary snapshots and terrain clocks are unchanged.
+
+The only `--shipping-cycles-pilot` launch in CI `39088740702` completed warm-up
+plus four bare null trials. Every trial passes 4,320-tick work, all 288 edit
+submissions, I/O, resources, coverage/readiness, complete drain and native
+operations. CPU sections share the same six raw snapshot brackets; integer
+midpoints partition exactly. Report serialization/flush precedes the final CPU
+boundary. Original terminal-marker bounds conservatively expand both arms.
+
+The empirical null range [-2.217168530%, +0.633380871%] contains zero but has
+2.850549401% width; matching-section drift is 1.073468789%. Both strict below-1%
+controls fail. Measurement validity is false and cost inconclusive despite
+verified integrity and valid trial guards. No positive request or either later
+quartet was run. Preserve the exact five-trial prefix; never pad or retry it.
+
+157 Python tests and eight native sanitizer suites pass in Actions. The current
+QA follow-up adds five saved-reader controls and passes all 162 Python tests in
+Codex Cloud, checks native witnesses against their real ticks/route brackets,
+and preserves honest counter failures. Saved corruption controls always change
+the original value, including usable-control and measured-zero marker cases.
+All 50 prior, 24 counter and 14 v2 saved faults are rejected. Windows/Linux and
+the current stricter reader reproduce the same original candidate/pilot values;
+rechecks launch no engine. Runtime tests were not repeated for QA/prose changes.
+
+The native key, matching binary hashes, exact ZIP and all original trial records
+are in [the v2 result](docs/M1_SHIPPING_CPU_CYCLES.md) and its committed evidence.
+The live `shipping_cycles_pilot` input defaults to false. Review saved null
+variation and make a prospective measurement/repetition decision before any new
+sequence. No target qualification, laptop action or M2 expansion follows.

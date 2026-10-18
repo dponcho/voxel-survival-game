@@ -1,14 +1,20 @@
 # Diagnostic cost decision — October 17, 2026
 
-**V2 cost method adopted; route implementation and qualification pending.**
-Policy `m1-shipping-diagnostics-2`; proposed method `m1-shipping-cpu-cycles-1`.
+**V2 cost method adopted and implemented; the null pilot is inconclusive.**
+Policy `m1-shipping-diagnostics-2`; method `m1-shipping-cpu-cycles-1`.
 This is the explicit measurement-policy decision required by the completed
 [inconclusive pilot](M1_SHIPPING_DIAGNOSTICS.md#result). M1 remains blocked.
 
 The counter-only prerequisite is now [cloud-verified with matching Windows
 binaries and a portable candidate](M1_CPU_CYCLE_CAPABILITY.md) in CI
-`39073452514`. The v2 inventory, in-route cycle dose, interval reader and finite
-route pilot remain unimplemented; the decision and all limits below are unchanged.
+`39073452514`. The separate v2 task now implements the inventory, native dose,
+exact interval reader and finite sequence in successful CI `39088740702` with
+new matching binaries and a portable candidate. Five valid work trials stopped
+at an inconclusive null: width 2.850549401%, section drift 1.073468789%.
+Positive/shipping quartets were not run. [The result](M1_SHIPPING_CPU_CYCLES.md)
+retains all evidence; the decision and numerical limits below are unchanged.
+The staged authorization text records the original two implementation boundaries;
+[the current register](NEXT_TASK.md) supplies the next saved-evidence decision.
 
 ## Decision and requirement change
 
@@ -97,7 +103,7 @@ expand the comparison by its conservative off+on cost, as v1 did for elapsed
 markers. Do not silently assign an unmeasured marker zero. Final batch reporting
 and process launch/exit remain explicitly excluded common harness work.
 
-## Finite method and controls to implement later
+## Adopted finite method and controls
 
 The existing conservative repeat-envelope method is retained, with cycles as
 its unit and interval arithmetic for boundary uncertainty. For each quartet,
@@ -159,7 +165,7 @@ automatic longer run, new injection family, threshold change or profile matrix.
 A passing cloud control establishes implementation behaviour only; an eventual
 target pilot needs the exact downloaded release and remains subject to review.
 
-## Next bounded implementation and completion
+## Staged implementation authorization (decision record)
 
 **Implement counter capability only; do not implement/run the new route pilot
 in that task.** Add a dedicated proposed `CairnProbe` observation method (not an

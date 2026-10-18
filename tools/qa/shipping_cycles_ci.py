@@ -64,7 +64,9 @@ def saved_faults(folder, build):
                 t['cycle_boundaries'][0]['before']['reads'][0]['cycles'] = 9007199254740993
             elif label == 'reversed-boundary': t['cycle_boundaries'][0]['bounds'][0] = str(2**64-1)
             elif label == 'missing-shared-section': t['cycle_boundaries'].pop(2)
-            elif label == 'unmeasured-marker-zero': t['cycle']['marker'] = ['0','0']
+            elif label == 'unmeasured-marker-zero':
+                t['cycle']['marker'] = ['0','0']
+                t.pop('marker_cycles', None)
             elif label in ('missing-native-witness','changed-native-digest','changed-native-update-count'):
                 # Every arm has the common native witness, including a bare
                 # sequence that stopped before either positive. A forged bare
@@ -88,7 +90,8 @@ def saved_faults(folder, build):
                 t['checks']['operations'] = True
                 t['valid'] = True
             elif label == 'continued-after-stop': pilot['trials'].append(copy.deepcopy(t))
-            elif label == 'forged-control': pilot['assessment']['controls']['valid'] = True
+            elif label == 'forged-control':
+                pilot['assessment']['controls']['valid'] = not pilot['assessment']['controls']['valid']
             elif label == 'false-qualification': pilot['qualified'] = True
             # Re-sign matching redundant snapshots where possible. Semantic
             # validation still rejects lost work, invented zero or altered SHA.

@@ -93,8 +93,14 @@ explicitly selects raw whole-process CPU-cycle demand for the unchanged 1% cost
 threshold while retaining separate elapsed/frame/operation evidence. The
 [counter-capability increment](docs/M1_CPU_CYCLE_CAPABILITY.md) now passes CI
 `39073452514` with new matching editor/debug/release binaries, two bounded
-capability smokes and a verified portable candidate. V2 inventory/dose/readers
-and its finite cloud sequence are next; no laptop action is requested. M1 remains blocked.
+capability smokes and a verified portable candidate. V2 inventory, native dose,
+exact readers and the one finite sequence now pass implementation/integrity checks
+in CI `39088740702` with a new matching Windows candidate. Warm-up plus the null
+quartet pass all work/operation guards, but the null width is 2.850549401% and
+matching-section drift 1.073468789%, failing their below-1% controls. The sequence
+stopped before positive/shipping quartets. [V2 result and next decision](docs/M1_SHIPPING_CPU_CYCLES.md)
+require a saved-evidence review and prospective measurement/repetition decision,
+with no automatic retry or laptop action. M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 
