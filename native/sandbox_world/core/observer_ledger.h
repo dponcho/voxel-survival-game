@@ -26,6 +26,10 @@ struct ObserverRecord {
     // bookkeeping; full includes it. Return dispatch remains disclosed overhead.
     std::array<CycleRead, 4> reads{};
 };
+struct ObserverStorage {
+    uint64_t records = 0, lanes = 0, open_spans = 0;
+    uint64_t record_bytes = 0, lane_bytes = 0, object_bytes = 0;
+};
 class ObserverLedger {
     struct Lane { uint64_t thread = 0, last_wall = 0, last_cycles = 0; std::vector<uint64_t> stack; };
     mutable std::mutex mutex;
@@ -113,6 +117,18 @@ public:
     uint64_t count() const { std::lock_guard<std::mutex> lock(mutex); return entries.size(); }
     uint32_t number_of_lanes() const { std::lock_guard<std::mutex> lock(mutex); return lane_count; }
     uint64_t cap() const { return capacity; }
+    ObserverStorage storage() const {
+        std::lock_guard<std::mutex> lock(mutex);
+        ObserverStorage result;
+        result.records = entries.size(); result.lanes = lane_count;
+        result.record_bytes = entries.capacity()*sizeof(ObserverRecord);
+        result.object_bytes = sizeof(*this);
+        for (const auto &lane : lanes) {
+            result.open_spans += lane.stack.size();
+            result.lane_bytes += lane.stack.capacity()*sizeof(uint64_t);
+        }
+        return result;
+    }
     // Only after seal/join: records remain available even on honest failure.
     const std::vector<ObserverRecord> &records() const { return entries; }
 };

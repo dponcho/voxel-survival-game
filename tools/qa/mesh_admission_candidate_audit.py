@@ -262,6 +262,9 @@ def audit():
     observer_metadata(info,entries,ROOT)
     from shipping_observer_ci import saved_controls as observer_saved_controls
     observer_controls=observer_saved_controls(reports,info)
+    from observer_disposal import verify_metadata as disposal_metadata, saved_controls as disposal_saved_controls
+    disposal_metadata(info,entries,ROOT)
+    disposal_controls=disposal_saved_controls(reports,info)
     manifest=read(ROOT/'build/engine-bundle/manifest.json')
     require(manifest==read(ROOT/'build/native-qualification-evidence/build/engine-bundle/manifest.json'),'Native qualification manifest')
     require(manifest['engine_inputs']==input_hash()==info['native_source_key']==info['engine_inputs'],'Native source key')
@@ -354,6 +357,7 @@ def audit():
         pck_entries_md5_verified=len(entries),pe_imports_verified=len(dlls),self_tests_verified=len(tests),published_download_roundtrip=True,
         native_manifest=manifest,admission=trials,reversal=reversal_trials,ordinary_admission=ordinary_trials,full_height=full_height_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,full_height_saved_mutations=full_height_mutation,
         counter_capability=counter_capability, shipping_cycle_controls=cycle_controls, observer_controls=observer_controls,
+        observer_disposal_controls=disposal_controls,
         target_action_required_now=False,engine_run_locally=False,executor_recovery='independent read-only audit executed in Actions after workspace disconnect')
     (reports/'m1-mesh-admission-independent-audit.json').write_text(json.dumps(result,indent=2))
     print('CAIRN_INDEPENDENT_AUDIT='+json.dumps(result,separators=(',',':')),flush=True)

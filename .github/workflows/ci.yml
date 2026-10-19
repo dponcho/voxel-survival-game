@@ -63,6 +63,10 @@ jobs:
         run: |
           c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_observer_ledger.cpp -o /tmp/cairn-observer-test
           /tmp/cairn-observer-test
+      - name: Explicit observer disposal and retained-owner controls with sanitizers
+        run: |
+          c++ -std=c++17 -pthread -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_observer_disposal.cpp -o /tmp/cairn-observer-disposal-test
+          /tmp/cairn-observer-disposal-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml

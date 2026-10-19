@@ -17,6 +17,8 @@ void CairnProbe::_bind_methods() {
     ClassDB::bind_method(D_METHOD("observer_end", "token"), &CairnProbe::observer_end);
     ClassDB::bind_method(D_METHOD("observer_status"), &CairnProbe::observer_status);
     ClassDB::bind_method(D_METHOD("observer_finish"), &CairnProbe::observer_finish);
+    ClassDB::bind_method(D_METHOD("observer_dispose"), &CairnProbe::observer_dispose);
+    ClassDB::bind_method(D_METHOD("observer_disposal_controls", "path"), &CairnProbe::observer_disposal_controls);
     ClassDB::bind_method(D_METHOD("observer_controls", "path"), &CairnProbe::observer_controls);
     ClassDB::bind_method(D_METHOD("cpu_cycle_observation"), &CairnProbe::cpu_cycle_observation);
     ClassDB::bind_method(D_METHOD("cpu_cycle_capability_smoke"), &CairnProbe::cpu_cycle_capability_smoke);

@@ -10,6 +10,7 @@ class CairnProbe : public RefCounted {
     GDCLASS(CairnProbe, RefCounted);
     std::shared_ptr<cairn::ObserverLedger> observer;
     String observer_path;
+    bool observer_emitted = false;
 protected:
     static void _bind_methods();
 public:
@@ -19,6 +20,8 @@ public:
     void observer_end(int64_t token);
     Dictionary observer_status() const;
     Dictionary observer_finish();
+    Dictionary observer_dispose();
+    Dictionary observer_disposal_controls(const String &path);
     Dictionary observer_controls(const String &path);
     std::shared_ptr<cairn::ObserverLedger> observer_recorder() const { return observer; }
     Dictionary cpu_cycle_observation() const;

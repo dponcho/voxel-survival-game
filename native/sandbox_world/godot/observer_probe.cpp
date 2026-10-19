@@ -31,6 +31,7 @@ CycleRead native_observer_read() {
 bool CairnProbe::observer_start(const String &path) {
     if (!Thread::is_main_thread() || (observer && observer->active())) return false;
     observer = std::make_shared<cairn::ObserverLedger>(); observer_path = path;
+    observer_emitted = false;
     return observer->failure() == cairn::OBS_OK;
 }
 void CairnProbe::observer_section(int section) {
@@ -54,6 +55,7 @@ Dictionary CairnProbe::observer_status() const {
 Dictionary CairnProbe::observer_finish() {
     Dictionary d; d["schema"] = "cairn-observer-ledger-1"; d["passed"] = false; d["closed"] = false;
     if (!observer || !Thread::is_main_thread() || !observer->active()) return d;
+    observer_emitted = true;
     observer->seal();
     d["emit_start"] = cpu_cycle_observation();
     Ref<FileAccess> file = FileAccess::open(observer_path, FileAccess::WRITE);

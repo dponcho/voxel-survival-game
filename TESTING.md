@@ -512,3 +512,18 @@ distinct disposal capability, meaningful failure/lifetime controls and matching
 Windows candidate only; no owner extension or route in that increment. The broader
 current candidate retains 1,332 / 756 µs operation failures; the earlier
 preflight's 1,088 / 802 µs and all historical failures remain unchanged.
+
+### Explicit recorder disposal capability
+
+The distinct `--observer-disposal-check` and `CairnProbe.observer_dispose()`
+implement the next capability; matching Windows verification is pending at the
+implementation checkpoint. Read [the scope and finite controls](docs/M1_OBSERVER_DISPOSAL.md).
+The tenth native sanitizer suite verifies last-owner destruction, active/open/
+retained-owner refusal, allocation rejection and failed-prefix cleanup. Eight
+new reader cases bring the pure suite to 203 passing regressions. The control
+executes once per matching editor/release, with a five-second native cap and
+fifteen saved semantic corruptions. It retains actual joined-writer evidence,
+post-disposal trace bytes and explicit counter/cap/write failures. Downloaded
+candidate audits on both platforms require the same new source/native metadata
+and reproduced controls. Existing suites and all three disabled pilot inputs
+remain; no owner extension or route is part of this capability task.
