@@ -4,18 +4,19 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
-**Observer-attribution implementation in progress.** Native checkpoint
-`e97dcd76b0eb9df6a7e174b9ab77e9cdf99a7788` passes matching binaries and required checks in
-[CI 39163145683](https://github.com/dponcho/voxel-survival-game/actions/runs/39163145683).
-Its static checks and all nine native sanitizer suites pass. The separate
-mode/reader/launcher at `062c6591e715a7934dc38cbb7a3ddfb219e64d85` pass matching
-API controls and export/scenario checks. CI `39165715618` stops in the independent
-candidate audit on an idle-frame terrain-reader defect, before the attribution
-route. Its original downloaded evidence passes the corrected read-only audit;
-two regressions retain the defect and the strict used-allowance guard. The one
-finite attribution process remains pending after corrected Actions preflight. Read
-[the implementation and exact ownership boundaries](M1_SHIPPING_OBSERVER_ATTRIBUTION.md).
-No attribution runtime result or laptop action is claimed yet.
+**Common-observer attribution implementation and finite process complete.**
+[CI 39179723675](https://github.com/dponcho/voxel-survival-game/actions/runs/39179723675)
+passes matching Windows binaries, required integration/package checks and
+downloaded Windows/Linux audits. Five trials pass all work/operation/attribution
+guards; 204,693 spans and fifteen joined writers reconcile. Recorded native work
+is identical by section, but the larger preparation process variation is not
+isolated by captured observer spans. The descriptive null width is 1.788237675%;
+this perturbing mode cannot qualify cost in any event. The one-shot flag is
+disabled in `f48992c`; **do not repeat it**. Read
+[the result, exact candidate and saved next decision](M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result).
+The next task is a saved-evidence prospective design decision focused on
+unisolated preparation work and explicit recorder lifetime boundaries. No
+observer refactor, new cost sequence or laptop action follows automatically.
 
 Read this register, `AGENTS.md`, active M1 in `ROADMAP.md`, and the relevant
 contract sections in `PERFORMANCE.md` / `TESTING.md`. Read historical experiment
@@ -45,9 +46,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | V2 and fault controls pass matching native/editor/release and independent audits. All twelve full-height phases pass. Latest CI `39088740702` has no observed broader operation failures and all fifteen v2 phases pass. Counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence; target/deferred budgets remain open. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | Native/fault checks and independent audits pass. All fifteen observer phases pass in CI `39179723675`; its broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 inventory, native dose, exact readers and matching candidate are implemented. CI `39088740702` completed warm-up + null quartet with all work guards passing, but null width 2.850549401% and section drift 1.073468789% fail controls. Saved review is complete; zero containment and <1% width are incompatible for this raw quartet. V1 remains historical/inconclusive. | Implement the declared bounded native common-observer attribution ledger and separate opt-in mode. After controls and matching binaries/package checks, one cloud process of warm-up + at most four bare attribution trials; see the decision below. | Current v2 sequence remains stopped. The new probe stops at five regardless of null usability, or at the first failed guard. No positive request, shipping estimate, retry, correction, threshold change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. The separate attribution prerequisite is complete in CI `39179723675`: five valid trials, exact span/worker reconciliation, descriptive width 1.788237675%. Preparation process variation remains unisolated; complete observer cost is unavailable. | Write the saved-evidence prospective design/measurement-policy decision below, focused on terrain-worker versus engine preparation demand and the recorder disposal boundary. | Both sequences are consumed and all pilot flags false. No automatic observer refactor, additional engine process, positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -125,29 +126,41 @@ The [review, exact record and decision](M1_SHIPPING_NULL_REVIEW.md) retain all
 measurements and prohibit a fitted correction, section removal, callback
 normalization, cycle/time conversion or adding thread totals to process demand.
 
-**Next bounded task: implement the common-observer attribution prerequisite**
-`m1-shipping-observer-attribution-1`, following the full
-[prospective design and acceptance checks](M1_SHIPPING_NULL_REVIEW.md#prospective-decision).
-Add a separate opt-in mode/inventory and bounded native ledger for preparation,
-callback observer groups, per-tick witness/evidence handling, report closure and
-the existing writer, retaining exact raw spans, errors, ownership and full drain.
-This is perturbing attribution evidence, not a shipping-cost estimator. Preserve
-all v1/v2 IDs, readers and verdicts, the same 1% requirement, complete lifecycle,
-32³/one-worker route/work/settings and operational limits. Native changes need a
-new source key, matching editor/debug/release binaries and a portable candidate.
+**Completed bounded attribution task.** Method
+`m1-shipping-observer-attribution-1` has a separate inventory, native raw ledger,
+writer witnesses, exact readers and matching portable candidate. All 188 Python
+regressions and nine sanitizer suites pass. Real editor/release API checks and
+twenty saved semantic faults are rejected on each platform. The only process completed five
+valid trials, preserving every original work and operation guard. The eighty raw
+files and original audit reproduce without an engine. Read
+[the exact proof](evidence/m1-shipping-observer-cloud-2026-10-19.json).
 
-After the ledger/fault controls and required integration/package checks pass,
-permit one predeclared cloud release process: one warm-up plus four bare
-attribution trials, 32 MiB additional trace cap per trial and 1,500 s process
-timeout. Stop at the first failed guard, retain the partial prefix and never
-retry or pad. Stop at five even if its descriptive null becomes usable; never
-create a positive request or append positive/shipping trials. Independently
-reconcile spans, nesting, thread identity, worker exit, counts, bytes and all
-original work/operation guards. Keep cost inconclusive, qualification false and
-target not run. Review the result before any observer refactor or new cost
-sequence. This probe's implementation is staged; matching API/package checks and
-the one process remain pending. No laptop action or M2 expansion follows. Use
-**GPT-6.1 Sol Max**. The historical v1/v2 pilot inputs stay false.
+Captured main scopes span 16.251262–16.346668% of complete process demand; these
+are not incremental optional shipping costs. In the two preparation pairs,
+process midpoint changes are −171,038,473 / +170,207,007 cycles while captured
+main changes are −812,875 / +3,114,940. Terrain-worker demand and engine work
+between readiness polls remain unisolated. Added recorder allocation disposal
+occurs after its originating final boundary and has unavailable cost. The
+descriptive range [−0.791083678%, +0.997153998%] has width 1.788237675%; this
+perturbing mode cannot qualify cost regardless of that range. No positive
+request or positive/shipping trials ran. Do not infer a causal per-frame cost,
+fit a correction, normalize callbacks, remove preparation or subtract thread
+spans from the process total.
+
+**Next bounded task: prospective preparation-demand design decision, saved
+evidence only.** Use the committed trials/spans to specify a narrow way to
+distinguish native terrain-worker CPU demand from engine work between readiness
+polls. Explicitly define ownership, counter errors, perturbation, recorder
+allocation/disposal boundaries, trace/work limits, controls and a finite stop
+rule. Explain what a future observation could identify and what would remain
+unavailable. Choose no observer refactor or new instrumentation family merely
+because a captured owner is expensive. No engine process is authorized by this
+design task; any future implementation/finite probe needs its own prospective
+decision. Preserve the numerical 1% requirement, complete lifecycle, old v1/v2
+IDs/readers/verdicts, identical 32³/one-worker work/settings and all operational
+limits. Native changes still require a new key, matching editor/debug/release
+and portable candidate. No laptop action or M2 expansion follows. Use
+**GPT-6.1 Sol Max**. All three pilot inputs remain false.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
@@ -194,6 +207,20 @@ this register. Survival gameplay stays at M4 and later.
 
 ## Evidence and verification routing
 
+Latest attribution runtime source: `1146807240df15bd32c798f77de266b71b6683bf`,
+successful CI `39179723675`, exported build
+`f0b23851d57f3acbacd5f2ad844106a91b5be039`, native key
+`7a22ed313f593db4b88a75cd7abfb3031f5c60ffbbe7e7161d85733dac468571`.
+[Player artifact `12157020368`](https://github.com/dponcho/voxel-survival-game/actions/runs/39179723675/artifacts/12157020368):
+30,259,378-byte inner ZIP, SHA-256
+`5c7bdd5e6fe77b0388926f95b0f3cb5e80029152a6544247d619cc3d78f9b8f4`.
+The [proof record](evidence/m1-shipping-observer-cloud-2026-10-19.json) retains
+all exact trial data, eighty raw-file identities, audits and sampled owners.
+CI `39165715618` remains a failed preflight before any attribution launch; the
+[reader-correction record](evidence/m1-observer-preflight-reader-2026-10-19.json)
+retains its original idle segments and broader failures. Source/native/runtime
+checks passed after correction; do not rerun either stopped route for prose.
+
 Latest v2 runtime: `7153ee46cb42ae925e08d48b2973d12adf4c58ee`, successful CI
 `39088740702`, exported build `41aa6e1cee6d3fea3a5e16d3c64e46fc8c1221eb`.
 Native key: `9a92d280a853f8982e65a44b27c5ded11b7888883fb132686b5fd3acd31922cd`.
@@ -210,8 +237,8 @@ raw-file integrity; the original readers remain unchanged.
 method controls, both counter capability smokes, required integration/offline
 checks, eight self-tests and 100 PCK entries pass. The preceding QA passed 162
 Python tests and exactly reproduced downloaded Windows/Linux results without an engine.
-All 50 prior + 24 counter + 14 v2 saved faults are rejected. The latest candidate
-has no broader operation overruns; current 16³ release H2 edit p95 remains failed
+All 50 prior + 24 counter + 14 v2 saved faults are rejected. That v2 candidate
+has no broader operation overruns in that v2 run; its 16³ release H2 edit p95 remains failed
 at 166 / 173 ms, and full-height baselines retain 520 alarms each. Prepared cases
 have zero alarms and all 288 submitted edits. Preserve historical failures too.
 No runtime rerun follows from a QA/evidence-only change.

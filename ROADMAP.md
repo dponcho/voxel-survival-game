@@ -102,9 +102,18 @@ stopped before positive/shipping quartets. The
 [saved null review and decision](docs/M1_SHIPPING_NULL_REVIEW.md) are now complete:
 the raw quartet cannot meet zero containment and strict <1% width together, and
 recorded native work matches while common observer attribution is incomplete.
-The next task implements a separate bounded observer-attribution prerequisite,
-with at most one five-trial bare cloud probe and no shipping continuation,
-automatic retry or laptop action. M1 remains blocked.
+The separate bounded observer-attribution prerequisite now passes CI
+`39179723675` with matching Windows binaries, a portable candidate and independent
+Windows/Linux audits. All five trials pass work/operation/attribution guards;
+204,693 spans and fifteen joined writers reconcile. Recorded native work is
+identical by section, but the larger preparation process variation is not
+isolated by captured observer scopes. The descriptive width is 1.788237675%;
+the perturbing mode cannot qualify optional cost in any event. The one process
+is consumed and all pilot flags are false. The next task is a saved-evidence
+prospective preparation-demand design decision, including recorder disposal
+boundaries. No observer refactor, new route, laptop action or M2 expansion follows
+automatically. [Result and exact candidate](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result).
+M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

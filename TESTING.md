@@ -455,15 +455,13 @@ tests cover incompatible zero/width requirements, strict boundaries, cancellatio
 invalid trials, work counters, raw tampering and escaping links. No runtime suite
 is repeated for this QA/review-only increment.
 
-The chosen next implementation is a separate bounded native observer-attribution
-ledger and opt-in mode with its own inventory. After native fault controls and
-matching binaries/integration/package checks, its one predeclared cloud process
-may complete at most warm-up + four bare trials. Trace overflow or any failed
-guard stops the prefix. Stop after five regardless of descriptive null usability;
-no positive request or shipping continuation. Independent span/nesting/thread/
-worker-exit/count/byte audits are required. Implementation is staged; matching
-API/probe verification remains pending. Cost remains inconclusive and all original limits apply. No target
-qualification, laptop action or M2 expansion follows.
+The chosen bounded native observer-attribution ledger and separate opt-in mode
+are now verified in CI `39179723675`. Its one declared cloud process completes
+warm-up + four bare trials, with every work/operation/attribution guard passing.
+It stops at five with no positive request or shipping continuation. Independent
+span/nesting/thread/worker-exit/count/byte audits pass on Windows and Linux.
+Cost remains inconclusive and all original limits apply. No target qualification,
+laptop action or M2 expansion follows.
 
 ### Common-observer attribution prerequisite
 
@@ -484,3 +482,26 @@ declaration. Every original work/operation guard remains active. Twenty saved
 semantic corruptions and a separate downloaded Linux replay execute no engine.
 Read [scope, perturbation and acceptance](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md).
 This prerequisite cannot qualify cost, the HD 620 or M1.
+
+CI `39179723675` passes all 188 Python regressions and nine native sanitizer
+suites, both real matching API checks, required integration/export/offline/package
+checks, eight self-tests and 105 PCK entry hashes. The five trials retain 204,693
+spans and fifteen joined writers; all eighty raw files reproduce without an
+engine. Twenty saved semantic faults are rejected on each platform. The
+one-shot request is disabled in `f48992c`; all pilot inputs remain false.
+
+Earlier CI `39165715618` stops before the route in its candidate audit. The
+[retained idle segments](docs/evidence/m1-observer-preflight-reader-2026-10-19.json)
+expose a reader defect: before any terrain operation, a native frame's emitted
+allowance is only the current configuration. Two regressions distinguish that
+idle snapshot from limits latched by real work, including zero-duration
+upload/deletion/data application across later idle segments. Used allowances,
+cumulative work, payload and individual limits remain strict. The original
+downloaded candidate passes the corrected saved audit without another engine.
+
+The attribution spans do not isolate the larger preparation process variation.
+Added trace allocation disposal also occurs outside its originating trial's
+final boundary, with unavailable cost. The saved next task is a prospective
+preparation-demand design decision, not another runtime sequence. The broader
+current candidate retains 1,332 / 756 µs operation failures; the earlier
+preflight's 1,088 / 802 µs and all historical failures remain unchanged.

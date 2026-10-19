@@ -233,8 +233,16 @@ readers. The five-trial null prefix passes work/operation guards, but range widt
 controls. Positive/shipping quartets were not run, and no shipping-cost estimate
 is available. [The saved review and decision](docs/M1_SHIPPING_NULL_REVIEW.md)
 retain this failed result and select a separate bounded common-observer
-attribution prerequisite before another qualification sequence. Its future bare
-probe cannot create a positive request, append shipping trials or qualify cost.
+attribution prerequisite before another qualification sequence. That prerequisite
+now completes five valid bare/warm-up trials in CI `39179723675`, with matching
+Windows binaries/package and independently reproduced span/worker evidence.
+Its descriptive width is 1.788237675%; it cannot qualify cost in any event.
+Preparation process variation remains outside the captured common-observer
+scopes, and later disposal of the added trace allocation is outside its
+originating trial boundary. Complete observer cost remains unavailable.
+[The result and saved decision](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result)
+stop the consumed process. No positive/shipping trial, automatic observer
+refactor, additional cost sequence, numerical relaxation or laptop action follows.
 Counter/API capability and evidence integrity do not qualify sensitivity or cost.
 M1 stays blocked.
 The linked v2 decision defines the current finite method and stop rule; the
