@@ -56,6 +56,32 @@ class TerrainBudgets(unittest.TestCase):
         self.assertIn('Cumulative frame upload payload exceeded its budget',reasons(phase))
         self.assertIn('Individual upload payload exceeded 256 KiB',reasons(phase))
 
+    def test_idle_phase_configuration_does_not_latch_an_unused_allowance(self):
+        a,pa=evidence(upload=0,deletion=0,payload=0)
+        a.update(upload_count=0,deletion_count=0,end_usec=700)
+        b,pb=copy.deepcopy(a),copy.deepcopy(pa)
+        b.update(phase=2,start_usec=701,end_usec=1400,
+                 frame_time_limit_usec=2000,frame_upload_limit_bytes=1048576)
+        state={};reconcile_rows([a],pa,state)
+        self.assertEqual(reconcile_rows([b],pb,state)['outcome'],'passed')
+
+    def test_zero_duration_operation_latches_allowance_through_idle_segments(self):
+        for kind in ('upload','deletion','data_apply'):
+            with self.subTest(kind=kind):
+                a,pa=evidence(upload=0,deletion=0,payload=0)
+                a.update(upload_count=0,deletion_count=0,end_usec=700)
+                a[kind+'_count']=1
+                if kind=='data_apply':pa['data_apply'].update(count=1,max_start_usec=0,max_kind=4)
+                b,pb=evidence(upload=0,deletion=0,payload=0)
+                b.update(upload_count=0,deletion_count=0,phase=2,start_usec=701,end_usec=1400)
+                c,pc=copy.deepcopy(b),copy.deepcopy(pb)
+                c.update(phase=3,start_usec=1401,end_usec=2100,
+                         frame_time_limit_usec=2000,frame_upload_limit_bytes=1048576)
+                if kind=='data_apply':a['data_apply_max_start_usec']=10;pa['data_apply']['max_start_usec']=10
+                state={};reconcile_rows([a],pa,state);reconcile_rows([b],pb,state)
+                with self.assertRaisesRegex(RuntimeError,'Same-frame allowance increased'):
+                    reconcile_rows([c],pc,state)
+
     def test_unavailable_truncated_and_fabricated_metrics_do_not_pass(self):
         row,phase=evidence(upload=1,deletion=0)
         for fault in ('null','missing','nested','clock','aggregate','budget'):

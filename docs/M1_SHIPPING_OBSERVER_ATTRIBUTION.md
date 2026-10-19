@@ -3,21 +3,34 @@
 Method `m1-shipping-observer-attribution-1`; inventory
 `m1-shipping-observer-inventory-1`; underlying policy `m1-shipping-diagnostics-2`.
 This implements the [saved-review decision](M1_SHIPPING_NULL_REVIEW.md#prospective-decision).
-**Implementation checkpoint; Windows/API/probe evidence is pending.**
+**Implementation checkpoint; matching Windows/API controls pass; route pending.**
 M1 remains blocked, optional shipping cost inconclusive and target not run.
 No laptop action is requested.
 
 The native checkpoint `e97dcd76b0eb9df6a7e174b9ab77e9cdf99a7788` started
 [CI 39163145683](https://github.com/dponcho/voxel-survival-game/actions/runs/39163145683).
-Its static checks and nine native sanitizer suites pass; matching binaries are
-being built. The native key is
+That run passes static checks, all nine native sanitizer suites, matching
+editor/debug/release builds and the required integration/package checks. The native key is
 `7a22ed313f593db4b88a75cd7abfb3031f5c60ffbbe7e7161d85733dac468571`.
-The separate runtime, reader and one-shot launcher are implemented in this next
-checkpoint. No attribution route has run yet. Do not infer an artifact or result
-from the native build alone.
+The separate runtime, reader and one-shot launcher are implemented at
+`062c6591e715a7934dc38cbb7a3ddfb219e64d85`. Its
+[CI 39165715618](https://github.com/dponcho/voxel-survival-game/actions/runs/39165715618)
+passes matching editor/release API controls (six spans, a joined writer and three
+native failure fixtures per binary), import/export and scenario checks. The
+independent candidate audit then fails on an ordinary terrain reader defect,
+before any attribution route launch. That failed run remains historical evidence.
+No attribution route has run yet.
 
-Current cloud-side Python checks pass 186 regressions, including 16 new observer
-reader/protocol tests. The implementation commit requests this one Actions
+The saved idle-frame evidence and the reader correction are retained in
+[the preflight record](evidence/m1-observer-preflight-reader-2026-10-19.json).
+An empty phase reports the configured allowance before any terrain operation
+latches it. The reader now distinguishes that snapshot from an allowance already
+used in the frame, including zero-duration operations. No runtime, budget or
+native input changes. The original downloaded candidate passes the corrected
+read-only audit; no engine executes during that recheck.
+
+Current cloud-side Python checks pass 188 regressions, including 16 new observer
+reader/protocol tests and two terrain-reader regressions. The correction requests the one Actions
 sequence; reusable/manual workflow inputs default to false. Disarm the one-shot
 request after its evidence is retained, without repeating the process.
 

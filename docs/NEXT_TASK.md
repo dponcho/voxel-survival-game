@@ -5,11 +5,15 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 requested while diagnostic controls and target gates remain unqualified.
 
 **Observer-attribution implementation in progress.** Native checkpoint
-`e97dcd76b0eb9df6a7e174b9ab77e9cdf99a7788` is building matching binaries in
+`e97dcd76b0eb9df6a7e174b9ab77e9cdf99a7788` passes matching binaries and required checks in
 [CI 39163145683](https://github.com/dponcho/voxel-survival-game/actions/runs/39163145683).
 Its static checks and all nine native sanitizer suites pass. The separate
-mode/reader/launcher are implemented; matching API/package checks and the one
-finite attribution process are still pending. Read
+mode/reader/launcher at `062c6591e715a7934dc38cbb7a3ddfb219e64d85` pass matching
+API controls and export/scenario checks. CI `39165715618` stops in the independent
+candidate audit on an idle-frame terrain-reader defect, before the attribution
+route. Its original downloaded evidence passes the corrected read-only audit;
+two regressions retain the defect and the strict used-allowance guard. The one
+finite attribution process remains pending after corrected Actions preflight. Read
 [the implementation and exact ownership boundaries](M1_SHIPPING_OBSERVER_ATTRIBUTION.md).
 No attribution runtime result or laptop action is claimed yet.
 

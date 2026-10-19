@@ -65,10 +65,15 @@ def reconcile_rows(rows, phase, state=None):
             require(row['frame_terrain_usec'] == used+work
                     and row['frame_upload_bytes_total'] == payload+row['upload_bytes'], 'Nested terrain work double-counted')
         require(row['frame_single_upload_bytes'] >= row['upload_max_bytes'], 'Largest payload lost behind a slower upload')
-        if previous:
+        # Native limits latch on the first terrain operation, including a
+        # zero-duration call. An entirely idle phase only reports its current
+        # configuration; that snapshot does not reserve the frame allowance.
+        if previous and previous['_budget_started']:
             require(row['frame_time_limit_usec'] <= previous['frame_time_limit_usec']
                     and row['frame_upload_limit_bytes'] <= previous['frame_upload_limit_bytes'], 'Same-frame allowance increased')
-        state[row['native_frame']] = row
+        started = any(row[k] for k in ('upload_count','deletion_count','data_apply_count',
+                                      'frame_terrain_usec','frame_upload_bytes_total','frame_single_upload_bytes'))
+        state[row['native_frame']] = dict(row, _budget_started=started or bool(previous and previous['_budget_started']))
     data = phase['data_apply']
     for key in ('count','usec'):
         require(data[key] == sum(r['data_apply_'+key] for r in rows), 'Data application phase sum mismatch')
