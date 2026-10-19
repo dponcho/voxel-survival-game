@@ -243,6 +243,13 @@ originating trial boundary. Complete observer cost remains unavailable.
 [The result and saved decision](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result)
 stop the consumed process. No positive/shipping trial, automatic observer
 refactor, additional cost sequence, numerical relaxation or laptop action follows.
+The [saved preparation decision](docs/M1_PREPARATION_DEMAND_DECISION.md) now
+reconciles direct shared main-thread bounds and inner root/gap unions. Most of
+the observed paired preparation change is in unowned main gaps, without any
+process/thread subtraction. This does not identify a particular engine owner,
+equal terrain-worker demand or observer-free cost. Explicit last-owner recorder
+disposal with bounded controls is the next capability; later direct native/main
+owner scopes and another finite process remain separately gated.
 Counter/API capability and evidence integrity do not qualify sensitivity or cost.
 M1 stays blocked.
 The linked v2 decision defines the current finite method and stop rule; the

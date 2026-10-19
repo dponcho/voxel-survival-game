@@ -499,9 +499,16 @@ upload/deletion/data application across later idle segments. Used allowances,
 cumulative work, payload and individual limits remain strict. The original
 downloaded candidate passes the corrected saved audit without another engine.
 
-The attribution spans do not isolate the larger preparation process variation.
-Added trace allocation disposal also occurs outside its originating trial's
-final boundary, with unavailable cost. The saved next task is a prospective
-preparation-demand design decision, not another runtime sequence. The broader
+The attribution spans alone do not isolate the larger preparation variation.
+The saved-only `preparation_demand_review.py` additionally verifies all 80 raw
+files, reproduces the old sequence audit, derives whole-main shared bounds and
+reconciles the exact inner same-thread root/gap union. Seven pure regressions
+cover large unsigned values, raw errors/identity/order, nesting, boundary snapshots,
+crossing spans and false owners. No engine runs; no cost verdict changes. Read
+[the evidence, reproduction command and prospective decision](docs/M1_PREPARATION_DEMAND_DECISION.md).
+All 195 pure regressions pass for this saved-only change.
+Recorder allocation disposal remains outside the old trial boundary. Next is a
+distinct disposal capability, meaningful failure/lifetime controls and matching
+Windows candidate only; no owner extension or route in that increment. The broader
 current candidate retains 1,332 / 756 µs operation failures; the earlier
 preflight's 1,088 / 802 µs and all historical failures remain unchanged.

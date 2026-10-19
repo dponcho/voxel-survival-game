@@ -109,9 +109,13 @@ Windows/Linux audits. All five trials pass work/operation/attribution guards;
 identical by section, but the larger preparation process variation is not
 isolated by captured observer scopes. The descriptive width is 1.788237675%;
 the perturbing mode cannot qualify optional cost in any event. The one process
-is consumed and all pilot flags are false. The next task is a saved-evidence
-prospective preparation-demand design decision, including recorder disposal
-boundaries. No observer refactor, new route, laptop action or M2 expansion follows
+is consumed and all pilot flags are false. The
+[saved preparation decision](docs/M1_PREPARATION_DEMAND_DECISION.md) now uses
+direct whole-main counter bounds and exact inner gaps to localize substantial
+preparation variation outside captured roots. Specific engine owners and
+terrain-worker demand remain unavailable. Next is an explicit recorder-disposal
+capability with finite controls and matching candidate only; four proposed owner
+scopes remain deferred. No new route, laptop action or M2 expansion follows
 automatically. [Result and exact candidate](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result).
 M1 remains blocked.
 

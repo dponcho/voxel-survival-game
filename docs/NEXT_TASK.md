@@ -14,9 +14,13 @@ isolated by captured observer spans. The descriptive null width is 1.788237675%;
 this perturbing mode cannot qualify cost in any event. The one-shot flag is
 disabled in `f48992c`; **do not repeat it**. Read
 [the result, exact candidate and saved next decision](M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result).
-The next task is a saved-evidence prospective design decision focused on
-unisolated preparation work and explicit recorder lifetime boundaries. No
-observer refactor, new cost sequence or laptop action follows automatically.
+**The saved preparation-demand decision is now complete.** Direct shared
+main-thread bounds and exact inner root/gap partitions localize substantial
+preparation variation to main-thread work outside captured roots. Specific
+engine owners and terrain-worker demand remain unavailable. The
+[decision and reproducible evidence](M1_PREPARATION_DEMAND_DECISION.md) select
+explicit recorder disposal as the next bounded native capability, with matching
+controls/candidate only. No new route or laptop action follows automatically.
 
 Read this register, `AGENTS.md`, active M1 in `ROADMAP.md`, and the relevant
 contract sections in `PERFORMANCE.md` / `TESTING.md`. Read historical experiment
@@ -48,7 +52,7 @@ cost qualification attempt. No engine ran for the review.
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
 | Complete synchronous terrain budget | Native/fault checks and independent audits pass. All fifteen observer phases pass in CI `39179723675`; its broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. The separate attribution prerequisite is complete in CI `39179723675`: five valid trials, exact span/worker reconciliation, descriptive width 1.788237675%. Preparation process variation remains unisolated; complete observer cost is unavailable. | Write the saved-evidence prospective design/measurement-policy decision below, focused on terrain-worker versus engine preparation demand and the recorder disposal boundary. | Both sequences are consumed and all pilot flags false. No automatic observer refactor, additional engine process, positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; specific owners, terrain-worker demand and complete observer cost remain unavailable. | Implement the distinct recorder-disposal capability and bounded controls below; produce matching binaries and a portable candidate. Four proposed owner scopes stay deferred. | Both sequences are consumed and all pilot flags false. No new route, positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -147,20 +151,30 @@ request or positive/shipping trials ran. Do not infer a causal per-frame cost,
 fit a correction, normalize callbacks, remove preparation or subtract thread
 spans from the process total.
 
-**Next bounded task: prospective preparation-demand design decision, saved
-evidence only.** Use the committed trials/spans to specify a narrow way to
-distinguish native terrain-worker CPU demand from engine work between readiness
-polls. Explicitly define ownership, counter errors, perturbation, recorder
-allocation/disposal boundaries, trace/work limits, controls and a finite stop
-rule. Explain what a future observation could identify and what would remain
-unavailable. Choose no observer refactor or new instrumentation family merely
-because a captured owner is expensive. No engine process is authorized by this
-design task; any future implementation/finite probe needs its own prospective
-decision. Preserve the numerical 1% requirement, complete lifecycle, old v1/v2
-IDs/readers/verdicts, identical 32³/one-worker work/settings and all operational
-limits. Native changes still require a new key, matching editor/debug/release
-and portable candidate. No laptop action or M2 expansion follows. Use
-**GPT-6.1 Sol Max**. All three pilot inputs remain false.
+**Completed saved preparation-demand decision.** The independent reader
+reproduces the original audit and all 80 raw file hashes without an engine.
+Whole-main preparation midpoint changes are −164,283,288 / +177,716,544 cycles,
+alongside process changes −171,038,473 / +170,207,007. Exact inner main gaps
+change −163,467,792 / +174,602,376 cycles; no thread/process subtraction or
+frame normalization is used. Seven focused regressions pass. Read
+[the ownership, lifetime, controls and finite future design](M1_PREPARATION_DEMAND_DECISION.md).
+
+**Next bounded task: explicit recorder-disposal capability and matching
+candidate, without a route.** Add a distinct native disposal API/witness that
+refuses active scopes, attached/live workers or foreign strong owners; after
+join/detach/seal/emission it must release the recorder and allocation with an
+independent destruction witness. Preserve immutable worker/trace evidence and
+failed prefixes. Keep the old finish API and v1/v2 modes/readers/verdicts intact;
+do not retrofit old evidence. Implement the decision's finite pure failure/lifetime
+controls and one new ≤5-second control per matching editor/release, retaining
+existing controls. Native changes require a new exact key, matching editor/debug/
+release, required integration/package checks and a portable candidate. No new
+owner scope, attribution/cost route, positive work or automatic repeat belongs
+to this increment. Keep all three pilot inputs false, numerical 1%, complete
+lifecycle, 32³/one-worker work/settings and all existing limits. Four narrowly
+specified future owner scopes remain deferred until disposal passes and their
+implementation/probe is explicitly selected. No laptop action or M2 expansion.
+Use **GPT-6.1 Sol Max**.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
