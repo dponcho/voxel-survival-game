@@ -2,8 +2,14 @@
 
 October 19, 2026. Implements the bounded capability selected in
 [the saved preparation decision](M1_PREPARATION_DEMAND_DECISION.md).
-Implementation is ready for cloud verification; no new Windows result is claimed
-at this checkpoint. M1 and optional diagnostic cost remain unqualified.
+Implementation `d1bb1320f41263ba3c0abd07886ce69e4d95336e` is published;
+[CI 39300074494](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494)
+has passed all 203 Python regressions and ten native sanitizer suites and is
+building the matching Windows binaries. Native key:
+`ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d`.
+No new Windows result is claimed at this checkpoint. M1 and optional diagnostic
+cost remain unqualified. Continue this existing run rather than rebuilding merely
+to resume verification.
 
 ## Capability and boundary
 

@@ -22,6 +22,17 @@ engine owners and terrain-worker demand remain unavailable. The
 explicit recorder disposal as the next bounded native capability, with matching
 controls/candidate only. No new route or laptop action follows automatically.
 
+**Disposal implementation is published and under verification.** Source
+`d1bb1320f41263ba3c0abd07886ce69e4d95336e`, native key
+`ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d`,
+[CI 39300074494](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494).
+All 203 pure regressions and ten native sanitizer suites pass; the new matching
+Windows build is still running at this checkpoint. Continue that run through
+the real disposal controls, integration/package and downloaded audits. Do not
+reimplement or rebuild merely to resume. No new candidate/runtime success is
+claimed yet; all three pilot inputs remain false. See
+[the capability and acceptance checks](M1_OBSERVER_DISPOSAL.md).
+
 Read this register, `AGENTS.md`, active M1 in `ROADMAP.md`, and the relevant
 contract sections in `PERFORMANCE.md` / `TESTING.md`. Read historical experiment
 records only when the active defect requires them. The full preceding narrative
