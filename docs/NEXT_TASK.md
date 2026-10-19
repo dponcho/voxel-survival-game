@@ -18,20 +18,21 @@ disabled in `f48992c`; **do not repeat it**. Read
 main-thread bounds and exact inner root/gap partitions localize substantial
 preparation variation to main-thread work outside captured roots. Specific
 engine owners and terrain-worker demand remain unavailable. The
-[decision and reproducible evidence](M1_PREPARATION_DEMAND_DECISION.md) select
-explicit recorder disposal as the next bounded native capability, with matching
-controls/candidate only. No new route or laptop action follows automatically.
+[decision and reproducible evidence](M1_PREPARATION_DEMAND_DECISION.md) selected
+explicit recorder disposal as a prerequisite, now verified below. No new route
+or laptop action follows automatically.
 
-**Disposal implementation is published and under verification.** Source
+**Explicit disposal capability is complete.** Source
 `d1bb1320f41263ba3c0abd07886ce69e4d95336e`, native key
 `ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d`,
 [CI 39300074494](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494).
-All 203 pure regressions and ten native sanitizer suites pass; the new matching
-Windows build is still running at this checkpoint. Continue that run through
-the real disposal controls, integration/package and downloaded audits. Do not
-reimplement or rebuild merely to resume. No new candidate/runtime success is
-claimed yet; all three pilot inputs remain false. See
-[the capability and acceptance checks](M1_OBSERVER_DISPOSAL.md).
+All 203 pure regressions on both platforms, ten native sanitizer suites,
+matching editor/debug/release, real disposal controls, integration/package and
+downloaded Windows/Linux audits pass. Both recorders are destroyed before their
+ending observations, retaining original traces and failure codes. Controls take
+3,930 / 3,163 µs and reject fifteen saved corruptions per binary. The
+[verified candidate, proof and next gate](M1_OBSERVER_DISPOSAL.md) are recorded.
+No attribution/cost route ran; all three pilot inputs remain false.
 
 Read this register, `AGENTS.md`, active M1 in `ROADMAP.md`, and the relevant
 contract sections in `PERFORMANCE.md` / `TESTING.md`. Read historical experiment
@@ -61,9 +62,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | Native/fault checks and independent audits pass. All fifteen observer phases pass in CI `39179723675`; its broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; specific owners, terrain-worker demand and complete observer cost remain unavailable. | Implement the distinct recorder-disposal capability and bounded controls below; produce matching binaries and a portable candidate. Four proposed owner scopes stay deferred. | Both sequences are consumed and all pilot flags false. No new route, positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific owners, terrain-worker demand and complete observer cost remain unavailable. | Implement the four specified preparation owner scopes under distinct method/inventory/raw version, with complete disposal, bounded controls and a matching candidate only. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -170,22 +171,40 @@ change −163,467,792 / +174,602,376 cycles; no thread/process subtraction or
 frame normalization is used. Seven focused regressions pass. Read
 [the ownership, lifetime, controls and finite future design](M1_PREPARATION_DEMAND_DECISION.md).
 
-**Next bounded task: explicit recorder-disposal capability and matching
-candidate, without a route.** Add a distinct native disposal API/witness that
-refuses active scopes, attached/live workers or foreign strong owners; after
-join/detach/seal/emission it must release the recorder and allocation with an
-independent destruction witness. Preserve immutable worker/trace evidence and
-failed prefixes. Keep the old finish API and v1/v2 modes/readers/verdicts intact;
-do not retrofit old evidence. Implement the decision's finite pure failure/lifetime
-controls and one new ≤5-second control per matching editor/release, retaining
-existing controls. Native changes require a new exact key, matching editor/debug/
-release, required integration/package checks and a portable candidate. No new
-owner scope, attribution/cost route, positive work or automatic repeat belongs
-to this increment. Keep all three pilot inputs false, numerical 1%, complete
-lifecycle, 32³/one-worker work/settings and all existing limits. Four narrowly
-specified future owner scopes remain deferred until disposal passes and their
-implementation/probe is explicitly selected. No laptop action or M2 expansion.
-Use **GPT-6.1 Sol Max**.
+**Completed disposal capability.** `observer_dispose()` refuses active/open,
+retained-owner and foreign-thread calls and witnesses last-owner destruction.
+It preserves failed prefixes and copies immutable state. The old finish API,
+v1/v2 modes, codecs/readers, native work, saves and historical verdicts remain.
+Both controls reclaim 33,555,256 bytes of requested ledger/vector storage;
+allocator/OS retention stays unavailable. The [self-contained proof](evidence/m1-observer-disposal-cloud-2026-10-19.json)
+replays both controls and fifteen faults per binary without an artifact or engine.
+
+**Next bounded task: four direct preparation owner scopes, controls and matching
+candidate only.** Implement the already specified generation, meshing,
+`VoxelEngine::process()` and `VoxelTerrain::process()` scopes from
+[the adopted design](M1_PREPARATION_DEMAND_DECISION.md#narrow-owner-extension-after-lifetime-capability-passes).
+Use method `m1-preparation-demand-attribution-1`, inventory
+`m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`; preserve old
+v1/v2 IDs, codecs/readers and verdicts. Reuse the bounded ledger and twelve
+original slots, adding only slots 13–16. Verify actual pool incarnation/OS-thread
+ownership, main nesting/union, raw unsigned errors, cross-boundary worker
+completion and attempt/completion counts without clipping or process/thread
+subtraction. Keep one terrain worker, eight lanes, depth eight and the 32 MiB
+wire cap; add no pool or broad engine profiler. Disabled paths take no new
+reads, locks or allocation.
+
+Wire the verified disposal capability into the new mode's complete lifecycle:
+allocation after start, drained scopes and joined/detached clients, unpublish,
+seal/emission, last-owner release, hashing and final boundary. Preserve failed
+prefixes; missing ownership/counters/lifetime proof invalidates attribution.
+Controls must exercise the real four entries, early returns, ownership reuse,
+section crossings, caps and cleanup, not synthetic slot calls alone. Native
+changes require a new exact key, matching editor/debug/release, required checks
+and a portable candidate. Implement the opt-in mode without running its route.
+Keep all three consumed pilot inputs false; any later one-process finite probe
+requires its own prospective declaration. Keep numerical 1%, complete lifecycle,
+identical 32³/one-worker work/settings and all existing limits. No laptop action
+or M2 expansion. Use **GPT-6.1 Sol Max**.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator

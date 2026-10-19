@@ -113,9 +113,12 @@ is consumed and all pilot flags are false. The
 [saved preparation decision](docs/M1_PREPARATION_DEMAND_DECISION.md) now uses
 direct whole-main counter bounds and exact inner gaps to localize substantial
 preparation variation outside captured roots. Specific engine owners and
-terrain-worker demand remain unavailable. Next is an explicit recorder-disposal
-capability with finite controls and matching candidate only; four proposed owner
-scopes remain deferred. No new route, laptop action or M2 expansion follows
+terrain-worker demand remain unavailable. Explicit disposal now passes CI
+`39300074494`: both real controls preserve failures and prove last-owner
+destruction, with matching Windows binaries/candidate and downloaded audits.
+[The proof](docs/M1_OBSERVER_DISPOSAL.md) selects the four already specified
+preparation owner scopes as the next controls/candidate implementation. A later
+finite route remains separately gated. No laptop action or M2 expansion follows
 automatically. [Result and exact candidate](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result).
 M1 remains blocked.
 

@@ -507,23 +507,25 @@ cover large unsigned values, raw errors/identity/order, nesting, boundary snapsh
 crossing spans and false owners. No engine runs; no cost verdict changes. Read
 [the evidence, reproduction command and prospective decision](docs/M1_PREPARATION_DEMAND_DECISION.md).
 All 195 pure regressions pass for this saved-only change.
-Recorder allocation disposal remains outside the old trial boundary. Next is a
-distinct disposal capability, meaningful failure/lifetime controls and matching
-Windows candidate only; no owner extension or route in that increment. The broader
-current candidate retains 1,332 / 756 µs operation failures; the earlier
+Recorder allocation disposal remains outside the old trial boundary. The distinct
+capability below now verifies release independently, preserving that old result.
+The preceding observer candidate retains 1,332 / 756 µs operation failures; the earlier
 preflight's 1,088 / 802 µs and all historical failures remain unchanged.
 
 ### Explicit recorder disposal capability
 
 The distinct `--observer-disposal-check` and `CairnProbe.observer_dispose()`
-implement the next capability; matching Windows verification is pending at the
-implementation checkpoint. Read [the scope and finite controls](docs/M1_OBSERVER_DISPOSAL.md).
+pass CI `39300074494` with a new matching editor/debug/release and portable
+candidate. Read [the result and self-contained replay](docs/M1_OBSERVER_DISPOSAL.md).
 The tenth native sanitizer suite verifies last-owner destruction, active/open/
 retained-owner refusal, allocation rejection and failed-prefix cleanup. Eight
 new reader cases bring the pure suite to 203 passing regressions. The control
 executes once per matching editor/release, with a five-second native cap and
 fifteen saved semantic corruptions. It retains actual joined-writer evidence,
 post-disposal trace bytes and explicit counter/cap/write failures. Downloaded
-candidate audits on both platforms require the same new source/native metadata
-and reproduced controls. Existing suites and all three disabled pilot inputs
-remain; no owner extension or route is part of this capability task.
+candidate audits on both platforms verify the same source/native metadata and
+reproduce both controls exactly. Fixtures take 3,930 / 3,163 µs, retain failure
+codes and reject fifteen corruptions per binary. All 203 pure regressions and
+ten full native sanitizer suites pass. The broader candidate retains a 905 µs
+deletion overrun and unqualified cost/target gates. Existing suites and all three
+disabled pilot inputs remain; no owner extension or route ran in this task.

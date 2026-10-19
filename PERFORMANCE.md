@@ -248,8 +248,13 @@ reconciles direct shared main-thread bounds and inner root/gap unions. Most of
 the observed paired preparation change is in unowned main gaps, without any
 process/thread subtraction. This does not identify a particular engine owner,
 equal terrain-worker demand or observer-free cost. Explicit last-owner recorder
-disposal with bounded controls is the next capability; later direct native/main
-owner scopes and another finite process remain separately gated.
+disposal now passes bounded controls and matching candidate checks in CI
+`39300074494`; [its proof](docs/M1_OBSERVER_DISPOSAL.md) retains failed prefixes
+and a destruction witness. This does not repair old trial boundaries or qualify
+complete observer cost. Next implement the four specified direct native/main
+owner scopes with complete disposal and controls; another finite process stays
+separately gated. The current broader candidate retains a 905 µs deletion
+overrun, with all preceding failures preserved.
 Counter/API capability and evidence integrity do not qualify sensitivity or cost.
 M1 stays blocked.
 The linked v2 decision defines the current finite method and stop rule; the

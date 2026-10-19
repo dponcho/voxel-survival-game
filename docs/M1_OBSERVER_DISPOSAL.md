@@ -2,14 +2,16 @@
 
 October 19, 2026. Implements the bounded capability selected in
 [the saved preparation decision](M1_PREPARATION_DEMAND_DECISION.md).
-Implementation `d1bb1320f41263ba3c0abd07886ce69e4d95336e` is published;
+Implementation `d1bb1320f41263ba3c0abd07886ce69e4d95336e` is verified;
 [CI 39300074494](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494)
-has passed all 203 Python regressions and ten native sanitizer suites and is
-building the matching Windows binaries. Native key:
+passes 203 Python regressions on both platforms, ten native sanitizer suites,
+matching Windows binaries, real disposal controls, required integration/package
+checks and downloaded Windows/Linux audits. Native key:
 `ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d`.
-No new Windows result is claimed at this checkpoint. M1 and optional diagnostic
-cost remain unqualified. Continue this existing run rather than rebuilding merely
-to resume verification.
+M1 and optional diagnostic cost remain unqualified. The
+[self-contained proof](evidence/m1-observer-disposal-cloud-2026-10-19.json)
+retains both original control reports, fourteen raw control files/checksums,
+exact candidate identity and reproduced verdicts.
 
 ## Capability and boundary
 
@@ -81,15 +83,67 @@ and Linux. No automatic control retry or route continuation is selected.
 
 ## Result and next gate
 
-Pending cloud verification and portable publication. Local focused/native checks
-pass; this executor's LeakSanitizer cannot inspect its process filesystem, so its
-local ASan/UBSan run disables only leak detection. CI retains full sanitizer
-settings. The full pure regression suite and cloud results are recorded on
-completion, along with exact source/native/artifact hashes.
+| Actual control | Editor | Release |
+| --- | ---: | ---: |
+| Complete fixture, µs (limit 5,000,000) | 3,930 | 3,163 |
+| Normal spans / lanes | 6 / 2 | 6 / 2 |
+| Requested ledger/vector bytes before release | 33,555,256 | 33,555,256 |
+| Destruction witness / owned storage after release | true / 0 | true / 0 |
+| Saved semantic corruptions rejected | 15 | 15 |
 
-A successful capability check will establish explicit recorder reclamation,
-not complete observer cost, stable preparation demand, target speed or M1.
-The previously specified four owner scopes remain deferred until an explicit next
-implementation/probe decision. Numerical 1%, operational limits, complete
-work/settings and all consumed pilot results remain unchanged. No laptop test
-is requested at this stage. Continue with GPT-6.1 Sol Max.
+Each normal trace remains readable at 1,192 bytes after destruction. Counter and
+cap failures retain their 232-byte prefixes and codes 4 / 1. The actual write
+failure retains code 7 with its missing trace explicitly unavailable. Refusals
+preserve state. Storage comprises 33,554,304 record-capacity bytes, 512 lane-
+capacity bytes and a 440-byte object; this does not measure OS memory reclamation.
+
+Both controls and their corruptions reproduce exactly on Windows, the downloaded
+Linux audit and the local saved reader. Existing counter/method/observer controls,
+required integration, eight self-tests, offline extractions, dependency checks
+and 107 PCK entry hashes pass. The native build took 122 minutes 21 seconds and
+is cached under the exact key. No attribution or shipping-cost route ran.
+The broader suite retains a **905 µs deletion** overrun; the preceding
+1,332 / 756 µs and all historical failures remain. This does not qualify complete
+observer cost, stable preparation demand, target speed or M1.
+
+| Published item | Exact identity |
+| --- | --- |
+| Exported source | `fe1cecec824fb6ce973ee278126d382f4a81dcf5` (PR merge of `d1bb132`) |
+| [Portable candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494/artifacts/12220471264) | Inner ZIP 30,260,192 bytes; SHA-256 `42ec54470844b27af1ec4d32a675a0f644ebdc13e6e8efa30c84caf0c852619e` |
+| Release executable | SHA-256 `61af76f7542be3d7747052ed3f6c5e52bc2b5978bb339f2f165efee63aa53a69` |
+| PCK | SHA-256 `158a6fff1978aa8b5cb82a8deb393069e992eacbc52b379d58511d736c8c29ff` |
+| [Matching native bundle](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494/artifacts/12219326396) | Editor/debug/release qualified independently; all three hashes are in the proof |
+| [Export evidence](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494/artifacts/12220746352) | Raw controls and Windows independent audit |
+| [Linux replay](https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494/artifacts/12220187625) | Identical downloaded verdicts; no engine executed |
+
+Next implement the four already specified preparation owner scopes under distinct
+method/inventory/raw version, with this disposal boundary, meaningful controls
+and a matching candidate only. Any later finite route needs its own prospective
+declaration. Numerical 1%, work/settings and limits remain unchanged; all three
+pilot inputs stay false. No laptop test or M2 expansion. Use GPT-6.1 Sol Max.
+
+## Replay the committed controls without artifacts or an engine
+
+The proof embeds all fourteen tiny raw files as exact hex. From the repository root:
+
+```bash
+python - <<'PY'
+import hashlib, json, sys, tempfile
+from pathlib import Path
+sys.path.insert(0, 'tools/qa')
+import observer_disposal as q
+p = json.loads(Path('docs/evidence/m1-observer-disposal-cloud-2026-10-19.json').read_text())
+with tempfile.TemporaryDirectory() as td:
+    folder = Path(td)
+    for name, item in p['raw_files'].items():
+        assert Path(name).name == name and '\\' not in name
+        data = bytes.fromhex(item['hex'])
+        assert len(data) == item['bytes'] and hashlib.sha256(data).hexdigest() == item['sha256']
+        (folder/name).write_bytes(data)
+    for label, report in p['control_reports'].items():
+        actual = q.validate(report, folder, p['candidate']['build'])
+        actual['saved_faults_rejected'] = q.mutations(report, folder, p['candidate']['build'])
+        assert actual == p['controls'][label]
+print('Both native controls and all saved corruptions reproduce; no engine.')
+PY
+```
