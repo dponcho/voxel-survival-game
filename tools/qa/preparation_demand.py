@@ -206,6 +206,14 @@ def validate(report, folder, build):
     cycles.sequence([n['process_start'], n['ledger']['emit_start'], n['ledger']['emit_end'],
                      n['release']['counter_start'], n['release']['counter_end'], n['process_end']])
     raw, rows = trace(folder/n['ledger']['file'], n['ledger'], n['ownership'])
+    require(n['ownership']['main_thread'] == n['process_start']['thread_id'] == n['process_end']['thread_id'],
+            'Control main identity detached from direct boundary observations')
+    process_upper = cycles.demand(n['process_start'], n['process_end'], 'process')[1]
+    require(all(int(lane['root_full_cycles']) <= process_upper for lane in raw['ownership']['lanes']),
+            'Direct lane exceeds enclosing process bound')
+    require(all(uint(n['process_start']['reads'][3]['wall_after_usec']) <= r['reads'][0]['wall_before_usec'] <=
+                r['reads'][3]['wall_after_usec'] <= uint(n['ledger']['emit_start']['reads'][0]['wall_before_usec'])
+                for r in rows), 'Control span escaped start or continued after drain/seal')
     disposal.disposal(n['release'], 'disposed')
     require(n['release']['failure_code'] == 0 and n['release']['storage_before']['record_count'] == len(rows), 'Release lost native records')
     counts = raw['ownership']['native']
@@ -239,7 +247,8 @@ def validate(report, folder, build):
             faults.append(dict(name=name, failure_code=code, trace_available=False)); continue
         data = p.read_bytes(); h, rs = decode(data, failed_cap=name == 'cap')
         require(h['failure_code'] == code and len(rs) == count and f['ledger']['trace_bytes'] == len(data) and
-                f['ledger']['closed'] is True, 'Fault prefix lost or padded')
+                f['ledger']['closed'] is True and all(f['ledger'][k] == v for k,v in h.items()),
+                'Fault prefix lost or padded')
         if code == 4:
             require(all(s['cycles'] is None and s['flags'] == 1 and s['error'] == 6 for s in rs[0]['reads']), 'Raw counter fault repaired')
         if code == 5: require(rs[0]['start_section'] == 0 and rs[0]['end_section'] == 1, 'Main crossing clipped')

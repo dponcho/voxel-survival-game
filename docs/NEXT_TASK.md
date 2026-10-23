@@ -182,6 +182,10 @@ replays both controls and fifteen faults per binary without an artifact or engin
 **Current bounded task: four direct preparation owner scopes, controls and matching
 candidate only. Implementation is staged; matching Windows CI and candidate remain pending.**
 Read [the implementation and finite acceptance checks](M1_PREPARATION_OWNER_SCOPES.md).
+Source `fcb1f2e`; [CI 39966730530](https://github.com/dponcho/voxel-survival-game/actions/runs/39966730530)
+passes the cloud static gate (213 regressions and eleven native sanitizer suites).
+Matching native compilation is still in progress; do not launch a duplicate build
+or any attribution route while waiting. The native key and live checkpoint are in the protocol.
 All 213 Python regressions and the three affected native ASan/UBSan suites pass locally.
 No route has run and all consumed pilot inputs remain false.
 

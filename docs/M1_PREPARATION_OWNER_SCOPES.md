@@ -87,6 +87,13 @@ three affected native ASan/UBSan suites pass locally. Local LeakSanitizer is
 unavailable under the executor's `/proc` restrictions; CI retains full sanitizer
 settings and all eleven suites.
 
+Source `fcb1f2e9e81f0377aed7edd73d01abb08da7ed81`, native key
+`a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100`,
+[CI 39966730530](https://github.com/dponcho/voxel-survival-game/actions/runs/39966730530).
+The cloud static gate now passes all 213 regressions and all eleven full sanitizer
+suites. The [live build checkpoint](evidence/m1-preparation-owner-build-checkpoint-2026-10-23.json)
+records the pending native compile without restarting it.
+
 Required CI parses the new mode, runs both new controls, rebuilds/requalifies
 all three exact-key Windows binaries, exports the portable player, retains all
 existing integration/offline checks and replays the downloaded candidate and
