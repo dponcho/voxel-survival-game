@@ -198,6 +198,12 @@ All 213 Python regressions and the three affected native ASan/UBSan suites pass 
 The [failed first preflight](evidence/m1-preparation-owner-preflight-2026-10-23.json)
 retains four actual scene-tree errors and all original raw control bytes. Native
 compilation passed, while editor controls correctly stopped before any export.
+A deterministic native admission-race regression also reproduced a worker
+waiting for the session lock across handover. The section/failure check is now
+repeated under that lock, before reads/registration/attempts. The new native key is
+`ae750bbdd0db95ce09ae5c5e3a423e6584d4af8bd08114254bb390a6c08d4256`; it
+supersedes the unfinished `030d60ff` build. The regression fails before and passes
+ASan/UBSan after the correction. Follow the replacement run, not the superseded key.
 No route has run and all consumed pilot inputs remain false.
 
 **Next bounded task: four direct preparation owner scopes, controls and matching

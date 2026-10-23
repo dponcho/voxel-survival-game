@@ -10,7 +10,8 @@ permissions:
   actions: read
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: false
+  # Supersede the known admission-race build; restored after this run starts.
+  cancel-in-progress: true
 jobs:
   static:
     runs-on: ubuntu-24.04

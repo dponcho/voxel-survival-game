@@ -125,6 +125,25 @@ sanitizer suites; matching native compilation is in progress. The new control
 also proves orphan rejection
 without allocating/publishing a recorder, and rejects twenty-one saved corruptions.
 
+## Admission lock correction
+
+A deterministic native regression reproduces a second preflight defect: the
+worker passed the optimistic preparation check, acquired its strong reference,
+then waited for the session lock while main changed the section. The original
+constructor admitted a section-1 record; the saved reader would reject it, but
+admission itself must be correct. The constructor now rechecks section/failure
+under the same lock used by handover, before any raw read, registration or
+attempt. The regression controls the interleaving with the existing bounded
+strong reference and asserts zero reads/attempts/records for the excluded call.
+It failed before the correction and passes ASan/UBSan after it.
+
+Native key `ae750bbdd0db95ce09ae5c5e3a423e6584d4af8bd08114254bb390a6c08d4256`
+supersedes the unfinished `030d60ff` build. A one-run concurrency setting stops
+that superseded native build so the corrected source can start its required
+checks immediately; the normal non-cancelling setting will be restored in the
+next documentation checkpoint. All pilot inputs remain false; no route is
+interrupted or launched. Matching binaries, controls and candidate remain pending.
+
 ## Run boundary and next decision
 
 Required CI has no preparation route input. All three consumed pilot flags stay

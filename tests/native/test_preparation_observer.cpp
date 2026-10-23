@@ -1,6 +1,7 @@
 #include "../../native/sandbox_world/core/preparation_observer.h"
 #include "../../native/sandbox_world/core/observer_disposal.h"
 #include <cassert>
+#include <chrono>
 #include <iostream>
 #include <thread>
 using namespace cairn;
@@ -53,6 +54,26 @@ int main() {
     s->ledger->set_section(1); release=true; cross.join();
     assert(s->counts[0].crossing==1 && s->counts[1].attempted==0);
     assert(unpublish_preparation(s,true,600)); s->ledger->seal(); assert(s->ledger->failure()==OBS_OK);
+    // Force the admission race: a worker has acquired its strong reference
+    // after the optimistic context check, but cannot take the session lock.
+    // Handover while holding that lock must exclude the call without reads.
+    for (int fault=0; fault<2; ++fault) {
+        s=make(); assert(publish_preparation(s));
+        const auto reads_before_race=calls.load();
+        std::unique_lock<std::mutex> handover(s->mutex);
+        std::thread raced([&] {
+            test_thread=2; PreparationPoolLifetime lifetime(&pool,0);
+            { PreparationScope excluded(PREPARATION_GENERATION); }
+        });
+        const auto race_deadline=std::chrono::steady_clock::now()+std::chrono::seconds(2);
+        while(s.use_count()<3 && std::chrono::steady_clock::now()<race_deadline) std::this_thread::yield();
+        assert(s.use_count()==3);
+        if (fault==0) s->ledger->set_section(1);
+        else s->ledger->fail(OBS_COUNTER);
+        handover.unlock(); raced.join();
+        assert(calls==reads_before_race && s->ledger->count()==0 && s->counts[0].attempted==0 && s->owner_count==0);
+        assert(s->ledger->failure()==(fault==0 ? OBS_OK : OBS_COUNTER) && unpublish_preparation(s,true,600));
+    }
     // Main section crossings and unregistered workers fail honestly.
     s=make(); assert(publish_preparation(s));
     { PreparationScope m(PREPARATION_ENGINE); s->ledger->set_section(1); }

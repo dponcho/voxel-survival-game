@@ -110,6 +110,12 @@ public:
                 preparation_published->ledger->failure() != OBS_OK) return;
         session = preparation_published;
         std::lock_guard<std::mutex> lock(session->mutex);
+        // Handover/failure can win while this constructor waits for the lock.
+        // Decline before any read, registration or attempt; section setters use
+        // this same mutex, so an admitted record starts in preparation.
+        if (session->ledger->context() != 0 || session->ledger->failure() != OBS_OK) {
+            session.reset(); return;
+        }
         thread = thread_reader();
         if (reader == native_observer_read) read = session->reader;
         if (slot < 13 || slot > 16) { session->ledger->fail(OBS_OWNER); session.reset(); return; }
