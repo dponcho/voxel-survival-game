@@ -1,0 +1,24 @@
+{
+  "schema": "cairn-preparation-owner-context-checkpoint-1",
+  "source_commit": "108c8e136eac84e784f8a9ab2d2b33884bcc7c8e",
+  "source_tree": "ccf1d923a9ddbc5ef64c8dfe851bc4442837dbce",
+  "native_key": "030d60ff7c04bed7fffab28511c1d79f10a251658baf05f98c0e864ba306dd69",
+  "ci_run": 39982108071,
+  "ci_url": "https://github.com/dponcho/voxel-survival-game/actions/runs/39982108071",
+  "status": "pending",
+  "preflight_run": 39966730530,
+  "preflight_reason": "Initial control allocated an orphan terrain; get_global_transform requires scene-tree membership. The correction supplies and proves the real in-tree context and explicitly refuses an orphan before publication.",
+  "pinned_requirement": {
+    "godot": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "path": "scene/3d/node_3d.cpp",
+    "function": "Node3D::get_global_transform() const",
+    "guard": "ERR_FAIL_COND_V(!is_inside_tree(), Transform3D());"
+  },
+  "local_affected_regressions": 10,
+  "required_pure_regressions": 213,
+  "required_native_sanitizer_suites": 11,
+  "saved_corruptions_per_binary": 21,
+  "route_processes": 0,
+  "laptop_action_required": false,
+  "qualified": false
+}

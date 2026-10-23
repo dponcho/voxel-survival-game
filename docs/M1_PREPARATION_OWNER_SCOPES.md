@@ -110,6 +110,9 @@ saved controls on Windows and Linux. These cloud checks and the candidate are
 
 Current fixture correction uses native key
 `030d60ff7c04bed7fffab28511c1d79f10a251658baf05f98c0e864ba306dd69`.
+Source `108c8e136eac84e784f8a9ab2d2b33884bcc7c8e`,
+[CI 39982108071](https://github.com/dponcho/voxel-survival-game/actions/runs/39982108071);
+[context correction checkpoint](evidence/m1-preparation-owner-context-checkpoint-2026-10-23.json).
 Its cloud verification is pending. The new control also proves orphan rejection
 without allocating/publishing a recorder, and rejects twenty-one saved corruptions.
 

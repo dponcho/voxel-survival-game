@@ -536,7 +536,7 @@ The distinct `--preparation-demand-check` exercises the four actual native entri
 real one-worker replacement, overload/early return, section handover, nested main
 ownership, UTF-8 writer join/detach and five failed-prefix/cleanup controls.
 The new `CAIRNOB2` reader preserves old codecs and checks attempts, completions,
-incarnations, raw counters and both object destructions; twenty saved corruptions
+incarnations, raw counters and both object destructions; twenty-one saved corruptions
 are rejected per matching binary. Ten pure cases bring the suite to 213; the
 eleventh native sanitizer suite covers publication, thread/lane reuse, crossing,
 depth/cap, failed counters and disposal. Required CI runs controls and the matching
