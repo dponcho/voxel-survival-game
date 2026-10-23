@@ -1,0 +1,123 @@
+{
+  "passed": true,
+  "build": {
+    "engine_inputs": "11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "game_commit": "23a5615f8f29cffa739da8cb8447d26c2e43bcaf",
+    "milestone": "M1",
+    "native_source_key": "11db4c9b8ea4d81f361faa9c32cfbd3ab7cb4c21e9053c7ccf0942e975b81d5d",
+    "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386",
+    "target_performance": "not_run",
+    "renderer": "gl_compatibility",
+    "engine_binaries": {
+      "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+      "editor.exe": "a3fdc470731d425f7e99fb1c6415faacde1073e57ff2848f1d03c5f2f5bc4c3c",
+      "template_debug.exe": "b59e30726ea1c6d3195bad78df9b7c2b157b2e2f4676dd2db34980d77918d5d8",
+      "template_release.exe": "9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35"
+    }
+  },
+  "portable_sha256": "7d0c3d08f68fa2b9c7f4ab5ba7b7fa91d1f74fd321d155b0af14a83b4f2e56fd",
+  "portable_bytes": 30038073,
+  "exe_sha256": "9fc689a2a78e75b6ee846d307925051d882fa417beb23b90af45636fe33fac35",
+  "pck_sha256": "243be0a1b1f9acbfa4678a5e3e83411a497f8ca88ddb704f599d496a716983d0",
+  "pck_entries": 54,
+  "player_archive_sha256": "ddca827f79cb26f45f6d1d4a95a5e57cbce754a46104601b09877c206e748c28",
+  "evidence_archive_sha256": "1e94418328364326e46a197a35343b8bfcdb91fc7f1108d23e20f8b2e97ea789",
+  "fixed_controls": 44,
+  "fixed_phases": 176,
+  "fixed_rows": 264852,
+  "fixed_json_bytes": 1765195,
+  "fixed_raw_bytes": 15133996,
+  "precision_controls": 28,
+  "precision_rows": 168596,
+  "smoke_folders": 10,
+  "scenarios": 98,
+  "native_phases": 284,
+  "operation_rows": 37330,
+  "frame_rows": 12871,
+  "edit_events": 94,
+  "target_qualified": false,
+  "milestone": "M1",
+  "task": "experimental_fixed_work_elapsed_count_sensitivity",
+  "status": "cloud_passed_target_unverified",
+  "evidence_scope": "public_cloud_only",
+  "implementation_commit": "34a92122704faa9953036dd4aee4995ed6e9f6c9",
+  "implementation_and_export_tree": "fb85f86f11bf493212f1411ce5cf641547a58b9b",
+  "ci": {
+    "run_id": 37707455386,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386",
+    "completed_at": "2026-10-08T00:33:11Z",
+    "conclusion": "success",
+    "jobs": {
+      "static": 113085112006,
+      "windows_native": 113085256870,
+      "windows_export": 113085546047
+    },
+    "python_regressions": 52,
+    "native_sanitizer_suites": 5,
+    "legacy_method_controls": 16,
+    "route_controls": 26,
+    "fresh_offline_extractions": 2
+  },
+  "artifacts": {
+    "player": {
+      "id": 11520043769,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520043769",
+      "archive_bytes": 29935383,
+      "archive_sha256": "ddca827f79cb26f45f6d1d4a95a5e57cbce754a46104601b09877c206e748c28",
+      "expires_at": "2026-11-07T00:32:47Z"
+    },
+    "export_evidence": {
+      "id": 11520791841,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520791841",
+      "archive_bytes": 9286174,
+      "archive_sha256": "1e94418328364326e46a197a35343b8bfcdb91fc7f1108d23e20f8b2e97ea789",
+      "expires_at": "2026-11-07T00:33:05Z"
+    },
+    "native_evidence": {
+      "id": 11520516452,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37707455386/artifacts/11520516452",
+      "archive_bytes": 12531,
+      "archive_sha256": "00c3201379129f5c4c117b602c9e0ae9cf0c4ee4871bf147e4df77a659eaed77",
+      "expires_at": "2027-01-06T00:22:51Z"
+    }
+  },
+  "checks": {
+    "archive_crc_and_safe_paths": true,
+    "artifact_and_portable_digests": true,
+    "x64_pe": true,
+    "all_pck_entry_md5_and_build_identity": true,
+    "native_inputs_and_template_hashes": true,
+    "native_game_offline_selftest_reports": 8,
+    "fixed_work_exact_arithmetic_classifications_and_nulls": true,
+    "fixed_work_phase_boundaries_and_streamed_saved_rows": true,
+    "old_control_expectations_preserved": true,
+    "actual_native_frame_edit_and_finalization_reconciliation": true
+  },
+  "bounds": {
+    "control_reports": 44,
+    "raw_files": 176,
+    "raw_bytes_max": 67108864,
+    "json_bytes_max": 3145728,
+    "clock_command_timeout_seconds": 60
+  },
+  "actual_calibration": {
+    "frame_rows": 1173,
+    "legacy_and_fixed_work_decisions": "inconclusive",
+    "later_sections": "unavailable",
+    "combined_finalization": "external_not_allocated"
+  },
+  "render_probe": "unavailable_hosted_opengl",
+  "qualification_policy_changed": false,
+  "hardware_noise_calibrated": false,
+  "causal_per_frame_cpu_gpu_probe_cost": null,
+  "causal_shared_total_diagnostic_overhead": null,
+  "target_side_action_now": "none",
+  "remaining_uncertainty": [
+    "HD 620 hardware noise and qualification",
+    "per-frame CPU/GPU critical-path sensitivity",
+    "shared instrumentation overhead",
+    "existing workload and operation failures remain unwaived"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "cairn-preparation-admission-checkpoint-1",
+  "source_commit": "2288a01f1b2786fda96775ab5ca1ff0fcbea3954",
+  "source_tree": "46160f4fa6d7a4e0ccb1ecd1a776bf3b164b0df6",
+  "native_key": "777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a",
+  "ci_run": 39998646163,
+  "ci_url": "https://github.com/dponcho/voxel-survival-game/actions/runs/39998646163",
+  "status": "static_checks_in_progress",
+  "local_affected_regressions": 10,
+  "local_native_asan_ubsan": "passed",
+  "admission_race": {
+    "before_header_sha256": "3c29c162b8b515e64583e38e451ea975cfa994aafe79078166a616aa8122c6de",
+    "reproduction_exit_code": 134,
+    "reproduction_assertion": "calls==reads_before_race && s->ledger->count()==0 && s->counts[0].attempted==0",
+    "after": "zero reads, attempts, owners and records after handover/first failure wins the session lock",
+    "interleaving": "Main holds the session lock; worker holds its acquired strong reference; main changes section or failure before releasing the lock."
+  },
+  "inactive_entry": "A different thread completes an excluded owner entry while publication is locked; no counter read or record.",
+  "superseded_runs": [
+    {
+      "id": 39982108071,
+      "native_key": "030d60ff7c04bed7fffab28511c1d79f10a251658baf05f98c0e864ba306dd69",
+      "outcome": "cancelled_before_controls",
+      "reason": "Reproduced admission race"
+    },
+    {
+      "id": 39997136063,
+      "native_key": "ae750bbdd0db95ce09ae5c5e3a423e6584d4af8bd08114254bb390a6c08d4256",
+      "outcome": "cancelled_before_controls",
+      "reason": "Inactive-section publication lock contract"
+    }
+  ],
+  "ci_concurrency": "Normal cancel-in-progress:false restored after the replacement run starts; cancelled superseded native builds only, no route was active.",
+  "required_pure_regressions": 213,
+  "required_native_sanitizer_suites": 11,
+  "route_processes": 0,
+  "laptop_action_required": false,
+  "qualified": false
+}

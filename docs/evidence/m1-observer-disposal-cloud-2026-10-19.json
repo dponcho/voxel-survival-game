@@ -1,0 +1,4895 @@
+{
+  "artifacts": [
+    {
+      "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220746352/zip",
+      "created_at": "2026-10-19T20:44:11Z",
+      "digest": "sha256:aeaa07d2322b538916a07339d6b05f6aedb22a9d5c058efc3a4c1dfbcdd34d5b",
+      "expired": false,
+      "expires_at": "2026-11-18T20:44:03Z",
+      "id": 12220746352,
+      "name": "Cairn-evidence-fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+      "size_in_bytes": 30472748,
+      "updated_at": "2026-10-19T20:44:11Z",
+      "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220746352",
+      "workflow_run": {
+        "head_branch": "codex/m1-engine-proof",
+        "head_repository_id": 1357754146,
+        "head_sha": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+        "id": 39300074494,
+        "repository_id": 1357754146
+      }
+    },
+    {
+      "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220471264/zip",
+      "created_at": "2026-10-19T20:42:24Z",
+      "digest": "sha256:d7bbefd5faaa8443ed092b1dafe913c0c5fbba65b4cc65463521dac041c6c2e5",
+      "expired": false,
+      "expires_at": "2026-11-18T20:42:22Z",
+      "id": 12220471264,
+      "name": "Cairn-windows-x86_64-fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+      "size_in_bytes": 30157312,
+      "updated_at": "2026-10-19T20:42:24Z",
+      "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220471264",
+      "workflow_run": {
+        "head_branch": "codex/m1-engine-proof",
+        "head_repository_id": 1357754146,
+        "head_sha": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+        "id": 39300074494,
+        "repository_id": 1357754146
+      }
+    },
+    {
+      "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220197356/zip",
+      "created_at": "2026-10-19T20:44:02Z",
+      "digest": "sha256:c95e9852ddeb0ca92031b0c038fcf48df80022b808ef8efcce1d0cb948e65995",
+      "expired": false,
+      "expires_at": "2026-11-18T20:43:41Z",
+      "id": 12220197356,
+      "name": "Cairn-symbols-fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+      "size_in_bytes": 685971936,
+      "updated_at": "2026-10-19T20:44:02Z",
+      "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220197356",
+      "workflow_run": {
+        "head_branch": "codex/m1-engine-proof",
+        "head_repository_id": 1357754146,
+        "head_sha": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+        "id": 39300074494,
+        "repository_id": 1357754146
+      }
+    },
+    {
+      "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220187625/zip",
+      "created_at": "2026-10-19T20:45:49Z",
+      "digest": "sha256:e730f2fdb7e22a090ad85f00543fda91d4af20fcb13de7f45ca23840834d5434",
+      "expired": false,
+      "expires_at": "2026-11-18T20:45:48Z",
+      "id": 12220187625,
+      "name": "Cairn-counter-saved-recheck-fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+      "size_in_bytes": 51020,
+      "updated_at": "2026-10-19T20:45:49Z",
+      "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12220187625",
+      "workflow_run": {
+        "head_branch": "codex/m1-engine-proof",
+        "head_repository_id": 1357754146,
+        "head_sha": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+        "id": 39300074494,
+        "repository_id": 1357754146
+      }
+    },
+    {
+      "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12219326396/zip",
+      "created_at": "2026-10-19T20:14:39Z",
+      "digest": "sha256:d4aeec9982338292725bc93c26f714f5c5e4e420af00625c6b2b7c1aec2c8313",
+      "expired": false,
+      "expires_at": "2027-01-17T18:08:43Z",
+      "id": 12219326396,
+      "name": "Cairn-native-windows-native-v2-ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+      "size_in_bytes": 1000684900,
+      "updated_at": "2026-10-19T20:14:39Z",
+      "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12219326396",
+      "workflow_run": {
+        "head_branch": "codex/m1-engine-proof",
+        "head_repository_id": 1357754146,
+        "head_sha": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+        "id": 39300074494,
+        "repository_id": 1357754146
+      }
+    },
+    {
+      "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12219181631/zip",
+      "created_at": "2026-10-19T20:14:40Z",
+      "digest": "sha256:97f03306bcf971bdada3711bf270ae08c5f266319ad6d78fca6c8090fde0bffa",
+      "expired": false,
+      "expires_at": "2027-01-17T18:08:43Z",
+      "id": 12219181631,
+      "name": "Cairn-native-evidence-fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+      "size_in_bytes": 80477,
+      "updated_at": "2026-10-19T20:14:40Z",
+      "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12219181631",
+      "workflow_run": {
+        "head_branch": "codex/m1-engine-proof",
+        "head_repository_id": 1357754146,
+        "head_sha": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+        "id": 39300074494,
+        "repository_id": 1357754146
+      }
+    }
+  ],
+  "candidate": {
+    "build": {
+      "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494",
+      "cpu_cycle_capability": {
+        "core_sha256": "3ae8741cdfd717edc75178df6cb82c63282c5c6bca98d7b04b861223d3bdfada",
+        "probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+        "runtime_sha256": "53320ed4e5dea5355c9cfdd64742ee9d1b92340a0e2a4159b64417c8dd82e2a8",
+        "schema": "cairn-cpu-cycle-capability-1"
+      },
+      "engine_binaries": {
+        "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+        "editor.exe": "8f02cefb57871a5b6be3378f308d23d3a2f27f42f6cf92d269adc7c32846bf35",
+        "template_debug.exe": "0784e3912cf1bfda5fba42c9304e5254052d80befd974adbd6def90b33026279",
+        "template_release.exe": "61af76f7542be3d7747052ed3f6c5e52bc2b5978bb339f2f165efee63aa53a69"
+      },
+      "engine_inputs": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+      "game_commit": "fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+      "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "milestone": "M1",
+      "native_source_key": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+      "observer_disposal": {
+        "native_sha256": {
+          "core/observer_disposal.h": "4063087d32dc8f4c4ff041bb49b2005c07072bed2a307ea05ff6a15906b7120f",
+          "core/observer_ledger.h": "fe80f7e281e9873bd71e14fdf8d824083d19966e365b4179ca957bbbaa77bd3d",
+          "godot/benchmark_probe.cpp": "2368127d2d92db4578a1ae6e63e583fc5cb4591f6b831c9164937cd358315faa",
+          "godot/benchmark_probe.h": "c9c10c52adcbfa0ef8aa0a9432e7da6b8c81a758bdf1d63c24c40cb811005ae2",
+          "godot/observer_disposal.cpp": "a0b05fc70d27b766ec204fb00c19f40e6cb33dac9fb57997d578675937f741ff",
+          "godot/observer_probe.cpp": "fe571845184839f17583944f134b3e3136fb8e4cd59b7b63cd3d1b14945ab77a",
+          "godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+          "godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+        },
+        "schema": "cairn-observer-disposal-1",
+        "sources_sha256": {
+          "m1_observer_disposal_tests.gd": "362f8ab7ab82ae696ca05f44f0adc2377adedb006879083132bdea9637eb976b",
+          "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+        }
+      },
+      "renderer": "gl_compatibility",
+      "shipping_cycles": {
+        "inventory_sha256": "0f8c8eca85edb4acbae93bf1c1b180f8119253ff83f5cc769ea5cab03063b1f7",
+        "method": "m1-shipping-cpu-cycles-1",
+        "native_dose_core_sha256": "c22f1ee3b469a61eb88453cff8d4fb40029a5dcabf2652a0d4102d01294d2036",
+        "native_probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+        "policy": "m1-shipping-diagnostics-2",
+        "sources_sha256": {
+          "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+          "m1_cycle_exact.gd": "f2b956c31c6e9fb2de0a902dd2986ff3844ddb257da7aa9caca722bf10635495",
+          "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+          "m1_shipping_cycles_method.gd": "66ba172c41e6ce68578755e7b2560788122695259fc95bd4986a65f00f906227",
+          "m1_shipping_cycles_runtime.gd": "f3cd711d6c81bd5784bda92933255a904f07045201d81c80cdec83b93ff1ea56",
+          "m1_shipping_cycles_tests.gd": "7ea4a37db205084f2ead456f4446b01016b33704c2863289d7b5f0522ae5127f",
+          "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+        }
+      },
+      "shipping_inventory_sha256": "e3b556c03bd80d3724f4391f5a736f3e4ab01277d43a4e1b39c611122b53882e",
+      "shipping_observer": {
+        "inventory_sha256": "00087cca6c0266bed5591d247aee9e6ed5b9978ed1c94e7baf3c91aba769ad5b",
+        "method": "m1-shipping-observer-attribution-1",
+        "native_sha256": {
+          "native/sandbox_world/core/observer_ledger.h": "fe80f7e281e9873bd71e14fdf8d824083d19966e365b4179ca957bbbaa77bd3d",
+          "native/sandbox_world/godot/benchmark_probe.cpp": "2368127d2d92db4578a1ae6e63e583fc5cb4591f6b831c9164937cd358315faa",
+          "native/sandbox_world/godot/benchmark_probe.h": "c9c10c52adcbfa0ef8aa0a9432e7da6b8c81a758bdf1d63c24c40cb811005ae2",
+          "native/sandbox_world/godot/observer_probe.cpp": "fe571845184839f17583944f134b3e3136fb8e4cd59b7b63cd3d1b14945ab77a",
+          "native/sandbox_world/godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+          "native/sandbox_world/godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+        },
+        "sources_sha256": {
+          "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+          "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+          "m1_shipping_observer_runtime.gd": "f7cf7129087561e01a3c0d12d69c06a8ac536d1835e3fd72e625b5a01360fb98",
+          "m1_shipping_observer_tests.gd": "d600893f0b78462ad03fea10f5f3123912a6ab218afd76b7f7b7e552dec818d6",
+          "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+        }
+      },
+      "shipping_sources_sha256": {
+        "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+        "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+        "m1_shipping_method.gd": "eedc8520deda34927d14ca7081b8ed30623333801f6e3093ff78dec1f6fe3921",
+        "m1_shipping_runtime.gd": "34d4f4fef280211552eed14ab42987ed7a61cca43ad65c2b6e898330dae6377d",
+        "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+      },
+      "target_performance": "not_run",
+      "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+    },
+    "exe_sha256": "61af76f7542be3d7747052ed3f6c5e52bc2b5978bb339f2f165efee63aa53a69",
+    "native_key": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+    "passed": true,
+    "pck_entries_md5_verified": 107,
+    "pck_sha256": "158a6fff1978aa8b5cb82a8deb393069e992eacbc52b379d58511d736c8c29ff",
+    "pe_imports_verified": 38,
+    "portable_bytes": 30260192,
+    "portable_sha256": "42ec54470844b27af1ec4d32a675a0f644ebdc13e6e8efa30c84caf0c852619e",
+    "published_download_roundtrip": true,
+    "qualified": false,
+    "self_tests_verified": 8,
+    "target_performance": "not_run"
+  },
+  "ci": {
+    "conclusion": "success",
+    "created_at": "2026-10-19T18:08:43Z",
+    "head_sha": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+    "html_url": "https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494",
+    "id": 39300074494,
+    "referenced_workflows": [
+      {
+        "path": "dponcho/voxel-survival-game/.github/workflows/windows-build.yml@fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+        "ref": "refs/pull/2/merge",
+        "sha": "fe1cecec824fb6ce973ee278126d382f4a81dcf5"
+      },
+      {
+        "path": "dponcho/voxel-survival-game/.github/workflows/engine.yml@fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+        "ref": "refs/pull/2/merge",
+        "sha": "fe1cecec824fb6ce973ee278126d382f4a81dcf5"
+      }
+    ],
+    "status": "completed",
+    "updated_at": "2026-10-19T20:45:53Z"
+  },
+  "ci_jobs": [
+    {
+      "conclusion": "success",
+      "id": 118222649438,
+      "logs_url": null,
+      "name": "static",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Packaging and cache regression tests",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Compile-check owned cloud scripts",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Native fixture checks with sanitizers",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Phase-local operation regression tests with sanitizers",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Edit visibility lifecycle tests with sanitizers",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Indexed mesh batch tests with sanitizers",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "World-space viewer demand tests with sanitizers",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Bounded mesh admission selection with sanitizers",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Exact cycle counter and failed-call controls with sanitizers",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Bounded native cycle dose and hard-cap controls with sanitizers",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Bounded observer ownership and raw-span controls with sanitizers",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicit observer disposal and retained-owner controls with sanitizers",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 29,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 30,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 31,
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "id": 118223354750,
+      "logs_url": null,
+      "name": "windows / native / native-binaries",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Identify native sources, pins and compilation recipe",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Restore exact native cache",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Reuse the identical pre-redesign native build",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify cache or restore a qualified native artifact",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install compiler only for a native source build",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build editor and matching Windows templates",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Qualify editor and both templates independently of gameplay",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Include the pinned packaging inspector",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Save verified native bundle",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Publish reusable native bundle",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Preserve native build and reuse evidence",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 27,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 28,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 29,
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "id": 118283321949,
+      "logs_url": null,
+      "name": "windows / export-and-test",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Download qualified native binaries from this run",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify exact native identity and every bundle file",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Windows packaging regression tests",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Import, export and verify game scenarios",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "One bounded counter capability smoke per matching editor and release",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify collision, edits, eviction and all four profiles",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Audit portable distribution and test offline extractions",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload portable player ZIP and identity",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Download published player for independent verification",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Download native qualification evidence for independent verification",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Download the preceding public cloud contract baseline once",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Independently verify downloaded candidate and complete saved admission evidence",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Upload separate symbols",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Preserve export evidence even after failure",
+          "number": 17,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 33,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 34,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "id": 118297445647,
+      "logs_url": null,
+      "name": "windows / counter-artifact-recheck",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Reproduce all saved candidate/counter checks without an engine",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "conclusion": "skipped",
+      "id": 118297448371,
+      "logs_url": null,
+      "name": "windows / saved-artifact-recheck",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": null
+    },
+    {
+      "conclusion": "skipped",
+      "id": 118297448735,
+      "logs_url": null,
+      "name": "windows / shipping-pilot",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": null
+    },
+    {
+      "conclusion": "skipped",
+      "id": 118298232736,
+      "logs_url": null,
+      "name": "windows / shipping-cycles-pilot",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": null
+    },
+    {
+      "conclusion": "skipped",
+      "id": 118298232844,
+      "logs_url": null,
+      "name": "windows / shipping-observer-pilot",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": null
+    },
+    {
+      "conclusion": "skipped",
+      "id": 118298233404,
+      "logs_url": null,
+      "name": "windows / shipping-cycles-saved-recheck",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": null
+    },
+    {
+      "conclusion": "skipped",
+      "id": 118298234302,
+      "logs_url": null,
+      "name": "windows / shipping-observer-saved-recheck",
+      "run_id": 39300074494,
+      "status": "completed",
+      "steps": null
+    }
+  ],
+  "control_reports": {
+    "editor": {
+      "build": {
+        "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494",
+        "cpu_cycle_capability": {
+          "core_sha256": "3ae8741cdfd717edc75178df6cb82c63282c5c6bca98d7b04b861223d3bdfada",
+          "probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+          "runtime_sha256": "53320ed4e5dea5355c9cfdd64742ee9d1b92340a0e2a4159b64417c8dd82e2a8",
+          "schema": "cairn-cpu-cycle-capability-1"
+        },
+        "engine_binaries": {
+          "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+          "editor.exe": "8f02cefb57871a5b6be3378f308d23d3a2f27f42f6cf92d269adc7c32846bf35",
+          "template_debug.exe": "0784e3912cf1bfda5fba42c9304e5254052d80befd974adbd6def90b33026279",
+          "template_release.exe": "61af76f7542be3d7747052ed3f6c5e52bc2b5978bb339f2f165efee63aa53a69"
+        },
+        "engine_inputs": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+        "game_commit": "fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+        "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "milestone": "M1",
+        "native_source_key": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+        "observer_disposal": {
+          "native_sha256": {
+            "core/observer_disposal.h": "4063087d32dc8f4c4ff041bb49b2005c07072bed2a307ea05ff6a15906b7120f",
+            "core/observer_ledger.h": "fe80f7e281e9873bd71e14fdf8d824083d19966e365b4179ca957bbbaa77bd3d",
+            "godot/benchmark_probe.cpp": "2368127d2d92db4578a1ae6e63e583fc5cb4591f6b831c9164937cd358315faa",
+            "godot/benchmark_probe.h": "c9c10c52adcbfa0ef8aa0a9432e7da6b8c81a758bdf1d63c24c40cb811005ae2",
+            "godot/observer_disposal.cpp": "a0b05fc70d27b766ec204fb00c19f40e6cb33dac9fb57997d578675937f741ff",
+            "godot/observer_probe.cpp": "fe571845184839f17583944f134b3e3136fb8e4cd59b7b63cd3d1b14945ab77a",
+            "godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+            "godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+          },
+          "schema": "cairn-observer-disposal-1",
+          "sources_sha256": {
+            "m1_observer_disposal_tests.gd": "362f8ab7ab82ae696ca05f44f0adc2377adedb006879083132bdea9637eb976b",
+            "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+          }
+        },
+        "renderer": "gl_compatibility",
+        "shipping_cycles": {
+          "inventory_sha256": "0f8c8eca85edb4acbae93bf1c1b180f8119253ff83f5cc769ea5cab03063b1f7",
+          "method": "m1-shipping-cpu-cycles-1",
+          "native_dose_core_sha256": "c22f1ee3b469a61eb88453cff8d4fb40029a5dcabf2652a0d4102d01294d2036",
+          "native_probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+          "policy": "m1-shipping-diagnostics-2",
+          "sources_sha256": {
+            "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+            "m1_cycle_exact.gd": "f2b956c31c6e9fb2de0a902dd2986ff3844ddb257da7aa9caca722bf10635495",
+            "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+            "m1_shipping_cycles_method.gd": "66ba172c41e6ce68578755e7b2560788122695259fc95bd4986a65f00f906227",
+            "m1_shipping_cycles_runtime.gd": "f3cd711d6c81bd5784bda92933255a904f07045201d81c80cdec83b93ff1ea56",
+            "m1_shipping_cycles_tests.gd": "7ea4a37db205084f2ead456f4446b01016b33704c2863289d7b5f0522ae5127f",
+            "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+          }
+        },
+        "shipping_inventory_sha256": "e3b556c03bd80d3724f4391f5a736f3e4ab01277d43a4e1b39c611122b53882e",
+        "shipping_observer": {
+          "inventory_sha256": "00087cca6c0266bed5591d247aee9e6ed5b9978ed1c94e7baf3c91aba769ad5b",
+          "method": "m1-shipping-observer-attribution-1",
+          "native_sha256": {
+            "native/sandbox_world/core/observer_ledger.h": "fe80f7e281e9873bd71e14fdf8d824083d19966e365b4179ca957bbbaa77bd3d",
+            "native/sandbox_world/godot/benchmark_probe.cpp": "2368127d2d92db4578a1ae6e63e583fc5cb4591f6b831c9164937cd358315faa",
+            "native/sandbox_world/godot/benchmark_probe.h": "c9c10c52adcbfa0ef8aa0a9432e7da6b8c81a758bdf1d63c24c40cb811005ae2",
+            "native/sandbox_world/godot/observer_probe.cpp": "fe571845184839f17583944f134b3e3136fb8e4cd59b7b63cd3d1b14945ab77a",
+            "native/sandbox_world/godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+            "native/sandbox_world/godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+          },
+          "sources_sha256": {
+            "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+            "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+            "m1_shipping_observer_runtime.gd": "f7cf7129087561e01a3c0d12d69c06a8ac536d1835e3fd72e625b5a01360fb98",
+            "m1_shipping_observer_tests.gd": "d600893f0b78462ad03fea10f5f3123912a6ab218afd76b7f7b7e552dec818d6",
+            "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+          }
+        },
+        "shipping_sources_sha256": {
+          "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+          "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+          "m1_shipping_method.gd": "eedc8520deda34927d14ca7081b8ed30623333801f6e3093ff78dec1f6fe3921",
+          "m1_shipping_runtime.gd": "34d4f4fef280211552eed14ab42987ed7a61cca43ad65c2b6e898330dae6377d",
+          "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+        },
+        "target_performance": "not_run",
+        "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+      },
+      "native": {
+        "absent": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "468636034",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172057",
+                "wall_before_usec": "172040"
+              },
+              {
+                "available": true,
+                "cycles": "449443512",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172057",
+                "wall_before_usec": "172057"
+              },
+              {
+                "available": true,
+                "cycles": "449444149",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172057",
+                "wall_before_usec": "172057"
+              },
+              {
+                "available": true,
+                "cycles": "468671216",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172071",
+                "wall_before_usec": "172058"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "468511842",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172006",
+                "wall_before_usec": "171989"
+              },
+              {
+                "available": true,
+                "cycles": "449319419",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172006",
+                "wall_before_usec": "172006"
+              },
+              {
+                "available": true,
+                "cycles": "449320130",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172007",
+                "wall_before_usec": "172006"
+              },
+              {
+                "available": true,
+                "cycles": "468545408",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172020",
+                "wall_before_usec": "172007"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": false,
+          "failure_code": null,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "absent",
+          "storage_after": null,
+          "storage_before": null,
+          "strong_owners": null
+        },
+        "active": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "469503360",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172410",
+                "wall_before_usec": "172394"
+              },
+              {
+                "available": true,
+                "cycles": "449937311",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172411",
+                "wall_before_usec": "172410"
+              },
+              {
+                "available": true,
+                "cycles": "449938609",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172411",
+                "wall_before_usec": "172411"
+              },
+              {
+                "available": true,
+                "cycles": "469546088",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172428",
+                "wall_before_usec": "172411"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "469380100",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172360",
+                "wall_before_usec": "172338"
+              },
+              {
+                "available": true,
+                "cycles": "449816060",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172361",
+                "wall_before_usec": "172360"
+              },
+              {
+                "available": true,
+                "cycles": "449816869",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172362",
+                "wall_before_usec": "172361"
+              },
+              {
+                "available": true,
+                "cycles": "469428390",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172380",
+                "wall_before_usec": "172362"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "active",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 1,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 0
+          },
+          "strong_owners": 1
+        },
+        "attached": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "473363015",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174151",
+                "wall_before_usec": "174136"
+              },
+              {
+                "available": true,
+                "cycles": "451643391",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174152",
+                "wall_before_usec": "174151"
+              },
+              {
+                "available": true,
+                "cycles": "451644102",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174152",
+                "wall_before_usec": "174152"
+              },
+              {
+                "available": true,
+                "cycles": "473394963",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174164",
+                "wall_before_usec": "174152"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "473253941",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174107",
+                "wall_before_usec": "174090"
+              },
+              {
+                "available": true,
+                "cycles": "451534979",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174107",
+                "wall_before_usec": "174107"
+              },
+              {
+                "available": true,
+                "cycles": "451535665",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174107",
+                "wall_before_usec": "174107"
+              },
+              {
+                "available": true,
+                "cycles": "473287359",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174120",
+                "wall_before_usec": "174107"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "retained_owner",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 6
+          },
+          "strong_owners": 2
+        },
+        "faults": [
+          {
+            "ledger": {
+              "cap_bytes": 33554432,
+              "closed": true,
+              "emit_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "475300648",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "174945",
+                    "wall_before_usec": "174922"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453582862",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "174946",
+                    "wall_before_usec": "174945"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453583573",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "174946",
+                    "wall_before_usec": "174946"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "475343670",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "174962",
+                    "wall_before_usec": "174946"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "emit_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "474804964",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "174742",
+                    "wall_before_usec": "174721"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453087007",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "174743",
+                    "wall_before_usec": "174742"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453087595",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "174743",
+                    "wall_before_usec": "174743"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "474850853",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "174761",
+                    "wall_before_usec": "174743"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "failure_code": 4,
+              "file": "observer-disposal-controls-editor.json.bin-counter",
+              "lane_count": 1,
+              "passed": false,
+              "record_count": 1,
+              "schema": "cairn-observer-ledger-1",
+              "trace_bytes": 232
+            },
+            "name": "counter",
+            "release": {
+              "counter_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "475630148",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175092",
+                    "wall_before_usec": "175075"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453911161",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175093",
+                    "wall_before_usec": "175092"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453911945",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175093",
+                    "wall_before_usec": "175093"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "475662683",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175105",
+                    "wall_before_usec": "175093"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "counter_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "475450098",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175006",
+                    "wall_before_usec": "174989"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453730964",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175007",
+                    "wall_before_usec": "175006"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "453731675",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175007",
+                    "wall_before_usec": "175007"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "475484055",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175020",
+                    "wall_before_usec": "175007"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "disposed": true,
+              "failure_code": 4,
+              "qualified": false,
+              "schema": "cairn-observer-disposal-1",
+              "status": "disposed",
+              "storage_after": 0,
+              "storage_before": {
+                "lane_capacity_bytes": 512,
+                "lane_count": 1,
+                "object_bytes": 440,
+                "open_spans": 0,
+                "record_capacity_bytes": 33554304,
+                "record_count": 1
+              },
+              "strong_owners": 1
+            }
+          },
+          {
+            "ledger": {
+              "cap_bytes": 232,
+              "closed": true,
+              "emit_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "476244557",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175344",
+                    "wall_before_usec": "175321"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454527114",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175345",
+                    "wall_before_usec": "175344"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454527874",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175345",
+                    "wall_before_usec": "175345"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "476298580",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175366",
+                    "wall_before_usec": "175345"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "emit_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "475770801",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175150",
+                    "wall_before_usec": "175133"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454051447",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175150",
+                    "wall_before_usec": "175150"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454052157",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175150",
+                    "wall_before_usec": "175150"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "475802748",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175163",
+                    "wall_before_usec": "175151"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "failure_code": 1,
+              "file": "observer-disposal-controls-editor.json.bin-cap",
+              "lane_count": 1,
+              "passed": false,
+              "record_count": 1,
+              "schema": "cairn-observer-ledger-1",
+              "trace_bytes": 232
+            },
+            "name": "cap",
+            "release": {
+              "counter_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "476516899",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175455",
+                    "wall_before_usec": "175440"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454797324",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175456",
+                    "wall_before_usec": "175455"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454797937",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175456",
+                    "wall_before_usec": "175456"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "476548675",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175468",
+                    "wall_before_usec": "175456"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "counter_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "476404689",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175409",
+                    "wall_before_usec": "175393"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454685286",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175410",
+                    "wall_before_usec": "175409"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454685923",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175410",
+                    "wall_before_usec": "175410"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "476437494",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175423",
+                    "wall_before_usec": "175410"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "disposed": true,
+              "failure_code": 1,
+              "qualified": false,
+              "schema": "cairn-observer-disposal-1",
+              "status": "disposed",
+              "storage_after": 0,
+              "storage_before": {
+                "lane_capacity_bytes": 512,
+                "lane_count": 1,
+                "object_bytes": 440,
+                "open_spans": 0,
+                "record_capacity_bytes": 192,
+                "record_count": 1
+              },
+              "strong_owners": 1
+            }
+          },
+          {
+            "ledger": {
+              "cap_bytes": 33554432,
+              "closed": false,
+              "emit_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "476937637",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175628",
+                    "wall_before_usec": "175610"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "455218871",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175628",
+                    "wall_before_usec": "175628"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "455219532",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175629",
+                    "wall_before_usec": "175628"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "476970467",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175641",
+                    "wall_before_usec": "175629"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "emit_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "476686757",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175525",
+                    "wall_before_usec": "175508"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454967672",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175525",
+                    "wall_before_usec": "175525"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "454968284",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175526",
+                    "wall_before_usec": "175525"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "476734409",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175545",
+                    "wall_before_usec": "175526"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "failure_code": 7,
+              "file": "missing.bin",
+              "lane_count": 1,
+              "passed": false,
+              "record_count": 1,
+              "schema": "cairn-observer-ledger-1",
+              "trace_bytes": 0
+            },
+            "name": "write",
+            "release": {
+              "counter_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "477218627",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175743",
+                    "wall_before_usec": "175727"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "455499101",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175743",
+                    "wall_before_usec": "175743"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "455499763",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175743",
+                    "wall_before_usec": "175743"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "477250330",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175756",
+                    "wall_before_usec": "175743"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "counter_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "477069618",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "175682",
+                    "wall_before_usec": "175666"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "455350166",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "175682",
+                    "wall_before_usec": "175682"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "455350778",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "175682",
+                    "wall_before_usec": "175682"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "477111047",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "175699",
+                    "wall_before_usec": "175682"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "5272"
+              },
+              "disposed": true,
+              "failure_code": 7,
+              "qualified": false,
+              "schema": "cairn-observer-disposal-1",
+              "status": "disposed",
+              "storage_after": 0,
+              "storage_before": {
+                "lane_capacity_bytes": 512,
+                "lane_count": 1,
+                "object_bytes": 440,
+                "open_spans": 0,
+                "record_capacity_bytes": 33554304,
+                "record_count": 1
+              },
+              "strong_owners": 1
+            }
+          }
+        ],
+        "fixture_end_usec": "175820",
+        "fixture_limit_usec": "5000000",
+        "fixture_start_usec": "171890",
+        "foreign": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "473601522",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174249",
+                "wall_before_usec": "174233"
+              },
+              {
+                "available": true,
+                "cycles": "451881776",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174249",
+                "wall_before_usec": "174249"
+              },
+              {
+                "available": true,
+                "cycles": "451882438",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174250",
+                "wall_before_usec": "174249"
+              },
+              {
+                "available": true,
+                "cycles": "473633274",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174262",
+                "wall_before_usec": "174250"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "473494457",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174205",
+                "wall_before_usec": "174189"
+              },
+              {
+                "available": true,
+                "cycles": "451774760",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174205",
+                "wall_before_usec": "174205"
+              },
+              {
+                "available": true,
+                "cycles": "451775593",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174206",
+                "wall_before_usec": "174205"
+              },
+              {
+                "available": true,
+                "cycles": "473526258",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174218",
+                "wall_before_usec": "174206"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "retained_owner",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 6
+          },
+          "strong_owners": 2
+        },
+        "ledger": {
+          "cap_bytes": 33554432,
+          "closed": true,
+          "emit_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "473071661",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174011",
+                "wall_before_usec": "173986"
+              },
+              {
+                "available": true,
+                "cycles": "451354169",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174011",
+                "wall_before_usec": "174011"
+              },
+              {
+                "available": true,
+                "cycles": "451354904",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174012",
+                "wall_before_usec": "174011"
+              },
+              {
+                "available": true,
+                "cycles": "473114267",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174028",
+                "wall_before_usec": "174012"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "emit_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "472482779",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "173770",
+                "wall_before_usec": "173748"
+              },
+              {
+                "available": true,
+                "cycles": "450764772",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "173770",
+                "wall_before_usec": "173770"
+              },
+              {
+                "available": true,
+                "cycles": "450765360",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "173770",
+                "wall_before_usec": "173770"
+              },
+              {
+                "available": true,
+                "cycles": "472518598",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "173784",
+                "wall_before_usec": "173770"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "failure_code": 0,
+          "file": "observer-disposal-controls-editor.json.bin",
+          "lane_count": 2,
+          "passed": true,
+          "record_count": 6,
+          "schema": "cairn-observer-ledger-1",
+          "trace_bytes": 1192
+        },
+        "live": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "470312127",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172678",
+                "wall_before_usec": "172663"
+              },
+              {
+                "available": true,
+                "cycles": "450590724",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172679",
+                "wall_before_usec": "172678"
+              },
+              {
+                "available": true,
+                "cycles": "450591704",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172679",
+                "wall_before_usec": "172679"
+              },
+              {
+                "available": true,
+                "cycles": "470390135",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172693",
+                "wall_before_usec": "172679"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "470077321",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172632",
+                "wall_before_usec": "172612"
+              },
+              {
+                "available": true,
+                "cycles": "450477609",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172632",
+                "wall_before_usec": "172632"
+              },
+              {
+                "available": true,
+                "cycles": "450478932",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172633",
+                "wall_before_usec": "172633"
+              },
+              {
+                "available": true,
+                "cycles": "470172870",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172649",
+                "wall_before_usec": "172633"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "retained_owner",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 1,
+            "record_capacity_bytes": 33554304,
+            "record_count": 2
+          },
+          "strong_owners": 3
+        },
+        "live_worker": {
+          "completed": 0,
+          "failed": false,
+          "joined": false,
+          "lane": 2,
+          "proxy_bytes": 0,
+          "proxy_count": 0,
+          "qualification_bytes": 0,
+          "qualification_count": 0
+        },
+        "open": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "469755246",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172514",
+                "wall_before_usec": "172498"
+              },
+              {
+                "available": true,
+                "cycles": "450188903",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172514",
+                "wall_before_usec": "172514"
+              },
+              {
+                "available": true,
+                "cycles": "450189515",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172514",
+                "wall_before_usec": "172514"
+              },
+              {
+                "available": true,
+                "cycles": "469796601",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172531",
+                "wall_before_usec": "172514"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "469648450",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "172470",
+                "wall_before_usec": "172453"
+              },
+              {
+                "available": true,
+                "cycles": "450082573",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "172470",
+                "wall_before_usec": "172470"
+              },
+              {
+                "available": true,
+                "cycles": "450083161",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "172471",
+                "wall_before_usec": "172470"
+              },
+              {
+                "available": true,
+                "cycles": "469690517",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "172487",
+                "wall_before_usec": "172471"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "open_spans",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 1,
+            "object_bytes": 440,
+            "open_spans": 2,
+            "record_capacity_bytes": 33554304,
+            "record_count": 2
+          },
+          "strong_owners": 1
+        },
+        "passed": true,
+        "post_begin": 0,
+        "post_finish": {
+          "closed": false,
+          "passed": false,
+          "schema": "cairn-observer-ledger-1"
+        },
+        "process_end": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "477337403",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "175791",
+              "wall_before_usec": "175776"
+            },
+            {
+              "available": true,
+              "cycles": "455617902",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "175792",
+              "wall_before_usec": "175791"
+            },
+            {
+              "available": true,
+              "cycles": "455618515",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "175792",
+              "wall_before_usec": "175792"
+            },
+            {
+              "available": true,
+              "cycles": "477368959",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "175804",
+              "wall_before_usec": "175792"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "5272"
+        },
+        "process_start": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "468332086",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "171935",
+              "wall_before_usec": "171900"
+            },
+            {
+              "available": true,
+              "cycles": "449147184",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "171936",
+              "wall_before_usec": "171935"
+            },
+            {
+              "available": true,
+              "cycles": "449147993",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "171936",
+              "wall_before_usec": "171936"
+            },
+            {
+              "available": true,
+              "cycles": "468382997",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "171953",
+              "wall_before_usec": "171936"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "5272"
+        },
+        "qualified": false,
+        "readback_bytes": 1192,
+        "release": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "473875162",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174361",
+                "wall_before_usec": "174345"
+              },
+              {
+                "available": true,
+                "cycles": "452155882",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174362",
+                "wall_before_usec": "174361"
+              },
+              {
+                "available": true,
+                "cycles": "452156642",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174362",
+                "wall_before_usec": "174362"
+              },
+              {
+                "available": true,
+                "cycles": "473908017",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174375",
+                "wall_before_usec": "174362"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "473728971",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174301",
+                "wall_before_usec": "174285"
+              },
+              {
+                "available": true,
+                "cycles": "452009494",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174302",
+                "wall_before_usec": "174301"
+              },
+              {
+                "available": true,
+                "cycles": "452010327",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174302",
+                "wall_before_usec": "174302"
+              },
+              {
+                "available": true,
+                "cycles": "473762070",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174315",
+                "wall_before_usec": "174302"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": true,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "disposed",
+          "storage_after": 0,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 6
+          },
+          "strong_owners": 1
+        },
+        "repeat": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "474352741",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174557",
+                "wall_before_usec": "174541"
+              },
+              {
+                "available": true,
+                "cycles": "452633167",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174557",
+                "wall_before_usec": "174557"
+              },
+              {
+                "available": true,
+                "cycles": "452633828",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174557",
+                "wall_before_usec": "174557"
+              },
+              {
+                "available": true,
+                "cycles": "474384910",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174570",
+                "wall_before_usec": "174557"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "474233622",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "174508",
+                "wall_before_usec": "174490"
+              },
+              {
+                "available": true,
+                "cycles": "452514758",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "174509",
+                "wall_before_usec": "174508"
+              },
+              {
+                "available": true,
+                "cycles": "452515567",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "174509",
+                "wall_before_usec": "174509"
+              },
+              {
+                "available": true,
+                "cycles": "474272504",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "174524",
+                "wall_before_usec": "174509"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "5272"
+          },
+          "disposed": false,
+          "failure_code": null,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "absent",
+          "storage_after": null,
+          "storage_before": null,
+          "strong_owners": null
+        },
+        "started": true,
+        "worker": {
+          "completed": 2,
+          "failed": false,
+          "joined": true,
+          "lane": 2,
+          "proxy_bytes": 6,
+          "proxy_count": 1,
+          "qualification_bytes": 17,
+          "qualification_count": 1
+        },
+        "wrong_thread": {
+          "counter_end": null,
+          "counter_start": null,
+          "disposed": false,
+          "failure_code": null,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "wrong_thread",
+          "storage_after": null,
+          "storage_before": null,
+          "strong_owners": null
+        }
+      },
+      "passed": true,
+      "qualified": false,
+      "schema": "cairn-observer-disposal-controls-1",
+      "target_performance": "not_run"
+    },
+    "release": {
+      "build": {
+        "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/39300074494",
+        "cpu_cycle_capability": {
+          "core_sha256": "3ae8741cdfd717edc75178df6cb82c63282c5c6bca98d7b04b861223d3bdfada",
+          "probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+          "runtime_sha256": "53320ed4e5dea5355c9cfdd64742ee9d1b92340a0e2a4159b64417c8dd82e2a8",
+          "schema": "cairn-cpu-cycle-capability-1"
+        },
+        "engine_binaries": {
+          "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+          "editor.exe": "8f02cefb57871a5b6be3378f308d23d3a2f27f42f6cf92d269adc7c32846bf35",
+          "template_debug.exe": "0784e3912cf1bfda5fba42c9304e5254052d80befd974adbd6def90b33026279",
+          "template_release.exe": "61af76f7542be3d7747052ed3f6c5e52bc2b5978bb339f2f165efee63aa53a69"
+        },
+        "engine_inputs": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+        "game_commit": "fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+        "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "milestone": "M1",
+        "native_source_key": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+        "observer_disposal": {
+          "native_sha256": {
+            "core/observer_disposal.h": "4063087d32dc8f4c4ff041bb49b2005c07072bed2a307ea05ff6a15906b7120f",
+            "core/observer_ledger.h": "fe80f7e281e9873bd71e14fdf8d824083d19966e365b4179ca957bbbaa77bd3d",
+            "godot/benchmark_probe.cpp": "2368127d2d92db4578a1ae6e63e583fc5cb4591f6b831c9164937cd358315faa",
+            "godot/benchmark_probe.h": "c9c10c52adcbfa0ef8aa0a9432e7da6b8c81a758bdf1d63c24c40cb811005ae2",
+            "godot/observer_disposal.cpp": "a0b05fc70d27b766ec204fb00c19f40e6cb33dac9fb57997d578675937f741ff",
+            "godot/observer_probe.cpp": "fe571845184839f17583944f134b3e3136fb8e4cd59b7b63cd3d1b14945ab77a",
+            "godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+            "godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+          },
+          "schema": "cairn-observer-disposal-1",
+          "sources_sha256": {
+            "m1_observer_disposal_tests.gd": "362f8ab7ab82ae696ca05f44f0adc2377adedb006879083132bdea9637eb976b",
+            "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+          }
+        },
+        "renderer": "gl_compatibility",
+        "shipping_cycles": {
+          "inventory_sha256": "0f8c8eca85edb4acbae93bf1c1b180f8119253ff83f5cc769ea5cab03063b1f7",
+          "method": "m1-shipping-cpu-cycles-1",
+          "native_dose_core_sha256": "c22f1ee3b469a61eb88453cff8d4fb40029a5dcabf2652a0d4102d01294d2036",
+          "native_probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+          "policy": "m1-shipping-diagnostics-2",
+          "sources_sha256": {
+            "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+            "m1_cycle_exact.gd": "f2b956c31c6e9fb2de0a902dd2986ff3844ddb257da7aa9caca722bf10635495",
+            "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+            "m1_shipping_cycles_method.gd": "66ba172c41e6ce68578755e7b2560788122695259fc95bd4986a65f00f906227",
+            "m1_shipping_cycles_runtime.gd": "f3cd711d6c81bd5784bda92933255a904f07045201d81c80cdec83b93ff1ea56",
+            "m1_shipping_cycles_tests.gd": "7ea4a37db205084f2ead456f4446b01016b33704c2863289d7b5f0522ae5127f",
+            "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+          }
+        },
+        "shipping_inventory_sha256": "e3b556c03bd80d3724f4391f5a736f3e4ab01277d43a4e1b39c611122b53882e",
+        "shipping_observer": {
+          "inventory_sha256": "00087cca6c0266bed5591d247aee9e6ed5b9978ed1c94e7baf3c91aba769ad5b",
+          "method": "m1-shipping-observer-attribution-1",
+          "native_sha256": {
+            "native/sandbox_world/core/observer_ledger.h": "fe80f7e281e9873bd71e14fdf8d824083d19966e365b4179ca957bbbaa77bd3d",
+            "native/sandbox_world/godot/benchmark_probe.cpp": "2368127d2d92db4578a1ae6e63e583fc5cb4591f6b831c9164937cd358315faa",
+            "native/sandbox_world/godot/benchmark_probe.h": "c9c10c52adcbfa0ef8aa0a9432e7da6b8c81a758bdf1d63c24c40cb811005ae2",
+            "native/sandbox_world/godot/observer_probe.cpp": "fe571845184839f17583944f134b3e3136fb8e4cd59b7b63cd3d1b14945ab77a",
+            "native/sandbox_world/godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+            "native/sandbox_world/godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+          },
+          "sources_sha256": {
+            "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+            "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+            "m1_shipping_observer_runtime.gd": "f7cf7129087561e01a3c0d12d69c06a8ac536d1835e3fd72e625b5a01360fb98",
+            "m1_shipping_observer_tests.gd": "d600893f0b78462ad03fea10f5f3123912a6ab218afd76b7f7b7e552dec818d6",
+            "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+          }
+        },
+        "shipping_sources_sha256": {
+          "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+          "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+          "m1_shipping_method.gd": "eedc8520deda34927d14ca7081b8ed30623333801f6e3093ff78dec1f6fe3921",
+          "m1_shipping_runtime.gd": "34d4f4fef280211552eed14ab42987ed7a61cca43ad65c2b6e898330dae6377d",
+          "title.gd": "90bf728015a4bac52cae7e7a0158e186074a5c129d746b470c1284c1fcba1b25"
+        },
+        "target_performance": "not_run",
+        "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+      },
+      "native": {
+        "absent": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "378902418",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "137799",
+                "wall_before_usec": "137784"
+              },
+              {
+                "available": true,
+                "cycles": "360246750",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "137800",
+                "wall_before_usec": "137799"
+              },
+              {
+                "available": true,
+                "cycles": "360247509",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "137800",
+                "wall_before_usec": "137800"
+              },
+              {
+                "available": true,
+                "cycles": "378936963",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "137813",
+                "wall_before_usec": "137800"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "378786436",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "137752",
+                "wall_before_usec": "137735"
+              },
+              {
+                "available": true,
+                "cycles": "360130351",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "137752",
+                "wall_before_usec": "137752"
+              },
+              {
+                "available": true,
+                "cycles": "360131453",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "137752",
+                "wall_before_usec": "137752"
+              },
+              {
+                "available": true,
+                "cycles": "378832128",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "137770",
+                "wall_before_usec": "137752"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": false,
+          "failure_code": null,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "absent",
+          "storage_after": null,
+          "storage_before": null,
+          "strong_owners": null
+        },
+        "active": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "379711064",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "138135",
+                "wall_before_usec": "138120"
+              },
+              {
+                "available": true,
+                "cycles": "360756815",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "138136",
+                "wall_before_usec": "138135"
+              },
+              {
+                "available": true,
+                "cycles": "360757746",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "138136",
+                "wall_before_usec": "138136"
+              },
+              {
+                "available": true,
+                "cycles": "379744384",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "138149",
+                "wall_before_usec": "138136"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "379581998",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "138083",
+                "wall_before_usec": "138060"
+              },
+              {
+                "available": true,
+                "cycles": "360629659",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "138084",
+                "wall_before_usec": "138083"
+              },
+              {
+                "available": true,
+                "cycles": "360630468",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "138084",
+                "wall_before_usec": "138084"
+              },
+              {
+                "available": true,
+                "cycles": "379637539",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "138105",
+                "wall_before_usec": "138084"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "active",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 1,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 0
+          },
+          "strong_owners": 1
+        },
+        "attached": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "382982282",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139371",
+                "wall_before_usec": "139354"
+              },
+              {
+                "available": true,
+                "cycles": "362625235",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139372",
+                "wall_before_usec": "139371"
+              },
+              {
+                "available": true,
+                "cycles": "362626289",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139372",
+                "wall_before_usec": "139372"
+              },
+              {
+                "available": true,
+                "cycles": "383021653",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139387",
+                "wall_before_usec": "139372"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "382736105",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139269",
+                "wall_before_usec": "139253"
+              },
+              {
+                "available": true,
+                "cycles": "362378667",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139270",
+                "wall_before_usec": "139269"
+              },
+              {
+                "available": true,
+                "cycles": "362379671",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139270",
+                "wall_before_usec": "139270"
+              },
+              {
+                "available": true,
+                "cycles": "382778858",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139287",
+                "wall_before_usec": "139270"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "retained_owner",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 6
+          },
+          "strong_owners": 2
+        },
+        "faults": [
+          {
+            "ledger": {
+              "cap_bytes": 33554432,
+              "closed": true,
+              "emit_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "384436380",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "139967",
+                    "wall_before_usec": "139938"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364080142",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "139968",
+                    "wall_before_usec": "139967"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364081048",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "139968",
+                    "wall_before_usec": "139968"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "384482048",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "139985",
+                    "wall_before_usec": "139968"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "emit_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "383990405",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "139784",
+                    "wall_before_usec": "139761"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "363633996",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "139785",
+                    "wall_before_usec": "139784"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "363635148",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "139785",
+                    "wall_before_usec": "139785"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "384034555",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "139803",
+                    "wall_before_usec": "139785"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "failure_code": 4,
+              "file": "observer-disposal-controls-release.json.bin-counter",
+              "lane_count": 1,
+              "passed": false,
+              "record_count": 1,
+              "schema": "cairn-observer-ledger-1",
+              "trace_bytes": 232
+            },
+            "name": "counter",
+            "release": {
+              "counter_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "384721314",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140084",
+                    "wall_before_usec": "140066"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364364684",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140084",
+                    "wall_before_usec": "140084"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364365321",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140084",
+                    "wall_before_usec": "140084"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "384759020",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140099",
+                    "wall_before_usec": "140085"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "counter_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "384579142",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140025",
+                    "wall_before_usec": "140007"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364222095",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140026",
+                    "wall_before_usec": "140025"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364223197",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140026",
+                    "wall_before_usec": "140026"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "384624760",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140044",
+                    "wall_before_usec": "140026"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "disposed": true,
+              "failure_code": 4,
+              "qualified": false,
+              "schema": "cairn-observer-disposal-1",
+              "status": "disposed",
+              "storage_after": 0,
+              "storage_before": {
+                "lane_capacity_bytes": 512,
+                "lane_count": 1,
+                "object_bytes": 440,
+                "open_spans": 0,
+                "record_capacity_bytes": 33554304,
+                "record_count": 1
+              },
+              "strong_owners": 1
+            }
+          },
+          {
+            "ledger": {
+              "cap_bytes": 232,
+              "closed": true,
+              "emit_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "385298902",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140321",
+                    "wall_before_usec": "140290"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364943815",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140322",
+                    "wall_before_usec": "140321"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364945089",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140322",
+                    "wall_before_usec": "140322"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "385348832",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140341",
+                    "wall_before_usec": "140322"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "emit_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "384851703",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140137",
+                    "wall_before_usec": "140122"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364494142",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140137",
+                    "wall_before_usec": "140137"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "364494730",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140138",
+                    "wall_before_usec": "140137"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "384889164",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140152",
+                    "wall_before_usec": "140138"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "failure_code": 1,
+              "file": "observer-disposal-controls-release.json.bin-cap",
+              "lane_count": 1,
+              "passed": false,
+              "record_count": 1,
+              "schema": "cairn-observer-ledger-1",
+              "trace_bytes": 232
+            },
+            "name": "cap",
+            "release": {
+              "counter_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "385600764",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140444",
+                    "wall_before_usec": "140429"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365243130",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140445",
+                    "wall_before_usec": "140444"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365243816",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140445",
+                    "wall_before_usec": "140445"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "385644619",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140462",
+                    "wall_before_usec": "140445"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "counter_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "385486913",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140398",
+                    "wall_before_usec": "140370"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365129744",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140398",
+                    "wall_before_usec": "140398"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365130748",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140399",
+                    "wall_before_usec": "140398"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "385531356",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140416",
+                    "wall_before_usec": "140399"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "disposed": true,
+              "failure_code": 1,
+              "qualified": false,
+              "schema": "cairn-observer-disposal-1",
+              "status": "disposed",
+              "storage_after": 0,
+              "storage_before": {
+                "lane_capacity_bytes": 512,
+                "lane_count": 1,
+                "object_bytes": 440,
+                "open_spans": 0,
+                "record_capacity_bytes": 192,
+                "record_count": 1
+              },
+              "strong_owners": 1
+            }
+          },
+          {
+            "ledger": {
+              "cap_bytes": 33554432,
+              "closed": false,
+              "emit_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "385996463",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140607",
+                    "wall_before_usec": "140583"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365639906",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140608",
+                    "wall_before_usec": "140607"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365641009",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140608",
+                    "wall_before_usec": "140608"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "386041077",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140625",
+                    "wall_before_usec": "140608"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "emit_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "385770672",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140514",
+                    "wall_before_usec": "140497"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365413160",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140514",
+                    "wall_before_usec": "140514"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365413772",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140515",
+                    "wall_before_usec": "140514"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "385808695",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140530",
+                    "wall_before_usec": "140515"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "failure_code": 7,
+              "file": "missing.bin",
+              "lane_count": 1,
+              "passed": false,
+              "record_count": 1,
+              "schema": "cairn-observer-ledger-1",
+              "trace_bytes": 0
+            },
+            "name": "write",
+            "release": {
+              "counter_end": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "386264027",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140717",
+                    "wall_before_usec": "140699"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365908965",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140718",
+                    "wall_before_usec": "140717"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365909675",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140718",
+                    "wall_before_usec": "140718"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "386313419",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140737",
+                    "wall_before_usec": "140718"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "counter_start": {
+                "platform": "windows",
+                "process_api": "QueryProcessCycleTime",
+                "reads": [
+                  {
+                    "available": true,
+                    "cycles": "386125798",
+                    "error": 0,
+                    "kind": "process_lo",
+                    "success": true,
+                    "wall_after_usec": "140660",
+                    "wall_before_usec": "140644"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365768212",
+                    "error": 0,
+                    "kind": "thread_lo",
+                    "success": true,
+                    "wall_after_usec": "140660",
+                    "wall_before_usec": "140660"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "365768874",
+                    "error": 0,
+                    "kind": "thread_hi",
+                    "success": true,
+                    "wall_after_usec": "140660",
+                    "wall_before_usec": "140660"
+                  },
+                  {
+                    "available": true,
+                    "cycles": "386162646",
+                    "error": 0,
+                    "kind": "process_hi",
+                    "success": true,
+                    "wall_after_usec": "140675",
+                    "wall_before_usec": "140660"
+                  }
+                ],
+                "schema": "cairn-cpu-cycle-observation-1",
+                "status": "measured",
+                "thread_api": "QueryThreadCycleTime",
+                "thread_id": "3756"
+              },
+              "disposed": true,
+              "failure_code": 7,
+              "qualified": false,
+              "schema": "cairn-observer-disposal-1",
+              "status": "disposed",
+              "storage_after": 0,
+              "storage_before": {
+                "lane_capacity_bytes": 512,
+                "lane_count": 1,
+                "object_bytes": 440,
+                "open_spans": 0,
+                "record_capacity_bytes": 33554304,
+                "record_count": 1
+              },
+              "strong_owners": 1
+            }
+          }
+        ],
+        "fixture_end_usec": "140795",
+        "fixture_limit_usec": "5000000",
+        "fixture_start_usec": "137632",
+        "foreign": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "383214640",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139466",
+                "wall_before_usec": "139452"
+              },
+              {
+                "available": true,
+                "cycles": "362857251",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139467",
+                "wall_before_usec": "139466"
+              },
+              {
+                "available": true,
+                "cycles": "362857961",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139467",
+                "wall_before_usec": "139467"
+              },
+              {
+                "available": true,
+                "cycles": "383247936",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139480",
+                "wall_before_usec": "139467"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "383109339",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139423",
+                "wall_before_usec": "139408"
+              },
+              {
+                "available": true,
+                "cycles": "362751729",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139423",
+                "wall_before_usec": "139423"
+              },
+              {
+                "available": true,
+                "cycles": "362752709",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139424",
+                "wall_before_usec": "139423"
+              },
+              {
+                "available": true,
+                "cycles": "383144717",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139438",
+                "wall_before_usec": "139424"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "retained_owner",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 6
+          },
+          "strong_owners": 2
+        },
+        "ledger": {
+          "cap_bytes": 33554432,
+          "closed": true,
+          "emit_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "382589546",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139210",
+                "wall_before_usec": "139179"
+              },
+              {
+                "available": true,
+                "cycles": "362234018",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139211",
+                "wall_before_usec": "139210"
+              },
+              {
+                "available": true,
+                "cycles": "362235145",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139211",
+                "wall_before_usec": "139211"
+              },
+              {
+                "available": true,
+                "cycles": "382636414",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139229",
+                "wall_before_usec": "139211"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "emit_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "381991649",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "138965",
+                "wall_before_usec": "138938"
+              },
+              {
+                "available": true,
+                "cycles": "361635337",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "138966",
+                "wall_before_usec": "138965"
+              },
+              {
+                "available": true,
+                "cycles": "361636292",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "138966",
+                "wall_before_usec": "138966"
+              },
+              {
+                "available": true,
+                "cycles": "382027859",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "138979",
+                "wall_before_usec": "138966"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "failure_code": 0,
+          "file": "observer-disposal-controls-release.json.bin",
+          "lane_count": 2,
+          "passed": true,
+          "record_count": 6,
+          "schema": "cairn-observer-ledger-1",
+          "trace_bytes": 1192
+        },
+        "live": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "380585374",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "138423",
+                "wall_before_usec": "138405"
+              },
+              {
+                "available": true,
+                "cycles": "361456463",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "138423",
+                "wall_before_usec": "138423"
+              },
+              {
+                "available": true,
+                "cycles": "361457247",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "138424",
+                "wall_before_usec": "138423"
+              },
+              {
+                "available": true,
+                "cycles": "380658385",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "138437",
+                "wall_before_usec": "138424"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "380318299",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "138369",
+                "wall_before_usec": "138341"
+              },
+              {
+                "available": true,
+                "cycles": "361326417",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "138370",
+                "wall_before_usec": "138369"
+              },
+              {
+                "available": true,
+                "cycles": "361327103",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "138370",
+                "wall_before_usec": "138370"
+              },
+              {
+                "available": true,
+                "cycles": "380417034",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "138389",
+                "wall_before_usec": "138370"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "retained_owner",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 1,
+            "record_capacity_bytes": 33554304,
+            "record_count": 2
+          },
+          "strong_owners": 5
+        },
+        "live_worker": {
+          "completed": 0,
+          "failed": false,
+          "joined": false,
+          "lane": 2,
+          "proxy_bytes": 0,
+          "proxy_count": 0,
+          "qualification_bytes": 0,
+          "qualification_count": 0
+        },
+        "open": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "379962950",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "138239",
+                "wall_before_usec": "138224"
+              },
+              {
+                "available": true,
+                "cycles": "361008578",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "138239",
+                "wall_before_usec": "138239"
+              },
+              {
+                "available": true,
+                "cycles": "361009509",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "138239",
+                "wall_before_usec": "138239"
+              },
+              {
+                "available": true,
+                "cycles": "379996172",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "138252",
+                "wall_before_usec": "138240"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "379850029",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "138192",
+                "wall_before_usec": "138176"
+              },
+              {
+                "available": true,
+                "cycles": "360895853",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "138193",
+                "wall_before_usec": "138193"
+              },
+              {
+                "available": true,
+                "cycles": "360897691",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "138194",
+                "wall_before_usec": "138193"
+              },
+              {
+                "available": true,
+                "cycles": "379887857",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "138208",
+                "wall_before_usec": "138194"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": false,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "open_spans",
+          "storage_after": null,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 1,
+            "object_bytes": 440,
+            "open_spans": 2,
+            "record_capacity_bytes": 33554304,
+            "record_count": 2
+          },
+          "strong_owners": 1
+        },
+        "passed": true,
+        "post_begin": 0,
+        "post_finish": {
+          "closed": false,
+          "passed": false,
+          "schema": "cairn-observer-ledger-1"
+        },
+        "process_end": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "386388169",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "140767",
+              "wall_before_usec": "140753"
+            },
+            {
+              "available": true,
+              "cycles": "366030975",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "140768",
+              "wall_before_usec": "140767"
+            },
+            {
+              "available": true,
+              "cycles": "366031686",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "140768",
+              "wall_before_usec": "140768"
+            },
+            {
+              "available": true,
+              "cycles": "386422346",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "140781",
+              "wall_before_usec": "140768"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "3756"
+        },
+        "process_start": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "378614667",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "137684",
+              "wall_before_usec": "137635"
+            },
+            {
+              "available": true,
+              "cycles": "359967255",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "137685",
+              "wall_before_usec": "137684"
+            },
+            {
+              "available": true,
+              "cycles": "359968186",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "137686",
+              "wall_before_usec": "137685"
+            },
+            {
+              "available": true,
+              "cycles": "378671825",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "137705",
+              "wall_before_usec": "137686"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "3756"
+        },
+        "qualified": false,
+        "readback_bytes": 1192,
+        "release": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "383470224",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139571",
+                "wall_before_usec": "139553"
+              },
+              {
+                "available": true,
+                "cycles": "363113741",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139572",
+                "wall_before_usec": "139571"
+              },
+              {
+                "available": true,
+                "cycles": "363114427",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139572",
+                "wall_before_usec": "139572"
+              },
+              {
+                "available": true,
+                "cycles": "383515279",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139589",
+                "wall_before_usec": "139572"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "383328321",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139513",
+                "wall_before_usec": "139498"
+              },
+              {
+                "available": true,
+                "cycles": "362971029",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139513",
+                "wall_before_usec": "139513"
+              },
+              {
+                "available": true,
+                "cycles": "362971862",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139514",
+                "wall_before_usec": "139513"
+              },
+              {
+                "available": true,
+                "cycles": "383361616",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139526",
+                "wall_before_usec": "139514"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": true,
+          "failure_code": 0,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "disposed",
+          "storage_after": 0,
+          "storage_before": {
+            "lane_capacity_bytes": 512,
+            "lane_count": 2,
+            "object_bytes": 440,
+            "open_spans": 0,
+            "record_capacity_bytes": 33554304,
+            "record_count": 6
+          },
+          "strong_owners": 1
+        },
+        "repeat": {
+          "counter_end": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "383696014",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139664",
+                "wall_before_usec": "139649"
+              },
+              {
+                "available": true,
+                "cycles": "363338453",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139664",
+                "wall_before_usec": "139664"
+              },
+              {
+                "available": true,
+                "cycles": "363339188",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139664",
+                "wall_before_usec": "139664"
+              },
+              {
+                "available": true,
+                "cycles": "383729114",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139677",
+                "wall_before_usec": "139664"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "counter_start": {
+            "platform": "windows",
+            "process_api": "QueryProcessCycleTime",
+            "reads": [
+              {
+                "available": true,
+                "cycles": "383595810",
+                "error": 0,
+                "kind": "process_lo",
+                "success": true,
+                "wall_after_usec": "139622",
+                "wall_before_usec": "139608"
+              },
+              {
+                "available": true,
+                "cycles": "363238420",
+                "error": 0,
+                "kind": "thread_lo",
+                "success": true,
+                "wall_after_usec": "139623",
+                "wall_before_usec": "139622"
+              },
+              {
+                "available": true,
+                "cycles": "363239400",
+                "error": 0,
+                "kind": "thread_hi",
+                "success": true,
+                "wall_after_usec": "139623",
+                "wall_before_usec": "139623"
+              },
+              {
+                "available": true,
+                "cycles": "383628664",
+                "error": 0,
+                "kind": "process_hi",
+                "success": true,
+                "wall_after_usec": "139636",
+                "wall_before_usec": "139623"
+              }
+            ],
+            "schema": "cairn-cpu-cycle-observation-1",
+            "status": "measured",
+            "thread_api": "QueryThreadCycleTime",
+            "thread_id": "3756"
+          },
+          "disposed": false,
+          "failure_code": null,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "absent",
+          "storage_after": null,
+          "storage_before": null,
+          "strong_owners": null
+        },
+        "started": true,
+        "worker": {
+          "completed": 2,
+          "failed": false,
+          "joined": true,
+          "lane": 2,
+          "proxy_bytes": 6,
+          "proxy_count": 1,
+          "qualification_bytes": 17,
+          "qualification_count": 1
+        },
+        "wrong_thread": {
+          "counter_end": null,
+          "counter_start": null,
+          "disposed": false,
+          "failure_code": null,
+          "qualified": false,
+          "schema": "cairn-observer-disposal-1",
+          "status": "wrong_thread",
+          "storage_after": null,
+          "storage_before": null,
+          "strong_owners": null
+        }
+      },
+      "passed": true,
+      "qualified": false,
+      "schema": "cairn-observer-disposal-controls-1",
+      "target_performance": "not_run"
+    }
+  },
+  "controls": {
+    "editor": {
+      "complete_process_cycles": [
+        "8954406",
+        "9036873"
+      ],
+      "disposal_thread_cycles": [
+        "145555",
+        "147148"
+      ],
+      "failure_prefixes": [
+        {
+          "bytes": 232,
+          "failure_code": 4,
+          "name": "counter",
+          "sha256": "9c7b21d37e352d3c78d25bc7d1f6c98fb3d48d409e401829160b5975c70d766c"
+        },
+        {
+          "bytes": 232,
+          "failure_code": 1,
+          "name": "cap",
+          "sha256": "ff9abcc71dd320f7d515bb9b93110d5756f822946c18f633264e93fd88c12e0a"
+        },
+        {
+          "bytes": null,
+          "failure_code": 7,
+          "name": "write",
+          "sha256": null,
+          "trace": "unavailable"
+        }
+      ],
+      "fixture_usec": 3930,
+      "lanes": 2,
+      "passed": true,
+      "qualified": false,
+      "recorder_destroyed": true,
+      "records": 6,
+      "retained_trace_sha256": "1e57c4a98cb06bdf1aefbfb3a9ddca92d8c3be088d46508b55331ab24a50efea",
+      "saved_faults_rejected": [
+        "false-destruction",
+        "retained-at-release",
+        "open-at-release",
+        "invented-freed-storage",
+        "absent-zero",
+        "thread-refusal-zero",
+        "counter-failure",
+        "rounded-counter",
+        "worker-not-joined",
+        "no-live-owner",
+        "lost-prefix",
+        "hidden-io-failure",
+        "post-disposal-write",
+        "fixture-over-cap",
+        "qualified-capability"
+      ],
+      "schema": "cairn-observer-disposal-controls-1",
+      "storage_before": {
+        "lane_capacity_bytes": 512,
+        "lane_count": 2,
+        "object_bytes": 440,
+        "open_spans": 0,
+        "record_capacity_bytes": 33554304,
+        "record_count": 6
+      },
+      "target_performance": "not_run",
+      "worker_joined": true
+    },
+    "release": {
+      "complete_process_cycles": [
+        "7716344",
+        "7807679"
+      ],
+      "disposal_thread_cycles": [
+        "141879",
+        "143398"
+      ],
+      "failure_prefixes": [
+        {
+          "bytes": 232,
+          "failure_code": 4,
+          "name": "counter",
+          "sha256": "31cc7018d9f6803e1f168312310b1fa8c29dad55287f894fa6afad8eb1698d20"
+        },
+        {
+          "bytes": 232,
+          "failure_code": 1,
+          "name": "cap",
+          "sha256": "583e9b16236e88232b3cda1f38e452d95a3dd175c95a4fbc718029a402fe22cb"
+        },
+        {
+          "bytes": null,
+          "failure_code": 7,
+          "name": "write",
+          "sha256": null,
+          "trace": "unavailable"
+        }
+      ],
+      "fixture_usec": 3163,
+      "lanes": 2,
+      "passed": true,
+      "qualified": false,
+      "recorder_destroyed": true,
+      "records": 6,
+      "retained_trace_sha256": "6e3964caaf47416f62e4b36f26cd73e5e91214f62b69f16201831840ae07b5b4",
+      "saved_faults_rejected": [
+        "false-destruction",
+        "retained-at-release",
+        "open-at-release",
+        "invented-freed-storage",
+        "absent-zero",
+        "thread-refusal-zero",
+        "counter-failure",
+        "rounded-counter",
+        "worker-not-joined",
+        "no-live-owner",
+        "lost-prefix",
+        "hidden-io-failure",
+        "post-disposal-write",
+        "fixture-over-cap",
+        "qualified-capability"
+      ],
+      "schema": "cairn-observer-disposal-controls-1",
+      "storage_before": {
+        "lane_capacity_bytes": 512,
+        "lane_count": 2,
+        "object_bytes": 440,
+        "open_spans": 0,
+        "record_capacity_bytes": 33554304,
+        "record_count": 6
+      },
+      "target_performance": "not_run",
+      "worker_joined": true
+    }
+  },
+  "date": "2026-10-19",
+  "decision": "Implement the four already specified preparation owner scopes under separate method/inventory/raw version with complete disposal and bounded controls/candidate only; keep all pilot flags false and select any later finite route separately.",
+  "exported_game_commit": "fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+  "implementation_commit": "d1bb1320f41263ba3c0abd07886ce69e4d95336e",
+  "limitations": [
+    "Owned recorder/object/vector reclamation only; allocator retention and OS working set are not measured.",
+    "Allocation fault is an injected factory rejection, not an OS out-of-memory recovery proof.",
+    "No attribution/cost route ran; old trial disposal remains outside its original boundary and unavailable.",
+    "No sensitivity, shipping-cost, rendered target or M1 qualification."
+  ],
+  "native": {
+    "binaries": {
+      "editor.exe": "8f02cefb57871a5b6be3378f308d23d3a2f27f42f6cf92d269adc7c32846bf35",
+      "template_debug.exe": "0784e3912cf1bfda5fba42c9304e5254052d80befd974adbd6def90b33026279",
+      "template_release.exe": "61af76f7542be3d7747052ed3f6c5e52bc2b5978bb339f2f165efee63aa53a69"
+    },
+    "build_step_completed_at": "2026-10-19T20:13:04Z",
+    "build_step_started_at": "2026-10-19T18:10:43Z",
+    "key": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+    "manifest_sha256": "aca8d670909cad8386675e954c3f71dc799e89dcc613948fc09566c8e92d19d1",
+    "qualification": {
+      "debug": {
+        "errors": [],
+        "game_commit": "fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+        "identity": {
+          "engine_inputs": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+          "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+        },
+        "passed": true
+      },
+      "editor": {
+        "errors": [],
+        "game_commit": "fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+        "identity": {
+          "engine_inputs": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+          "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+        },
+        "passed": true
+      },
+      "release": {
+        "errors": [],
+        "game_commit": "fe1cecec824fb6ce973ee278126d382f4a81dcf5",
+        "identity": {
+          "engine_inputs": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+          "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+        },
+        "passed": true
+      }
+    },
+    "selection": {
+      "artifact_id": "",
+      "artifact_run_id": "",
+      "key": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+      "source": "built"
+    }
+  },
+  "raw_files": {
+    "observer-disposal-controls-editor.json.bin": {
+      "bytes": 1192,
+      "hex": "434149524e4f423101000000c0000000000000020000000006000000000000000000000002000000010000000000000000000000000000009814000000000000070000000100000000000000000000000000000001000000010000000000000000000000000000009be6d21a00000000a0a1020000000000a0a10200000000000300000000000000fbf8d21a00000000a2a1020000000000a2a1020000000000030000000000000048d4dc1a00000000a6a6020000000000a7a6020000000000030000000000000006dadc1a00000000a8a6020000000000a8a6020000000000030000000000000002000000000000000100000000000000981400000000000002000000010000000000000000000000000000000100000001000000000000000000000000000000a9fbd21a00000000a3a1020000000000a3a1020000000000030000000000000070fed21a00000000a3a1020000000000a3a10200000000000300000000000000d55ed71a0000000018a202000000000019a202000000000003000000000000000861d71a0000000019a202000000000019a2020000000000030000000000000003000000000000000000000000000000e40b00000000000008000000020000000000000000000000000000000100000001000000000000000000000000000000590102000000000079a202000000000079a2020000000000030000000000000087080200000000007aa20200000000007aa202000000000003000000000000002d001e000000000058a602000000000058a6020000000000030000000000000048021e000000000058a602000000000059a6020000000000030000000000000004000000000000000300000000000000e40b000000000000090000000200000000000000000000000000000001000000010000000000000011000000000000008b2c180000000000bba5020000000000bca502000000000003000000000000002331180000000000bca5020000000000bca50200000000000300000000000000e845180000000000bea5020000000000bfa502000000000003000000000000000348180000000000bfa5020000000000bfa5020000000000030000000000000005000000000000000300000000000000e40b0000000000000a000000020000000000000000000000000000000100000001000000000000000600000000000000c14d180000000000bfa5020000000000bfa502000000000003000000000000006f50180000000000bfa5020000000000c0a50200000000000300000000000000c55f1c00000000002ca60200000000002da60200000000000300000000000000a4621c00000000002da60200000000002da6020000000000030000000000000006000000000000000300000000000000e40b0000000000000b00000002000000000000000000000000000000010000000100000000000000000000000000000090661c00000000002da60200000000002da6020000000000030000000000000088691c00000000002da60200000000002ea602000000000003000000000000009b151d00000000003fa602000000000040a60200000000000300000000000000cf171d000000000040a602000000000040a60200000000000300000000000000",
+      "sha256": "1e57c4a98cb06bdf1aefbfb3a9ddca92d8c3be088d46508b55331ab24a50efea"
+    },
+    "observer-disposal-controls-editor.json.bin-cap": {
+      "bytes": 232,
+      "hex": "434149524e4f423101000000c0000000e8000000000000000100000000000000010000000100000001000000000000000000000000000000981400000000000002000000010000000000000000000000000000000100000001000000000000000000000000000000f2820f1b0000000019ac0200000000001aac02000000000003000000000000008a870f1b000000001aac0200000000001aac02000000000003000000000000009a8a0f1b000000001aac0200000000001aac02000000000003000000000000002f8d0f1b000000001aac0200000000001bac0200000000000300000000000000",
+      "sha256": "ff9abcc71dd320f7d515bb9b93110d5756f822946c18f633264e93fd88c12e0a"
+    },
+    "observer-disposal-controls-editor.json.bin-counter": {
+      "bytes": 232,
+      "hex": "434149524e4f423101000000c00000000000000200000000010000000000000004000000010000000100000000000000000000000000000098140000000000000200000001000000000000000000000000000000010000000100000000000000000000000000000000000000000000007daa0200000000007daa020000000000010000000600000000000000000000007eaa0200000000007eaa020000000000010000000600000000000000000000007eaa0200000000007eaa020000000000010000000600000000000000000000007faa0200000000007faa0200000000000100000006000000",
+      "sha256": "9c7b21d37e352d3c78d25bc7d1f6c98fb3d48d409e401829160b5975c70d766c"
+    },
+    "observer-disposal-controls-editor.json.bin.csv": {
+      "bytes": 17,
+      "hex": "646973706f73616c20636f6e74726f6c0a",
+      "sha256": "f3c00348871c4909914d50510f0e8381200c5ffe8c7130c1e41d7c11f8bc4c24"
+    },
+    "observer-disposal-controls-editor.json.bin.csv.edits.jsonl": {
+      "bytes": 0,
+      "hex": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observer-disposal-controls-editor.json.bin.csv.operations.csv": {
+      "bytes": 0,
+      "hex": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observer-disposal-controls-editor.json.bin.csv.proxy.tmp": {
+      "bytes": 6,
+      "hex": "70726f78790a",
+      "sha256": "cfa4580531f01a8346912547dd3beb0c5fcddf2a2f2ad6f89a770ea61b1eb5ff"
+    },
+    "observer-disposal-controls-release.json.bin": {
+      "bytes": 1192,
+      "hex": "434149524e4f423101000000c000000000000002000000000600000000000000000000000200000001000000000000000000000000000000ac0e000000000000070000000100000000000000000000000000000001000000010000000000000000000000000000007605821500000000bb1b020000000000bb1b02000000000003000000000000009514821500000000bc1b020000000000bd1b0200000000000300000000000000f1c68c1500000000b11e020000000000b11e020000000000030000000000000027cb8c1500000000b21e020000000000b21e020000000000030000000000000002000000000000000100000000000000ac0e000000000000020000000100000000000000000000000000000001000000010000000000000000000000000000007417821500000000bd1b020000000000bd1b02000000000003000000000000003b1a821500000000bd1b020000000000bd1b0200000000000300000000000000f784861500000000341c020000000000341c02000000000003000000000000004387861500000000341c020000000000341c020000000000030000000000000003000000000000000000000000000000800f00000000000008000000020000000000000000000000000000000100000001000000000000000000000000000000291e020000000000a61c020000000000a61c02000000000003000000000000004924020000000000a71c020000000000a71c02000000000003000000000000009731130000000000701e020000000000711e0200000000000300000000000000b233130000000000711e020000000000711e020000000000030000000000000004000000000000000300000000000000800f00000000000009000000020000000000000000000000000000000100000001000000000000001100000000000000e92b0c0000000000b41d020000000000b41d0200000000000300000000000000ee2f0c0000000000b41d020000000000b51d0200000000000300000000000000ae400c0000000000b61d020000000000b61d0200000000000300000000000000b0420c0000000000b61d020000000000b71d020000000000030000000000000005000000000000000300000000000000800f0000000000000a0000000200000000000000000000000000000001000000010000000000000006000000000000004a490c0000000000b71d020000000000b71d0200000000000300000000000000df4b0c0000000000b71d020000000000b81d02000000000003000000000000009781110000000000431e020000000000431e0200000000000300000000000000cd85110000000000441e020000000000441e020000000000030000000000000006000000000000000300000000000000800f0000000000000b000000020000000000000000000000000000000100000001000000000000000000000000000000a189110000000000441e020000000000441e0200000000000300000000000000b18c110000000000441e020000000000441e02000000000003000000000000000143120000000000571e020000000000581e02000000000003000000000000003445120000000000581e020000000000581e0200000000000300000000000000",
+      "sha256": "6e3964caaf47416f62e4b36f26cd73e5e91214f62b69f16201831840ae07b5b4"
+    },
+    "observer-disposal-controls-release.json.bin-cap": {
+      "bytes": 232,
+      "hex": "434149524e4f423101000000c0000000e8000000000000000100000000000000010000000100000001000000000000000000000000000000ac0e00000000000002000000010000000000000000000000000000000100000001000000000000000000000000000000d50fb915000000005723020000000000572302000000000003000000000000007813b91500000000572302000000000057230200000000000300000000000000dc15b91500000000582302000000000058230200000000000300000000000000c617b91500000000582302000000000058230200000000000300000000000000",
+      "sha256": "583e9b16236e88232b3cda1f38e452d95a3dd175c95a4fbc718029a402fe22cb"
+    },
+    "observer-disposal-controls-release.json.bin-counter": {
+      "bytes": 232,
+      "hex": "434149524e4f423101000000c000000000000002000000000100000000000000040000000100000001000000000000000000000000000000ac0e000000000000020000000100000000000000000000000000000001000000010000000000000000000000000000000000000000000000ed21020000000000ee2102000000000001000000060000000000000000000000ee21020000000000ee2102000000000001000000060000000000000000000000ee21020000000000ee2102000000000001000000060000000000000000000000ef21020000000000ef210200000000000100000006000000",
+      "sha256": "31cc7018d9f6803e1f168312310b1fa8c29dad55287f894fa6afad8eb1698d20"
+    },
+    "observer-disposal-controls-release.json.bin.csv": {
+      "bytes": 17,
+      "hex": "646973706f73616c20636f6e74726f6c0a",
+      "sha256": "f3c00348871c4909914d50510f0e8381200c5ffe8c7130c1e41d7c11f8bc4c24"
+    },
+    "observer-disposal-controls-release.json.bin.csv.edits.jsonl": {
+      "bytes": 0,
+      "hex": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observer-disposal-controls-release.json.bin.csv.operations.csv": {
+      "bytes": 0,
+      "hex": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "observer-disposal-controls-release.json.bin.csv.proxy.tmp": {
+      "bytes": 6,
+      "hex": "70726f78790a",
+      "sha256": "cfa4580531f01a8346912547dd3beb0c5fcddf2a2f2ad6f89a770ea61b1eb5ff"
+    }
+  },
+  "retained_broader_operation_failures": [
+    {
+      "folder": "m1-release-32-2-raw",
+      "kind": "deletion",
+      "max_usec": 905,
+      "phase": "retirement",
+      "scenario": "AB-off-2"
+    }
+  ],
+  "schema": "cairn-observer-disposal-proof-1",
+  "source_report_sha256": {
+    "editor": "618eb5a61a13ad9536a4a437f8811426f58d6bb1f679150357fdcfad900ab4c8",
+    "release": "04d1075828c9a98669c7ce12bf9f95e196c4e5ac4c6631f49df740ad61c5f978"
+  },
+  "status": {
+    "capability_verified": true,
+    "laptop_action_required_now": false,
+    "m1": "blocked",
+    "measurement_valid": false,
+    "qualified": false,
+    "shipping_cost_estimate": null,
+    "target_performance": "not_run"
+  },
+  "validation": {
+    "api_control_processes": 2,
+    "control_commands": [
+      {
+        "command": [
+          "D:\\a\\voxel-survival-game\\voxel-survival-game\\build\\engine-bundle\\editor.exe",
+          "--headless",
+          "--path",
+          "D:\\a\\voxel-survival-game\\voxel-survival-game\\game",
+          "--",
+          "--observer-disposal-check",
+          "--observer-disposal-output=D:\\a\\voxel-survival-game\\voxel-survival-game\\reports\\observer-disposal-controls-editor.json"
+        ],
+        "exit_code": 0,
+        "label": "observer-disposal-controls-editor",
+        "seconds": 0.281
+      },
+      {
+        "command": [
+          "D:\\a\\voxel-survival-game\\voxel-survival-game\\dist\\player\\Cairn.exe",
+          "--headless",
+          "--",
+          "--observer-disposal-check",
+          "--observer-disposal-output=D:\\a\\voxel-survival-game\\voxel-survival-game\\reports\\observer-disposal-controls-release.json"
+        ],
+        "exit_code": 0,
+        "label": "observer-disposal-controls-release",
+        "seconds": 0.265
+      }
+    ],
+    "linux_downloaded_replay": {
+      "candidate_audit_reproduced": true,
+      "counter_capability": {
+        "editor": {
+          "decimals_verified": [
+            "0",
+            "9007199254740993",
+            "9223372036854775808",
+            "18446744073709551615"
+          ],
+          "fixture_usec": 54857,
+          "hashes": {
+            "main": {
+              "bytes": 4194304,
+              "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+              "process_cycles": [
+                "40798723",
+                "40888320"
+              ],
+              "thread_cycles": [
+                "40840544",
+                "40842260"
+              ],
+              "updates": 1024
+            },
+            "worker": {
+              "bytes": 4194304,
+              "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+              "process_cycles": [
+                "41379864",
+                "41464241"
+              ],
+              "thread_cycles": [
+                "41422567",
+                "41424135"
+              ],
+              "updates": 1024
+            }
+          },
+          "note": "Capability/identity only. Wait need not have zero cycles. No sensitivity or cost pass.",
+          "passed": true,
+          "qualified": false,
+          "saved_mutations": {
+            "counter_failure": "CPU cycle capability: unsuccessful counter",
+            "failed_output_zero": "CPU cycle capability: failed/unavailable value was lost or replaced by zero",
+            "fixture_timeout": "CPU cycle capability: fixture exceeded its five-second cap",
+            "incomplete_hash": "CPU cycle capability: incomplete or incorrect main SHA work",
+            "lost_worker": "CPU cycle capability: process counter lost exited worker demand",
+            "numeric_raw_cycle": "CPU cycle capability: counter/wall must be a canonical unsigned decimal string",
+            "rounded_uint64": "CPU cycle capability: native/GDScript/JSON decimal roundtrip",
+            "unavailable": "CPU cycle capability: counter unavailable, failed or contradictory",
+            "wall_reversal": "CPU cycle capability: wall bracket reversal",
+            "worker_not_joined": "CPU cycle capability: worker not independently witnessed and joined",
+            "wrong_build": "CPU cycle capability: source/native identity",
+            "wrong_digest": "CPU cycle capability: incomplete or incorrect worker SHA work"
+          },
+          "schema": "cairn-cpu-cycle-capability-1",
+          "target_performance": "not_run",
+          "wait_process_cycles": [
+            "84917",
+            "167924"
+          ],
+          "wait_requested_usec": 20000,
+          "worker_enclosing_process_cycles": [
+            "42070004",
+            "42150878"
+          ],
+          "worker_thread_cycles": [
+            "41422567",
+            "41424135"
+          ]
+        },
+        "release": {
+          "decimals_verified": [
+            "0",
+            "9007199254740993",
+            "9223372036854775808",
+            "18446744073709551615"
+          ],
+          "fixture_usec": 54332,
+          "hashes": {
+            "main": {
+              "bytes": 4194304,
+              "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+              "process_cycles": [
+                "40848312",
+                "40935531"
+              ],
+              "thread_cycles": [
+                "40888295",
+                "40889642"
+              ],
+              "updates": 1024
+            },
+            "worker": {
+              "bytes": 4194304,
+              "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+              "process_cycles": [
+                "40919412",
+                "41027996"
+              ],
+              "thread_cycles": [
+                "40970200",
+                "40971866"
+              ],
+              "updates": 1024
+            }
+          },
+          "note": "Capability/identity only. Wait need not have zero cycles. No sensitivity or cost pass.",
+          "passed": true,
+          "qualified": false,
+          "saved_mutations": {
+            "counter_failure": "CPU cycle capability: unsuccessful counter",
+            "failed_output_zero": "CPU cycle capability: failed/unavailable value was lost or replaced by zero",
+            "fixture_timeout": "CPU cycle capability: fixture exceeded its five-second cap",
+            "incomplete_hash": "CPU cycle capability: incomplete or incorrect main SHA work",
+            "lost_worker": "CPU cycle capability: process counter lost exited worker demand",
+            "numeric_raw_cycle": "CPU cycle capability: counter/wall must be a canonical unsigned decimal string",
+            "rounded_uint64": "CPU cycle capability: native/GDScript/JSON decimal roundtrip",
+            "unavailable": "CPU cycle capability: counter unavailable, failed or contradictory",
+            "wall_reversal": "CPU cycle capability: wall bracket reversal",
+            "worker_not_joined": "CPU cycle capability: worker not independently witnessed and joined",
+            "wrong_build": "CPU cycle capability: source/native identity",
+            "wrong_digest": "CPU cycle capability: incomplete or incorrect worker SHA work"
+          },
+          "schema": "cairn-cpu-cycle-capability-1",
+          "target_performance": "not_run",
+          "wait_process_cycles": [
+            "204599",
+            "290986"
+          ],
+          "wait_requested_usec": 20000,
+          "worker_enclosing_process_cycles": [
+            "41683738",
+            "41793717"
+          ],
+          "worker_thread_cycles": [
+            "40970200",
+            "40971866"
+          ]
+        }
+      },
+      "engine_executed": false,
+      "passed": true,
+      "portable_sha256": "42ec54470844b27af1ec4d32a675a0f644ebdc13e6e8efa30c84caf0c852619e",
+      "qualified": false,
+      "target_action_required_now": false,
+      "target_performance": "not_run"
+    },
+    "local_saved_disposal_audit_equal": true,
+    "native_sanitizer_suites": 10,
+    "pilot_inputs": {
+      "historical_v1_pilot": false,
+      "shipping_cycles_pilot": false,
+      "shipping_observer_pilot": false
+    },
+    "python_regressions_per_platform": 203,
+    "shipping_or_attribution_route_processes": 0,
+    "windows_downloaded_audit": {
+      "exe_sha256": "61af76f7542be3d7747052ed3f6c5e52bc2b5978bb339f2f165efee63aa53a69",
+      "native_key": "ec74fbdda9015e0c1ae3bd75594fad2c35e8d89a91d0196ba5436b0007bc581d",
+      "passed": true,
+      "pck_entries_md5_verified": 107,
+      "pck_sha256": "158a6fff1978aa8b5cb82a8deb393069e992eacbc52b379d58511d736c8c29ff",
+      "pe_imports_verified": 38,
+      "portable_bytes": 30260192,
+      "portable_sha256": "42ec54470844b27af1ec4d32a675a0f644ebdc13e6e8efa30c84caf0c852619e",
+      "published_download_roundtrip": true,
+      "qualified": false,
+      "self_tests_verified": 8,
+      "target_performance": "not_run"
+    },
+    "windows_linux_disposal_audits_equal": true
+  },
+  "verification_checkpoint": "4c1fea4f43be1196d07daa5a20e4a6430bd78252"
+}
