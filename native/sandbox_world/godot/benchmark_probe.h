@@ -18,7 +18,7 @@ public:
     ~CairnProbe();
     bool preparation_start(const String &path);
     Dictionary preparation_finish();
-    Dictionary preparation_controls(const String &path, Object *mesher);
+    Dictionary preparation_controls(const String &path, Object *mesher, Object *terrain);
     bool observer_start(const String &path);
     void observer_section(int section);
     int64_t observer_begin(int slot, int64_t units, int64_t bytes);

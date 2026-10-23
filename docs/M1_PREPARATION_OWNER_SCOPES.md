@@ -70,13 +70,14 @@ of that perturbation. No total engine/worker/GPU/driver or causal cost is inferr
 ## Bounded verification
 
 `--preparation-demand-check` calls the real four functions in each matching
-editor/release, under a five-second native cap and 60-second outer timeout. Its
+editor/release, with an explicitly refused orphan fixture and a real in-tree terrain,
+under a five-second native cap and 60-second outer timeout. Its
 existing pool executes finite generation, real stock meshing/splitting and a
 checkerboard face-guard early return. It exercises actual one-worker replacement,
 a gated generation return across handover, nested main scopes, a persistent
 worker detach and joined UTF-8 qualification/proxy writes. Separate real-entry
 counter/cap/unregistered-owner/main-crossing/write faults retain failed prefixes
-and reclaim their owners. Twenty saved metadata corruptions must be rejected.
+and reclaim their owners. Twenty-one saved metadata corruptions must be rejected.
 
 The eleventh native sanitizer suite covers disabled dispatch, real thread entry/
 exit identities, legal same-TID reuse, overlap refusal, nested union, crossing,
@@ -87,7 +88,14 @@ three affected native ASan/UBSan suites pass locally. Local LeakSanitizer is
 unavailable under the executor's `/proc` restrictions; CI retains full sanitizer
 settings and all eleven suites.
 
-Source `fcb1f2e9e81f0377aed7edd73d01abb08da7ed81`, native key
+The initial source `fcb1f2e` is a preflight. Pinned `Node3D::get_global_transform()`
+requires `is_inside_tree()`, while the first native control created an orphan
+terrain. The corrected fixture supplies an in-tree node, proves its context,
+rejects the orphan before publication, then removes/destroys the fixture before
+closure. No log is suppressed or acceptance check removed. The initial compile
+is retained as preflight evidence, not a qualified candidate.
+
+Initial source `fcb1f2e9e81f0377aed7edd73d01abb08da7ed81`, native key
 `a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100`,
 [CI 39966730530](https://github.com/dponcho/voxel-survival-game/actions/runs/39966730530).
 The cloud static gate now passes all 213 regressions and all eleven full sanitizer
@@ -99,6 +107,11 @@ all three exact-key Windows binaries, exports the portable player, retains all
 existing integration/offline checks and replays the downloaded candidate and
 saved controls on Windows and Linux. These cloud checks and the candidate are
 **pending** until their actual result is recorded here.
+
+Current fixture correction uses native key
+`030d60ff7c04bed7fffab28511c1d79f10a251658baf05f98c0e864ba306dd69`.
+Its cloud verification is pending. The new control also proves orphan rejection
+without allocating/publishing a recorder, and rejects twenty-one saved corruptions.
 
 ## Run boundary and next decision
 

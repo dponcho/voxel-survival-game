@@ -201,6 +201,8 @@ def validate(report, folder, build):
     require(report['schema'] == SCHEMA and report['build'] == build and report['passed'] is True and
             report['qualified'] is False and report['target_performance'] == 'not_run', 'Preparation controls identity/result differs')
     n = report['native']
+    require(report['context_refusal'] == dict(passed=False, qualified=False) and n['terrain_in_tree'] is True and
+            not (folder/(n['ledger']['file'][:-4]+'.orphan.bin')).exists(), 'Terrain control did not reject an orphan or prove tree context')
     require(n['passed'] is True and n['qualified'] is False and uint(n['fixture_limit_usec']) == 5000000 and
             0 <= uint(n['fixture_end_usec'])-uint(n['fixture_start_usec']) <= 5000000, 'Preparation control failed or exceeded cap')
     cycles.sequence([n['process_start'], n['ledger']['emit_start'], n['ledger']['emit_end'],
@@ -259,6 +261,7 @@ def validate(report, folder, build):
 
 def mutations(report, folder, build):
     changes = {
+        'invalid-terrain-context': lambda n: n.__setitem__('terrain_in_tree',False),
         'live-publisher': lambda n: n['ownership'].__setitem__('unpublished',False),
         'retained-session': lambda n: n['ownership'].__setitem__('session_destroyed',False),
         'live-scope': lambda n: n['ownership'].__setitem__('in_flight',1),

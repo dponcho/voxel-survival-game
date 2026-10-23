@@ -117,8 +117,12 @@ struct ControlTask : zylann::IThreadedTask {
     void apply_result() override { *applied = true; }
 };
 }
-Dictionary CairnProbe::preparation_controls(const String &path, Object *mesher_object) {
+Dictionary CairnProbe::preparation_controls(const String &path, Object *mesher_object, Object *terrain_object) {
     Dictionary d; d["passed"] = false; d["qualified"] = false;
+    if (!Thread::is_main_thread()) return d;
+    auto *terrain = Object::cast_to<zylann::voxel::VoxelTerrain>(terrain_object);
+    if (!terrain || !terrain->is_inside_tree()) return d;
+    d["terrain_in_tree"] = terrain->is_inside_tree();
     const uint64_t start = cairn::native_preparation_wall();
     control_deadline = start+5000000;
     d["fixture_start_usec"] = String::num_uint64(start); d["process_start"] = cpu_cycle_observation();
@@ -143,9 +147,9 @@ Dictionary CairnProbe::preparation_controls(const String &path, Object *mesher_o
         engine.push_async_task(ZN_NEW(ControlTask(fixture,mesher,true,applied)));
         return wait();
     };
-    // Main scopes nest under the existing main stack. Terrain has no viewers,
-    // so this calls all its real processing without admitting a route.
-    auto *terrain = memnew(zylann::voxel::VoxelTerrain);
+    // The script supplies a real in-tree terrain with processing disabled and
+    // no viewers. Its transform/world context is valid, without route work.
+    // Main scopes nest under the existing main stack.
     const auto parent = observer_begin(cairn::CALLBACK_QUERY,1,0);
     terrain->cairn_preparation_control_process();
     const bool first = run();
@@ -162,6 +166,7 @@ Dictionary CairnProbe::preparation_controls(const String &path, Object *mesher_o
     const bool third = wait();
     preparation->control_gate = nullptr;
     terrain->cairn_preparation_control_process(); // Admission is off after preparation.
+    terrain->get_parent()->remove_child(terrain);
     memdelete(terrain);
     Ref<CairnReportSink> sink; sink.instantiate(); sink->set_observer_probe(this);
     sink->start(path+".csv");
