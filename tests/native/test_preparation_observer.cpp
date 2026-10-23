@@ -74,6 +74,18 @@ int main() {
         assert(calls==reads_before_race && s->ledger->count()==0 && s->counts[0].attempted==0 && s->owner_count==0);
         assert(s->ledger->failure()==(fault==0 ? OBS_OK : OBS_COUNTER) && unpublish_preparation(s,true,600));
     }
+    // Inactive sections must return even while publication is locked elsewhere.
+    s=make(); assert(publish_preparation(s)); preparation_set_section(s,1);
+    const auto reads_when_inactive=calls.load();
+    std::unique_lock<std::mutex> publication(preparation_publish_mutex);
+    std::atomic<bool> inactive_done{false};
+    std::thread inactive([&] { { PreparationScope no_lock(PREPARATION_GENERATION); } inactive_done=true; });
+    const auto inactive_deadline=std::chrono::steady_clock::now()+std::chrono::seconds(2);
+    while(!inactive_done && std::chrono::steady_clock::now()<inactive_deadline) std::this_thread::yield();
+    const bool returned_without_publication=inactive_done.load();
+    publication.unlock(); inactive.join();
+    assert(returned_without_publication && calls==reads_when_inactive && s->ledger->count()==0);
+    assert(unpublish_preparation(s,true,600));
     // Main section crossings and unregistered workers fail honestly.
     s=make(); assert(publish_preparation(s));
     { PreparationScope m(PREPARATION_ENGINE); s->ledger->set_section(1); }

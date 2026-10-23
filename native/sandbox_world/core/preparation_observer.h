@@ -52,6 +52,7 @@ public:
 // Fast disabled dispatch; publication mutex closes acquire/unpublish races.
 // Only one prospective session, never a per-system pool or profiler.
 inline std::atomic<bool> preparation_enabled{false};
+inline std::atomic<bool> preparation_admitting{false};
 inline std::mutex preparation_publish_mutex;
 inline std::shared_ptr<PreparationSession> preparation_published;
 inline bool publish_preparation(const std::shared_ptr<PreparationSession> &session) {
@@ -59,11 +60,13 @@ inline bool publish_preparation(const std::shared_ptr<PreparationSession> &sessi
     if (preparation_published || !session || session->ledger->version() != 2) return false;
     preparation_published = session;
     preparation_enabled.store(true, std::memory_order_release);
+    preparation_admitting.store(true, std::memory_order_release);
     return true;
 }
 inline bool unpublish_preparation(const std::shared_ptr<PreparationSession> &session, bool drained, uint64_t wall) {
     std::lock_guard<std::mutex> publish_lock(preparation_publish_mutex);
     if (preparation_published != session || !session) return false;
+    preparation_admitting.store(false, std::memory_order_release);
     preparation_enabled.store(false, std::memory_order_release);
     preparation_published.reset();
     std::lock_guard<std::mutex> lock(session->mutex);
@@ -75,6 +78,12 @@ inline bool unpublish_preparation(const std::shared_ptr<PreparationSession> &ses
         else o.detached = wall;
     }
     return session->drained;
+}
+inline void preparation_set_section(const std::shared_ptr<PreparationSession> &session, uint32_t section) {
+    std::lock_guard<std::mutex> lock(session->mutex);
+    session->ledger->set_section(section);
+    if (session->ledger->context() != 0 || session->ledger->failure() != OBS_OK)
+        preparation_admitting.store(false, std::memory_order_release);
 }
 inline void preparation_pool_enter(const void *pool, uint32_t index, uint32_t workers = 1) {
     preparation_thread = {pool, preparation_incarnation.fetch_add(1)+1, index, workers};
@@ -104,7 +113,7 @@ class PreparationScope {
 public:
     explicit PreparationScope(uint32_t owner, CycleRead (*reader)() = native_observer_read,
             uint64_t (*thread_reader)() = native_observer_thread) : slot(owner), read(reader), current_thread(thread_reader) {
-        if (!preparation_enabled.load(std::memory_order_acquire)) return;
+        if (!preparation_admitting.load(std::memory_order_acquire)) return;
         std::lock_guard<std::mutex> publish_lock(preparation_publish_mutex);
         if (!preparation_published || preparation_published->ledger->context() != 0 ||
                 preparation_published->ledger->failure() != OBS_OK) return;

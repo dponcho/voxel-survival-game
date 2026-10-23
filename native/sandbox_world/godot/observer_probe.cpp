@@ -38,8 +38,7 @@ bool CairnProbe::observer_start(const String &path) {
 void CairnProbe::observer_section(int section) {
     if (preparation) {
         if (!Thread::is_main_thread()) { observer->fail(cairn::OBS_OWNER); return; }
-        std::lock_guard<std::mutex> lock(preparation->mutex);
-        observer->set_section(uint32_t(section));
+        cairn::preparation_set_section(preparation,uint32_t(section));
         return;
     }
     if (observer) observer->set_section(uint32_t(section));

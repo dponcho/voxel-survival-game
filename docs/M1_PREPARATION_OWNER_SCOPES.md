@@ -144,6 +144,16 @@ checks immediately; the normal non-cancelling setting will be restored in the
 next documentation checkpoint. All pilot inputs remain false; no route is
 interrupted or launched. Matching binaries, controls and candidate remain pending.
 
+The inactive-section regression also holds the publication mutex while another
+thread attempts an owner entry. A separate atomic admission flag now makes that
+call return without reads, registration, allocation or publication locking.
+Handover clears admission under the session lock; admitted scopes still return
+and pool retirement tracking stays enabled until unpublish. Both admission-race
+variants (handover and first failure) and the locked-publication inactive case
+pass ASan/UBSan. Current native key:
+`777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a`.
+This supersedes the short-lived `ae750bbd` build before any controls/route.
+
 ## Run boundary and next decision
 
 Required CI has no preparation route input. All three consumed pilot flags stay

@@ -204,6 +204,11 @@ repeated under that lock, before reads/registration/attempts. The new native key
 `ae750bbdd0db95ce09ae5c5e3a423e6584d4af8bd08114254bb390a6c08d4256`; it
 supersedes the unfinished `030d60ff` build. The regression fails before and passes
 ASan/UBSan after the correction. Follow the replacement run, not the superseded key.
+Inactive sections now also use an atomic admission gate: a regression holds the
+publication mutex and proves that an excluded owner call returns without that lock
+or any read/registration. Pool retirement tracking remains active separately.
+Current native key `777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a`
+supersedes `ae750bbd` before controls or a route. Follow its replacement CI.
 No route has run and all consumed pilot inputs remain false.
 
 **Next bounded task: four direct preparation owner scopes, controls and matching
