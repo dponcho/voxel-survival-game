@@ -93,7 +93,14 @@ requires `is_inside_tree()`, while the first native control created an orphan
 terrain. The corrected fixture supplies an in-tree node, proves its context,
 rejects the orphan before publication, then removes/destroys the fixture before
 closure. No log is suppressed or acceptance check removed. The initial compile
-is retained as preflight evidence, not a qualified candidate.
+is retained as preflight evidence, not a qualified candidate. CI `39966730530`
+passes compilation/qualification of all three binaries but correctly fails the
+editor control on four scene-tree errors before any export or route. The
+[self-contained failed preflight](evidence/m1-preparation-owner-preflight-2026-10-23.json)
+retains its original report, log, nine raw files / 503,842 bytes, native manifest
+and digests. Its 2,620 raw records reconcile structurally, and both owners are
+destroyed, but engine-context failure invalidates attribution even though inner
+API flags say passed. No error is ignored and no portable candidate is claimed.
 
 Initial source `fcb1f2e9e81f0377aed7edd73d01abb08da7ed81`, native key
 `a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100`,
@@ -113,7 +120,9 @@ Current fixture correction uses native key
 Source `108c8e136eac84e784f8a9ab2d2b33884bcc7c8e`,
 [CI 39982108071](https://github.com/dponcho/voxel-survival-game/actions/runs/39982108071);
 [context correction checkpoint](evidence/m1-preparation-owner-context-checkpoint-2026-10-23.json).
-Its cloud verification is pending. The new control also proves orphan rejection
+The corrected cloud static gate passes all 213 regressions and eleven full
+sanitizer suites; matching native compilation is in progress. The new control
+also proves orphan rejection
 without allocating/publishing a recorder, and rejects twenty-one saved corruptions.
 
 ## Run boundary and next decision

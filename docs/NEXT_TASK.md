@@ -190,11 +190,14 @@ new matching binaries under native key
 `030d60ff7c04bed7fffab28511c1d79f10a251658baf05f98c0e864ba306dd69`.
 No error log or acceptance check is suppressed. Source `108c8e1`,
 [CI 39982108071](https://github.com/dponcho/voxel-survival-game/actions/runs/39982108071)
-is queued behind the first run; follow that replacement through all required checks,
+passes the static gate and is compiling matching native binaries; follow that replacement through all required checks,
 controls and candidate audits. The [context checkpoint](evidence/m1-preparation-owner-context-checkpoint-2026-10-23.json)
 retains the exact pinned precondition and source/key. Do not launch another build
 or any attribution route while waiting.
 All 213 Python regressions and the three affected native ASan/UBSan suites pass locally.
+The [failed first preflight](evidence/m1-preparation-owner-preflight-2026-10-23.json)
+retains four actual scene-tree errors and all original raw control bytes. Native
+compilation passed, while editor controls correctly stopped before any export.
 No route has run and all consumed pilot inputs remain false.
 
 **Next bounded task: four direct preparation owner scopes, controls and matching
