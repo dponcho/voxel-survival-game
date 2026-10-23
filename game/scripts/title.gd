@@ -8,6 +8,12 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--preparation-demand-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_preparation_demand_tests.gd").new())
+		return
+	if "--preparation-demand-pilot" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_preparation_demand_runtime.gd").new())
+		return
 	if "--observer-disposal-check" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_observer_disposal_tests.gd").new())
 		return

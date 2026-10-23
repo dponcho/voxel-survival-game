@@ -529,3 +529,16 @@ codes and reject fifteen corruptions per binary. All 203 pure regressions and
 ten full native sanitizer suites pass. The broader candidate retains a 905 µs
 deletion overrun and unqualified cost/target gates. Existing suites and all three
 disabled pilot inputs remain; no owner extension or route ran in this task.
+
+### Four direct preparation owners
+
+The distinct `--preparation-demand-check` exercises the four actual native entries,
+real one-worker replacement, overload/early return, section handover, nested main
+ownership, UTF-8 writer join/detach and five failed-prefix/cleanup controls.
+The new `CAIRNOB2` reader preserves old codecs and checks attempts, completions,
+incarnations, raw counters and both object destructions; twenty saved corruptions
+are rejected per matching binary. Ten pure cases bring the suite to 213; the
+eleventh native sanitizer suite covers publication, thread/lane reuse, crossing,
+depth/cap, failed counters and disposal. Required CI runs controls and the matching
+portable audits only. Read [the scope and live verification](docs/M1_PREPARATION_OWNER_SCOPES.md).
+No route or laptop qualification is included.

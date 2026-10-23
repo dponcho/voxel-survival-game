@@ -13,7 +13,8 @@ constexpr uint32_t OBSERVER_HEADER = 40, OBSERVER_RECORD = 192, OBSERVER_SLOTS =
 enum ObserverSlot : uint32_t {
     PREPARATION_QUERY = 1, CALLBACK_QUERY, FRONTIER, CALLBACK_OUTPUT,
     NATIVE_WITNESS, TICK_OUTPUT, REPORT_CLOSE, WORKER_LIFETIME,
-    WORKER_QUALIFICATION, WORKER_PROXY, WORKER_FLUSH, BOUNDARY_QUERY
+    WORKER_QUALIFICATION, WORKER_PROXY, WORKER_FLUSH, BOUNDARY_QUERY,
+    PREPARATION_GENERATION, PREPARATION_MESHING, PREPARATION_ENGINE, PREPARATION_TERRAIN
 };
 enum ObserverError : uint32_t {
     OBS_OK = 0, OBS_CAP, OBS_OWNER, OBS_NESTING, OBS_COUNTER, OBS_CONTEXT, OBS_OPEN, OBS_IO
@@ -36,6 +37,7 @@ class ObserverLedger {
     std::array<Lane, 8> lanes{};
     std::vector<ObserverRecord> entries;
     uint64_t capacity;
+    const uint32_t wire_version;
     uint32_t lane_count = 1;
     std::atomic<uint32_t> section{0}, error{OBS_OK};
     std::atomic<bool> sealed{false};
@@ -46,7 +48,8 @@ class ObserverLedger {
         if (r.value.available && r.value.success && !r.value.error) owner.last_cycles = r.value.cycles;
     }
 public:
-    explicit ObserverLedger(uint64_t cap = OBSERVER_CAP) : capacity(cap) {
+    explicit ObserverLedger(uint64_t cap = OBSERVER_CAP, uint32_t version = 1) : capacity(cap), wire_version(version) {
+        if (version != 1 && version != 2) fail(OBS_OWNER);
         if (cap < OBSERVER_HEADER || cap > OBSERVER_CAP) { fail(OBS_CAP); capacity = OBSERVER_HEADER; }
         entries.reserve((capacity-OBSERVER_HEADER)/OBSERVER_RECORD);
         for (auto &lane : lanes) lane.stack.reserve(8);
@@ -55,6 +58,7 @@ public:
     uint32_t failure() const { return error.load(); }
     bool active() const { return !sealed.load(); }
     uint32_t context() const { return section.load(); }
+    uint32_t version() const { return wire_version; }
     uint32_t new_lane() {
         std::lock_guard<std::mutex> lock(mutex);
         if (sealed || lane_count == lanes.size()) { fail(OBS_OWNER); return 0; }
@@ -67,9 +71,11 @@ public:
     template<class Read>
     uint64_t begin(uint32_t slot, uint32_t lane, uint64_t thread, uint64_t units,
             uint64_t bytes, Read read, uint32_t submitted = 5) {
+        if (wire_version == 2 && failure() != OBS_OK) return 0;
         const auto first = read();
         std::lock_guard<std::mutex> lock(mutex);
-        if (sealed || !lane || lane > lane_count || !thread || !slot || slot > OBSERVER_SLOTS) {
+        if (wire_version == 2 && failure() != OBS_OK) return 0;
+        if (sealed || !lane || lane > lane_count || !thread || !slot || slot > (wire_version == 2 ? 16u : OBSERVER_SLOTS)) {
             fail(OBS_OWNER); return 0;
         }
         auto &owner = lanes[lane-1];
@@ -89,7 +95,7 @@ public:
         return entry.id;
     }
     template<class Read>
-    void end(uint64_t id, uint32_t lane, uint64_t thread, Read read) {
+    void end(uint64_t id, uint32_t lane, uint64_t thread, Read read, uint32_t outcome = 0) {
         const auto first = read();
         std::lock_guard<std::mutex> lock(mutex);
         if (sealed || !id || id > entries.size() || !lane || lane > lane_count) { fail(OBS_NESTING); return; }
@@ -98,6 +104,7 @@ public:
                 owner.stack.empty() || owner.stack.back() != id || entry.complete) { fail(OBS_NESTING); return; }
         entry.reads[2] = first; owner.stack.pop_back();
         entry.end_section = section.load(); entry.complete = 1;
+        if (wire_version == 2 && entry.slot >= PREPARATION_GENERATION) entry.bytes = outcome;
         entry.reads[3] = read();
         check(owner,first); check(owner,entry.reads[3]);
         uint64_t previous_wall = 0, previous_cycles = 0;
@@ -135,8 +142,8 @@ public:
 inline void observer_u32(std::vector<uint8_t> &out, uint32_t n) { for (unsigned i=0;i<4;++i) out.push_back(uint8_t(n>>(8*i))); }
 inline void observer_u64(std::vector<uint8_t> &out, uint64_t n) { for (unsigned i=0;i<8;++i) out.push_back(uint8_t(n>>(8*i))); }
 inline std::vector<uint8_t> observer_header(const ObserverLedger &ledger) {
-    std::vector<uint8_t> out{'C','A','I','R','N','O','B','1'};
-    observer_u32(out,1); observer_u32(out,OBSERVER_RECORD); observer_u64(out,ledger.cap());
+    std::vector<uint8_t> out{'C','A','I','R','N','O','B',uint8_t('0'+ledger.version())};
+    observer_u32(out,ledger.version()); observer_u32(out,OBSERVER_RECORD); observer_u64(out,ledger.cap());
     observer_u64(out,ledger.count()); observer_u32(out,ledger.failure()); observer_u32(out,ledger.number_of_lanes());
     return out;
 }

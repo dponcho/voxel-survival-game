@@ -1,5 +1,6 @@
 #include "fixture_generator.h"
 #include "m1_hooks.h"
+#include "../core/preparation_observer.h"
 #include "../core/fixture.h"
 #include "../core/mesh_batch.h"
 #include "modules/voxel/storage/voxel_buffer.h"
@@ -31,6 +32,8 @@ bool CairnFixture::try_edit(Object *object, Vector3i position, int value) {
 }
 int CairnFixture::get_used_channels_mask() const { return 1 << zylann::voxel::VoxelBuffer::CHANNEL_TYPE; }
 CairnFixture::Result CairnFixture::generate_block(VoxelQueryData input) {
+    cairn::PreparationScope preparation(cairn::PREPARATION_GENERATION);
+    preparation.control_entry();
     const uint64_t start = OS::get_singleton()->get_ticks_usec();
     auto &buffer = input.voxel_buffer;
     const Vector3i size = buffer.get_size();
@@ -55,6 +58,8 @@ CairnFixture::Result CairnFixture::generate_block(VoxelQueryData input) {
 }
 
 void CairnMesher::build(Output &output, const Input &input) {
+    cairn::PreparationScope preparation(cairn::PREPARATION_MESHING);
+    preparation.control_entry();
     const uint64_t start = OS::get_singleton()->get_ticks_usec();
     // Refuse the whole unsupported fixture before allocating unbounded geometry.
     // The harness observes overloads and stops with a failed result.
@@ -70,7 +75,7 @@ void CairnMesher::build(Output &output, const Input &input) {
             for (const Vector3i &side : sides) if (voxels.get_voxel(p + side,
                     zylann::voxel::VoxelBuffer::CHANNEL_TYPE) == 0) ++faces;
         }
-    if (faces > cairn::MAX_FACES) { ++cairn::overloads; return; }
+    if (faces > cairn::MAX_FACES) { preparation.overload(); ++cairn::overloads; return; }
     VoxelMesherBlocky::build(output, input);
     zylann::StdVector<Output::Surface> split;
     // Preserve the stock cube mesher, winding, colors, AO, UVs and tangent data.
@@ -90,7 +95,7 @@ void CairnMesher::build(Output &output, const Input &input) {
                 indices.size() % 3 != 0 || normals.size() != vertices.size() ||
                 uvs.size() != vertices.size() || colors.size() != vertices.size() ||
                 (!tangents.is_empty() && tangents.size() != vertices.size() * 4)) {
-            ++cairn::overloads;
+            preparation.overload(); ++cairn::overloads;
             output.surfaces.clear();
             return;
         }
@@ -98,7 +103,7 @@ void CairnMesher::build(Output &output, const Input &input) {
         for (int begin = 0; begin < indices.size(); begin += cairn::TRIANGLES_PER_UPLOAD * 3) {
             const int count = MIN(cairn::TRIANGLES_PER_UPLOAD * 3, indices.size() - begin);
             if (!batch.build(indices.ptr() + begin, count)) {
-                ++cairn::overloads;
+                preparation.overload(); ++cairn::overloads;
                 output.surfaces.clear();
                 return;
             }

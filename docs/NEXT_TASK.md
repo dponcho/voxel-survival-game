@@ -179,6 +179,12 @@ Both controls reclaim 33,555,256 bytes of requested ledger/vector storage;
 allocator/OS retention stays unavailable. The [self-contained proof](evidence/m1-observer-disposal-cloud-2026-10-19.json)
 replays both controls and fifteen faults per binary without an artifact or engine.
 
+**Current bounded task: four direct preparation owner scopes, controls and matching
+candidate only. Implementation is staged; matching Windows CI and candidate remain pending.**
+Read [the implementation and finite acceptance checks](M1_PREPARATION_OWNER_SCOPES.md).
+All 213 Python regressions and the three affected native ASan/UBSan suites pass locally.
+No route has run and all consumed pilot inputs remain false.
+
 **Next bounded task: four direct preparation owner scopes, controls and matching
 candidate only.** Implement the already specified generation, meshing,
 `VoxelEngine::process()` and `VoxelTerrain::process()` scopes from

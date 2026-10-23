@@ -67,6 +67,10 @@ jobs:
         run: |
           c++ -std=c++17 -pthread -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_observer_disposal.cpp -o /tmp/cairn-observer-disposal-test
           /tmp/cairn-observer-disposal-test
+      - name: Preparation owners and publication lifetime with sanitizers
+        run: |
+          c++ -std=c++17 -pthread -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_preparation_observer.cpp -o /tmp/cairn-preparation-test
+          /tmp/cairn-preparation-test
   windows:
     needs: static
     uses: ./.github/workflows/windows-build.yml

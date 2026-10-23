@@ -11,6 +11,9 @@
 #endif
 
 void CairnProbe::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("preparation_start", "path"), &CairnProbe::preparation_start);
+    ClassDB::bind_method(D_METHOD("preparation_finish"), &CairnProbe::preparation_finish);
+    ClassDB::bind_method(D_METHOD("preparation_controls", "path", "mesher"), &CairnProbe::preparation_controls);
     ClassDB::bind_method(D_METHOD("observer_start", "path"), &CairnProbe::observer_start);
     ClassDB::bind_method(D_METHOD("observer_section", "section"), &CairnProbe::observer_section);
     ClassDB::bind_method(D_METHOD("observer_begin", "slot", "units", "bytes"), &CairnProbe::observer_begin, DEFVAL(1), DEFVAL(0));

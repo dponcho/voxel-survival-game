@@ -1,6 +1,7 @@
 #include "benchmark_probe.h"
 #include "report_sink.h"
 #include "../core/observer_ledger.h"
+#include "../core/preparation_observer.h"
 #include "core/io/file_access.h"
 #include "core/os/os.h"
 #include "core/os/thread.h"
@@ -29,12 +30,18 @@ CycleRead native_observer_read() {
 }
 }
 bool CairnProbe::observer_start(const String &path) {
-    if (!Thread::is_main_thread() || (observer && observer->active())) return false;
+    if (!Thread::is_main_thread() || preparation || (observer && observer->active())) return false;
     observer = std::make_shared<cairn::ObserverLedger>(); observer_path = path;
     observer_emitted = false;
     return observer->failure() == cairn::OBS_OK;
 }
 void CairnProbe::observer_section(int section) {
+    if (preparation) {
+        if (!Thread::is_main_thread()) { observer->fail(cairn::OBS_OWNER); return; }
+        std::lock_guard<std::mutex> lock(preparation->mutex);
+        observer->set_section(uint32_t(section));
+        return;
+    }
     if (observer) observer->set_section(uint32_t(section));
 }
 int64_t CairnProbe::observer_begin(int slot, int64_t units, int64_t bytes) {
@@ -54,12 +61,17 @@ Dictionary CairnProbe::observer_status() const {
 }
 Dictionary CairnProbe::observer_finish() {
     Dictionary d; d["schema"] = "cairn-observer-ledger-1"; d["passed"] = false; d["closed"] = false;
-    if (!observer || !Thread::is_main_thread() || !observer->active()) return d;
+    if (!observer || !Thread::is_main_thread() || !observer->active() || preparation) return d;
+    if (observer->version() == 2) d["schema"] = "cairn-observer-ledger-2";
     observer_emitted = true;
     observer->seal();
     d["emit_start"] = cpu_cycle_observation();
     Ref<FileAccess> file = FileAccess::open(observer_path, FileAccess::WRITE);
     auto bytes = cairn::observer_header(*observer);
+    if (observer->version() == 2) {
+        bytes.reserve(65536+cairn::OBSERVER_RECORD);
+        d["serialization_capacity_bytes"] = int64_t(bytes.capacity());
+    }
     uint64_t written = 0;
     auto flush = [&] {
         if (!file.is_null() && file->store_buffer(bytes.data(),bytes.size())) written += bytes.size();

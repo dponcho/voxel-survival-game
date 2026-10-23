@@ -4,16 +4,21 @@
 #include "core/variant/dictionary.h"
 #include "core/variant/array.h"
 #include <memory>
-namespace cairn { class ObserverLedger; }
+namespace cairn { class ObserverLedger; class PreparationSession; }
 
 class CairnProbe : public RefCounted {
     GDCLASS(CairnProbe, RefCounted);
     std::shared_ptr<cairn::ObserverLedger> observer;
     String observer_path;
     bool observer_emitted = false;
+    std::shared_ptr<cairn::PreparationSession> preparation;
 protected:
     static void _bind_methods();
 public:
+    ~CairnProbe();
+    bool preparation_start(const String &path);
+    Dictionary preparation_finish();
+    Dictionary preparation_controls(const String &path, Object *mesher);
     bool observer_start(const String &path);
     void observer_section(int section);
     int64_t observer_begin(int slot, int64_t units, int64_t bytes);
