@@ -154,6 +154,14 @@ pass ASan/UBSan. Current native key:
 `777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a`.
 This supersedes the short-lived `ae750bbd` build before any controls/route.
 
+Current source `2288a01f1b2786fda96775ab5ca1ff0fcbea3954`,
+[CI 39998646163](https://github.com/dponcho/voxel-survival-game/actions/runs/39998646163).
+The [admission checkpoint](evidence/m1-preparation-admission-checkpoint-2026-10-23.json)
+records the reproduced failure, both passing race variants, inactive-entry proof
+and cancelled superseded builds. The normal `cancel-in-progress:false` setting
+is restored now that this replacement has started. Follow this exact key/run
+through native qualification, both controls and downloaded candidate audits.
+
 ## Run boundary and next decision
 
 Required CI has no preparation route input. All three consumed pilot flags stay

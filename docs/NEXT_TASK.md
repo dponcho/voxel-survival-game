@@ -209,6 +209,13 @@ publication mutex and proves that an excluded owner call returns without that lo
 or any read/registration. Pool retirement tracking remains active separately.
 Current native key `777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a`
 supersedes `ae750bbd` before controls or a route. Follow its replacement CI.
+**Live replacement: source `2288a01`, native key `777879f5`,
+[CI 39998646163](https://github.com/dponcho/voxel-survival-game/actions/runs/39998646163).**
+The [admission checkpoint](evidence/m1-preparation-admission-checkpoint-2026-10-23.json)
+records the deterministic failure/fix, inactive-entry proof and superseded
+cancellations. Normal non-cancelling CI is restored; keep this build running and
+complete its real controls and matching candidate audits. Do not start another
+build or an attribution route while waiting.
 No route has run and all consumed pilot inputs remain false.
 
 **Next bounded task: four direct preparation owner scopes, controls and matching
