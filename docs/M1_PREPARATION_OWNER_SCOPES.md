@@ -162,6 +162,24 @@ and cancelled superseded builds. The normal `cancel-in-progress:false` setting
 is restored now that this replacement has started. Follow this exact key/run
 through native qualification, both controls and downloaded candidate audits.
 
+## Packaging timeout recovery — October 25, 2026
+
+CI `39998646163` completed the static gate, matching native qualification, both
+real-entry controls, full integration and both offline extraction tests. Its
+35-minute export job expired while compressing separate symbols, before player
+publication or independent Windows/Linux candidate audits. It remains cancelled,
+not a complete candidate pass. The downloaded evidence archive is 31,014,145
+bytes, SHA-256
+`cd2200f6ee8fda3d50bcce415297c2ec7debec763cfda4f4706ccd4f4d4cb8a3`.
+
+The run spent 8 minutes 46 seconds downloading the qualified native bundle and
+21 minutes 3 seconds in required integration. The export job's orchestration
+limit is now 60 minutes, preserving every check, runtime timeout, numerical
+gate and disabled pilot input. The exact native key remains `777879f5`; reuse
+its qualified bundle, requalify all three binaries, and complete the required
+candidate publication and downloaded audits. No new native compilation or route
+is needed for this workflow-only correction.
+
 ## Run boundary and next decision
 
 Required CI has no preparation route input. All three consumed pilot flags stay

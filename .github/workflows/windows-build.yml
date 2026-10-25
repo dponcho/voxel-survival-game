@@ -43,7 +43,10 @@ jobs:
   export-and-test:
     needs: native
     runs-on: windows-2022
-    timeout-minutes: 35
+    # Run 39998646163 spent 8m46s downloading the exact native bundle and
+    # 21m03s in required integration, then hit 35m during symbol compression.
+    # Leave room for packaging and both audits; individual runtime caps stay fixed.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
