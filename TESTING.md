@@ -542,3 +542,16 @@ eleventh native sanitizer suite covers publication, thread/lane reuse, crossing,
 depth/cap, failed counters and disposal. Required CI runs controls and the matching
 portable audits only. Read [the scope and live verification](docs/M1_PREPARATION_OWNER_SCOPES.md).
 No route or laptop qualification is included.
+
+### Saved preparation owner launch review
+
+`tools/qa/preparation_owner_review.py` checks the exact downloaded portable ZIP,
+native/PCK/source/inventory identity and all 48 embedded control files, replaying
+four controls and 84 saved semantic corruptions without an engine. Seven new
+regressions reject altered/compressed bytes, escaped paths, re-signed unjoined
+writers or retained recorders, forged qualification and a different candidate.
+The ten affected preparation-reader cases also pass. Source inspection finds a
+late prefix-write failure can start another trial; it is not an executed engine
+fault fixture. The [review and next controls](docs/M1_PREPARATION_OWNER_LAUNCH_REVIEW.md)
+withhold the route until the narrow stopping/reader correction and matching PCK
+are verified. No unchanged runtime suite, new native build or pilot ran here.

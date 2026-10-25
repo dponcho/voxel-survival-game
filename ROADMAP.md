@@ -124,9 +124,12 @@ The [four direct preparation owner scopes](docs/M1_PREPARATION_OWNER_SCOPES.md)
 are verified with version 2 raw ownership and explicit disposal in CI
 `40216786118`, including matching Windows controls/candidate and downloaded
 Windows/Linux audits. The exact-key workflow recovery preserves the earlier
-packaging cancellation and all original controls. The next bounded task is a
-saved proof review and prospective finite-route decision; this increment ran
-no attribution route or laptop test.
+packaging cancellation and all original controls. The
+[saved launch review](docs/M1_PREPARATION_OWNER_LAUNCH_REVIEW.md) now reproduces
+the candidate and all four controls, but withholds a finite-route declaration:
+a post-boundary prefix-write failure can start another trial. Correct and
+verify that new-mode controller/reader gap with bounded faults and a matching
+PCK first. No attribution route or laptop test ran in the review.
 M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.

@@ -243,12 +243,14 @@ route process is created by this increment. The independent reader retains the
 original complete fixed-work/lifecycle checks and adds version 2 ownership and
 destruction; a failed or unavailable attribution never becomes a passing zero.
 
-With controls and matching candidate verified, the next bounded task is to review
-their exact proof and prospectively decide whether to declare **at most one
-process, warm-up plus four bare trials**, as already specified in the adopted
-design. Preserve 32³/one worker, complete 4,320 ticks / 103,680 actor ticks /
-288 edits / 72 saves, full height and radii, all deadlines/caps and numerical 1%.
-That future decision is separate; no route, laptop action or M2 follows now.
+The [saved launch review](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md) now reproduces
+this exact candidate and all four controls. It withholds a route declaration:
+a late `sequence-prefix.json` write failure can start another trial. Correct
+and verify that controller/reader gap with bounded faults and a matching PCK
+before reviewing any **one process, warm-up plus four bare trials** declaration.
+The existing capability verdict and original bytes remain. Preserve 32³/one
+worker, 4,320 ticks / 103,680 actor ticks / 288 edits / 72 saves, full height,
+radii, deadlines/caps and numerical 1%. No route, laptop action or M2 follows.
 
 
 ## Replay saved controls without artifacts or an engine

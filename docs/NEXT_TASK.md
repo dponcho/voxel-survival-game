@@ -4,6 +4,13 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
+**Saved owner launch review complete; route declaration withheld.** The exact
+candidate and four saved controls reproduce, including all 84 saved corruptions.
+Source review found that a failed `sequence-prefix.json` write can start the next
+trial. Correct this stopping/reader gap and verify bounded controller faults
+before any attribution process. Read [the decision and next acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md).
+This review ran no engine and changed no runtime or candidate bytes.
+
 **Common-observer attribution implementation and finite process complete.**
 [CI 39179723675](https://github.com/dponcho/voxel-survival-game/actions/runs/39179723675)
 passes matching Windows binaries, required integration/package checks and
@@ -64,7 +71,7 @@ cost qualification attempt. No engine ran for the review.
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
 | Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`. | Review the verified four-owner controls/candidate proof, then make a separate prospective decision before any finite attribution declaration or process. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the saved launch review withholds a route because prefix-write failure can continue. | Correct and verify the new mode's prefix-write stopping and reader gap, with bounded controller faults and a matching PCK; review that proof before any route declaration. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -199,15 +206,35 @@ minutes and reuses/requalifies the exact native bundle. Original control bytes,
 cancellation and historical failures remain; no gate or runtime cap was relaxed.
 No route has run and all three consumed pilot inputs remain false.
 
-**Next bounded task: saved proof review and prospective finite-route decision.**
-Review the exact controls/candidate proof and new mode against
-[the adopted design](M1_PREPARATION_DEMAND_DECISION.md#narrow-owner-extension-after-lifetime-capability-passes).
-Decide explicitly whether to declare at most one process, warm-up plus four bare
-trials, under method `m1-preparation-demand-attribution-1`, inventory
-`m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`. This completed
-increment creates no declaration or route. Keep historical v1/v2 codecs and
-verdicts, all three consumed pilot flags false, and avoid another native build
-or unchanged integration rerun for this saved review.
+**Completed saved task: proof review and prospective finite-route decision.**
+The [review](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md) verifies the downloaded ZIP,
+native/PCK/source identity and all four embedded controls. Seven new regressions
+and ten affected reader regressions pass. Its [derived record](evidence/m1-preparation-owner-launch-review-2026-10-25.json)
+verifies all 48 files / 1,624,650 bytes and 84 rejected semantic corruptions, retaining
+the exact source/line witness. No runtime fault fixture or engine ran. Decision:
+do not create a declaration for this candidate. A failed post-boundary
+`sequence-prefix.json` write sets only the sticky I/O flag after trial validity
+is copied; the inherited scheduler can start another trial. The current reader
+does not reconcile prefix publication. The capability proof and its original
+passing CI remain valid within their declared scope.
+
+**Next bounded task: prefix-publication failure stopping, reader and matching
+candidate only.** Follow the [narrow correction and acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md#next-bounded-implementation).
+Stop before any next scenario/recorder/terrain start on prefix-write failure.
+Preserve immutable complete/terminal files and original measured boundaries;
+represent the later common batch failure separately. Independently reject any
+continuation, reconcile successful prefix files and preserve honest missing or
+failed output. Exercise the actual new-mode controller/handover path in bounded
+matching editor/release controls with injected prefix failure, normal handover,
+pre-existing trial failure and last-trial failure. Run affected regressions and
+required integration/package checks; produce a new source-matched portable PCK.
+Reuse/requalify native key `777879f5` unless native sources actually change.
+
+Keep `m1-preparation-demand-attribution-1`, inventory
+`m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`, old v1/v2 paths,
+codecs and historical verdicts. All three consumed pilot flags stay false.
+Do not declare or run the attribution route while fixing its controller. Review
+the corrected exact candidate/proof before a later prospective declaration.
 
 Any later declaration must bind the verified exact native key/inventory and
 retain 32³/one worker, full height/radii, 4,320 ticks / 103,680 actor ticks /
