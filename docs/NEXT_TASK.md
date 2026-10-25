@@ -62,9 +62,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific owners, terrain-worker demand and complete observer cost remain unavailable. | Implement the four specified preparation owner scopes under distinct method/inventory/raw version, with complete disposal, bounded controls and a matching candidate only. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`. | Review the verified four-owner controls/candidate proof, then make a separate prospective decision before any finite attribution declaration or process. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -179,71 +179,43 @@ Both controls reclaim 33,555,256 bytes of requested ledger/vector storage;
 allocator/OS retention stays unavailable. The [self-contained proof](evidence/m1-observer-disposal-cloud-2026-10-19.json)
 replays both controls and fifteen faults per binary without an artifact or engine.
 
-**Current bounded task: four direct preparation owner scopes, controls and matching
-candidate only. Implementation is staged; matching Windows CI and candidate remain pending.**
-Read [the implementation and finite acceptance checks](M1_PREPARATION_OWNER_SCOPES.md).
-Initial source `fcb1f2e` / CI `39966730530` is preflight evidence. Pinned engine review
-found that its orphan terrain fixture violates `Node3D::get_global_transform()`
-scene-tree preconditions. The correction passes a real in-tree node, explicitly
-refuses an orphan before publication and records the context proof. It requires
-new matching binaries under native key
-`030d60ff7c04bed7fffab28511c1d79f10a251658baf05f98c0e864ba306dd69`.
-No error log or acceptance check is suppressed. Source `108c8e1`,
-[CI 39982108071](https://github.com/dponcho/voxel-survival-game/actions/runs/39982108071)
-passes the static gate and is compiling matching native binaries; follow that replacement through all required checks,
-controls and candidate audits. The [context checkpoint](evidence/m1-preparation-owner-context-checkpoint-2026-10-23.json)
-retains the exact pinned precondition and source/key. Do not launch another build
-or any attribution route while waiting.
-All 213 Python regressions and the three affected native ASan/UBSan suites pass locally.
-The [failed first preflight](evidence/m1-preparation-owner-preflight-2026-10-23.json)
-retains four actual scene-tree errors and all original raw control bytes. Native
-compilation passed, while editor controls correctly stopped before any export.
-A deterministic native admission-race regression also reproduced a worker
-waiting for the session lock across handover. The section/failure check is now
-repeated under that lock, before reads/registration/attempts. The new native key is
-`ae750bbdd0db95ce09ae5c5e3a423e6584d4af8bd08114254bb390a6c08d4256`; it
-supersedes the unfinished `030d60ff` build. The regression fails before and passes
-ASan/UBSan after the correction. Follow the replacement run, not the superseded key.
-Inactive sections now also use an atomic admission gate: a regression holds the
-publication mutex and proves that an excluded owner call returns without that lock
-or any read/registration. Pool retirement tracking remains active separately.
-Current native key `777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a`
-supersedes `ae750bbd` before controls or a route. Follow its replacement CI.
-**Live replacement: source `2288a01`, native key `777879f5`,
-[CI 39998646163](https://github.com/dponcho/voxel-survival-game/actions/runs/39998646163).**
-The [admission checkpoint](evidence/m1-preparation-admission-checkpoint-2026-10-23.json)
-records the deterministic failure/fix, inactive-entry proof and superseded
-cancellations. Normal non-cancelling CI is restored; keep this build running and
-complete its real controls and matching candidate audits. Do not start another
-build or an attribution route while waiting.
-No route has run and all consumed pilot inputs remain false.
+**Completed bounded task: four direct preparation owner scopes, controls and
+matching candidate.** Source `2288a01`, workflow recovery `378de8f`, native key
+`777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a`,
+[CI 40216786118](https://github.com/dponcho/voxel-survival-game/actions/runs/40216786118).
+All 213 Python regressions per platform, eleven native sanitizer suites,
+matching editor/debug/release, both real-entry controls, required integration/
+package checks and downloaded Windows/Linux audits pass. Both controls retain
+actual function entries, worker incarnation/OS ownership, handover, early returns,
+failed prefixes and complete session/recorder destruction; 21 saved corruptions
+are rejected per binary. Read [the result and exact candidate](M1_PREPARATION_OWNER_SCOPES.md#result)
+and [self-contained proof](evidence/m1-preparation-owner-cloud-2026-10-25.json).
 
-**Next bounded task: four direct preparation owner scopes, controls and matching
-candidate only.** Implement the already specified generation, meshing,
-`VoxelEngine::process()` and `VoxelTerrain::process()` scopes from
+The first scene-context failure and two superseded admission builds remain in
+the linked checkpoints. CI `39998646163` passed controls/integration and offline
+extractions but hit its 35-minute job cap during symbol compression, before
+publication/audits. Recovery increases only that orchestration limit to 60
+minutes and reuses/requalifies the exact native bundle. Original control bytes,
+cancellation and historical failures remain; no gate or runtime cap was relaxed.
+No route has run and all three consumed pilot inputs remain false.
+
+**Next bounded task: saved proof review and prospective finite-route decision.**
+Review the exact controls/candidate proof and new mode against
 [the adopted design](M1_PREPARATION_DEMAND_DECISION.md#narrow-owner-extension-after-lifetime-capability-passes).
-Use method `m1-preparation-demand-attribution-1`, inventory
-`m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`; preserve old
-v1/v2 IDs, codecs/readers and verdicts. Reuse the bounded ledger and twelve
-original slots, adding only slots 13–16. Verify actual pool incarnation/OS-thread
-ownership, main nesting/union, raw unsigned errors, cross-boundary worker
-completion and attempt/completion counts without clipping or process/thread
-subtraction. Keep one terrain worker, eight lanes, depth eight and the 32 MiB
-wire cap; add no pool or broad engine profiler. Disabled paths take no new
-reads, locks or allocation.
+Decide explicitly whether to declare at most one process, warm-up plus four bare
+trials, under method `m1-preparation-demand-attribution-1`, inventory
+`m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`. This completed
+increment creates no declaration or route. Keep historical v1/v2 codecs and
+verdicts, all three consumed pilot flags false, and avoid another native build
+or unchanged integration rerun for this saved review.
 
-Wire the verified disposal capability into the new mode's complete lifecycle:
-allocation after start, drained scopes and joined/detached clients, unpublish,
-seal/emission, last-owner release, hashing and final boundary. Preserve failed
-prefixes; missing ownership/counters/lifetime proof invalidates attribution.
-Controls must exercise the real four entries, early returns, ownership reuse,
-section crossings, caps and cleanup, not synthetic slot calls alone. Native
-changes require a new exact key, matching editor/debug/release, required checks
-and a portable candidate. Implement the opt-in mode without running its route.
-Keep all three consumed pilot inputs false; any later one-process finite probe
-requires its own prospective declaration. Keep numerical 1%, complete lifecycle,
-identical 32³/one-worker work/settings and all existing limits. No laptop action
-or M2 expansion. Use **GPT-6.1 Sol Max**.
+Any later declaration must bind the verified exact native key/inventory and
+retain 32³/one worker, full height/radii, 4,320 ticks / 103,680 actor ticks /
+288 edits / 72 saves, the 32 MiB wire cap, eight lanes/depth eight, numerical 1%
+and every existing deadline/work/operation/resource/readiness/coverage/edit gate.
+Stop at first failure or trial five; no retry, positive/shipping continuation,
+fitted correction, frame normalization, clipping or process/thread subtraction.
+No laptop action or M2 expansion follows. Use **GPT-6.1 Sol Max**.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator

@@ -121,9 +121,12 @@ preparation owner scopes as the next controls/candidate implementation. A later
 finite route remains separately gated. No laptop action or M2 expansion follows
 automatically. [Result and exact candidate](docs/M1_SHIPPING_OBSERVER_ATTRIBUTION.md#result).
 The [four direct preparation owner scopes](docs/M1_PREPARATION_OWNER_SCOPES.md)
-are implemented with version 2 raw ownership and explicit disposal; their matching
-Windows controls and candidate are pending. No route or laptop run is authorized
-by this increment.
+are verified with version 2 raw ownership and explicit disposal in CI
+`40216786118`, including matching Windows controls/candidate and downloaded
+Windows/Linux audits. The exact-key workflow recovery preserves the earlier
+packaging cancellation and all original controls. The next bounded task is a
+saved proof review and prospective finite-route decision; this increment ran
+no attribution route or laptop test.
 M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
