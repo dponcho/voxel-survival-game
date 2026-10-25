@@ -17,7 +17,8 @@ SCHEMA = 'cairn-preparation-demand-controls-1'
 CAP, SIZE = 33554432, 192
 HEADER, RECORD, STAMP = struct.Struct('<8sIIQQII'), struct.Struct('<QQQIIIIIIQQ'), struct.Struct('<QQQII')
 SOURCES = ('m1_preparation_demand_runtime.gd', 'm1_preparation_demand_tests.gd', 'title.gd',
-           'm1_full_height_runtime.gd', 'benchmark.gd')
+           'm1_full_height_runtime.gd', 'benchmark.gd',
+           'm1_preparation_prefix_fixture.gd', 'm1_preparation_prefix_tests.gd', 'm1_preparation_prefix_before.gd')
 NATIVE = ('core/preparation_observer.h', 'core/observer_ledger.h', 'core/observer_disposal.h',
           'godot/preparation_probe.cpp', 'godot/fixture_generator.cpp', 'godot/observer_probe.cpp',
           'godot/benchmark_probe.h', 'godot/benchmark_probe.cpp', 'godot/report_sink.cpp', 'godot/report_sink.h')
@@ -320,7 +321,8 @@ def saved_controls(reports, build):
     return results
 
 
-def verify_prefix(trials):
+def verify_prefix(trials, *, publication_failure=False):
+    require(type(publication_failure) is bool, 'Invalid prefix failure witness')
     expected = [('warmup',0)]+[('bare',i) for i in range(4)]
     require(1 <= len(trials) <= 5 and [(t['group'],t['index']) for t in trials] == expected[:len(trials)],
             'Preparation prefix repeated, padded, reordered or continued')
@@ -330,7 +332,8 @@ def verify_prefix(trials):
                 t['dose']['requested_tick_cycles'] == t['dose']['reference_cycles'] == '0',
                 'Preparation mode enabled positive/shipping work')
         if index < len(trials)-1: require(t['valid'] is True and t['complete'] is True, 'Continued after a failed preparation trial')
-    require(len(trials) == 5 or trials[-1]['valid'] is False, 'Early preparation stop without failure')
+    require(len(trials) == 5 or trials[-1]['valid'] is False or publication_failure,
+            'Early preparation stop without failure')
 
 
 def trial_ledger(folder,t):
@@ -468,7 +471,10 @@ def reconcile(folder,build,inventory_path):
             and p['inventory_sha256']==sha(inventory_path) and p['max_trials']==5
             and p['qualified'] is False and p['target_performance']=='not_run' and p['measurement_valid'] is False
             and s['qualified'] is False and s['benchmark_mode']=='preparation-demand-attribution', 'Observer batch identity/qualification changed')
-    trials=p['trials'];verify_prefix(trials)
+    from preparation_prefix import publications
+    trials=p['trials']
+    publication=publications(folder,p)
+    verify_prefix(trials,publication_failure=not publication['passed'])
     assessment=dict(method=VERSION,qualified=False,outcome='inconclusive',controls=dict(valid=False),shipping_cost_estimate=None,abort_reason=p['abort_reason'])
     require(p['assessment']==assessment and p['abort_reason'] and s['shipping_diagnostic_qualification']==assessment,
             'Observer attribution forged a cost/qualification verdict')
@@ -522,6 +528,9 @@ def reconcile(folder,build,inventory_path):
     else:
         require(p['descriptive_cycle_null']=={} and p['elapsed_descriptive']=={}, 'Observer incomplete prefix invented a null envelope')
     integrity='verified' if all(t['complete'] for t in trials) and all(r.get('observer',{}).get('evidence_integrity')!='retained_io_failure' for r in records) else 'retained_partial'
+    if not publication['passed']: integrity='retained_publication_failure'
     return dict(passed=True,evidence_integrity=integrity,
-                attribution_valid=all(t['valid'] for t in trials),measurement_valid=False,cycle_cost='inconclusive',
+                attribution_valid=all(t['valid'] for t in trials) and publication['passed'],
+                trial_guards_valid=all(t['valid'] for t in trials),publication=publication,
+                measurement_valid=False,cycle_cost='inconclusive',
                 shipping_cost_estimate=None,qualified=False,target_performance='not_run',trials=len(trials),records=records)

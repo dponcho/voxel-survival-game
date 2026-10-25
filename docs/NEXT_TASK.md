@@ -11,6 +11,13 @@ trial. Correct this stopping/reader gap and verify bounded controller faults
 before any attribution process. Read [the decision and next acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md).
 This review ran no engine and changed no runtime or candidate bytes.
 
+**Prefix stopping correction staged; matching candidate verification pending.**
+The new-mode controller/reader correction and paired rejected/fixed controls
+are implemented. Native key remains 777879f5; reuse/requalify the exact bundle
+and follow the required cloud checks through both controls and downloaded
+candidate audits. Read [the implementation and acceptance boundary](M1_PREPARATION_PREFIX_STOP.md).
+No attribution route or declaration is authorized by this increment.
+
 **Common-observer attribution implementation and finite process complete.**
 [CI 39179723675](https://github.com/dponcho/voxel-survival-game/actions/runs/39179723675)
 passes matching Windows binaries, required integration/package checks and

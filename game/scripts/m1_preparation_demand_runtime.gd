@@ -9,6 +9,8 @@ const X = preload("res://scripts/m1_cycle_exact.gd")
 const Elapsed = preload("res://scripts/m1_shipping_method.gd")
 const ATTR_VERSION: String = "m1-preparation-demand-attribution-1"
 const INVENTORY: String = "res://diagnostics/preparation_demand_inventory.json"
+const PREFIX_SCHEMA: String = "cairn-preparation-sequence-prefix-1"
+const PREFIX_ABORT: String = "Sequence-prefix publication failed"
 const FRAME_HEADER: String = "frame,entry_usec,interval_usec,tick,resident_mesh,resident_data,generation_jobs,mesh_jobs,result_jobs,retired_meshes,accepted,readiness_stops,coverage_alarms"
 const POSE_HEADER: String = "tick,usec,x,y,z,command_hash,actors,accepted,rejected,saves,readiness_stops,source_tick,decision_tick,source_x,source_y,source_z,direction,prep_x,prep_y,prep_z,dose_start_usec,dose_end_usec,dose_request_usec,hash_updates,hash_sha256"
 var inventory: Dictionary = {}
@@ -39,6 +41,8 @@ var closure_spans: Array[Dictionary] = []
 var drain_spans: Array[Dictionary] = []
 var phase_first: int = 0
 var callback_begin_usec: int = 0
+var prefix_publications: Array[Dictionary] = []
+var json_write_error: int = OK
 
 func _ready() -> void:
 	# Required CI invokes only --preparation-demand-check. A later route needs a
@@ -90,6 +94,12 @@ func _capture_boundary(label: String) -> Dictionary:
 		"bounds": Method.boundary_bounds(before, after), "wall_usec": Time.get_ticks_usec()}
 
 func _start_scenario() -> void:
+	# A stopped batch cannot publish another recorder or create another terrain,
+	# even if a caller invokes this entry directly after the inherited handover.
+	if not abort_reason.is_empty(): return
+	_setup_trial()
+
+func _setup_trial() -> void:
 	finish_reason = ""
 	active_scenario = scenarios[scenario_index].duplicate(true)
 	cycle_boundaries.clear()
@@ -344,13 +354,16 @@ func _end_scenario() -> void:
 	await super._end_scenario()
 
 func _write_json(name: String, value: Dictionary) -> bool:
+	json_write_error = OK
 	var file := FileAccess.open(report_dir.path_join(name), FileAccess.WRITE)
-	if file == null: return false
+	if file == null:
+		json_write_error = FileAccess.get_open_error()
+		return false
 	file.store_string(JSON.stringify(value, "  "))
 	file.flush()
-	var ok: bool = file.get_error() == OK
+	json_write_error = file.get_error()
 	file.close()
-	return ok
+	return json_write_error == OK
 
 func _finish_trial() -> void:
 	var report_span: int = probe.observer_begin(7)
@@ -453,10 +466,49 @@ func _finish_trial() -> void:
 	trial["io_failed"] = report_io_failed
 	trial.valid = bool(trial.valid) and trial.checks.marker and trial.checks.io
 	if not trial.cycle.is_empty(): trial.cycle["marker"] = marker_bounds
+	_publish_finished_trial()
+
+func _prefix_file_state() -> Dictionary:
+	var path: String = report_dir.path_join("sequence-prefix.json")
+	var result: Dictionary = {"name": "sequence-prefix.json", "status": "missing", "bytes": null, "sha256": null}
+	if not FileAccess.file_exists(path): return result
+	result.status = "unavailable"
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null: return result
+	var size: int = file.get_length()
+	var readable: bool = file.get_error() == OK
+	file.close()
+	var hash_value: String = FileAccess.get_sha256(path)
+	if not readable or hash_value.is_empty(): return result
+	result.merge({"status": "retained", "bytes": size, "sha256": hash_value}, true)
+	return result
+
+func _batch_publication_valid() -> bool:
+	for publication: Dictionary in prefix_publications:
+		if not bool(publication.passed): return false
+	return true
+
+func _publication_outcome(outcome: String) -> String:
+	return outcome if _batch_publication_valid() else "failed"
+
+func _publish_finished_trial() -> void:
+	# Common batch reporting AFTER the immutable complete/terminal snapshots and
+	# final boundary. Do not retroactively change the finished trial's I/O flag.
 	trial["complete"] = true
 	trials.append(trial.duplicate(true))
-	if not _write_json("sequence-prefix.json", {"trials": trials, "no_retry": true}): report_io_failed = true
 	if not bool(trial.valid): abort_reason = "Attribution trial guard failed: " + str(trial.id)
+	var begin: int = Time.get_ticks_usec()
+	var written: bool = _write_json("sequence-prefix.json", {"schema": PREFIX_SCHEMA, "trials": trials, "no_retry": true})
+	var write_error: int = json_write_error
+	var retained: Dictionary = _prefix_file_state()
+	var published: bool = written and retained.status == "retained"
+	prefix_publications.append({"schema": PREFIX_SCHEMA, "trial_count": trials.size(), "id": trial.id,
+		"write_succeeded": written, "write_error": write_error, "passed": published, "start_usec": begin,
+		"end_usec": Time.get_ticks_usec(), "file": retained})
+	if not published:
+		report_io_failed = true
+		if abort_reason.is_empty(): abort_reason = PREFIX_ABORT
+		integration_failures.append(PREFIX_ABORT)
 	trial.clear()
 	if not abort_reason.is_empty(): scenarios.resize(scenario_index + 1)
 	# Exactly warm-up + four bare trials. Never append another group.
@@ -466,6 +518,7 @@ func _target_machine() -> bool:
 	return false
 
 func _finish_report(outcome: String, message: String) -> void:
+	outcome = _publication_outcome(outcome)
 	# An aborted route is evidence, never a fabricated complete trial. Close its
 	# writers and retain its precise prefix without running a replacement trial.
 	if not trial.is_empty():
@@ -530,6 +583,7 @@ func _finish_report(outcome: String, message: String) -> void:
 		"machine": initial_machine, "inventory": inventory, "inventory_sha256": FileAccess.get_sha256(INVENTORY),
 		"trial_guards_valid": valid, "measurement_valid": valid and bool(pilot_result.controls.valid), "qualified": false, "target_performance": "not_run",
 		"trials": trials, "assessment": pilot_result, "abort_reason": abort_reason,
+		"prefix_publications": prefix_publications, "batch_publication_valid": _batch_publication_valid(),
 		"elapsed_descriptive": elapsed, "descriptive_cycle_null": Method.envelope(trials.slice(1, 5)) if trials.size() == 5 else {}, "max_trials": 5,
 		"scope": "perturbing common-observer attribution only; no cost estimate, continuation or target qualification"}
 	if not _write_json("preparation-demand-attribution.json", result): integration_failures.append("Attribution summary write failed")

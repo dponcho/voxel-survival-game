@@ -161,6 +161,7 @@ def prepare():
     from observer_disposal import source_metadata as disposal_metadata, run_controls as disposal_controls
     info["observer_disposal"] = disposal_metadata(ROOT)
     from preparation_demand import source_metadata as preparation_metadata, run_controls as preparation_controls
+    from preparation_prefix import run_controls as prefix_controls
     info["preparation_demand"] = preparation_metadata(ROOT)
     write_json(game / "build_info.json", info)
     editor = BUNDLE / "editor.exe"
@@ -169,7 +170,7 @@ def prepare():
         raise RuntimeError("Project import reported errors")
     # Check each new dependency directly: a derived benchmark test can otherwise
     # report only an unresolved base class and hide the originating parse error.
-    for script in ("m1_preparation_demand_tests", "m1_preparation_demand_runtime", "m1_observer_disposal_tests", "m1_shipping_observer_runtime", "m1_shipping_observer_tests", "m1_cycle_exact", "m1_shipping_cycles_method", "m1_shipping_cycles_runtime", "m1_shipping_cycles_tests", "m1_cpu_cycle_capability", "benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "m1_frontier_edit_runtime", "m1_frontier_travel_runtime", "m1_frontier_admission_runtime", "m1_frontier_reversal_runtime", "m1_full_height_runtime", "m1_shipping_method", "m1_shipping_method_tests", "m1_shipping_runtime", "benchmark"):
+    for script in ("m1_preparation_prefix_before", "m1_preparation_prefix_fixture", "m1_preparation_prefix_tests", "m1_preparation_demand_tests", "m1_preparation_demand_runtime", "m1_observer_disposal_tests", "m1_shipping_observer_runtime", "m1_shipping_observer_tests", "m1_cycle_exact", "m1_shipping_cycles_method", "m1_shipping_cycles_runtime", "m1_shipping_cycles_tests", "m1_cpu_cycle_capability", "benchmark_frame_slack", "benchmark_frame_slack_tests", "benchmark_frame_slack_runtime", "m1_frontier_preparation", "m1_frontier_boundary_runtime", "m1_frontier_edit_runtime", "m1_frontier_travel_runtime", "m1_frontier_admission_runtime", "m1_frontier_reversal_runtime", "m1_full_height_runtime", "m1_shipping_method", "m1_shipping_method_tests", "m1_shipping_runtime", "benchmark"):
         output = run([editor, "--headless", "--path", game, "--check-only", "--script",
                       "res://scripts/" + script + ".gd"], "parse-" + script, timeout=60)
         if "SCRIPT ERROR:" in output or "ERROR:" in output:
@@ -178,6 +179,7 @@ def prepare():
     observer_controls(editor, "editor", game)
     disposal_controls(editor, "editor", game)
     preparation_controls(editor, "editor", game)
+    prefix_controls(editor, "editor", game)
     # Fail cheap dispatch/estimator defects before the long terrain suite. This
     # is the same adopted control set, not another sensitivity experiment.
     output = run([editor, "--headless", "--path", game, "--script",
@@ -242,6 +244,7 @@ def prepare():
     observer_controls(player / "Cairn.exe", "release")
     disposal_controls(player / "Cairn.exe", "release")
     preparation_controls(player / "Cairn.exe", "release")
+    prefix_controls(player / "Cairn.exe", "release")
     write_json(player / "BUILD_INFO.json", info)
     shutil.copytree(BUNDLE / "LICENSES", player / "LICENSES", dirs_exist_ok=True)
     shutil.copy2(ROOT / "distribution/README.txt", player / "README.txt")
