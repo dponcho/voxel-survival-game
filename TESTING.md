@@ -609,3 +609,9 @@ launcher while preserving ordinary controls and old disabled pilots.
 All 256 pure regressions pass locally. Runtime, inventory and the frozen
 candidate stay unchanged; the actual one-process result remains pending.
 Read [the launch and retention boundary](docs/M1_PREPARATION_DEMAND_RUN.md).
+
+The first cloud preflight's Windows default-codepage failure is retained before
+any reservation or process. Explicit UTF-8 source reading reproduces the same
+frozen review on both platforms. A codepage regression and a structured
+preflight-failure/zero-process replay regression bring the suite to 258 cases;
+all 26 affected launcher/review cases pass after the correction.

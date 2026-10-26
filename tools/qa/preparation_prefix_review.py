@@ -105,10 +105,10 @@ def function(source,name):
 
 def source_witness(proof,root=ROOT):
     root = Path(root)
-    runtime = (root/prior.RUNTIME).read_text()
-    base = (root/prior.BASE).read_text()
+    runtime = (root/prior.RUNTIME).read_text(encoding='utf-8')
+    base = (root/prior.BASE).read_text(encoding='utf-8')
     frozen_path = 'game/scripts/m1_preparation_prefix_before.gd'
-    frozen = (root/frozen_path).read_text()
+    frozen = (root/frozen_path).read_text(encoding='utf-8')
     for name,text in ((prior.RUNTIME,runtime),(prior.BASE,base),(frozen_path,frozen)):
         require(digest(text.encode()) == proof['preparation_metadata']['sources_sha256'][Path(name).name],
                 'Reviewed runtime source changed')

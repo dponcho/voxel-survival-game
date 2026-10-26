@@ -8,6 +8,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 import zlib
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -42,6 +43,15 @@ class CorrectedLaunchReviewTests(unittest.TestCase):
         self.assertEqual(prefix['bytes']+owners['bytes'],860237)
         self.assertEqual(prefix['semantic_corruptions_rejected']+owners['semantic_corruptions_rejected'],66)
         self.assertEqual([owners['controls'][k]['raw']['record_count'] for k in ('editor','release')],[1380,1583])
+
+    def test_source_witness_is_identical_with_a_windows_default_codepage(self):
+        original=Path.read_text
+        expected=review.source_witness(self.proof)
+        def windows_default(path,encoding=None,errors=None):
+            if encoding is None:return path.read_bytes().decode('cp1252')
+            return original(path,encoding=encoding,errors=errors)
+        with patch.object(Path,'read_text',windows_default):
+            self.assertEqual(review.source_witness(self.proof),expected)
 
     def test_resigned_continuation_cannot_inherit_a_passing_control(self):
         proof = self.changed_report(lambda r:r['cases'][1].__setitem__('setup_calls',1))

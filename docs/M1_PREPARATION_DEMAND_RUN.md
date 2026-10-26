@@ -68,3 +68,21 @@ starting a replacement. The result determines the next bounded decision.
 The broader candidate's 1,221 µs upload overrun and all earlier failed
 measurements remain intact. A failed operation guard in this process stops its
 prefix; it never licenses a retry, a cost estimate or qualification.
+
+## Preflight correction before any process
+
+[CI 40257212559](https://github.com/dponcho/voxel-survival-game/actions/runs/40257212559)
+passed all 256 pure regressions and eleven sanitizer suites, then failed the
+Windows source-witness review before reservation. The raw source/candidate
+identity checks passed. `Path.read_text()` used the Windows default code page;
+re-encoding decoded UTF-8 source produced a different digest. Explicit UTF-8
+fixes this review-only defect without changing source/game/candidate bytes or
+the frozen review/declaration result. A simulated Windows-codepage regression
+reproduces the failure and verifies the correction.
+
+The [original log and job record](evidence/m1-preparation-launch-preflight-2026-10-25.json)
+retain zero engine processes and no reservation; the declaration was unconsumed.
+The launcher now retains structured preflight failure evidence before any
+verification, so failed validation also uploads and replays honestly. Two added
+regressions bring the suite to 258; all 26 affected launcher/review tests pass.
+A new corrected source run may perform the first and only declared process.

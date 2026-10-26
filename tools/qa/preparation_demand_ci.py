@@ -30,6 +30,7 @@ REPORTS = ROOT/'reports/preparation-demand-pilot'
 PLAYER = ROOT/'build/published-player/Cairn-windows-x86_64.zip'
 DESTINATION = ROOT/'build/preparation-demand-player'
 SNAPSHOTS = ('tools/qa/preparation_demand_ci.py','tools/qa/preparation_demand_saved_recheck.py',
+             'tools/qa/preparation_prefix_review.py',
              '.github/workflows/ci.yml','.github/workflows/preparation-demand.yml','build/preparation-demand-once.json')
 require,read,sha = prep.require,prep.read,prep.sha
 
@@ -69,21 +70,28 @@ def prepare():
     require(plan(),'Preparation request is consumed/disabled')
     ctx = context()
     require(not REPORTS.exists() and not DESTINATION.exists(),'Existing preparation output forbids another launch')
-    result = review.derive(PLAYER)
-    require(result['candidate'] == candidate(),'Preflight candidate changed')
     REPORTS.mkdir(parents=True)
-    write_json(REPORTS/'preflight-review.json',result)
-    shutil.copy2(DECLARATION,REPORTS/'sequence-declared.json')
-    sources = {}
-    for name in SNAPSHOTS:
-        path = REPORTS/'source'/name;path.parent.mkdir(parents=True,exist_ok=True)
-        shutil.copy2(ROOT/name,path);sources[name]=sha(path)
-    extract(PLAYER,DESTINATION)
-    require(sha(DESTINATION/'Cairn.exe') == result['candidate']['exe_sha256'] and
-            sha(DESTINATION/'Cairn.pck') == result['candidate']['pck_sha256'],'Extracted candidate changed')
-    write_json(REPORTS/'preflight.json',dict(schema='cairn-preparation-launch-preflight-1',context=ctx,
-        candidate=result['candidate'],declaration_sha256=DECLARATION_SHA256,source_sha256=sources,
-        controls_verified=4,corruptions_rejected=66,engine_processes=0,report_root=str(REPORTS)))
+    write_json(REPORTS/'preflight-attempt.json',dict(context=ctx,declaration_sha256=DECLARATION_SHA256,
+        engine_processes=0,reservation_created=False))
+    try:
+        sources = {}
+        for name in SNAPSHOTS:
+            path = REPORTS/'source'/name;path.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copy2(ROOT/name,path);sources[name]=sha(path)
+        result = review.derive(PLAYER)
+        require(result['candidate'] == candidate(),'Preflight candidate changed')
+        write_json(REPORTS/'preflight-review.json',result)
+        shutil.copy2(DECLARATION,REPORTS/'sequence-declared.json')
+        extract(PLAYER,DESTINATION)
+        require(sha(DESTINATION/'Cairn.exe') == result['candidate']['exe_sha256'] and
+                sha(DESTINATION/'Cairn.pck') == result['candidate']['pck_sha256'],'Extracted candidate changed')
+        write_json(REPORTS/'preflight.json',dict(schema='cairn-preparation-launch-preflight-1',context=ctx,
+            candidate=result['candidate'],declaration_sha256=DECLARATION_SHA256,source_sha256=sources,
+            controls_verified=4,corruptions_rejected=66,engine_processes=0,report_root=str(REPORTS)))
+    except Exception as error:
+        write_json(REPORTS/'preflight-error.json',dict(error_type=type(error).__name__,message=str(error),
+            engine_processes=0,reservation_created=False,declaration_consumed=False))
+        raise
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -255,7 +263,19 @@ def files(folder):
 
 
 def audit(folder=REPORTS):
-    folder=Path(folder);preflight=read(folder/'preflight.json');identity=candidate()
+    folder=Path(folder)
+    if not (folder/'preflight.json').exists():
+        error=read(folder/'preflight-error.json')
+        require(error['engine_processes'] == 0 and error['reservation_created'] is False and
+            not any((folder/n).exists() for n in ('reservation.json','launch-record.json','process-result.json')),
+            'Preflight failure invented a reservation or engine result')
+        result=dict(passed=True,qualified=False,target_performance='not_run',engine_executed_by_audit=False,
+            engine_processes=0,candidate=None,execution_valid=False,attribution_valid=False,
+            sequence=dict(evidence_integrity='preflight_failed',trials=None,attribution_valid=False),
+            saved_faults=dict(count=None,rejected=None),preflight_error=error,files=files(folder))
+        write_json(folder/'independent-audit.json',result)
+        return result
+    preflight=read(folder/'preflight.json');identity=candidate()
     require(read(folder/'preflight-review.json') == review.derive(PLAYER),'Saved preflight review changed')
     require(preflight['candidate'] == identity and sha(folder/'sequence-declared.json') == DECLARATION_SHA256,
             'Saved preparation candidate/declaration changed')

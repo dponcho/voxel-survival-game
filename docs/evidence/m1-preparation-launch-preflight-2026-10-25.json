@@ -1,0 +1,339 @@
+{
+  "schema": "cairn-preparation-launch-preflight-failure-1",
+  "date": "2026-10-25",
+  "source_commit": "b7b4d9f0d26c8ac37bfc3998b488f7e537c8dbe3",
+  "ci_run": 40257212559,
+  "ci_jobs": [
+    {
+      "id": 121361525131,
+      "name": "static",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40257212559,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Packaging and cache regression tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Compile-check owned cloud scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Native fixture checks with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Phase-local operation regression tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Edit visibility lifecycle tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Indexed mesh batch tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "World-space viewer demand tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Bounded mesh admission selection with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Exact cycle counter and failed-call controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Bounded native cycle dose and hard-cap controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Bounded observer ownership and raw-span controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Explicit observer disposal and retained-owner controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Preparation owners and publication lifetime with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        }
+      ]
+    },
+    {
+      "id": 121361525268,
+      "name": "plan",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 40257212559,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Select ordinary candidate CI or the one frozen preparation process",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 121361993556,
+      "name": "preparation-demand / sequence",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 40257212559,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Download only the frozen qualified portable candidate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Verify exact declaration, source, candidate and four saved controls",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 5
+        },
+        {
+          "name": "Permanently reserve the sole declared process",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6
+        },
+        {
+          "name": "Run the one release process; retain every failure without retry",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7
+        },
+        {
+          "name": "Independently audit all retained files and the finite result",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8
+        },
+        {
+          "name": "Preserve original raw evidence even after failure",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 9
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    },
+    {
+      "id": 121361995094,
+      "name": "windows",
+      "status": "completed",
+      "conclusion": "skipped",
+      "run_id": 40257212559,
+      "logs_url": null,
+      "steps": null
+    },
+    {
+      "id": 121362092011,
+      "name": "preparation-demand / saved-recheck",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 40257212559,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 5
+        },
+        {
+          "name": "Reproduce all saved evidence without another engine",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    }
+  ],
+  "engine_processes": 0,
+  "reservation_created": false,
+  "declaration_consumed": false,
+  "portable_changed": false,
+  "reason": "Windows default text decoding in source_witness re-encoded UTF-8 source differently. Raw source/native/candidate identity checks passed; no reservation or engine step ran.",
+  "original_sequence_log": "﻿2026-10-26T02:05:32.7008460Z Current runner version: '2.338.0'\r\n2026-10-26T02:05:32.7045531Z ##[group]Runner Image Provisioner\r\n2026-10-26T02:05:32.7046930Z Hosted Compute Agent\r\n2026-10-26T02:05:32.7047798Z Version: 20261021.618\r\n2026-10-26T02:05:32.7048761Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e\r\n2026-10-26T02:05:32.7049866Z Build Date: 2026-10-21T00:45:21Z\r\n2026-10-26T02:05:32.7050883Z Worker ID: {b9d93cf7-62a8-4471-b2e2-8eab2076edf1}\r\n2026-10-26T02:05:32.7052043Z Region: westus\r\n2026-10-26T02:05:32.7052854Z Cloud: Azure\r\n2026-10-26T02:05:32.7053585Z ##[endgroup]\r\n2026-10-26T02:05:32.7055733Z ##[group]Operating System\r\n2026-10-26T02:05:32.7056753Z Microsoft Windows Server 2022\r\n2026-10-26T02:05:32.7057693Z 10.0.20348\r\n2026-10-26T02:05:32.7058445Z Datacenter\r\n2026-10-26T02:05:32.7059158Z ##[endgroup]\r\n2026-10-26T02:05:32.7060058Z ##[group]Runner Image\r\n2026-10-26T02:05:32.7061017Z Image: windows-2022\r\n2026-10-26T02:05:32.7061916Z Version: 20261022.344.1\r\n2026-10-26T02:05:32.7064270Z Included Software: https://github.com/actions/runner-images/blob/win22/20261022.344/images/windows/Windows2022-Readme.md\r\n2026-10-26T02:05:32.7067004Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261022.344\r\n2026-10-26T02:05:32.7068577Z ##[endgroup]\r\n2026-10-26T02:05:32.7070542Z ##[group]GITHUB_TOKEN Permissions\r\n2026-10-26T02:05:32.7074067Z Actions: read\r\n2026-10-26T02:05:32.7075003Z Contents: write\r\n2026-10-26T02:05:32.7075871Z Metadata: read\r\n2026-10-26T02:05:32.7076712Z ##[endgroup]\r\n2026-10-26T02:05:32.7079770Z Secret source: Actions\r\n2026-10-26T02:05:32.7081103Z Cache mode: write\r\n2026-10-26T02:05:32.7082452Z Prepare workflow directory\r\n2026-10-26T02:05:32.7477920Z Prepare all required actions\r\n2026-10-26T02:05:32.7525187Z Getting action download info\r\n2026-10-26T02:05:33.1756227Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)\r\n2026-10-26T02:05:33.2909153Z Download action repository 'actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)\r\n2026-10-26T02:05:33.4115990Z Download action repository 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)\r\n2026-10-26T02:05:33.8414098Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)\r\n2026-10-26T02:05:34.1656734Z Uses: dponcho/voxel-survival-game/.github/workflows/preparation-demand.yml@refs/pull/2/merge (ba36f994e792d9ec246acd3ea46876a7ef16e8cb)\r\n2026-10-26T02:05:34.1661676Z Complete job name: preparation-demand / sequence\r\n2026-10-26T02:05:34.3231856Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262\r\n2026-10-26T02:05:34.3233296Z with:\r\n2026-10-26T02:05:34.3233710Z   persist-credentials: false\r\n2026-10-26T02:05:34.3234228Z   repository: dponcho/voxel-survival-game\r\n2026-10-26T02:05:34.3238699Z   token: ***\r\n2026-10-26T02:05:34.3239112Z   ssh-strict: true\r\n2026-10-26T02:05:34.3239555Z   ssh-user: git\r\n2026-10-26T02:05:34.3239931Z   clean: true\r\n2026-10-26T02:05:34.3240335Z   sparse-checkout-cone-mode: true\r\n2026-10-26T02:05:34.3240821Z   fetch-depth: 1\r\n2026-10-26T02:05:34.3241223Z   fetch-tags: false\r\n2026-10-26T02:05:34.3241628Z   show-progress: true\r\n2026-10-26T02:05:34.3242042Z   lfs: false\r\n2026-10-26T02:05:34.3242416Z   submodules: false\r\n2026-10-26T02:05:34.3242831Z   set-safe-directory: true\r\n2026-10-26T02:05:34.3243288Z   allow-unsafe-pr-checkout: false\r\n2026-10-26T02:05:34.3244077Z ##[endgroup]\r\n2026-10-26T02:05:34.6304875Z Syncing repository: dponcho/voxel-survival-game\r\n2026-10-26T02:05:34.6307545Z ##[group]Getting Git version info\r\n2026-10-26T02:05:34.6308619Z Working directory is 'D:\\a\\voxel-survival-game\\voxel-survival-game'\r\n2026-10-26T02:05:34.7468061Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" version\r\n2026-10-26T02:05:35.0549302Z git version 2.56.0.windows.3\r\n2026-10-26T02:05:35.0592443Z ##[endgroup]\r\n2026-10-26T02:05:35.0614325Z Temporarily overriding HOME='D:\\a\\_temp\\3d0d3234-09af-489a-a35d-3af952d8ff9e' before making global git config changes\r\n2026-10-26T02:05:35.0619142Z Adding repository directory to the temporary git global config as a safe directory\r\n2026-10-26T02:05:35.0626967Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --global --add safe.directory D:\\a\\voxel-survival-game\\voxel-survival-game\r\n2026-10-26T02:05:35.1208949Z Deleting the contents of 'D:\\a\\voxel-survival-game\\voxel-survival-game'\r\n2026-10-26T02:05:35.1215597Z ##[group]Initializing the repository\r\n2026-10-26T02:05:35.1224528Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" init D:\\a\\voxel-survival-game\\voxel-survival-game\r\n2026-10-26T02:05:35.2176848Z Initialized empty Git repository in D:/a/voxel-survival-game/voxel-survival-game/.git/\r\n2026-10-26T02:05:35.2228488Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" remote add origin https://github.com/dponcho/voxel-survival-game\r\n2026-10-26T02:05:35.2867897Z ##[endgroup]\r\n2026-10-26T02:05:35.2869303Z ##[group]Disabling automatic garbage collection\r\n2026-10-26T02:05:35.2877739Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local gc.auto 0\r\n2026-10-26T02:05:35.3198805Z ##[endgroup]\r\n2026-10-26T02:05:35.3200198Z ##[group]Setting up auth\r\n2026-10-26T02:05:35.3212727Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp core\\.sshCommand\r\n2026-10-26T02:05:35.3537514Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"sh -c \\\"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\\\"\"\r\n2026-10-26T02:05:37.4495997Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\r\n2026-10-26T02:05:37.4825477Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"sh -c \\\"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\\\"\"\r\n2026-10-26T02:05:38.0070472Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp ^includeIf\\.gitdir:\r\n2026-10-26T02:05:38.0382245Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"git config --local --show-origin --name-only --get-regexp remote.origin.url\"\r\n2026-10-26T02:05:38.4895814Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local http.https://github.com/.extraheader \"AUTHORIZATION: basic ***\"\r\n2026-10-26T02:05:38.5209262Z ##[endgroup]\r\n2026-10-26T02:05:38.5210085Z ##[group]Fetching the repository\r\n2026-10-26T02:05:38.5225040Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ba36f994e792d9ec246acd3ea46876a7ef16e8cb:refs/remotes/pull/2/merge\r\n2026-10-26T02:05:39.8569165Z From https://github.com/dponcho/voxel-survival-game\r\n2026-10-26T02:05:39.8607828Z  * [new ref]         ba36f994e792d9ec246acd3ea46876a7ef16e8cb -> pull/2/merge\r\n2026-10-26T02:05:39.8609823Z ##[endgroup]\r\n2026-10-26T02:05:39.8610526Z ##[group]Determining the checkout info\r\n2026-10-26T02:05:39.8612230Z ##[endgroup]\r\n2026-10-26T02:05:39.8623113Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" sparse-checkout disable\r\n2026-10-26T02:05:39.9069556Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --unset-all extensions.worktreeConfig\r\n2026-10-26T02:05:39.9363439Z ##[group]Checking out the ref\r\n2026-10-26T02:05:39.9372415Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" checkout --progress --force refs/remotes/pull/2/merge\r\n2026-10-26T02:05:40.1314510Z Note: switching to 'refs/remotes/pull/2/merge'.\r\n2026-10-26T02:05:40.1315160Z \r\n2026-10-26T02:05:40.1315747Z You are in 'detached HEAD' state. You can look around, make experimental\r\n2026-10-26T02:05:40.1317058Z changes and commit them, and you can discard any commits you make in this\r\n2026-10-26T02:05:40.1318162Z state without impacting any branches by switching back to a branch.\r\n2026-10-26T02:05:40.1318690Z \r\n2026-10-26T02:05:40.1319029Z If you want to create a new branch to retain commits you create, you may\r\n2026-10-26T02:05:40.1321309Z do so (now or later) by using -c with the switch command. Example:\r\n2026-10-26T02:05:40.1321861Z \r\n2026-10-26T02:05:40.1322075Z   git switch -c <new-branch-name>\r\n2026-10-26T02:05:40.1322486Z \r\n2026-10-26T02:05:40.1322673Z Or undo this operation with:\r\n2026-10-26T02:05:40.1323008Z \r\n2026-10-26T02:05:40.1323172Z   git switch -\r\n2026-10-26T02:05:40.1323457Z \r\n2026-10-26T02:05:40.1323818Z Turn off this advice by setting config variable advice.detachedHead to false\r\n2026-10-26T02:05:40.1324385Z \r\n2026-10-26T02:05:40.1325016Z HEAD is now at ba36f99 Merge b7b4d9f0d26c8ac37bfc3998b488f7e537c8dbe3 into 52d8e69138478832012e8abc2743ae7be7374f0f\r\n2026-10-26T02:05:40.2370945Z ##[endgroup]\r\n2026-10-26T02:05:40.2765982Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" log -1 --format=%H\r\n2026-10-26T02:05:40.3069123Z ba36f994e792d9ec246acd3ea46876a7ef16e8cb\r\n2026-10-26T02:05:40.3109380Z ##[group]Removing auth\r\n2026-10-26T02:05:40.3118233Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp core\\.sshCommand\r\n2026-10-26T02:05:40.3557430Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"sh -c \\\"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\\\"\"\r\n2026-10-26T02:05:40.8205304Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\r\n2026-10-26T02:05:40.8616398Z http.https://github.com/.extraheader\r\n2026-10-26T02:05:40.8666185Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --unset-all http.https://github.com/.extraheader\r\n2026-10-26T02:05:40.9003042Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"sh -c \\\"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\\\"\"\r\n2026-10-26T02:05:41.4235628Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp ^includeIf\\.gitdir:\r\n2026-10-26T02:05:41.4626298Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"git config --local --show-origin --name-only --get-regexp remote.origin.url\"\r\n2026-10-26T02:05:42.0284287Z ##[endgroup]\r\n2026-10-26T02:05:42.0711921Z ##[group]Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065\r\n2026-10-26T02:05:42.0712574Z with:\r\n2026-10-26T02:05:42.0712840Z   python-version: 3.12.10\r\n2026-10-26T02:05:42.0713178Z   check-latest: false\r\n2026-10-26T02:05:42.0716806Z   token: ***\r\n2026-10-26T02:05:42.0717085Z   update-environment: true\r\n2026-10-26T02:05:42.0717408Z   allow-prereleases: false\r\n2026-10-26T02:05:42.0717708Z   freethreaded: false\r\n2026-10-26T02:05:42.0717982Z ##[endgroup]\r\n2026-10-26T02:05:42.2328186Z ##[group]Installed versions\r\n2026-10-26T02:05:42.2381939Z (node:7944) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n2026-10-26T02:05:42.2382848Z (Use `node --trace-deprecation ...` to show where the warning was created)\r\n2026-10-26T02:05:42.2384036Z Successfully set up CPython (3.12.10)\r\n2026-10-26T02:05:42.2385496Z ##[endgroup]\r\n2026-10-26T02:05:42.2661033Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093\r\n2026-10-26T02:05:42.2661503Z with:\r\n2026-10-26T02:05:42.2661692Z   artifact-ids: 12619403556\r\n2026-10-26T02:05:42.2661903Z   run-id: 40247195315\r\n2026-10-26T02:05:42.2664236Z   github-token: ***\r\n2026-10-26T02:05:42.2664478Z   path: build/published-player\r\n2026-10-26T02:05:42.2664714Z   merge-multiple: true\r\n2026-10-26T02:05:42.2664941Z   repository: dponcho/voxel-survival-game\r\n2026-10-26T02:05:42.2665189Z env:\r\n2026-10-26T02:05:42.2665435Z   pythonLocation: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:42.2665890Z   PKG_CONFIG_PATH: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64/lib/pkgconfig\r\n2026-10-26T02:05:42.2666329Z   Python_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:42.2666925Z   Python2_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:42.2667309Z   Python3_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:42.2667640Z ##[endgroup]\r\n2026-10-26T02:05:42.4358763Z Downloading artifacts by ID\r\n2026-10-26T02:05:42.4364941Z Fetching artifact list for workflow run 40247195315 in repository dponcho/voxel-survival-game\r\n2026-10-26T02:05:42.4456659Z (node:5136) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n2026-10-26T02:05:42.4457381Z (Use `node --trace-deprecation ...` to show where the warning was created)\r\n2026-10-26T02:05:42.5040745Z (node:5136) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\r\n2026-10-26T02:05:42.7826586Z Found 5 artifact(s)\r\n2026-10-26T02:05:42.7828360Z Preparing to download the following artifacts:\r\n2026-10-26T02:05:42.7830566Z - Cairn-windows-x86_64-73fad4ab0ed4da9d66fb071c7be15596a9f0e705 (ID: 12619403556, Size: 30215938, Expected Digest: sha256:69aab50998c991d536ae3b4d4eb576b05128c6381b2a6d98c8b3383aa5c5f8c8)\r\n2026-10-26T02:05:42.7887690Z Downloading artifact '12619403556' from 'dponcho/voxel-survival-game'\r\n2026-10-26T02:05:43.0850213Z Redirecting to blob download url: https://productionresultssa18.blob.core.windows.net/actions-results/58a32945-28ea-86ea-a2f4-c172c894e810/workflow-job-run-94680d5a-035a-5c44-a4b3-534f3f99a7c5/artifacts/767f69600cc5b3d7e16e3ddf5cfeacc9e084a94ba5f07560e016021a9aa26c71.zip\r\n2026-10-26T02:05:43.0852099Z Starting download of artifact to: D:\\a\\voxel-survival-game\\voxel-survival-game\\build\\published-player\r\n2026-10-26T02:05:43.3963800Z (node:5136) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.\r\n2026-10-26T02:05:44.4895834Z SHA256 digest of downloaded artifact is 69aab50998c991d536ae3b4d4eb576b05128c6381b2a6d98c8b3383aa5c5f8c8\r\n2026-10-26T02:05:44.4897148Z Artifact download completed successfully.\r\n2026-10-26T02:05:44.4898021Z Total of 1 artifact(s) downloaded\r\n2026-10-26T02:05:44.4907914Z Download artifact has finished successfully\r\n2026-10-26T02:05:44.5173317Z ##[group]Run python tools/qa/preparation_demand_ci.py prepare\r\n2026-10-26T02:05:44.5174302Z \u001b[36;1mpython tools/qa/preparation_demand_ci.py prepare\u001b[0m\r\n2026-10-26T02:05:44.5394362Z shell: C:\\Program Files\\PowerShell\\7\\pwsh.EXE -command \". '{0}'\"\r\n2026-10-26T02:05:44.5394899Z env:\r\n2026-10-26T02:05:44.5395226Z   pythonLocation: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:44.5395806Z   PKG_CONFIG_PATH: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64/lib/pkgconfig\r\n2026-10-26T02:05:44.5396383Z   Python_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:44.5396890Z   Python2_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:44.5397418Z   Python3_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:44.5397818Z ##[endgroup]\r\n2026-10-26T02:05:48.3554731Z Traceback (most recent call last):\r\n2026-10-26T02:05:48.3561331Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_demand_ci.py\", line 331, in <module>\r\n2026-10-26T02:05:48.3561947Z     if __name__=='__main__':main()\r\n2026-10-26T02:05:48.3645018Z                             ^^^^^^\r\n2026-10-26T02:05:48.3645935Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_demand_ci.py\", line 323, in main\r\n2026-10-26T02:05:48.3647009Z     elif args.command=='prepare':prepare()\r\n2026-10-26T02:05:48.3647877Z                                  ^^^^^^^^^\r\n2026-10-26T02:05:48.3648803Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_demand_ci.py\", line 72, in prepare\r\n2026-10-26T02:05:48.3650243Z     result = review.derive(PLAYER)\r\n2026-10-26T02:05:48.3650658Z              ^^^^^^^^^^^^^^^^^^^^^\r\n2026-10-26T02:05:48.3651853Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_prefix_review.py\", line 186, in derive\r\n2026-10-26T02:05:48.3690882Z     witness = source_witness(proof,root)\r\n2026-10-26T02:05:48.3691298Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n2026-10-26T02:05:48.3692617Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_prefix_review.py\", line 113, in source_witness\r\n2026-10-26T02:05:48.3694316Z     require(digest(text.encode()) == proof['preparation_metadata']['sources_sha256'][Path(name).name],\r\n2026-10-26T02:05:48.3695724Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\shipping_diagnostics.py\", line 39, in require\r\n2026-10-26T02:05:48.3696596Z     raise RuntimeError(message)\r\n2026-10-26T02:05:48.3697022Z RuntimeError: Reviewed runtime source changed\r\n2026-10-26T02:05:48.5608572Z ##[error]Process completed with exit code 1.\r\n2026-10-26T02:05:48.5783105Z ##[group]Run python tools/qa/preparation_demand_ci.py audit\r\n2026-10-26T02:05:48.5783602Z \u001b[36;1mpython tools/qa/preparation_demand_ci.py audit\u001b[0m\r\n2026-10-26T02:05:48.5821919Z shell: C:\\Program Files\\PowerShell\\7\\pwsh.EXE -command \". '{0}'\"\r\n2026-10-26T02:05:48.5822255Z env:\r\n2026-10-26T02:05:48.5822519Z   pythonLocation: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:48.5822980Z   PKG_CONFIG_PATH: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64/lib/pkgconfig\r\n2026-10-26T02:05:48.5823421Z   Python_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:48.5823810Z   Python2_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:48.5824196Z   Python3_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:48.5824499Z ##[endgroup]\r\n2026-10-26T02:05:48.9274230Z Traceback (most recent call last):\r\n2026-10-26T02:05:48.9275650Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_demand_ci.py\", line 331, in <module>\r\n2026-10-26T02:05:48.9276797Z     if __name__=='__main__':main()\r\n2026-10-26T02:05:48.9277349Z                             ^^^^^^\r\n2026-10-26T02:05:48.9278080Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_demand_ci.py\", line 327, in main\r\n2026-10-26T02:05:48.9279037Z     value=audit();print(json.dumps(dict(passed=True,engine_processes=value['engine_processes'],\r\n2026-10-26T02:05:48.9279762Z           ^^^^^^^\r\n2026-10-26T02:05:48.9280617Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\preparation_demand_ci.py\", line 258, in audit\r\n2026-10-26T02:05:48.9281490Z     folder=Path(folder);preflight=read(folder/'preflight.json');identity=candidate()\r\n2026-10-26T02:05:48.9282051Z                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n2026-10-26T02:05:48.9283289Z   File \"D:\\a\\voxel-survival-game\\voxel-survival-game\\tools\\qa\\shipping_diagnostics.py\", line 43, in read\r\n2026-10-26T02:05:48.9284081Z     return json.loads(Path(path).read_text(encoding='utf-8-sig'))\r\n2026-10-26T02:05:48.9285106Z                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n2026-10-26T02:05:48.9286248Z   File \"C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\Lib\\pathlib.py\", line 1027, in read_text\r\n2026-10-26T02:05:48.9348116Z     with self.open(mode='r', encoding=encoding, errors=errors) as f:\r\n2026-10-26T02:05:48.9349312Z          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n2026-10-26T02:05:48.9350366Z   File \"C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\Lib\\pathlib.py\", line 1013, in open\r\n2026-10-26T02:05:48.9352992Z     return io.open(self, mode, buffering, encoding, errors, newline)\r\n2026-10-26T02:05:48.9353395Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n2026-10-26T02:05:48.9354825Z FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\a\\\\voxel-survival-game\\\\voxel-survival-game\\\\reports\\\\preparation-demand-pilot\\\\preflight.json'\r\n2026-10-26T02:05:49.0377328Z ##[error]Process completed with exit code 1.\r\n2026-10-26T02:05:49.0545252Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02\r\n2026-10-26T02:05:49.0546523Z with:\r\n2026-10-26T02:05:49.0546846Z   name: Cairn-preparation-demand-ba36f994e792d9ec246acd3ea46876a7ef16e8cb\r\n2026-10-26T02:05:49.0547275Z   path: reports/preparation-demand-pilot/\r\n2026-10-26T02:05:49.0547548Z   if-no-files-found: error\r\n2026-10-26T02:05:49.0547762Z   retention-days: 30\r\n2026-10-26T02:05:49.0547964Z   compression-level: 6\r\n2026-10-26T02:05:49.0548157Z   overwrite: false\r\n2026-10-26T02:05:49.0548357Z   include-hidden-files: false\r\n2026-10-26T02:05:49.0548580Z env:\r\n2026-10-26T02:05:49.0548827Z   pythonLocation: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:49.0549277Z   PKG_CONFIG_PATH: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64/lib/pkgconfig\r\n2026-10-26T02:05:49.0549721Z   Python_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:49.0550111Z   Python2_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:49.0550534Z   Python3_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\r\n2026-10-26T02:05:49.0550843Z ##[endgroup]\r\n2026-10-26T02:05:49.2409165Z (node:2392) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n2026-10-26T02:05:49.2410382Z (Use `node --trace-deprecation ...` to show where the warning was created)\r\n2026-10-26T02:05:49.2464274Z ##[error]No files were found with the provided path: reports/preparation-demand-pilot/. No artifacts will be uploaded.\r\n2026-10-26T02:05:49.2762060Z Post job cleanup.\r\n2026-10-26T02:05:49.4638653Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" version\r\n2026-10-26T02:05:49.4981622Z git version 2.56.0.windows.3\r\n2026-10-26T02:05:49.5054384Z Temporarily overriding HOME='D:\\a\\_temp\\4895da36-5010-4cb8-b54c-5d263f24beda' before making global git config changes\r\n2026-10-26T02:05:49.5056086Z Adding repository directory to the temporary git global config as a safe directory\r\n2026-10-26T02:05:49.5068102Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --global --add safe.directory D:\\a\\voxel-survival-game\\voxel-survival-game\r\n2026-10-26T02:05:49.5408456Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp core\\.sshCommand\r\n2026-10-26T02:05:49.5844177Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"sh -c \\\"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\\\"\"\r\n2026-10-26T02:05:50.0858792Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\r\n2026-10-26T02:05:50.1196743Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"sh -c \\\"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\\\"\"\r\n2026-10-26T02:05:50.6010403Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" config --local --name-only --get-regexp ^includeIf\\.gitdir:\r\n2026-10-26T02:05:50.6321964Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" submodule foreach --recursive \"git config --local --show-origin --name-only --get-regexp remote.origin.url\"\r\n2026-10-26T02:05:51.1504307Z Cleaning up orphan processes\r\n2026-10-26T02:05:51.2014225Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093, actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/\r\n"
+}

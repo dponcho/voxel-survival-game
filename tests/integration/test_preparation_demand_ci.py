@@ -219,5 +219,20 @@ class PreparationLauncherTests(unittest.TestCase):
                      patch.object(launch.review,'derive',return_value=dict(synthetic_fixture=True)):
                     with self.assertRaises(RuntimeError):launch.audit(root)
 
+    def test_preflight_failure_is_preserved_and_never_consumes_the_process(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);reports=root/'reports';source=root/'synthetic.py';source.write_text('# fixture\n')
+            with patch.object(launch,'plan',return_value=True),patch.object(launch,'context',return_value={}),\
+                 patch.object(launch,'ROOT',root),patch.object(launch,'REPORTS',reports),\
+                 patch.object(launch,'DESTINATION',root/'player'),patch.object(launch,'SNAPSHOTS',('synthetic.py',)),\
+                 patch.object(launch.review,'derive',side_effect=RuntimeError('Synthetic failed preflight')):
+                with self.assertRaisesRegex(RuntimeError,'Synthetic failed'):launch.prepare()
+            error=launch.read(reports/'preflight-error.json')
+            self.assertEqual(error['engine_processes'],0);self.assertFalse(error['declaration_consumed'])
+            result=launch.audit(reports)
+            self.assertEqual(result['sequence']['evidence_integrity'],'preflight_failed')
+            self.assertIsNone(result['candidate']);self.assertIsNone(result['sequence']['trials'])
+            self.assertEqual(result,launch.audit(reports))
+
 
 if __name__=='__main__':unittest.main()

@@ -11,6 +11,10 @@ reuses the frozen portable ZIP, claims a permanent remote reservation before
 the sole engine start, and preserves every failure for independent Windows/Linux
 audits. Native/runtime/inventory/candidate bytes and old pilot flags are unchanged.
 Complete only this declared process and its saved audit; never retry it.
+CI `40257212559` failed Windows text decoding during review preflight, before
+reservation and with zero engine processes. The [retained checkpoint and
+UTF-8 correction](M1_PREPARATION_DEMAND_RUN.md#preflight-correction-before-any-process)
+preserve the original failure and frozen declaration; the process is unconsumed.
 
 **Corrected proof review complete; one future attribution process declared.**
 The [saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) verifies the exact
