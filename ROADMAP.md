@@ -127,9 +127,12 @@ Windows/Linux audits. The exact-key workflow recovery preserves the earlier
 packaging cancellation and all original controls. The
 [saved launch review](docs/M1_PREPARATION_OWNER_LAUNCH_REVIEW.md) now reproduces
 the candidate and all four controls, but withholds a finite-route declaration:
-a post-boundary prefix-write failure can start another trial. Correct and
-verify that new-mode controller/reader gap with bounded faults and a matching
-PCK first. No attribution route or laptop test ran in the review.
+a post-boundary prefix-write failure can start another trial. The
+[narrow controller/reader correction](docs/M1_PREPARATION_PREFIX_STOP.md) now
+passes CI `40247195315`: paired real failed-open controls, seven corrected cases per
+matching binary, a new source-matched PCK and independent Windows/Linux audits.
+Native binaries were reused/requalified. Review this corrected exact proof before
+any later prospective declaration. No attribution route or laptop action ran.
 M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.

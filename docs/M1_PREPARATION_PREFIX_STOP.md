@@ -1,10 +1,11 @@
 # Preparation prefix publication stopping
 
-October 25, 2026. Implements the bounded correction selected by the
-[saved launch review](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md).
-Implementation is staged; matching editor/release controls, required cloud
-checks and the portable candidate remain pending. No attribution route or
-declaration is part of this increment. M1 remains unqualified.
+October 25, 2026. The bounded correction selected by the
+[saved launch review](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md) is verified in
+[CI 40247195315](https://github.com/dponcho/voxel-survival-game/actions/runs/40247195315).
+Both matching editor/release controls, required cloud
+integration/package checks and downloaded Windows/Linux audits pass. No
+attribution route or declaration is part of this increment. M1 remains unqualified.
 
 ## Correction and measurement boundary
 
@@ -64,5 +65,43 @@ The method/inventory remain m1-preparation-demand-attribution-1 /
 m1-preparation-demand-inventory-1, raw version 2 / CAIRNOB2. The inventory
 bytes, one terrain worker, 32³ render blocks, original fixed work, full height/
 radii/caps, complete lifecycle, numerical 1% and consumed pilot flags are
-unchanged. After verified controls/candidate, review their exact proof before
+unchanged. Review the verified controls/candidate proof before
 any later prospective one-process declaration. No laptop action or M2 expansion.
+
+## Verified result and exact candidate
+
+Implementation `501d3a3d4bf13f69fc33213ca8e809fa44fee83e`; exported PR source
+`73fad4ab0ed4da9d66fb071c7be15596a9f0e705`. All 232 Python regressions per platform and
+eleven native sanitizer suites pass. Native compilation was skipped: the exact
+cached bundle was reused and all three binaries independently requalified.
+
+| Item | Verified result |
+| --- | --- |
+| [Portable candidate](https://github.com/dponcho/voxel-survival-game/actions/runs/40247195315/artifacts/12619403556) | Inner ZIP 30,315,398 bytes; SHA-256 `1d96bf5d77141bc46fdc48b526c42c6ac353fde91f84c49ded523cfa3fc90262` |
+| PCK | SHA-256 `c06b0f11ffb846f496fd156520144a666b55a08d7e21943243ffeee2e32a9c54`; all 118 entries independently checked |
+| Package | 38 PE imports, 8 identity self-tests, two fresh offline extractions |
+| Matching controller fixtures | Editor / release 265,539 / 170,954 µs; each below the unchanged 5,000,000 µs cap |
+| Paired rejected implementation | Real failed FileAccess open dispatches one next setup in each binary |
+| Corrected implementation | Seven cases per binary; all failed publications dispatch zero next setups and retain immutable files/flags |
+| Saved corruptions | Twelve rejected per binary; all reader/control verdicts reproduce from downloaded evidence |
+
+The [self-contained proof](evidence/m1-preparation-prefix-cloud-2026-10-25.json) preserves
+116 exact embedded files / 152,075 bytes, their hashes,
+both controller reports and raw failed-open codes, command records, candidate/
+native identities and downloaded audits. It also embeds the current candidate's
+two existing owner controls: 24 files / 708,162 bytes.
+Both compressed control sets were decoded
+and replayed before saving. The independent Windows audit and Linux replay pass;
+a fresh local saved-evidence replay also agrees, executing no engine.
+
+The required broader suite retains a 1,221 µs upload in
+release-m1-heavy-ab-raw / AB-H1-on-1 / preparation.
+The preceding 809 / 865 µs deletion overruns,
+905 µs disposal-candidate failure, 16³ H2 edit failures and all earlier failed
+measurements remain in their original records. Cloud correctness and controller
+integrity do not qualify observer cost or HD 620 frame/operation performance.
+
+Next review this corrected exact candidate/proof and decide whether a later
+prospective finite declaration is justified. Do not execute a route in that
+review. All three consumed pilot inputs stay false; no laptop action or M2
+expansion follows automatically.

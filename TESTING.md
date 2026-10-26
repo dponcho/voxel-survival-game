@@ -555,3 +555,25 @@ late prefix-write failure can start another trial; it is not an executed engine
 fault fixture. The [review and next controls](docs/M1_PREPARATION_OWNER_LAUNCH_REVIEW.md)
 withhold the route until the narrow stopping/reader correction and matching PCK
 are verified. No unchanged runtime suite, new native build or pilot ran here.
+
+### Prefix publication stopping and immutable observations
+
+`--preparation-prefix-check` exercises the production JSON writer/publication,
+start guard and inherited drain/handover with synthetic completed trials and a
+counted setup seam. A real failed FileAccess open reproduces one next setup in
+the frozen rejected tail. Seven corrected cases cover normal handover, warm-up/
+middle/last prefix failure, prior trial failure, normal final termination and
+combined trial/publication failure. Failed publication dispatches zero later
+setups, including direct stopped-entry attempts, and preserves immutable files,
+trial flags and the first stop reason. Native snapshots show no added terrain
+work or active observer. These are controller controls, not shortened routes.
+
+Both matching fixtures pass in [CI 40247195315](https://github.com/dponcho/voxel-survival-game/actions/runs/40247195315), taking
+265,539 / 170,954 µs under the unchanged five-second cap. Twelve saved semantic
+corruptions per binary and twelve pure prefix-reader cases pass; the complete
+pure suite is 232 tests per platform. The reader reconciles successful files,
+retains missing/stale/partial/empty failed evidence, checks post-terminal
+chronology and rejects any continuation. Required integration/package checks,
+the new PCK, both downloaded platform audits and a fresh local saved replay pass.
+Read [the exact result and proof](docs/M1_PREPARATION_PREFIX_STOP.md).
+No attribution process/declaration ran; all consumed pilot flags remain false.

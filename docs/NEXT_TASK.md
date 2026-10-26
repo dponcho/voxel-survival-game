@@ -6,17 +6,20 @@ requested while diagnostic controls and target gates remain unqualified.
 
 **Saved owner launch review complete; route declaration withheld.** The exact
 candidate and four saved controls reproduce, including all 84 saved corruptions.
-Source review found that a failed `sequence-prefix.json` write can start the next
-trial. Correct this stopping/reader gap and verify bounded controller faults
-before any attribution process. Read [the decision and next acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md).
+Historical source review found that a failed `sequence-prefix.json` write
+could start the next trial. The correction is verified below; review its new
+proof before any attribution process. Read [the decision and next acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md).
 This review ran no engine and changed no runtime or candidate bytes.
 
-**Prefix stopping correction staged; matching candidate verification pending.**
-The new-mode controller/reader correction and paired rejected/fixed controls
-are implemented. Native key remains 777879f5; reuse/requalify the exact bundle
-and follow the required cloud checks through both controls and downloaded
-candidate audits. Read [the implementation and acceptance boundary](M1_PREPARATION_PREFIX_STOP.md).
-No attribution route or declaration is authorized by this increment.
+**Prefix stopping correction and matching candidate verified.**
+[CI 40247195315](https://github.com/dponcho/voxel-survival-game/actions/runs/40247195315) passes 232 Python regressions per platform,
+eleven native sanitizer suites, both actual-controller controls, required
+integration/package checks and downloaded Windows/Linux audits. The frozen
+rejected tail starts another setup after real prefix I/O failure; the corrected
+path stops, retains immutable trial evidence and rejects continuation. Native
+key 777879f5 was reused/requalified. Read [the result and exact proof](M1_PREPARATION_PREFIX_STOP.md).
+No attribution route or declaration ran. Next review this corrected proof before
+any prospective finite declaration.
 
 **Common-observer attribution implementation and finite process complete.**
 [CI 39179723675](https://github.com/dponcho/voxel-survival-game/actions/runs/39179723675)
@@ -76,9 +79,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the saved launch review withholds a route because prefix-write failure can continue. | Correct and verify the new mode's prefix-write stopping and reader gap, with bounded controller faults and a matching PCK; review that proof before any route declaration. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical launch review found a prefix-write continuation gap, now corrected and verified in CI `40247195315`. | Review the corrected exact prefix-control/candidate proof and decide whether a prospective finite attribution declaration is justified; run no route in that review. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -221,35 +224,42 @@ verifies all 48 files / 1,624,650 bytes and 84 rejected semantic corruptions, re
 the exact source/line witness. No runtime fault fixture or engine ran. Decision:
 do not create a declaration for this candidate. A failed post-boundary
 `sequence-prefix.json` write sets only the sticky I/O flag after trial validity
-is copied; the inherited scheduler can start another trial. The current reader
-does not reconcile prefix publication. The capability proof and its original
+is copied; the inherited scheduler can start another trial. At that review, the
+reader did not reconcile prefix publication. The capability proof and its original
 passing CI remain valid within their declared scope.
 
-**Next bounded task: prefix-publication failure stopping, reader and matching
-candidate only.** Follow the [narrow correction and acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md#next-bounded-implementation).
-Stop before any next scenario/recorder/terrain start on prefix-write failure.
-Preserve immutable complete/terminal files and original measured boundaries;
-represent the later common batch failure separately. Independently reject any
-continuation, reconcile successful prefix files and preserve honest missing or
-failed output. Exercise the actual new-mode controller/handover path in bounded
-matching editor/release controls with injected prefix failure, normal handover,
-pre-existing trial failure and last-trial failure. Run affected regressions and
-required integration/package checks; produce a new source-matched portable PCK.
-Reuse/requalify native key `777879f5` unless native sources actually change.
+**Completed bounded task: prefix-publication stopping, reader and matching candidate.**
+The [verified correction](M1_PREPARATION_PREFIX_STOP.md) stops the real inherited
+handover before any next recorder/terrain setup, preserves immutable completed/
+terminal observations, and records later batch publication separately. Both
+matching binaries reproduce the rejected tail and pass seven corrected cases;
+twelve saved corruptions per binary and twelve reader regressions pass. Native
+key `777879f5` is unchanged; the new PCK passes required integration/package and
+downloaded Windows/Linux checks in CI `40247195315`.
+
+**Next bounded task: saved corrected-proof review and prospective finite-route
+decision only.** Verify the [self-contained proof](evidence/m1-preparation-prefix-cloud-2026-10-25.json)
+against its exact downloaded portable ZIP, PCK/source/inventory/native identity,
+both prefix controller reports/retained files and both existing owner controls.
+Reproduce saved verdicts and corruptions without an engine; retain the frozen
+rejected source witness and immutable-boundary distinction. Decide explicitly
+whether the stopping/reader defect is closed sufficiently for a later finite
+attribution declaration. Save the evidence and decision; withhold declaration
+if a concrete prerequisite remains. Do not execute an attribution process,
+repeat consumed sequences, rebuild unchanged native code or rerun runtime suites
+solely for this saved review.
 
 Keep `m1-preparation-demand-attribution-1`, inventory
 `m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`, old v1/v2 paths,
 codecs and historical verdicts. All three consumed pilot flags stay false.
-Do not declare or run the attribution route while fixing its controller. Review
-the corrected exact candidate/proof before a later prospective declaration.
-
-Any later declaration must bind the verified exact native key/inventory and
-retain 32³/one worker, full height/radii, 4,320 ticks / 103,680 actor ticks /
-288 edits / 72 saves, the 32 MiB wire cap, eight lanes/depth eight, numerical 1%
-and every existing deadline/work/operation/resource/readiness/coverage/edit gate.
-Stop at first failure or trial five; no retry, positive/shipping continuation,
-fitted correction, frame normalization, clipping or process/thread subtraction.
-No laptop action or M2 expansion follows. Use **GPT-6.1 Sol Max**.
+Any later declaration must bind the corrected verified exact native key,
+candidate and inventory; retain 32³/one worker, full height/radii,
+4,320 ticks / 103,680 actor ticks / 288 edits / 72 saves, the 32 MiB wire cap,
+eight lanes/depth eight, numerical 1% and every existing deadline/work/operation/
+resource/readiness/coverage/edit gate. Stop at first failure or trial five;
+no retry, positive/shipping continuation, fitted correction, frame normalization,
+clipping or process/thread subtraction. No laptop action or M2 expansion follows.
+Use **GPT-6.1 Sol Max**.
 
 The completed ordinary proof and the five broader operation failures are in
 [M1_ORDINARY_ADMISSION.md](M1_ORDINARY_ADMISSION.md). The earlier startup-validator
@@ -295,6 +305,15 @@ not reached that checkpoint; no immediate M2/content expansion is authorized by
 this register. Survival gameplay stays at M4 and later.
 
 ## Evidence and verification routing
+
+Current corrected preparation controller: `501d3a3d4bf13f69fc33213ca8e809fa44fee83e`,
+successful CI `40247195315`, exported build `73fad4ab0ed4da9d66fb071c7be15596a9f0e705`.
+[Player artifact `12619403556`](https://github.com/dponcho/voxel-survival-game/actions/runs/40247195315/artifacts/12619403556):
+30,315,398-byte inner ZIP, SHA-256
+`1d96bf5d77141bc46fdc48b526c42c6ac353fde91f84c49ded523cfa3fc90262`. Native key remains `777879f5`.
+[Exact controls/candidate proof](evidence/m1-preparation-prefix-cloud-2026-10-25.json); no attribution
+route or declaration in this increment. Historical attribution runtimes below
+retain their original identities and failed/inconclusive verdicts.
 
 Latest attribution runtime source: `1146807240df15bd32c798f77de266b71b6683bf`,
 successful CI `39179723675`, exported build
