@@ -4,49 +4,30 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
-**Declared process consumed; saved-only replay recovery pending.**
-CI `40259410841` ran one process: warmup-0 and bare-0 passed; bare-1 completed
-fixed work but failed retirement deletion at 819 µs against 750 µs. It stopped
-before bare-2/3. Native ownership/disposal and all prefix publications reconcile;
-the result is invalid for attribution/cost. Windows audits eight corruptions.
-The [original result and transfer recovery](M1_PREPARATION_DEMAND_RUN.md#single-process-result)
-preserve all measured bytes; two omitted workflow source snapshots are restored
-by exact Git/SHA identity in derived replays. A fresh local replay agrees.
-The launch request is now false. Complete only the saved Windows/Linux replays,
-then review this failed prefix without another engine. Never repeat the process.
+**Declared process and independent saved verification complete.**
+[CI 40259410841](https://github.com/dponcho/voxel-survival-game/actions/runs/40259410841)
+ran exactly one process. Warmup-0 and bare-0 passed; bare-1 completed all fixed
+work but failed retirement deletion at **819 µs against 750 µs**. It stopped
+before bare-2/3, with no retry or replacement. All three ownership/disposal
+witnesses and prefix publications reconcile, retaining 144,055 spans. The
+result is invalid for attribution/cost; no complete bare quartet exists.
 
-**Declared launcher prepared; single cloud result pending.**
-The [one-use launcher](M1_PREPARATION_DEMAND_RUN.md) passes all 256 local Python
-regressions, including thirteen new reservation/timeout/retention cases. It
-reuses the frozen portable ZIP, claims a permanent remote reservation before
-the sole engine start, and preserves every failure for independent Windows/Linux
-audits. Native/runtime/inventory/candidate bytes and old pilot flags are unchanged.
-Complete only this declared process and its saved audit; never retry it.
-CI `40257212559` failed Windows text decoding during review preflight, before
-reservation and with zero engine processes. The [retained checkpoint and
-UTF-8 correction](M1_PREPARATION_DEMAND_RUN.md#preflight-correction-before-any-process)
-preserve the original failure and frozen declaration; the process is unconsumed.
-CI `40257944925` passes preflight but its reference-creation request receives
-HTTP 403 before any engine. The [retained reservation checkpoint](M1_PREPARATION_DEMAND_RUN.md#reservation-permission-preflight)
-records zero processes and no permanent claim. The connected GitHub account now
-creates the one run-bound assignment from the verified preflight artifact; CI
-only reads it. Complete the first declared process under that assignment.
+[Saved-only CI 40389612694](https://github.com/dponcho/voxel-survival-game/actions/runs/40389612694)
+passes 263 Python regressions, eleven native sanitizer suites and Windows/Linux
+replays. Both downloaded reports and a fresh exact-archive local replay agree
+with the original Windows audit and eight rejected corruptions. The original
+CI remains failed: its first Linux transfer lacked two workflow source snapshots.
+Only exact preflight/Git-bound source bytes were recovered in derived copies;
+measured files and original verdicts are unchanged. Read
+[the result and self-contained record](M1_PREPARATION_DEMAND_RUN.md#single-process-result).
+Both launch and saved-recheck requests are now false. Keep the permanent
+run-bound reservation; never repeat the consumed process. The next task is a
+saved failed-prefix/direct-owner review and one finite decision, without an engine.
 
-**Corrected proof review complete; one future attribution process declared.**
-The [saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) verifies the exact
-candidate/source/native/inventory and all four controls: 140 files / 860,237
-bytes, 66 rejected corruptions and 33 focused regressions. The prefix stopping
-gap is closed; the immutable measured finalizer is unchanged. A
-[prospective declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json)
-binds one later release process, warm-up plus four bare trials, first failure or
-trial five, no retry/continuation. This review ran no engine. Next prepare and
-run only that declared process, retaining and independently auditing every stop.
-
-**Saved owner launch review complete; route declaration withheld.** The exact
+**Historical saved owner launch review complete; route declaration withheld then.** The exact
 candidate and four saved controls reproduce, including all 84 saved corruptions.
 Historical source review found that a failed `sequence-prefix.json` write
-could start the next trial. The correction is verified below; review its new
-proof before any attribution process. Read [the decision and next acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md).
+could start the next trial. The required correction and its subsequent review are verified below. Read [the decision and next acceptance checks](M1_PREPARATION_OWNER_LAUNCH_REVIEW.md).
 This review ran no engine and changed no runtime or candidate bytes.
 
 **Prefix stopping correction and matching candidate verified.**
@@ -117,9 +98,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The consumed preparation process in CI `40259410841` retains an 819 µs retirement deletion (750 µs limit). The prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite and declares one future attribution process. | Prepare the minimum cloud launcher and saved replay, then run only the declared exact-candidate release process. Reserve once; stop at first failure or trial five; retain/audit every early stop without retry. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite. Its declared process is now consumed: three completed trials, third failed at 819 µs retirement deletion; all ownership/publication evidence reconciles. | Review the saved failed prefix and directly captured preparation owners; identify the minimum prerequisite and make one finite next decision without an engine. | All declared sequences are consumed and all pilot requests are false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -283,30 +264,44 @@ regressions and the 22 affected reader regressions pass. It closes the original
 prefix continuation defect and records the exact prospective declaration.
 No runtime/inventory/native/candidate change or engine process ran.
 
-**Next bounded task: one declared preparation-demand attribution process and
-saved result only.** Follow the [frozen declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json)
-and [launch boundary](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md#prospective-decision-and-next-task).
-Prepare the minimum cloud launcher and independent saved replay for this new
-mode. Verify the exact downloaded ZIP/PCK/executable/native/inventory/declaration
-before launch; reserve the one process durably before starting it. Reject an
-existing reservation/output, including after job restart. Use one Windows
-release process, one warm-up plus four bare trials, stopping at first failure
-or trial five; process cap 1,500 seconds. Preserve and independently audit all
-raw files, immutable completed/terminal evidence, separate batch publication,
-partial output, exit codes and timeouts without another engine. A failed or
-inconclusive prefix is the result; never retry or pad it. Do not rebuild/export
-the unchanged candidate or enable an old consumed pilot flag.
+**Completed bounded task: launcher and single declared cloud process.**
+The [frozen declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json)
+is consumed by run `40259410841`, assignment commit
+`8ab1624e0a74f153b6189afa837fb24f6688d8c9`. The exact frozen portable candidate,
+exit/timeout, immutable trial evidence, batch publication and all first failures
+are retained and independently audited. There was one spawn, exit 0, no timeout,
+and three completed trials; bare-1's 819 µs retirement deletion fails the unchanged
+750 µs limit. No further trial, new native build, export or engine was run.
+The original failed Linux transfer and both zero-process preflights remain
+historical failures. Saved-only CI `40389612694` and the downloaded local replay
+verify the same original measurements with two explicitly recovered source files.
+
+**Next bounded task: saved failed-prefix and direct-owner review only.**
+Read [the result](M1_PREPARATION_DEMAND_RUN.md) and
+[exact evidence](evidence/m1-preparation-demand-cloud-2026-10-25.json).
+Verify the original archive/digests, source-recovery provenance and independent
+saved audit. Inspect the failed retirement deletion's phase, kind, payload,
+maximum and available timing/ownership evidence; distinguish what is directly
+observed from what cannot be attributed. Retain the third trial as complete but
+invalid. Review the three trials' directly captured preparation owners only
+within their valid scopes; do not invent a full bare quartet, causal observer
+cost or a passing operation result.
+
+Make one finite decision identifying the minimum prerequisite/correction and
+its observable acceptance checks before any later separately declared process.
+Preserve all original files, work and guards, including historical 1,221 µs
+upload and 809 / 865 / 905 µs deletion failures. Do not waive the 819 µs failure
+as noise, repeat this process, add trials, fit a correction, normalize callbacks,
+clip spans, subtract thread totals from process demand, rebuild the unchanged
+candidate, enable any consumed pilot, or start a laptop/M2 task.
 
 Keep `m1-preparation-demand-attribution-1`, inventory
-`m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`, old v1/v2 paths,
-codecs and historical verdicts. All three consumed pilot flags stay false.
-Any later declaration must bind the corrected verified exact native key,
-candidate and inventory; retain 32³/one worker, full height/radii,
-4,320 ticks / 103,680 actor ticks / 288 edits / 72 saves, the 32 MiB wire cap,
-eight lanes/depth eight, numerical 1% and every existing deadline/work/operation/
-resource/readiness/coverage/edit gate. Stop at first failure or trial five;
-no retry, positive/shipping continuation, fitted correction, frame normalization,
-clipping or process/thread subtraction. No laptop action or M2 expansion follows.
+`m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`, old codecs,
+32³/one worker, full height/radii, 4,320 ticks / 103,680 actor ticks / 288 edits /
+72 saves, 32 MiB wire cap, eight lanes/depth eight, numerical 1% and every
+existing deadline/work/operation/resource/readiness/coverage/edit gate.
+Both preparation requests and all three older consumed pilot inputs stay false;
+the permanent reservation is never updated, deleted or reused.
 Use **GPT-6.1 Sol Max**.
 
 The completed ordinary proof and the five broader operation failures are in
@@ -363,10 +358,12 @@ successful CI `40247195315`, exported build `73fad4ab0ed4da9d66fb071c7be15596a9f
 route or declaration in that implementation increment. The [corrected saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) now binds
 [frozen declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json)
 SHA-256 `17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad`;
-its one process is unrun. Historical attribution runtimes below retain their
+its one process is consumed in CI `40259410841`, with saved-only verification
+in CI `40389612694`. The [committed result](evidence/m1-preparation-demand-cloud-2026-10-25.json)
+retains the failed third trial and unchanged candidate. Historical attribution runtimes below retain their
 original identities and failed/inconclusive verdicts.
 
-Latest attribution runtime source: `1146807240df15bd32c798f77de266b71b6683bf`,
+Historical common-observer attribution runtime source: `1146807240df15bd32c798f77de266b71b6683bf`,
 successful CI `39179723675`, exported build
 `f0b23851d57f3acbacd5f2ad844106a91b5be039`, native key
 `7a22ed313f593db4b88a75cd7abfb3031f5c60ffbbe7e7161d85733dac468571`.

@@ -138,6 +138,16 @@ measured finalizer and closes the prefix stopping prerequisite. One prospective
 exact-candidate release process is declared for the next task, stopping at first
 failure or trial five. This review ran no engine or laptop action; every broader
 failure and qualification gate remains.
+The declared launcher/process task is now complete: CI `40259410841` consumes
+one process and stops after three completed trials, at bare-1's 819 µs
+retirement deletion against 750 µs. Warmup-0 and bare-0 pass; native ownership,
+disposal, immutable boundaries and prefix publication reconcile. The original
+CI retains its failed Linux source-snapshot transfer. Saved-only CI
+`40389612694` passes 263 Python regressions, eleven sanitizer suites and both
+Windows/Linux replays; downloaded reports and a fresh local replay agree.
+No replacement process, candidate rebuild, full bare quartet or cost estimate
+follows. Both request files are false and the permanent reservation remains.
+[Exact result and finite next review](docs/M1_PREPARATION_DEMAND_RUN.md#single-process-result).
 M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.

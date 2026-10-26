@@ -3,8 +3,9 @@
 October 25, 2026. **The single declared process is consumed.** It completed
 three trials and stopped on an 819 µs retirement deletion in bare-1, exceeding
 750 µs. Windows verifies the original measurements and eight saved corruptions.
-A fresh local saved replay reproduces the result; cloud saved-only Windows/Linux
-replays are pending after the source-snapshot transfer correction below.
+Saved-only CI `40389612694` passes Windows/Linux replays, all 263 Python
+regressions and eleven native sanitizer suites. Downloaded reports and a fresh
+exact-archive local replay agree. Final verification: October 26, 2026.
 The portable candidate and declaration remain unchanged. Never repeat this process.
 
 ## Frozen input and scope
@@ -33,7 +34,8 @@ performance. M1 remains blocked and no laptop action is requested.
 `build/preparation-demand-once.json` selects this frozen sequence. While enabled,
 CI runs its existing static checks, skips ordinary native/export/package jobs,
 and calls only `preparation-demand.yml`. All three consumed old pilot inputs
-remain false. Disable this new request after the result; never reuse it.
+remain false. This request and the later saved-recheck request are now false;
+never reuse the consumed process or remove its permanent reservation.
 
 The preflight verifies the exact ZIP/executable/PCK/source/native/inventory,
 declaration bytes, original proof and four saved controls/66 corruptions. It
@@ -166,3 +168,48 @@ The process request is disabled permanently; a separate saved-only CI request
 replays the original artifact on Windows and Linux with zero additional engines.
 Four new source-recovery/mode cases pass; the complete pure suite is 263 cases.
 Future evidence upload explicitly includes its known public workflow snapshots.
+
+
+## Final saved verification and handoff
+
+[CI 40389612694](https://github.com/dponcho/voxel-survival-game/actions/runs/40389612694)
+uses source `f93c88b2ce2516c74041e36b1d0d6d211abad55e`, merge checkout
+`cd573a8717c4a8575877940a30fe7afe7b9f50e8`. All 263 Python regressions and eleven
+native sanitizer suites pass. The engine job and ordinary Windows native/export
+job are skipped. The Windows and Linux jobs only replay saved files.
+
+| Saved replay | Artifact | ZIP bytes | SHA-256 |
+| --- | --- | ---: | --- |
+| Windows | [12680774860](https://github.com/dponcho/voxel-survival-game/actions/runs/40389612694/artifacts/12680774860) | 6,350 | `da8cf503c22d55d67ce62a9c6f630c28a0411c8c0e6fab5a48b66a16e26ce447` |
+| Linux | [12682069436](https://github.com/dponcho/voxel-survival-game/actions/runs/40389612694/artifacts/12682069436) | 6,331 | `8d3eb7ddf7dc14d93806f5058a84669b607db9655a6addbc9c08f8ded2928328` |
+
+Both ZIPs pass digest/size/CRC/path checks after download. Their parsed reports
+match each other and a fresh local replay extracted directly from the original
+verified archive. All 66 original audit manifest entries reproduce, including
+the two explicitly recovered source files. Each replay rejects the same eight
+saved corruptions and executes zero engines. Integrity and process execution
+are verified; trial guards and attribution validity remain false.
+
+The [committed evidence](evidence/m1-preparation-demand-cloud-2026-10-25.json)
+retains original CI failures separately from the successful saved-only CI,
+exact candidate/assignment/process identity, full audited file digests,
+compressed immutable/batch/source/console/audit records and all replay reports.
+The original raw [artifact 12623918109](https://github.com/dponcho/voxel-survival-game/actions/runs/40259410841/artifacts/12623918109)
+is 8,164,605 bytes, SHA-256
+`dc9aea7e3b2aca29d136ec9b98d647ae323a915de09f279c32c5ed5c53729eb3`.
+The complete original CI remains **failed** because its first Linux transfer
+recheck lacked the two workflow snapshots; later saved verification does not
+rewrite that history or the failed measurement.
+
+For reproduction, use a fresh checkout of the saved-replay source above,
+download/extract the exact player and original raw artifacts into the paths in
+`.github/workflows/preparation-demand-recheck.yml`, and run only
+`python tools/qa/preparation_demand_saved_recheck.py`. This reads saved evidence;
+never invoke `prepare`, `reserve` or `run` again for the consumed declaration.
+
+The bounded launcher/execution task is complete with a failed three-trial
+prefix. Both request files are disabled, all older pilot inputs remain false,
+and reservation commit `8ab1624e0a74f153b6189afa837fb24f6688d8c9` remains permanent.
+The next task is the saved failed-prefix/direct-owner review in
+[NEXT_TASK.md](NEXT_TASK.md), making one finite next decision without an engine.
+M1, cost and target qualification remain blocked; no laptop action follows.

@@ -607,7 +607,7 @@ and stable unfinalized replay with unknown trial counts. The former blanket
 no-route regression now requires dispatch through the separately declared
 launcher while preserving ordinary controls and old disabled pilots.
 All 256 pure regressions pass locally. Runtime, inventory and the frozen
-candidate stay unchanged; the actual one-process result remains pending.
+candidate stayed unchanged; the actual one-process result is now recorded below.
 Read [the launch and retention boundary](docs/M1_PREPARATION_DEMAND_RUN.md).
 
 The first cloud preflight's Windows default-codepage failure is retained before
@@ -633,3 +633,18 @@ Exact pinned Git bytes restore only those source files in derived copies;
 all measured files stay untouched and the complete Windows audit reproduces
 locally. Four recovery/mode regressions bring the pure suite to 263. The next
 cloud jobs are saved-only readers, with the process request permanently false.
+
+
+Final saved-only CI `40389612694` passes all **263 Python regressions** and
+**eleven native AddressSanitizer/UndefinedBehaviorSanitizer suites**. Both actual
+Windows/Linux saved-reader jobs pass; the engine and ordinary Windows build
+jobs are skipped. Downloaded replay artifacts pass SHA-256/size/CRC/path checks,
+match each other and reproduce a fresh exact-archive local replay: 66 original
+audit entries, 144,055 spans, eight rejected corruptions, zero additional engines.
+Only the two preflight/Git-bound source snapshots are restored in derived copies.
+The complete original run `40259410841` remains failed on its first Linux
+transfer replay, with the third trial's 819 µs operation failure intact.
+Both preparation request files are now false. The launcher/execution increment
+is complete; [the result and reproduction instructions](docs/M1_PREPARATION_DEMAND_RUN.md#final-saved-verification-and-handoff)
+lead only to a saved failed-prefix review. No unchanged engine suite or candidate
+rebuild is required for this final evidence/prose commit.
