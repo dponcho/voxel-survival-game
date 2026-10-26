@@ -623,3 +623,13 @@ CI verifies it with read-only GETs and its Git-blob digest. Fifteen launcher
 cases cover this assignment, including refusal to adopt another run's claim;
 the total pure suite is 259. No engine or candidate change follows from either
 preflight correction.
+
+The declared process completes three fixed-work trials, stopping at bare-1's
+819 µs retirement deletion against 750 µs. Native ownership/disposal and prefix
+publication integrity pass; measurement/attribution validity stays false.
+The original Windows audit rejects eight saved corruptions. Its first Linux
+transfer recheck fails because upload omitted two `.github` source snapshots.
+Exact pinned Git bytes restore only those source files in derived copies;
+all measured files stay untouched and the complete Windows audit reproduces
+locally. Four recovery/mode regressions bring the pure suite to 263. The next
+cloud jobs are saved-only readers, with the process request permanently false.

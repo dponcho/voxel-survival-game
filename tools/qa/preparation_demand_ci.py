@@ -28,6 +28,7 @@ REPOSITORY = 'dponcho/voxel-survival-game'
 DECLARATION = ROOT/'docs/evidence/m1-preparation-demand-declaration-2026-10-25.json'
 DECLARATION_SHA256 = '17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad'
 REQUEST = ROOT/'build/preparation-demand-once.json'
+RECHECK_REQUEST = ROOT/'build/preparation-demand-recheck-once.json'
 REF = 'refs/heads/codex/reserved-preparation-demand-'+DECLARATION_SHA256
 REPORTS = ROOT/'reports/preparation-demand-pilot'
 PLAYER = ROOT/'build/published-player/Cairn-windows-x86_64.zip'
@@ -43,6 +44,15 @@ def plan(request=REQUEST):
     require(type(value['enabled']) is bool and value == dict(enabled=value['enabled'],declaration_sha256=DECLARATION_SHA256),
             'Unknown preparation launch request')
     require(sha(DECLARATION) == DECLARATION_SHA256,'Frozen declaration bytes changed')
+    return value['enabled']
+
+
+def recheck_plan(request=RECHECK_REQUEST):
+    if not Path(request).exists():return False
+    value=read(request)
+    require(type(value['enabled']) is bool and
+            value == dict(enabled=value['enabled'],source_run=40259410841,artifact_id=12623918109),
+            'Unknown saved-only recheck request')
     return value['enabled']
 
 
@@ -314,6 +324,7 @@ def audit(folder=REPORTS):
     require(preflight['candidate'] == identity and sha(folder/'sequence-declared.json') == DECLARATION_SHA256,
             'Saved preparation candidate/declaration changed')
     for name,expected in preflight['source_sha256'].items():
+        require(name in SNAPSHOTS,'Unexpected source snapshot path')
         require(sha(folder/'source'/name) == expected,'Saved launch source changed')
     reservation=read(folder/'reservation.json')
     require(reservation['status'] == 'reserved' and reservation['context'] == preflight['context'] and
@@ -378,8 +389,10 @@ def main():
     parser.add_argument('command',choices=['plan','prepare','reserve','run','audit'])
     args=parser.parse_args()
     if args.command=='plan':
-        enabled=plan()
-        with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as f:f.write('launch='+str(enabled).lower()+'\n')
+        enabled=plan();recheck=recheck_plan()
+        require(not (enabled and recheck),'Cannot launch and replay in the same CI request')
+        with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as f:
+            f.write('launch='+str(enabled).lower()+'\nrecheck='+str(recheck).lower()+'\n')
     elif args.command=='prepare':prepare()
     elif args.command=='reserve':reserve()
     elif args.command=='run':run()

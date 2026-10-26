@@ -1,9 +1,11 @@
 # Declared preparation-demand process
 
-October 25, 2026. Launcher prepared; the single real cloud process and its
-downloaded audit remain pending. All 256 Python regressions pass locally,
-including thirteen new reservation/launcher/retention cases. No engine ran
-during launcher implementation. The existing portable candidate is unchanged.
+October 25, 2026. **The single declared process is consumed.** It completed
+three trials and stopped on an 819 µs retirement deletion in bare-1, exceeding
+750 µs. Windows verifies the original measurements and eight saved corruptions.
+A fresh local saved replay reproduces the result; cloud saved-only Windows/Linux
+replays are pending after the source-snapshot transfer correction below.
+The portable candidate and declaration remain unchanged. Never repeat this process.
 
 ## Frozen input and scope
 
@@ -108,3 +110,59 @@ attempt; a new run or restart is refused, and the local exclusive record blocks
 another invocation in that job. Fifteen launcher cases pass, including a foreign
 run assignment. The total pure suite is now 259. Candidate, declaration, native
 sources and all runtime/measurement boundaries are unchanged.
+
+## Single-process result
+
+Runtime source `7da951107b45e151eae79f03f6e762c6f594f721`, exported launcher
+workflow `259c9bac6840a14fce6192e482112f98fcbdd928`,
+[CI 40259410841](https://github.com/dponcho/voxel-survival-game/actions/runs/40259410841).
+The permanent assignment commit is `8ab1624e0a74f153b6189afa837fb24f6688d8c9`,
+bound to this run, attempt 1, exact source/merge/candidate/declaration. It remains
+permanent. The launcher records one PID, one spawn, exit 0, no timeout and
+233.828 seconds. The reader retains the failed operation independently of exit.
+
+| Completed trial | Work / ownership / publication | Operation guard |
+| --- | --- | --- |
+| warmup-0 | Passed | Passed |
+| bare-0 | Passed | Passed |
+| bare-1 | Passed | Failed: retirement deletion 819 µs > 750 µs |
+
+Each trial retains 4,320 ticks, 103,680 actor ticks, 288 accepted/submitted edits
+and 72 saves. Three valid native owner/disposal witnesses retain
+47,975 / 48,109 / 47,971 records, **144,055 spans** total; all three sessions and
+recorders are destroyed. All three prefix publications reconcile, preserving
+immutable trial evidence. The final prefix is 256,604 bytes, SHA-256
+`437ab3176515a45e4722e2f7372a04c0e823940fd7fe663659c27bb7bf1aaa67`.
+
+The failed deletion is kind 2 (surface removal), reported at 233,134,609 µs,
+with maximum event payload 112,280 bytes. Retirement retains 871 deletions /
+73,913,840 accounted bytes. This phase observation does not establish OS/driver
+attribution or a target-hardware diagnosis. The batch stops before bare-2 and
+bare-3; no complete bare quartet or cost estimate exists. Integrity is verified,
+trial/attribution validity is false, and M1 remains blocked.
+
+The [original result artifact](https://github.com/dponcho/voxel-survival-game/actions/runs/40259410841/artifacts/12623918109)
+is 8,164,605 bytes, SHA-256
+`dc9aea7e3b2aca29d136ec9b98d647ae323a915de09f279c32c5ed5c53729eb3`.
+It preserves all measured raw files, source/context/claim and Windows audit.
+Eight re-signed saved corruptions are rejected. The original CI remains failed
+because its initial Linux transfer recheck lacks two source files; the engine
+sequence and Windows audit passed their integrity checks.
+
+## Source-snapshot transfer recovery
+
+Artifact upload's default hidden-file exclusion omitted
+`source/.github/workflows/ci.yml` and `source/.github/workflows/preparation-demand.yml`.
+Both files exist in the original Windows audit manifest; all measured raw bytes
+were transferred. The [recovery record](evidence/m1-preparation-source-snapshot-recovery-2026-10-25.json)
+retains the original Linux failure and exact source bytes from Git commit
+`7da9511`, matching both preflight and Windows manifest sizes/SHA-256 values.
+
+Only these two source paths can be restored in a fresh derived replay folder.
+Wrong bytes, another source, escaped paths or measured-file substitutions fail.
+No original artifact or measured file is rewritten. All 66 original manifest
+entries and the Windows audit reproduce locally after source restoration.
+The process request is disabled permanently; a separate saved-only CI request
+replays the original artifact on Windows and Linux with zero additional engines.
+Four new source-recovery/mode cases pass; the complete pure suite is 263 cases.
+Future evidence upload explicitly includes its known public workflow snapshots.

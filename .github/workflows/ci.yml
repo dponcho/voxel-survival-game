@@ -17,6 +17,7 @@ jobs:
     timeout-minutes: 3
     outputs:
       launch: ${{ steps.plan.outputs.launch }}
+      recheck: ${{ steps.plan.outputs.recheck }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -85,7 +86,7 @@ jobs:
           /tmp/cairn-preparation-test
   windows:
     needs: [static, plan]
-    if: ${{ needs.plan.outputs.launch != 'true' }}
+    if: ${{ needs.plan.outputs.launch != 'true' && needs.plan.outputs.recheck != 'true' }}
     uses: ./.github/workflows/windows-build.yml
     with:
       cold: false
@@ -98,3 +99,7 @@ jobs:
       contents: read
       actions: read
     uses: ./.github/workflows/preparation-demand.yml
+  preparation-recheck:
+    needs: [static, plan]
+    if: ${{ needs.plan.outputs.recheck == 'true' && github.repository == 'dponcho/voxel-survival-game' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+    uses: ./.github/workflows/preparation-demand-recheck.yml

@@ -4,6 +4,17 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
+**Declared process consumed; saved-only replay recovery pending.**
+CI `40259410841` ran one process: warmup-0 and bare-0 passed; bare-1 completed
+fixed work but failed retirement deletion at 819 µs against 750 µs. It stopped
+before bare-2/3. Native ownership/disposal and all prefix publications reconcile;
+the result is invalid for attribution/cost. Windows audits eight corruptions.
+The [original result and transfer recovery](M1_PREPARATION_DEMAND_RUN.md#single-process-result)
+preserve all measured bytes; two omitted workflow source snapshots are restored
+by exact Git/SHA identity in derived replays. A fresh local replay agrees.
+The launch request is now false. Complete only the saved Windows/Linux replays,
+then review this failed prefix without another engine. Never repeat the process.
+
 **Declared launcher prepared; single cloud result pending.**
 The [one-use launcher](M1_PREPARATION_DEMAND_RUN.md) passes all 256 local Python
 regressions, including thirteen new reservation/timeout/retention cases. It

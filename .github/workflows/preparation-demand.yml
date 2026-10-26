@@ -50,6 +50,7 @@ jobs:
         with:
           name: Cairn-preparation-demand-${{ github.sha }}
           path: reports/preparation-demand-pilot/
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
   saved-recheck:
