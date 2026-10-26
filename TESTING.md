@@ -577,3 +577,22 @@ chronology and rejects any continuation. Required integration/package checks,
 the new PCK, both downloaded platform audits and a fresh local saved replay pass.
 Read [the exact result and proof](docs/M1_PREPARATION_PREFIX_STOP.md).
 No attribution process/declaration ran; all consumed pilot flags remain false.
+
+### Corrected saved launch review and finite declaration
+
+`tools/qa/preparation_prefix_review.py` verifies the exact corrected portable ZIP,
+PCK/source/inventory/native identity, original proof hash, CI/qualification
+records and immutable-boundary source witness. It decodes and replays all 140
+files / 860,237 bytes, both prefix controls and both current owner controls,
+with 66 rejected saved corruptions. Eleven new review regressions reject
+re-signed continuation/trial/immutable-file changes, escaped or missing nested
+files, forged verdicts, changed boundaries, wrong candidate/proof and enlarged
+or retried declarations. Together with the twelve prefix and ten owner reader
+cases, 33 focused tests pass. No unchanged full engine/native suite is rerun.
+
+The [saved decision](docs/M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) closes the
+stopping prerequisite and creates an exact prospective one-process declaration.
+Canonical declaration comparison also rejects numeric/boolean substitution.
+The review runs no engine, changes no runtime/inventory/candidate, enables no
+consumed pilot, and qualifies no cost/target gate. The future launcher must
+reserve once, preserve the first failure/timeout and audit without another run.

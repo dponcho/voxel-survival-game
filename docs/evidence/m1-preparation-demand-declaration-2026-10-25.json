@@ -1,0 +1,100 @@
+{
+  "automatic_retry": false,
+  "candidate": {
+    "exe_sha256": "b3d7a391ffb60c0649d7dd4ba1a599da544be6ac89bc567bb5adcd47feec91de",
+    "game_commit": "73fad4ab0ed4da9d66fb071c7be15596a9f0e705",
+    "inventory_sha256": "269adac80b939b85b0ddc8d1030b5e9b0568d0737d2dc97279582d7d8b4a9f0c",
+    "native_key": "777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a",
+    "pck_entries_md5_verified": 118,
+    "pck_sha256": "c06b0f11ffb846f496fd156520144a666b55a08d7e21943243ffeee2e32a9c54",
+    "pe_imports_verified": 38,
+    "portable_bytes": 30315398,
+    "portable_sha256": "1d96bf5d77141bc46fdc48b526c42c6ac353fde91f84c49ded523cfa3fc90262"
+  },
+  "execution": "A later task may launch only this exact downloaded release candidate, once; this review executes no engine.",
+  "fixed_work": {
+    "accepted_edits": 288,
+    "actor_ticks": 103680,
+    "data_chunk": 16,
+    "data_radius": 128,
+    "fixture_y": [
+      -64,
+      192
+    ],
+    "physics_ticks": 4320,
+    "proxy_saves": 72,
+    "render_block": 32,
+    "render_scale": 1,
+    "resolution": [
+      1280,
+      720
+    ],
+    "route": [
+      "+X",
+      "-X",
+      "+Z"
+    ],
+    "terrain_workers": 1,
+    "visual_radius": 96
+  },
+  "forbidden": [
+    "positive or shipping continuation",
+    "another profile/process matrix",
+    "fitted correction",
+    "frame normalization",
+    "clipping",
+    "process/thread addition or subtraction",
+    "cycle/time conversion",
+    "laptop action",
+    "M2 expansion"
+  ],
+  "implementation_commit": "501d3a3d4bf13f69fc33213ca8e809fa44fee83e",
+  "inventory_sha256": "269adac80b939b85b0ddc8d1030b5e9b0568d0737d2dc97279582d7d8b4a9f0c",
+  "maximum_trials": 5,
+  "method": "m1-preparation-demand-attribution-1",
+  "native_source_key": "777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a",
+  "numerical_cost_limit": "strictly below 1%; not qualified by this attribution mode",
+  "observer_bounds": {
+    "depth": 8,
+    "lanes": 8,
+    "magic": "CAIRNOB2",
+    "raw_version": 2,
+    "trace_bytes": 33554432
+  },
+  "positive_shipping_continuation": false,
+  "preserve_all_existing_gates": true,
+  "process_timeout_seconds": 1500,
+  "processes": 1,
+  "prospective": true,
+  "qualification": false,
+  "review_method": "m1-preparation-prefix-launch-review-1",
+  "reviewed_head": "f511e7610df0a87ced09d770822b811e909300b6",
+  "route_authorized": true,
+  "schema": "cairn-preparation-demand-declaration-1",
+  "shipping_cost_estimate": null,
+  "source_evidence_sha256": "7ef239d68367dc67cd9885a842cd08138cd5a247ffaff413d24a45bef9801e50",
+  "stop_rule": "Stop on first work/counter/span/I/O/publication/operation/resource/readiness/coverage/edit failure or trial five. Retain partial and immutable complete evidence. No retry.",
+  "target_performance": "not_run",
+  "trials": [
+    {
+      "group": "warmup",
+      "index": 0
+    },
+    {
+      "group": "bare",
+      "index": 0
+    },
+    {
+      "group": "bare",
+      "index": 1
+    },
+    {
+      "group": "bare",
+      "index": 2
+    },
+    {
+      "group": "bare",
+      "index": 3
+    }
+  ]
+}

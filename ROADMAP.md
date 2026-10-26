@@ -131,8 +131,13 @@ a post-boundary prefix-write failure can start another trial. The
 [narrow controller/reader correction](docs/M1_PREPARATION_PREFIX_STOP.md) now
 passes CI `40247195315`: paired real failed-open controls, seven corrected cases per
 matching binary, a new source-matched PCK and independent Windows/Linux audits.
-Native binaries were reused/requalified. Review this corrected exact proof before
-any later prospective declaration. No attribution route or laptop action ran.
+Native binaries were reused/requalified. The
+[corrected saved review](docs/M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) now verifies
+140 embedded files and all four controls/66 corruptions, preserves the original
+measured finalizer and closes the prefix stopping prerequisite. One prospective
+exact-candidate release process is declared for the next task, stopping at first
+failure or trial five. This review ran no engine or laptop action; every broader
+failure and qualification gate remains.
 M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.

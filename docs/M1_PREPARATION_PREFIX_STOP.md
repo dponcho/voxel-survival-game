@@ -101,7 +101,7 @@ The preceding 809 / 865 µs deletion overruns,
 measurements remain in their original records. Cloud correctness and controller
 integrity do not qualify observer cost or HD 620 frame/operation performance.
 
-Next review this corrected exact candidate/proof and decide whether a later
-prospective finite declaration is justified. Do not execute a route in that
-review. All three consumed pilot inputs stay false; no laptop action or M2
-expansion follows automatically.
+The [corrected saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) now verifies
+this exact candidate/proof, closes the stopping prerequisite and saves one
+prospective finite declaration. That review executes no engine. All three
+consumed pilot inputs stay false; no laptop action or M2 expansion follows.

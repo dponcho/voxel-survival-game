@@ -4,6 +4,16 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
+**Corrected proof review complete; one future attribution process declared.**
+The [saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) verifies the exact
+candidate/source/native/inventory and all four controls: 140 files / 860,237
+bytes, 66 rejected corruptions and 33 focused regressions. The prefix stopping
+gap is closed; the immutable measured finalizer is unchanged. A
+[prospective declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json)
+binds one later release process, warm-up plus four bare trials, first failure or
+trial five, no retry/continuation. This review ran no engine. Next prepare and
+run only that declared process, retaining and independently auditing every stop.
+
 **Saved owner launch review complete; route declaration withheld.** The exact
 candidate and four saved controls reproduce, including all 84 saved corruptions.
 Historical source review found that a failed `sequence-prefix.json` write
@@ -18,8 +28,8 @@ integration/package checks and downloaded Windows/Linux audits. The frozen
 rejected tail starts another setup after real prefix I/O failure; the corrected
 path stops, retains immutable trial evidence and rejects continuation. Native
 key 777879f5 was reused/requalified. Read [the result and exact proof](M1_PREPARATION_PREFIX_STOP.md).
-No attribution route or declaration ran. Next review this corrected proof before
-any prospective finite declaration.
+That implementation increment ran no attribution route and created no
+declaration. Its corrected saved review and prospective decision are above.
 
 **Common-observer attribution implementation and finite process complete.**
 [CI 39179723675](https://github.com/dponcho/voxel-survival-game/actions/runs/39179723675)
@@ -81,7 +91,7 @@ cost qualification attempt. No engine ran for the review.
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
 | Complete synchronous terrain budget | Native/fault checks and independent audits pass. The current prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical launch review found a prefix-write continuation gap, now corrected and verified in CI `40247195315`. | Review the corrected exact prefix-control/candidate proof and decide whether a prospective finite attribution declaration is justified; run no route in that review. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite and declares one future attribution process. | Prepare the minimum cloud launcher and saved replay, then run only the declared exact-candidate release process. Reserve once; stop at first failure or trial five; retain/audit every early stop without retry. | Both sequences are consumed and all pilot flags false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -237,17 +247,27 @@ twelve saved corruptions per binary and twelve reader regressions pass. Native
 key `777879f5` is unchanged; the new PCK passes required integration/package and
 downloaded Windows/Linux checks in CI `40247195315`.
 
-**Next bounded task: saved corrected-proof review and prospective finite-route
-decision only.** Verify the [self-contained proof](evidence/m1-preparation-prefix-cloud-2026-10-25.json)
-against its exact downloaded portable ZIP, PCK/source/inventory/native identity,
-both prefix controller reports/retained files and both existing owner controls.
-Reproduce saved verdicts and corruptions without an engine; retain the frozen
-rejected source witness and immutable-boundary distinction. Decide explicitly
-whether the stopping/reader defect is closed sufficiently for a later finite
-attribution declaration. Save the evidence and decision; withhold declaration
-if a concrete prerequisite remains. Do not execute an attribution process,
-repeat consumed sequences, rebuild unchanged native code or rerun runtime suites
-solely for this saved review.
+**Completed saved task: corrected proof review and prospective declaration.**
+The [reproducible review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) verifies the exact
+downloaded candidate, all four current controls, every embedded file, 66 saved
+corruptions and the source stopping/measurement boundaries. Eleven new review
+regressions and the 22 affected reader regressions pass. It closes the original
+prefix continuation defect and records the exact prospective declaration.
+No runtime/inventory/native/candidate change or engine process ran.
+
+**Next bounded task: one declared preparation-demand attribution process and
+saved result only.** Follow the [frozen declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json)
+and [launch boundary](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md#prospective-decision-and-next-task).
+Prepare the minimum cloud launcher and independent saved replay for this new
+mode. Verify the exact downloaded ZIP/PCK/executable/native/inventory/declaration
+before launch; reserve the one process durably before starting it. Reject an
+existing reservation/output, including after job restart. Use one Windows
+release process, one warm-up plus four bare trials, stopping at first failure
+or trial five; process cap 1,500 seconds. Preserve and independently audit all
+raw files, immutable completed/terminal evidence, separate batch publication,
+partial output, exit codes and timeouts without another engine. A failed or
+inconclusive prefix is the result; never retry or pad it. Do not rebuild/export
+the unchanged candidate or enable an old consumed pilot flag.
 
 Keep `m1-preparation-demand-attribution-1`, inventory
 `m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`, old v1/v2 paths,
@@ -312,8 +332,11 @@ successful CI `40247195315`, exported build `73fad4ab0ed4da9d66fb071c7be15596a9f
 30,315,398-byte inner ZIP, SHA-256
 `1d96bf5d77141bc46fdc48b526c42c6ac353fde91f84c49ded523cfa3fc90262`. Native key remains `777879f5`.
 [Exact controls/candidate proof](evidence/m1-preparation-prefix-cloud-2026-10-25.json); no attribution
-route or declaration in this increment. Historical attribution runtimes below
-retain their original identities and failed/inconclusive verdicts.
+route or declaration in that implementation increment. The [corrected saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) now binds
+[frozen declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json)
+SHA-256 `17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad`;
+its one process is unrun. Historical attribution runtimes below retain their
+original identities and failed/inconclusive verdicts.
 
 Latest attribution runtime source: `1146807240df15bd32c798f77de266b71b6683bf`,
 successful CI `39179723675`, exported build
