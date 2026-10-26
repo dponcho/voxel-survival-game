@@ -96,12 +96,15 @@ class PreparationTests(unittest.TestCase):
         self.assertEqual(prep.decode(data,failed_cap=True)[0]['record_count'],1)
         with self.assertRaises(RuntimeError): prep.decode(data[:-1],failed_cap=True)
 
-    def test_controls_are_required_without_enabling_any_pilot(self):
+    def test_controls_stay_required_and_only_the_declared_launcher_dispatches(self):
         pipeline=(ROOT/'tools/ci/pipeline.py').read_text()
         self.assertIn('preparation_controls(editor, "editor", game)',pipeline)
         self.assertIn('preparation_controls(player / "Cairn.exe", "release")',pipeline)
+        self.assertNotIn('--preparation-demand-pilot',pipeline)
+        # A separate prospective declaration now permits the new launcher.
+        # Ordinary build/control workflows still cannot invoke the route directly.
         for path in (ROOT/'.github/workflows').glob('*.yml'):
-            self.assertNotIn('preparation-demand-pilot',path.read_text())
+            self.assertNotIn('--preparation-demand-pilot',path.read_text())
         metadata=prep.source_metadata(ROOT)
         self.assertEqual((metadata['method'],metadata['inventory'],metadata['raw_version']),
                          (prep.VERSION,prep.INVENTORY,2))

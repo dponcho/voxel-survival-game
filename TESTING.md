@@ -596,3 +596,16 @@ Canonical declaration comparison also rejects numeric/boolean substitution.
 The review runs no engine, changes no runtime/inventory/candidate, enables no
 consumed pilot, and qualifies no cost/target gate. The future launcher must
 reserve once, preserve the first failure/timeout and audit without another run.
+
+### Declared preparation launcher
+
+Thirteen new cases cover the permanent create-only reservation, remote conflict
+and uncertain-result refusal, owned first-attempt context, exact one-spawn
+command, credential-free child environment, cap/kill/OS-launch outcomes,
+preserved failed-trial exits, altered console/path/scope, changed reservation,
+and stable unfinalized replay with unknown trial counts. The former blanket
+no-route regression now requires dispatch through the separately declared
+launcher while preserving ordinary controls and old disabled pilots.
+All 256 pure regressions pass locally. Runtime, inventory and the frozen
+candidate stay unchanged; the actual one-process result remains pending.
+Read [the launch and retention boundary](docs/M1_PREPARATION_DEMAND_RUN.md).

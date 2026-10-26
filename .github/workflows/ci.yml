@@ -12,6 +12,18 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    outputs:
+      launch: ${{ steps.plan.outputs.launch }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Select ordinary candidate CI or the one frozen preparation process
+        id: plan
+        run: python tools/qa/preparation_demand_ci.py plan
   static:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -72,9 +84,17 @@ jobs:
           c++ -std=c++17 -pthread -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_preparation_observer.cpp -o /tmp/cairn-preparation-test
           /tmp/cairn-preparation-test
   windows:
-    needs: static
+    needs: [static, plan]
+    if: ${{ needs.plan.outputs.launch != 'true' }}
     uses: ./.github/workflows/windows-build.yml
     with:
       cold: false
       shipping_cycles_pilot: false
       shipping_observer_pilot: false
+  preparation-demand:
+    needs: [static, plan]
+    if: ${{ needs.plan.outputs.launch == 'true' && github.repository == 'dponcho/voxel-survival-game' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'codex/m1-engine-proof' }}
+    permissions:
+      contents: write
+      actions: read
+    uses: ./.github/workflows/preparation-demand.yml

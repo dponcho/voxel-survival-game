@@ -4,6 +4,14 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
+**Declared launcher prepared; single cloud result pending.**
+The [one-use launcher](M1_PREPARATION_DEMAND_RUN.md) passes all 256 local Python
+regressions, including thirteen new reservation/timeout/retention cases. It
+reuses the frozen portable ZIP, claims a permanent remote reservation before
+the sole engine start, and preserves every failure for independent Windows/Linux
+audits. Native/runtime/inventory/candidate bytes and old pilot flags are unchanged.
+Complete only this declared process and its saved audit; never retry it.
+
 **Corrected proof review complete; one future attribution process declared.**
 The [saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) verifies the exact
 candidate/source/native/inventory and all four controls: 140 files / 860,237

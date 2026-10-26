@@ -1,0 +1,70 @@
+# Declared preparation-demand process
+
+October 25, 2026. Launcher prepared; the single real cloud process and its
+downloaded audit remain pending. All 256 Python regressions pass locally,
+including thirteen new reservation/launcher/retention cases. No engine ran
+during launcher implementation. The existing portable candidate is unchanged.
+
+## Frozen input and scope
+
+The [saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) and
+[declaration](evidence/m1-preparation-demand-declaration-2026-10-25.json), SHA-256
+`17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad`,
+permit one Windows release process: warm-up plus four bare trials, stopping at
+first failure or trial five, process cap 1,500 seconds. No retry or continuation.
+
+Download the existing [player artifact 12619403556](https://github.com/dponcho/voxel-survival-game/actions/runs/40247195315/artifacts/12619403556).
+The inner ZIP remains 30,315,398 bytes, SHA-256
+`1d96bf5d77141bc46fdc48b526c42c6ac353fde91f84c49ded523cfa3fc90262`;
+native key remains `777879f5`. No native build, export or additional engine
+self-test is needed for this launcher-only change.
+
+Keep method/inventory `m1-preparation-demand-attribution-1` /
+`m1-preparation-demand-inventory-1`, raw v2 / `CAIRNOB2`, 32³/one worker,
+full height/radii, 4,320 ticks / 103,680 actor ticks / 288 edits / 72 saves,
+32 MiB trace, eight lanes/depth eight, complete lifecycle, numerical 1% and all
+existing gates. This perturbing process cannot qualify shipping cost or target
+performance. M1 remains blocked and no laptop action is requested.
+
+## One-use launcher and retained evidence
+
+`build/preparation-demand-once.json` selects this frozen sequence. While enabled,
+CI runs its existing static checks, skips ordinary native/export/package jobs,
+and calls only `preparation-demand.yml`. All three consumed old pilot inputs
+remain false. Disable this new request after the result; never reuse it.
+
+The preflight verifies the exact ZIP/executable/PCK/source/native/inventory,
+declaration bytes, original proof and four saved controls/66 corruptions. It
+extracts the frozen ZIP and snapshots the launcher/workflow/request source.
+
+Before any engine start, the reservation step atomically creates the permanent
+Git branch `codex/reserved-preparation-demand-17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad`,
+pointing to the original candidate implementation `501d3a3`. It never updates,
+adopts or deletes an existing claim. A conflict, uncertain network result,
+rerun attempt, wrong repository/PR/ref, existing local output or changed input
+refuses launch. Keep the claim even if no process could start or the process
+fails. The reservation uses GitHub's [create-reference API](https://docs.github.com/en/rest/git/refs#create-a-reference);
+[run-attempt identity](https://docs.github.com/en/actions/reference/workflows-and-actions/variables)
+separately rejects a restarted Actions attempt.
+
+Only the reservation step receives the scoped repository-write token. The game
+child receives no token/secret environment variables. An exclusive local launch
+record precedes the sole process creation. The 1,500-second cap kills that
+process and retains its actual exit/timeout; an OS launch failure records zero
+started processes with unavailable exit data and forbids a replacement.
+
+The original raw files, console output, context, reservation response, launch
+and process results, frozen declaration and source snapshots are uploaded even
+after failure. Finalized batches use the existing independent preparation
+reader and applicable re-signed corruptions. Unfinalized evidence keeps unknown
+trial/corruption counts null. No missing work becomes a passing zero. Process
+integrity and attribution validity are recorded separately.
+
+Windows audits the result after the process. A fresh Linux job downloads the
+same candidate and original result artifact and reproduces the audit without
+an engine. The permanent claim prevents later workflow or job reruns from
+starting a replacement. The result determines the next bounded decision.
+
+The broader candidate's 1,221 µs upload overrun and all earlier failed
+measurements remain intact. A failed operation guard in this process stops its
+prefix; it never licenses a retry, a cost estimate or qualification.
