@@ -1,0 +1,26 @@
+{
+  "automatic_retry": false,
+  "candidate": {
+    "exe_sha256": "b3d7a391ffb60c0649d7dd4ba1a599da544be6ac89bc567bb5adcd47feec91de",
+    "game_commit": "73fad4ab0ed4da9d66fb071c7be15596a9f0e705",
+    "inventory_sha256": "269adac80b939b85b0ddc8d1030b5e9b0568d0737d2dc97279582d7d8b4a9f0c",
+    "native_key": "777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a",
+    "pck_entries_md5_verified": 118,
+    "pck_sha256": "c06b0f11ffb846f496fd156520144a666b55a08d7e21943243ffeee2e32a9c54",
+    "pe_imports_verified": 38,
+    "portable_bytes": 30315398,
+    "portable_sha256": "1d96bf5d77141bc46fdc48b526c42c6ac353fde91f84c49ded523cfa3fc90262"
+  },
+  "context": {
+    "pr": 2,
+    "repository": "dponcho/voxel-survival-game",
+    "run_attempt": 1,
+    "run_id": "40259410841",
+    "source_commit": "7da951107b45e151eae79f03f6e762c6f594f721",
+    "workflow_commit": "259c9bac6840a14fce6192e482112f98fcbdd928"
+  },
+  "declaration_sha256": "17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad",
+  "processes": 1,
+  "ref": "refs/heads/codex/reserved-preparation-demand-17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad",
+  "schema": "cairn-preparation-process-assignment-1"
+}
