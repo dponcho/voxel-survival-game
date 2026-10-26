@@ -1,5 +1,7 @@
 """The declared cloud process cannot be duplicated, enlarged or retried."""
 import contextlib
+import base64
+import hashlib
 import io
 import json
 import os
@@ -17,16 +19,21 @@ import preparation_demand_ci as launch
 
 
 class Response(io.BytesIO):
-    status=201
+    status=200
 
 
 class API:
-    def __init__(self,error=None):self.requests=[];self.error=error
+    def __init__(self,claim=None,error=None):self.requests=[];self.error=error;self.claim=claim
     def open(self,request,timeout):
         self.requests.append(request)
         if self.error:raise self.error
-        return Response(json.dumps(dict(ref=launch.REF,object=dict(type='commit',sha=launch.review.SOURCE,
-            url='https://api.github.com/repos/'+launch.REPOSITORY+'/git/commits/'+launch.review.SOURCE))).encode())
+        if '/git/ref/' in request.full_url:
+            value=dict(ref=launch.REF,object=dict(type='commit',sha='c'*40))
+        else:
+            raw=json.dumps(self.claim).encode()
+            value=dict(encoding='base64',size=len(raw),content=base64.b64encode(raw).decode(),
+                sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest())
+        return Response(json.dumps(value).encode())
 
 
 class Process:
@@ -43,10 +50,10 @@ class PreparationLauncherTests(unittest.TestCase):
             ref='codex/m1-engine-proof',sha='a'*40))))
         return dict(GITHUB_ACTIONS='true',GITHUB_REPOSITORY=launch.REPOSITORY,GITHUB_EVENT_NAME='pull_request',
             GITHUB_RUN_ATTEMPT='1',GITHUB_RUN_ID='12345',GITHUB_SHA='b'*40,GITHUB_EVENT_PATH=str(event),
-            CAIRN_RESERVATION_TOKEN='unit-test-placeholder')
+            CAIRN_RESERVATION_READ_TOKEN='unit-test-placeholder')
 
     def preflight(self,folder,env):
-        launch.write_json(folder/'preflight.json',dict(context=launch.context(env)))
+        launch.write_json(folder/'preflight.json',dict(context=launch.context(env),candidate=dict(portable_sha256='a'*64)))
 
     def test_plan_accepts_consumption_and_rejects_unknown_declarations(self):
         with tempfile.TemporaryDirectory() as td:
@@ -70,22 +77,23 @@ class PreparationLauncherTests(unittest.TestCase):
             launch.write_json(root/'event.json',data)
             with self.assertRaises(RuntimeError):launch.context(env)
 
-    def test_permanent_claim_is_created_once_and_never_updated(self):
+    def test_assignment_is_read_only_bound_to_one_run_and_never_updated(self):
         with tempfile.TemporaryDirectory() as td:
-            root=Path(td);env=self.context(root);self.preflight(root,env);api=API()
+            root=Path(td);env=self.context(root);self.preflight(root,env)
+            preflight=launch.read(root/'preflight.json')
+            api=API(launch.assignment(preflight['context'],preflight['candidate']))
             launch.reserve(root,env,api)
-            self.assertEqual(len(api.requests),1)
-            self.assertEqual(api.requests[0].method,'POST')
-            self.assertEqual(json.loads(api.requests[0].data),dict(ref=launch.REF,sha=launch.review.SOURCE))
+            self.assertEqual(len(api.requests),2)
+            self.assertTrue(all(r.get_method()=='GET' and r.data is None for r in api.requests))
             self.assertEqual(launch.read(root/'reservation.json')['status'],'reserved')
             with self.assertRaises(FileExistsError):launch.reserve(root,env,api)
-            self.assertEqual(len(api.requests),1)
+            self.assertEqual(len(api.requests),2)
 
     def test_conflict_or_uncertain_network_claim_is_not_retried_or_adopted(self):
         for error in (urllib.error.HTTPError('https://api.github.com',422,'exists',{},None),
                       urllib.error.URLError('uncertain result')):
             with self.subTest(error=type(error).__name__),tempfile.TemporaryDirectory() as td:
-                root=Path(td);env=self.context(root);self.preflight(root,env);api=API(error)
+                root=Path(td);env=self.context(root);self.preflight(root,env);api=API(error=error)
                 with self.assertRaises(type(error)):launch.reserve(root,env,api)
                 saved=launch.read(root/'reservation.json')
                 self.assertEqual(saved['status'],'refused_or_uncertain')
@@ -93,6 +101,16 @@ class PreparationLauncherTests(unittest.TestCase):
                 self.assertNotIn('unit-test-placeholder',(root/'reservation.json').read_text())
                 with self.assertRaises(FileExistsError):launch.reserve(root,env,api)
                 self.assertEqual(len(api.requests),1)
+
+    def test_an_existing_assignment_for_another_run_cannot_be_adopted(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);env=self.context(root);self.preflight(root,env)
+            preflight=launch.read(root/'preflight.json')
+            claim=launch.assignment(preflight['context'],preflight['candidate'])
+            claim['context']['run_id']='99999'
+            with self.assertRaisesRegex(RuntimeError,'another run/candidate'):
+                launch.reserve(root,env,API(claim))
+            self.assertEqual(launch.read(root/'reservation.json')['status'],'refused_or_uncertain')
 
     def test_one_spawn_has_exact_scope_and_no_credentials(self):
         with tempfile.TemporaryDirectory() as td:
@@ -182,8 +200,12 @@ class PreparationLauncherTests(unittest.TestCase):
             source_sha256={},report_root='D:\\CI\\reports\\preparation-demand-pilot'))
         launch.write_json(root/'preflight-review.json',dict(synthetic_fixture=True))
         (root/'sequence-declared.json').write_bytes(launch.DECLARATION.read_bytes())
+        assignment=launch.assignment({'run_id':'12345'},identity)
+        raw_assignment=json.dumps(assignment).encode();(root/'remote-assignment.json').write_bytes(raw_assignment)
         launch.write_json(root/'reservation.json',dict(status='reserved',context={'run_id':'12345'},
-            ref=launch.REF,sha=launch.review.SOURCE,http_status=201))
+            ref=launch.REF,sha='c'*40,http_status=200,response=dict(object=dict(sha='c'*40)),
+            assignment=assignment,assignment_sha256=hashlib.sha256(raw_assignment).hexdigest(),
+            git_blob_sha=hashlib.sha1(b'blob '+str(len(raw_assignment)).encode()+b'\0'+raw_assignment).hexdigest()))
         launch.write_json(root/'launch-record.json',dict(context={'run_id':'12345'},timeout_seconds=1500,
             automatic_retry=False,command=['D:\\player\\Cairn.exe','--headless','--','--preparation-demand-pilot',
             '--preparation-demand-declaration=D:\\CI\\reports\\preparation-demand-pilot\\sequence-declared.json',

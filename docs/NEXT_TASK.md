@@ -15,6 +15,11 @@ CI `40257212559` failed Windows text decoding during review preflight, before
 reservation and with zero engine processes. The [retained checkpoint and
 UTF-8 correction](M1_PREPARATION_DEMAND_RUN.md#preflight-correction-before-any-process)
 preserve the original failure and frozen declaration; the process is unconsumed.
+CI `40257944925` passes preflight but its reference-creation request receives
+HTTP 403 before any engine. The [retained reservation checkpoint](M1_PREPARATION_DEMAND_RUN.md#reservation-permission-preflight)
+records zero processes and no permanent claim. The connected GitHub account now
+creates the one run-bound assignment from the verified preflight artifact; CI
+only reads it. Complete the first declared process under that assignment.
 
 **Corrected proof review complete; one future attribution process declared.**
 The [saved review](M1_PREPARATION_PREFIX_LAUNCH_REVIEW.md) verifies the exact

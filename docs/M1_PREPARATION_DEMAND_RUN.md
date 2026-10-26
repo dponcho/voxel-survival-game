@@ -37,18 +37,22 @@ The preflight verifies the exact ZIP/executable/PCK/source/native/inventory,
 declaration bytes, original proof and four saved controls/66 corruptions. It
 extracts the frozen ZIP and snapshots the launcher/workflow/request source.
 
-Before any engine start, the reservation step atomically creates the permanent
-Git branch `codex/reserved-preparation-demand-17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad`,
-pointing to the original candidate implementation `501d3a3`. It never updates,
-adopts or deletes an existing claim. A conflict, uncertain network result,
-rerun attempt, wrong repository/PR/ref, existing local output or changed input
-refuses launch. Keep the claim even if no process could start or the process
-fails. The reservation uses GitHub's [create-reference API](https://docs.github.com/en/rest/git/refs#create-a-reference);
+Before any engine start, CI publishes its verified preflight identity. The
+connected GitHub account then creates the permanent branch
+`codex/reserved-preparation-demand-17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad`
+once, with an assignment binding the exact run ID, first attempt, source/merge
+commits, candidate and declaration. It never updates or deletes an existing
+claim. CI reads the assignment and verifies the Git blob and exact context;
+another run cannot adopt it. Existing local output, a rerun attempt, wrong
+repository/PR/ref or changed input refuses launch. Keep the claim even if no
+process could start or the process fails. Creation uses GitHub's
+[create-reference API](https://docs.github.com/en/rest/git/refs#create-a-reference);
 [run-attempt identity](https://docs.github.com/en/actions/reference/workflows-and-actions/variables)
 separately rejects a restarted Actions attempt.
 
-Only the reservation step receives the scoped repository-write token. The game
-child receives no token/secret environment variables. An exclusive local launch
+CI uses read-only repository permissions. Only assignment verification receives
+the read token; the game child receives no token/secret environment variables.
+An exclusive local launch
 record precedes the sole process creation. The 1,500-second cap kills that
 process and retains its actual exit/timeout; an OS launch failure records zero
 started processes with unavailable exit data and forbids a replacement.
@@ -86,3 +90,21 @@ The launcher now retains structured preflight failure evidence before any
 verification, so failed validation also uploads and replays honestly. Two added
 regressions bring the suite to 258; all 26 affected launcher/review tests pass.
 A new corrected source run may perform the first and only declared process.
+
+## Reservation permission preflight
+
+CI `40257944925` passes all 258 pure regressions and eleven sanitizer suites,
+plus the corrected Windows candidate/source/control preflight. Its Actions
+token has Contents write permission, but GitHub rejects reference creation with
+HTTP 403. The reservation and game steps never complete/start respectively;
+the permanent branch remains absent. The [retained original artifact](evidence/m1-preparation-reservation-preflight-2026-10-25.json)
+includes all nine preflight files and the refused reservation. No engine ran
+and the declaration remains unconsumed.
+
+The launcher now accepts only a permanent assignment created through the
+connected GitHub account after receiving the verified preflight artifact. CI
+needs no repository-write permission. The assignment binds one exact run and
+attempt; a new run or restart is refused, and the local exclusive record blocks
+another invocation in that job. Fifteen launcher cases pass, including a foreign
+run assignment. The total pure suite is now 259. Candidate, declaration, native
+sources and all runtime/measurement boundaries are unchanged.

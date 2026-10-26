@@ -1,6 +1,8 @@
 """One frozen preparation process; permanent reservation, no retry or rebuild."""
 import argparse
+import base64
 import copy
+import hashlib
 import json
 import os
 from pathlib import Path,PureWindowsPath
@@ -11,6 +13,7 @@ import sys
 import tempfile
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 
@@ -98,29 +101,56 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self,req,fp,code,msg,headers,newurl): return None
 
 
-def reserve(folder=REPORTS,env=None,opener=None):
+def assignment(ctx,identity):
+    return dict(schema='cairn-preparation-process-assignment-1',context=ctx,candidate=identity,
+        declaration_sha256=DECLARATION_SHA256,processes=1,automatic_retry=False,ref=REF)
+
+
+def same(left,right):
+    return json.dumps(left,sort_keys=True,separators=(',',':')) == json.dumps(right,sort_keys=True,separators=(',',':'))
+
+
+def reserve(folder=REPORTS,env=None,opener=None,clock=time.monotonic,pause=time.sleep):
     env = os.environ if env is None else env
     ctx = context(env);folder=Path(folder)
-    require(read(folder/'preflight.json')['context'] == ctx,'Reservation detached from preflight')
+    preflight=read(folder/'preflight.json')
+    require(preflight['context'] == ctx,'Reservation detached from preflight')
     path=folder/'reservation.json'
-    # Reserve the local attempt before any network call; uncertain failures are
-    # retained, never retried. The permanent remote ref is the cross-run lock.
+    # The connected account creates the permanent branch once, assigning one
+    # exact run/attempt. CI only reads it; a different run can never adopt it.
     with path.open('x',encoding='utf-8') as f:
-        json.dump(dict(schema='cairn-preparation-reservation-1',status='attempting',context=ctx,
-            ref=REF,sha=review.SOURCE,declaration_sha256=DECLARATION_SHA256),f)
-    token=env.get('CAIRN_RESERVATION_TOKEN','')
-    require(bool(token),'Missing scoped reservation token')
-    request=urllib.request.Request('https://api.github.com/repos/'+REPOSITORY+'/git/refs',method='POST',
-        data=json.dumps(dict(ref=REF,sha=review.SOURCE)).encode(),headers={'Authorization':'Bearer '+token,
-        'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'})
+        json.dump(dict(schema='cairn-preparation-reservation-1',status='awaiting_assignment',context=ctx,
+            ref=REF,declaration_sha256=DECLARATION_SHA256),f)
+    token=env.get('CAIRN_RESERVATION_READ_TOKEN','')
+    require(bool(token),'Missing read-only reservation token')
     opener=urllib.request.build_opener(NoRedirect) if opener is None else opener
+    def get(endpoint):
+        request=urllib.request.Request('https://api.github.com/repos/'+REPOSITORY+endpoint,headers={
+            'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+        with opener.open(request,timeout=15) as response:
+            require(response.status == 200,'Reservation read response differs')
+            return json.load(response)
     try:
-        with opener.open(request,timeout=60) as response:
-            value=json.load(response)
-            require(response.status == 201 and value['ref'] == REF and
-                    value['object'] == dict(type='commit',sha=review.SOURCE,url=value['object']['url']),
-                    'Reservation response differs')
-        result=read(path);result.update(status='reserved',http_status=201,response=value)
+        begin=clock()
+        while True:
+            try:value=get('/git/ref/'+REF.removeprefix('refs/'));break
+            except urllib.error.HTTPError as error:
+                if error.code != 404 or clock()-begin >= 300:raise
+                print('Waiting for the permanent run-bound assignment; no engine started.',flush=True);pause(5)
+        claim_sha=value['object']['sha']
+        require(value['ref'] == REF and value['object']['type'] == 'commit' and re.fullmatch('[0-9a-f]{40}',claim_sha),
+                'Permanent assignment reference differs')
+        content=get('/contents/build/preparation-demand-reservation.json?ref='+claim_sha)
+        require(content['encoding'] == 'base64' and 0 < content['size'] <= 16384,'Assignment file encoding/size differs')
+        data=base64.b64decode(content['content'].replace('\n',''),validate=True)
+        require(len(data) == content['size'] and
+                hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest() == content['sha'],
+                'Assignment Git blob changed')
+        claim=json.loads(data)
+        require(same(claim,assignment(ctx,preflight['candidate'])),'Permanent assignment belongs to another run/candidate')
+        (folder/'remote-assignment.json').write_bytes(data)
+        result=read(path);result.update(status='reserved',http_status=200,response=value,sha=claim_sha,
+            assignment=claim,assignment_sha256=review.digest(data),git_blob_sha=content['sha'])
         write_json(path,result)
     except Exception as error:
         result=read(path);result.update(status='refused_or_uncertain',http_status=getattr(error,'code',None),
@@ -186,9 +216,13 @@ def marker(folder,result):
 def run():
     require(sys.platform == 'win32','Only the declared Windows release process may run')
     ctx=context();before=read(REPORTS/'preflight.json');reservation=read(REPORTS/'reservation.json')
-    require(reservation['status'] == 'reserved' and reservation['http_status'] == 201 and
+    require(reservation['status'] == 'reserved' and reservation['http_status'] == 200 and
             reservation['context'] == before['context'] == ctx and reservation['ref'] == REF and
-            reservation['sha'] == review.SOURCE,'No matching exclusive remote reservation')
+            same(reservation['assignment'],assignment(ctx,before['candidate'])),
+            'No matching exclusive remote reservation')
+    require(sha(REPORTS/'remote-assignment.json') == reservation['assignment_sha256'] and
+            same(read(REPORTS/'remote-assignment.json'),reservation['assignment']),
+            'Remote assignment changed before launch')
     require(candidate() == before['candidate'] and sha(REPORTS/'sequence-declared.json') == DECLARATION_SHA256,
             'Candidate/declaration changed after reservation')
     require(all(sha(ROOT/name) == expected for name,expected in before['source_sha256'].items()),
@@ -283,8 +317,14 @@ def audit(folder=REPORTS):
         require(sha(folder/'source'/name) == expected,'Saved launch source changed')
     reservation=read(folder/'reservation.json')
     require(reservation['status'] == 'reserved' and reservation['context'] == preflight['context'] and
-            reservation['ref'] == REF and reservation['sha'] == review.SOURCE and reservation['http_status'] == 201,
+            reservation['ref'] == REF and reservation['http_status'] == 200 and
+            same(reservation['assignment'],assignment(preflight['context'],identity)) and
+            reservation['response']['object']['sha'] == reservation['sha'],
             'Saved exclusive reservation differs')
+    raw_assignment=(folder/'remote-assignment.json').read_bytes()
+    require(review.digest(raw_assignment) == reservation['assignment_sha256'] and
+            hashlib.sha1(b'blob '+str(len(raw_assignment)).encode()+b'\0'+raw_assignment).hexdigest() == reservation['git_blob_sha'] and
+            same(json.loads(raw_assignment),reservation['assignment']),'Saved assignment Git blob differs')
     process=read(folder/'process-result.json');launch=read(folder/'launch-record.json')
     require(type(process['spawn_attempts']) is int and process['spawn_attempts'] == 1 and
             type(process['engine_processes']) is int and process['engine_processes'] == int(process['pid'] is not None) and

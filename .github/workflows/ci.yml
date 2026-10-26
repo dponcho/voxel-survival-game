@@ -95,6 +95,6 @@ jobs:
     needs: [static, plan]
     if: ${{ needs.plan.outputs.launch == 'true' && github.repository == 'dponcho/voxel-survival-game' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'codex/m1-engine-proof' }}
     permissions:
-      contents: write
+      contents: read
       actions: read
     uses: ./.github/workflows/preparation-demand.yml

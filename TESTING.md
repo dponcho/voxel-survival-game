@@ -615,3 +615,11 @@ any reservation or process. Explicit UTF-8 source reading reproduces the same
 frozen review on both platforms. A codepage regression and a structured
 preflight-failure/zero-process replay regression bring the suite to 258 cases;
 all 26 affected launcher/review cases pass after the correction.
+
+The reservation permission preflight is also retained before any process:
+CI's Contents-write token receives HTTP 403. The permanent claim is instead
+created by the connected account and bound to one verified Actions context.
+CI verifies it with read-only GETs and its Git-blob digest. Fifteen launcher
+cases cover this assignment, including refusal to adopt another run's claim;
+the total pure suite is 259. No engine or candidate change follows from either
+preflight correction.

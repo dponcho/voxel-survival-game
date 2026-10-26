@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-2022
     timeout-minutes: 45
     permissions:
-      contents: write
+      contents: read
       actions: read
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -28,9 +28,16 @@ jobs:
           merge-multiple: true
       - name: Verify exact declaration, source, candidate and four saved controls
         run: python tools/qa/preparation_demand_ci.py prepare
-      - name: Permanently reserve the sole declared process
+      - name: Publish the verified identity for the permanent run assignment
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Cairn-preparation-assignment-request-${{ github.sha }}
+          path: reports/preparation-demand-pilot/preflight.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Verify the permanent assignment to this sole run
         env:
-          CAIRN_RESERVATION_TOKEN: ${{ github.token }}
+          CAIRN_RESERVATION_READ_TOKEN: ${{ github.token }}
         run: python tools/qa/preparation_demand_ci.py reserve
       - name: Run the one release process; retain every failure without retry
         run: python tools/qa/preparation_demand_ci.py run
