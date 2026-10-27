@@ -1,0 +1,2256 @@
+{
+  "schema": "cairn-preparation-owner-preflight-1",
+  "ci_run": 39966730530,
+  "source_commit": "fcb1f2e9e81f0377aed7edd73d01abb08da7ed81",
+  "exported_commit": "153a89174cd71c909b7b9c468b0d5b115547734b",
+  "native_key": "a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100",
+  "outcome": "failed_fixture_context",
+  "qualified": false,
+  "attribution_valid": false,
+  "route_processes": 0,
+  "laptop_action_required": false,
+  "reason": "Four engine errors reject the orphan terrain fixture despite inner API flags. No portable candidate was produced.",
+  "engine_errors": [
+    "ERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()",
+    "ERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()",
+    "ERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()",
+    "ERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()"
+  ],
+  "control_log": "[\"D:\\\\a\\\\voxel-survival-game\\\\voxel-survival-game\\\\build\\\\engine-bundle\\\\editor.exe\", \"--headless\", \"--path\", \"D:\\\\a\\\\voxel-survival-game\\\\voxel-survival-game\\\\game\", \"--\", \"--preparation-demand-check\", \"--preparation-demand-output=D:\\\\a\\\\voxel-survival-game\\\\voxel-survival-game\\\\reports\\\\preparation-demand-editor\\\\controls.json\"]\nGodot Engine v4.7.2.stable.custom_build - https://godotengine.org\n\nERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()\n   at: get_global_transform (scene\\3d\\node_3d.cpp:649)\n   GDScript backtrace (most recent call first):\n       [0] _ready (res://scripts/m1_preparation_demand_tests.gd:17)\n       [1] _ready (res://scripts/title.gd:12)\nERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()\n   at: get_global_transform (scene\\3d\\node_3d.cpp:649)\n   GDScript backtrace (most recent call first):\n       [0] _ready (res://scripts/m1_preparation_demand_tests.gd:17)\n       [1] _ready (res://scripts/title.gd:12)\nERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()\n   at: get_global_transform (scene\\3d\\node_3d.cpp:649)\n   GDScript backtrace (most recent call first):\n       [0] _ready (res://scripts/m1_preparation_demand_tests.gd:17)\n       [1] _ready (res://scripts/title.gd:12)\nERROR: Condition \"!is_inside_tree()\" is true. Returning: Transform3D()\n   at: get_global_transform (scene\\3d\\node_3d.cpp:649)\n   GDScript backtrace (most recent call first):\n       [0] _ready (res://scripts/m1_preparation_demand_tests.gd:17)\n       [1] _ready (res://scripts/title.gd:12)\nCAIRN_PREPARATION_DEMAND={\"output\":\"D:\\\\a\\\\voxel-survival-game\\\\voxel-survival-game\\\\reports\\\\preparation-demand-editor\\\\controls.json\",\"passed\":true}\n",
+  "native_manifest": {
+    "engine_inputs": "a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "lock": {
+      "schema": 1,
+      "godot": {
+        "version": "4.7.2",
+        "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "url": "https://codeload.github.com/godotengine/godot/zip/ed1daf0bf001b61586d9930840f2f1394092c079",
+        "sha256": "098b0a71e95ad98ab44651199d55c3f085e4e02c735514e284a2d5263ac81fb2"
+      },
+      "voxel": {
+        "version": "1.7",
+        "commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+        "url": "https://codeload.github.com/Zylann/godot_voxel/zip/2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+        "sha256": "782c0676318f05efdd03204f70932435255464daaa80eb9d995f2ab920d32e4b"
+      },
+      "compiler": {
+        "version": "llvm-mingw-20250709-ucrt-x86_64",
+        "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20250709/llvm-mingw-20250709-ucrt-x86_64.zip",
+        "sha256": "82babcd6aae4dc3606e8e0471d816989c384b4bf86a139f184a8b4a1b2c2758d"
+      },
+      "python": "3.12.10",
+      "scons": {
+        "version": "4.9.1",
+        "url": "https://files.pythonhosted.org/packages/45/92/50b739021983b131dcacd57aa8b04d31c5acc2e7e0eb4ed4a362f438c6b7/scons-4.9.1-py3-none-any.whl",
+        "sha256": "d2db1a22eb6039e97cbbb0106f18f435af033d0aad190299c9688378e2810a5e"
+      }
+    },
+    "config": {
+      "runner": "windows-2022",
+      "jobs": 2,
+      "targets": [
+        "editor",
+        "template_debug",
+        "template_release"
+      ],
+      "flags": [
+        "platform=windows",
+        "arch=x86_64",
+        "use_mingw=yes",
+        "use_llvm=yes",
+        "use_static_cpp=yes",
+        "vulkan=no",
+        "d3d12=no",
+        "opengl3=yes",
+        "angle=no",
+        "lto=none",
+        "precision=single",
+        "debug_symbols=yes",
+        "separate_debug_symbols=yes",
+        "winrt=no",
+        "accesskit=no",
+        "voxel_gpu=no",
+        "voxel_fast_noise_2=no"
+      ]
+    },
+    "toolchain": {
+      "compiler": "[\"D:\\\\a\\\\voxel-survival-game\\\\voxel-survival-game\\\\build\\\\toolchain\\\\llvm-mingw-20250709-ucrt-x86_64\\\\bin\\\\clang++.exe\", \"--version\"]\nclang version 20.1.8 (https://github.com/llvm/llvm-project.git 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)\nTarget: x86_64-w64-windows-gnu\nThread model: posix\nInstalledDir: D:/a/voxel-survival-game/voxel-survival-game/build/toolchain/llvm-mingw-20250709-ucrt-x86_64/bin\nConfiguration file: D:/a/voxel-survival-game/voxel-survival-game/build/toolchain/llvm-mingw-20250709-ucrt-x86_64/bin/x86_64-w64-windows-gnu.cfg\n",
+      "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "compiler_archive_sha256": "82babcd6aae4dc3606e8e0471d816989c384b4bf86a139f184a8b4a1b2c2758d",
+      "runner_image": "20261012.333.1"
+    },
+    "files": {
+      "audit-tools/libc++.dll": "62722ceb24eac2bf347eb8b8b994fd86b088a3754f1927f2dc185e094217c917",
+      "audit-tools/libclang-cpp.dll": "a4556f7bf2bf39ebf0beef3eb2b5ae8d1619b3b6ad63eda9f7d7a61ce11b109e",
+      "audit-tools/libclang_rt.asan_dynamic-x86_64.dll": "15741cb648ee6e3a10070f18ffe6c39e2c4f59a152f614c1d797bb981fa80a74",
+      "audit-tools/libffi-8.dll": "88d20568d9c43243b4c3efb69a92c60904a1ee18052b79ce20a639794259e124",
+      "audit-tools/liblldb.dll": "319eb0cd7ceedc4285545956430b18c849738b0c7d60b1d130cc72cedf2c15f6",
+      "audit-tools/libLLVM-20.dll": "90f90574a6933947063ccc6d11bcb96610f886f6d00b8602535a3f7a4b21a4a7",
+      "audit-tools/libomp.dll": "071587320e48c34cbd906372c7a4eaf00335589c0146922346773d34d74c5a6d",
+      "audit-tools/libpython3.12.dll": "fb99bccbf59125735a508d5f763c1decf2c9f09af873693eef4888c8ce11aed4",
+      "audit-tools/libpython3.dll": "87bab618c3323ab2a3ae4fec821e38584e8c7ff23fed5407f11c3fe29790bfed",
+      "audit-tools/libunwind.dll": "8512f3b90cebc84cbf48054132adca567efd00fd5dc5a8a48f67975e6500d85d",
+      "audit-tools/libwinpthread-1.dll": "d49ef9b0744f560d4fc3ac1abb0c6be79411af31267ccbd2d29bbab6ac25fbb9",
+      "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+      "editor.exe": "f91c0ccc7d18e4b0c5a06d62e80666425939c08624625ec9114f8233efcf9a71",
+      "LICENSES/godot/COPYRIGHT.txt": "cb1980c88089573bcacd7221d777c689bb8bbd778799f24c27fca0fe5f774d6d",
+      "LICENSES/godot/core/license.gen.h": "f3f4ab3847e7040bb6dee45f985259f54e3adddc3b3917c9394c38dee4d51e13",
+      "LICENSES/godot/LICENSE.txt": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+      "LICENSES/godot/misc/logo/LICENSE.txt": "ecbabe930d468f0552a079cdb2cbd1eefe66f03d0aedbb13293bd1b1ec15b67c",
+      "LICENSES/godot/misc/scripts/copyright_headers.py": "72880d6961c6fabc1edde7db57ce5e38d40aaa8792d84b35bcd54a82287fd7f9",
+      "LICENSES/godot/modules/betsy/LICENSE.Betsy.md": "566a2ee167ffcad3f1c973cf0de0540c0b888da064d69cccbe081ad0f61e0497",
+      "LICENSES/godot/modules/voxel/LICENSE.md": "3a1f742145830b5702fe9e7aa2566c5896012a88fb3f70a00d6fd64e9cc203ee",
+      "LICENSES/godot/modules/voxel/thirdparty/fast_noise_2/LICENSE": "6a772f6fa13928b07693cc8643dac0284910ea031b82cba1b49e51a36616cddf",
+      "LICENSES/godot/modules/voxel/thirdparty/lz4/LICENSE": "8b58c446121a109ccf32edc094bba3010a3d85e4ee3702950db55e4d3e87736c",
+      "LICENSES/godot/modules/voxel/thirdparty/meshoptimizer/LICENSE.md": "e4a26033e3551fb2722888949fbb41e77aee628e8e8f04dcffeee301aa7e5634",
+      "LICENSES/godot/thirdparty/accesskit/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "LICENSES/godot/thirdparty/amd-fsr/license.txt": "db089274ce766da70f5b7d791029c3486f9f9e27c8c79c652689603d3192e802",
+      "LICENSES/godot/thirdparty/amd-fsr2/LICENSE.txt": "6a12d0fdb5410839473f80b5395cf9493e8c007f76faed9f3fa41ab2f273803e",
+      "LICENSES/godot/thirdparty/angle/LICENSE": "bf4da21bd20bcfb5b60b7ecc67fa864a79be049e21d6178076887f178dd6c71a",
+      "LICENSES/godot/thirdparty/astcenc/LICENSE.txt": "494accc32e50eb523a0e384d0ae6d4b702db867a89d6971216760e92b240ee12",
+      "LICENSES/godot/thirdparty/basis_universal/LICENSE": "a9dfe3795e7bdcf240626d70d72de2933964f8ff482c75e68f29253ee2e79b1b",
+      "LICENSES/godot/thirdparty/brotli/LICENSE": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+      "LICENSES/godot/thirdparty/clipper2/LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+      "LICENSES/godot/thirdparty/cvtt/LICENSE.txt": "55162613b64f29d6a6f3be61d598355dc169d01fe764ba96148e1d29098fde68",
+      "LICENSES/godot/thirdparty/d3d12ma/LICENSE.txt": "5478a2f36b736e13dd3250b9c71a4ab521bc327fb9d112a92c647bf3e69ddb68",
+      "LICENSES/godot/thirdparty/d3d12ma/NOTICES.txt": "7af18e6093af41d516228ffd65e782859bf2918931d8c3670c7ba8b74afa8288",
+      "LICENSES/godot/thirdparty/directx_headers/LICENSE": "fd532481d828e13a0b13ccb598e02338a3617740675a862ee6bdc1541b68e93d",
+      "LICENSES/godot/thirdparty/doctest/LICENSE.txt": "0fe0b331fa1513dcce8604ff1fa925f32d1cea17d8aeb1c2471fad40d291adc5",
+      "LICENSES/godot/thirdparty/dr_libs/LICENSE": "dd1c647e6f767f8ff4b2dfae0fed314726600a01e0cf1ef556afddd5fa96ff15",
+      "LICENSES/godot/thirdparty/embree/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "LICENSES/godot/thirdparty/enet/LICENSE": "a29cd246638974da7c6edf423a0a69d4a6f7d759940b7cfa9a2bc3442ac3834c",
+      "LICENSES/godot/thirdparty/etcpak/LICENSE.txt": "38f5183e1228651dc7f9dfbca5ebdcfd8711b60fabed58ed9f922bdfeaf76583",
+      "LICENSES/godot/thirdparty/fonts/LICENSE.DroidSans.txt": "d0588452395c674334105d9a39e4d8627c66080f45491013e877139581a78ed1",
+      "LICENSES/godot/thirdparty/fonts/LICENSE.Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "LICENSES/godot/thirdparty/fonts/LICENSE.JetBrainsMono.txt": "cba21c71f3727ba46904a35430c384cedc1e7fcdbb2b8ac0aae093af729290f6",
+      "LICENSES/godot/thirdparty/fonts/LICENSE.Noto.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "LICENSES/godot/thirdparty/fonts/LICENSE.OpenSans.txt": "01cd5ffb3a528c219a86e49a814c6c53bd8a69b9a3c305dd237074ba1c811af7",
+      "LICENSES/godot/thirdparty/fonts/LICENSE.Vazirmatn.txt": "17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31",
+      "LICENSES/godot/thirdparty/freetype/LICENSE.TXT": "bd36c8b474855fa294c2ec5c184544478ef3720aad37d65a6296a4f264fd2d3b",
+      "LICENSES/godot/thirdparty/gamepadmotionhelpers/LICENSE.txt": "cab235520dc9bda018e27ccc8c533ecf375766823f9ed918f3698fa52aaffa33",
+      "LICENSES/godot/thirdparty/glad/LICENSE": "cbb325cd4ac5bd06717ffa34a322b984f9d285e4c67c8ca1b7380d6ef08c2a77",
+      "LICENSES/godot/thirdparty/glslang/LICENSE.txt": "17e70c676e1521ff3e4686f04a2053d93a7e28a33be8de7ec37ab0ff72feb677",
+      "LICENSES/godot/thirdparty/graphite/COPYING": "2c272829ff23f182c8bf7ea12fedea69b0ae148663123ed5240c117cb129c9c1",
+      "LICENSES/godot/thirdparty/grisu2/LICENSE": "9b2646fd3a16b9c382853aadc2e707d7a872c4c03eb5af7401e6389a7fe42f1a",
+      "LICENSES/godot/thirdparty/harfbuzz/COPYING": "ba8f810f2455c2f08e2d56bb49b72f37fcf68f1f4fade38977cfd7372050ad64",
+      "LICENSES/godot/thirdparty/icu4c/LICENSE": "e55522d81edc687a341a4411e0776e54ca654e90147f354a90458aaced4116af",
+      "LICENSES/godot/thirdparty/jolt_physics/LICENSE": "800abe35d64ad9defd636ff1ee8c961e06f0ebca3ef8d10083e8aa0e8ef86ac3",
+      "LICENSES/godot/thirdparty/libbacktrace/LICENSE": "ef8a9b3247488f8901ca60de9b17b745d7bd67e5ec1e622f80d62364572200d8",
+      "LICENSES/godot/thirdparty/libjpeg-turbo/LICENSE.md": "2189dc45a8fe96204069f8124caa53a148dfdc193f50f584c6ca7849a6072872",
+      "LICENSES/godot/thirdparty/libktx/LICENSE.dfdutils.adoc": "8ee9fdaf365c301bb413656765fc85c5424a807c50e35a8ae622b99f4ea22244",
+      "LICENSES/godot/thirdparty/libktx/LICENSE.md": "0f92b4ce771585dfebc963ede074a30b4431b9e327911db44097d83ccf372128",
+      "LICENSES/godot/thirdparty/libogg/COPYING": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814",
+      "LICENSES/godot/thirdparty/libpng/LICENSE": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526",
+      "LICENSES/godot/thirdparty/libtheora/COPYING": "8417fad7da775735564e209484a2e011e0fa201e94f01fdbee6e4977e478e6fc",
+      "LICENSES/godot/thirdparty/libtheora/LICENSE": "2c902950c73a63cd285dc0c36573de9c5fefe66d49312949c51d941f33e92932",
+      "LICENSES/godot/thirdparty/libvorbis/COPYING": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a",
+      "LICENSES/godot/thirdparty/libwebp/COPYING": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf",
+      "LICENSES/godot/thirdparty/manifold/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "LICENSES/godot/thirdparty/mbedtls/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "LICENSES/godot/thirdparty/meshoptimizer/LICENSE.md": "f03037ca7bad1e3eb7f4a63fa6084a8baabd5ba30d3c239a9a7f35705d873e26",
+      "LICENSES/godot/thirdparty/metal-cpp/LICENSE.txt": "f4e92c7fe2aa066e294c0da9d08683dc9fb741ee6e6debbfad99a0c96e07c1f2",
+      "LICENSES/godot/thirdparty/mingw-std-threads/LICENSE": "86c148320eb0acc26607ed347e0fde9f49a236d0ec5291d36dc6a7e0e1d26b9f",
+      "LICENSES/godot/thirdparty/miniupnpc/LICENSE": "52bdad87d7aefe3eab35cb02426aa748510f9398a1e2d520d93bcbb18f10dd11",
+      "LICENSES/godot/thirdparty/msdfgen/LICENSE.txt": "32a94b25ad7072a78457d35019b32d73d2c265c806b0b76e9638fe800330bbe4",
+      "LICENSES/godot/thirdparty/openxr/COPYING.adoc": "b7a6297e6013f7b1664a68829e83868d1bf2cf29efa384dd0cc74f2aedd35df5",
+      "LICENSES/godot/thirdparty/openxr/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "LICENSES/godot/thirdparty/openxr/src/external/jsoncpp/LICENSE": "cec0db5f6d7ed6b3a72647bd50aed02e13c3377fd44382b96dc2915534c042ad",
+      "LICENSES/godot/thirdparty/pcre2/LICENCE.md": "197d8a73ffee0d6b09adba2f9c677b5f5aede24edf89258a68e48248d010d811",
+      "LICENSES/godot/thirdparty/re-spirv/LICENSE": "761ecab744d5ed0528b5b794239abaa6f62bd5bd36fc1980b3cb98c48ce32868",
+      "LICENSES/godot/thirdparty/recastnavigation/License.txt": "5881db2682bc4871837e36b5af4460f59905a7944848221406f841eaa3fda8c4",
+      "LICENSES/godot/thirdparty/rvo2/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "LICENSES/godot/thirdparty/sdl/hidapi/LICENSE-bsd.txt": "30eb1bef29b46f8ba7ab8b416035dbd93cb034a45481dd97815b944284582cd2",
+      "LICENSES/godot/thirdparty/sdl/hidapi/LICENSE.txt": "7d3b087c34f35d4d538e3bcddd1ff8f66e92f9ef336881999482800ddf840913",
+      "LICENSES/godot/thirdparty/sdl/include/SDL3/SDL_copying.h": "64436d5078d6742f11c8b0acf8bc87237d15da36716eb2552986a8b45c419967",
+      "LICENSES/godot/thirdparty/sdl/LICENSE.txt": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "LICENSES/godot/thirdparty/smaa/LICENSE.txt": "6088dabb2126729ddb2355b179ce0598e7c246406677b30395f22220695d69fe",
+      "LICENSES/godot/thirdparty/spirv-cross/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "LICENSES/godot/thirdparty/spirv-cross/LICENSES/LicenseRef-KhronosFreeUse.txt": "fbeaca472f4f70e276dd1106ca5097435967a22ad6c1d8200aef7ad9f70aaf3f",
+      "LICENSES/godot/thirdparty/spirv-headers/LICENSE": "56724af6d76732a7a1f36ea69965ed2314ae04073676313a4f94c1e2fe55342a",
+      "LICENSES/godot/thirdparty/spirv-reflect/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "LICENSES/godot/thirdparty/swappy-frame-pacing/LICENSE": "f2bdf6f48abaa135ee6feba72d3b2eb2fa242352a9e558585d1084f6f2a45811",
+      "LICENSES/godot/thirdparty/thorvg/LICENSE": "74242cdc4ccaebc73fa04fbd52a538429eae2be7a231f9eaf1dbf59d2bedc16b",
+      "LICENSES/godot/thirdparty/tinyexr/LICENSE": "b90388aaadc2b6f77a5c01278697a2a0539eab471a3befc6a081728becdc3390",
+      "LICENSES/godot/thirdparty/ufbx/LICENSE": "0dd48ebadf52273c736256325c8f078c03c8bb4facee22a4122de0ad3f615391",
+      "LICENSES/godot/thirdparty/vhacd/LICENSE": "245c933225f5bd28a10336137b26f1f86551b6b1d29f804253eb5e1d73744c2e",
+      "LICENSES/godot/thirdparty/volk/LICENSE.md": "33c831f76b79501665e66c23ac8f876020457c216d44526a8f747da897999b35",
+      "LICENSES/godot/thirdparty/vulkan/LICENSE.md": "ac24e5ea920e4318e4d02c4086ae51f53cfb03feed06c18df1019e7ada1ec7bc",
+      "LICENSES/godot/thirdparty/wayland/COPYING": "6eefcb023622a463168a5c20add95fd24a38c7482622a9254a23b99b7c153061",
+      "LICENSES/godot/thirdparty/wayland-protocols/COPYING": "f1a2b233e8a9a71c40f4aa885be08a0842ac85bb8588703c1dd7e6e6502e3124",
+      "LICENSES/godot/thirdparty/wslay/COPYING": "0e602a00db6ce15c1311a180b13563aa638918a77f813b24cd78c9fe5cab63d0",
+      "LICENSES/godot/thirdparty/xatlas/LICENSE": "2c16d5b1c2808277fe975b4f70f0fd9afc9b3bcf04e6c676665a82cb2d5579e3",
+      "LICENSES/godot/thirdparty/zlib/LICENSE": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2",
+      "LICENSES/godot/thirdparty/zstd/LICENSE": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+      "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+      "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+      "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+      "LICENSES/llvm-mingw/armv7-w64-mingw32/lib/liboemlicense.a": "2c54a4d445a779f3ee616b24d10fcbaf90e7caf6cc6ca871cb0a0febfb362c00",
+      "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+      "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+      "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+      "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+      "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+      "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+      "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+      "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+      "LICENSES/llvm-mingw/LICENSE.TXT": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee",
+      "LICENSES/llvm-mingw/python/lib/python3.12/LICENSE.txt": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+      "LICENSES/llvm-mingw/share/gendef/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "LICENSES/llvm-mingw/share/widl/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+      "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+      "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+      "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+      "symbols/godot.windows.editor.x86_64.llvm.console.exe.debugsymbols": "d071eeccd8b8cc30548fca9188da2e6e06fb5f27e21b8ae0f383bca7aab316f4",
+      "symbols/godot.windows.editor.x86_64.llvm.exe.debugsymbols": "0cc37bcc8424ecd232b12ee73dc863b5256a72b3a9f60acbcf370722de479ed8",
+      "symbols/godot.windows.template_debug.x86_64.llvm.console.exe.debugsymbols": "899c74c1bd036daf477ea75bcc4b67a0b89ed62ce87a35220da582c27e09c2c3",
+      "symbols/godot.windows.template_debug.x86_64.llvm.exe.debugsymbols": "f3e06fe2cb14f7e296689838e36e134a10653eb525c1995d2c410b41ce280532",
+      "symbols/godot.windows.template_release.x86_64.llvm.console.exe.debugsymbols": "123128e17da8b183b27624dbd708b4bf65099dc80438e2163e9705c449d9af22",
+      "symbols/godot.windows.template_release.x86_64.llvm.exe.debugsymbols": "b641efa92a6dca00c9f679a1644dda13520d69f7cb368137464f97e2f70c4615",
+      "template_debug.exe": "25e10f7053e5cf80cf3b35baed095efd79ff3f985003748c280be9f6373cf9b2",
+      "template_release.exe": "602671cae348f4e55c8e6e9c44e5bfc16e31d2fa2967457d7f275aa7319812fa"
+    }
+  },
+  "original_control": {
+    "build": {
+      "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/39966730530",
+      "cpu_cycle_capability": {
+        "core_sha256": "3ae8741cdfd717edc75178df6cb82c63282c5c6bca98d7b04b861223d3bdfada",
+        "probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+        "runtime_sha256": "53320ed4e5dea5355c9cfdd64742ee9d1b92340a0e2a4159b64417c8dd82e2a8",
+        "schema": "cairn-cpu-cycle-capability-1"
+      },
+      "engine_binaries": {
+        "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+        "editor.exe": "f91c0ccc7d18e4b0c5a06d62e80666425939c08624625ec9114f8233efcf9a71",
+        "template_debug.exe": "25e10f7053e5cf80cf3b35baed095efd79ff3f985003748c280be9f6373cf9b2",
+        "template_release.exe": "602671cae348f4e55c8e6e9c44e5bfc16e31d2fa2967457d7f275aa7319812fa"
+      },
+      "engine_inputs": "a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100",
+      "game_commit": "153a89174cd71c909b7b9c468b0d5b115547734b",
+      "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "milestone": "M1",
+      "native_source_key": "a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100",
+      "observer_disposal": {
+        "native_sha256": {
+          "core/observer_disposal.h": "4063087d32dc8f4c4ff041bb49b2005c07072bed2a307ea05ff6a15906b7120f",
+          "core/observer_ledger.h": "a615f39991027ff90aeff996d0a8cc0b7746bb52d95ab2d50a6ba28f7b0ce559",
+          "godot/benchmark_probe.cpp": "8f83f78bdcdecbe6208987429ddae6e9f37c4135e850efb642aa2942ceeade47",
+          "godot/benchmark_probe.h": "a4413743c86199a1f0b5ebcd8f1b9231201413fcd4b29363dc0d3379fadb14fc",
+          "godot/observer_disposal.cpp": "a0b05fc70d27b766ec204fb00c19f40e6cb33dac9fb57997d578675937f741ff",
+          "godot/observer_probe.cpp": "c25e5f7fd6cbd99a96a1328819aa1a75241b19f67965ac3de2e18ad2eeb6a404",
+          "godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+          "godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+        },
+        "schema": "cairn-observer-disposal-1",
+        "sources_sha256": {
+          "m1_observer_disposal_tests.gd": "362f8ab7ab82ae696ca05f44f0adc2377adedb006879083132bdea9637eb976b",
+          "title.gd": "6a017a2ad6044bf3f742844e6e7bcdcac4a759b48f2d38123d0c960693e75e1e"
+        }
+      },
+      "preparation_demand": {
+        "inventory": "m1-preparation-demand-inventory-1",
+        "inventory_sha256": "269adac80b939b85b0ddc8d1030b5e9b0568d0737d2dc97279582d7d8b4a9f0c",
+        "method": "m1-preparation-demand-attribution-1",
+        "native_sha256": {
+          "core/observer_disposal.h": "4063087d32dc8f4c4ff041bb49b2005c07072bed2a307ea05ff6a15906b7120f",
+          "core/observer_ledger.h": "a615f39991027ff90aeff996d0a8cc0b7746bb52d95ab2d50a6ba28f7b0ce559",
+          "core/preparation_observer.h": "3c29c162b8b515e64583e38e451ea975cfa994aafe79078166a616aa8122c6de",
+          "godot/benchmark_probe.cpp": "8f83f78bdcdecbe6208987429ddae6e9f37c4135e850efb642aa2942ceeade47",
+          "godot/benchmark_probe.h": "a4413743c86199a1f0b5ebcd8f1b9231201413fcd4b29363dc0d3379fadb14fc",
+          "godot/fixture_generator.cpp": "cbc199226e2cc70e6a470edde09ac6a52c7ef0709eaf5e54b855f48a61eb3623",
+          "godot/observer_probe.cpp": "c25e5f7fd6cbd99a96a1328819aa1a75241b19f67965ac3de2e18ad2eeb6a404",
+          "godot/preparation_probe.cpp": "a38f671c5fe56b9de0fd1a827802820d14d21a5517809c7ae36b35f48d331762",
+          "godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+          "godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+        },
+        "patches_sha256": "3bd79145e02d5b4fc2712e94b70376bc80d072f2e9fb37f707bc0bfb60b175ac",
+        "raw_version": 2.0,
+        "sources_sha256": {
+          "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+          "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+          "m1_preparation_demand_runtime.gd": "dda1eebcf86e1ae4991d3910ffa14ad868480482b3e3d14fd69e20fb22e5ccff",
+          "m1_preparation_demand_tests.gd": "43bf19e26c46d6fe9f4c4ea1c41018205da25f94676cfa3d774650aca4ee2933",
+          "title.gd": "6a017a2ad6044bf3f742844e6e7bcdcac4a759b48f2d38123d0c960693e75e1e"
+        }
+      },
+      "renderer": "gl_compatibility",
+      "shipping_cycles": {
+        "inventory_sha256": "0f8c8eca85edb4acbae93bf1c1b180f8119253ff83f5cc769ea5cab03063b1f7",
+        "method": "m1-shipping-cpu-cycles-1",
+        "native_dose_core_sha256": "c22f1ee3b469a61eb88453cff8d4fb40029a5dcabf2652a0d4102d01294d2036",
+        "native_probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+        "policy": "m1-shipping-diagnostics-2",
+        "sources_sha256": {
+          "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+          "m1_cycle_exact.gd": "f2b956c31c6e9fb2de0a902dd2986ff3844ddb257da7aa9caca722bf10635495",
+          "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+          "m1_shipping_cycles_method.gd": "66ba172c41e6ce68578755e7b2560788122695259fc95bd4986a65f00f906227",
+          "m1_shipping_cycles_runtime.gd": "f3cd711d6c81bd5784bda92933255a904f07045201d81c80cdec83b93ff1ea56",
+          "m1_shipping_cycles_tests.gd": "7ea4a37db205084f2ead456f4446b01016b33704c2863289d7b5f0522ae5127f",
+          "title.gd": "6a017a2ad6044bf3f742844e6e7bcdcac4a759b48f2d38123d0c960693e75e1e"
+        }
+      },
+      "shipping_inventory_sha256": "e3b556c03bd80d3724f4391f5a736f3e4ab01277d43a4e1b39c611122b53882e",
+      "shipping_observer": {
+        "inventory_sha256": "00087cca6c0266bed5591d247aee9e6ed5b9978ed1c94e7baf3c91aba769ad5b",
+        "method": "m1-shipping-observer-attribution-1",
+        "native_sha256": {
+          "native/sandbox_world/core/observer_ledger.h": "a615f39991027ff90aeff996d0a8cc0b7746bb52d95ab2d50a6ba28f7b0ce559",
+          "native/sandbox_world/godot/benchmark_probe.cpp": "8f83f78bdcdecbe6208987429ddae6e9f37c4135e850efb642aa2942ceeade47",
+          "native/sandbox_world/godot/benchmark_probe.h": "a4413743c86199a1f0b5ebcd8f1b9231201413fcd4b29363dc0d3379fadb14fc",
+          "native/sandbox_world/godot/observer_probe.cpp": "c25e5f7fd6cbd99a96a1328819aa1a75241b19f67965ac3de2e18ad2eeb6a404",
+          "native/sandbox_world/godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+          "native/sandbox_world/godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+        },
+        "sources_sha256": {
+          "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+          "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+          "m1_shipping_observer_runtime.gd": "f7cf7129087561e01a3c0d12d69c06a8ac536d1835e3fd72e625b5a01360fb98",
+          "m1_shipping_observer_tests.gd": "d600893f0b78462ad03fea10f5f3123912a6ab218afd76b7f7b7e552dec818d6",
+          "title.gd": "6a017a2ad6044bf3f742844e6e7bcdcac4a759b48f2d38123d0c960693e75e1e"
+        }
+      },
+      "shipping_sources_sha256": {
+        "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+        "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+        "m1_shipping_method.gd": "eedc8520deda34927d14ca7081b8ed30623333801f6e3093ff78dec1f6fe3921",
+        "m1_shipping_runtime.gd": "34d4f4fef280211552eed14ab42987ed7a61cca43ad65c2b6e898330dae6377d",
+        "title.gd": "6a017a2ad6044bf3f742844e6e7bcdcac4a759b48f2d38123d0c960693e75e1e"
+      },
+      "target_performance": "not_run",
+      "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+    },
+    "native": {
+      "faults": [
+        {
+          "ledger": {
+            "cap_bytes": 33554432,
+            "closed": true,
+            "emit_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "520669216",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "195374",
+                  "wall_before_usec": "195343"
+                },
+                {
+                  "available": true,
+                  "cycles": "488962542",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "195375",
+                  "wall_before_usec": "195374"
+                },
+                {
+                  "available": true,
+                  "cycles": "488963620",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "195375",
+                  "wall_before_usec": "195375"
+                },
+                {
+                  "available": true,
+                  "cycles": "520719074",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "195394",
+                  "wall_before_usec": "195375"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "emit_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "520197395",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "195181",
+                  "wall_before_usec": "195160"
+                },
+                {
+                  "available": true,
+                  "cycles": "488490329",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "195181",
+                  "wall_before_usec": "195181"
+                },
+                {
+                  "available": true,
+                  "cycles": "488491456",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "195182",
+                  "wall_before_usec": "195181"
+                },
+                {
+                  "available": true,
+                  "cycles": "520243308",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "195199",
+                  "wall_before_usec": "195182"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "failure_code": 4,
+            "file": "controls.json.bin-counter",
+            "lane_count": 1,
+            "passed": false,
+            "record_count": 1,
+            "schema": "cairn-observer-ledger-2",
+            "serialization_capacity_bytes": 65728,
+            "trace_bytes": 232
+          },
+          "name": "counter",
+          "ownership": {
+            "configured_workers": 1,
+            "counts": [
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 13
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 14
+              },
+              {
+                "attempted": "1",
+                "completed": "1",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 15
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 16
+              }
+            ],
+            "drained": true,
+            "in_flight": 0,
+            "main_thread": "6964",
+            "native_end": {
+              "data_apply_max_usec": 6,
+              "data_apply_usec": 7,
+              "deletion_max_usec": 0,
+              "deletion_usec": 0,
+              "generated": 3,
+              "generation_jobs": 0,
+              "generation_usec": 364,
+              "main_jobs": 0,
+              "mesh_jobs": 0,
+              "meshed": 2,
+              "meshing_usec": 726,
+              "overloads": 2,
+              "private_bytes": 80576512,
+              "result_jobs": 0,
+              "retired_high_water": 0,
+              "retired_meshes": 0,
+              "stale_results": 0,
+              "upload_bytes": 0,
+              "upload_max_usec": 0,
+              "upload_usec": 0,
+              "uploads": 0,
+              "working_set": 97472512
+            },
+            "owners": [],
+            "passed": false,
+            "schema": "cairn-preparation-owners-1",
+            "session_bytes": 536,
+            "session_destroyed": true,
+            "unpublished": true
+          },
+          "release": {
+            "counter_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "520970960",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "195498",
+                  "wall_before_usec": "195480"
+                },
+                {
+                  "available": true,
+                  "cycles": "489264213",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "195499",
+                  "wall_before_usec": "195498"
+                },
+                {
+                  "available": true,
+                  "cycles": "489264850",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "195499",
+                  "wall_before_usec": "195499"
+                },
+                {
+                  "available": true,
+                  "cycles": "521013811",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "195515",
+                  "wall_before_usec": "195499"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "counter_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "520818569",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "195435",
+                  "wall_before_usec": "195418"
+                },
+                {
+                  "available": true,
+                  "cycles": "489111503",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "195436",
+                  "wall_before_usec": "195435"
+                },
+                {
+                  "available": true,
+                  "cycles": "489112165",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "195436",
+                  "wall_before_usec": "195436"
+                },
+                {
+                  "available": true,
+                  "cycles": "520861224",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "195453",
+                  "wall_before_usec": "195436"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "disposed": true,
+            "failure_code": 4,
+            "qualified": false,
+            "schema": "cairn-observer-disposal-1",
+            "status": "disposed",
+            "storage_after": 0,
+            "storage_before": {
+              "lane_capacity_bytes": 512,
+              "lane_count": 1,
+              "object_bytes": 448,
+              "open_spans": 0,
+              "record_capacity_bytes": 33554304,
+              "record_count": 1
+            },
+            "strong_owners": 1
+          }
+        },
+        {
+          "ledger": {
+            "cap_bytes": 232,
+            "closed": true,
+            "emit_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "521708777",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "195801",
+                  "wall_before_usec": "195770"
+                },
+                {
+                  "available": true,
+                  "cycles": "490002495",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "195802",
+                  "wall_before_usec": "195801"
+                },
+                {
+                  "available": true,
+                  "cycles": "490003720",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "195802",
+                  "wall_before_usec": "195802"
+                },
+                {
+                  "available": true,
+                  "cycles": "521758316",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "195821",
+                  "wall_before_usec": "195802"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "emit_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "521249991",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "195612",
+                  "wall_before_usec": "195589"
+                },
+                {
+                  "available": true,
+                  "cycles": "489543562",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "195613",
+                  "wall_before_usec": "195613"
+                },
+                {
+                  "available": true,
+                  "cycles": "489544272",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "195613",
+                  "wall_before_usec": "195613"
+                },
+                {
+                  "available": true,
+                  "cycles": "521297226",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "195632",
+                  "wall_before_usec": "195614"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "failure_code": 1,
+            "file": "controls.json.bin-cap",
+            "lane_count": 1,
+            "passed": false,
+            "record_count": 1,
+            "schema": "cairn-observer-ledger-2",
+            "serialization_capacity_bytes": 65728,
+            "trace_bytes": 232
+          },
+          "name": "cap",
+          "ownership": {
+            "configured_workers": 1,
+            "counts": [
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 13
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 14
+              },
+              {
+                "attempted": "2",
+                "completed": "1",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 15
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 16
+              }
+            ],
+            "drained": true,
+            "in_flight": 0,
+            "main_thread": "6964",
+            "native_end": {
+              "data_apply_max_usec": 6,
+              "data_apply_usec": 7,
+              "deletion_max_usec": 0,
+              "deletion_usec": 0,
+              "generated": 3,
+              "generation_jobs": 0,
+              "generation_usec": 364,
+              "main_jobs": 0,
+              "mesh_jobs": 0,
+              "meshed": 2,
+              "meshing_usec": 726,
+              "overloads": 2,
+              "private_bytes": 46952448,
+              "result_jobs": 0,
+              "retired_high_water": 0,
+              "retired_meshes": 0,
+              "stale_results": 0,
+              "upload_bytes": 0,
+              "upload_max_usec": 0,
+              "upload_usec": 0,
+              "uploads": 0,
+              "working_set": 97468416
+            },
+            "owners": [],
+            "passed": false,
+            "schema": "cairn-preparation-owners-1",
+            "session_bytes": 536,
+            "session_destroyed": true,
+            "unpublished": true
+          },
+          "release": {
+            "counter_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "522300059",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196044",
+                  "wall_before_usec": "196024"
+                },
+                {
+                  "available": true,
+                  "cycles": "490593336",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196045",
+                  "wall_before_usec": "196044"
+                },
+                {
+                  "available": true,
+                  "cycles": "490593949",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196045",
+                  "wall_before_usec": "196045"
+                },
+                {
+                  "available": true,
+                  "cycles": "522342885",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196061",
+                  "wall_before_usec": "196045"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "counter_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "521910019",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "195884",
+                  "wall_before_usec": "195850"
+                },
+                {
+                  "available": true,
+                  "cycles": "490202904",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "195885",
+                  "wall_before_usec": "195884"
+                },
+                {
+                  "available": true,
+                  "cycles": "490203884",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "195885",
+                  "wall_before_usec": "195885"
+                },
+                {
+                  "available": true,
+                  "cycles": "521958088",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "195904",
+                  "wall_before_usec": "195885"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "disposed": true,
+            "failure_code": 1,
+            "qualified": false,
+            "schema": "cairn-observer-disposal-1",
+            "status": "disposed",
+            "storage_after": 0,
+            "storage_before": {
+              "lane_capacity_bytes": 512,
+              "lane_count": 1,
+              "object_bytes": 448,
+              "open_spans": 0,
+              "record_capacity_bytes": 192,
+              "record_count": 1
+            },
+            "strong_owners": 1
+          }
+        },
+        {
+          "ledger": {
+            "cap_bytes": 33554432,
+            "closed": true,
+            "emit_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "522993558",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196328",
+                  "wall_before_usec": "196301"
+                },
+                {
+                  "available": true,
+                  "cycles": "491287864",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196329",
+                  "wall_before_usec": "196328"
+                },
+                {
+                  "available": true,
+                  "cycles": "491288599",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196330",
+                  "wall_before_usec": "196329"
+                },
+                {
+                  "available": true,
+                  "cycles": "523042730",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196348",
+                  "wall_before_usec": "196330"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "emit_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "522563263",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196152",
+                  "wall_before_usec": "196132"
+                },
+                {
+                  "available": true,
+                  "cycles": "490856369",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196152",
+                  "wall_before_usec": "196152"
+                },
+                {
+                  "available": true,
+                  "cycles": "490857080",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196153",
+                  "wall_before_usec": "196153"
+                },
+                {
+                  "available": true,
+                  "cycles": "522612877",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196172",
+                  "wall_before_usec": "196153"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "failure_code": 2,
+            "file": "controls.json.bin-owner",
+            "lane_count": 1,
+            "passed": false,
+            "record_count": 0,
+            "schema": "cairn-observer-ledger-2",
+            "serialization_capacity_bytes": 65728,
+            "trace_bytes": 40
+          },
+          "name": "owner",
+          "ownership": {
+            "configured_workers": 1,
+            "counts": [
+              {
+                "attempted": "1",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 13
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 14
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 15
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 16
+              }
+            ],
+            "drained": true,
+            "in_flight": 0,
+            "main_thread": "6964",
+            "native_end": {
+              "data_apply_max_usec": 6,
+              "data_apply_usec": 7,
+              "deletion_max_usec": 0,
+              "deletion_usec": 0,
+              "generated": 4,
+              "generation_jobs": 0,
+              "generation_usec": 365,
+              "main_jobs": 0,
+              "mesh_jobs": 0,
+              "meshed": 2,
+              "meshing_usec": 726,
+              "overloads": 2,
+              "private_bytes": 80850944,
+              "result_jobs": 0,
+              "retired_high_water": 0,
+              "retired_meshes": 0,
+              "stale_results": 0,
+              "upload_bytes": 0,
+              "upload_max_usec": 0,
+              "upload_usec": 0,
+              "uploads": 0,
+              "working_set": 97742848
+            },
+            "owners": [],
+            "passed": false,
+            "schema": "cairn-preparation-owners-1",
+            "session_bytes": 536,
+            "session_destroyed": true,
+            "unpublished": true
+          },
+          "release": {
+            "counter_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "523282585",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196447",
+                  "wall_before_usec": "196428"
+                },
+                {
+                  "available": true,
+                  "cycles": "491575151",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196447",
+                  "wall_before_usec": "196447"
+                },
+                {
+                  "available": true,
+                  "cycles": "491576180",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196448",
+                  "wall_before_usec": "196447"
+                },
+                {
+                  "available": true,
+                  "cycles": "523325141",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196464",
+                  "wall_before_usec": "196448"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "counter_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "523135952",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196387",
+                  "wall_before_usec": "196369"
+                },
+                {
+                  "available": true,
+                  "cycles": "491428568",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196387",
+                  "wall_before_usec": "196387"
+                },
+                {
+                  "available": true,
+                  "cycles": "491429622",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196387",
+                  "wall_before_usec": "196387"
+                },
+                {
+                  "available": true,
+                  "cycles": "523181106",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196405",
+                  "wall_before_usec": "196388"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "disposed": true,
+            "failure_code": 2,
+            "qualified": false,
+            "schema": "cairn-observer-disposal-1",
+            "status": "disposed",
+            "storage_after": 0,
+            "storage_before": {
+              "lane_capacity_bytes": 512,
+              "lane_count": 1,
+              "object_bytes": 448,
+              "open_spans": 0,
+              "record_capacity_bytes": 33554304,
+              "record_count": 0
+            },
+            "strong_owners": 1
+          }
+        },
+        {
+          "ledger": {
+            "cap_bytes": 33554432,
+            "closed": true,
+            "emit_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "523965937",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196727",
+                  "wall_before_usec": "196699"
+                },
+                {
+                  "available": true,
+                  "cycles": "492259998",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196728",
+                  "wall_before_usec": "196727"
+                },
+                {
+                  "available": true,
+                  "cycles": "492260733",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196728",
+                  "wall_before_usec": "196728"
+                },
+                {
+                  "available": true,
+                  "cycles": "524015427",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196748",
+                  "wall_before_usec": "196728"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "emit_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "523525477",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196547",
+                  "wall_before_usec": "196525"
+                },
+                {
+                  "available": true,
+                  "cycles": "491819048",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196547",
+                  "wall_before_usec": "196547"
+                },
+                {
+                  "available": true,
+                  "cycles": "491819636",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196548",
+                  "wall_before_usec": "196547"
+                },
+                {
+                  "available": true,
+                  "cycles": "523572345",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196566",
+                  "wall_before_usec": "196548"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "failure_code": 5,
+            "file": "controls.json.bin-main_crossing",
+            "lane_count": 1,
+            "passed": false,
+            "record_count": 1,
+            "schema": "cairn-observer-ledger-2",
+            "serialization_capacity_bytes": 65728,
+            "trace_bytes": 232
+          },
+          "name": "main_crossing",
+          "ownership": {
+            "configured_workers": 1,
+            "counts": [
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 13
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 14
+              },
+              {
+                "attempted": "1",
+                "completed": "1",
+                "crossing": "1",
+                "overload": "0",
+                "slot": 15
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 16
+              }
+            ],
+            "drained": true,
+            "in_flight": 0,
+            "main_thread": "6964",
+            "native_end": {
+              "data_apply_max_usec": 6,
+              "data_apply_usec": 7,
+              "deletion_max_usec": 0,
+              "deletion_usec": 0,
+              "generated": 4,
+              "generation_jobs": 0,
+              "generation_usec": 365,
+              "main_jobs": 0,
+              "mesh_jobs": 0,
+              "meshed": 2,
+              "meshing_usec": 726,
+              "overloads": 2,
+              "private_bytes": 80850944,
+              "result_jobs": 0,
+              "retired_high_water": 0,
+              "retired_meshes": 0,
+              "stale_results": 0,
+              "upload_bytes": 0,
+              "upload_max_usec": 0,
+              "upload_usec": 0,
+              "uploads": 0,
+              "working_set": 97742848
+            },
+            "owners": [],
+            "passed": false,
+            "schema": "cairn-preparation-owners-1",
+            "session_bytes": 536,
+            "session_destroyed": true,
+            "unpublished": true
+          },
+          "release": {
+            "counter_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "524279022",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196855",
+                  "wall_before_usec": "196830"
+                },
+                {
+                  "available": true,
+                  "cycles": "492571613",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196856",
+                  "wall_before_usec": "196855"
+                },
+                {
+                  "available": true,
+                  "cycles": "492572250",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196856",
+                  "wall_before_usec": "196856"
+                },
+                {
+                  "available": true,
+                  "cycles": "524359749",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196890",
+                  "wall_before_usec": "196856"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "counter_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "524115460",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196789",
+                  "wall_before_usec": "196771"
+                },
+                {
+                  "available": true,
+                  "cycles": "492408590",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196789",
+                  "wall_before_usec": "196789"
+                },
+                {
+                  "available": true,
+                  "cycles": "492409227",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196789",
+                  "wall_before_usec": "196789"
+                },
+                {
+                  "available": true,
+                  "cycles": "524160736",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196807",
+                  "wall_before_usec": "196789"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "disposed": true,
+            "failure_code": 5,
+            "qualified": false,
+            "schema": "cairn-observer-disposal-1",
+            "status": "disposed",
+            "storage_after": 0,
+            "storage_before": {
+              "lane_capacity_bytes": 512,
+              "lane_count": 1,
+              "object_bytes": 448,
+              "open_spans": 0,
+              "record_capacity_bytes": 33554304,
+              "record_count": 1
+            },
+            "strong_owners": 1
+          }
+        },
+        {
+          "ledger": {
+            "cap_bytes": 33554432,
+            "closed": false,
+            "emit_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "524809960",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "197074",
+                  "wall_before_usec": "197051"
+                },
+                {
+                  "available": true,
+                  "cycles": "493103311",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "197075",
+                  "wall_before_usec": "197074"
+                },
+                {
+                  "available": true,
+                  "cycles": "493104071",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "197075",
+                  "wall_before_usec": "197075"
+                },
+                {
+                  "available": true,
+                  "cycles": "524853595",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "197092",
+                  "wall_before_usec": "197075"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "emit_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "524569420",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "196975",
+                  "wall_before_usec": "196954"
+                },
+                {
+                  "available": true,
+                  "cycles": "492862305",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "196976",
+                  "wall_before_usec": "196976"
+                },
+                {
+                  "available": true,
+                  "cycles": "492863358",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "196976",
+                  "wall_before_usec": "196976"
+                },
+                {
+                  "available": true,
+                  "cycles": "524616925",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "196995",
+                  "wall_before_usec": "196977"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "failure_code": 7,
+            "file": "missing.bin",
+            "lane_count": 1,
+            "passed": false,
+            "record_count": 1,
+            "schema": "cairn-observer-ledger-2",
+            "serialization_capacity_bytes": 65728,
+            "trace_bytes": 0
+          },
+          "name": "write",
+          "ownership": {
+            "configured_workers": 1,
+            "counts": [
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 13
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 14
+              },
+              {
+                "attempted": "1",
+                "completed": "1",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 15
+              },
+              {
+                "attempted": "0",
+                "completed": "0",
+                "crossing": "0",
+                "overload": "0",
+                "slot": 16
+              }
+            ],
+            "drained": true,
+            "in_flight": 0,
+            "main_thread": "6964",
+            "native_end": {
+              "data_apply_max_usec": 6,
+              "data_apply_usec": 7,
+              "deletion_max_usec": 0,
+              "deletion_usec": 0,
+              "generated": 4,
+              "generation_jobs": 0,
+              "generation_usec": 365,
+              "main_jobs": 0,
+              "mesh_jobs": 0,
+              "meshed": 2,
+              "meshing_usec": 726,
+              "overloads": 2,
+              "private_bytes": 80850944,
+              "result_jobs": 0,
+              "retired_high_water": 0,
+              "retired_meshes": 0,
+              "stale_results": 0,
+              "upload_bytes": 0,
+              "upload_max_usec": 0,
+              "upload_usec": 0,
+              "uploads": 0,
+              "working_set": 97742848
+            },
+            "owners": [],
+            "passed": true,
+            "schema": "cairn-preparation-owners-1",
+            "session_bytes": 536,
+            "session_destroyed": true,
+            "unpublished": true
+          },
+          "release": {
+            "counter_end": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "525084507",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "197187",
+                  "wall_before_usec": "197170"
+                },
+                {
+                  "available": true,
+                  "cycles": "493377637",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "197188",
+                  "wall_before_usec": "197187"
+                },
+                {
+                  "available": true,
+                  "cycles": "493378298",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "197188",
+                  "wall_before_usec": "197188"
+                },
+                {
+                  "available": true,
+                  "cycles": "525127847",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "197205",
+                  "wall_before_usec": "197188"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "counter_start": {
+              "platform": "windows",
+              "process_api": "QueryProcessCycleTime",
+              "reads": [
+                {
+                  "available": true,
+                  "cycles": "524943976",
+                  "error": 0,
+                  "kind": "process_lo",
+                  "success": true,
+                  "wall_after_usec": "197129",
+                  "wall_before_usec": "197112"
+                },
+                {
+                  "available": true,
+                  "cycles": "493236493",
+                  "error": 0,
+                  "kind": "thread_lo",
+                  "success": true,
+                  "wall_after_usec": "197130",
+                  "wall_before_usec": "197129"
+                },
+                {
+                  "available": true,
+                  "cycles": "493237522",
+                  "error": 0,
+                  "kind": "thread_hi",
+                  "success": true,
+                  "wall_after_usec": "197130",
+                  "wall_before_usec": "197130"
+                },
+                {
+                  "available": true,
+                  "cycles": "524990893",
+                  "error": 0,
+                  "kind": "process_hi",
+                  "success": true,
+                  "wall_after_usec": "197148",
+                  "wall_before_usec": "197130"
+                }
+              ],
+              "schema": "cairn-cpu-cycle-observation-1",
+              "status": "measured",
+              "thread_api": "QueryThreadCycleTime",
+              "thread_id": "6964"
+            },
+            "disposed": true,
+            "failure_code": 7,
+            "qualified": false,
+            "schema": "cairn-observer-disposal-1",
+            "status": "disposed",
+            "storage_after": 0,
+            "storage_before": {
+              "lane_capacity_bytes": 512,
+              "lane_count": 1,
+              "object_bytes": 448,
+              "open_spans": 0,
+              "record_capacity_bytes": 33554304,
+              "record_count": 1
+            },
+            "strong_owners": 1
+          }
+        }
+      ],
+      "fixture_end_usec": "197271",
+      "fixture_limit_usec": "5000000",
+      "fixture_start_usec": "179013",
+      "ledger": {
+        "cap_bytes": 33554432,
+        "closed": true,
+        "emit_end": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "519542852",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "194912",
+              "wall_before_usec": "194890"
+            },
+            {
+              "available": true,
+              "cycles": "487837869",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "194913",
+              "wall_before_usec": "194912"
+            },
+            {
+              "available": true,
+              "cycles": "487838702",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "194913",
+              "wall_before_usec": "194913"
+            },
+            {
+              "available": true,
+              "cycles": "519594058",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "194933",
+              "wall_before_usec": "194913"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "6964"
+        },
+        "emit_start": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "516490814",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "193574",
+              "wall_before_usec": "193548"
+            },
+            {
+              "available": true,
+              "cycles": "484787644",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "193575",
+              "wall_before_usec": "193574"
+            },
+            {
+              "available": true,
+              "cycles": "484788452",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "193575",
+              "wall_before_usec": "193575"
+            },
+            {
+              "available": true,
+              "cycles": "516542950",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "193594",
+              "wall_before_usec": "193575"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "6964"
+        },
+        "failure_code": 0,
+        "file": "controls.json.bin",
+        "lane_count": 4,
+        "passed": true,
+        "record_count": 2620,
+        "schema": "cairn-observer-ledger-2",
+        "serialization_capacity_bytes": 65728,
+        "trace_bytes": 503080
+      },
+      "native_start": {
+        "data_apply_max_usec": 0,
+        "data_apply_usec": 0,
+        "deletion_max_usec": 0,
+        "deletion_usec": 0,
+        "generated": 0,
+        "generation_jobs": 0,
+        "generation_usec": 0,
+        "main_jobs": 0,
+        "mesh_jobs": 0,
+        "meshed": 0,
+        "meshing_usec": 0,
+        "overloads": 0,
+        "private_bytes": 46927872,
+        "result_jobs": 0,
+        "retired_high_water": 0,
+        "retired_meshes": 0,
+        "stale_results": 0,
+        "upload_bytes": 0,
+        "upload_max_usec": 0,
+        "upload_usec": 0,
+        "uploads": 0,
+        "working_set": 97112064
+      },
+      "ownership": {
+        "configured_workers": 1,
+        "counts": [
+          {
+            "attempted": "3",
+            "completed": "3",
+            "crossing": "1",
+            "overload": "0",
+            "slot": 13
+          },
+          {
+            "attempted": "4",
+            "completed": "4",
+            "crossing": "0",
+            "overload": "2",
+            "slot": 14
+          },
+          {
+            "attempted": "2607",
+            "completed": "2607",
+            "crossing": "0",
+            "overload": "0",
+            "slot": 15
+          },
+          {
+            "attempted": "1",
+            "completed": "1",
+            "crossing": "0",
+            "overload": "0",
+            "slot": 16
+          }
+        ],
+        "drained": true,
+        "in_flight": 0,
+        "main_thread": "6964",
+        "native_end": {
+          "data_apply_max_usec": 6,
+          "data_apply_usec": 7,
+          "deletion_max_usec": 0,
+          "deletion_usec": 0,
+          "generated": 3,
+          "generation_jobs": 0,
+          "generation_usec": 364,
+          "main_jobs": 0,
+          "mesh_jobs": 0,
+          "meshed": 2,
+          "meshing_usec": 726,
+          "overloads": 2,
+          "private_bytes": 80576512,
+          "result_jobs": 0,
+          "retired_high_water": 0,
+          "retired_meshes": 0,
+          "stale_results": 0,
+          "upload_bytes": 0,
+          "upload_max_usec": 0,
+          "upload_usec": 0,
+          "uploads": 0,
+          "working_set": 97951744
+        },
+        "owners": [
+          {
+            "attached_usec": "182072",
+            "detached_usec": "193508",
+            "in_flight": 0,
+            "incarnation": "1",
+            "lane": 2,
+            "pool": "VoxelEngine.general",
+            "pool_joined": false,
+            "retired_usec": "183766",
+            "thread": "988",
+            "worker_index": 0
+          },
+          {
+            "attached_usec": "184030",
+            "detached_usec": "193508",
+            "in_flight": 0,
+            "incarnation": "2",
+            "lane": 3,
+            "pool": "VoxelEngine.general",
+            "pool_joined": false,
+            "retired_usec": null,
+            "thread": "1344",
+            "worker_index": 0
+          }
+        ],
+        "passed": true,
+        "schema": "cairn-preparation-owners-1",
+        "session_bytes": 536,
+        "session_destroyed": true,
+        "unpublished": true
+      },
+      "passed": true,
+      "process_end": {
+        "platform": "windows",
+        "process_api": "QueryProcessCycleTime",
+        "reads": [
+          {
+            "available": true,
+            "cycles": "525216684",
+            "error": 0,
+            "kind": "process_lo",
+            "success": true,
+            "wall_after_usec": "197241",
+            "wall_before_usec": "197224"
+          },
+          {
+            "available": true,
+            "cycles": "493509300",
+            "error": 0,
+            "kind": "thread_lo",
+            "success": true,
+            "wall_after_usec": "197242",
+            "wall_before_usec": "197241"
+          },
+          {
+            "available": true,
+            "cycles": "493510599",
+            "error": 0,
+            "kind": "thread_hi",
+            "success": true,
+            "wall_after_usec": "197242",
+            "wall_before_usec": "197242"
+          },
+          {
+            "available": true,
+            "cycles": "525255885",
+            "error": 0,
+            "kind": "process_hi",
+            "success": true,
+            "wall_after_usec": "197257",
+            "wall_before_usec": "197242"
+          }
+        ],
+        "schema": "cairn-cpu-cycle-observation-1",
+        "status": "measured",
+        "thread_api": "QueryThreadCycleTime",
+        "thread_id": "6964"
+      },
+      "process_start": {
+        "platform": "windows",
+        "process_api": "QueryProcessCycleTime",
+        "reads": [
+          {
+            "available": true,
+            "cycles": "490122127",
+            "error": 0,
+            "kind": "process_lo",
+            "success": true,
+            "wall_after_usec": "179049",
+            "wall_before_usec": "179017"
+          },
+          {
+            "available": true,
+            "cycles": "469824489",
+            "error": 0,
+            "kind": "thread_lo",
+            "success": true,
+            "wall_after_usec": "179050",
+            "wall_before_usec": "179049"
+          },
+          {
+            "available": true,
+            "cycles": "469825445",
+            "error": 0,
+            "kind": "thread_hi",
+            "success": true,
+            "wall_after_usec": "179051",
+            "wall_before_usec": "179050"
+          },
+          {
+            "available": true,
+            "cycles": "490174754",
+            "error": 0,
+            "kind": "process_hi",
+            "success": true,
+            "wall_after_usec": "179068",
+            "wall_before_usec": "179051"
+          }
+        ],
+        "schema": "cairn-cpu-cycle-observation-1",
+        "status": "measured",
+        "thread_api": "QueryThreadCycleTime",
+        "thread_id": "6964"
+      },
+      "qualified": false,
+      "release": {
+        "counter_end": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "519930100",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "195071",
+              "wall_before_usec": "195053"
+            },
+            {
+              "available": true,
+              "cycles": "488223352",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "195071",
+              "wall_before_usec": "195071"
+            },
+            {
+              "available": true,
+              "cycles": "488224014",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "195072",
+              "wall_before_usec": "195072"
+            },
+            {
+              "available": true,
+              "cycles": "519978904",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "195091",
+              "wall_before_usec": "195072"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "6964"
+        },
+        "counter_start": {
+          "platform": "windows",
+          "process_api": "QueryProcessCycleTime",
+          "reads": [
+            {
+              "available": true,
+              "cycles": "519719498",
+              "error": 0,
+              "kind": "process_lo",
+              "success": true,
+              "wall_after_usec": "194984",
+              "wall_before_usec": "194966"
+            },
+            {
+              "available": true,
+              "cycles": "488012922",
+              "error": 0,
+              "kind": "thread_lo",
+              "success": true,
+              "wall_after_usec": "194985",
+              "wall_before_usec": "194984"
+            },
+            {
+              "available": true,
+              "cycles": "488013632",
+              "error": 0,
+              "kind": "thread_hi",
+              "success": true,
+              "wall_after_usec": "194985",
+              "wall_before_usec": "194985"
+            },
+            {
+              "available": true,
+              "cycles": "519768988",
+              "error": 0,
+              "kind": "process_hi",
+              "success": true,
+              "wall_after_usec": "195005",
+              "wall_before_usec": "194985"
+            }
+          ],
+          "schema": "cairn-cpu-cycle-observation-1",
+          "status": "measured",
+          "thread_api": "QueryThreadCycleTime",
+          "thread_id": "6964"
+        },
+        "disposed": true,
+        "failure_code": 0,
+        "qualified": false,
+        "schema": "cairn-observer-disposal-1",
+        "status": "disposed",
+        "storage_after": 0,
+        "storage_before": {
+          "lane_capacity_bytes": 512,
+          "lane_count": 4,
+          "object_bytes": 448,
+          "open_spans": 0,
+          "record_capacity_bytes": 33554304,
+          "record_count": 2620
+        },
+        "strong_owners": 1
+      },
+      "worker": {
+        "completed": 2,
+        "failed": false,
+        "joined": true,
+        "lane": 4,
+        "proxy_bytes": 6,
+        "proxy_count": 1,
+        "qualification_bytes": 20,
+        "qualification_count": 1
+      }
+    },
+    "passed": true,
+    "qualified": false,
+    "schema": "cairn-preparation-demand-controls-1",
+    "target_performance": "not_run"
+  },
+  "raw_files": {
+    "controls.json.bin": {
+      "bytes": 503080,
+      "sha256": "b8b0844c3b146bdace78e6cc96b308f153192220e55581673bbc7d57e7900b9c",
+      "zlib_base64": "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"
+    },
+    "controls.json.bin-cap": {
+      "bytes": 232,
+      "sha256": "ccff0ef6f1cf40d5c8e6bf75d22065a3d2d508719943d58c8a877cc4f2105ba4",
+      "zlib_base64": "eNpzdvQM8vN3MmJiYGA4AMQvGCCAEYlmROLDgIk0hObHIseIph8EmnV0ZEH0h99MDMg0M1Q+3ABV/iOavLo1RP4TVPwTmvwPG/zyANnsF64="
+    },
+    "controls.json.bin-counter": {
+      "bytes": 232,
+      "sha256": "8d571806bf734384cd7d82c4726139bf259ca2ff87d6b341d047e043b540f6b4",
+      "zlib_base64": "eNpzdvQM8vN3MmJiYGA4wAAGICYDI4TNwAJlw/gwYCINofmxyCGrR5dz/AU2nsEJSoPk2ZDknQjIO0PFnXHIu0DFXdDkAYdIDW8="
+    },
+    "controls.json.bin-main_crossing": {
+      "bytes": 232,
+      "sha256": "e182db790d3bbcd1ba5b0f5534aa1eccd6b7eca6d22c6f7ac50fabfe5d151952",
+      "zlib_base64": "eNpzdvQM8vN3MmJiYGA4wAAGICYDI4TNwAplw/gwYCINofmR5JBpdLHdHP6yIHrWf7DxcJoZKv+fF1V+Npq8pCREfg5UfA6avLQ0fnkAqHUUNA=="
+    },
+    "controls.json.bin-owner": {
+      "bytes": 40,
+      "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9",
+      "zlib_base64": "eNpzdvQM8vN3MmJiYGA4wAAGTAxIAMRhBGIAZbAC+A=="
+    },
+    "controls.json.bin.csv": {
+      "bytes": 20,
+      "sha256": "cba237fca710fe813654741d712e4d83f2919fd5354971e94613b5866638acf8",
+      "zlib_base64": "eNorKEotSCxKLMnMz1NIzs8rKcrP4QIAVdEH0Q=="
+    },
+    "controls.json.bin.csv.edits.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "zlib_base64": "eNoDAAAAAAE="
+    },
+    "controls.json.bin.csv.operations.csv": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "zlib_base64": "eNoDAAAAAAE="
+    },
+    "controls.json.bin.csv.proxy.tmp": {
+      "bytes": 6,
+      "sha256": "cfa4580531f01a8346912547dd3beb0c5fcddf2a2f2ad6f89a770ea61b1eb5ff",
+      "zlib_base64": "eNorKMqvqOQCAAkAAk0="
+    }
+  },
+  "low_level_ledger_integrity": {
+    "record_count": 2620,
+    "lane_count": 4,
+    "bytes": 503080,
+    "sha256": "b8b0844c3b146bdace78e6cc96b308f153192220e55581673bbc7d57e7900b9c",
+    "session_destroyed": true,
+    "recorder_disposed": true,
+    "usable_attribution": false
+  },
+  "artifacts": [
+    {
+      "id": 12514928176,
+      "bytes": 80464,
+      "sha256": "6412745eca5fa3b3fbd947c3ec8fc1665c8665803d38f61b319e49f44a5d0f4f"
+    },
+    {
+      "id": 12514419507,
+      "bytes": 123520,
+      "sha256": "8ed22537dd72c4cb47d64fde2140e13a9b68ffd39128f013ab34457fa86f711e"
+    }
+  ],
+  "correction_source": "108c8e136eac84e784f8a9ab2d2b33884bcc7c8e",
+  "correction_native_key": "030d60ff7c04bed7fffab28511c1d79f10a251658baf05f98c0e864ba306dd69",
+  "correction_ci_run": 39982108071
+}

@@ -7,10 +7,24 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    outputs:
+      launch: ${{ steps.plan.outputs.launch }}
+      recheck: ${{ steps.plan.outputs.recheck }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Select ordinary candidate CI or the one frozen preparation process
+        id: plan
+        run: python tools/qa/preparation_demand_ci.py plan
   static:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -24,9 +38,72 @@ jobs:
       - name: Packaging and cache regression tests
         run: python -m unittest discover -s tests/integration -v
       - name: Compile-check owned cloud scripts
-        run: python -m compileall -q tools/ci native/sandbox_world/config.py
+        run: python -m compileall -q tools/ci tools/qa native/sandbox_world/config.py
+      - name: Native fixture checks with sanitizers
+        run: |
+          c++ --version
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_fixture.cpp -o /tmp/cairn-fixture-test
+          /tmp/cairn-fixture-test
+      - name: Phase-local operation regression tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_operation_metrics.cpp -o /tmp/cairn-operation-test
+          /tmp/cairn-operation-test
+      - name: Bounded operation-event witnesses with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_operation_witness.cpp -o /tmp/cairn-operation-witness-test
+          /tmp/cairn-operation-witness-test
+      - name: Edit visibility lifecycle tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_edit_visibility.cpp -o /tmp/cairn-edit-visibility-test
+          /tmp/cairn-edit-visibility-test
+      - name: Indexed mesh batch tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_mesh_batch.cpp -o /tmp/cairn-mesh-batch-test
+          /tmp/cairn-mesh-batch-test
+      - name: World-space viewer demand tests with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_viewer_demand.cpp -o /tmp/cairn-viewer-demand-test
+          /tmp/cairn-viewer-demand-test
+      - name: Bounded mesh admission selection with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_mesh_admission.cpp -o /tmp/cairn-mesh-admission-test
+          /tmp/cairn-mesh-admission-test
+      - name: Exact cycle counter and failed-call controls with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_cycle_observation.cpp -o /tmp/cairn-cycle-observation-test
+          /tmp/cairn-cycle-observation-test
+      - name: Bounded native cycle dose and hard-cap controls with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_cycle_dose.cpp -o /tmp/cairn-cycle-dose-test
+          /tmp/cairn-cycle-dose-test
+      - name: Bounded observer ownership and raw-span controls with sanitizers
+        run: |
+          c++ -std=c++17 -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_observer_ledger.cpp -o /tmp/cairn-observer-test
+          /tmp/cairn-observer-test
+      - name: Explicit observer disposal and retained-owner controls with sanitizers
+        run: |
+          c++ -std=c++17 -pthread -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_observer_disposal.cpp -o /tmp/cairn-observer-disposal-test
+          /tmp/cairn-observer-disposal-test
+      - name: Preparation owners and publication lifetime with sanitizers
+        run: |
+          c++ -std=c++17 -pthread -fsanitize=address,undefined -fno-omit-frame-pointer -g tests/native/test_preparation_observer.cpp -o /tmp/cairn-preparation-test
+          /tmp/cairn-preparation-test
   windows:
-    needs: static
+    needs: [static, plan]
+    if: ${{ needs.plan.outputs.launch != 'true' && needs.plan.outputs.recheck != 'true' }}
     uses: ./.github/workflows/windows-build.yml
     with:
-      cold: ${{ github.event.action == 'ready_for_review' }}
+      cold: false
+      shipping_cycles_pilot: false
+      shipping_observer_pilot: false
+  preparation-demand:
+    needs: [static, plan]
+    if: ${{ needs.plan.outputs.launch == 'true' && github.repository == 'dponcho/voxel-survival-game' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'codex/m1-engine-proof' }}
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/preparation-demand.yml
+  preparation-recheck:
+    needs: [static, plan]
+    if: ${{ needs.plan.outputs.recheck == 'true' && github.repository == 'dponcho/voxel-survival-game' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+    uses: ./.github/workflows/preparation-demand-recheck.yml

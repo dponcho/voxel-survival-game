@@ -1,0 +1,348 @@
+{
+  "passed": true,
+  "qualified": false,
+  "engine_executed": false,
+  "target_performance": "not_run",
+  "source": "5a5012534afdc64c444e148b2a4a92804650e570",
+  "build": {
+    "engine_inputs": "028f3967c2a5e63d2a647adef67ad425efa601daa6c2799ae6ce698f336fd019",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "game_commit": "5a5012534afdc64c444e148b2a4a92804650e570",
+    "milestone": "M1",
+    "native_source_key": "028f3967c2a5e63d2a647adef67ad425efa601daa6c2799ae6ce698f336fd019",
+    "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/38985239110",
+    "target_performance": "not_run",
+    "renderer": "gl_compatibility",
+    "engine_binaries": {
+      "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+      "editor.exe": "50358cbf1bd770339787f4c2b67e27d7a8b77e40c603533287d96a0b9e180baf",
+      "template_debug.exe": "40d59fc43722100cc0e290881c11b81cb1e4608060cab3dc8b6bbb9065ae1e8d",
+      "template_release.exe": "340d7028b2a2824d80d9052fce334b28b08ed7cdf28b900209f1f3f2fc9693f7"
+    },
+    "shipping_inventory_sha256": "e3b556c03bd80d3724f4391f5a736f3e4ab01277d43a4e1b39c611122b53882e",
+    "shipping_sources_sha256": {
+      "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+      "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+      "m1_shipping_runtime.gd": "34d4f4fef280211552eed14ab42987ed7a61cca43ad65c2b6e898330dae6377d",
+      "m1_shipping_method.gd": "eedc8520deda34927d14ca7081b8ed30623333801f6e3093ff78dec1f6fe3921",
+      "title.gd": "ee9f4b7681193d500be6e78a58a787322bdfd9a69e08fd27653a97abe8ba7824"
+    }
+  },
+  "native_key": "028f3967c2a5e63d2a647adef67ad425efa601daa6c2799ae6ce698f336fd019",
+  "portable_sha256": "3e9241c46edca867fc0ac0aa7306125a420539f18b80d96b54882c61eb88b175",
+  "portable_bytes": 30170627,
+  "pck_entries": 89,
+  "pe_imports": 38,
+  "self_tests": 8,
+  "method_controls": 24,
+  "main_saved_faults": 50,
+  "pilot_saved_faults": 12,
+  "original_editor_files_verified": 17,
+  "pilot_folders": 7,
+  "trial_count": 9,
+  "assessment": {
+    "added_fraction": null,
+    "controls": {
+      "null": {},
+      "positive": {},
+      "reason": "controls not complete",
+      "valid": false
+    },
+    "method": "m1-shipping-complete-trial-1",
+    "outcome": "inconclusive",
+    "policy": "m1-shipping-diagnostics-1",
+    "qualified": false,
+    "shipping": {},
+    "stop_decision": "Stop. Keep shipping optional diagnostics unqualified; choose an explicit supported measurement, repetition or threshold policy before another pilot.",
+    "target_hardware": false,
+    "threshold": 0.01
+  },
+  "trials": [
+    {
+      "id": "AB-H2-pilot-warmup-0",
+      "group": "warmup",
+      "index": 0,
+      "mode": "bare",
+      "duration_usec": 77461136,
+      "sections_usec": [
+        5352236,
+        24004437,
+        24005134,
+        23998238,
+        101091
+      ],
+      "callback_count": 10441,
+      "marker_usec": 309,
+      "dose": {
+        "actual_usec": 0,
+        "hash_updates": 0,
+        "reference_usec": 0,
+        "requested_tick_usec": 0,
+        "ticks": 0,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-null-0",
+      "group": "null",
+      "index": 0,
+      "mode": "bare",
+      "duration_usec": 77762452,
+      "sections_usec": [
+        5667577,
+        23990422,
+        24005091,
+        23998259,
+        101103
+      ],
+      "callback_count": 10439,
+      "marker_usec": 324,
+      "dose": {
+        "actual_usec": 0,
+        "hash_updates": 0,
+        "reference_usec": 0,
+        "requested_tick_usec": 0,
+        "ticks": 0,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-null-1",
+      "group": "null",
+      "index": 1,
+      "mode": "bare",
+      "duration_usec": 77452278,
+      "sections_usec": [
+        5349905,
+        24004516,
+        23998204,
+        23998213,
+        101440
+      ],
+      "callback_count": 10440,
+      "marker_usec": 353,
+      "dose": {
+        "actual_usec": 0,
+        "hash_updates": 0,
+        "reference_usec": 0,
+        "requested_tick_usec": 0,
+        "ticks": 0,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-null-2",
+      "group": "null",
+      "index": 2,
+      "mode": "bare",
+      "duration_usec": 77761903,
+      "sections_usec": [
+        5666916,
+        23997666,
+        23998137,
+        23998190,
+        100994
+      ],
+      "callback_count": 10439,
+      "marker_usec": 354,
+      "dose": {
+        "actual_usec": 0,
+        "hash_updates": 0,
+        "reference_usec": 0,
+        "requested_tick_usec": 0,
+        "ticks": 0,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-null-3",
+      "group": "null",
+      "index": 3,
+      "mode": "bare",
+      "duration_usec": 77452110,
+      "sections_usec": [
+        5356996,
+        23997549,
+        23998283,
+        23998139,
+        101143
+      ],
+      "callback_count": 10439,
+      "marker_usec": 314,
+      "dose": {
+        "actual_usec": 0,
+        "hash_updates": 0,
+        "reference_usec": 0,
+        "requested_tick_usec": 0,
+        "ticks": 0,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-positive-0",
+      "group": "positive",
+      "index": 0,
+      "mode": "bare",
+      "duration_usec": 77762781,
+      "sections_usec": [
+        5667399,
+        23997493,
+        23998252,
+        23998243,
+        101394
+      ],
+      "callback_count": 10439,
+      "marker_usec": 359,
+      "dose": {
+        "actual_usec": 0,
+        "hash_updates": 0,
+        "reference_usec": 0,
+        "requested_tick_usec": 0,
+        "ticks": 0,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-positive-1",
+      "group": "positive",
+      "index": 1,
+      "mode": "bare",
+      "duration_usec": 77446024,
+      "sections_usec": [
+        5349623,
+        23990922,
+        23998258,
+        23998134,
+        109087
+      ],
+      "callback_count": 10438,
+      "marker_usec": 311,
+      "dose": {
+        "actual_usec": 1605522,
+        "hash_updates": 93125,
+        "reference_usec": 77762781,
+        "requested_tick_usec": 361,
+        "ticks": 4320,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-positive-2",
+      "group": "positive",
+      "index": 2,
+      "mode": "bare",
+      "duration_usec": 77756037,
+      "sections_usec": [
+        5665958,
+        23991041,
+        23998214,
+        23998199,
+        102625
+      ],
+      "callback_count": 10438,
+      "marker_usec": 346,
+      "dose": {
+        "actual_usec": 1602053,
+        "hash_updates": 93249,
+        "reference_usec": 77762781,
+        "requested_tick_usec": 361,
+        "ticks": 4320,
+        "valid": true
+      }
+    },
+    {
+      "id": "AB-H2-pilot-positive-3",
+      "group": "positive",
+      "index": 3,
+      "mode": "bare",
+      "duration_usec": 77443335,
+      "sections_usec": [
+        5355016,
+        23990592,
+        23998204,
+        23998249,
+        101274
+      ],
+      "callback_count": 10438,
+      "marker_usec": 327,
+      "dose": {
+        "actual_usec": 0,
+        "hash_updates": 0,
+        "reference_usec": 77762781,
+        "requested_tick_usec": 0,
+        "ticks": 0,
+        "valid": true
+      }
+    }
+  ],
+  "note": "Downloaded candidate and complete original saved evidence independently reconciled on Linux; no engine or compiler executed.",
+  "audit_environment": "Codex Cloud Linux, independent downloaded-file replay; not a new GitHub Actions runtime run",
+  "candidate_source_commit": "e208cbbbc9ded194d80e38a038a528ecf45b25a1",
+  "original_actions_run": 38985239110,
+  "original_actions_conclusion": "failure: runtime measurement invalid; retained unchanged",
+  "evidence_integrity": "verified",
+  "measurement_valid": false,
+  "target_action_required_now": false,
+  "runtime_repeated": false,
+  "qa_sources_sha256": {
+    "tools/qa/shipping_diagnostics.py": "1be47138ee53f9049d98a35928464bd7fc65e97ff26ddcb3eca7e0c33416d793",
+    "tools/qa/shipping_pilot_ci.py": "46558318ac7139deadf76003712dae97cfa6db4282d1104b961f4ee00c74609c",
+    "tools/qa/shipping_saved_artifact_recheck.py": "dc5e33b9c5452efed2887487d65b31676873a7c2d9b8f8c3071f8b5d17681d6c",
+    "tests/integration/test_shipping_reader.py": "8d580d9c200565ca9f604be3558d0df3fbadce13b6720fe63e90d716f1760e26"
+  },
+  "regressions": {
+    "full_suite_passed": 134,
+    "focused_reader_passed": 14,
+    "note": "Full suite before final Windows/Linux missing-file-normalization fix; focused suite includes that fix."
+  },
+  "operation_failures": [
+    {
+      "folder": "release-pilot/M1-2026-10-17T00-54-14-32-1-6068",
+      "trial": "AB-H2-pilot-null-0",
+      "failures": [
+        {
+          "phase": "preparation",
+          "reasons": [
+            "Individual upload exceeded 0.75 ms"
+          ]
+        }
+      ]
+    },
+    {
+      "folder": "release-pilot/M1-2026-10-17T00-54-14-32-1-6068",
+      "trial": "AB-H2-pilot-positive-1",
+      "failures": [
+        {
+          "phase": "retirement",
+          "reasons": [
+            "Individual deletion exceeded 0.75 ms"
+          ]
+        }
+      ]
+    }
+  ],
+  "original_artifacts": [
+    {
+      "id": 12082779545,
+      "kind": "player",
+      "sha256": "1c847496ac4cf5c6c3d9b9ab4f97077696ba529dc4c21ce1d2f7807a43773d30"
+    },
+    {
+      "id": 12084235149,
+      "kind": "export evidence",
+      "sha256": "15d44aaf9663918afe80c404520140b04230d69118a97ba6c279e5ccd8215bb4"
+    },
+    {
+      "id": 12083210854,
+      "kind": "native evidence",
+      "sha256": "e95b5ad5a3828d8c5b52b13c989d6850dbbd1789f9f0fb8ba381d68f2afff0f3"
+    },
+    {
+      "id": 12084093542,
+      "kind": "pilot evidence",
+      "sha256": "5c4e822e38a15f7b512f5305ae50a0d44570ecd9d26ba68b0c89d5b3898a570c"
+    }
+  ],
+  "decision": "Stop calibration. Keep shipping overhead and M1 unqualified; declare a supported measurement-policy change before another pilot."
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "cairn-retirement-pinned-source-1",
+  "files": [
+    {
+      "repository": "godotengine/godot",
+      "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "path": "scene/resources/mesh.cpp",
+      "excerpts": [
+        {
+          "first_line": 2027,
+          "text": "void ArrayMesh::surface_remove(int p_surface) {\n\tERR_FAIL_INDEX(p_surface, surfaces.size());\n\tRS::get_singleton()->mesh_surface_remove(mesh, p_surface);\n\tsurfaces.remove_at(p_surface);\n\n\tclear_cache();\n\t_recompute_aabb();\n\tnotify_property_list_changed();\n\temit_changed();\n}"
+        },
+        {
+          "first_line": 2363,
+          "text": "ArrayMesh::~ArrayMesh() {\n\tif (mesh.is_valid()) {\n\t\tERR_FAIL_NULL(RenderingServer::get_singleton());\n\t\tRenderingServer::get_singleton()->free_rid(mesh);\n\t}\n}"
+        }
+      ],
+      "url": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/scene/resources/mesh.cpp",
+      "bytes": 84785,
+      "sha256": "69f9d23d126b7673a1236552d7a0d9d9803e48c2180b2a498319818007913d6f",
+      "git_blob_sha1": "383c28fc455e6fccc1141c343edd688adb9dc542"
+    },
+    {
+      "repository": "godotengine/godot",
+      "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "path": "core/object/ref_counted.h",
+      "excerpts": [
+        {
+          "first_line": 66,
+          "text": "\ttemplate <bool Init>\n\t_FORCE_INLINE_ void ref_pointer(T *p_refcounted) {\n\t\tif (p_refcounted == reference) {\n\t\t\treturn;\n\t\t}\n\n\t\t// This will go out of scope and get unref'd.\n\t\tRef cleanup_ref;\n\t\tcleanup_ref.reference = reference;\n\t\treference = p_refcounted;\n\t\tif (reference) {\n\t\t\tif constexpr (Init) {\n\t\t\t\tif (!reference->init_ref()) {\n\t\t\t\t\treference = nullptr;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tif (!reference->reference()) {\n\t\t\t\t\treference = nullptr;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
+        },
+        {
+          "first_line": 146,
+          "text": "\ttemplate <typename T_Other>\n\tvoid operator=(const Ref<T_Other> &p_from) {\n\t\tref_pointer<false>(Object::cast_to<T>(p_from.ptr()));\n\t}"
+        },
+        {
+          "first_line": 183,
+          "text": "\ttemplate <typename T_Other>\n\tRef(const Ref<T_Other> &p_from) {\n\t\tthis->operator=(p_from);\n\t}"
+        },
+        {
+          "first_line": 199,
+          "text": "\tvoid unref() {\n\t\t// TODO: this should be moved to mutexes, since this engine does not really\n\t\t// do a lot of referencing on references and stuff\n\t\t// mutexes will avoid more crashes?\n\n\t\tif (reference) {\n\t\t\t// NOTE: `reinterpret_cast` is \"safe\" here because we know `T` has simple linear\n\t\t\t// inheritance to `RefCounted`. This guarantees that `T * == `RefCounted *`, which\n\t\t\t// allows us to declare `Ref<T>` with forward declared `T` types.\n\t\t\tif (reinterpret_cast<RefCounted *>(reference)->unreference()) {\n\t\t\t\tmemdelete(reinterpret_cast<RefCounted *>(reference));\n\t\t\t}\n\t\t\treference = nullptr;\n\t\t}\n\t}"
+        },
+        {
+          "first_line": 226,
+          "text": "\t~Ref() {\n\t\tunref();\n\t}"
+        }
+      ],
+      "url": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/core/object/ref_counted.h",
+      "bytes": 7628,
+      "sha256": "05ef9e22f969dd4e93d5682e898b86e0ed646bf6d21a0225de9c7d68193bf074",
+      "git_blob_sha1": "0eab2fafec31a9017141551f062f7362af10fb34"
+    },
+    {
+      "repository": "Zylann/godot_voxel",
+      "commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+      "path": "engine/voxel_engine.cpp",
+      "excerpts": [
+        {
+          "first_line": 327,
+          "text": "\t// Receive generation and meshing results\n\t_general_thread_pool.dequeue_completed_tasks([](zylann::IThreadedTask *task) {\n\t\ttask->apply_result();\n\t\tZN_DELETE(task);\n\t});\n\n\t// Run this after dequeueing threaded tasks, because they can add some to this runner,\n\t// which could in turn complete right away (we avoid 1-frame delays this way).\n\t_time_spread_task_runner.process(_main_thread_time_budget_usec);\n\n\t_progressive_task_runner.process();"
+        }
+      ],
+      "url": "https://github.com/Zylann/godot_voxel/blob/2ac9f5f8a8219bf499314cc0fad54ffc47df908f/engine/voxel_engine.cpp",
+      "bytes": 15566,
+      "sha256": "3f827b545d567b787601211c0bda46496befcbda3eea78117c00e4e7e4f8ec6d",
+      "git_blob_sha1": "fa8e8893f84c5cf11d3a0785d70b71faa63b2d6a"
+    }
+  ]
+}

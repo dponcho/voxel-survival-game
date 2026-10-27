@@ -1,0 +1,865 @@
+{
+  "attribution_route_processes": 0,
+  "cancelled_run_controls": {
+    "bytes": 936553,
+    "controls": {
+      "editor": {
+        "elapsed_usec": 9950,
+        "engine_executed": false,
+        "faults": [
+          {
+            "bytes": 232,
+            "failure_code": 4,
+            "name": "counter",
+            "sha256": "76964bcfe45c32b2cc407bcf8882cbd65f7b9b5b1aa7d83e7828e8f08d3efaf8"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 1,
+            "name": "cap",
+            "sha256": "cc4b2469839dc3188c7f08a1db3d5de552e720978644180a8a925a7595cc135b"
+          },
+          {
+            "bytes": 40,
+            "failure_code": 2,
+            "name": "owner",
+            "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 5,
+            "name": "main_crossing",
+            "sha256": "0a7097aa1c5b5363824c66b0a7a0a544c42202256ad4df94fb31c036ff293046"
+          },
+          {
+            "failure_code": 7,
+            "name": "write",
+            "trace_available": false
+          }
+        ],
+        "mutations_rejected": [
+          "invalid-terrain-context",
+          "live-publisher",
+          "retained-session",
+          "live-scope",
+          "pool-join-invention",
+          "missing-retirement",
+          "same-incarnation",
+          "wrong-os-thread",
+          "missing-detach",
+          "unexpected-worker",
+          "missing-attempt",
+          "double-completion",
+          "hidden-overload",
+          "clipped-crossing",
+          "changed-native-work",
+          "unjoined-writer",
+          "retained-recorder",
+          "false-destruction",
+          "hidden-raw-failure",
+          "qualified-cost",
+          "over-cap-fixture"
+        ],
+        "passed": true,
+        "qualified": false,
+        "raw": {
+          "bytes": 294952,
+          "cap_bytes": 33554432,
+          "failure_code": 0,
+          "lane_count": 4,
+          "ownership": {
+            "crossing_ids": [
+              1532
+            ],
+            "crossing_policy": "Retained complete, separate from preparation; no wall split or clipping",
+            "lanes": [
+              {
+                "bookkeeping_cycles": "1707043",
+                "exclusive_body_cycles": "2387101",
+                "lane": 1,
+                "root_full_cycles": "4094144",
+                "thread": "6076"
+              },
+              {
+                "bookkeeping_cycles": "6297",
+                "exclusive_body_cycles": "2002974",
+                "lane": 2,
+                "root_full_cycles": "2009271",
+                "thread": "6008"
+              },
+              {
+                "bookkeeping_cycles": "11636",
+                "exclusive_body_cycles": "1963382",
+                "lane": 3,
+                "root_full_cycles": "1975018",
+                "thread": "2640"
+              },
+              {
+                "bookkeeping_cycles": "5978",
+                "exclusive_body_cycles": "1009376",
+                "lane": 4,
+                "root_full_cycles": "1015354",
+                "thread": "3820"
+              }
+            ],
+            "native": [
+              {
+                "attempted": 3,
+                "body_cycles": "531210",
+                "bookkeeping_cycles": "6099",
+                "crossing": 1,
+                "exclusive_body_cycles": "531210",
+                "inclusive_full_cycles": "537309",
+                "overload": 0,
+                "slot": 13
+              },
+              {
+                "attempted": 4,
+                "body_cycles": "3435146",
+                "bookkeeping_cycles": "11834",
+                "crossing": 0,
+                "exclusive_body_cycles": "3435146",
+                "inclusive_full_cycles": "3446980",
+                "overload": 2,
+                "slot": 14
+              },
+              {
+                "attempted": 1523,
+                "body_cycles": "1548646",
+                "bookkeeping_cycles": "1698223",
+                "crossing": 0,
+                "exclusive_body_cycles": "1548646",
+                "inclusive_full_cycles": "3246869",
+                "overload": 0,
+                "slot": 15
+              },
+              {
+                "attempted": 1,
+                "body_cycles": "79037",
+                "bookkeeping_cycles": "1740",
+                "crossing": 0,
+                "exclusive_body_cycles": "79037",
+                "inclusive_full_cycles": "80777",
+                "overload": 0,
+                "slot": 16
+              }
+            ]
+          },
+          "record_count": 1536,
+          "sha256": "b5663f0d592b486eeb38a6c92f9a17384642eb147ed4e29634b9f261525d549d"
+        }
+      },
+      "release": {
+        "elapsed_usec": 10340,
+        "engine_executed": false,
+        "faults": [
+          {
+            "bytes": 232,
+            "failure_code": 4,
+            "name": "counter",
+            "sha256": "0935d29386c222d4312a1b46b6ae93d792c20a6610aeb27b70416fbbcd442dc0"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 1,
+            "name": "cap",
+            "sha256": "7a79a08e61fcc27c47737805fd008e68d3bd84769957e7b77652cfb21736c74f"
+          },
+          {
+            "bytes": 40,
+            "failure_code": 2,
+            "name": "owner",
+            "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 5,
+            "name": "main_crossing",
+            "sha256": "9cdb9f8cd5bd6a3930b039b03feb02baa62b4953e0f3ca42009594904c72c950"
+          },
+          {
+            "failure_code": 7,
+            "name": "write",
+            "trace_available": false
+          }
+        ],
+        "mutations_rejected": [
+          "invalid-terrain-context",
+          "live-publisher",
+          "retained-session",
+          "live-scope",
+          "pool-join-invention",
+          "missing-retirement",
+          "same-incarnation",
+          "wrong-os-thread",
+          "missing-detach",
+          "unexpected-worker",
+          "missing-attempt",
+          "double-completion",
+          "hidden-overload",
+          "clipped-crossing",
+          "changed-native-work",
+          "unjoined-writer",
+          "retained-recorder",
+          "false-destruction",
+          "hidden-raw-failure",
+          "qualified-cost",
+          "over-cap-fixture"
+        ],
+        "passed": true,
+        "qualified": false,
+        "raw": {
+          "bytes": 503080,
+          "cap_bytes": 33554432,
+          "failure_code": 0,
+          "lane_count": 4,
+          "ownership": {
+            "crossing_ids": [
+              2616
+            ],
+            "crossing_policy": "Retained complete, separate from preparation; no wall split or clipping",
+            "lanes": [
+              {
+                "bookkeeping_cycles": "2917781",
+                "exclusive_body_cycles": "3932990",
+                "lane": 1,
+                "root_full_cycles": "6850771",
+                "thread": "1700"
+              },
+              {
+                "bookkeeping_cycles": "17737",
+                "exclusive_body_cycles": "3846549",
+                "lane": 2,
+                "root_full_cycles": "3864286",
+                "thread": "5536"
+              },
+              {
+                "bookkeeping_cycles": "8575",
+                "exclusive_body_cycles": "3337267",
+                "lane": 3,
+                "root_full_cycles": "3345842",
+                "thread": "1524"
+              },
+              {
+                "bookkeeping_cycles": "6322",
+                "exclusive_body_cycles": "1017559",
+                "lane": 4,
+                "root_full_cycles": "1023881",
+                "thread": "1352"
+              }
+            ],
+            "native": [
+              {
+                "attempted": 3,
+                "body_cycles": "638446",
+                "bookkeeping_cycles": "7324",
+                "crossing": 1,
+                "exclusive_body_cycles": "638446",
+                "inclusive_full_cycles": "645770",
+                "overload": 0,
+                "slot": 13
+              },
+              {
+                "attempted": 4,
+                "body_cycles": "6545370",
+                "bookkeeping_cycles": "18988",
+                "crossing": 0,
+                "exclusive_body_cycles": "6545370",
+                "inclusive_full_cycles": "6564358",
+                "overload": 2,
+                "slot": 14
+              },
+              {
+                "attempted": 2607,
+                "body_cycles": "2570396",
+                "bookkeeping_cycles": "2914058",
+                "crossing": 0,
+                "exclusive_body_cycles": "2570396",
+                "inclusive_full_cycles": "5484454",
+                "overload": 0,
+                "slot": 15
+              },
+              {
+                "attempted": 1,
+                "body_cycles": "27391",
+                "bookkeeping_cycles": "1568",
+                "crossing": 0,
+                "exclusive_body_cycles": "27391",
+                "inclusive_full_cycles": "28959",
+                "overload": 0,
+                "slot": 16
+              }
+            ]
+          },
+          "record_count": 2620,
+          "sha256": "213928515b0415fa5df9453133021b7fd40063d4e960d356aae22d5093595316"
+        }
+      }
+    },
+    "file_count": 24,
+    "files": {
+      "editor/controls.json": {
+        "bytes": 64060,
+        "sha256": "83670284dc8b23075db06a1c001b21ca6541453d152de5e7eadbb310b3d22685"
+      },
+      "editor/controls.json.bin": {
+        "bytes": 294952,
+        "sha256": "b5663f0d592b486eeb38a6c92f9a17384642eb147ed4e29634b9f261525d549d"
+      },
+      "editor/controls.json.bin-cap": {
+        "bytes": 232,
+        "sha256": "cc4b2469839dc3188c7f08a1db3d5de552e720978644180a8a925a7595cc135b"
+      },
+      "editor/controls.json.bin-counter": {
+        "bytes": 232,
+        "sha256": "76964bcfe45c32b2cc407bcf8882cbd65f7b9b5b1aa7d83e7828e8f08d3efaf8"
+      },
+      "editor/controls.json.bin-main_crossing": {
+        "bytes": 232,
+        "sha256": "0a7097aa1c5b5363824c66b0a7a0a544c42202256ad4df94fb31c036ff293046"
+      },
+      "editor/controls.json.bin-owner": {
+        "bytes": 40,
+        "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+      },
+      "editor/controls.json.bin.csv": {
+        "bytes": 20,
+        "sha256": "cba237fca710fe813654741d712e4d83f2919fd5354971e94613b5866638acf8"
+      },
+      "editor/controls.json.bin.csv.edits.jsonl": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "editor/controls.json.bin.csv.operations.csv": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "editor/controls.json.bin.csv.proxy.tmp": {
+        "bytes": 6,
+        "sha256": "cfa4580531f01a8346912547dd3beb0c5fcddf2a2f2ad6f89a770ea61b1eb5ff"
+      },
+      "editor/process.log": {
+        "bytes": 555,
+        "sha256": "ff055a6bc5698dde912c44c2941a1f1f823a47a0dfe0e6aa8f9be13116a350cd"
+      },
+      "editor/validation.json": {
+        "bytes": 3920,
+        "sha256": "23cb519e88bcb7d15af96a9e98feffffd09a4f0ee1625f6b943041d141f0dbe7"
+      },
+      "release/controls.json": {
+        "bytes": 64060,
+        "sha256": "81aaa0fdfad7a0cc26401537807ec94c5d948c2a8cffd25aeab630d9e620770d"
+      },
+      "release/controls.json.bin": {
+        "bytes": 503080,
+        "sha256": "213928515b0415fa5df9453133021b7fd40063d4e960d356aae22d5093595316"
+      },
+      "release/controls.json.bin-cap": {
+        "bytes": 232,
+        "sha256": "7a79a08e61fcc27c47737805fd008e68d3bd84769957e7b77652cfb21736c74f"
+      },
+      "release/controls.json.bin-counter": {
+        "bytes": 232,
+        "sha256": "0935d29386c222d4312a1b46b6ae93d792c20a6610aeb27b70416fbbcd442dc0"
+      },
+      "release/controls.json.bin-main_crossing": {
+        "bytes": 232,
+        "sha256": "9cdb9f8cd5bd6a3930b039b03feb02baa62b4953e0f3ca42009594904c72c950"
+      },
+      "release/controls.json.bin-owner": {
+        "bytes": 40,
+        "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+      },
+      "release/controls.json.bin.csv": {
+        "bytes": 20,
+        "sha256": "cba237fca710fe813654741d712e4d83f2919fd5354971e94613b5866638acf8"
+      },
+      "release/controls.json.bin.csv.edits.jsonl": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "release/controls.json.bin.csv.operations.csv": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "release/controls.json.bin.csv.proxy.tmp": {
+        "bytes": 6,
+        "sha256": "cfa4580531f01a8346912547dd3beb0c5fcddf2a2f2ad6f89a770ea61b1eb5ff"
+      },
+      "release/process.log": {
+        "bytes": 481,
+        "sha256": "7f283344a34480bb9871835b4da5c83460a5a6ba081f0dd24b8ca912de4422e3"
+      },
+      "release/validation.json": {
+        "bytes": 3921,
+        "sha256": "02a679698dadae6c26bc4cebfdfd57d3f12b911e555cfa6f1666eb32b5d1bb14"
+      }
+    },
+    "semantic_corruptions_rejected": 42
+  },
+  "candidate": {
+    "exe_sha256": "b3d7a391ffb60c0649d7dd4ba1a599da544be6ac89bc567bb5adcd47feec91de",
+    "game_commit": "d6e14a545e31dcd62e74e263442e6849459b5d8c",
+    "inventory_sha256": "269adac80b939b85b0ddc8d1030b5e9b0568d0737d2dc97279582d7d8b4a9f0c",
+    "native_key": "777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a",
+    "pck_entries_md5_verified": 112,
+    "pck_sha256": "cddd23ad15583052f1bafcaf4216b89e426d642806dadb73d006ef475448f5f9",
+    "pe_imports_verified": 38,
+    "portable_bytes": 30306108,
+    "portable_sha256": "3b894f209a1b9976fa2b79dfcc60878895d4219c1557eb4b8078e5622b1f48b1"
+  },
+  "control_reports_verified": 4,
+  "current_controls": {
+    "bytes": 688097,
+    "controls": {
+      "editor": {
+        "elapsed_usec": 11411,
+        "engine_executed": false,
+        "faults": [
+          {
+            "bytes": 232,
+            "failure_code": 4,
+            "name": "counter",
+            "sha256": "199e637d57542768fd9b375cf36a4cdce18b041bb6ace3e05997c4a9a1473aef"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 1,
+            "name": "cap",
+            "sha256": "8d7e244463838c46c195b6cae21d8594c303cc3b9aef6ff1b719da53fec2f0ab"
+          },
+          {
+            "bytes": 40,
+            "failure_code": 2,
+            "name": "owner",
+            "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 5,
+            "name": "main_crossing",
+            "sha256": "7db3ca33359ac4196b2c158fb65ac1c4dcb376a8e04f9d2e43088300e56163c4"
+          },
+          {
+            "failure_code": 7,
+            "name": "write",
+            "trace_available": false
+          }
+        ],
+        "mutations_rejected": [
+          "invalid-terrain-context",
+          "live-publisher",
+          "retained-session",
+          "live-scope",
+          "pool-join-invention",
+          "missing-retirement",
+          "same-incarnation",
+          "wrong-os-thread",
+          "missing-detach",
+          "unexpected-worker",
+          "missing-attempt",
+          "double-completion",
+          "hidden-overload",
+          "clipped-crossing",
+          "changed-native-work",
+          "unjoined-writer",
+          "retained-recorder",
+          "false-destruction",
+          "hidden-raw-failure",
+          "qualified-cost",
+          "over-cap-fixture"
+        ],
+        "passed": true,
+        "qualified": false,
+        "raw": {
+          "bytes": 322600,
+          "cap_bytes": 33554432,
+          "failure_code": 0,
+          "lane_count": 4,
+          "ownership": {
+            "crossing_ids": [
+              1676
+            ],
+            "crossing_policy": "Retained complete, separate from preparation; no wall split or clipping",
+            "lanes": [
+              {
+                "bookkeeping_cycles": "2448468",
+                "exclusive_body_cycles": "3523002",
+                "lane": 1,
+                "root_full_cycles": "5971470",
+                "thread": "6664"
+              },
+              {
+                "bookkeeping_cycles": "6302",
+                "exclusive_body_cycles": "3445274",
+                "lane": 2,
+                "root_full_cycles": "3451576",
+                "thread": "4752"
+              },
+              {
+                "bookkeeping_cycles": "6316",
+                "exclusive_body_cycles": "2566852",
+                "lane": 3,
+                "root_full_cycles": "2573168",
+                "thread": "6096"
+              },
+              {
+                "bookkeeping_cycles": "8722",
+                "exclusive_body_cycles": "971804",
+                "lane": 4,
+                "root_full_cycles": "980526",
+                "thread": "1900"
+              }
+            ],
+            "native": [
+              {
+                "attempted": 3,
+                "body_cycles": "921660",
+                "bookkeeping_cycles": "5872",
+                "crossing": 1,
+                "exclusive_body_cycles": "921660",
+                "inclusive_full_cycles": "927532",
+                "overload": 0,
+                "slot": 13
+              },
+              {
+                "attempted": 4,
+                "body_cycles": "5090466",
+                "bookkeeping_cycles": "6746",
+                "crossing": 0,
+                "exclusive_body_cycles": "5090466",
+                "inclusive_full_cycles": "5097212",
+                "overload": 2,
+                "slot": 14
+              },
+              {
+                "attempted": 1667,
+                "body_cycles": "2249022",
+                "bookkeeping_cycles": "2438508",
+                "crossing": 0,
+                "exclusive_body_cycles": "2249022",
+                "inclusive_full_cycles": "4687530",
+                "overload": 0,
+                "slot": 15
+              },
+              {
+                "attempted": 1,
+                "body_cycles": "76918",
+                "bookkeeping_cycles": "1704",
+                "crossing": 0,
+                "exclusive_body_cycles": "76918",
+                "inclusive_full_cycles": "78622",
+                "overload": 0,
+                "slot": 16
+              }
+            ]
+          },
+          "record_count": 1680,
+          "sha256": "d3d0e2e0c56d661b6ee9b0e6f28966ff7453954f79ddfc35993b0098a520d149"
+        }
+      },
+      "release": {
+        "elapsed_usec": 9229,
+        "engine_executed": false,
+        "faults": [
+          {
+            "bytes": 232,
+            "failure_code": 4,
+            "name": "counter",
+            "sha256": "34b14ff1ed16cb63bf86d1bc99c1ad255f8f5df5d3bd2cc4809fc9a3d8c9e67e"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 1,
+            "name": "cap",
+            "sha256": "59695426423058abf74e558a4a69c4bf95ef55428cf02117bb944565cd07a2a2"
+          },
+          {
+            "bytes": 40,
+            "failure_code": 2,
+            "name": "owner",
+            "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+          },
+          {
+            "bytes": 232,
+            "failure_code": 5,
+            "name": "main_crossing",
+            "sha256": "4b1f8a70fceecc50e590d692dde67838c864da30175b7663a5162eb9ef0daf82"
+          },
+          {
+            "failure_code": 7,
+            "name": "write",
+            "trace_available": false
+          }
+        ],
+        "mutations_rejected": [
+          "invalid-terrain-context",
+          "live-publisher",
+          "retained-session",
+          "live-scope",
+          "pool-join-invention",
+          "missing-retirement",
+          "same-incarnation",
+          "wrong-os-thread",
+          "missing-detach",
+          "unexpected-worker",
+          "missing-attempt",
+          "double-completion",
+          "hidden-overload",
+          "clipped-crossing",
+          "changed-native-work",
+          "unjoined-writer",
+          "retained-recorder",
+          "false-destruction",
+          "hidden-raw-failure",
+          "qualified-cost",
+          "over-cap-fixture"
+        ],
+        "passed": true,
+        "qualified": false,
+        "raw": {
+          "bytes": 226984,
+          "cap_bytes": 33554432,
+          "failure_code": 0,
+          "lane_count": 4,
+          "ownership": {
+            "crossing_ids": [
+              1178
+            ],
+            "crossing_policy": "Retained complete, separate from preparation; no wall split or clipping",
+            "lanes": [
+              {
+                "bookkeeping_cycles": "1393764",
+                "exclusive_body_cycles": "1971806",
+                "lane": 1,
+                "root_full_cycles": "3365570",
+                "thread": "1296"
+              },
+              {
+                "bookkeeping_cycles": "7420",
+                "exclusive_body_cycles": "1705244",
+                "lane": 2,
+                "root_full_cycles": "1712664",
+                "thread": "1504"
+              },
+              {
+                "bookkeeping_cycles": "13818",
+                "exclusive_body_cycles": "1710298",
+                "lane": 3,
+                "root_full_cycles": "1724116",
+                "thread": "800"
+              },
+              {
+                "bookkeeping_cycles": "6330",
+                "exclusive_body_cycles": "937194",
+                "lane": 4,
+                "root_full_cycles": "943524",
+                "thread": "4000"
+              }
+            ],
+            "native": [
+              {
+                "attempted": 3,
+                "body_cycles": "308850",
+                "bookkeeping_cycles": "7296",
+                "crossing": 1,
+                "exclusive_body_cycles": "308850",
+                "inclusive_full_cycles": "316146",
+                "overload": 0,
+                "slot": 13
+              },
+              {
+                "attempted": 4,
+                "body_cycles": "3106692",
+                "bookkeeping_cycles": "13942",
+                "crossing": 0,
+                "exclusive_body_cycles": "3106692",
+                "inclusive_full_cycles": "3120634",
+                "overload": 2,
+                "slot": 14
+              },
+              {
+                "attempted": 1169,
+                "body_cycles": "1314932",
+                "bookkeeping_cycles": "1389790",
+                "crossing": 0,
+                "exclusive_body_cycles": "1314932",
+                "inclusive_full_cycles": "2704722",
+                "overload": 0,
+                "slot": 15
+              },
+              {
+                "attempted": 1,
+                "body_cycles": "33342",
+                "bookkeeping_cycles": "1864",
+                "crossing": 0,
+                "exclusive_body_cycles": "33342",
+                "inclusive_full_cycles": "35206",
+                "overload": 0,
+                "slot": 16
+              }
+            ]
+          },
+          "record_count": 1182,
+          "sha256": "3344108b5bd79d5212942d953fa2a976f823349b0340a79fcbf3f3bcd51d5440"
+        }
+      }
+    },
+    "file_count": 24,
+    "files": {
+      "editor/controls.json": {
+        "bytes": 64060,
+        "sha256": "b5532a6288e05f6b8b767abd3d2941a7b893bf1e7f2de9b186b56e8ac5e0324d"
+      },
+      "editor/controls.json.bin": {
+        "bytes": 322600,
+        "sha256": "d3d0e2e0c56d661b6ee9b0e6f28966ff7453954f79ddfc35993b0098a520d149"
+      },
+      "editor/controls.json.bin-cap": {
+        "bytes": 232,
+        "sha256": "8d7e244463838c46c195b6cae21d8594c303cc3b9aef6ff1b719da53fec2f0ab"
+      },
+      "editor/controls.json.bin-counter": {
+        "bytes": 232,
+        "sha256": "199e637d57542768fd9b375cf36a4cdce18b041bb6ace3e05997c4a9a1473aef"
+      },
+      "editor/controls.json.bin-main_crossing": {
+        "bytes": 232,
+        "sha256": "7db3ca33359ac4196b2c158fb65ac1c4dcb376a8e04f9d2e43088300e56163c4"
+      },
+      "editor/controls.json.bin-owner": {
+        "bytes": 40,
+        "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+      },
+      "editor/controls.json.bin.csv": {
+        "bytes": 20,
+        "sha256": "cba237fca710fe813654741d712e4d83f2919fd5354971e94613b5866638acf8"
+      },
+      "editor/controls.json.bin.csv.edits.jsonl": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "editor/controls.json.bin.csv.operations.csv": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "editor/controls.json.bin.csv.proxy.tmp": {
+        "bytes": 6,
+        "sha256": "cfa4580531f01a8346912547dd3beb0c5fcddf2a2f2ad6f89a770ea61b1eb5ff"
+      },
+      "editor/process.log": {
+        "bytes": 555,
+        "sha256": "ff055a6bc5698dde912c44c2941a1f1f823a47a0dfe0e6aa8f9be13116a350cd"
+      },
+      "editor/validation.json": {
+        "bytes": 3917,
+        "sha256": "3e92ad206851945056f93e7c627d374d2dcef959e9be5e0923b43f93e96efe4f"
+      },
+      "release/controls.json": {
+        "bytes": 64059,
+        "sha256": "389a099b76174647d97c14705ef1b009d244ad2f1dcf4bd6a8b73acc019216ef"
+      },
+      "release/controls.json.bin": {
+        "bytes": 226984,
+        "sha256": "3344108b5bd79d5212942d953fa2a976f823349b0340a79fcbf3f3bcd51d5440"
+      },
+      "release/controls.json.bin-cap": {
+        "bytes": 232,
+        "sha256": "59695426423058abf74e558a4a69c4bf95ef55428cf02117bb944565cd07a2a2"
+      },
+      "release/controls.json.bin-counter": {
+        "bytes": 232,
+        "sha256": "34b14ff1ed16cb63bf86d1bc99c1ad255f8f5df5d3bd2cc4809fc9a3d8c9e67e"
+      },
+      "release/controls.json.bin-main_crossing": {
+        "bytes": 232,
+        "sha256": "4b1f8a70fceecc50e590d692dde67838c864da30175b7663a5162eb9ef0daf82"
+      },
+      "release/controls.json.bin-owner": {
+        "bytes": 40,
+        "sha256": "671ad81b64d0988c850faf588dd0d859880a30bbbe731ac790873fd0698cdda9"
+      },
+      "release/controls.json.bin.csv": {
+        "bytes": 20,
+        "sha256": "cba237fca710fe813654741d712e4d83f2919fd5354971e94613b5866638acf8"
+      },
+      "release/controls.json.bin.csv.edits.jsonl": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "release/controls.json.bin.csv.operations.csv": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "release/controls.json.bin.csv.proxy.tmp": {
+        "bytes": 6,
+        "sha256": "cfa4580531f01a8346912547dd3beb0c5fcddf2a2f2ad6f89a770ea61b1eb5ff"
+      },
+      "release/process.log": {
+        "bytes": 481,
+        "sha256": "7f283344a34480bb9871835b4da5c83460a5a6ba081f0dd24b8ca912de4422e3"
+      },
+      "release/validation.json": {
+        "bytes": 3917,
+        "sha256": "4ff4aeecc4c9b06ac70304800a6c7abfe1831d7f8aa717a253c5586f21341d52"
+      }
+    },
+    "semantic_corruptions_rejected": 42
+  },
+  "decision": {
+    "declaration_created": false,
+    "next_task": "Fix only the new preparation-demand mode and reader; inject prefix-write failure in matching editor/release without a route; verify a new portable PCK with the same exact native bundle.",
+    "reason": "Correct and verify prefix-publication failure stopping before declaring a route.",
+    "route_authorized": false
+  },
+  "engine_processes": 0,
+  "finding": {
+    "basis": "Source control-flow inspection only; no engine or injected runtime fault executed.",
+    "finding": "sequence_prefix_io_does_not_stop_next_trial",
+    "impact": "The next recorder/terrain setup can start after an already detected prefix I/O failure.",
+    "path": [
+      "The completed trial is copied before the prefix write.",
+      "Write failure changes report_io_failed; trial.valid and abort_reason remain unchanged.",
+      "No scenario truncation occurs while abort_reason is empty.",
+      "The inherited scheduler increments index 0 to 1 and calls the next _start_scenario()."
+    ],
+    "preconditions": {
+      "abort_reason": "",
+      "completed_trial_valid": true,
+      "scenario_index": 0,
+      "scheduled_trials": 5,
+      "sequence_prefix_write": false
+    },
+    "publication": {
+      "file": "game/scripts/m1_preparation_demand_runtime.gd",
+      "first_line": 457,
+      "last_line": 461,
+      "source_sha256": "dda1eebcf86e1ae4991d3910ffa14ad868480482b3e3d14fd69e20fb22e5ccff",
+      "text": "\ttrials.append(trial.duplicate(true))\n\tif not _write_json(\"sequence-prefix.json\", {\"trials\": trials, \"no_retry\": true}): report_io_failed = true\n\tif not bool(trial.valid): abort_reason = \"Attribution trial guard failed: \" + str(trial.id)\n\ttrial.clear()\n\tif not abort_reason.is_empty(): scenarios.resize(scenario_index + 1)"
+    },
+    "runtime_reproduction": "not_run; required before accepting the correction",
+    "scheduler": {
+      "file": "game/scripts/benchmark.gd",
+      "first_line": 766,
+      "last_line": 770,
+      "source_sha256": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+      "text": "\t\t\t_scenario_drained()\n\t\t\tscenario_index += 1\n\t\t\tif scenario_index >= (2 if mode == \"startup\" else scenarios.size()):\n\t\t\t\t_finish(\"completed\", \"Short startup timing check completed; only warmup and N1 ran\" if mode == \"startup\" else \"All applicable engine scenarios ran\")\n\t\t\telse: _start_scenario()"
+    }
+  },
+  "historical_pilot_flags": {
+    "historical_v1_pilot": false,
+    "shipping_cycles_pilot": false,
+    "shipping_observer_pilot": false
+  },
+  "laptop_action_required": false,
+  "measurement_valid": false,
+  "native_build_required": false,
+  "qualified": false,
+  "reviewed_head": "b6b36a4b1186f064d11e5a94140fe3539c6fbf77",
+  "runtime_or_inventory_changed": false,
+  "schema": "m1-preparation-owner-launch-review-1",
+  "semantic_corruptions_rejected": 84,
+  "shipping_cost_estimate": null,
+  "source_evidence_sha256": "3bf79439713d668a8ccf68f327bc13fa19d5f736b02e58fc2d759a6f8e845f09",
+  "target_performance": "not_run"
+}

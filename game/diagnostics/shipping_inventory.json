@@ -1,0 +1,62 @@
+{
+  "version": "m1-shipping-inventory-1",
+  "policy": "m1-shipping-diagnostics-1",
+  "operational_always_on": [
+    "collision/readiness checks and required data viewer",
+    "edit transaction/revision integrity and fixed-work proxy autosaves",
+    "native job/result/resident/payload admission limits",
+    "complete synchronous terrain enforcement clocks and whole-frame carry",
+    "geometric priority admission and one bounded directional preparation viewer"
+  ],
+  "shipping_optional": [
+    "callback interval count, sum, maximum and deadline-miss counters",
+    "one native/resource snapshot per completed simulation second; at most 72 telemetry rows",
+    "bounded shipping summary allocation, serialization, write, flush, close and retained telemetry disposal per trial"
+  ],
+  "forensic_additions": [
+    "native per-operation frame trace, batching, CSV writer and drain for all three phases",
+    "per-callback asynchronous renderer CPU/GPU queries and detailed JSONL write/flush",
+    "per-30-callback live diagnostic labels"
+  ],
+  "common_external_qualification_observers": [
+    "monotonic whole-trial, lifecycle, matching-route-section, callback and positive-dose clocks",
+    "fixed-work interval histogram and callback accounting including the last callback",
+    "per-callback native/resource snapshots, caps, frontier scan/evaluation and bounded qualification CSV",
+    "native lifetime/phase aggregates and operation-limit checks at closure (not raw operation tracing)",
+    "accepted-edit-to-mesh-submission observer, event serialization, bounded writer and final acknowledgement",
+    "per-physics collision elapsed timers, actual pose, command fingerprint, work counts, preparation handover and dose evidence CSV",
+    "per-trial correctness report construction, serialization, hashing of trace files, flush and close"
+  ],
+  "outside_complete_trial_common_harness": [
+    "process launch, project import, common scene/UI initialization and one complete warm-up trial",
+    "terminal timing marker write (separately clocked, never folded into optional cost)",
+    "bounded between-trial report retention/deep-copy and finite protocol selection; at most 13 trial records",
+    "batch summary/identity hashing, independent-reader work, return-to-title UI and process exit"
+  ],
+  "disabled_in_all_pilot_modes": [
+    "native admission selection trace",
+    "deep full-height mesh-resource/vertical-voxel JSONL observer",
+    "legacy calibration/flatness classifiers as qualification decisions"
+  ],
+  "mode_switches": {
+    "bare": {"shipping_optional": false, "forensic_additions": false},
+    "shipping": {"shipping_optional": true, "forensic_additions": false},
+    "forensic": {"shipping_optional": true, "forensic_additions": true}
+  },
+  "estimand": "Incremental complete-trial elapsed effect of shipping_optional, conditional on the common operational work and external qualification observers. Not total diagnostic CPU/GPU overhead or a physical-presentation measurement.",
+  "boundary": "One start/end subtraction: before optional setup and fixture preparation through 4320 fixed physics ticks, final edit acknowledgement, native phase closure, writer drain, terrain/preparation retirement, optional summary serialization/flush/close and complete per-trial report serialization/flush/close. Nested spans are evidence, not additive costs.",
+  "protocol": {
+    "version": "m1-shipping-complete-trial-1",
+    "threshold": 0.01,
+    "warmup_trials": 1,
+    "null_quartet": ["bare", "bare", "bare", "bare"],
+    "positive_quartet": ["bare", "bare+dose", "bare+dose", "bare"],
+    "conditional_shipping_quartet": ["bare", "shipping", "shipping", "bare"],
+    "shipping_condition": "null and positive controls both pass; otherwise stop without another calibration family",
+    "positive_dose": "Synchronous native SHA256 work after each of 4320 real fixed physics ticks. Per-tick request ceil(0.02 * complete positive A0 duration / 4320) microseconds, fixed before B1. Record each actual span/update count/digest. No sleep, yield, I/O, terminal substitute or time-per-callback normalization. Idle absorption is a failed sensitivity control, not a passing zero.",
+    "positive_tick_request_cap_usec": 2000,
+    "positive_tick_elapsed_cap_usec": 50000,
+    "positive_hash_update_cap": 512,
+    "stop_rule": "On overlap, negative attribution, unresolved matching-section drift, invalid controls or missing work/I/O/operation evidence: inconclusive; stop and request an explicit measurement/repetition/threshold policy decision. No automatic reruns or profile matrix."
+  }
+}

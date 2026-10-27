@@ -4,9 +4,80 @@ const REQUIRED_CLASSES: Array[StringName] = [
 	&"VoxelTerrain", &"VoxelMesherBlocky", &"VoxelBoxMover", &"SandboxWorld"
 ]
 var build_info: Dictionary = {}
+var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--operation-witness-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_operation_witness_tests.gd").new())
+		return
+	if "--mesh-retirement-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_mesh_retirement_tests.gd").new())
+		return
+	if "--preparation-prefix-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_preparation_prefix_tests.gd").new())
+		return
+	if "--preparation-demand-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_preparation_demand_tests.gd").new())
+		return
+	if "--preparation-demand-pilot" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_preparation_demand_runtime.gd").new())
+		return
+	if "--observer-disposal-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_observer_disposal_tests.gd").new())
+		return
+	if "--shipping-observer-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_shipping_observer_tests.gd").new())
+		return
+	if "--shipping-observer-pilot" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_shipping_observer_runtime.gd").new())
+		return
+	if "--shipping-cycles-check" in OS.get_cmdline_user_args():
+		$Margin.hide()
+		add_child(load("res://scripts/m1_shipping_cycles_tests.gd").new())
+		return
+	if "--shipping-cycles-pilot" in OS.get_cmdline_user_args():
+		$Margin.hide()
+		add_child(load("res://scripts/m1_shipping_cycles_runtime.gd").new())
+		return
+	if "--cpu-cycle-capability" in OS.get_cmdline_user_args():
+		$Margin.hide()
+		add_child(load("res://scripts/m1_cpu_cycle_capability.gd").new())
+		return
+	if "--shipping-pilot" in OS.get_cmdline_user_args() or "--shipping-pilot-check" in OS.get_cmdline_user_args():
+		$Margin.hide()
+		add_child(load("res://scripts/m1_shipping_runtime.gd").new())
+		return
+	if "--full-height-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_full_height_runtime.gd").new())
+		return
+	if "--ordinary-admission-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_ordinary_admission_runtime.gd").new())
+		return
+	if "--frontier-reversal-replay" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_frontier_reversal_runtime.gd").new())
+		return
+	if "--frontier-admission-replay" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_frontier_admission_runtime.gd").new())
+		return
+	if "--frontier-travel-replay" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_frontier_travel_runtime.gd").new())
+		return
+	if "--frontier-edit-replay" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_frontier_edit_runtime.gd").new())
+		return
+	if "--frontier-boundary-replay" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_frontier_boundary_runtime.gd").new())
+		return
+	if "--frame-slack-probe" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/benchmark_frame_slack_runtime.gd").new())
+		return
+	if "--cpu-dose-probe" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/benchmark_cpu_dose_runtime.gd").new())
+		return
+	if "--benchmark" in OS.get_cmdline_user_args() or "--m1-smoke" in OS.get_cmdline_user_args():
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/benchmark.tscn")
+		return
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://build_info.json"))
 	if parsed is Dictionary:
 		build_info = parsed
@@ -18,10 +89,40 @@ func _ready() -> void:
 	$Margin/Content/Check.pressed.connect(_interactive_check)
 	$Margin/Content/Quit.pressed.connect(func() -> void: get_tree().quit())
 	$Margin/Content/Check.grab_focus()
+	$Margin/Content/Description.text = "Milestone 1 • Terrain and engine performance experiment"
+	$Margin/Content.add_theme_constant_override("separation", 8)
+	profile = OptionButton.new()
+	for label: String in ["32³ render blocks • 1 worker (baseline)", "16³ render blocks • 1 worker", "32³ render blocks • 2 workers", "16³ render blocks • 2 workers"]:
+		profile.add_item(label)
+	$Margin/Content.add_child(profile)
+	$Margin/Content.move_child(profile, 5)
+	var pilot := Button.new()
+	pilot.text = "Run focused shipping diagnostic pilot (~12–18 min)"
+	pilot.pressed.connect(_launch_shipping_pilot)
+	$Margin/Content.add_child(pilot)
+	$Margin/Content.move_child(pilot, 6)
+	for entry: Array in [["Calibrate heavy-route measurements (~7 min + loading)", "calibration"], ["Compare heavy-route probe cost (~7 min + loading)", "heavy-ab"], ["Run startup timing check (~20 s + loading)", "startup"], ["Run performance check (~24 min)", "full"], ["Compare all four settings (~96 min)", "matrix"], ["Explore the terrain fixture", "explore"]]:
+		var button := Button.new()
+		button.text = entry[0]
+		button.pressed.connect(_launch_benchmark.bind(entry[1]))
+		$Margin/Content.add_child(button)
+		$Margin/Content.move_child(button, $Margin/Content.get_child_count() - 2)
 	if "--self-test" in OS.get_cmdline_user_args():
 		var report: Dictionary = await _self_test()
 		print("CAIRN_SELF_TEST=" + JSON.stringify(report))
 		get_tree().quit(0 if report["passed"] else 1)
+
+func _launch_shipping_pilot() -> void:
+	# The pilot is fixed at 32-cube / one worker, never the profile dropdown.
+	if OS.create_process(OS.get_executable_path(), PackedStringArray(["--", "--shipping-pilot"])) > 0: get_tree().quit()
+	else: $Margin/Content/Result.text = "Could not start the focused diagnostic pilot."
+
+func _launch_benchmark(mode: String) -> void:
+	var sizes: Array[int] = [32, 16, 32, 16]
+	var counts: Array[int] = [1, 1, 2, 2]
+	var arguments := PackedStringArray(["--", "--benchmark", "--render-size=%d" % sizes[profile.selected], "--workers=%d" % counts[profile.selected], "--benchmark-mode=" + mode])
+	if OS.create_process(OS.get_executable_path(), arguments) > 0: get_tree().quit()
+	else: $Margin/Content/Result.text = "Could not start the engine check."
 
 
 func _interactive_check() -> void:

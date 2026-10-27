@@ -4,11 +4,12 @@ on:
     tags: ['v[0-9]*']
 permissions:
   contents: read
+  actions: read
 jobs:
   validate:
     uses: ./.github/workflows/windows-build.yml
     with:
-      cold: true
+      cold: false
   attach:
     needs: validate
     runs-on: ubuntu-24.04
@@ -28,4 +29,3 @@ jobs:
         run: |
           sha256sum --check SHA256SUMS.txt
           gh release create "$RELEASE_TAG" Cairn-windows-x86_64.zip SHA256SUMS.txt BUILD_INFO.json --verify-tag --prerelease --title "Cairn $RELEASE_TAG" --notes "Experimental candidate. See BUILD_INFO.json for source identity. Target hardware performance remains unverified."
-

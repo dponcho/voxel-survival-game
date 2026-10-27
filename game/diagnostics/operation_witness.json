@@ -1,0 +1,14 @@
+{
+  "schema": "cairn-operation-witness-inventory-1",
+  "classification": "separately opt-in perturbing forensic capability; disabled in every shipping/cost/attribution route",
+  "selection": "new first-tie process per-kind and current-phase guard maxima, first failing individual/frame/payload event, and counter/context failures; the finite cap control explicitly selects every event",
+  "record_cap": 128,
+  "retained_pod_cap_bytes": 65536,
+  "serialized_evidence_cap_bytes_per_process": 262144,
+  "always_present_dispatch": "one inactive begin branch and token/end branches per upload, deletion and completed-task attempt; no counter calls while disabled; this remains shared operational diagnostic work, with cost unqualified",
+  "inside_wall_bracket": "four raw same-thread reads and their clock enclosures, begin/end bookkeeping, control dose and existing lifetime witness; the last-owning reference dies before both ending reads",
+  "outside_wall_bracket": "record selection/copy, original charging bookkeeping, dispatch and final return; a retained commit-end clock bounds the observed post-wall interval, without claiming to include final return",
+  "writer": "synchronous bounded binary serialization, open/write/flush/close/resource release retained under process counter/wall bounds; proof JSON writer separately enclosed; terminal receipt excludes its own write",
+  "unavailable": "renderer-deferred/driver/GPU/allocator work, causal OS attribution, complete wall-interval CPU demand, inactive dispatch overhead and shipping diagnostic-cost qualification",
+  "limits_unchanged": "750us per operation; 1000/2000us frame carry; 256KiB upload; 512KiB/1MiB frame payload; existing work/readiness/resource/ownership gates"
+}

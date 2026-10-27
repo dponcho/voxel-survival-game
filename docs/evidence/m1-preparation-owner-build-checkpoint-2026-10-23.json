@@ -1,0 +1,179 @@
+{
+  "schema": "cairn-preparation-owner-build-checkpoint-1",
+  "source_commit": "fcb1f2e9e81f0377aed7edd73d01abb08da7ed81",
+  "source_tree": "10dd2d24023ba58dc6ea072623aeb6813ab0ec4e",
+  "native_key": "a6ab4888dce3d003e61161ef0456763051ba70ea82b4b801c15d791dbf8f7100",
+  "ci_run": 39966730530,
+  "ci_url": "https://github.com/dponcho/voxel-survival-game/actions/runs/39966730530",
+  "pure_regressions": 213,
+  "native_sanitizer_suites": 11,
+  "static": "passed",
+  "matching_windows": "pending",
+  "portable_candidate": "pending",
+  "route_processes": 0,
+  "pilot_inputs": {
+    "historical_v1_pilot": false,
+    "shipping_cycles_pilot": false,
+    "shipping_observer_pilot": false
+  },
+  "laptop_action_required": false,
+  "qualified": false,
+  "jobs": [
+    {
+      "id": 120458409937,
+      "name": "static",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Packaging and cache regression tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Compile-check owned cloud scripts",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Native fixture checks with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Phase-local operation regression tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Edit visibility lifecycle tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Indexed mesh batch tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "World-space viewer demand tests with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Bounded mesh admission selection with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exact cycle counter and failed-call controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Bounded native cycle dose and hard-cap controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Bounded observer ownership and raw-span controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicit observer disposal and retained-owner controls with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preparation owners and publication lifetime with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 120459468858,
+      "name": "windows / native / native-binaries",
+      "status": "in_progress",
+      "conclusion": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Identify native sources, pins and compilation recipe",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Restore exact native cache",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reuse the identical pre-redesign native build",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify cache or restore a qualified native artifact",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install compiler only for a native source build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build editor and matching Windows templates",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    }
+  ]
+}
