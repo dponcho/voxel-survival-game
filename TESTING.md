@@ -695,5 +695,18 @@ order, missing observations remain null, identities remain exact and refused
 work invents no endpoint. The historical source check explicitly rejects the
 new implementation inheriting the old candidate identity. Existing eleven
 native sanitizer suites and all required runtime/package checks remain. Source
-and native metadata, compiled scripts and both downloaded platform audits must
-match the new exact candidate. Live cloud controls/candidate are pending.
+and native metadata, compiled scripts and both downloaded platform audits match
+the new exact candidate in CI `40440351282`. All 280 Python regressions pass on both
+platforms, as do the eleven sanitizer suites, three native qualification reports,
+required integration/package checks and complete downloaded Windows/Linux audit
+replays. Both actual ten-case lifetime controls and all seventeen corruptions
+per binary reproduce locally from saved files, with no engine. The
+[result and self-contained proof](docs/M1_MESH_RETIREMENT_LIFETIME.md) retain raw
+ObjectDB observations, exact timing/charging, candidate identity and every
+broader failure. The preserved Windows preflight exposed a historical test
+fixture decoding UTF-8 with Windows' default codepage and signing a different
+UTF-8 string from its saved source. Controlled simulation reproduces that error;
+the test now writes UTF-8/LF and signs its actual bytes. The production identity
+reader remains strict. The broader diagnostics retain 1,488 µs debug kind-2
+retirement and 824 µs release upload failures against 750 µs. These controls
+prove synchronous object lifetime only, not target or renderer-deferred cost.

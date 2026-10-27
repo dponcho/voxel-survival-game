@@ -154,14 +154,20 @@ Python regressions without an engine. Direct owner scopes still leave most main
 preparation demand in unowned gaps. A separate source lifetime defect is found:
 the empty-ArrayMesh local reference can perform final destruction after the
 individual deletion timer/charge; the completed-task parent does not cover it.
-Next correct that lifetime and prove actual destruction inside the existing
-bracket with bounded controls and a matching candidate. This does not explain
-or waive the 819 µs kind-2 overrun. No new attribution process is declared.
-The [retirement-lifetime correction](docs/M1_MESH_RETIREMENT_LIFETIME.md) is now
-prepared with a scoped production release and real ObjectDB endpoint controls;
-matching native binaries, actual control results and portable candidate audits
-are pending. Numerical limits, old measurements and consumed pilots remain.
-M1 remains blocked.
+The [retirement-lifetime correction](docs/M1_MESH_RETIREMENT_LIFETIME.md) now
+passes CI `40440351282`: both matching editor/release controls reproduce the rejected
+lifetime and prove corrected last-owner destruction before the ending clock.
+Ten cases and seventeen saved corruptions per binary reconcile single charging,
+sharing and postponed work. All 280 Python regressions on both platforms, eleven
+native sanitizer suites, matching qualification, required integration/package
+checks and downloaded Windows/Linux audits pass. Native key `a10b5a4e` and a
+new exact portable candidate are recorded; initial compile/fixture failures
+remain preserved. No attribution route or replacement process ran. The 819 µs
+kind-2 overrun and uncaptured preparation gaps remain unresolved; the next task
+is a saved review and finite next decision. Current broader diagnostics also
+retain a 1,488 µs debug kind-2 retirement and an 824 µs release upload against
+750 µs. Numerical limits, original evidence, consumed pilots and save/generator
+compatibility remain. M1 stays blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

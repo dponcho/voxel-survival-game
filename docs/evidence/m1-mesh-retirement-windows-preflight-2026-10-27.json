@@ -1,0 +1,656 @@
+{
+  "schema": "cairn-mesh-retirement-windows-preflight-1",
+  "status": "failed-before-capability-controls",
+  "ci": {
+    "source_commit": "1a9b99016ccbb2c58a371764682e2b5ebdd1f48c",
+    "ci_run": 40427845266,
+    "jobs": [
+      {
+        "id": 121937978962,
+        "name": "plan",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Select ordinary candidate CI or the one frozen preparation process",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          }
+        ]
+      },
+      {
+        "id": 121937979136,
+        "name": "static",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Packaging and cache regression tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Compile-check owned cloud scripts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Native fixture checks with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Phase-local operation regression tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Edit visibility lifecycle tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Indexed mesh batch tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "World-space viewer demand tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Bounded mesh admission selection with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Exact cycle counter and failed-call controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Bounded native cycle dose and hard-cap controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Bounded observer ownership and raw-span controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Explicit observer disposal and retained-owner controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Preparation owners and publication lifetime with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 32
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33
+          }
+        ]
+      },
+      {
+        "id": 121938595408,
+        "name": "windows / native / native-binaries",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Identify native sources, pins and compilation recipe",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Restore exact native cache",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Reuse the identical pre-redesign native build",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6
+          },
+          {
+            "name": "Verify cache or restore a qualified native artifact",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Install compiler only for a native source build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Build editor and matching Windows templates",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Qualify editor and both templates independently of gameplay",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Include the pinned packaging inspector",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Save verified native bundle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Publish reusable native bundle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Preserve native build and reuse evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29
+          }
+        ]
+      },
+      {
+        "id": 121938596634,
+        "name": "preparation-demand",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121938597068,
+        "name": "preparation-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121977272022,
+        "name": "windows / export-and-test",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Download qualified native binaries from this run",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Verify exact native identity and every bundle file",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Windows packaging regression tests",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 6
+          },
+          {
+            "name": "Import, export and verify game scenarios",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7
+          },
+          {
+            "name": "One bounded counter capability smoke per matching editor and release",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8
+          },
+          {
+            "name": "Verify collision, edits, eviction and all four profiles",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9
+          },
+          {
+            "name": "Audit portable distribution and test offline extractions",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 10
+          },
+          {
+            "name": "Upload portable player ZIP and identity",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 11
+          },
+          {
+            "name": "Download published player for independent verification",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 12
+          },
+          {
+            "name": "Download native qualification evidence for independent verification",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13
+          },
+          {
+            "name": "Download the preceding public cloud contract baseline once",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14
+          },
+          {
+            "name": "Independently verify downloaded candidate and complete saved admission evidence",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 15
+          },
+          {
+            "name": "Upload separate symbols",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 16
+          },
+          {
+            "name": "Preserve export evidence even after failure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 33
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35
+          }
+        ]
+      },
+      {
+        "id": 121978036586,
+        "name": "windows / counter-artifact-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121978036977,
+        "name": "windows / shipping-pilot",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121978037767,
+        "name": "windows / shipping-cycles-pilot",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121978037976,
+        "name": "windows / saved-artifact-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121978038016,
+        "name": "windows / shipping-cycles-saved-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121978038092,
+        "name": "windows / shipping-observer-saved-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121978038286,
+        "name": "windows / shipping-observer-pilot",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40427845266,
+        "logs_url": null,
+        "steps": null
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12705387484,
+        "name": "Cairn-native-evidence-bb3714dc0fdc5870f0efd00a57e6db849c2609e9",
+        "size_in_bytes": 80474,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12705387484",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12705387484/zip",
+        "expired": false,
+        "created_at": "2026-10-27T02:40:50Z",
+        "expires_at": "2027-01-25T00:40:02Z",
+        "updated_at": "2026-10-27T02:40:50Z",
+        "digest": "sha256:dfbc1cdc0e9fbea7b756871943747fc5f0d0062774f67a9dd3885d45aa0e815f",
+        "workflow_run": {
+          "id": 40427845266,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "1a9b99016ccbb2c58a371764682e2b5ebdd1f48c"
+        }
+      },
+      {
+        "id": 12705192730,
+        "name": "Cairn-native-windows-native-v2-a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+        "size_in_bytes": 1001966253,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12705192730",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12705192730/zip",
+        "expired": false,
+        "created_at": "2026-10-27T02:40:49Z",
+        "expires_at": "2027-01-25T00:40:02Z",
+        "updated_at": "2026-10-27T02:40:49Z",
+        "digest": "sha256:40aaea5112fd02a2c6ad2648e23d12769481bf556ab03cb500613fd597bab45f",
+        "workflow_run": {
+          "id": 40427845266,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "1a9b99016ccbb2c58a371764682e2b5ebdd1f48c"
+        }
+      },
+      {
+        "id": 12704998398,
+        "name": "Cairn-evidence-bb3714dc0fdc5870f0efd00a57e6db849c2609e9",
+        "size_in_bytes": 8653,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12704998398",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12704998398/zip",
+        "expired": false,
+        "created_at": "2026-10-27T02:43:17Z",
+        "expires_at": "2026-11-26T02:43:16Z",
+        "updated_at": "2026-10-27T02:43:17Z",
+        "digest": "sha256:d5d5850cf9af67579752c78cc84a87c0fe86cf00e691f0cba44d7a21dd8b7b2f",
+        "workflow_run": {
+          "id": 40427845266,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "1a9b99016ccbb2c58a371764682e2b5ebdd1f48c"
+        }
+      }
+    ]
+  },
+  "native_key": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+  "failure": {
+    "test": "test_boundary_or_rejected_tail_changes_need_a_new_review_even_if_resigned",
+    "expected": "Measured finalizer/boundary changed",
+    "actual": "Reviewed runtime source changed",
+    "cause": "Windows default cp1252 decoding of the UTF-8 fixture produced a different UTF-8 string hash from the saved source. The reader correctly rejected that source identity before reaching the intended boundary mutation. Controlled cp1252/LF reproduces the exact error; UTF-8/LF and UTF-8/CRLF both reach the intended boundary error because this historical reader normalizes newlines.",
+    "correction": "The test now reads/writes explicit UTF-8 and LF, then signs the actual saved bytes. Production identity verification is unchanged.",
+    "platform_text_io_simulation": {
+      "utf8-lf": {
+        "signed_sha256": "34676977e0b22a758dcf3903fc35df01bc3a40b48c85a3c33bcc2b937d4b386a",
+        "written_sha256": "34676977e0b22a758dcf3903fc35df01bc3a40b48c85a3c33bcc2b937d4b386a",
+        "error": "Measured finalizer/boundary changed"
+      },
+      "utf8-crlf": {
+        "signed_sha256": "34676977e0b22a758dcf3903fc35df01bc3a40b48c85a3c33bcc2b937d4b386a",
+        "written_sha256": "b86c9f71815fc141d28048c9c918cd9bb867c2b496e37b51108d3384817942b0",
+        "error": "Measured finalizer/boundary changed"
+      },
+      "cp1252-lf": {
+        "signed_sha256": "ac6230c98cb859df28b8482107b1321453d742a41810d4f063f840e6858a29f3",
+        "written_sha256": "34676977e0b22a758dcf3903fc35df01bc3a40b48c85a3c33bcc2b937d4b386a",
+        "error": "Reviewed runtime source changed"
+      }
+    },
+    "initial_diagnosis_corrected": "The first line-ending diagnosis was disproved by the controlled simulation. The codepage is the reproducing cause; the fixture correction explicitly fixes both encoding and line endings."
+  },
+  "correction_commit": "2489baaa0f2686634a1bec15b7977608372b6c35",
+  "windows_job_log": {
+    "bytes": 79601,
+    "sha256": "7a3c485a7bc9b69521efc178aed7d248ce8c3baba90bf97e24c7269c77c6454b",
+    "base64_zlib": "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"
+  },
+  "verified_artifact_files": {
+    "build/config/windows-system-dlls.json": {
+      "bytes": 968,
+      "sha256": "210f0eadc6b800c136127671b7aad719ffeec54ec6688a7fb1388abd5cb55e1f",
+      "base64_zlib": "eNp1kk1OxDAMhfdzCsSaIDrDAs6C0KiTmDaa/Fh20k45PSmoiQti5y92nl5e/Ha4u7vv0SrParZB6UigkKIG5jQS9IaV61Snnh6Nc/cPf4cJBsuJlt3YL1UGncmmRV16hv/16pjj3sV4zajccS9q5jIA210eVwsbzRz19XQUDsxU1LeTwhOlrb5oWrCS/hj8QG1SR6+Tk1rlxLhBTKzXG5qTeRV111W4DCM4FC+wAXN6qf3AxWOl2Uu6DbUejJV2Rmu2jvW++bA4OhQSV6AArvWvnBmo6Xi2XrzK86RbRmGXUYjke2c/K6dSNKXooOkU6LOIJyKEQdjAOFPZso/KFJEXbmooUyEspp7rp69b0qQYUpYv5hL37ud4dLPo56K1rmHlkkdTWwnC1BA7sX35lkbw9eoExDaGun82jCmhQO8FMMZY8qLpR6ucJMpc452d6bEZmfl4FpR4t8m37yXqzj+hHN4PXymJK+8="
+    },
+    "build/config/windows.json": {
+      "bytes": 434,
+      "sha256": "1f2c05813a9e3412a06c8656829774abc808aab061a94c3cf89199b3ff7fcedc",
+      "base64_zlib": "eNpVkNFqxCAQRd/zFcHnLbTZspRCvqQsMjETa9c44phkl6X/XjVJIW+ee+9cHZ9VXYswOYdBfNZiMa6nhV+a16YRp+z9UMfJaQpECBpj5i+BvYkUxCmpOHoLEWWP3aQPSkCLwCiuZXywoMtwgoQ5MlAY2+3WPAlBfbf3j4u8vGecGOVonF7aB/IuWDuPK689WeMI0SipvN+T82Rv4FpHGfpz/9ZsZ/LotD3vOUiAxVrbbKREDrPnAyrDhlzLJsdKVV5S8mPsyPJewugh/H/B0V1r044hbi8ApZD5Znae6Y5Waj8deACO0pFJ25Wnp55r9Vv9AfBBimY="
+    },
+    "build/dependencies.lock.json": {
+      "bytes": 1153,
+      "sha256": "004a5b97f6f84e120d5f0dee6c82064ebe893cf7b3e997493843608366f0ecff",
+      "base64_zlib": "eNqVk8tu4zAMRff9iiLr2qaodz+lm4ISqSQzjh3Y7iNT9N9HcVBkgLYYdGcK1r2Xh+Lbze3tZs47OdDm/lbdncvtyONSq7da1PJZpnk/DvVgY1rf4ubucp7Hw2F//m8jrJgKpAKgklM2OI5RQzBQsCgdDUTM4OPHzaepP1/bLctxvu+6PLL0I3G73S+7p9RW4W7NIMN2P8jlu/uzP3Y/NZp3hNadvSCGBOSVREscAyVjnFUqRrY26wLBihHA7LW1yggGQ8gWnaYcVEm4qYLvK53n8VX6L+mo1n9mg5RjsSVQQBVTMTWvMjlDIbamlGw8lwih/IDNw6mnYbhgeVzjrHB+6nSF40Ol5rzTKhSwUphBI5jiIWo02qK1xhkmogCSYmVuC1KKCKxRTLrCqfGO+16mL/n0/fOhOeyH7UuDgBaqfPOUp6V5De7RmW8I/NP4YV7Gaf41dlelbpJeaJa54/FlOJPqPrS7//i1FdpnFgETpcyOSAxn7cBJEDBecVAuhph1MMmkEhzVB1dUfSghGVIJM3ob+MrieFp2l8Z1q7BVsJrVZRuH+Zvtiq36hkKpVOf2Irkb50W4Hadtd6T8m7a1e2O7iJ2F5HWEOv+gk9KKM2W2vs4tgWGtsqWcUbzUMRphQ9phMTpkl3y3BmvWEM3xpJthHKSh4dS+7PrPnBg5KUKU5EBHiT6nlECBq0iqpK1rqjUDEasaKMYcXQjah7paCsjKyunm/eYvYUxA5A=="
+    },
+    "build/engine-bundle/manifest.json": {
+      "bytes": 19686,
+      "sha256": "0e1ad4ccdc1d928e9ad92a3c43450622bcbe6119cf829a4b282b9a9e3a2ac638",
+      "base64_zlib": "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"
+    }
+  },
+  "native_qualification": {
+    "qualification-debug.json": {
+      "errors": [],
+      "game_commit": "bb3714dc0fdc5870f0efd00a57e6db849c2609e9",
+      "identity": {
+        "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+        "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+      },
+      "passed": true
+    },
+    "qualification-editor.json": {
+      "errors": [],
+      "game_commit": "bb3714dc0fdc5870f0efd00a57e6db849c2609e9",
+      "identity": {
+        "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+        "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+      },
+      "passed": true
+    },
+    "qualification-release.json": {
+      "errors": [],
+      "game_commit": "bb3714dc0fdc5870f0efd00a57e6db849c2609e9",
+      "identity": {
+        "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+        "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+      },
+      "passed": true
+    }
+  },
+  "validation": {
+    "python_regressions": 280,
+    "linux_passed": true,
+    "windows_passed": false,
+    "windows_failures": 1,
+    "native_sanitizer_suites": 11,
+    "native_compile_passed": true,
+    "native_qualification_passed": true,
+    "capability_controls_ran": false,
+    "candidate_published": false,
+    "attribution_route_processes": 0,
+    "automatic_retry": false,
+    "native_source_key_changed_by_test_fix": false
+  }
+}
