@@ -16,6 +16,9 @@ protected:
     static void _bind_methods();
 public:
     ~CairnProbe();
+    bool operation_witness_start(const String &path);
+    Dictionary operation_witness_finish();
+    Dictionary operation_witness_controls(const String &path);
     Dictionary retirement_controls();
     bool preparation_start(const String &path);
     Dictionary preparation_finish();

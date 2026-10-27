@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--operation-witness-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_operation_witness_tests.gd").new())
+		return
 	if "--mesh-retirement-check" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_mesh_retirement_tests.gd").new())
 		return

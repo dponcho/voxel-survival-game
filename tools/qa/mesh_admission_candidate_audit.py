@@ -273,6 +273,9 @@ def audit():
     from mesh_retirement import verify_metadata as retirement_metadata, saved_controls as retirement_saved_controls
     retirement_metadata(info,entries,ROOT)
     retirement_controls=retirement_saved_controls(reports,info)
+    from operation_witness import verify_metadata as operation_metadata, saved_controls as operation_saved_controls
+    operation_metadata(info,entries,ROOT)
+    operation_controls=operation_saved_controls(reports,info)
     manifest=read(ROOT/'build/engine-bundle/manifest.json')
     require(manifest==read(ROOT/'build/native-qualification-evidence/build/engine-bundle/manifest.json'),'Native qualification manifest')
     require(manifest['engine_inputs']==input_hash()==info['native_source_key']==info['engine_inputs'],'Native source key')
@@ -366,7 +369,7 @@ def audit():
         native_manifest=manifest,admission=trials,reversal=reversal_trials,ordinary_admission=ordinary_trials,full_height=full_height_trials,prior_continuous=legacy,ordinary=ordinary_result,prior_controls=prior,saved_mutations=mutation,reversal_saved_mutations=reversal_mutation,full_height_saved_mutations=full_height_mutation,
         counter_capability=counter_capability, shipping_cycle_controls=cycle_controls, observer_controls=observer_controls,
         observer_disposal_controls=disposal_controls,preparation_demand_controls=preparation_controls,
-        preparation_prefix_controls=prefix_controls,mesh_retirement_controls=retirement_controls,
+        preparation_prefix_controls=prefix_controls,mesh_retirement_controls=retirement_controls,operation_witness_controls=operation_controls,
         target_action_required_now=False,engine_run_locally=False,executor_recovery='independent read-only audit executed in Actions after workspace disconnect')
     (reports/'m1-mesh-admission-independent-audit.json').write_text(json.dumps(result,indent=2))
     print('CAIRN_INDEPENDENT_AUDIT='+json.dumps(result,separators=(',',':')),flush=True)

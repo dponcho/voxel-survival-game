@@ -28,7 +28,7 @@ affected Python regressions pass. The original 819 µs prefix event, one valid
 bare trial, missing quartet and two current broader failures remain unchanged.
 This review runs zero engines and changes no runtime, inventory, codec or candidate.
 
-**Next: event-specific CPU-cycle bounds for existing terrain-operation guards.**
+**In progress: event-specific CPU-cycle bounds for existing terrain-operation guards.**
 Use **GPT-6.1 Sol Max**. Retain raw same-thread counter/error/wall bounds inside
 actual operational brackets, including corrected destruction. Preserve the first
 failing event separately from later maxima, exact kind/payload and single-charge

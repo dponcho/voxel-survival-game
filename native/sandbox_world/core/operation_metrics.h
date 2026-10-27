@@ -41,6 +41,10 @@ public:
     uint64_t terrain_time_overruns = 0, terrain_upload_overruns = 0;
     void configure(uint64_t usec, uint64_t bytes) { time_limit = usec; byte_limit = bytes; }
     uint64_t active_phase() const { return active ? phase : 0; }
+    uint64_t current_native_frame() const { return native_frame; }
+    uint64_t current_time_limit() const { return frame_time_limit ? frame_time_limit : time_limit; }
+    uint64_t current_byte_limit() const { return frame_byte_limit ? frame_byte_limit : byte_limit; }
+    uint64_t current_bytes() const { return frame_bytes; }
 
     void begin_frame(uint64_t now) {
         seal(now, false);

@@ -11,6 +11,9 @@
 #endif
 
 void CairnProbe::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("operation_witness_start", "path"), &CairnProbe::operation_witness_start);
+    ClassDB::bind_method(D_METHOD("operation_witness_finish"), &CairnProbe::operation_witness_finish);
+    ClassDB::bind_method(D_METHOD("operation_witness_controls", "path"), &CairnProbe::operation_witness_controls);
     ClassDB::bind_method(D_METHOD("retirement_controls"), &CairnProbe::retirement_controls);
     ClassDB::bind_method(D_METHOD("preparation_start", "path"), &CairnProbe::preparation_start);
     ClassDB::bind_method(D_METHOD("preparation_finish"), &CairnProbe::preparation_finish);

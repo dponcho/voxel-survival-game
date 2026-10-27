@@ -30,6 +30,13 @@ Measure cloud algorithm benchmarks as regression signals. Use normalized work co
 
 ## 3. Meaningful native tests
 
+The opt-in [operation-event capability](docs/M1_OPERATION_WITNESSES.md) adds a
+twelfth engine-independent sanitizer suite, matching editor/release real-entry
+controls and re-signed saved-reader faults. Its injected guard, counter and cap
+failures must remain failed. Complete saved Windows/Linux candidate audits replay
+the raw binary, phase/frame union accounting and full writer bounds. No new route
+or target qualification follows from these capability controls.
+
 | System | Required cases and invariant |
 | --- | --- |
 | Coordinates | Floor division/local coordinates at -17, -16, -1, 0, 15, 16 and world limits; reconstruction returns the original coordinate |
