@@ -1,0 +1,483 @@
+{
+  "archive_files_verified": 65,
+  "archive_sha256": "dc9aea7e3b2aca29d136ec9b98d647ae323a915de09f279c32c5ed5c53729eb3",
+  "attribution_valid": false,
+  "audited_files_verified": 66,
+  "candidate": {
+    "exe_sha256": "b3d7a391ffb60c0649d7dd4ba1a599da544be6ac89bc567bb5adcd47feec91de",
+    "game_commit": "73fad4ab0ed4da9d66fb071c7be15596a9f0e705",
+    "inventory_sha256": "269adac80b939b85b0ddc8d1030b5e9b0568d0737d2dc97279582d7d8b4a9f0c",
+    "native_key": "777879f5d9b2bd461e37dcac74102b5adc370381342d60250fcebed7002c360a",
+    "pck_entries_md5_verified": 118,
+    "pck_sha256": "c06b0f11ffb846f496fd156520144a666b55a08d7e21943243ffeee2e32a9c54",
+    "pe_imports_verified": 38,
+    "portable_bytes": 30315398,
+    "portable_sha256": "1d96bf5d77141bc46fdc48b526c42c6ac353fde91f84c49ded523cfa3fc90262"
+  },
+  "comparative_null": null,
+  "complete_bare_quartet": false,
+  "decision": {
+    "failure_cause": "Unavailable: recorded kind-2 overrun has no event-specific CPU/OS/driver attribution.",
+    "laptop_action": false,
+    "new_process_declared": false,
+    "next_acceptance": [
+      "Preserve the operational start/end clocks, 750 us individual guard, cumulative native-frame charging and phase carry.",
+      "Release every local/task-owned mesh reference before recording deletion; retain shared external owners honestly.",
+      "Use bounded actual production-path controls for empty/surfaced/non-ArrayMesh resources, shared owners, postponement and real last-owner destruction.",
+      "Demonstrate the frozen rejected lifetime and corrected destruction order, with destructor witness before the measured endpoint and independently rejected corruptions.",
+      "Build new matching native editor/debug/release and portable candidate; run required correctness/package checks and saved Windows/Linux audits.",
+      "Keep every consumed pilot/request false. No attribution route, retry, fitted correction, payload reduction, threshold change or laptop/M2 task in that increment."
+    ],
+    "next_task": "Correct empty-ArrayMesh last-owner release timing and prove real destruction inside the existing operation bracket.",
+    "preparation_cause": "Unavailable: direct owner spans leave most main preparation demand in same-thread gaps.",
+    "repeat_consumed_process": false
+  },
+  "engine_processes_executed_by_review": 0,
+  "failure": {
+    "associated_payload_bytes": 112280,
+    "direct_preparation_scopes_admit_only_section": 0,
+    "elapsed_usec": 819,
+    "event_thread_cycle_demand": null,
+    "excess_usec": 69,
+    "kind": 2,
+    "kind_name": "surface-removal path",
+    "limit_usec": 750,
+    "main_spans_overlapping_event": [],
+    "os_driver_cause": null,
+    "phase": "retirement",
+    "phase_deletion_bytes": 73913840,
+    "phase_deletion_count": 871,
+    "phase_deletion_usec": 6824,
+    "qualification": "Complete failed measurement retained; no cause or operation pass inferred.",
+    "raw_operation_trace": false,
+    "trial": "AB-H2-preparation-bare-1",
+    "wall_end_usec": 233135428,
+    "wall_start_usec": 233134609
+  },
+  "measurement_valid": false,
+  "original_sequence_audit_reproduced": true,
+  "qualified": false,
+  "reader_sha256": "2adc04d363232748427ccec82ae7f49e64731dbdc3c881bf201ead7d8e6826ee",
+  "saved_corruptions": {
+    "count": 8,
+    "passed": true,
+    "rejected": [
+      "false-qualification",
+      "invented-cost",
+      "continued-trial",
+      "positive-request",
+      "overlapping-publication",
+      "unjoined-writer",
+      "retained-recorder",
+      "ignored-operation-guard"
+    ]
+  },
+  "schema": "m1-preparation-failed-prefix-review-1",
+  "shipping_cost_estimate": null,
+  "source_evidence_sha256": "adf7012ca93db9a235f58e6b1346e5d15e79fa61b5cbc3de6aec4bb5340a2a08",
+  "source_snapshot_recovery": [
+    {
+      "bytes": 4954,
+      "path": "source/.github/workflows/ci.yml",
+      "sha256": "d1e779713ae27ab338eabd640f554a504721acd35b6a7c1f4b593816e72bde1e",
+      "source_commit": "7da951107b45e151eae79f03f6e762c6f594f721"
+    },
+    {
+      "bytes": 3582,
+      "path": "source/.github/workflows/preparation-demand.yml",
+      "sha256": "9aaed9ad282a8695f72ec946114813f4f4dd95aa64d3c5b377f70a180e9c958c",
+      "source_commit": "7da951107b45e151eae79f03f6e762c6f594f721"
+    }
+  ],
+  "source_witness": {
+    "completed_task_parent": "    for (unsigned int collected = 0; collected < 8 && cairn::admit_terrain_operation(cairn::frame_upload_usec, cairn::time_budget); ++collected) {\n        const uint64_t start = OS::get_singleton()->get_ticks_usec();\n        const uint64_t previous = cairn::frame_upload_usec;\n        if (!_general_thread_pool.dequeue_one_completed_task([](zylann::IThreadedTask *task) {\n            task->apply_result();\n            ZN_DELETE(task);\n        })) break;\n        cairn::record_data_apply(start, previous);\n    }",
+    "finding": "An owning local Ref<ArrayMesh> survives record_deletion. On the empty ArrayMesh path, _mesh.unref() cannot be the last release while that local Ref remains; its destructor and possible ArrayMesh destruction/free_rid occur after the operation timer/charge.",
+    "free_mesh_task": "#ifndef VOXEL_FREE_MESH_TASK_H\n#define VOXEL_FREE_MESH_TASK_H\n#include \"../engine/voxel_engine.h\"\n#include \"../util/godot/direct_mesh_instance.h\"\n#include \"modules/sandbox_world/godot/m1_hooks.h\"\nnamespace zylann::voxel {\n// Release a bounded surface per operation, under the same upload/delete allowance.\n// The M1 single-viewer slab has <=507 mesh blocks. New viewer demand waits above\n// 128 retirees, leaving capacity for a complete old scene plus four mesh results.\nclass FreeMeshTask : public ITimeSpreadTask {\npublic:\n    static void add(Ref<Mesh> mesh) {\n        if (mesh.is_null()) return;\n        FreeMeshTask *task = ZN_NEW(FreeMeshTask(mesh));\n        VoxelEngine::get_singleton().push_main_thread_time_spread_task(task);\n    }\n    static void try_add_and_destroy(zylann::godot::DirectMeshInstance &mi) {\n        if (mi.get_mesh_ptr() != nullptr) add(mi.get_mesh());\n        mi.destroy();\n    }\n    void run(TimeSpreadTaskContext &ctx) override {\n        if (!cairn::admit_upload(0)) { ctx.postpone = true; return; }\n        const uint64_t start = OS::get_singleton()->get_ticks_usec();\n        Ref<ArrayMesh> array = _mesh;\n        const bool surface = array.is_valid() && array->get_surface_count() > 0;\n        const int last_surface = surface ? array->get_surface_count() - 1 : 0;\n        const uint32_t bytes = surface ? cairn::mesh_payload_bytes(\n                array->surface_get_array_len(last_surface), array->surface_get_array_index_len(last_surface)) : 0;\n        if (surface) {\n            array->surface_remove(array->get_surface_count() - 1);\n            ctx.postpone = true;\n        } else { _mesh.unref(); }\n        cairn::record_deletion(bytes, start, surface);\n    }\n    ~FreeMeshTask() { --cairn::retired_meshes; }\nprivate:\n    explicit FreeMeshTask(Ref<Mesh> mesh) : _mesh(mesh) {\n        ++cairn::retired_meshes;\n        cairn::retired_high_water = MAX(cairn::retired_high_water, cairn::retired_meshes);\n        if (cairn::retired_meshes > 768) ++cairn::overloads;\n    }\n    Ref<Mesh> _mesh;\n};\n}\n#endif\n",
+    "owned_source_sha256": {
+      "build/patches/voxel/m1-admission.json": "65716bddf96e887517bdcfa2d84289f99db6dafe01abfb58a6f149d1af5c826f",
+      "build/patches/voxel/m1-preparation.json": "3bd79145e02d5b4fc2712e94b70376bc80d072f2e9fb37f707bc0bfb60b175ac",
+      "native/sandbox_world/core/operation_metrics.h": "49eddab88feb7053380eeb79d369a6f9139ab09d0cde28b24ebfe4e656e2aaaa",
+      "native/sandbox_world/core/preparation_observer.h": "d0b701bc5e864a2c865918b41962415950ada86135905b37b19d4cacb6a51a08",
+      "native/sandbox_world/godot/m1_hooks.h": "8f04b0630425dcf1cad8ef92bf2304c6703160ba252a25878335774403dfe56c"
+    },
+    "scope": "Source-level lifetime finding, not an executed destruction control. Complete trial process bounds still include this work. No GPU/deferred/OS cost or explanation of the kind-2 overrun follows.",
+    "upstream": {
+      "files": [
+        {
+          "bytes": 84785,
+          "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "excerpts": [
+            {
+              "first_line": 2027,
+              "text": "void ArrayMesh::surface_remove(int p_surface) {\n\tERR_FAIL_INDEX(p_surface, surfaces.size());\n\tRS::get_singleton()->mesh_surface_remove(mesh, p_surface);\n\tsurfaces.remove_at(p_surface);\n\n\tclear_cache();\n\t_recompute_aabb();\n\tnotify_property_list_changed();\n\temit_changed();\n}"
+            },
+            {
+              "first_line": 2363,
+              "text": "ArrayMesh::~ArrayMesh() {\n\tif (mesh.is_valid()) {\n\t\tERR_FAIL_NULL(RenderingServer::get_singleton());\n\t\tRenderingServer::get_singleton()->free_rid(mesh);\n\t}\n}"
+            }
+          ],
+          "git_blob_sha1": "383c28fc455e6fccc1141c343edd688adb9dc542",
+          "path": "scene/resources/mesh.cpp",
+          "repository": "godotengine/godot",
+          "sha256": "69f9d23d126b7673a1236552d7a0d9d9803e48c2180b2a498319818007913d6f",
+          "url": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/scene/resources/mesh.cpp"
+        },
+        {
+          "bytes": 7628,
+          "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "excerpts": [
+            {
+              "first_line": 66,
+              "text": "\ttemplate <bool Init>\n\t_FORCE_INLINE_ void ref_pointer(T *p_refcounted) {\n\t\tif (p_refcounted == reference) {\n\t\t\treturn;\n\t\t}\n\n\t\t// This will go out of scope and get unref'd.\n\t\tRef cleanup_ref;\n\t\tcleanup_ref.reference = reference;\n\t\treference = p_refcounted;\n\t\tif (reference) {\n\t\t\tif constexpr (Init) {\n\t\t\t\tif (!reference->init_ref()) {\n\t\t\t\t\treference = nullptr;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tif (!reference->reference()) {\n\t\t\t\t\treference = nullptr;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}"
+            },
+            {
+              "first_line": 146,
+              "text": "\ttemplate <typename T_Other>\n\tvoid operator=(const Ref<T_Other> &p_from) {\n\t\tref_pointer<false>(Object::cast_to<T>(p_from.ptr()));\n\t}"
+            },
+            {
+              "first_line": 183,
+              "text": "\ttemplate <typename T_Other>\n\tRef(const Ref<T_Other> &p_from) {\n\t\tthis->operator=(p_from);\n\t}"
+            },
+            {
+              "first_line": 199,
+              "text": "\tvoid unref() {\n\t\t// TODO: this should be moved to mutexes, since this engine does not really\n\t\t// do a lot of referencing on references and stuff\n\t\t// mutexes will avoid more crashes?\n\n\t\tif (reference) {\n\t\t\t// NOTE: `reinterpret_cast` is \"safe\" here because we know `T` has simple linear\n\t\t\t// inheritance to `RefCounted`. This guarantees that `T * == `RefCounted *`, which\n\t\t\t// allows us to declare `Ref<T>` with forward declared `T` types.\n\t\t\tif (reinterpret_cast<RefCounted *>(reference)->unreference()) {\n\t\t\t\tmemdelete(reinterpret_cast<RefCounted *>(reference));\n\t\t\t}\n\t\t\treference = nullptr;\n\t\t}\n\t}"
+            },
+            {
+              "first_line": 226,
+              "text": "\t~Ref() {\n\t\tunref();\n\t}"
+            }
+          ],
+          "git_blob_sha1": "0eab2fafec31a9017141551f062f7362af10fb34",
+          "path": "core/object/ref_counted.h",
+          "repository": "godotengine/godot",
+          "sha256": "05ef9e22f969dd4e93d5682e898b86e0ed646bf6d21a0225de9c7d68193bf074",
+          "url": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/core/object/ref_counted.h"
+        },
+        {
+          "bytes": 15566,
+          "commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+          "excerpts": [
+            {
+              "first_line": 327,
+              "text": "\t// Receive generation and meshing results\n\t_general_thread_pool.dequeue_completed_tasks([](zylann::IThreadedTask *task) {\n\t\ttask->apply_result();\n\t\tZN_DELETE(task);\n\t});\n\n\t// Run this after dequeueing threaded tasks, because they can add some to this runner,\n\t// which could in turn complete right away (we avoid 1-frame delays this way).\n\t_time_spread_task_runner.process(_main_thread_time_budget_usec);\n\n\t_progressive_task_runner.process();"
+            }
+          ],
+          "git_blob_sha1": "fa8e8893f84c5cf11d3a0785d70b71faa63b2d6a",
+          "path": "engine/voxel_engine.cpp",
+          "repository": "Zylann/godot_voxel",
+          "sha256": "3f827b545d567b787601211c0bda46496befcbda3eea78117c00e4e7e4f8ec6d",
+          "url": "https://github.com/Zylann/godot_voxel/blob/2ac9f5f8a8219bf499314cc0fad54ffc47df908f/engine/voxel_engine.cpp"
+        }
+      ],
+      "schema": "cairn-retirement-pinned-source-1"
+    }
+  },
+  "target_performance": "not_run",
+  "total_retained_engine_processes": 1,
+  "trials": [
+    {
+      "complete": true,
+      "direct_native_owners": [
+        {
+          "attempted": 5104,
+          "body_cycles": "625687834",
+          "bookkeeping_cycles": "7914240",
+          "crossing": 0,
+          "exclusive_body_cycles": "625687834",
+          "inclusive_full_cycles": "633602074",
+          "overload": 0,
+          "slot": 13
+        },
+        {
+          "attempted": 392,
+          "body_cycles": "791211480",
+          "bookkeeping_cycles": "869128",
+          "crossing": 0,
+          "exclusive_body_cycles": "791211480",
+          "inclusive_full_cycles": "792080608",
+          "overload": 0,
+          "slot": 14
+        },
+        {
+          "attempted": 776,
+          "body_cycles": "146983066",
+          "bookkeeping_cycles": "1257762",
+          "crossing": 0,
+          "exclusive_body_cycles": "146983066",
+          "inclusive_full_cycles": "148240828",
+          "overload": 0,
+          "slot": 15
+        },
+        {
+          "attempted": 777,
+          "body_cycles": "51238922",
+          "bookkeeping_cycles": "1391060",
+          "crossing": 0,
+          "exclusive_body_cycles": "51238922",
+          "inclusive_full_cycles": "52629982",
+          "overload": 0,
+          "slot": 16
+        }
+      ],
+      "failed_checks": [],
+      "id": "AB-H2-preparation-warmup-0",
+      "inner_main": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2465694982",
+        "endpoints": [
+          "762027180",
+          "3227722162"
+        ],
+        "gap_count": 2335,
+        "gap_cycles": "2229588514",
+        "gap_sequence_sha256": "8d600a17f960d9559510773d8c3412c4c6745ffcf43e62dafcb2638979834a5e",
+        "largest_gap_cycles": "8450296",
+        "main_thread": "2612",
+        "outside_root_ids": [
+          7835
+        ],
+        "partition_available": true,
+        "root_count": 2334,
+        "root_full_cycles": "236106468",
+        "roots_by_slot": {
+          "1": "34590332",
+          "15": "148240828",
+          "16": "52629982",
+          "7": "645326"
+        },
+        "wall_enclosure_usec": [
+          318298,
+          5673416
+        ]
+      },
+      "main_preparation_bounds": [
+        "2465694982",
+        "2466253560"
+      ],
+      "main_preparation_midpoint": "2465974271",
+      "owner_session_destroyed": true,
+      "preparation_native_frames": 777,
+      "preparation_native_work": {
+        "generated": 5104,
+        "meshed": 392,
+        "overloads": 0,
+        "section": "preparation",
+        "stale_results": 0,
+        "upload_bytes": 73972640,
+        "uploads": 659
+      },
+      "process_preparation_bounds": [
+        "3962509922",
+        "3963184434"
+      ],
+      "process_preparation_midpoint": "3962847178",
+      "recorder_disposed": true,
+      "records": 47975,
+      "valid": true
+    },
+    {
+      "complete": true,
+      "direct_native_owners": [
+        {
+          "attempted": 5104,
+          "body_cycles": "533020224",
+          "bookkeeping_cycles": "7694968",
+          "crossing": 0,
+          "exclusive_body_cycles": "533020224",
+          "inclusive_full_cycles": "540715192",
+          "overload": 0,
+          "slot": 13
+        },
+        {
+          "attempted": 392,
+          "body_cycles": "755250194",
+          "bookkeeping_cycles": "913194",
+          "crossing": 0,
+          "exclusive_body_cycles": "755250194",
+          "inclusive_full_cycles": "756163388",
+          "overload": 0,
+          "slot": 14
+        },
+        {
+          "attempted": 823,
+          "body_cycles": "134269818",
+          "bookkeeping_cycles": "1491042",
+          "crossing": 0,
+          "exclusive_body_cycles": "134269818",
+          "inclusive_full_cycles": "135760860",
+          "overload": 0,
+          "slot": 15
+        },
+        {
+          "attempted": 822,
+          "body_cycles": "49042978",
+          "bookkeeping_cycles": "1513726",
+          "crossing": 0,
+          "exclusive_body_cycles": "49042978",
+          "inclusive_full_cycles": "50556704",
+          "overload": 0,
+          "slot": 16
+        }
+      ],
+      "failed_checks": [],
+      "id": "AB-H2-preparation-bare-0",
+      "inner_main": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2579764228",
+        "endpoints": [
+          "37233852280",
+          "39813616508"
+        ],
+        "gap_count": 2472,
+        "gap_cycles": "2357082394",
+        "gap_sequence_sha256": "3d5a3ed10379bf4c140f7be2aa3343ce79913f0fb557ba06520c6b248d9563bf",
+        "largest_gap_cycles": "4166538",
+        "main_thread": "2612",
+        "outside_root_ids": [
+          7972
+        ],
+        "partition_available": true,
+        "root_count": 2471,
+        "root_full_cycles": "222681834",
+        "roots_by_slot": {
+          "1": "35812270",
+          "15": "135760860",
+          "16": "50556704",
+          "7": "552000"
+        },
+        "wall_enclosure_usec": [
+          77875424,
+          83543501
+        ]
+      },
+      "main_preparation_bounds": [
+        "2579764228",
+        "2580166784"
+      ],
+      "main_preparation_midpoint": "2579965506",
+      "owner_session_destroyed": true,
+      "preparation_native_frames": 824,
+      "preparation_native_work": {
+        "generated": 5104,
+        "meshed": 392,
+        "overloads": 0,
+        "section": "preparation",
+        "stale_results": 0,
+        "upload_bytes": 73972640,
+        "uploads": 659
+      },
+      "process_preparation_bounds": [
+        "3949596744",
+        "3950384886"
+      ],
+      "process_preparation_midpoint": "3949990815",
+      "recorder_disposed": true,
+      "records": 48109,
+      "valid": true
+    },
+    {
+      "complete": true,
+      "direct_native_owners": [
+        {
+          "attempted": 5104,
+          "body_cycles": "531469724",
+          "bookkeeping_cycles": "7473126",
+          "crossing": 0,
+          "exclusive_body_cycles": "531469724",
+          "inclusive_full_cycles": "538942850",
+          "overload": 0,
+          "slot": 13
+        },
+        {
+          "attempted": 392,
+          "body_cycles": "746188604",
+          "bookkeeping_cycles": "843908",
+          "crossing": 0,
+          "exclusive_body_cycles": "746188604",
+          "inclusive_full_cycles": "747032512",
+          "overload": 0,
+          "slot": 14
+        },
+        {
+          "attempted": 777,
+          "body_cycles": "127882948",
+          "bookkeeping_cycles": "1204652",
+          "crossing": 0,
+          "exclusive_body_cycles": "127882948",
+          "inclusive_full_cycles": "129087600",
+          "overload": 0,
+          "slot": 15
+        },
+        {
+          "attempted": 776,
+          "body_cycles": "45981566",
+          "bookkeeping_cycles": "1398928",
+          "crossing": 0,
+          "exclusive_body_cycles": "45981566",
+          "inclusive_full_cycles": "47380494",
+          "overload": 0,
+          "slot": 16
+        }
+      ],
+      "failed_checks": [
+        "operations"
+      ],
+      "id": "AB-H2-preparation-bare-1",
+      "inner_main": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2425919186",
+        "endpoints": [
+          "73723943710",
+          "76149862896"
+        ],
+        "gap_count": 2334,
+        "gap_cycles": "2218656656",
+        "gap_sequence_sha256": "f555ffcc6dab20ea89c0cf86e06b9e370d431b05b8c94c41f570ecffea1f607d",
+        "largest_gap_cycles": "4141340",
+        "main_thread": "2612",
+        "outside_root_ids": [
+          7834
+        ],
+        "partition_available": true,
+        "root_count": 2333,
+        "root_full_cycles": "207262530",
+        "roots_by_slot": {
+          "1": "30206118",
+          "15": "129087600",
+          "16": "47380494",
+          "7": "588318"
+        },
+        "wall_enclosure_usec": [
+          155740821,
+          161091563
+        ]
+      },
+      "main_preparation_bounds": [
+        "2425919186",
+        "2426330598"
+      ],
+      "main_preparation_midpoint": "2426124892",
+      "owner_session_destroyed": true,
+      "preparation_native_frames": 778,
+      "preparation_native_work": {
+        "generated": 5104,
+        "meshed": 392,
+        "overloads": 0,
+        "section": "preparation",
+        "stale_results": 0,
+        "upload_bytes": 73972640,
+        "uploads": 659
+      },
+      "process_preparation_bounds": [
+        "3782487396",
+        "3783061376"
+      ],
+      "process_preparation_midpoint": "3782774386",
+      "recorder_disposed": true,
+      "records": 47971,
+      "valid": false
+    }
+  ],
+  "upstream_source_evidence_sha256": "d21072d9846d6825e3808f5cb007701d539d875c67bc21799614181d89899573",
+  "valid_bare_trials": 1
+}

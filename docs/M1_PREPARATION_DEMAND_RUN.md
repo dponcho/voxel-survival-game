@@ -210,6 +210,20 @@ never invoke `prepare`, `reserve` or `run` again for the consumed declaration.
 The bounded launcher/execution task is complete with a failed three-trial
 prefix. Both request files are disabled, all older pilot inputs remain false,
 and reservation commit `8ab1624e0a74f153b6189afa837fb24f6688d8c9` remains permanent.
-The next task is the saved failed-prefix/direct-owner review in
-[NEXT_TASK.md](NEXT_TASK.md), making one finite next decision without an engine.
+The [saved failed-prefix review](M1_PREPARATION_FAILED_PREFIX_REVIEW.md) is now
+complete. It selects a narrow last-owner lifetime/accounting correction and real
+destruction controls as the next prerequisite in [NEXT_TASK.md](NEXT_TASK.md).
 M1, cost and target qualification remain blocked; no laptop action follows.
+
+
+## Saved review decision
+
+The [October 26 review](M1_PREPARATION_FAILED_PREFIX_REVIEW.md) reproduces the
+original failed sequence/eight corruptions and verifies the complete manifest.
+Preparation owner evidence remains descriptive: most main demand lies in gaps,
+and one valid bare trial cannot form a quartet. The review also identifies a
+separate source defect: a local owning ArrayMesh reference can keep final
+mesh destruction outside the deletion timer/charge on the empty-mesh path.
+Correct that lifetime and prove real destruction inside the bracket before
+reviewing any later process declaration. This source finding does not explain
+or rescue the kind-2 819 µs failure. Original candidate and verdicts stay intact.

@@ -147,7 +147,16 @@ CI retains its failed Linux source-snapshot transfer. Saved-only CI
 Windows/Linux replays; downloaded reports and a fresh local replay agree.
 No replacement process, candidate rebuild, full bare quartet or cost estimate
 follows. Both request files are false and the permanent reservation remains.
-[Exact result and finite next review](docs/M1_PREPARATION_DEMAND_RUN.md#single-process-result).
+[Exact result](docs/M1_PREPARATION_DEMAND_RUN.md#single-process-result).
+The October 26 [saved failed-prefix review](docs/M1_PREPARATION_FAILED_PREFIX_REVIEW.md)
+now reproduces the exact audit, verifies all 66 entries and passes 75 affected
+Python regressions without an engine. Direct owner scopes still leave most main
+preparation demand in unowned gaps. A separate source lifetime defect is found:
+the empty-ArrayMesh local reference can perform final destruction after the
+individual deletion timer/charge; the completed-task parent does not cover it.
+Next correct that lifetime and prove actual destruction inside the existing
+bracket with bounded controls and a matching candidate. This does not explain
+or waive the 819 µs kind-2 overrun. No new attribution process is declared.
 M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.

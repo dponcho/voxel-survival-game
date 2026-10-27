@@ -4,6 +4,25 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
+**Saved failed-prefix review complete; retirement-lifetime correction next.**
+The [review and finite acceptance checks](M1_PREPARATION_FAILED_PREFIX_REVIEW.md)
+verify all 66 audit entries, the exact candidate and the original failed prefix.
+Only one valid bare trial exists; no quartet, cost estimate or attribution pass
+can be derived. Direct preparation owners leave most main-thread demand in
+uncaptured same-thread gaps. No captured main span owns the 819 µs retirement
+event, so its CPU/OS/driver cause remains unavailable.
+
+A separate source defect is concrete: an owning local `Ref<ArrayMesh>` survives
+`record_deletion()`. On the empty ArrayMesh path it can perform final destruction
+after that timer/charge. The completed-task parent does not cover this time-spread
+path. This is a source-level finding, not an executed destruction fixture; it
+neither explains nor excuses the measured kind-2 surface-removal failure.
+**Next correct the last-owner lifetime inside the existing operation bracket,
+prove real destruction in bounded production-path controls, and produce matching
+binaries/candidate.** No attribution route, declaration, retry or laptop action
+belongs to that increment. All 75 affected Python regressions pass; this review
+ran no engine and changed no runtime, inventory, native key or portable bytes.
+
 **Declared process and independent saved verification complete.**
 [CI 40259410841](https://github.com/dponcho/voxel-survival-game/actions/runs/40259410841)
 ran exactly one process. Warmup-0 and bare-0 passed; bare-1 completed all fixed
@@ -21,8 +40,8 @@ Only exact preflight/Git-bound source bytes were recovered in derived copies;
 measured files and original verdicts are unchanged. Read
 [the result and self-contained record](M1_PREPARATION_DEMAND_RUN.md#single-process-result).
 Both launch and saved-recheck requests are now false. Keep the permanent
-run-bound reservation; never repeat the consumed process. The next task is a
-saved failed-prefix/direct-owner review and one finite decision, without an engine.
+run-bound reservation; never repeat the consumed process. The saved review above
+selects a narrow retirement-lifetime correction; no new attribution process is declared.
 
 **Historical saved owner launch review complete; route declaration withheld then.** The exact
 candidate and four saved controls reproduce, including all 84 saved corruptions.
@@ -98,9 +117,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | Native/fault checks and independent audits pass. The consumed preparation process in CI `40259410841` retains an 819 µs retirement deletion (750 µs limit). The prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Carry the complete ledger into the relevant exact-build target pilot; preserve failures and isolate any blocking code path. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | Existing native/fault checks and independent audits pass within their scopes. The saved review identifies an owning local ArrayMesh reference whose final release can outlive the deletion timer. The consumed preparation process in CI `40259410841` retains an 819 µs retirement deletion (750 µs limit). The prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | First close the empty-ArrayMesh release lifetime/charge gap with real destruction controls and a matching candidate; retain all observed failures. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite. Its declared process is now consumed: three completed trials, third failed at 819 µs retirement deletion; all ownership/publication evidence reconciles. | Review the saved failed prefix and directly captured preparation owners; identify the minimum prerequisite and make one finite next decision without an engine. | All declared sequences are consumed and all pilot requests are false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite. Its declared process is now consumed: three completed trials, third failed at 819 µs retirement deletion; all ownership/publication evidence reconciles. | Complete the selected retirement-lifetime correction and real destruction controls before reviewing any later attribution declaration. | All declared sequences are consumed and all pilot requests are false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
@@ -276,32 +295,48 @@ The original failed Linux transfer and both zero-process preflights remain
 historical failures. Saved-only CI `40389612694` and the downloaded local replay
 verify the same original measurements with two explicitly recovered source files.
 
-**Next bounded task: saved failed-prefix and direct-owner review only.**
-Read [the result](M1_PREPARATION_DEMAND_RUN.md) and
-[exact evidence](evidence/m1-preparation-demand-cloud-2026-10-25.json).
-Verify the original archive/digests, source-recovery provenance and independent
-saved audit. Inspect the failed retirement deletion's phase, kind, payload,
-maximum and available timing/ownership evidence; distinguish what is directly
-observed from what cannot be attributed. Retain the third trial as complete but
-invalid. Review the three trials' directly captured preparation owners only
-within their valid scopes; do not invent a full bare quartet, causal observer
-cost or a passing operation result.
+**Completed saved task: failed-prefix/direct-owner review and finite decision.**
+The [reproducible review](M1_PREPARATION_FAILED_PREFIX_REVIEW.md) verifies the
+original archive and all 66 audit entries, recovers only two exact source
+snapshots, reproduces the sequence/eight corruptions and retains the failed
+third trial. Only one valid bare trial exists. Direct generation/meshing work
+matches, while most directly bounded main preparation demand remains in gaps
+outside the captured roots. No event-specific CPU/OS/driver diagnosis follows
+for the 819 µs kind-2 retirement failure. Source review separately proves the
+empty-ArrayMesh local-owner lifetime can extend beyond the deletion endpoint.
+All 75 affected Python regressions pass, including eight new saved-review cases.
+No engine ran; runtime and candidate bytes are unchanged.
 
-Make one finite decision identifying the minimum prerequisite/correction and
-its observable acceptance checks before any later separately declared process.
-Preserve all original files, work and guards, including historical 1,221 µs
-upload and 809 / 865 / 905 µs deletion failures. Do not waive the 819 µs failure
-as noise, repeat this process, add trials, fit a correction, normalize callbacks,
-clip spans, subtract thread totals from process demand, rebuild the unchanged
-candidate, enable any consumed pilot, or start a laptop/M2 task.
+**Next bounded task: last mesh-owner destruction inside deletion accounting.**
+Follow [the exact finding and acceptance checks](M1_PREPARATION_FAILED_PREFIX_REVIEW.md#finite-decision-and-next-acceptance-checks).
+Correct only the local/task-owned reference lifetime in `FreeMeshTask::run()`
+so its synchronous release/destruction finishes before `record_deletion()` ends
+the existing operation bracket. Preserve external owners and one-surface/
+postponement behavior. Prove the rejected old lifetime and corrected order with
+bounded controls on the actual production path: empty/surfaced ArrayMesh,
+shared owner, applicable non-ArrayMesh/null handling, postponement and real
+last-owner destruction. A destructor witness must precede the corrected endpoint;
+retain honest failures and independently reject forged order/ownership/charge.
 
-Keep `m1-preparation-demand-attribution-1`, inventory
+Keep the 750 µs individual limit, 1/2 ms native-frame budgets, nested union
+charging and phase carry. The process bounds must still include all synchronous
+work; renderer-deferred cost stays unverified. This correction does not prove
+that the separate 819 µs surface-removal overrun is solved. Produce matching
+native editor/debug/release and a new portable candidate with existing required
+correctness/package checks and downloaded Windows/Linux saved audits. Use only
+finite capability controls; no attribution route or declaration in that task.
+
+Preserve all original measurements, including the 819 µs failure, historical
+1,221 µs upload and 809 / 865 / 905 µs deletion failures. Keep
+`m1-preparation-demand-attribution-1`, inventory
 `m1-preparation-demand-inventory-1`, raw version 2 / `CAIRNOB2`, old codecs,
 32³/one worker, full height/radii, 4,320 ticks / 103,680 actor ticks / 288 edits /
 72 saves, 32 MiB wire cap, eight lanes/depth eight, numerical 1% and every
 existing deadline/work/operation/resource/readiness/coverage/edit gate.
 Both preparation requests and all three older consumed pilot inputs stay false;
-the permanent reservation is never updated, deleted or reused.
+the permanent reservation is never updated, deleted or reused. No retry, fitted
+correction, frame normalization, span clipping, process/thread subtraction,
+payload/threshold relaxation, laptop action or M2 expansion follows.
 Use **GPT-6.1 Sol Max**.
 
 The completed ordinary proof and the five broader operation failures are in

@@ -648,3 +648,30 @@ Both preparation request files are now false. The launcher/execution increment
 is complete; [the result and reproduction instructions](docs/M1_PREPARATION_DEMAND_RUN.md#final-saved-verification-and-handoff)
 lead only to a saved failed-prefix review. No unchanged engine suite or candidate
 rebuild is required for this final evidence/prose commit.
+
+
+### Saved failed preparation-prefix review
+
+`tools/qa/preparation_failed_prefix_review.py` verifies the exact original ZIP,
+all 65 transferred files and all 66 original audit entries after recovery of
+only the two preflight/Git-bound workflow snapshots. It verifies the frozen
+candidate/native/inventory, reproduces the original preflight controls,
+sequence and eight semantic corruptions, and compares all retained platform
+replays. It derives exact same-thread inner root/gap unions and retains the
+invalid third trial without filling the missing bare quartet or estimating cost.
+
+Eight new regressions reject altered members, re-signed escaped/duplicate/link
+paths, false owners, bad counters, reversed roots, clipped crossings, changed
+kind/payload/failure scope, changed source lifetime and forged consumed proof.
+All **75 affected preparation regressions pass**; compile and whitespace checks
+pass. The real raw derivation and committed-record reproduction both run no
+engine. Native/runtime/inventory/candidate bytes are unchanged; no expensive
+engine suite or native build is repeated for this saved-review increment.
+
+The [source-bound finding and next controls](docs/M1_PREPARATION_FAILED_PREFIX_REVIEW.md)
+select correction of a local ArrayMesh reference whose final destruction can
+occur after deletion measurement. This is a source finding, not an executed
+engine lifetime control or an explanation of the retained 819 µs surface-removal
+failure. The next implementation must demonstrate actual destruction before
+the measured endpoint, preserve external owners/guards and produce matching
+binaries/candidate; no consumed attribution process is authorized by this review.
