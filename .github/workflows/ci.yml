@@ -9,8 +9,7 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  # Keep this corrected proof independent of the earlier fixture include preflight.
-  group: ci-retirement-proof-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   plan:

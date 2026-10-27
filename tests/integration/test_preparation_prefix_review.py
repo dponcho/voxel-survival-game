@@ -127,13 +127,13 @@ class CorrectedLaunchReviewTests(unittest.TestCase):
                 for name in names:
                     path=root/name;path.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,path)
                 name = names[0] if which=='boundary' else names[2]
-                path=root/name;text=path.read_text()
+                path=root/name;text=path.read_text(encoding='utf-8')
                 if which=='boundary':text=text.replace('trial["marker_usec"] = Time.get_ticks_usec() - marker_begin',
                     'trial["marker_usec"] = Time.get_ticks_usec() - marker_begin + 1')
                 else:text=text.replace('report_io_failed = true','report_io_failed = false')
-                path.write_text(text)
+                path.write_text(text,encoding='utf-8',newline='\n')
                 proof=copy.deepcopy(self.proof)
-                proof['preparation_metadata']['sources_sha256'][Path(name).name]=hashlib.sha256(text.encode()).hexdigest()
+                proof['preparation_metadata']['sources_sha256'][Path(name).name]=hashlib.sha256(path.read_bytes()).hexdigest()
                 with self.assertRaisesRegex(RuntimeError,'finalizer/boundary changed|Frozen rejected publication'):
                     review.source_witness(proof,root)
 
