@@ -1,8 +1,8 @@
 // Frozen rejected production lifetime, for the bounded native control only.
 #ifndef CAIRN_FROZEN_FREE_MESH_TASK_H
 #define CAIRN_FROZEN_FREE_MESH_TASK_H
-#include "../engine/voxel_engine.h"
-#include "../util/godot/direct_mesh_instance.h"
+#include "modules/voxel/engine/voxel_engine.h"
+#include "modules/voxel/util/godot/direct_mesh_instance.h"
 #include "modules/sandbox_world/godot/m1_hooks.h"
 namespace zylann::voxel {
 // Release a bounded surface per operation, under the same upload/delete allowance.
