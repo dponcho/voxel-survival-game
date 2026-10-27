@@ -16,6 +16,7 @@ protected:
     static void _bind_methods();
 public:
     ~CairnProbe();
+    Dictionary retirement_controls();
     bool preparation_start(const String &path);
     Dictionary preparation_finish();
     Dictionary preparation_controls(const String &path, Object *mesher, Object *terrain);

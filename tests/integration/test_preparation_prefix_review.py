@@ -105,10 +105,18 @@ class CorrectedLaunchReviewTests(unittest.TestCase):
             lambda p:p['validation'].__setitem__('shipping_observer_pilot',True),
             lambda p:p['native']['qualification']['release'].__setitem__('passed',False),
             lambda p:p['linux_downloaded_replay'].__setitem__('engine_executed',True)]
-        review.verify_proof(self.proof)
-        for change in changes:
-            proof = copy.deepcopy(self.proof);change(proof)
-            with self.assertRaises(RuntimeError):review.verify_proof(proof)
+        # This test checks the archived CI verdicts against their original
+        # metadata fixture. A later native correction must not be required to
+        # retain the old implementation in the live checkout.
+        with patch.object(review.owners,'source_metadata',return_value=copy.deepcopy(self.proof['preparation_metadata'])):
+            review.verify_proof(self.proof)
+            for change in changes:
+                proof = copy.deepcopy(self.proof);change(proof)
+                with self.assertRaises(RuntimeError):review.verify_proof(proof)
+
+    def test_current_retirement_correction_cannot_inherit_the_old_candidate_source(self):
+        with self.assertRaisesRegex(RuntimeError,'Reviewed preparation metadata changed'):
+            review.verify_proof(self.proof)
 
     def test_boundary_or_rejected_tail_changes_need_a_new_review_even_if_resigned(self):
         for which in ('boundary','rejected'):

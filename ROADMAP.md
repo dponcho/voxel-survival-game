@@ -157,6 +157,10 @@ individual deletion timer/charge; the completed-task parent does not cover it.
 Next correct that lifetime and prove actual destruction inside the existing
 bracket with bounded controls and a matching candidate. This does not explain
 or waive the 819 µs kind-2 overrun. No new attribution process is declared.
+The [retirement-lifetime correction](docs/M1_MESH_RETIREMENT_LIFETIME.md) is now
+prepared with a scoped production release and real ObjectDB endpoint controls;
+matching native binaries, actual control results and portable candidate audits
+are pending. Numerical limits, old measurements and consumed pilots remain.
 M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.

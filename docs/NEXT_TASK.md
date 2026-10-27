@@ -4,6 +4,16 @@ Branch: `codex/m1-engine-proof`. Model: **GPT-6.1 Sol Max**.
 **M1 remains blocked; no target profile qualified.** No new laptop action is
 requested while diagnostic controls and target gates remain unqualified.
 
+**Retirement-lifetime correction prepared; matching cloud proof pending.**
+The [production correction and controls](M1_MESH_RETIREMENT_LIFETIME.md) put every
+operation-local mesh reference inside the unchanged deletion bracket. A bounded
+real-entry control compares the frozen rejected body with actual corrected
+empty/surfaced/shared/postponed/non-ArrayMesh/null paths, observing ObjectDB
+before the ending clock without creating another owner. Complete the matching
+native build, editor/release controls, required candidate/package checks and
+saved Windows/Linux audits. No attribution route or retry is enabled; the old
+819 µs failure and consumed reservation remain unchanged.
+
 **Saved failed-prefix review complete; retirement-lifetime correction next.**
 The [review and finite acceptance checks](M1_PREPARATION_FAILED_PREFIX_REVIEW.md)
 verify all 66 audit entries, the exact candidate and the original failed prefix.

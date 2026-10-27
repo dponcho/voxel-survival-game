@@ -8,6 +8,9 @@ var profile: OptionButton
 
 
 func _ready() -> void:
+	if "--mesh-retirement-check" in OS.get_cmdline_user_args():
+		add_child(load("res://scripts/m1_mesh_retirement_tests.gd").new())
+		return
 	if "--preparation-prefix-check" in OS.get_cmdline_user_args():
 		add_child(load("res://scripts/m1_preparation_prefix_tests.gd").new())
 		return

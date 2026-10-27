@@ -675,3 +675,25 @@ engine lifetime control or an explanation of the retained 819 µs surface-remova
 failure. The next implementation must demonstrate actual destruction before
 the measured endpoint, preserve external owners/guards and produce matching
 binaries/candidate; no consumed attribution process is authorized by this review.
+
+
+### Mesh retirement lifetime and actual destruction
+
+The production FreeMeshTask body now ends the local ArrayMesh reference scope
+before `record_deletion()` samples/charges its existing ending clock. The hidden
+`--mesh-retirement-check` runs once per matching editor/release with a five-second
+fixture cap and ten bounded cases. A test-only POD endpoint hook observes real
+ObjectDB liveness/refcounts without retaining the object; it is cleared on exit
+and null during ordinary gameplay. It compares the frozen old body, allocated
+empty/two-surface ArrayMesh, external sharing, declared admission refusal/resume,
+actual non-ArrayMesh and null add. It preserves operation kind/payload, actual
+start/end, reference/surface counts, native frame/phase, exact charge and counters.
+
+The new saved reader rejects seventeen semantic corruptions. Eight new pure
+cases also verify that a 751 µs operation stays failed despite correct lifetime
+order, missing observations remain null, identities remain exact and refused
+work invents no endpoint. The historical source check explicitly rejects the
+new implementation inheriting the old candidate identity. Existing eleven
+native sanitizer suites and all required runtime/package checks remain. Source
+and native metadata, compiled scripts and both downloaded platform audits must
+match the new exact candidate. Live cloud controls/candidate are pending.

@@ -70,7 +70,12 @@ inline void record_upload(uint32_t bytes, uint64_t start) {
     upload_max_usec = MAX(upload_max_usec, elapsed);
     operations.record_upload(bytes, start, elapsed);
 }
+// Main-thread, test-only observation. Null in ordinary gameplay. A bounded
+// capability fixture observes ObjectDB before the unchanged ending clock read;
+// its inspection cost stays inside that fixture's measured operation.
+inline void (*retirement_control_before_end)(uint32_t, uint64_t, bool) = nullptr;
 inline void record_deletion(uint32_t bytes, uint64_t start, bool surface) {
+    if (retirement_control_before_end) retirement_control_before_end(bytes, start, surface);
     const uint64_t elapsed = OS::get_singleton()->get_ticks_usec() - start;
     deletion_usec += elapsed; frame_upload_usec += elapsed;
     deletion_max_usec = MAX(deletion_max_usec, elapsed);
