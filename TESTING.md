@@ -710,3 +710,29 @@ the test now writes UTF-8/LF and signs its actual bytes. The production identity
 reader remains strict. The broader diagnostics retain 1,488 µs debug kind-2
 retirement and 824 µs release upload failures against 750 µs. These controls
 prove synchronous object lifetime only, not target or renderer-deferred cost.
+
+
+### Saved retirement review and event-level next decision
+
+`tools/qa/mesh_retirement_review.py` verifies four original artifact archives,
+the exact current and frozen old portable identities, both embedded lifetime
+controls and all seventeen corruptions per binary. It runs the complete saved
+candidate audit on an isolated copy and compares the entire original Windows,
+downloaded Linux and fresh local results. The ordinary portion reconciles 98
+scenarios, 284 native phases and 37,359 native-frame operation rows. Review
+success does not turn an invalid operation into a performance pass.
+
+The original failed process archive and all 66 audited files reproduce. Actual
+raw same-thread roots/gaps are grouped by adjacent slot endpoints, with exact
+sums and no process subtraction, cycle/time conversion or causal owner label.
+All three original partitions and the 819 µs failed event remain unchanged.
+
+Eleven new pure tests reject re-signed lifetime claims, scope/clock regressions,
+changed archive/player/native/CI identities, escaped/duplicate/link members,
+platform-audit disagreements and false gap ownership. All 95 affected pure
+regressions pass. A fresh `--check` reproduces the committed review record; no
+engine, new candidate, inventory/codec change, native build or laptop run is
+part of this increment. Read the [decision and prospective event-witness
+acceptance checks](docs/M1_MESH_RETIREMENT_REVIEW.md). Current 1,488 µs debug
+surface-removal and 824 µs release upload failures remain failed against 750 µs;
+target performance and shipping cost are unqualified.

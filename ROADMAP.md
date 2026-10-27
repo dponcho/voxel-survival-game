@@ -168,6 +168,16 @@ is a saved review and finite next decision. Current broader diagnostics also
 retain a 1,488 µs debug kind-2 retirement and an 824 µs release upload against
 750 µs. Numerical limits, original evidence, consumed pilots and save/generator
 compatibility remain. M1 stays blocked.
+The October 27 [saved retirement review](docs/M1_MESH_RETIREMENT_REVIEW.md) now
+reproduces both lifetime controls and complete Windows/Linux/local audits, with
+95 affected pure regressions passing. It closes the kind-3 prerequisite while
+retaining all kind-1/2 failures and the incomplete bare quartet. Raw adjacency
+concentrates almost all missing main preparation cycles between observed
+VoxelEngine exit and preparation-query entry; it identifies no causal owner.
+The next bounded capability adds event-specific CPU-cycle bounds to existing
+terrain guards, preserving first failure/maxima and every threshold. No process
+is declared or rerun. Runtime/candidate bytes are unchanged by this review;
+M1 remains blocked, with a conditional 12–20 further task-turn planning range.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

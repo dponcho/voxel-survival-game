@@ -20,23 +20,37 @@ Broader diagnostics retain a 1,488 µs debug kind-2 retirement and an 824 µs
 release upload against the unchanged 750 µs limit. Lifetime-control validity
 does not qualify these operation budgets or target performance.
 
-**Next: saved review of the corrected candidate and finite next decision.**
-Use **GPT-6.1 Sol Max**. Work from the downloaded candidate, self-contained
-lifetime proof and existing failed-prefix evidence; this review runs no engine
-and requires no native rebuild or laptop action.
+**Saved retirement review complete; one bounded next implementation selected.**
+The [review, reproduction and finite acceptance checks](M1_MESH_RETIREMENT_REVIEW.md)
+reproduce the exact portable/native/PCK identity, both ten-case lifetime controls,
+all 34 corruptions and the complete Windows/Linux/local saved audits. All 95
+affected Python regressions pass. The original 819 µs prefix event, one valid
+bare trial, missing quartet and two current broader failures remain unchanged.
+This review runs zero engines and changes no runtime, inventory, codec or candidate.
 
-1. Reproduce the exact portable/PCK/native identity, both raw ten-case controls,
-   all seventeen corruptions per binary and the complete Windows/Linux audit
-   agreement. Inspect real last-owner release and the pre-clock witness without
-   adding another owning reference or treating renderer-deferred cleanup as done.
-2. Confirm that this closes the kind-3 empty-reference lifetime/charge gap.
-   Retain the separate 819 µs kind-2 surface-removal failure and every broader
-   operation failure; no complete bare quartet or cost qualification exists.
-3. Assess the still-uncaptured same-thread preparation gaps against the retained
-   failed-prefix evidence. Select one bounded next implementation or state the
-   missing observation and its finite acceptance checks. Any later attribution
-   process needs its own prospective exact-candidate declaration; never reuse
-   the permanent consumed reservation or repeat its process.
+**Next: event-specific CPU-cycle bounds for existing terrain-operation guards.**
+Use **GPT-6.1 Sol Max**. Retain raw same-thread counter/error/wall bounds inside
+actual operational brackets, including corrected destruction. Preserve the first
+failing event separately from later maxima, exact kind/payload and single-charge
+accounting. Bound the forensic record storage/output and prove actual-entry,
+failed-counter, injected guard-failure, first-failure/maximum and overflow paths
+with matching editor/release controls and a new portable candidate. Keep every
+numerical/work/resource gate. Read the linked six acceptance checks before editing.
+
+Further main-loop owner expansion is deferred. Exact old raw topology places
+98.875–99.298% of uncaptured gap cycles between VoxelEngine-process exit and
+preparation-query entry, but identifies no intervening causal owner. Missing
+event-specific CPU demand for the failed upload/deletion is the next observation.
+No attribution route or replacement process is declared. Stop at capability,
+candidate and independent audits, then perform a saved review. Both requests and
+all consumed pilots remain false; never reuse the permanent reservation. No
+laptop action or M2 work is requested now.
+
+The conditional planning estimate is **12–20 further completed task turns** for
+full M1 qualification, including laptop report/review exchanges. The
+[breakdown and assumptions](M1_MESH_RETIREMENT_REVIEW.md#remaining-turn-estimate)
+retain target viability, diagnostic-cost evidence, retention and three complete
+qualification runs as open gates. Significant target failures can take longer.
 
 **Prior saved failed-prefix review.**
 The [review and acceptance checks](M1_PREPARATION_FAILED_PREFIX_REVIEW.md)
@@ -142,9 +156,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | CI `40440351282` closes the local ArrayMesh lifetime gap with actual editor/release endpoint controls and exact candidate audits. Its broader diagnostics retain 1,488 µs debug H2 kind-2 retirement and 824 µs release AB-H1-on-2 preparation upload failures against 750 µs. The consumed preparation process in CI `40259410841` retains an 819 µs retirement deletion (750 µs limit). The prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | The lifetime correction now passes real editor/release controls and matching candidate audits. Review the saved proof and separate remaining kind-2/attribution gaps; retain every failure. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | CI `40440351282` closes the local ArrayMesh lifetime gap with actual editor/release endpoint controls and exact candidate audits. Its broader diagnostics retain 1,488 µs debug H2 kind-2 retirement and 824 µs release AB-H1-on-2 preparation upload failures against 750 µs. The consumed preparation process in CI `40259410841` retains an 819 µs retirement deletion (750 µs limit). The prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | The saved lifetime review is complete. Add the selected bounded event-specific CPU witnesses to existing guards; preserve first failure/maxima and all numerical limits. Prove the capability and matching candidate before any later declared observation. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite. Its declared process is now consumed: three completed trials, third failed at 819 µs retirement deletion; all ownership/publication evidence reconciles. | Review the corrected candidate and saved lifetime proof, then make one finite next decision for the remaining gaps before any later declaration. | All declared sequences are consumed and all pilot requests are false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite. Its declared process is now consumed: three completed trials, third failed at 819 µs retirement deletion; all ownership/publication evidence reconciles. | Complete the chosen event-witness capability and exact saved review. Preparation gap topology remains noncausal; a later observation requires its own prospective declaration. No automatic observer expansion or calibration retry. | All declared sequences are consumed and all pilot requests are false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 

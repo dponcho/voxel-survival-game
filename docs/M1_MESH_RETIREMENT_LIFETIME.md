@@ -165,3 +165,9 @@ lifetime-control operation guards pass; that does not waive these broader
 failures. No attribution route or
 replacement process ran. All request flags remain false and the permanent
 consumed reservation is unchanged. M1 remains blocked; no laptop action follows.
+
+
+The October 27 [saved review](M1_MESH_RETIREMENT_REVIEW.md) now reproduces these
+controls, exact candidate and complete platform audits without an engine. It
+closes the lifetime prerequisite and selects bounded event-specific CPU-cycle
+bounds for the remaining operation guards. No attribution process is declared.
