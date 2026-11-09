@@ -743,3 +743,32 @@ part of this increment. Read the [decision and prospective event-witness
 acceptance checks](docs/M1_MESH_RETIREMENT_REVIEW.md). Current 1,488 µs debug
 surface-removal and 824 µs release upload failures remain failed against 750 µs;
 target performance and shipping cost are unqualified.
+
+
+### Bounded operation-event witnesses — verified November 9
+
+[CI 42681602647](https://github.com/dponcho/voxel-survival-game/actions/runs/42681602647)
+passes 303 Python regressions per platform and twelve native sanitizer suites.
+The fifteen-case actual-entry editor/release controls each reject twenty saved
+semantic mutations, retain first failure and later maximum, and prove failed/
+unavailable counters, corrected destruction, phase carry, union charging and
+explicit overflow. Each process retains 128 of 130 completed events, one
+cancelled attempt and 522 reads, using 40,456 bytes of fixed storage and 105,839
+serialized evidence bytes. Injected guard failures and failed witness integrity
+remain false verdicts despite successful control reproduction.
+
+The original Windows backslash preflight is preserved. Its repair verifies raw
+local/central member names, checks original reader names, rejects local-header,
+CRC and expansion corruption and accepts a valid slash path. The phase-carry
+attack always changes the saved value, including zero. Native key `ff3a8494`
+was restored from the qualified artifact and all three binaries requalified.
+
+Both existing lifetime controls and 34 corruptions, required integration,
+dependencies/offline packaging and downloaded Windows/Linux audits pass. A
+fresh saved-only local replay matches both complete platform audits: 123 PCK
+entries, 38 PE imports, eight identity tests, 98 ordinary scenarios, 284 native
+phases and 37,355 operation rows. Kind-2 overlimits of 803 / 763 / 893 µs and
+166 ms H2 edit p95 bounds for both 16³ profiles remain failed measurements.
+Read [the exact candidate and raw proof](docs/M1_OPERATION_WITNESSES.md#executed-result--november-9-2026).
+No attribution process, target qualification or new laptop action follows;
+the next task is an exact saved review.

@@ -179,6 +179,17 @@ terrain guards, preserving first failure/maxima and every threshold. No process
 is declared or rerun. Runtime/candidate bytes are unchanged by this review;
 M1 remains blocked, with a conditional 12–20 further task-turn planning range.
 
+November 9 completes the [operation-event capability and candidate](docs/M1_OPERATION_WITNESSES.md#executed-result--november-9-2026).
+CI `42681602647` passes 303 Python regressions on each platform, twelve sanitizer
+suites, exact native reuse/requalification, fifteen live cases and twenty saved
+corruptions per editor/release, integration/package checks and complete
+Windows/Linux/local saved audits. The original Windows archive regression is
+fixed and retained as prior failed evidence. Injected failures, counter errors
+and overflow remain invalid; current broader kind-2 overruns of 803 / 763 / 893 µs
+and both 16³ H2 edit p95 failures remain. No attribution process ran and no target
+or shipping-cost gate is qualified. Next is an exact saved review, with no
+new observation, laptop request or M2 automatically authorized.
+
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 
 Compare the stock 32³ render path with 16³ render blocks and one versus two terrain workers. Keep the same resolution, scene and view distance. Record cost attribution: generation, meshing, upload, deletion, draw submission, collision and GPU work.

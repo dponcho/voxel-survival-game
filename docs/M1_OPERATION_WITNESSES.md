@@ -1,7 +1,9 @@
 # M1 bounded operation-event CPU witnesses
 
-Implementation and cloud verification in progress. M1 remains blocked; no
-attribution process, cost result or target qualification is declared here.
+Capability, matching portable candidate and independent saved audits verified
+in [CI 42681602647](https://github.com/dponcho/voxel-survival-game/actions/runs/42681602647).
+M1 remains blocked; no attribution process, cost result or target qualification
+is declared here. The next task is an exact saved review of this evidence.
 The finite acceptance contract is the [saved retirement review](M1_MESH_RETIREMENT_REVIEW.md#one-bounded-next-implementation).
 
 ## Capability and boundaries
@@ -96,10 +98,10 @@ phase carry, charging, cancellation and qualification.
 
 ## Completion and next task
 
-Completion requires matching editor/debug/release native qualification, both
-actual controls, required integration/package checks, a new portable Windows
-candidate and independent saved Windows/Linux audits. Compilation remains in
-GitHub Actions. Cloud/headless results cannot qualify HD 620 performance.
+The required matching editor/debug/release qualification, both actual controls,
+integration/package checks, portable Windows candidate and independent saved
+Windows/Linux/local audits have passed. Compilation remains in GitHub Actions.
+Cloud/headless results cannot qualify HD 620 performance.
 
 After those checks, the next task is an exact saved review of the produced
 candidate and evidence. Do not arm an attribution route, rerun a calibration,
@@ -108,3 +110,60 @@ permanent old reservation stays unchanged. A later finite observation needs its
 own prospective exact-candidate declaration and stopping rule. The conditional
 [M1 turn estimate](M1_MESH_RETIREMENT_REVIEW.md#remaining-turn-estimate) remains
 a planning range, with target viability and diagnostic-cost qualification open.
+
+## Executed result — November 9, 2026
+
+Source `e8ae2a9ea38d0169c28e6ce7b6f692c9d4407d6a`, CI checkout/exported game
+`75f8b0a9e2fcbfd61d830f420a20e91c9f49ccd2`. Both trees equal
+`278661dadad5561672682253b4de49f88dfd280e`. All **303 Python regressions on each
+platform and twelve native sanitizer suites** pass. Matching-editor import and
+direct parser checks, editor/release controls, all required integration,
+dependencies and offline extractions pass. The complete Windows and Linux saved
+audits match a fresh local saved-only replay; no engine ran locally.
+
+| Control binary | Complete native fixture, µs | Cases | Semantic faults rejected | Serialized process evidence, bytes |
+| --- | ---: | ---: | ---: | ---: |
+| editor | 8,775 | 15 | 20 | 105,839 |
+| release | 8,812 | 15 | 20 | 105,839 |
+
+Each recorder uses **40,456 bytes**, writes a **38,144-byte** trace, retains 128
+of 130 completed events and reports two overflowed events, two counter errors,
+one cancelled attempt and 522 reads. Both complete actual-entry controls pass,
+while `operation_guards_valid=false` and `witness_integrity_valid=false` remain.
+The injected first/later upload durations are **2,369 / 4,946 µs** (editor) and
+**2,435 / 4,960 µs** (release). First failure remains event 1 and the later
+maximum event 2. Failed/unavailable counters retain null CPU intervals; both
+corrected last-owner witnesses precede the ending counter reads. All twenty
+existing lifetime cases and 34 lifetime corruptions also reproduce.
+
+The [portable artifact](https://github.com/dponcho/voxel-survival-game/actions/runs/42681602647/artifacts/13705042193)
+contains a **30,372,525-byte** player ZIP, SHA-256
+`f8d2fc1acebfbae3d769fac5aa8d0278d220df643d76080131f20cbf9c80ac09`.
+Native key `ff3a84944e7120b6d6be80e78f7f70438906e57059400289f65339a1d4d9a540`
+is unchanged from the original implementation. CI restored artifact `12768368615`
+from run `40560322527`, verified its exact digest and requalified all three
+binaries. No cold rebuild was needed. The final audit verifies 123 PCK entries,
+38 PE imports and eight identity/self-test reports.
+
+The original run's Windows `backslash` regression remains a failed preflight.
+CPython normalized the fixture name while writing it, and the old reader also
+checked only normalized names. The repair validates original ZIP names, signs
+verified malicious header bytes and preserves local-header/CRC/expansion and
+valid slash-path checks. The phase-carry corruption now changes even a genuine
+zero; every mutation asserts it changed the input. No runtime code, numerical
+gate, generator/save format or shipping inventory changed in that repair.
+
+The [self-contained proof](evidence/m1-operation-witness-cloud-2026-11-09.json)
+retains source bytes, raw control traces/proofs/writer receipts, derivations,
+corruption rejections, artifact identities, qualification, complete audits and
+the original failed archive/log. The ordinary audit reconciles 98 scenarios,
+284 native phases and 37,355 operation rows. It retains kind-2 surface-removal
+overruns of **803, 763 and 893 µs** against 750 µs, and H2 edit p95 bounds of
+**166 ms** for both 16³ profiles against 100 ms. These remain failed observations;
+their causes and target performance are unqualified. The earlier 819 µs failed
+prefix, incomplete quartet and all historical failures remain unchanged.
+
+Both preparation requests and all older pilots remain false; the permanent
+reservation remains `8ab1624e0a74f153b6189afa837fb24f6688d8c9`. No attribution
+process or replacement ran. **Next: exact saved review and a finite decision**,
+without another engine run, new attribution declaration, laptop request or M2.
