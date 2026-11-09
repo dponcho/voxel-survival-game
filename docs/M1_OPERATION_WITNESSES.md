@@ -3,7 +3,8 @@
 Capability, matching portable candidate and independent saved audits verified
 in [CI 42681602647](https://github.com/dponcho/voxel-survival-game/actions/runs/42681602647).
 M1 remains blocked; no attribution process, cost result or target qualification
-is declared here. The next task is an exact saved review of this evidence.
+is declared here. The [exact saved review](M1_OPERATION_WITNESS_REVIEW.md) is
+complete; its finite next implementation keeps observation launch disabled.
 The finite acceptance contract is the [saved retirement review](M1_MESH_RETIREMENT_REVIEW.md#one-bounded-next-implementation).
 
 ## Capability and boundaries
@@ -103,9 +104,11 @@ integration/package checks, portable Windows candidate and independent saved
 Windows/Linux/local audits have passed. Compilation remains in GitHub Actions.
 Cloud/headless results cannot qualify HD 620 performance.
 
-After those checks, the next task is an exact saved review of the produced
-candidate and evidence. Do not arm an attribution route, rerun a calibration,
-request laptop work or start M2. All consumed request files stay false and the
+The [exact saved review](M1_OPERATION_WITNESS_REVIEW.md) now reproduces the
+produced candidate, controls, writer receipts and full audits. Its next task is
+a bounded real-route controller and saved reader, with launch disabled. Do not
+arm an attribution route, rerun a calibration, request laptop work or start M2.
+All consumed request files stay false and the
 permanent old reservation stays unchanged. A later finite observation needs its
 own prospective exact-candidate declaration and stopping rule. The conditional
 [M1 turn estimate](M1_MESH_RETIREMENT_REVIEW.md#remaining-turn-estimate) remains
@@ -165,5 +168,6 @@ prefix, incomplete quartet and all historical failures remain unchanged.
 
 Both preparation requests and all older pilots remain false; the permanent
 reservation remains `8ab1624e0a74f153b6189afa837fb24f6688d8c9`. No attribution
-process or replacement ran. **Next: exact saved review and a finite decision**,
-without another engine run, new attribution declaration, laptop request or M2.
+process or replacement ran. The [subsequent saved review and finite decision](M1_OPERATION_WITNESS_REVIEW.md)
+are complete without another engine run, new attribution declaration, laptop
+request or M2.

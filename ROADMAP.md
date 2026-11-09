@@ -187,8 +187,14 @@ Windows/Linux/local saved audits. The original Windows archive regression is
 fixed and retained as prior failed evidence. Injected failures, counter errors
 and overflow remain invalid; current broader kind-2 overruns of 803 / 763 / 893 µs
 and both 16³ H2 edit p95 failures remain. No attribution process ran and no target
-or shipping-cost gate is qualified. Next is an exact saved review, with no
-new observation, laptop request or M2 automatically authorized.
+or shipping-cost gate is qualified. The subsequent [exact saved review](docs/M1_OPERATION_WITNESS_REVIEW.md)
+now reproduces the four archives, both control families, 74 semantic faults,
+writer/source brackets and complete Windows/Linux/local audits. All 317 Python
+regressions pass. Every ordinary overrun, both H2 edit p95 failures and eight
+FIFO comparison-baseline edit failures remain explicit. The next bounded
+implementation adds a real-route controller/reader around the existing recorder,
+with launch disabled; the current reader/writer are fixture-specific. No new
+observation, laptop request or M2 is declared. M1 remains blocked.
 
 Do not spend weeks building content on an unqualified engine. The first representative engine experiment must include: a visible surface, cave-heavy geometry, a permitted dense-build fixture, one-block edits on borders, persistent-direction sprinting, rapid turns and resource eviction. A flat plane alone does not qualify the architecture.
 

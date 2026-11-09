@@ -771,4 +771,31 @@ phases and 37,355 operation rows. Kind-2 overlimits of 803 / 763 / 893 µs and
 166 ms H2 edit p95 bounds for both 16³ profiles remain failed measurements.
 Read [the exact candidate and raw proof](docs/M1_OPERATION_WITNESSES.md#executed-result--november-9-2026).
 No attribution process, target qualification or new laptop action follows;
-the next task is an exact saved review.
+the subsequent exact saved review is recorded below.
+
+### Saved operation-witness review and finite decision
+
+`tools/qa/operation_witness_review.py` verifies the exact four Actions archives,
+all fifty embedded blobs, 25 source snapshots, qualified native/PCK/player
+identity, both operation and lifetime control families, raw counter events,
+writer receipts and source endpoint/charge/close order. A fresh isolated tree
+executes the existing saved-only entry point, reproducing the complete original
+Windows and retained Linux audits and downloaded-replay summaries. No engine
+runs. The result retains 123 PCK entries, 38 PE imports, eight self-tests,
+98 ordinary scenarios, 284 phases and 37,355 frame-aggregate operation rows.
+
+All **317 Python regressions pass**, including fourteen review cases rejecting
+re-signed receipt/size/thread/verdict/validation forgeries, evidence-cap padding,
+last-owner/ending-read/writer-close reorderings and changed complete audits.
+All thirty operation cases, twenty lifetime cases and 74 original semantic
+faults reproduce. Counter errors and overflow retain false guard/integrity
+verdicts. Three ordinary kind-2 overruns, both ordinary H2 edit p95 failures
+and eight FIFO comparison-baseline edit p95 failures remain explicit. Frozen
+source checks apply to CLI replay, without pinning future native regressions
+to this candidate's source key.
+
+The [saved decision and next finite acceptance checks](docs/M1_OPERATION_WITNESS_REVIEW.md)
+accept the recorder capability and select a bounded real-route controller and
+saved reader, with launch disabled. Current reader/writer requirements are
+fixture-specific. Runtime, inventory, codecs, native key, candidate and consumed
+requests are unchanged; no new process, calibration, laptop action or M2 follows.

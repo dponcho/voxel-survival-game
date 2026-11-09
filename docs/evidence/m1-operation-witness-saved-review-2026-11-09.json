@@ -1,0 +1,2426 @@
+{
+  "artifact_archives": {
+    "export": {
+      "bytes": 31049243,
+      "expanded_bytes": 441119455,
+      "id": 13704598026,
+      "members": 2528,
+      "sha256": "56759577b9e44c2d2d027456789fcebb2d576aa14b14d2d5b19301e692c006e7"
+    },
+    "linux": {
+      "bytes": 56300,
+      "expanded_bytes": 571572,
+      "id": 13705935580,
+      "members": 2,
+      "sha256": "b697761c2129967c365c338d7c14efe0400663a66d17e4c35af56d7bcfdfe62f"
+    },
+    "player": {
+      "bytes": 30278046,
+      "expanded_bytes": 30383394,
+      "id": 13705042193,
+      "members": 3,
+      "sha256": "8a72ee4428b96f1f0b735ba0a1dc456260296b267fb950f8c2c19ecfdd428839"
+    },
+    "qualification": {
+      "bytes": 12790,
+      "expanded_bytes": 29182,
+      "id": 13702447617,
+      "members": 13,
+      "sha256": "71694d49a96fc41d63fe1452ddbdd229796a9e54b37abfba203056818e450c8b"
+    }
+  },
+  "audit_agreement": {
+    "complete_audits_match": true,
+    "ordinary": {
+      "edit_events": 94,
+      "folders": 10,
+      "heavy": [
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-16-1-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "failed",
+          "folder": "m1-release-16-1-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Edit visibility exceeded the 100/200 ms limits",
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-16-2-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "failed",
+          "folder": "m1-release-16-2-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Edit visibility exceeded the 100/200 ms limits",
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-32-2-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-32-2-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-reference-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-closure-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-closure-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-reference-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-reference-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-closure-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-closure-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-reference-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        }
+      ],
+      "heavy_contracts_checked": 42,
+      "native_phases": 284,
+      "operation_rows": 37355,
+      "retained_operation_exceedances": [
+        {
+          "folder": "m1-release-32-2-raw",
+          "kind": "deletion",
+          "max_usec": 803,
+          "phase": "retirement",
+          "scenario": "AB-off-2"
+        },
+        {
+          "folder": "m1-route-calibration-raw",
+          "kind": "deletion",
+          "max_usec": 763,
+          "phase": "preparation",
+          "scenario": "CAL-H2-closure-2"
+        },
+        {
+          "folder": "release-m1-raw",
+          "kind": "deletion",
+          "max_usec": 893,
+          "phase": "retirement",
+          "scenario": "AB-off-2"
+        }
+      ],
+      "scenario_samples": 14324,
+      "scenarios": 98
+    },
+    "pck_entries": 123,
+    "pe_imports": 38,
+    "self_tests": 8
+  },
+  "candidate": {
+    "exe_sha256": "686799994aed0fc5ee6a8783833c5509870e475b897f76749ae1386c56cc7860",
+    "pck_entries_md5_verified": 123,
+    "pck_sha256": "de3a050f5623aa183226a2e60cd293b0cb53968ee12ee0ea84dc4cef54b01c75",
+    "pe_imports_verified": 38,
+    "portable_bytes": 30372525,
+    "portable_sha256": "f8d2fc1acebfbae3d769fac5aa8d0278d220df643d76080131f20cbf9c80ac09",
+    "self_tests_verified": 8
+  },
+  "controls": {
+    "lifetime": {
+      "editor": {
+        "cases": [
+          {
+            "elapsed_usec": 9,
+            "endpoint_object_alive": true,
+            "entry": "frozen-before-run",
+            "kind": 3,
+            "name": "rejected-empty",
+            "object_id": "9223372065476707894",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "empty",
+            "object_id": "9223372065493485110",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 3,
+            "endpoint_object_alive": true,
+            "entry": "FreeMeshTask::run",
+            "kind": 2,
+            "name": "surface-0",
+            "object_id": "9223372065510262326",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": true,
+            "entry": "FreeMeshTask::run",
+            "kind": 2,
+            "name": "surface-1",
+            "object_id": "9223372065510262326",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "surface-release",
+            "object_id": "9223372065510262326",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": true,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "shared-empty",
+            "object_id": "9223372065527039542",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": null,
+            "entry": "FreeMeshTask::run",
+            "kind": 0,
+            "name": "postponed",
+            "object_id": "9223372065543816758",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "postponed-release",
+            "object_id": "9223372065543816758",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "non-array",
+            "object_id": "9223372065560593974",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": null,
+            "entry": "FreeMeshTask::add",
+            "kind": 0,
+            "name": "null-add",
+            "object_id": "0",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          }
+        ],
+        "complete_process_cycles": [
+          "1123570",
+          "1225586"
+        ],
+        "corrected_object_absent_before_ending_clock": true,
+        "endpoint_hook_cleared": true,
+        "fixture_usec": 565,
+        "mutations_rejected": [
+          "false-corrected-destruction",
+          "hidden-rejected-lifetime",
+          "false-shared-release",
+          "endpoint-after-clock",
+          "endpoint-after-return",
+          "false-owner-thread",
+          "double-charged-release",
+          "wrong-release-kind",
+          "missing-native-frame",
+          "invented-null-endpoint",
+          "destroyed-before-postpone",
+          "different-surface-owner",
+          "retained-control-hook",
+          "unallocated-mesh-resource",
+          "fixture-over-cap",
+          "failed-counter",
+          "qualified-control"
+        ],
+        "operation_guards_valid": true,
+        "passed": true,
+        "qualified": false,
+        "rejected_lifetime_reproduced": true,
+        "renderer_deferred": "unverified",
+        "schema": "cairn-mesh-retirement-proof-1",
+        "shared_owner_preserved": true,
+        "target_performance": "not_run"
+      },
+      "release": {
+        "cases": [
+          {
+            "elapsed_usec": 2,
+            "endpoint_object_alive": true,
+            "entry": "frozen-before-run",
+            "kind": 3,
+            "name": "rejected-empty",
+            "object_id": "9223372063664768461",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "empty",
+            "object_id": "9223372063681545677",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": true,
+            "entry": "FreeMeshTask::run",
+            "kind": 2,
+            "name": "surface-0",
+            "object_id": "9223372063698322893",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": true,
+            "entry": "FreeMeshTask::run",
+            "kind": 2,
+            "name": "surface-1",
+            "object_id": "9223372063698322893",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "surface-release",
+            "object_id": "9223372063698322893",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": true,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "shared-empty",
+            "object_id": "9223372063715100109",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": null,
+            "entry": "FreeMeshTask::run",
+            "kind": 0,
+            "name": "postponed",
+            "object_id": "9223372063731877325",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 1,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "postponed-release",
+            "object_id": "9223372063731877325",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": false,
+            "entry": "FreeMeshTask::run",
+            "kind": 3,
+            "name": "non-array",
+            "object_id": "9223372063748654541",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "elapsed_usec": 0,
+            "endpoint_object_alive": null,
+            "entry": "FreeMeshTask::add",
+            "kind": 0,
+            "name": "null-add",
+            "object_id": "0",
+            "operation_guard": "passed",
+            "operation_reasons": []
+          }
+        ],
+        "complete_process_cycles": [
+          "1270056",
+          "1380453"
+        ],
+        "corrected_object_absent_before_ending_clock": true,
+        "endpoint_hook_cleared": true,
+        "fixture_usec": 635,
+        "mutations_rejected": [
+          "false-corrected-destruction",
+          "hidden-rejected-lifetime",
+          "false-shared-release",
+          "endpoint-after-clock",
+          "endpoint-after-return",
+          "false-owner-thread",
+          "double-charged-release",
+          "wrong-release-kind",
+          "missing-native-frame",
+          "invented-null-endpoint",
+          "destroyed-before-postpone",
+          "different-surface-owner",
+          "retained-control-hook",
+          "unallocated-mesh-resource",
+          "fixture-over-cap",
+          "failed-counter",
+          "qualified-control"
+        ],
+        "operation_guards_valid": true,
+        "passed": true,
+        "qualified": false,
+        "rejected_lifetime_reproduced": true,
+        "renderer_deferred": "unverified",
+        "schema": "cairn-mesh-retirement-proof-1",
+        "shared_owner_preserved": true,
+        "target_performance": "not_run"
+      }
+    },
+    "lifetime_cases": 20,
+    "operation": {
+      "editor": {
+        "cases": [
+          {
+            "events": [
+              1
+            ],
+            "name": "upload-first-failure",
+            "operation_guard": "failed",
+            "reasons": [
+              "Individual upload exceeded 0.75 ms",
+              "Cumulative terrain frame time exceeded its 1/2 ms budget"
+            ]
+          },
+          {
+            "events": [
+              2
+            ],
+            "name": "upload-later-maximum",
+            "operation_guard": "failed",
+            "reasons": [
+              "Individual upload exceeded 0.75 ms",
+              "Cumulative terrain frame time exceeded its 1/2 ms budget"
+            ]
+          },
+          {
+            "events": [
+              3
+            ],
+            "name": "surface-0",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              4
+            ],
+            "name": "surface-1",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              5
+            ],
+            "name": "surface-release",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              6
+            ],
+            "name": "empty-release",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              7
+            ],
+            "name": "shared-empty",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [],
+            "name": "postponed",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              8
+            ],
+            "name": "resumed",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [],
+            "name": "null-add",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              10,
+              9
+            ],
+            "name": "nested-charge",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              11
+            ],
+            "name": "phase-carry-normal",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              12
+            ],
+            "name": "phase-carry-heavy",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              13
+            ],
+            "name": "failed-counter",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              14
+            ],
+            "name": "unavailable-counter",
+            "operation_guard": "passed",
+            "reasons": []
+          }
+        ],
+        "complete_process_cycles": [
+          "3394719",
+          "3503891"
+        ],
+        "completed_events": 130,
+        "corrected_last_owner_inside_end_reads": true,
+        "counter_errors": 2,
+        "cpu_wall_cause": "unavailable",
+        "events": [
+          {
+            "body_cycles": "94178",
+            "elapsed_usec": 2369,
+            "frame": 1,
+            "full_cycles": "101749",
+            "id": 1,
+            "kind": 1,
+            "phase": 1000,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "7571"
+          },
+          {
+            "body_cycles": "20532",
+            "elapsed_usec": 4946,
+            "frame": 2,
+            "full_cycles": "22639",
+            "id": 2,
+            "kind": 1,
+            "phase": 1001,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "2107"
+          },
+          {
+            "body_cycles": "14725",
+            "elapsed_usec": 7,
+            "frame": 3,
+            "full_cycles": "15974",
+            "id": 3,
+            "kind": 2,
+            "phase": 1002,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1249"
+          },
+          {
+            "body_cycles": "1862",
+            "elapsed_usec": 2,
+            "frame": 4,
+            "full_cycles": "2939",
+            "id": 4,
+            "kind": 2,
+            "phase": 1003,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1077"
+          },
+          {
+            "body_cycles": "7325",
+            "elapsed_usec": 4,
+            "frame": 5,
+            "full_cycles": "8330",
+            "id": 5,
+            "kind": 3,
+            "phase": 1004,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1005"
+          },
+          {
+            "body_cycles": "2131",
+            "elapsed_usec": 1,
+            "frame": 6,
+            "full_cycles": "3136",
+            "id": 6,
+            "kind": 3,
+            "phase": 1005,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1005"
+          },
+          {
+            "body_cycles": "711",
+            "elapsed_usec": 1,
+            "frame": 7,
+            "full_cycles": "1765",
+            "id": 7,
+            "kind": 3,
+            "phase": 1006,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1054"
+          },
+          {
+            "body_cycles": "1690",
+            "elapsed_usec": 2,
+            "frame": 9,
+            "full_cycles": "2694",
+            "id": 8,
+            "kind": 3,
+            "phase": 1008,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1004"
+          },
+          {
+            "body_cycles": "1519",
+            "elapsed_usec": 1,
+            "frame": 11,
+            "full_cycles": "2572",
+            "id": 10,
+            "kind": 3,
+            "phase": 1010,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1053"
+          },
+          {
+            "body_cycles": "10191",
+            "elapsed_usec": 5,
+            "frame": 11,
+            "full_cycles": "11293",
+            "id": 9,
+            "kind": 4,
+            "phase": 1010,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1102"
+          },
+          {
+            "body_cycles": "1715",
+            "elapsed_usec": 2,
+            "frame": 12,
+            "full_cycles": "2744",
+            "id": 11,
+            "kind": 3,
+            "phase": 1011,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1029"
+          },
+          {
+            "body_cycles": "1446",
+            "elapsed_usec": 1,
+            "frame": 12,
+            "full_cycles": "2451",
+            "id": 12,
+            "kind": 3,
+            "phase": 1012,
+            "status": "measured",
+            "thread": "2064",
+            "uncertainty_cycles": "1005"
+          },
+          {
+            "body_cycles": null,
+            "elapsed_usec": 2,
+            "frame": 13,
+            "full_cycles": null,
+            "id": 13,
+            "kind": 3,
+            "phase": 1013,
+            "status": "failed",
+            "thread": "2064",
+            "uncertainty_cycles": null
+          },
+          {
+            "body_cycles": null,
+            "elapsed_usec": 0,
+            "frame": 14,
+            "full_cycles": null,
+            "id": 14,
+            "kind": 3,
+            "phase": 1014,
+            "status": "unavailable",
+            "thread": "2064",
+            "uncertainty_cycles": null
+          }
+        ],
+        "failed_counter_nulls_preserved": true,
+        "first_failure_id": 1,
+        "mutations_rejected": [
+          "false-thread",
+          "wrong-upload-kind",
+          "wrong-upload-payload",
+          "endpoint-outside-wall",
+          "first-failure-replaced-by-maximum",
+          "maximum-replaced-by-first-failure",
+          "hidden-overflow",
+          "passing-truncation",
+          "passing-injected-guard",
+          "wrong-case-thread",
+          "false-destruction",
+          "destroyed-shared-owner",
+          "phase-carry-mismatch",
+          "double-parent-charge",
+          "missing-refusal",
+          "hidden-counter-error",
+          "invented-cancelled-operation",
+          "unbounded-storage",
+          "unclosed-writer",
+          "qualified-control"
+        ],
+        "operation_guards_valid": false,
+        "overflow": 2,
+        "passed": true,
+        "proof_writer_process_cycles": [
+          "4106299",
+          "4203417"
+        ],
+        "qualified": false,
+        "renderer_deferred": "unverified",
+        "retained_events": 128,
+        "serialized_process_evidence_bytes": 105839,
+        "shipping_cost": "unqualified",
+        "storage_bytes": 40456,
+        "trace_bytes": 38144,
+        "upload_first_tie_maximum_id": 2,
+        "witness_integrity_valid": false
+      },
+      "release": {
+        "cases": [
+          {
+            "events": [
+              1
+            ],
+            "name": "upload-first-failure",
+            "operation_guard": "failed",
+            "reasons": [
+              "Individual upload exceeded 0.75 ms",
+              "Cumulative terrain frame time exceeded its 1/2 ms budget"
+            ]
+          },
+          {
+            "events": [
+              2
+            ],
+            "name": "upload-later-maximum",
+            "operation_guard": "failed",
+            "reasons": [
+              "Individual upload exceeded 0.75 ms",
+              "Cumulative terrain frame time exceeded its 1/2 ms budget"
+            ]
+          },
+          {
+            "events": [
+              3
+            ],
+            "name": "surface-0",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              4
+            ],
+            "name": "surface-1",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              5
+            ],
+            "name": "surface-release",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              6
+            ],
+            "name": "empty-release",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              7
+            ],
+            "name": "shared-empty",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [],
+            "name": "postponed",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              8
+            ],
+            "name": "resumed",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [],
+            "name": "null-add",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              10,
+              9
+            ],
+            "name": "nested-charge",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              11
+            ],
+            "name": "phase-carry-normal",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              12
+            ],
+            "name": "phase-carry-heavy",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              13
+            ],
+            "name": "failed-counter",
+            "operation_guard": "passed",
+            "reasons": []
+          },
+          {
+            "events": [
+              14
+            ],
+            "name": "unavailable-counter",
+            "operation_guard": "passed",
+            "reasons": []
+          }
+        ],
+        "complete_process_cycles": [
+          "3367375",
+          "3475715"
+        ],
+        "completed_events": 130,
+        "corrected_last_owner_inside_end_reads": true,
+        "counter_errors": 2,
+        "cpu_wall_cause": "unavailable",
+        "events": [
+          {
+            "body_cycles": "131737",
+            "elapsed_usec": 2435,
+            "frame": 1,
+            "full_cycles": "133599",
+            "id": 1,
+            "kind": 1,
+            "phase": 1000,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1862"
+          },
+          {
+            "body_cycles": "17713",
+            "elapsed_usec": 4960,
+            "frame": 2,
+            "full_cycles": "19232",
+            "id": 2,
+            "kind": 1,
+            "phase": 1001,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1519"
+          },
+          {
+            "body_cycles": "8036",
+            "elapsed_usec": 4,
+            "frame": 3,
+            "full_cycles": "9384",
+            "id": 3,
+            "kind": 2,
+            "phase": 1002,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1348"
+          },
+          {
+            "body_cycles": "2058",
+            "elapsed_usec": 1,
+            "frame": 4,
+            "full_cycles": "3185",
+            "id": 4,
+            "kind": 2,
+            "phase": 1003,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1127"
+          },
+          {
+            "body_cycles": "7154",
+            "elapsed_usec": 3,
+            "frame": 5,
+            "full_cycles": "8183",
+            "id": 5,
+            "kind": 3,
+            "phase": 1004,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1029"
+          },
+          {
+            "body_cycles": "2352",
+            "elapsed_usec": 2,
+            "frame": 6,
+            "full_cycles": "3405",
+            "id": 6,
+            "kind": 3,
+            "phase": 1005,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1053"
+          },
+          {
+            "body_cycles": "735",
+            "elapsed_usec": 1,
+            "frame": 7,
+            "full_cycles": "1788",
+            "id": 7,
+            "kind": 3,
+            "phase": 1006,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1053"
+          },
+          {
+            "body_cycles": "2180",
+            "elapsed_usec": 2,
+            "frame": 9,
+            "full_cycles": "3332",
+            "id": 8,
+            "kind": 3,
+            "phase": 1008,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1152"
+          },
+          {
+            "body_cycles": "1666",
+            "elapsed_usec": 1,
+            "frame": 11,
+            "full_cycles": "2744",
+            "id": 10,
+            "kind": 3,
+            "phase": 1010,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1078"
+          },
+          {
+            "body_cycles": "7498",
+            "elapsed_usec": 4,
+            "frame": 11,
+            "full_cycles": "8674",
+            "id": 9,
+            "kind": 4,
+            "phase": 1010,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1176"
+          },
+          {
+            "body_cycles": "1176",
+            "elapsed_usec": 1,
+            "frame": 12,
+            "full_cycles": "2205",
+            "id": 11,
+            "kind": 3,
+            "phase": 1011,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1029"
+          },
+          {
+            "body_cycles": "1225",
+            "elapsed_usec": 1,
+            "frame": 12,
+            "full_cycles": "2352",
+            "id": 12,
+            "kind": 3,
+            "phase": 1012,
+            "status": "measured",
+            "thread": "6652",
+            "uncertainty_cycles": "1127"
+          },
+          {
+            "body_cycles": null,
+            "elapsed_usec": 2,
+            "frame": 13,
+            "full_cycles": null,
+            "id": 13,
+            "kind": 3,
+            "phase": 1013,
+            "status": "failed",
+            "thread": "6652",
+            "uncertainty_cycles": null
+          },
+          {
+            "body_cycles": null,
+            "elapsed_usec": 1,
+            "frame": 14,
+            "full_cycles": null,
+            "id": 14,
+            "kind": 3,
+            "phase": 1014,
+            "status": "unavailable",
+            "thread": "6652",
+            "uncertainty_cycles": null
+          }
+        ],
+        "failed_counter_nulls_preserved": true,
+        "first_failure_id": 1,
+        "mutations_rejected": [
+          "false-thread",
+          "wrong-upload-kind",
+          "wrong-upload-payload",
+          "endpoint-outside-wall",
+          "first-failure-replaced-by-maximum",
+          "maximum-replaced-by-first-failure",
+          "hidden-overflow",
+          "passing-truncation",
+          "passing-injected-guard",
+          "wrong-case-thread",
+          "false-destruction",
+          "destroyed-shared-owner",
+          "phase-carry-mismatch",
+          "double-parent-charge",
+          "missing-refusal",
+          "hidden-counter-error",
+          "invented-cancelled-operation",
+          "unbounded-storage",
+          "unclosed-writer",
+          "qualified-control"
+        ],
+        "operation_guards_valid": false,
+        "overflow": 2,
+        "passed": true,
+        "proof_writer_process_cycles": [
+          "4003374",
+          "4098532"
+        ],
+        "qualified": false,
+        "renderer_deferred": "unverified",
+        "retained_events": 128,
+        "serialized_process_evidence_bytes": 105839,
+        "shipping_cost": "unqualified",
+        "storage_bytes": 40456,
+        "trace_bytes": 38144,
+        "upload_first_tie_maximum_id": 2,
+        "witness_integrity_valid": false
+      }
+    },
+    "operation_cases": 30,
+    "semantic_faults_rejected": 74
+  },
+  "decision": {
+    "basis": "Controls establish the recorder capability. Existing representative failures have no event CPU witnesses, and the current reader/writer are fixture-specific; they cannot validate a real route.",
+    "capability_accepted": true,
+    "consumed_process_retry": false,
+    "inconclusive_policy": "Stop and choose an explicit bounded implementation/policy decision; do not add another observer family automatically.",
+    "inventory_or_codec_changed": false,
+    "laptop_action": false,
+    "new_process_declared": false,
+    "next_task": "Implement a bounded one-shot operation-witness controller and saved route reader, with finite stop/write-failure controls and a matching portable candidate; leave its launch request disabled.",
+    "observation_preconditions": "Prospective exact-candidate/workload declaration and verified failure/overflow/counter/I/O stopping, finite caps and no retry.",
+    "preparation_owner_expansion": "deferred; no new causal owner established",
+    "representative_event_attribution": "not_observed",
+    "threshold_changes": false
+  },
+  "embedded_files": {
+    "/broader_failure_sources/m1-release-16-1-raw/M1-2026-11-09T19-42-18-16-1-8048/summary.json": {
+      "bytes": 583880,
+      "sha256": "13c000e1dd6f6de590d2513b5a6745f8f561ef306c24975a3c0f69d188995aad"
+    },
+    "/broader_failure_sources/m1-release-16-2-raw/M1-2026-11-09T19-43-32-16-2-1524/summary.json": {
+      "bytes": 584582,
+      "sha256": "f46cfaf08052bb351140ee6977975863dad5d5f6dff266ea11ff593efdc2b669"
+    },
+    "/broader_failure_sources/m1-release-32-2-raw/M1-2026-11-09T19-43-03-32-2-6664/summary.json": {
+      "bytes": 586953,
+      "sha256": "aa822d566a0907a8cc095b93e763a836297986e23c6dda0fde01486e5ec84d35"
+    },
+    "/broader_failure_sources/m1-route-calibration-raw/M1-2026-11-09T19-44-47-32-1-4748/summary.json": {
+      "bytes": 242987,
+      "sha256": "23f0888a853160fe6a8e1be0b96f6c2cfbed50d505063abaa295d838005a7707"
+    },
+    "/broader_failure_sources/release-m1-raw/M1-2026-11-09T19-24-03-32-1-4760/summary.json": {
+      "bytes": 588111,
+      "sha256": "106f278437e119aa61529f5a0c3b1e5ad5b1e1585866dca4fc8ee08e9603a31e"
+    },
+    "/ci/export_log": {
+      "bytes": 682934,
+      "sha256": "9b174b47cff7f843e0442dbfdfa03b69689b69dccb09ecb5c196ec3fdfc3b325"
+    },
+    "/ci/native_log": {
+      "bytes": 25064,
+      "sha256": "16a06e47e73edd575a020a3e2d63b4188ed7d337955108f62d3026dccd28c2bb"
+    },
+    "/ci/static_log": {
+      "bytes": 93050,
+      "sha256": "fb475f76a89303808ac093f3fac7f328ddfef9f89a8a7a7a415fc04d1b2b6ede"
+    },
+    "/controls/editor/files/controls.json": {
+      "bytes": 65104,
+      "sha256": "9fab3b23e23b08a10ffad85f3e4e10f7ff1251b369af42b0716c4b590f9d9110"
+    },
+    "/controls/editor/files/controls.json.events": {
+      "bytes": 38144,
+      "sha256": "1b3bdf437ec974e377136e342bf1489c97271ea0891c83bb09642d23270a42a4"
+    },
+    "/controls/editor/files/controls.json.writer.json": {
+      "bytes": 2591,
+      "sha256": "a2f2f6218e3b8058ab0a40468b1602c7451caa45fb9f608a404d6eccb3496020"
+    },
+    "/controls/editor/files/validation.json": {
+      "bytes": 7505,
+      "sha256": "367fda8912bb52969031c0c062502d0b6529a51cfbe3b60e92e9e87c2627289b"
+    },
+    "/controls/release/files/controls.json": {
+      "bytes": 65104,
+      "sha256": "4e2e5fda22deac581e0c7d6349e63455b439bdb6fedaa79c874f2b9d433ce4ab"
+    },
+    "/controls/release/files/controls.json.events": {
+      "bytes": 38144,
+      "sha256": "5315d223ff1ab60185b918b80c16921f16b872c0ea5f4c1fcf3f2cb4dc77eb1f"
+    },
+    "/controls/release/files/controls.json.writer.json": {
+      "bytes": 2591,
+      "sha256": "482cbab3265f8a370059381bef763f6514ad9370b5e89e0f401a621322912215"
+    },
+    "/controls/release/files/validation.json": {
+      "bytes": 7502,
+      "sha256": "a8f0271b5b113ba3b58279fb2d6729a64b72dfb0240dd997215ae9d9ccc04d04"
+    },
+    "/lifetime_controls/editor/files/controls.json": {
+      "bytes": 49068,
+      "sha256": "9b2a04c026134c122afd80477283abc3758f0ab8ec2b08416b2487bff931d977"
+    },
+    "/lifetime_controls/editor/files/validation.json": {
+      "bytes": 3741,
+      "sha256": "8343e5c81882bd05ad3610e2e49d273daac3e038766ff01c5e1ccf82ecbcd0ff"
+    },
+    "/lifetime_controls/release/files/controls.json": {
+      "bytes": 49067,
+      "sha256": "107ad9650400aaf7a801be769aab3e01391d144af6035ee4ea269406b46ea6c9"
+    },
+    "/lifetime_controls/release/files/validation.json": {
+      "bytes": 3741,
+      "sha256": "8002d4ef047930f0113496f19707c68ca349430bb585dd33e8c28e8251d6b2ea"
+    },
+    "/linux_complete_audit_log": {
+      "bytes": 566163,
+      "sha256": "e23b20a79e222936f7150b1ae7626d7de7287905abcfb52043b93aa30788cfc3"
+    },
+    "/linux_replay": {
+      "bytes": 5409,
+      "sha256": "3120d5a52243337514a518a8e86679b5686de83c8c9af872b54be5300e86bb30"
+    },
+    "/original_windows_failure/archive": {
+      "bytes": 8659,
+      "sha256": "0cd05c87ed12e1a82d2a5b3c3c3e3c672638b8a5a16f69f959a9abea3d04d5ec"
+    },
+    "/original_windows_failure/log": {
+      "bytes": 83258,
+      "sha256": "439af705d15402ddee5eec33484b2e8dc7a36532f918e16c80ad85bcd4b74817"
+    },
+    "/source_files/.github/workflows/ci.yml": {
+      "bytes": 5649,
+      "sha256": "e98c46563972fd98255a3c0e82c7fff4e4423031fdc33a6a83155bb200403eb9"
+    },
+    "/source_files/.github/workflows/engine.yml": {
+      "bytes": 3616,
+      "sha256": "7590e199fe802852a36bd86a20810f120d94b3b54cff99d1ab18f6c2d019a758"
+    },
+    "/source_files/.github/workflows/windows-build.yml": {
+      "bytes": 16194,
+      "sha256": "140e8427c523fed926cf8a1c6d35abb62465a40af1a1b943574beae90de53777"
+    },
+    "/source_files/build/patches/voxel/m1-admission.json": {
+      "bytes": 19616,
+      "sha256": "2596bd57a94137677cba33976c13f2c104c41661b233d1c0ad4063fc44c6fb6b"
+    },
+    "/source_files/game/diagnostics/operation_witness.json": {
+      "bytes": 1733,
+      "sha256": "8d4641563d4392dffce8622676d50a464f60db87caa71d2b38996f507be5b20f"
+    },
+    "/source_files/game/scripts/m1_operation_witness_tests.gd": {
+      "bytes": 2639,
+      "sha256": "773cb54d52375c9eac446f2a9fa551d1c12a88419a363145cf1591b6bc6f4929"
+    },
+    "/source_files/game/scripts/title.gd": {
+      "bytes": 8895,
+      "sha256": "cff4a725aa4f8f48578ce648b7210718e4b09acf60e5bcaf57f8b0f5bb77b764"
+    },
+    "/source_files/native/sandbox_world/core/cycle_observation.h": {
+      "bytes": 1730,
+      "sha256": "3ae8741cdfd717edc75178df6cb82c63282c5c6bca98d7b04b861223d3bdfada"
+    },
+    "/source_files/native/sandbox_world/core/operation_metrics.h": {
+      "bytes": 6295,
+      "sha256": "6b51d482ed7a357ce69cc7df3892e8491b4faa62e1dcef8f182589deb25bf44d"
+    },
+    "/source_files/native/sandbox_world/core/operation_witness.h": {
+      "bytes": 7894,
+      "sha256": "4f2591863b8f42c4da0e9eebfeab85193ccc333cb42943ec71fa75780eaba663"
+    },
+    "/source_files/native/sandbox_world/godot/benchmark_probe.cpp": {
+      "bytes": 20589,
+      "sha256": "780fd807112c4233d93a7369273d35412ae47ab4a27866f832e4b6d38cad2c76"
+    },
+    "/source_files/native/sandbox_world/godot/benchmark_probe.h": {
+      "bytes": 2420,
+      "sha256": "3ca0b112ca92eee4d6c73793325799a31528a56924ddc11c0c6525453808b688"
+    },
+    "/source_files/native/sandbox_world/godot/m1_hooks.h": {
+      "bytes": 6073,
+      "sha256": "3e27696f71744d41613e1c9235bee825852950456cfa307165d4954ae2ce98a4"
+    },
+    "/source_files/native/sandbox_world/godot/observer_probe.cpp": {
+      "bytes": 5492,
+      "sha256": "36ed7db27eb9d8e01a639598fd51cc67d1718cdabc78375fbe1e8f8f5abf1852"
+    },
+    "/source_files/native/sandbox_world/godot/operation_witness.cpp": {
+      "bytes": 5383,
+      "sha256": "ca4dd4d136e8e4c5154fb7b57a44360e028cf08f0dc6ced0b246514fd92449a8"
+    },
+    "/source_files/native/sandbox_world/godot/operation_witness.h": {
+      "bytes": 943,
+      "sha256": "5f762186a80fc680bbb410ae99436123968bad6def871dcbc27cfc28ac808bb8"
+    },
+    "/source_files/native/sandbox_world/godot/operation_witness_controls.cpp": {
+      "bytes": 10470,
+      "sha256": "a903d221118ceb829acda273aa5d94b92ef44e32dd357ecb6cf80d565d6d27d9"
+    },
+    "/source_files/tests/integration/test_mesh_retirement_review.py": {
+      "bytes": 14154,
+      "sha256": "bf15b4cb9c1011ec7ac926a1d9fa9ea34618579a89744635c8b3865d5d42a395"
+    },
+    "/source_files/tests/integration/test_operation_witness.py": {
+      "bytes": 4508,
+      "sha256": "05e4ba51bee935896544c6ce4b23ec85e60967ceff39423f0a0ea6676245f1fa"
+    },
+    "/source_files/tests/native/test_operation_witness.cpp": {
+      "bytes": 2837,
+      "sha256": "5573c3ca63a9e84db52a4c87827ac4356e62f48500ea4672b7275dcd1a440f10"
+    },
+    "/source_files/tools/ci/pipeline.py": {
+      "bytes": 21624,
+      "sha256": "df3c2c6c294cfb6e59ed60c148ac36ace386a8080386ebf97eb6099883fe23b5"
+    },
+    "/source_files/tools/qa/cpu_cycle_saved_recheck.py": {
+      "bytes": 2256,
+      "sha256": "b4159f39712aaa53b94a89f39e75a5b00ec677b0f44d329266a22d6e833ad76b"
+    },
+    "/source_files/tools/qa/mesh_admission_candidate_audit.py": {
+      "bytes": 27856,
+      "sha256": "f45768869dca3968e6e94e81c34b8f2f6cd30ec019f0938bb9abc56c2ed3cdc9"
+    },
+    "/source_files/tools/qa/mesh_retirement_review.py": {
+      "bytes": 22103,
+      "sha256": "5c151021300f1316dde8d8580212bd9c254c1a702684d973139eaed63c307e23"
+    },
+    "/source_files/tools/qa/operation_witness.py": {
+      "bytes": 27242,
+      "sha256": "49247d6c4746de8b06006567068116b070519c9d4064be015887802b8cbfc2dd"
+    },
+    "/windows_independent_audit": {
+      "bytes": 1006052,
+      "sha256": "622a8ae17ecbf39789d370c3662dc1daaa5bb08e5adcb9b13be17bbac6d1a247"
+    }
+  },
+  "engine_processes_executed": 0,
+  "game_commit": "75f8b0a9e2fcbfd61d830f420a20e91c9f49ccd2",
+  "history": {
+    "complete_bare_quartet": false,
+    "consumed_prefix_failure": {
+      "associated_payload_bytes": 112280,
+      "direct_preparation_scopes_admit_only_section": 0,
+      "elapsed_usec": 819,
+      "event_thread_cycle_demand": null,
+      "excess_usec": 69,
+      "kind": 2,
+      "kind_name": "surface-removal path",
+      "limit_usec": 750,
+      "main_spans_overlapping_event": [],
+      "os_driver_cause": null,
+      "phase": "retirement",
+      "phase_deletion_bytes": 73913840,
+      "phase_deletion_count": 871,
+      "phase_deletion_usec": 6824,
+      "qualification": "Complete failed measurement retained; no cause or operation pass inferred.",
+      "raw_operation_trace": false,
+      "trial": "AB-H2-preparation-bare-1",
+      "wall_end_usec": 233135428,
+      "wall_start_usec": 233134609
+    },
+    "previous_broader_failures": [
+      {
+        "data_apply": {
+          "bytes": 0,
+          "count": 0,
+          "max_bytes": 0,
+          "max_kind": 0,
+          "max_start_usec": 0,
+          "max_usec": 0,
+          "usec": 0
+        },
+        "deletion": {
+          "bytes": 54128480,
+          "count": 518,
+          "max_bytes": 143360,
+          "max_kind": 2,
+          "max_start_usec": 12650779,
+          "max_usec": 1488,
+          "usec": 5939
+        },
+        "phase": "retirement",
+        "reasons": [
+          "Individual deletion exceeded 0.75 ms"
+        ],
+        "report": "debug-m1-raw/M1-2026-10-27T02-54-32-32-1-8152/summary.json",
+        "scenario": "H2",
+        "terrain_time_overruns": 0,
+        "upload": {
+          "bytes": 0,
+          "count": 0,
+          "max_bytes": 0,
+          "max_kind": 0,
+          "max_start_usec": 0,
+          "max_usec": 0,
+          "usec": 0
+        }
+      },
+      {
+        "data_apply": {
+          "bytes": 0,
+          "count": 965,
+          "max_bytes": 0,
+          "max_kind": 4,
+          "max_start_usec": 7595710,
+          "max_usec": 130,
+          "usec": 2415
+        },
+        "deletion": {
+          "bytes": 0,
+          "count": 0,
+          "max_bytes": 0,
+          "max_kind": 0,
+          "max_start_usec": 0,
+          "max_usec": 0,
+          "usec": 0
+        },
+        "phase": "preparation",
+        "reasons": [
+          "Individual upload exceeded 0.75 ms"
+        ],
+        "report": "release-m1-heavy-ab-raw/M1-2026-10-27T02-55-57-32-1-2716/summary.json",
+        "scenario": "AB-H1-on-2",
+        "terrain_time_overruns": 0,
+        "upload": {
+          "bytes": 53838400,
+          "count": 426,
+          "max_bytes": 143360,
+          "max_kind": 1,
+          "max_start_usec": 7595841,
+          "max_usec": 824,
+          "usec": 16256
+        }
+      }
+    ],
+    "proof_hashes": {
+      "m1-mesh-retirement-cloud-2026-10-26.json": "e4f35957fb05f5356c21b8c4c5fe52ae68a3440bb1c3e10eb92772c25a1ad329",
+      "m1-mesh-retirement-saved-review-2026-10-27.json": "c166534b45cec3059effaefe7dd4c0dd5b0210c0c90198df943297d084a307e7"
+    },
+    "valid_bare_trials": 1
+  },
+  "linux_local_replay": {
+    "candidate_audit_reproduced": true,
+    "counter_capability": {
+      "editor": {
+        "decimals_verified": [
+          "0",
+          "9007199254740993",
+          "9223372036854775808",
+          "18446744073709551615"
+        ],
+        "fixture_usec": 55273,
+        "hashes": {
+          "main": {
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+            "process_cycles": [
+              "42226195",
+              "42322110"
+            ],
+            "thread_cycles": [
+              "42273185",
+              "42275022"
+            ],
+            "updates": 1024
+          },
+          "worker": {
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+            "process_cycles": [
+              "41105881",
+              "41199593"
+            ],
+            "thread_cycles": [
+              "41151181",
+              "41152578"
+            ],
+            "updates": 1024
+          }
+        },
+        "note": "Capability/identity only. Wait need not have zero cycles. No sensitivity or cost pass.",
+        "passed": true,
+        "qualified": false,
+        "saved_mutations": {
+          "counter_failure": "CPU cycle capability: unsuccessful counter",
+          "failed_output_zero": "CPU cycle capability: failed/unavailable value was lost or replaced by zero",
+          "fixture_timeout": "CPU cycle capability: fixture exceeded its five-second cap",
+          "incomplete_hash": "CPU cycle capability: incomplete or incorrect main SHA work",
+          "lost_worker": "CPU cycle capability: process counter lost exited worker demand",
+          "numeric_raw_cycle": "CPU cycle capability: counter/wall must be a canonical unsigned decimal string",
+          "rounded_uint64": "CPU cycle capability: native/GDScript/JSON decimal roundtrip",
+          "unavailable": "CPU cycle capability: counter unavailable, failed or contradictory",
+          "wall_reversal": "CPU cycle capability: wall bracket reversal",
+          "worker_not_joined": "CPU cycle capability: worker not independently witnessed and joined",
+          "wrong_build": "CPU cycle capability: source/native identity",
+          "wrong_digest": "CPU cycle capability: incomplete or incorrect worker SHA work"
+        },
+        "schema": "cairn-cpu-cycle-capability-1",
+        "target_performance": "not_run",
+        "wait_process_cycles": [
+          "113876",
+          "206463"
+        ],
+        "wait_requested_usec": 20000,
+        "worker_enclosing_process_cycles": [
+          "41777597",
+          "41853425"
+        ],
+        "worker_thread_cycles": [
+          "41151181",
+          "41152578"
+        ]
+      },
+      "release": {
+        "decimals_verified": [
+          "0",
+          "9007199254740993",
+          "9223372036854775808",
+          "18446744073709551615"
+        ],
+        "fixture_usec": 61022,
+        "hashes": {
+          "main": {
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+            "process_cycles": [
+              "41837916",
+              "41933687"
+            ],
+            "thread_cycles": [
+              "41890591",
+              "41892012"
+            ],
+            "updates": 1024
+          },
+          "worker": {
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121",
+            "process_cycles": [
+              "55927448",
+              "56032382"
+            ],
+            "thread_cycles": [
+              "55976694",
+              "55979854"
+            ],
+            "updates": 1024
+          }
+        },
+        "note": "Capability/identity only. Wait need not have zero cycles. No sensitivity or cost pass.",
+        "passed": true,
+        "qualified": false,
+        "saved_mutations": {
+          "counter_failure": "CPU cycle capability: unsuccessful counter",
+          "failed_output_zero": "CPU cycle capability: failed/unavailable value was lost or replaced by zero",
+          "fixture_timeout": "CPU cycle capability: fixture exceeded its five-second cap",
+          "incomplete_hash": "CPU cycle capability: incomplete or incorrect main SHA work",
+          "lost_worker": "CPU cycle capability: process counter lost exited worker demand",
+          "numeric_raw_cycle": "CPU cycle capability: counter/wall must be a canonical unsigned decimal string",
+          "rounded_uint64": "CPU cycle capability: native/GDScript/JSON decimal roundtrip",
+          "unavailable": "CPU cycle capability: counter unavailable, failed or contradictory",
+          "wall_reversal": "CPU cycle capability: wall bracket reversal",
+          "worker_not_joined": "CPU cycle capability: worker not independently witnessed and joined",
+          "wrong_build": "CPU cycle capability: source/native identity",
+          "wrong_digest": "CPU cycle capability: incomplete or incorrect worker SHA work"
+        },
+        "schema": "cairn-cpu-cycle-capability-1",
+        "target_performance": "not_run",
+        "wait_process_cycles": [
+          "230790",
+          "311395"
+        ],
+        "wait_requested_usec": 20000,
+        "worker_enclosing_process_cycles": [
+          "56766451",
+          "56850339"
+        ],
+        "worker_thread_cycles": [
+          "55976694",
+          "55979854"
+        ]
+      }
+    },
+    "engine_executed": false,
+    "passed": true,
+    "portable_sha256": "f8d2fc1acebfbae3d769fac5aa8d0278d220df643d76080131f20cbf9c80ac09",
+    "qualified": false,
+    "target_action_required_now": false,
+    "target_performance": "not_run"
+  },
+  "native_key": "ff3a84944e7120b6d6be80e78f7f70438906e57059400289f65339a1d4d9a540",
+  "native_key_changed": false,
+  "proof_sha256": "6941f781a5f51d1cbebfbaa207e90612969009df7ff533ea66749b2b2c9bc4a1",
+  "qualified": false,
+  "reader_sha256": "cac56213294bd138a11ac937da6dad22a0fa2d12b91c5e5dda51d62c4393d3bf",
+  "retained_failures": {
+    "comparison_baseline_edits": [
+      {
+        "coverage": 36,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 193452,
+          "overflow": 0,
+          "p95_upper_usec": 125000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 80,
+          "superseded": 0,
+          "timeout": 0,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-frontier-reversal-editor-1-fifo-raw",
+        "id": "AB-H2-reversal",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      },
+      {
+        "coverage": 37,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 193361,
+          "overflow": 0,
+          "p95_upper_usec": 125000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 80,
+          "superseded": 0,
+          "timeout": 0,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-frontier-reversal-editor-2-fifo-raw",
+        "id": "AB-H2-reversal",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      },
+      {
+        "coverage": 36,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 193347,
+          "overflow": 0,
+          "p95_upper_usec": 133000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 80,
+          "superseded": 0,
+          "timeout": 0,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-frontier-reversal-release-1-fifo-raw",
+        "id": "AB-H2-reversal",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      },
+      {
+        "coverage": 37,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 193343,
+          "overflow": 0,
+          "p95_upper_usec": 133000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 80,
+          "superseded": 0,
+          "timeout": 0,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-frontier-reversal-release-2-fifo-raw",
+        "id": "AB-H2-reversal",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      },
+      {
+        "coverage": 38,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 186347,
+          "overflow": 0,
+          "p95_upper_usec": 132000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 79,
+          "superseded": 0,
+          "timeout": 1,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-ordinary-admission-editor-1-fifo-raw",
+        "id": "AB-H2-ordinary",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility has superseded, cancelled, timed-out or unavailable outcomes",
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      },
+      {
+        "coverage": 36,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 193333,
+          "overflow": 0,
+          "p95_upper_usec": 125000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 80,
+          "superseded": 0,
+          "timeout": 0,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-ordinary-admission-editor-2-fifo-raw",
+        "id": "AB-H2-ordinary",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      },
+      {
+        "coverage": 37,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 186375,
+          "overflow": 0,
+          "p95_upper_usec": 132000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 79,
+          "superseded": 0,
+          "timeout": 1,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-ordinary-admission-release-1-fifo-raw",
+        "id": "AB-H2-ordinary",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility has superseded, cancelled, timed-out or unavailable outcomes",
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      },
+      {
+        "coverage": 36,
+        "edit_visibility": {
+          "accepted": 80,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 193320,
+          "overflow": 0,
+          "p95_upper_usec": 132000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 79,
+          "superseded": 0,
+          "timeout": 1,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-ordinary-admission-release-2-fifo-raw",
+        "id": "AB-H2-ordinary",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility has superseded, cancelled, timed-out or unavailable outcomes",
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required",
+          "Required mesh coverage is unready before fog obscures it"
+        ]
+      }
+    ],
+    "edits": [
+      {
+        "coverage": 0,
+        "edit_visibility": {
+          "accepted": 4,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 165679,
+          "overflow": 0,
+          "p95_upper_usec": 166000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 4,
+          "superseded": 0,
+          "timeout": 0,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-release-16-1-raw",
+        "id": "H2",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required"
+        ]
+      },
+      {
+        "coverage": 0,
+        "edit_visibility": {
+          "accepted": 4,
+          "cancelled": 0,
+          "enabled": false,
+          "max_usec": 165687,
+          "overflow": 0,
+          "p95_upper_usec": 166000,
+          "pending": 0,
+          "pending_high_water": 1,
+          "queued": 0,
+          "submitted": 4,
+          "superseded": 0,
+          "timeout": 0,
+          "unavailable": 0
+        },
+        "evaluation": "failed",
+        "folder": "m1-release-16-2-raw",
+        "id": "H2",
+        "qualified": false,
+        "reasons": [
+          "Edit visibility exceeded the 100/200 ms limits",
+          "Diagnostic callback wall time reached 1%; A/B qualification required"
+        ]
+      }
+    ],
+    "event_specific_cpu_witnesses_available": false,
+    "historical_failures_waived": false,
+    "operations": [
+      {
+        "configuration": {
+          "actual_workers": 2,
+          "anti_aliasing": "disabled",
+          "data_chunk": 16,
+          "data_radius": 128,
+          "fixture_y": [
+            -16,
+            32
+          ],
+          "fog": {
+            "begin_m": 16.0,
+            "curve": 1.0,
+            "density": 1.0,
+            "enabled": true,
+            "end_m": 96.0,
+            "height_density": 0.0,
+            "mode": "depth"
+          },
+          "fog_density": 1.0,
+          "render_block": 32,
+          "render_scale": 1.0,
+          "reported_window_size": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "shadows": false,
+          "triangle_colliders": false,
+          "visual_radius": 96,
+          "workers": 2
+        },
+        "folder": "m1-release-32-2-raw",
+        "kind": "deletion",
+        "max_usec": 803,
+        "operation": {
+          "bytes": 28098560,
+          "count": 245,
+          "max_bytes": 143360,
+          "max_kind": 2,
+          "max_start_usec": 27984540,
+          "max_usec": 803,
+          "usec": 1581
+        },
+        "phase": "retirement",
+        "scenario": "AB-off-2"
+      },
+      {
+        "configuration": {
+          "actual_workers": 1,
+          "anti_aliasing": "disabled",
+          "data_chunk": 16,
+          "data_radius": 128,
+          "fixture_y": [
+            -16,
+            32
+          ],
+          "fog": {
+            "begin_m": 16.0,
+            "curve": 1.0,
+            "density": 1.0,
+            "enabled": true,
+            "end_m": 96.0,
+            "height_density": 0.0,
+            "mode": "depth"
+          },
+          "fog_density": 1.0,
+          "render_block": 32,
+          "render_scale": 1.0,
+          "reported_window_size": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "shadows": false,
+          "triangle_colliders": false,
+          "visual_radius": 96,
+          "workers": 1
+        },
+        "folder": "m1-route-calibration-raw",
+        "kind": "deletion",
+        "max_usec": 763,
+        "operation": {
+          "bytes": 53841760,
+          "count": 515,
+          "max_bytes": 143360,
+          "max_kind": 2,
+          "max_start_usec": 19357264,
+          "max_usec": 763,
+          "usec": 4864
+        },
+        "phase": "preparation",
+        "scenario": "CAL-H2-closure-2"
+      },
+      {
+        "configuration": {
+          "actual_workers": 1,
+          "anti_aliasing": "disabled",
+          "data_chunk": 16,
+          "data_radius": 128,
+          "fixture_y": [
+            -16,
+            32
+          ],
+          "fog": {
+            "begin_m": 16.0,
+            "curve": 1.0,
+            "density": 1.0,
+            "enabled": true,
+            "end_m": 96.0,
+            "height_density": 0.0,
+            "mode": "depth"
+          },
+          "fog_density": 1.0,
+          "render_block": 32,
+          "render_scale": 1.0,
+          "reported_window_size": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "shadows": false,
+          "triangle_colliders": false,
+          "visual_radius": 96,
+          "workers": 1
+        },
+        "folder": "release-m1-raw",
+        "kind": "deletion",
+        "max_usec": 893,
+        "operation": {
+          "bytes": 28098560,
+          "count": 245,
+          "max_bytes": 143360,
+          "max_kind": 2,
+          "max_start_usec": 27781110,
+          "max_usec": 893,
+          "usec": 2640
+        },
+        "phase": "retirement",
+        "scenario": "AB-off-2"
+      }
+    ],
+    "shipping_cost": "unqualified",
+    "target_performance": "not_run"
+  },
+  "runtime_changed": false,
+  "schema": "m1-operation-witness-saved-review-1",
+  "shipping_cost_estimate": null,
+  "source_commit": "e8ae2a9ea38d0169c28e6ce7b6f692c9d4407d6a",
+  "source_contract": {
+    "complete_wall_cpu_demand": "unavailable",
+    "corrected_local_scope_depth": 1,
+    "deletion_order": "start, begin reads, last local owner scope exit, non-owning witness, ending reads, wall end, charge, commit",
+    "ending_reads_scope_depth": 0,
+    "fixed_record_cap": 128,
+    "inactive_dispatch_cost": "unqualified",
+    "renderer_deferred": "unverified",
+    "retained_storage_cap_bytes": 65536,
+    "serialized_process_cap_bytes": 262144,
+    "terminal_receipt_own_write_included": false,
+    "upload_order": "start, begin reads, actual surface upload, ending reads, wall end, charge, commit",
+    "writer_order": "capture disabled, process start, serialize/open/write/flush/close/release, process end"
+  },
+  "source_tree": "278661dadad5561672682253b4de49f88dfd280e",
+  "target_performance": "not_run"
+}

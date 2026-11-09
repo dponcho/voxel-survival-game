@@ -28,7 +28,7 @@ affected Python regressions pass. The original 819 µs prefix event, one valid
 bare trial, missing quartet and two current broader failures remain unchanged.
 This review runs zero engines and changes no runtime, inventory, codec or candidate.
 
-**Operation-event CPU-witness capability and candidate verified; exact saved review next.**
+**Operation-event CPU-witness capability, candidate and exact saved review complete.**
 [CI 42681602647](https://github.com/dponcho/voxel-survival-game/actions/runs/42681602647)
 passes 303 Python regressions on each platform, twelve sanitizer suites, exact
 native reuse/requalification, editor import/parser checks, both live controls,
@@ -47,18 +47,32 @@ Current broader diagnostics retain kind-2 deletion overruns of 803 / 763 / 893 �
 against 750 µs, and 166 ms H2 edit p95 bounds for both 16³ profiles against 100 ms.
 No performance gate is waived. Generator/save compatibility is unchanged.
 
-Use **GPT-6.1 Sol Max** for the next exact saved review. Reproduce the source,
-portable/native/PCK identity, both controls and writer receipts, corruption
-rejections and complete audits from committed/downloaded evidence. Keep first
-failure, overflow, unavailable counters and all broader failures explicit.
-Stop at a finite saved decision; do not launch an observation automatically.
+The [exact saved review and finite next acceptance checks](M1_OPERATION_WITNESS_REVIEW.md)
+reproduce all fifty embedded blobs, 25 source snapshots, four exact archives,
+both control families and writer receipts, all 74 semantic corruptions, and
+complete Windows/Linux/fresh-local audits. All 317 Python regressions pass,
+including fourteen new review cases. It also retains eight FIFO comparison
+baseline edit p95 failures separately from the two ordinary H2 profile failures.
+No engine ran; runtime/native/PCK/inventory/codec bytes are unchanged.
+
+Use **GPT-6.1 Sol Max** for the next bounded implementation: add a real-route
+controller and saved reader around the existing recorder. The current proof
+reader/writer require the deliberately invalid fifteen-case fixture and cannot
+validate a sparse non-injected terrain route. Prove finite stop/write-failure,
+counter/unavailability/overflow and first-failure/maxima paths in editor/release
+controls, then verify matching binaries, portable candidate and complete audits.
+Keep launch disabled. Add only minimal recorder-status access if needed for
+fail-stop. Preserve all original budgets and the 256 KiB total evidence cap;
+do not move required evidence to uncounted sidecars. Read the linked finite
+acceptance checks before editing. No prospective observation is declared now.
 
 Further main-loop owner expansion is deferred. Exact old raw topology places
 98.875–99.298% of uncaptured gap cycles between VoxelEngine-process exit and
 preparation-query entry, but identifies no intervening causal owner. The new
 capability does not retroactively add CPU witnesses to earlier failed events.
-No attribution route or replacement process is declared. Perform the saved
-review before considering a prospective observation. Both requests and
+No attribution route or replacement process is declared. The saved review
+accepts the capability but requires the route controller/reader prerequisite
+before a later prospective observation. Both requests and
 all consumed pilots remain false; never reuse the permanent reservation. No
 laptop action or M2 work is requested now.
 
@@ -173,9 +187,9 @@ cost qualification attempt. No engine ran for the review.
 | Gate / requirement | Evidence and remaining defect | Finite next action | Stop and decide |
 | --- | --- | --- | --- |
 | Ordinary priority admission | Cloud comparison complete in CI `38912228615`: all four priority runs have zero coverage alarms, 80 submitted edits, passing operation guards and full drain. FIFO retains 35–38 alarms and four timeouts. Production remains FIFO. | Carry the opt-in policy into relevant target proof; do not repeat the completed ordinary matrix. | This closes the bounded cloud comparison, not global adoption or target qualification. Selection/resource witnesses remain unavailable with their observers disabled. |
-| Complete synchronous terrain budget | CI `40440351282` closes the local ArrayMesh lifetime gap with actual editor/release endpoint controls and exact candidate audits. Its broader diagnostics retain 1,488 µs debug H2 kind-2 retirement and 824 µs release AB-H1-on-2 preparation upload failures against 750 µs. The consumed preparation process in CI `40259410841` retains an 819 µs retirement deletion (750 µs limit). The prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Event-witness capability, exact candidate and complete Windows/Linux/local audits pass CI `42681602647`; current broader kind-2 overruns are 803 / 763 / 893 µs. Perform the exact saved review before any separately declared observation, retaining every failure and numerical limit. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
+| Complete synchronous terrain budget | CI `40440351282` closes the local ArrayMesh lifetime gap with actual editor/release endpoint controls and exact candidate audits. Its broader diagnostics retain 1,488 µs debug H2 kind-2 retirement and 824 µs release AB-H1-on-2 preparation upload failures against 750 µs. The consumed preparation process in CI `40259410841` retains an 819 µs retirement deletion (750 µs limit). The prefix-controls candidate in CI `40247195315` retains 1221 µs upload (release-m1-heavy-ab-raw, AB-H1-on-1, preparation). The preceding owner-controls candidate in CI `40216786118` retains 809 / 865 µs deletion overruns. The preceding disposal candidate in CI `39300074494` retains a 905 µs deletion overrun. All fifteen observer phases pass in CI `39179723675`; its historical broader suite retains a 1,332 µs upload and 756 µs deletion. Earlier preflight 1,088 / 802 µs, counter-candidate 1,025 / 810 µs, earlier 753 / 794 µs and five preceding failures remain historical evidence. | Event-witness capability and exact saved review are complete. Current ordinary kind-2 overruns remain 803 / 763 / 893 µs. Implement the finite real-route controller/saved-reader prerequisite with launch disabled, retaining every failure and numerical limit; no new process is declared. | Two legal 600 µs operations fail a normal 1 ms frame; nested work is charged once and phase carry persists. Actual broader/target budgets remain open; renderer-deferred work stays unverified. |
 | Representative world demand / direction | Cloud proof complete in CI `38922744175`: 32³/one worker, full `Y[-64,192)`, actual +X/-X/+Z travel and edited-data/mesh reload. Both prepared cases have zero alarms/readiness stops and 288 submitted edits; baseline has 521 alarms. Peaks: 392 meshes / 5,104 data, within 512 / 8,192. | Retain this opt-in case for any subsequently authorized pilot/target comparison; do not repeat the completed four-case cloud matrix. | Cloud correctness does not select a production profile or qualify rendered geometry/GPU/frame performance. Unchanged 16³ interior demand still needs 2,197 regions against the 512 cap. |
-| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite. Its declared process is now consumed: three completed trials, third failed at 819 µs retirement deletion; all ownership/publication evidence reconciles. | Perform the exact saved review of the completed event-witness capability and candidate. Preparation gap topology remains noncausal; a later observation requires its own prospective declaration. No automatic observer expansion or calibration retry. | All declared sequences are consumed and all pilot requests are false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
+| Shipping diagnostic overhead <1% | V2 remains failed/inconclusive: width 2.850549401%, section drift 1.073468789%. Attribution CI `39179723675` retains five valid trials and descriptive width 1.788237675%. Saved direct main bounds/gaps now localize substantial preparation variation outside captured roots; disposal capability now passes CI `39300074494`, while specific representative owner/worker demand and complete observer cost remain unavailable; four-owner controls/candidate now pass CI `40216786118`; the historical prefix-write continuation gap is corrected and verified in CI `40247195315`; the corrected saved review closes that prerequisite. Its declared process is now consumed: three completed trials, third failed at 819 µs retirement deletion; all ownership/publication evidence reconciles. | Exact event-witness saved review is complete. Implement its bounded real-route controller/saved-reader prerequisite with launch disabled. Preparation gap topology remains noncausal; a later observation requires its own prospective declaration. No automatic observer expansion or calibration retry. | All declared sequences are consumed and all pilot requests are false. Any later finite attribution route needs its own prospective declaration. No positive/shipping trial, fitted correction, numerical limit change, profile matrix or laptop action. |
 | Target frame / edit / coverage / resource / operation viability | Existing laptop reports do not qualify a profile; historical H2 upload/pacing failures remain. Cloud correctness cannot settle them. | After usable diagnostic controls and an explicit target decision, one relevant exact-build comparison with fixed work/settings and complete budgets. | Pass the existing 720p normal/heavy frame, 100/200 ms edit, resource/readiness/coverage and terrain-operation gates. Failures identify the next concrete implementation defect. No unchanged four-profile rerun by default. |
 | Complete M1 qualification | Physical pacing/attribution, driver-deferred/allocation accounting, retention, profile selection and three complete qualification runs remain open. | Freeze a viable candidate; complete only the missing observations and declared repeats. | M1 qualifies only when all required evidence passes. Missing metrics remain unavailable; an inconclusive result requires an explicit next decision, never a passing zero. |
 
