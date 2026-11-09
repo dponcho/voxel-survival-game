@@ -1,0 +1,2978 @@
+{
+  "artifact_archives": {
+    "Cairn-counter-saved-recheck-": {
+      "bytes": 54642,
+      "expanded_bytes": 560520,
+      "members": 2,
+      "sha256": "083d55172144efe651ddf214d209aae72ceab150f2d5f196b11ffb4e34d8f198"
+    },
+    "Cairn-evidence-": {
+      "bytes": 31165528,
+      "expanded_bytes": 440585360,
+      "members": 2517,
+      "sha256": "ed4ac40fcf38d59438a06901c38ceaa273916fc2f6549716c5d96c2c0cec0721"
+    },
+    "Cairn-native-evidence-": {
+      "bytes": 12536,
+      "expanded_bytes": 29033,
+      "members": 12,
+      "sha256": "0c15fc21faf1e1cb9185a1dafa6728d25b966517e6d3066f2001566edbd1b93f"
+    },
+    "Cairn-windows-x86_64-": {
+      "bytes": 30246859,
+      "expanded_bytes": 30352119,
+      "members": 3,
+      "sha256": "4471cb65218d401dfe447e71ebfec9da0f5cc33f2585485005781eb45cc29821"
+    }
+  },
+  "audit_agreement": {
+    "complete_audits_match": true,
+    "ordinary": {
+      "edit_events": 94,
+      "folders": 10,
+      "heavy": [
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H1-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-heavy-ab-raw",
+          "id": "AB-H2-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "debug-m1-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H1-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-heavy-ab-raw",
+          "id": "AB-H2-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-16-1-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "failed",
+          "folder": "m1-release-16-1-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Edit visibility exceeded the 100/200 ms limits",
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-16-2-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "failed",
+          "folder": "m1-release-16-2-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Edit visibility exceeded the 100/200 ms limits",
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-32-2-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "m1-release-32-2-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-reference-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-closure-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-closure-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H1-reference-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-reference-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-closure-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-closure-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "m1-route-calibration-raw",
+          "id": "CAL-H2-reference-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H1-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-off-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-on-1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-on-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": null,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-heavy-ab-raw",
+          "id": "AB-H2-off-2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required",
+            "Fog/frontier qualification is inconclusive; inspect measured and unavailable samples"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-raw",
+          "id": "H1",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        },
+        {
+          "coverage": 0,
+          "evaluation": "inconclusive",
+          "folder": "release-m1-raw",
+          "id": "H2",
+          "qualified": false,
+          "reasons": [
+            "Diagnostic callback wall time reached 1%; A/B qualification required"
+          ]
+        }
+      ],
+      "heavy_contracts_checked": 42,
+      "native_phases": 284,
+      "operation_rows": 37359,
+      "retained_operation_exceedances": [
+        {
+          "folder": "debug-m1-raw",
+          "kind": "deletion",
+          "max_usec": 1488,
+          "phase": "retirement",
+          "scenario": "H2"
+        },
+        {
+          "folder": "release-m1-heavy-ab-raw",
+          "kind": "upload",
+          "max_usec": 824,
+          "phase": "preparation",
+          "scenario": "AB-H1-on-2"
+        }
+      ],
+      "scenario_samples": 14319,
+      "scenarios": 98
+    },
+    "pck_entries": 120,
+    "pe_imports": 38,
+    "portable_sha256": "439d13d0d5a45f37e23876126027b945ce1d6f02bb2a0720af1b3fd5fe3200b8",
+    "self_tests": 8
+  },
+  "broader_operation_failures": [
+    {
+      "data_apply": {
+        "bytes": 0,
+        "count": 0,
+        "max_bytes": 0,
+        "max_kind": 0,
+        "max_start_usec": 0,
+        "max_usec": 0,
+        "usec": 0
+      },
+      "deletion": {
+        "bytes": 54128480,
+        "count": 518,
+        "max_bytes": 143360,
+        "max_kind": 2,
+        "max_start_usec": 12650779,
+        "max_usec": 1488,
+        "usec": 5939
+      },
+      "phase": "retirement",
+      "reasons": [
+        "Individual deletion exceeded 0.75 ms"
+      ],
+      "report": "debug-m1-raw/M1-2026-10-27T02-54-32-32-1-8152/summary.json",
+      "scenario": "H2",
+      "terrain_time_overruns": 0,
+      "upload": {
+        "bytes": 0,
+        "count": 0,
+        "max_bytes": 0,
+        "max_kind": 0,
+        "max_start_usec": 0,
+        "max_usec": 0,
+        "usec": 0
+      }
+    },
+    {
+      "data_apply": {
+        "bytes": 0,
+        "count": 965,
+        "max_bytes": 0,
+        "max_kind": 4,
+        "max_start_usec": 7595710,
+        "max_usec": 130,
+        "usec": 2415
+      },
+      "deletion": {
+        "bytes": 0,
+        "count": 0,
+        "max_bytes": 0,
+        "max_kind": 0,
+        "max_start_usec": 0,
+        "max_usec": 0,
+        "usec": 0
+      },
+      "phase": "preparation",
+      "reasons": [
+        "Individual upload exceeded 0.75 ms"
+      ],
+      "report": "release-m1-heavy-ab-raw/M1-2026-10-27T02-55-57-32-1-2716/summary.json",
+      "scenario": "AB-H1-on-2",
+      "terrain_time_overruns": 0,
+      "upload": {
+        "bytes": 53838400,
+        "count": 426,
+        "max_bytes": 143360,
+        "max_kind": 1,
+        "max_start_usec": 7595841,
+        "max_usec": 824,
+        "usec": 16256
+      }
+    }
+  ],
+  "candidate": {
+    "exe_sha256": "7b1fcbb7fe09e0da2bd17933a97764a2306623f4f0bc77c207556304d4853281",
+    "pck_entries_md5_verified": 120,
+    "pck_sha256": "b2499d1c344da4de213712f5acd1722e4443ab0bd9fa9ea924acd441522c2ea8",
+    "pe_imports_verified": 38,
+    "portable_bytes": 30342929,
+    "portable_sha256": "439d13d0d5a45f37e23876126027b945ce1d6f02bb2a0720af1b3fd5fe3200b8",
+    "self_tests_verified": 8
+  },
+  "controls": {
+    "editor": {
+      "cases": [
+        {
+          "elapsed_usec": 7,
+          "endpoint_object_alive": true,
+          "entry": "frozen-before-run",
+          "kind": 3,
+          "name": "rejected-empty",
+          "object_id": "9223372065476707894",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 1,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "empty",
+          "object_id": "9223372065493485110",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 2,
+          "endpoint_object_alive": true,
+          "entry": "FreeMeshTask::run",
+          "kind": 2,
+          "name": "surface-0",
+          "object_id": "9223372065510262326",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": true,
+          "entry": "FreeMeshTask::run",
+          "kind": 2,
+          "name": "surface-1",
+          "object_id": "9223372065510262326",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "surface-release",
+          "object_id": "9223372065510262326",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": true,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "shared-empty",
+          "object_id": "9223372065527039542",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": null,
+          "entry": "FreeMeshTask::run",
+          "kind": 0,
+          "name": "postponed",
+          "object_id": "9223372065543816758",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "postponed-release",
+          "object_id": "9223372065543816758",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 1,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "non-array",
+          "object_id": "9223372065560593974",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": null,
+          "entry": "FreeMeshTask::add",
+          "kind": 0,
+          "name": "null-add",
+          "object_id": "0",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        }
+      ],
+      "complete_process_cycles": [
+        "1200940",
+        "1283594"
+      ],
+      "corrected_object_absent_before_ending_clock": true,
+      "endpoint_hook_cleared": true,
+      "fixture_usec": 555,
+      "mutations_rejected": [
+        "false-corrected-destruction",
+        "hidden-rejected-lifetime",
+        "false-shared-release",
+        "endpoint-after-clock",
+        "endpoint-after-return",
+        "false-owner-thread",
+        "double-charged-release",
+        "wrong-release-kind",
+        "missing-native-frame",
+        "invented-null-endpoint",
+        "destroyed-before-postpone",
+        "different-surface-owner",
+        "retained-control-hook",
+        "unallocated-mesh-resource",
+        "fixture-over-cap",
+        "failed-counter",
+        "qualified-control"
+      ],
+      "operation_guards_valid": true,
+      "passed": true,
+      "qualified": false,
+      "rejected_lifetime_reproduced": true,
+      "renderer_deferred": "unverified",
+      "schema": "cairn-mesh-retirement-proof-1",
+      "shared_owner_preserved": true,
+      "target_performance": "not_run"
+    },
+    "release": {
+      "cases": [
+        {
+          "elapsed_usec": 2,
+          "endpoint_object_alive": true,
+          "entry": "frozen-before-run",
+          "kind": 3,
+          "name": "rejected-empty",
+          "object_id": "9223372063664768461",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "empty",
+          "object_id": "9223372063681545677",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 1,
+          "endpoint_object_alive": true,
+          "entry": "FreeMeshTask::run",
+          "kind": 2,
+          "name": "surface-0",
+          "object_id": "9223372063698322893",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": true,
+          "entry": "FreeMeshTask::run",
+          "kind": 2,
+          "name": "surface-1",
+          "object_id": "9223372063698322893",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "surface-release",
+          "object_id": "9223372063698322893",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": true,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "shared-empty",
+          "object_id": "9223372063715100109",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": null,
+          "entry": "FreeMeshTask::run",
+          "kind": 0,
+          "name": "postponed",
+          "object_id": "9223372063731877325",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "postponed-release",
+          "object_id": "9223372063731877325",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": false,
+          "entry": "FreeMeshTask::run",
+          "kind": 3,
+          "name": "non-array",
+          "object_id": "9223372063748654541",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "elapsed_usec": 0,
+          "endpoint_object_alive": null,
+          "entry": "FreeMeshTask::add",
+          "kind": 0,
+          "name": "null-add",
+          "object_id": "0",
+          "operation_guard": "passed",
+          "operation_reasons": []
+        }
+      ],
+      "complete_process_cycles": [
+        "1221246",
+        "1303588"
+      ],
+      "corrected_object_absent_before_ending_clock": true,
+      "endpoint_hook_cleared": true,
+      "fixture_usec": 550,
+      "mutations_rejected": [
+        "false-corrected-destruction",
+        "hidden-rejected-lifetime",
+        "false-shared-release",
+        "endpoint-after-clock",
+        "endpoint-after-return",
+        "false-owner-thread",
+        "double-charged-release",
+        "wrong-release-kind",
+        "missing-native-frame",
+        "invented-null-endpoint",
+        "destroyed-before-postpone",
+        "different-surface-owner",
+        "retained-control-hook",
+        "unallocated-mesh-resource",
+        "fixture-over-cap",
+        "failed-counter",
+        "qualified-control"
+      ],
+      "operation_guards_valid": true,
+      "passed": true,
+      "qualified": false,
+      "rejected_lifetime_reproduced": true,
+      "renderer_deferred": "unverified",
+      "schema": "cairn-mesh-retirement-proof-1",
+      "shared_owner_preserved": true,
+      "target_performance": "not_run"
+    }
+  },
+  "decision": {
+    "basis": "The kind-3 lifetime prerequisite is closed. Kind-1/2 overruns still stop otherwise complete trials; their event-specific CPU demand is unavailable. Gap adjacency is not causal ownership.",
+    "consumed_process_retry": false,
+    "inventory_or_codec_changed_by_review": false,
+    "laptop_action": false,
+    "new_process_declared": false,
+    "next_task": "Bounded event-specific cycle witnesses for the existing synchronous terrain-operation guards.",
+    "preparation_owner_expansion": "deferred; 15->1 topology does not identify an intervening engine/renderer/allocator owner",
+    "threshold_changes": false
+  },
+  "engine_processes_executed": 0,
+  "game_commit": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+  "lifetime_source": {
+    "corrected_local_scope_depth": 1,
+    "corrected_run_sha256": "8574852965085a21f2847453ec009f6435ea981d920ed6743a2f5996d9695b63",
+    "ending_clock_scope_depth": 0,
+    "frozen_local_scope_depth": 0,
+    "frozen_run_sha256": "e99e6e65f5ccab7eb2990f49fbb5807335b6bf6655a59dcced5ffa684a412f46",
+    "renderer_deferred": "unverified",
+    "source_order": "scope exit, non-owning witness, ending clock, charge",
+    "synchronous_lifetime_gap_closed": true
+  },
+  "native_key": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+  "native_key_changed": false,
+  "previous_review_sha256": "d35a4417b953648d9d78643ac195b2ebd2807cf64542c13f4b63bd8277947707",
+  "proof_sha256": "e4f35957fb05f5356c21b8c4c5fe52ae68a3440bb1c3e10eb92772c25a1ad329",
+  "qualified": false,
+  "reader_sha256": "3fd46cfe932a227455527f02b706e743e4674a016c8f8932d2751aee6e12a230",
+  "retained_prefix": {
+    "archive_files": 65,
+    "audited_files": 66,
+    "complete_bare_quartet": false,
+    "failure": {
+      "associated_payload_bytes": 112280,
+      "direct_preparation_scopes_admit_only_section": 0,
+      "elapsed_usec": 819,
+      "event_thread_cycle_demand": null,
+      "excess_usec": 69,
+      "kind": 2,
+      "kind_name": "surface-removal path",
+      "limit_usec": 750,
+      "main_spans_overlapping_event": [],
+      "os_driver_cause": null,
+      "phase": "retirement",
+      "phase_deletion_bytes": 73913840,
+      "phase_deletion_count": 871,
+      "phase_deletion_usec": 6824,
+      "qualification": "Complete failed measurement retained; no cause or operation pass inferred.",
+      "raw_operation_trace": false,
+      "trial": "AB-H2-preparation-bare-1",
+      "wall_end_usec": 233135428,
+      "wall_start_usec": 233134609
+    },
+    "recovered_source_files": [
+      {
+        "bytes": 4954,
+        "path": "source/.github/workflows/ci.yml",
+        "sha256": "d1e779713ae27ab338eabd640f554a504721acd35b6a7c1f4b593816e72bde1e",
+        "source_commit": "7da951107b45e151eae79f03f6e762c6f594f721"
+      },
+      {
+        "bytes": 3582,
+        "path": "source/.github/workflows/preparation-demand.yml",
+        "sha256": "9aaed9ad282a8695f72ec946114813f4f4dd95aa64d3c5b377f70a180e9c958c",
+        "source_commit": "7da951107b45e151eae79f03f6e762c6f594f721"
+      }
+    ],
+    "retrospective_qualification": false,
+    "sequence": {
+      "attribution_valid": false,
+      "cycle_cost": "inconclusive",
+      "evidence_integrity": "verified",
+      "measurement_valid": false,
+      "passed": true,
+      "publication": {
+        "attempts": 3,
+        "complete_trial_flags_preserved": true,
+        "last_file": {
+          "bytes": 256604,
+          "name": "sequence-prefix.json",
+          "sha256": "437ab3176515a45e4722e2f7372a04c0e823940fd7fe663659c27bb7bf1aaa67",
+          "status": "retained"
+        },
+        "passed": true,
+        "status": "verified"
+      },
+      "qualified": false,
+      "records": [
+        {
+          "attribution_valid": true,
+          "checks": {
+            "accepted": true,
+            "actors": true,
+            "coverage": true,
+            "cycles": true,
+            "dose": true,
+            "drained": true,
+            "edits": true,
+            "integration": true,
+            "io": true,
+            "marker": true,
+            "observers": true,
+            "operations": true,
+            "policy": true,
+            "readiness": true,
+            "rejected": true,
+            "resources": true,
+            "route_clocks": true,
+            "saves": true,
+            "ticks": true
+          },
+          "common": {
+            "command_hash": 1241625024,
+            "dose_actual_usec": 0,
+            "dose_hash_updates": 0,
+            "frame_rows": 10441,
+            "id": "AB-H2-preparation-warmup-0",
+            "interval_usec": 72041338,
+            "measurement_valid": true,
+            "mode": "bare",
+            "operation_failures": [],
+            "peak_data": 5104,
+            "peak_mesh": 392,
+            "physics_rows": 4320,
+            "terminal_player": [
+              10.0,
+              64.000999451,
+              165.999450684
+            ]
+          },
+          "complete": true,
+          "id": "AB-H2-preparation-warmup-0",
+          "observer": {
+            "emission_process_cycles": [
+              "31376778",
+              "31508272"
+            ],
+            "emission_thread_cycles": [
+              "31445494",
+              "31447158"
+            ],
+            "groups": [
+              {
+                "bookkeeping_cycles": "17386",
+                "calls": 3,
+                "exclusive_body_cycles": "627940",
+                "inclusive_full_cycles": "645326",
+                "lane": 1,
+                "section": "0",
+                "slot": 7
+              },
+              {
+                "bookkeeping_cycles": "4378",
+                "calls": 1,
+                "exclusive_body_cycles": "1092284",
+                "inclusive_full_cycles": "1349280",
+                "lane": 2,
+                "section": "0",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "2211036",
+                "calls": 778,
+                "exclusive_body_cycles": "32379296",
+                "inclusive_full_cycles": "34590332",
+                "lane": 1,
+                "section": "0",
+                "slot": 1
+              },
+              {
+                "bookkeeping_cycles": "1391060",
+                "calls": 777,
+                "exclusive_body_cycles": "51238922",
+                "inclusive_full_cycles": "52629982",
+                "lane": 1,
+                "section": "0",
+                "slot": 16
+              },
+              {
+                "bookkeeping_cycles": "7914240",
+                "calls": 5104,
+                "exclusive_body_cycles": "625687834",
+                "inclusive_full_cycles": "633602074",
+                "lane": 3,
+                "section": "0",
+                "slot": 13
+              },
+              {
+                "bookkeeping_cycles": "1257762",
+                "calls": 776,
+                "exclusive_body_cycles": "146983066",
+                "inclusive_full_cycles": "148240828",
+                "lane": 1,
+                "section": "0",
+                "slot": 15
+              },
+              {
+                "bookkeeping_cycles": "869128",
+                "calls": 392,
+                "exclusive_body_cycles": "791211480",
+                "inclusive_full_cycles": "792080608",
+                "lane": 3,
+                "section": "0",
+                "slot": 14
+              },
+              {
+                "bookkeeping_cycles": "4350",
+                "calls": 1,
+                "exclusive_body_cycles": "15848",
+                "inclusive_full_cycles": "20198",
+                "lane": 2,
+                "section": "0",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "1256",
+                "calls": 1,
+                "exclusive_body_cycles": "231164",
+                "inclusive_full_cycles": "232420",
+                "lane": 2,
+                "section": "0",
+                "slot": 11
+              },
+              {
+                "bookkeeping_cycles": "7194",
+                "calls": 1,
+                "exclusive_body_cycles": "29580194",
+                "inclusive_full_cycles": "107760416",
+                "lane": 4,
+                "section": "cross_section",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "1978",
+                "calls": 1,
+                "exclusive_body_cycles": "22538",
+                "inclusive_full_cycles": "24516",
+                "lane": 1,
+                "section": "0",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "7484148",
+                "calls": 3478,
+                "exclusive_body_cycles": "260643778",
+                "inclusive_full_cycles": "1016355308",
+                "lane": 1,
+                "section": "1",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5273812",
+                "calls": 3478,
+                "exclusive_body_cycles": "228035774",
+                "inclusive_full_cycles": "233309586",
+                "lane": 1,
+                "section": "1",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "4977790",
+                "calls": 3478,
+                "exclusive_body_cycles": "509940006",
+                "inclusive_full_cycles": "514917796",
+                "lane": 1,
+                "section": "1",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3227780",
+                "calls": 1440,
+                "exclusive_body_cycles": "532939378",
+                "inclusive_full_cycles": "536167158",
+                "lane": 1,
+                "section": "1",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "2222236",
+                "calls": 1440,
+                "exclusive_body_cycles": "756698094",
+                "inclusive_full_cycles": "758920330",
+                "lane": 1,
+                "section": "1",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "150840",
+                "calls": 29,
+                "exclusive_body_cycles": "5963674",
+                "inclusive_full_cycles": "6114514",
+                "lane": 4,
+                "section": "1",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "181168",
+                "calls": 24,
+                "exclusive_body_cycles": "20124436",
+                "inclusive_full_cycles": "20305604",
+                "lane": 4,
+                "section": "1",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1470",
+                "calls": 1,
+                "exclusive_body_cycles": "16588",
+                "inclusive_full_cycles": "18058",
+                "lane": 1,
+                "section": "1",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "2289666",
+                "calls": 1441,
+                "exclusive_body_cycles": "768100590",
+                "inclusive_full_cycles": "770390256",
+                "lane": 1,
+                "section": "2",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "7372290",
+                "calls": 3478,
+                "exclusive_body_cycles": "267353884",
+                "inclusive_full_cycles": "1043033404",
+                "lane": 1,
+                "section": "2",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5334824",
+                "calls": 3478,
+                "exclusive_body_cycles": "233598166",
+                "inclusive_full_cycles": "238932990",
+                "lane": 1,
+                "section": "2",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "5008840",
+                "calls": 3478,
+                "exclusive_body_cycles": "524365400",
+                "inclusive_full_cycles": "529374240",
+                "lane": 1,
+                "section": "2",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3319272",
+                "calls": 1440,
+                "exclusive_body_cycles": "532223156",
+                "inclusive_full_cycles": "535542428",
+                "lane": 1,
+                "section": "2",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "129744",
+                "calls": 30,
+                "exclusive_body_cycles": "5288208",
+                "inclusive_full_cycles": "5417952",
+                "lane": 4,
+                "section": "2",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "235630",
+                "calls": 24,
+                "exclusive_body_cycles": "20019398",
+                "inclusive_full_cycles": "20255028",
+                "lane": 4,
+                "section": "2",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1308",
+                "calls": 1,
+                "exclusive_body_cycles": "30428",
+                "inclusive_full_cycles": "31736",
+                "lane": 1,
+                "section": "2",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "2448940",
+                "calls": 1441,
+                "exclusive_body_cycles": "845598170",
+                "inclusive_full_cycles": "848047110",
+                "lane": 1,
+                "section": "3",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "8554438",
+                "calls": 3479,
+                "exclusive_body_cycles": "303640226",
+                "inclusive_full_cycles": "1198319022",
+                "lane": 1,
+                "section": "3",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5557152",
+                "calls": 3479,
+                "exclusive_body_cycles": "270854680",
+                "inclusive_full_cycles": "276411832",
+                "lane": 1,
+                "section": "3",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "5219492",
+                "calls": 3479,
+                "exclusive_body_cycles": "604493034",
+                "inclusive_full_cycles": "609712526",
+                "lane": 1,
+                "section": "3",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3833358",
+                "calls": 1440,
+                "exclusive_body_cycles": "535918362",
+                "inclusive_full_cycles": "539751720",
+                "lane": 1,
+                "section": "3",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "135530",
+                "calls": 30,
+                "exclusive_body_cycles": "5720256",
+                "inclusive_full_cycles": "5855786",
+                "lane": 4,
+                "section": "3",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "158232",
+                "calls": 24,
+                "exclusive_body_cycles": "19879530",
+                "inclusive_full_cycles": "20037762",
+                "lane": 4,
+                "section": "3",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1680",
+                "calls": 1,
+                "exclusive_body_cycles": "25280",
+                "inclusive_full_cycles": "26960",
+                "lane": 1,
+                "section": "3",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "1576",
+                "calls": 1,
+                "exclusive_body_cycles": "44084",
+                "inclusive_full_cycles": "45660",
+                "lane": 1,
+                "section": "4",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "13148",
+                "calls": 6,
+                "exclusive_body_cycles": "528254",
+                "inclusive_full_cycles": "1616624",
+                "lane": 1,
+                "section": "4",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "9102",
+                "calls": 6,
+                "exclusive_body_cycles": "350462",
+                "inclusive_full_cycles": "359564",
+                "lane": 1,
+                "section": "4",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "8260",
+                "calls": 6,
+                "exclusive_body_cycles": "707398",
+                "inclusive_full_cycles": "715658",
+                "lane": 1,
+                "section": "4",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "4860",
+                "calls": 2,
+                "exclusive_body_cycles": "165320",
+                "inclusive_full_cycles": "170180",
+                "lane": 4,
+                "section": "4",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "12192",
+                "calls": 4,
+                "exclusive_body_cycles": "89289068",
+                "inclusive_full_cycles": "89301260",
+                "lane": 1,
+                "section": "4",
+                "slot": 7
+              },
+              {
+                "bookkeeping_cycles": "1082",
+                "calls": 1,
+                "exclusive_body_cycles": "15120",
+                "inclusive_full_cycles": "16202",
+                "lane": 4,
+                "section": "4",
+                "slot": 11
+              },
+              {
+                "bookkeeping_cycles": "3920",
+                "calls": 1,
+                "exclusive_body_cycles": "1075576",
+                "inclusive_full_cycles": "1320432",
+                "lane": 5,
+                "section": "4",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "5154",
+                "calls": 1,
+                "exclusive_body_cycles": "14630",
+                "inclusive_full_cycles": "19784",
+                "lane": 5,
+                "section": "4",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "1472",
+                "calls": 1,
+                "exclusive_body_cycles": "219680",
+                "inclusive_full_cycles": "221152",
+                "lane": 5,
+                "section": "4",
+                "slot": 11
+              }
+            ],
+            "lanes": [
+              {
+                "bookkeeping_cycles": "77051996",
+                "exclusive_body_cycles": "7496646022",
+                "lane": 1,
+                "root_full_cycles": "7573698018",
+                "thread": "2612"
+              },
+              {
+                "bookkeeping_cycles": "9984",
+                "exclusive_body_cycles": "1339296",
+                "lane": 2,
+                "root_full_cycles": "1349280",
+                "thread": "5332"
+              },
+              {
+                "bookkeeping_cycles": "8783368",
+                "exclusive_body_cycles": "1416899314",
+                "lane": 3,
+                "root_full_cycles": "1425682682",
+                "thread": "2832"
+              },
+              {
+                "bookkeeping_cycles": "1004280",
+                "exclusive_body_cycles": "106756136",
+                "lane": 4,
+                "root_full_cycles": "107760416",
+                "thread": "3020"
+              },
+              {
+                "bookkeeping_cycles": "10546",
+                "exclusive_body_cycles": "1309886",
+                "lane": 5,
+                "root_full_cycles": "1320432",
+                "thread": "5708"
+              }
+            ],
+            "native_owners": {
+              "crossing_ids": [],
+              "crossing_policy": "Retained complete, separate from preparation; no wall split or clipping",
+              "lanes": [
+                {
+                  "bookkeeping_cycles": "77051996",
+                  "exclusive_body_cycles": "7496646022",
+                  "lane": 1,
+                  "root_full_cycles": "7573698018",
+                  "thread": "2612"
+                },
+                {
+                  "bookkeeping_cycles": "9984",
+                  "exclusive_body_cycles": "1339296",
+                  "lane": 2,
+                  "root_full_cycles": "1349280",
+                  "thread": "5332"
+                },
+                {
+                  "bookkeeping_cycles": "8783368",
+                  "exclusive_body_cycles": "1416899314",
+                  "lane": 3,
+                  "root_full_cycles": "1425682682",
+                  "thread": "2832"
+                },
+                {
+                  "bookkeeping_cycles": "1004280",
+                  "exclusive_body_cycles": "106756136",
+                  "lane": 4,
+                  "root_full_cycles": "107760416",
+                  "thread": "3020"
+                },
+                {
+                  "bookkeeping_cycles": "10546",
+                  "exclusive_body_cycles": "1309886",
+                  "lane": 5,
+                  "root_full_cycles": "1320432",
+                  "thread": "5708"
+                }
+              ],
+              "native": [
+                {
+                  "attempted": 5104,
+                  "body_cycles": "625687834",
+                  "bookkeeping_cycles": "7914240",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "625687834",
+                  "inclusive_full_cycles": "633602074",
+                  "overload": 0,
+                  "slot": 13
+                },
+                {
+                  "attempted": 392,
+                  "body_cycles": "791211480",
+                  "bookkeeping_cycles": "869128",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "791211480",
+                  "inclusive_full_cycles": "792080608",
+                  "overload": 0,
+                  "slot": 14
+                },
+                {
+                  "attempted": 776,
+                  "body_cycles": "146983066",
+                  "bookkeeping_cycles": "1257762",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "146983066",
+                  "inclusive_full_cycles": "148240828",
+                  "overload": 0,
+                  "slot": 15
+                },
+                {
+                  "attempted": 777,
+                  "body_cycles": "51238922",
+                  "bookkeeping_cycles": "1391060",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "51238922",
+                  "inclusive_full_cycles": "52629982",
+                  "overload": 0,
+                  "slot": 16
+                }
+              ]
+            },
+            "passed": true,
+            "record_count": 47975,
+            "scope": "Perturbing preparation attribution only; no thread/process addition, fitted subtraction or shipping-cost estimate.",
+            "trace_bytes": 9211240
+          }
+        },
+        {
+          "attribution_valid": true,
+          "checks": {
+            "accepted": true,
+            "actors": true,
+            "coverage": true,
+            "cycles": true,
+            "dose": true,
+            "drained": true,
+            "edits": true,
+            "integration": true,
+            "io": true,
+            "marker": true,
+            "observers": true,
+            "operations": true,
+            "policy": true,
+            "readiness": true,
+            "rejected": true,
+            "resources": true,
+            "route_clocks": true,
+            "saves": true,
+            "ticks": true
+          },
+          "common": {
+            "command_hash": 1241625024,
+            "dose_actual_usec": 0,
+            "dose_hash_updates": 0,
+            "frame_rows": 10440,
+            "id": "AB-H2-preparation-bare-0",
+            "interval_usec": 72034612,
+            "measurement_valid": true,
+            "mode": "bare",
+            "operation_failures": [],
+            "peak_data": 5104,
+            "peak_mesh": 392,
+            "physics_rows": 4320,
+            "terminal_player": [
+              10.0,
+              64.000999451,
+              165.999450684
+            ]
+          },
+          "complete": true,
+          "id": "AB-H2-preparation-bare-0",
+          "observer": {
+            "emission_process_cycles": [
+              "29498288",
+              "29632370"
+            ],
+            "emission_thread_cycles": [
+              "29564232",
+              "29565828"
+            ],
+            "groups": [
+              {
+                "bookkeeping_cycles": "6212",
+                "calls": 3,
+                "exclusive_body_cycles": "545788",
+                "inclusive_full_cycles": "552000",
+                "lane": 1,
+                "section": "0",
+                "slot": 7
+              },
+              {
+                "bookkeeping_cycles": "4758",
+                "calls": 1,
+                "exclusive_body_cycles": "925170",
+                "inclusive_full_cycles": "1235612",
+                "lane": 2,
+                "section": "0",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "1491042",
+                "calls": 823,
+                "exclusive_body_cycles": "134269818",
+                "inclusive_full_cycles": "135760860",
+                "lane": 1,
+                "section": "0",
+                "slot": 15
+              },
+              {
+                "bookkeeping_cycles": "2655910",
+                "calls": 823,
+                "exclusive_body_cycles": "33156360",
+                "inclusive_full_cycles": "35812270",
+                "lane": 1,
+                "section": "0",
+                "slot": 1
+              },
+              {
+                "bookkeeping_cycles": "1513726",
+                "calls": 822,
+                "exclusive_body_cycles": "49042978",
+                "inclusive_full_cycles": "50556704",
+                "lane": 1,
+                "section": "0",
+                "slot": 16
+              },
+              {
+                "bookkeeping_cycles": "7694968",
+                "calls": 5104,
+                "exclusive_body_cycles": "533020224",
+                "inclusive_full_cycles": "540715192",
+                "lane": 3,
+                "section": "0",
+                "slot": 13
+              },
+              {
+                "bookkeeping_cycles": "913194",
+                "calls": 392,
+                "exclusive_body_cycles": "755250194",
+                "inclusive_full_cycles": "756163388",
+                "lane": 3,
+                "section": "0",
+                "slot": 14
+              },
+              {
+                "bookkeeping_cycles": "3540",
+                "calls": 1,
+                "exclusive_body_cycles": "16962",
+                "inclusive_full_cycles": "20502",
+                "lane": 2,
+                "section": "0",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "1234",
+                "calls": 1,
+                "exclusive_body_cycles": "283948",
+                "inclusive_full_cycles": "285182",
+                "lane": 2,
+                "section": "0",
+                "slot": 11
+              },
+              {
+                "bookkeeping_cycles": "2816",
+                "calls": 1,
+                "exclusive_body_cycles": "31085212",
+                "inclusive_full_cycles": "110388546",
+                "lane": 4,
+                "section": "cross_section",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "2056",
+                "calls": 1,
+                "exclusive_body_cycles": "23902",
+                "inclusive_full_cycles": "25958",
+                "lane": 1,
+                "section": "0",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "7231494",
+                "calls": 3478,
+                "exclusive_body_cycles": "243783622",
+                "inclusive_full_cycles": "945809180",
+                "lane": 1,
+                "section": "1",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5241084",
+                "calls": 3478,
+                "exclusive_body_cycles": "217700670",
+                "inclusive_full_cycles": "222941754",
+                "lane": 1,
+                "section": "1",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "5057426",
+                "calls": 3478,
+                "exclusive_body_cycles": "466794884",
+                "inclusive_full_cycles": "471852310",
+                "lane": 1,
+                "section": "1",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3186850",
+                "calls": 1440,
+                "exclusive_body_cycles": "583023950",
+                "inclusive_full_cycles": "586210800",
+                "lane": 1,
+                "section": "1",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "2191192",
+                "calls": 1440,
+                "exclusive_body_cycles": "750729696",
+                "inclusive_full_cycles": "752920888",
+                "lane": 1,
+                "section": "1",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "136702",
+                "calls": 29,
+                "exclusive_body_cycles": "5723366",
+                "inclusive_full_cycles": "5860068",
+                "lane": 4,
+                "section": "1",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "162850",
+                "calls": 24,
+                "exclusive_body_cycles": "20450516",
+                "inclusive_full_cycles": "20613366",
+                "lane": 4,
+                "section": "1",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1440",
+                "calls": 1,
+                "exclusive_body_cycles": "19586",
+                "inclusive_full_cycles": "21026",
+                "lane": 1,
+                "section": "1",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "2310696",
+                "calls": 1441,
+                "exclusive_body_cycles": "764516092",
+                "inclusive_full_cycles": "766826788",
+                "lane": 1,
+                "section": "2",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "7167514",
+                "calls": 3478,
+                "exclusive_body_cycles": "247597106",
+                "inclusive_full_cycles": "966297528",
+                "lane": 1,
+                "section": "2",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5161228",
+                "calls": 3478,
+                "exclusive_body_cycles": "219607240",
+                "inclusive_full_cycles": "224768468",
+                "lane": 1,
+                "section": "2",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "5052402",
+                "calls": 3478,
+                "exclusive_body_cycles": "481712038",
+                "inclusive_full_cycles": "486764440",
+                "lane": 1,
+                "section": "2",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3188560",
+                "calls": 1440,
+                "exclusive_body_cycles": "575892256",
+                "inclusive_full_cycles": "579080816",
+                "lane": 1,
+                "section": "2",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "135184",
+                "calls": 30,
+                "exclusive_body_cycles": "5809140",
+                "inclusive_full_cycles": "5944324",
+                "lane": 4,
+                "section": "2",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "208350",
+                "calls": 24,
+                "exclusive_body_cycles": "20521530",
+                "inclusive_full_cycles": "20729880",
+                "lane": 4,
+                "section": "2",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "2650",
+                "calls": 1,
+                "exclusive_body_cycles": "28262",
+                "inclusive_full_cycles": "30912",
+                "lane": 1,
+                "section": "2",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "2228694",
+                "calls": 1441,
+                "exclusive_body_cycles": "752197884",
+                "inclusive_full_cycles": "754426578",
+                "lane": 1,
+                "section": "3",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "7094386",
+                "calls": 3478,
+                "exclusive_body_cycles": "243846338",
+                "inclusive_full_cycles": "954000042",
+                "lane": 1,
+                "section": "3",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5240944",
+                "calls": 3478,
+                "exclusive_body_cycles": "220697328",
+                "inclusive_full_cycles": "225938272",
+                "lane": 1,
+                "section": "3",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "4949552",
+                "calls": 3478,
+                "exclusive_body_cycles": "472171494",
+                "inclusive_full_cycles": "477121046",
+                "lane": 1,
+                "section": "3",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3189764",
+                "calls": 1440,
+                "exclusive_body_cycles": "569698080",
+                "inclusive_full_cycles": "572887844",
+                "lane": 1,
+                "section": "3",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "158794",
+                "calls": 30,
+                "exclusive_body_cycles": "5132808",
+                "inclusive_full_cycles": "5291602",
+                "lane": 4,
+                "section": "3",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "131262",
+                "calls": 24,
+                "exclusive_body_cycles": "20524040",
+                "inclusive_full_cycles": "20655302",
+                "lane": 4,
+                "section": "3",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1426",
+                "calls": 1,
+                "exclusive_body_cycles": "22464",
+                "inclusive_full_cycles": "23890",
+                "lane": 1,
+                "section": "3",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "1560",
+                "calls": 1,
+                "exclusive_body_cycles": "45840",
+                "inclusive_full_cycles": "47400",
+                "lane": 1,
+                "section": "4",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "11174",
+                "calls": 6,
+                "exclusive_body_cycles": "507838",
+                "inclusive_full_cycles": "1559912",
+                "lane": 1,
+                "section": "4",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "8734",
+                "calls": 6,
+                "exclusive_body_cycles": "341798",
+                "inclusive_full_cycles": "350532",
+                "lane": 1,
+                "section": "4",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "7306",
+                "calls": 6,
+                "exclusive_body_cycles": "683062",
+                "inclusive_full_cycles": "690368",
+                "lane": 1,
+                "section": "4",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "6212",
+                "calls": 2,
+                "exclusive_body_cycles": "182218",
+                "inclusive_full_cycles": "188430",
+                "lane": 4,
+                "section": "4",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "11190",
+                "calls": 4,
+                "exclusive_body_cycles": "90186140",
+                "inclusive_full_cycles": "90197330",
+                "lane": 1,
+                "section": "4",
+                "slot": 7
+              },
+              {
+                "bookkeeping_cycles": "1152",
+                "calls": 1,
+                "exclusive_body_cycles": "16394",
+                "inclusive_full_cycles": "17546",
+                "lane": 4,
+                "section": "4",
+                "slot": 11
+              },
+              {
+                "bookkeeping_cycles": "3290",
+                "calls": 1,
+                "exclusive_body_cycles": "1049274",
+                "inclusive_full_cycles": "1304262",
+                "lane": 5,
+                "section": "4",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "5514",
+                "calls": 1,
+                "exclusive_body_cycles": "15464",
+                "inclusive_full_cycles": "20978",
+                "lane": 5,
+                "section": "4",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "1306",
+                "calls": 1,
+                "exclusive_body_cycles": "229414",
+                "inclusive_full_cycles": "230720",
+                "lane": 5,
+                "section": "4",
+                "slot": 11
+              }
+            ],
+            "lanes": [
+              {
+                "bookkeeping_cycles": "74206212",
+                "exclusive_body_cycles": "7118842514",
+                "lane": 1,
+                "root_full_cycles": "7193048726",
+                "thread": "2612"
+              },
+              {
+                "bookkeeping_cycles": "9532",
+                "exclusive_body_cycles": "1226080",
+                "lane": 2,
+                "root_full_cycles": "1235612",
+                "thread": "2852"
+              },
+              {
+                "bookkeeping_cycles": "8608162",
+                "exclusive_body_cycles": "1288270418",
+                "lane": 3,
+                "root_full_cycles": "1296878580",
+                "thread": "2832"
+              },
+              {
+                "bookkeeping_cycles": "943322",
+                "exclusive_body_cycles": "109445224",
+                "lane": 4,
+                "root_full_cycles": "110388546",
+                "thread": "1052"
+              },
+              {
+                "bookkeeping_cycles": "10110",
+                "exclusive_body_cycles": "1294152",
+                "lane": 5,
+                "root_full_cycles": "1304262",
+                "thread": "8132"
+              }
+            ],
+            "native_owners": {
+              "crossing_ids": [],
+              "crossing_policy": "Retained complete, separate from preparation; no wall split or clipping",
+              "lanes": [
+                {
+                  "bookkeeping_cycles": "74206212",
+                  "exclusive_body_cycles": "7118842514",
+                  "lane": 1,
+                  "root_full_cycles": "7193048726",
+                  "thread": "2612"
+                },
+                {
+                  "bookkeeping_cycles": "9532",
+                  "exclusive_body_cycles": "1226080",
+                  "lane": 2,
+                  "root_full_cycles": "1235612",
+                  "thread": "2852"
+                },
+                {
+                  "bookkeeping_cycles": "8608162",
+                  "exclusive_body_cycles": "1288270418",
+                  "lane": 3,
+                  "root_full_cycles": "1296878580",
+                  "thread": "2832"
+                },
+                {
+                  "bookkeeping_cycles": "943322",
+                  "exclusive_body_cycles": "109445224",
+                  "lane": 4,
+                  "root_full_cycles": "110388546",
+                  "thread": "1052"
+                },
+                {
+                  "bookkeeping_cycles": "10110",
+                  "exclusive_body_cycles": "1294152",
+                  "lane": 5,
+                  "root_full_cycles": "1304262",
+                  "thread": "8132"
+                }
+              ],
+              "native": [
+                {
+                  "attempted": 5104,
+                  "body_cycles": "533020224",
+                  "bookkeeping_cycles": "7694968",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "533020224",
+                  "inclusive_full_cycles": "540715192",
+                  "overload": 0,
+                  "slot": 13
+                },
+                {
+                  "attempted": 392,
+                  "body_cycles": "755250194",
+                  "bookkeeping_cycles": "913194",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "755250194",
+                  "inclusive_full_cycles": "756163388",
+                  "overload": 0,
+                  "slot": 14
+                },
+                {
+                  "attempted": 823,
+                  "body_cycles": "134269818",
+                  "bookkeeping_cycles": "1491042",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "134269818",
+                  "inclusive_full_cycles": "135760860",
+                  "overload": 0,
+                  "slot": 15
+                },
+                {
+                  "attempted": 822,
+                  "body_cycles": "49042978",
+                  "bookkeeping_cycles": "1513726",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "49042978",
+                  "inclusive_full_cycles": "50556704",
+                  "overload": 0,
+                  "slot": 16
+                }
+              ]
+            },
+            "passed": true,
+            "record_count": 48109,
+            "scope": "Perturbing preparation attribution only; no thread/process addition, fitted subtraction or shipping-cost estimate.",
+            "trace_bytes": 9236968
+          }
+        },
+        {
+          "attribution_valid": false,
+          "checks": {
+            "accepted": true,
+            "actors": true,
+            "coverage": true,
+            "cycles": true,
+            "dose": true,
+            "drained": true,
+            "edits": true,
+            "integration": true,
+            "io": true,
+            "marker": true,
+            "observers": true,
+            "operations": false,
+            "policy": true,
+            "readiness": true,
+            "rejected": true,
+            "resources": true,
+            "route_clocks": true,
+            "saves": true,
+            "ticks": true
+          },
+          "common": {
+            "command_hash": 1241625024,
+            "dose_actual_usec": 0,
+            "dose_hash_updates": 0,
+            "frame_rows": 10440,
+            "id": "AB-H2-preparation-bare-1",
+            "interval_usec": 72034645,
+            "measurement_valid": false,
+            "mode": "bare",
+            "operation_failures": [
+              {
+                "phase": "retirement",
+                "reasons": [
+                  "Individual deletion exceeded 0.75 ms"
+                ]
+              }
+            ],
+            "peak_data": 5104,
+            "peak_mesh": 392,
+            "physics_rows": 4320,
+            "terminal_player": [
+              10.0,
+              64.000999451,
+              165.999450684
+            ]
+          },
+          "complete": true,
+          "id": "AB-H2-preparation-bare-1",
+          "observer": {
+            "emission_process_cycles": [
+              "30147920",
+              "30292244"
+            ],
+            "emission_thread_cycles": [
+              "30200782",
+              "30202352"
+            ],
+            "groups": [
+              {
+                "bookkeeping_cycles": "6308",
+                "calls": 3,
+                "exclusive_body_cycles": "582010",
+                "inclusive_full_cycles": "588318",
+                "lane": 1,
+                "section": "0",
+                "slot": 7
+              },
+              {
+                "bookkeeping_cycles": "5150",
+                "calls": 1,
+                "exclusive_body_cycles": "1161988",
+                "inclusive_full_cycles": "1448706",
+                "lane": 2,
+                "section": "0",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "1204652",
+                "calls": 777,
+                "exclusive_body_cycles": "127882948",
+                "inclusive_full_cycles": "129087600",
+                "lane": 1,
+                "section": "0",
+                "slot": 15
+              },
+              {
+                "bookkeeping_cycles": "2422636",
+                "calls": 777,
+                "exclusive_body_cycles": "27783482",
+                "inclusive_full_cycles": "30206118",
+                "lane": 1,
+                "section": "0",
+                "slot": 1
+              },
+              {
+                "bookkeeping_cycles": "1398928",
+                "calls": 776,
+                "exclusive_body_cycles": "45981566",
+                "inclusive_full_cycles": "47380494",
+                "lane": 1,
+                "section": "0",
+                "slot": 16
+              },
+              {
+                "bookkeeping_cycles": "7473126",
+                "calls": 5104,
+                "exclusive_body_cycles": "531469724",
+                "inclusive_full_cycles": "538942850",
+                "lane": 3,
+                "section": "0",
+                "slot": 13
+              },
+              {
+                "bookkeeping_cycles": "843908",
+                "calls": 392,
+                "exclusive_body_cycles": "746188604",
+                "inclusive_full_cycles": "747032512",
+                "lane": 3,
+                "section": "0",
+                "slot": 14
+              },
+              {
+                "bookkeeping_cycles": "4364",
+                "calls": 1,
+                "exclusive_body_cycles": "17274",
+                "inclusive_full_cycles": "21638",
+                "lane": 2,
+                "section": "0",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "1298",
+                "calls": 1,
+                "exclusive_body_cycles": "258632",
+                "inclusive_full_cycles": "259930",
+                "lane": 2,
+                "section": "0",
+                "slot": 11
+              },
+              {
+                "bookkeeping_cycles": "3564",
+                "calls": 1,
+                "exclusive_body_cycles": "31618422",
+                "inclusive_full_cycles": "110982424",
+                "lane": 4,
+                "section": "cross_section",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "1866",
+                "calls": 1,
+                "exclusive_body_cycles": "55860",
+                "inclusive_full_cycles": "57726",
+                "lane": 1,
+                "section": "0",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "7168588",
+                "calls": 3477,
+                "exclusive_body_cycles": "245667672",
+                "inclusive_full_cycles": "957768816",
+                "lane": 1,
+                "section": "1",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5114278",
+                "calls": 3477,
+                "exclusive_body_cycles": "216439230",
+                "inclusive_full_cycles": "221553508",
+                "lane": 1,
+                "section": "1",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "5125042",
+                "calls": 3477,
+                "exclusive_body_cycles": "478254006",
+                "inclusive_full_cycles": "483379048",
+                "lane": 1,
+                "section": "1",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3084270",
+                "calls": 1440,
+                "exclusive_body_cycles": "566295954",
+                "inclusive_full_cycles": "569380224",
+                "lane": 1,
+                "section": "1",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "2290788",
+                "calls": 1440,
+                "exclusive_body_cycles": "754906738",
+                "inclusive_full_cycles": "757197526",
+                "lane": 1,
+                "section": "1",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "128838",
+                "calls": 29,
+                "exclusive_body_cycles": "6389542",
+                "inclusive_full_cycles": "6518380",
+                "lane": 4,
+                "section": "1",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "163432",
+                "calls": 23,
+                "exclusive_body_cycles": "19466630",
+                "inclusive_full_cycles": "19630062",
+                "lane": 4,
+                "section": "1",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "5452",
+                "calls": 1,
+                "exclusive_body_cycles": "971408",
+                "inclusive_full_cycles": "976860",
+                "lane": 4,
+                "section": "cross_section",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1392",
+                "calls": 1,
+                "exclusive_body_cycles": "26132",
+                "inclusive_full_cycles": "27524",
+                "lane": 1,
+                "section": "1",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "2287046",
+                "calls": 1441,
+                "exclusive_body_cycles": "760621496",
+                "inclusive_full_cycles": "762908542",
+                "lane": 1,
+                "section": "2",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "7154142",
+                "calls": 3479,
+                "exclusive_body_cycles": "246018120",
+                "inclusive_full_cycles": "954391200",
+                "lane": 1,
+                "section": "2",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5385902",
+                "calls": 3479,
+                "exclusive_body_cycles": "214573718",
+                "inclusive_full_cycles": "219959620",
+                "lane": 1,
+                "section": "2",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "4897650",
+                "calls": 3479,
+                "exclusive_body_cycles": "476361668",
+                "inclusive_full_cycles": "481259318",
+                "lane": 1,
+                "section": "2",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3037346",
+                "calls": 1440,
+                "exclusive_body_cycles": "557965338",
+                "inclusive_full_cycles": "561002684",
+                "lane": 1,
+                "section": "2",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "134146",
+                "calls": 30,
+                "exclusive_body_cycles": "5330388",
+                "inclusive_full_cycles": "5464534",
+                "lane": 4,
+                "section": "2",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "166794",
+                "calls": 24,
+                "exclusive_body_cycles": "19905832",
+                "inclusive_full_cycles": "20072626",
+                "lane": 4,
+                "section": "2",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1374",
+                "calls": 1,
+                "exclusive_body_cycles": "25140",
+                "inclusive_full_cycles": "26514",
+                "lane": 1,
+                "section": "2",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "2254280",
+                "calls": 1441,
+                "exclusive_body_cycles": "772256400",
+                "inclusive_full_cycles": "774510680",
+                "lane": 1,
+                "section": "3",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "7281778",
+                "calls": 3478,
+                "exclusive_body_cycles": "242807204",
+                "inclusive_full_cycles": "957388642",
+                "lane": 1,
+                "section": "3",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "5142830",
+                "calls": 3478,
+                "exclusive_body_cycles": "216810838",
+                "inclusive_full_cycles": "221953668",
+                "lane": 1,
+                "section": "3",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "4876462",
+                "calls": 3478,
+                "exclusive_body_cycles": "480469530",
+                "inclusive_full_cycles": "485345992",
+                "lane": 1,
+                "section": "3",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "3150854",
+                "calls": 1440,
+                "exclusive_body_cycles": "604124512",
+                "inclusive_full_cycles": "607275366",
+                "lane": 1,
+                "section": "3",
+                "slot": 5
+              },
+              {
+                "bookkeeping_cycles": "164442",
+                "calls": 30,
+                "exclusive_body_cycles": "5476380",
+                "inclusive_full_cycles": "5640822",
+                "lane": 4,
+                "section": "3",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "181148",
+                "calls": 24,
+                "exclusive_body_cycles": "20676308",
+                "inclusive_full_cycles": "20857456",
+                "lane": 4,
+                "section": "3",
+                "slot": 10
+              },
+              {
+                "bookkeeping_cycles": "1328",
+                "calls": 1,
+                "exclusive_body_cycles": "18148",
+                "inclusive_full_cycles": "19476",
+                "lane": 1,
+                "section": "3",
+                "slot": 12
+              },
+              {
+                "bookkeeping_cycles": "1608",
+                "calls": 1,
+                "exclusive_body_cycles": "43854",
+                "inclusive_full_cycles": "45462",
+                "lane": 1,
+                "section": "4",
+                "slot": 6
+              },
+              {
+                "bookkeeping_cycles": "15522",
+                "calls": 6,
+                "exclusive_body_cycles": "637466",
+                "inclusive_full_cycles": "2167020",
+                "lane": 1,
+                "section": "4",
+                "slot": 4
+              },
+              {
+                "bookkeeping_cycles": "8316",
+                "calls": 6,
+                "exclusive_body_cycles": "504024",
+                "inclusive_full_cycles": "512340",
+                "lane": 1,
+                "section": "4",
+                "slot": 2
+              },
+              {
+                "bookkeeping_cycles": "8620",
+                "calls": 6,
+                "exclusive_body_cycles": "993072",
+                "inclusive_full_cycles": "1001692",
+                "lane": 1,
+                "section": "4",
+                "slot": 3
+              },
+              {
+                "bookkeeping_cycles": "4434",
+                "calls": 2,
+                "exclusive_body_cycles": "179264",
+                "inclusive_full_cycles": "183698",
+                "lane": 4,
+                "section": "4",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "11756",
+                "calls": 4,
+                "exclusive_body_cycles": "91117114",
+                "inclusive_full_cycles": "91128870",
+                "lane": 1,
+                "section": "4",
+                "slot": 7
+              },
+              {
+                "bookkeeping_cycles": "1108",
+                "calls": 1,
+                "exclusive_body_cycles": "14892",
+                "inclusive_full_cycles": "16000",
+                "lane": 4,
+                "section": "4",
+                "slot": 11
+              },
+              {
+                "bookkeeping_cycles": "2960",
+                "calls": 1,
+                "exclusive_body_cycles": "1009542",
+                "inclusive_full_cycles": "1285632",
+                "lane": 5,
+                "section": "4",
+                "slot": 8
+              },
+              {
+                "bookkeeping_cycles": "3634",
+                "calls": 1,
+                "exclusive_body_cycles": "14598",
+                "inclusive_full_cycles": "18232",
+                "lane": 5,
+                "section": "4",
+                "slot": 9
+              },
+              {
+                "bookkeeping_cycles": "1268",
+                "calls": 1,
+                "exclusive_body_cycles": "253630",
+                "inclusive_full_cycles": "254898",
+                "lane": 5,
+                "section": "4",
+                "slot": 11
+              }
+            ],
+            "lanes": [
+              {
+                "bookkeeping_cycles": "73335562",
+                "exclusive_body_cycles": "7129223240",
+                "lane": 1,
+                "root_full_cycles": "7202558802",
+                "thread": "2612"
+              },
+              {
+                "bookkeeping_cycles": "10812",
+                "exclusive_body_cycles": "1437894",
+                "lane": 2,
+                "root_full_cycles": "1448706",
+                "thread": "8060"
+              },
+              {
+                "bookkeeping_cycles": "8317034",
+                "exclusive_body_cycles": "1277658328",
+                "lane": 3,
+                "root_full_cycles": "1285975362",
+                "thread": "2832"
+              },
+              {
+                "bookkeeping_cycles": "953358",
+                "exclusive_body_cycles": "110029066",
+                "lane": 4,
+                "root_full_cycles": "110982424",
+                "thread": "6932"
+              },
+              {
+                "bookkeeping_cycles": "7862",
+                "exclusive_body_cycles": "1277770",
+                "lane": 5,
+                "root_full_cycles": "1285632",
+                "thread": "6468"
+              }
+            ],
+            "native_owners": {
+              "crossing_ids": [],
+              "crossing_policy": "Retained complete, separate from preparation; no wall split or clipping",
+              "lanes": [
+                {
+                  "bookkeeping_cycles": "73335562",
+                  "exclusive_body_cycles": "7129223240",
+                  "lane": 1,
+                  "root_full_cycles": "7202558802",
+                  "thread": "2612"
+                },
+                {
+                  "bookkeeping_cycles": "10812",
+                  "exclusive_body_cycles": "1437894",
+                  "lane": 2,
+                  "root_full_cycles": "1448706",
+                  "thread": "8060"
+                },
+                {
+                  "bookkeeping_cycles": "8317034",
+                  "exclusive_body_cycles": "1277658328",
+                  "lane": 3,
+                  "root_full_cycles": "1285975362",
+                  "thread": "2832"
+                },
+                {
+                  "bookkeeping_cycles": "953358",
+                  "exclusive_body_cycles": "110029066",
+                  "lane": 4,
+                  "root_full_cycles": "110982424",
+                  "thread": "6932"
+                },
+                {
+                  "bookkeeping_cycles": "7862",
+                  "exclusive_body_cycles": "1277770",
+                  "lane": 5,
+                  "root_full_cycles": "1285632",
+                  "thread": "6468"
+                }
+              ],
+              "native": [
+                {
+                  "attempted": 5104,
+                  "body_cycles": "531469724",
+                  "bookkeeping_cycles": "7473126",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "531469724",
+                  "inclusive_full_cycles": "538942850",
+                  "overload": 0,
+                  "slot": 13
+                },
+                {
+                  "attempted": 392,
+                  "body_cycles": "746188604",
+                  "bookkeeping_cycles": "843908",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "746188604",
+                  "inclusive_full_cycles": "747032512",
+                  "overload": 0,
+                  "slot": 14
+                },
+                {
+                  "attempted": 777,
+                  "body_cycles": "127882948",
+                  "bookkeeping_cycles": "1204652",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "127882948",
+                  "inclusive_full_cycles": "129087600",
+                  "overload": 0,
+                  "slot": 15
+                },
+                {
+                  "attempted": 776,
+                  "body_cycles": "45981566",
+                  "bookkeeping_cycles": "1398928",
+                  "crossing": 0,
+                  "exclusive_body_cycles": "45981566",
+                  "inclusive_full_cycles": "47380494",
+                  "overload": 0,
+                  "slot": 16
+                }
+              ]
+            },
+            "passed": true,
+            "record_count": 47971,
+            "scope": "Perturbing preparation attribution only; no thread/process addition, fitted subtraction or shipping-cost estimate.",
+            "trace_bytes": 9210472
+          }
+        }
+      ],
+      "shipping_cost_estimate": null,
+      "target_performance": "not_run",
+      "trial_guards_valid": false,
+      "trials": 3
+    },
+    "shipping_cost_estimate": null,
+    "trials": [
+      {
+        "causal_owner": null,
+        "id": "AB-H2-preparation-warmup-0",
+        "partition": {
+          "crossing_root_ids": [],
+          "demand_cycles": "2465694982",
+          "endpoints": [
+            "762027180",
+            "3227722162"
+          ],
+          "gap_count": 2335,
+          "gap_cycles": "2229588514",
+          "gap_sequence_sha256": "8d600a17f960d9559510773d8c3412c4c6745ffcf43e62dafcb2638979834a5e",
+          "largest_gap_cycles": "8450296",
+          "main_thread": "2612",
+          "outside_root_ids": [
+            7835
+          ],
+          "partition_available": true,
+          "root_count": 2334,
+          "root_full_cycles": "236106468",
+          "roots_by_slot": {
+            "1": "34590332",
+            "15": "148240828",
+            "16": "52629982",
+            "7": "645326"
+          },
+          "wall_enclosure_usec": [
+            318298,
+            5673416
+          ]
+        },
+        "predecessor_successor": {
+          "1->16": {
+            "count": 777,
+            "cycles": "11373016",
+            "largest_cycles": "84092"
+          },
+          "1->7": {
+            "count": 1,
+            "cycles": "15708",
+            "largest_cycles": "15708"
+          },
+          "15->1": {
+            "count": 776,
+            "cycles": "2204497320",
+            "largest_cycles": "4160604"
+          },
+          "16->1": {
+            "count": 1,
+            "cycles": "102306",
+            "largest_cycles": "102306"
+          },
+          "16->15": {
+            "count": 776,
+            "cycles": "1299992",
+            "largest_cycles": "9796"
+          },
+          "7->1": {
+            "count": 1,
+            "cycles": "8450296",
+            "largest_cycles": "8450296"
+          },
+          "7->7": {
+            "count": 1,
+            "cycles": "1223698",
+            "largest_cycles": "1223698"
+          },
+          "7->inner-end": {
+            "count": 1,
+            "cycles": "1173368",
+            "largest_cycles": "1173368"
+          },
+          "inner-start->7": {
+            "count": 1,
+            "cycles": "1452810",
+            "largest_cycles": "1452810"
+          }
+        },
+        "scope": "Adjacent raw endpoints on the same thread; no process subtraction or owner inference.",
+        "valid": true
+      },
+      {
+        "causal_owner": null,
+        "id": "AB-H2-preparation-bare-0",
+        "partition": {
+          "crossing_root_ids": [],
+          "demand_cycles": "2579764228",
+          "endpoints": [
+            "37233852280",
+            "39813616508"
+          ],
+          "gap_count": 2472,
+          "gap_cycles": "2357082394",
+          "gap_sequence_sha256": "3d5a3ed10379bf4c140f7be2aa3343ce79913f0fb557ba06520c6b248d9563bf",
+          "largest_gap_cycles": "4166538",
+          "main_thread": "2612",
+          "outside_root_ids": [
+            7972
+          ],
+          "partition_available": true,
+          "root_count": 2471,
+          "root_full_cycles": "222681834",
+          "roots_by_slot": {
+            "1": "35812270",
+            "15": "135760860",
+            "16": "50556704",
+            "7": "552000"
+          },
+          "wall_enclosure_usec": [
+            77875424,
+            83543501
+          ]
+        },
+        "predecessor_successor": {
+          "1->16": {
+            "count": 822,
+            "cycles": "11775028",
+            "largest_cycles": "81702"
+          },
+          "1->7": {
+            "count": 1,
+            "cycles": "17194",
+            "largest_cycles": "17194"
+          },
+          "15->1": {
+            "count": 823,
+            "cycles": "2339495690",
+            "largest_cycles": "4166538"
+          },
+          "16->15": {
+            "count": 822,
+            "cycles": "1277892",
+            "largest_cycles": "35444"
+          },
+          "7->15": {
+            "count": 1,
+            "cycles": "1169360",
+            "largest_cycles": "1169360"
+          },
+          "7->7": {
+            "count": 1,
+            "cycles": "1010496",
+            "largest_cycles": "1010496"
+          },
+          "7->inner-end": {
+            "count": 1,
+            "cycles": "985930",
+            "largest_cycles": "985930"
+          },
+          "inner-start->7": {
+            "count": 1,
+            "cycles": "1350804",
+            "largest_cycles": "1350804"
+          }
+        },
+        "scope": "Adjacent raw endpoints on the same thread; no process subtraction or owner inference.",
+        "valid": true
+      },
+      {
+        "causal_owner": null,
+        "id": "AB-H2-preparation-bare-1",
+        "partition": {
+          "crossing_root_ids": [],
+          "demand_cycles": "2425919186",
+          "endpoints": [
+            "73723943710",
+            "76149862896"
+          ],
+          "gap_count": 2334,
+          "gap_cycles": "2218656656",
+          "gap_sequence_sha256": "f555ffcc6dab20ea89c0cf86e06b9e370d431b05b8c94c41f570ecffea1f607d",
+          "largest_gap_cycles": "4141340",
+          "main_thread": "2612",
+          "outside_root_ids": [
+            7834
+          ],
+          "partition_available": true,
+          "root_count": 2333,
+          "root_full_cycles": "207262530",
+          "roots_by_slot": {
+            "1": "30206118",
+            "15": "129087600",
+            "16": "47380494",
+            "7": "588318"
+          },
+          "wall_enclosure_usec": [
+            155740821,
+            161091563
+          ]
+        },
+        "predecessor_successor": {
+          "1->16": {
+            "count": 776,
+            "cycles": "9847906",
+            "largest_cycles": "63138"
+          },
+          "1->7": {
+            "count": 1,
+            "cycles": "18154",
+            "largest_cycles": "18154"
+          },
+          "15->1": {
+            "count": 777,
+            "cycles": "2203078048",
+            "largest_cycles": "4141340"
+          },
+          "16->15": {
+            "count": 776,
+            "cycles": "1117118",
+            "largest_cycles": "10742"
+          },
+          "7->15": {
+            "count": 1,
+            "cycles": "1272080",
+            "largest_cycles": "1272080"
+          },
+          "7->7": {
+            "count": 1,
+            "cycles": "964868",
+            "largest_cycles": "964868"
+          },
+          "7->inner-end": {
+            "count": 1,
+            "cycles": "1001734",
+            "largest_cycles": "1001734"
+          },
+          "inner-start->7": {
+            "count": 1,
+            "cycles": "1356748",
+            "largest_cycles": "1356748"
+          }
+        },
+        "scope": "Adjacent raw endpoints on the same thread; no process subtraction or owner inference.",
+        "valid": false
+      }
+    ],
+    "valid_bare_trials": 1
+  },
+  "runtime_changed": false,
+  "schema": "m1-mesh-retirement-saved-review-1",
+  "shipping_cost_estimate": null,
+  "target_performance": "not_run"
+}

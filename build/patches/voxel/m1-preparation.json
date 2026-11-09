@@ -1,0 +1,42 @@
+[
+  {
+    "path": "engine/voxel_engine.cpp",
+    "old": "#include \"voxel_engine.h\"",
+    "replacement": "#include \"voxel_engine.h\"\n#include \"modules/sandbox_world/core/preparation_observer.h\""
+  },
+  {
+    "path": "engine/voxel_engine.cpp",
+    "old": "void VoxelEngine::process() {",
+    "replacement": "void VoxelEngine::process() {\n\tcairn::PreparationScope cairn_preparation(cairn::PREPARATION_ENGINE);\n\tcairn_preparation.control_entry();"
+  },
+  {
+    "path": "engine/voxel_engine.h",
+    "old": "\tint get_thread_count() const;",
+    "replacement": "\tconst void *cairn_preparation_pool() const { return &_general_thread_pool; }\n\tint get_thread_count() const;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "#include \"voxel_terrain.h\"",
+    "replacement": "#include \"voxel_terrain.h\"\n#include \"modules/sandbox_world/core/preparation_observer.h\""
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "void VoxelTerrain::process() {",
+    "replacement": "void VoxelTerrain::process() {\n\tcairn::PreparationScope cairn_preparation(cairn::PREPARATION_TERRAIN);\n\tcairn_preparation.control_entry();"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.h",
+    "old": "\tvoid set_mesh_block_size(unsigned int p_block_size);",
+    "replacement": "\t// Hidden native control invokes the real entry, with unchanged terrain work.\n\tvoid cairn_preparation_control_process() { process(); }\n\tvoid set_mesh_block_size(unsigned int p_block_size);"
+  },
+  {
+    "path": "util/tasks/threaded_task_runner.cpp",
+    "old": "#include \"threaded_task_runner.h\"",
+    "replacement": "#include \"threaded_task_runner.h\"\n#include \"modules/sandbox_world/core/preparation_observer.h\""
+  },
+  {
+    "path": "util/tasks/threaded_task_runner.cpp",
+    "old": "\tThreadedTaskRunner &pool = *data.pool;",
+    "replacement": "\tThreadedTaskRunner &pool = *data.pool;\n\tcairn::PreparationPoolLifetime cairn_pool_lifetime(&pool, data.index, pool.get_thread_count());"
+  }
+]

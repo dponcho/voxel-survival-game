@@ -1,0 +1,125 @@
+# Cloud endpoint and callback-count precision controls
+
+This bounded follow-up characterizes the existing supplementary route instrument.
+It changes no runtime workload, estimator, assessment rule, 1% threshold, world/
+save semantics or historical verdict. M1 remains blocked; no profile is qualified.
+All parameters below are independent synthetic software clocks, not private target
+measurements. [CI 37677486748](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748) and the downloaded candidate verify the controls;
+cloud success does not qualify HD 620.
+
+## Predeclared controls
+
+The production calibration and diagnostic ledgers/evaluator consume injected
+monotonic clocks, using hypothetical eligible H1/H2 contracts. Each normal modeled
+repeat has six five-second sections of 250 callbacks and four terminal callbacks
+of 5,000 µs each. Declared simulation ticks remain 1,800; these clock controls do
+not execute the corresponding terrain, actors, edits or storage. A separate actual
+release smoke retains those existing runtime observations.
+
+There are fourteen controls per workload: null, positive, endpoint redistribution,
+acknowledgement-duration drift, count masking, count drift, missing, reordered,
+stall, failed actor activity, failed individual upload, unavailable terminal data,
+I/O failure and dose overlap. The ordinary positive control adds 600,000 µs only
+after measurement, modeled native phase closure and writer drain. The null case injects zero;
+its complete-window effect is zero and its repeats stable, but the production
+assessor correctly remains inconclusive because its known-positive dose guard
+requires the declared 600,000 µs. No separate null qualification rule is adopted.
+The failed operation fixture uses the actual operation evaluator at 751 µs against
+the unchanged 750 µs upload limit. Preparation/retirement and real failing target
+operation evidence remain separate and unwaived.
+
+The endpoint case moves 500 µs from the last main section into the first terminal
+interval, keeping complete duration, sample count and acknowledgement interval
+sum unchanged. The acknowledgement case adds 500 µs to the final terminal
+interval without changing the main route or first terminal interval. Both retain
+all endpoint/acknowledgement rows; neither trims, splits, reweights or interpolates
+an interval. Ending callback ticks determine the production section membership.
+Literal acknowledgement-marker span and interval sums are separately retained;
+a marker starts after the endpoint callback, not at the preceding interval origin.
+
+Count masking adds five callbacks in each main section of both closure repeats,
+with exactly the same main section durations and the same 600,000 µs closure dose.
+This changes only modeled render callback counts, not declared simulation ticks.
+Count drift changes the second reference instead and retains the resulting repeat
+failure. These controls separate duration drift, count drift and terminal alignment
+rather than treating them as an interchangeable timing-noise observation.
+
+## Accounting and independent verification
+
+Every raw row saves integer tick/interval/entry timestamps, current callback begin/
+end, previous callback frame/shared/switched cost, nested writer cost and ledger
+tail. The last callback is independently reconciled. Seven aggregate bins, full/
+partial timing blocks, setup/measurement/finalization, dose, writer drain and three
+modeled native-phase boundaries are retained. The native measurement phase closes
+before writer drain and dose; their costs remain in the complete diagnostic
+window, outside that native phase and before retirement. Overlapping callback/I/O/ledger
+brackets are not summed. Injected file-write clocks are explicitly a model: actual
+disk service, causal file-I/O cost and native operation rows are unavailable here.
+Existing actual smoke operation CSVs, full report finalization and file-I/O evidence
+continue through the unchanged runtime checks.
+
+The independent Python reader streams saved CSVs, checks closed-form counts and
+integer durations/cost sums, reconciles every aggregate and clock boundary, and
+compares the saved production verdict with the existing exact-rational oracle.
+It reports the exact ratio identity `mean ratio = duration ratio / callback-count
+ratio`, and terminal interval delta divided by full-window duration, without
+adopting either quantity as an alternative acceptance rule. Missing terminal
+precision is null/unavailable; shared causal overhead is null/inconclusive.
+JSON fractional means allow only the established serialization roundoff tolerance;
+integer accounting and all acceptance boundaries remain exact and unchanged.
+
+Storage is bounded to 28 control reports, 112 streamed raw files (including the
+omitted repeat's retained evidence), 1 MiB saved control JSON and 32 MiB total CSV.
+Each clock ledger retains seven bins; no new gameplay queue, worker or retained
+per-frame sample array is introduced. Actions caps the clock command at 60 seconds.
+Static regressions independently expand clocks and reject lost/corrupt final rows,
+changed callback partitions, boundary/ack/drain/I/O scope, waived failure, altered
+verdicts, passing zeros and oversized/incomplete evidence.
+
+## Executed results — October 7 UTC
+
+[CI 37677486748](https://github.com/dponcho/voxel-survival-game/actions/runs/37677486748) passed all three jobs at code `501d572e84cd90480d81c27abb6e27ad34799222`, exported as
+`c1c4f87de6268044ddc4a61955f3fa0556643d2d`. All 42 Python regressions, five native sanitizer suites, matching-engine
+checks, 28 precision controls, sixteen old method controls, 26 old route controls,
+existing actual runtime/profile/smoke checks, saved raw reconciliation and portable/
+offline audits passed. Independent downloaded reconciliation checks 928,417 bytes
+of control JSON, 112 raw CSVs, 112 modeled phases and 168,596 rows. Report storage,
+all raw hashes and precision arithmetic reproduce the Actions validation exactly.
+See [M1_EVIDENCE.md](M1_EVIDENCE.md) for exact artifacts/checksums and runtime counts.
+
+These values are synthetic clock results, not target observations:
+
+| Control | Observation | Authoritative supplementary status |
+| --- | --- | --- |
+| Null | Zero raw effect, stable repeats; known-positive dose absent | Inconclusive |
+| Positive | 600 ms adds about 1.99858% complete-window time and time per callback | Controls resolved, qualification false |
+| Endpoint redistribution | Terminal mean repeat variation 2.46914%; full-window delta zero; unscaled terminal delta about 0.00166549% of full time | Inconclusive; terminal guard retained |
+| Acknowledgement drift | Same terminal variation; full-window duration increases about 0.00166549% | Inconclusive; terminal guard retained |
+| Callback-count masking | Full time +1.99857%, callback count +1.99468%, time per callback only +0.00381114% | Inconclusive; raw effect below limit |
+| Count drift / failed / missing / unavailable / stalled / overlapping dose / I/O failure | Their respective guards fail; unavailable precision remains null | Inconclusive |
+
+The endpoint case shows a guard sensitivity issue without claiming the changed
+bucket's raw delta is a causal cost. The acknowledgement case adds real modeled
+wall duration, and its small complete-trial contribution is independently retained.
+The count case demonstrates a denominator cancellation: known closure delay alone
+cannot validate per-frame sensitivity with unequal callback counts. This arithmetic
+does not attribute real-target changes to noise, render service, driver or process.
+No current tolerance or verdict is changed. All terminal evidence is retained.
+
+## Remaining scope
+
+The current terminal guard and complete-window estimator remain authoritative.
+This characterization cannot retroactively pass the private target report, resolve
+hardware noise or establish critical-path frontier, CPU/GPU or shared diagnostic
+cost. Any proposed successor still needs its own predeclared null/positive/invalid
+controls and a separate adoption decision. No new target run or full matrix is
+requested for cloud-only precision controls.
+
+The bounded supplementary correction is now cloud verified: the experimental
+fixed-work assessor observes complete elapsed duration separately from callback
+count and reports terminal uncertainty in complete-trial units. Its 44 controls
+independently reconcile 176 phases and 264,852 saved rows; count changes cannot
+hide the injected closure effect in the duration observation. Existing endpoint
+controls, assessments, thresholds and target verdicts remain unchanged. Read
+[M1_FIXED_WORK_SENSITIVITY.md](M1_FIXED_WORK_SENSITIVITY.md). It establishes neither
+per-frame CPU/GPU probe cost nor total shared diagnostic overhead.

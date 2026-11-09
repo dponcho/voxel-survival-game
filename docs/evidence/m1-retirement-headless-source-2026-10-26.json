@@ -1,0 +1,36 @@
+{
+  "schema": "cairn-retirement-headless-source-1",
+  "repository": "godotengine/godot",
+  "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "files": [
+    {
+      "path": "servers/rendering/dummy/storage/mesh_storage.h",
+      "git_blob_sha1": "04ba8cd85d817e0683364c0503d77359b2110edd",
+      "excerpts": [
+        {
+          "first_line": 46,
+          "text": "class MeshStorage : public RendererMeshStorage {\nprivate:\n\tstatic MeshStorage *singleton;\n\n\tmutable RID_Owner<DummyMesh> mesh_owner;\n"
+        }
+      ],
+      "bytes": 12013,
+      "sha256": "00932e8dd4f271aa73eaf9ff8cb190aec9798991793602a9b9aa75b4a691f0f3"
+    },
+    {
+      "path": "servers/rendering/dummy/storage/mesh_storage.cpp",
+      "git_blob_sha1": "bb05f367f8b369d61b2f00c55f33531813199941",
+      "excerpts": [
+        {
+          "first_line": 45,
+          "text": "RID MeshStorage::mesh_allocate() {\n\treturn mesh_owner.allocate_rid();\n}"
+        },
+        {
+          "first_line": 53,
+          "text": "void MeshStorage::mesh_free(RID p_rid) {\n\tDummyMesh *mesh = mesh_owner.get_or_null(p_rid);\n\tERR_FAIL_NULL(mesh);\n\tmesh->dependency.deleted_notify(p_rid);\n\tmesh_owner.free(p_rid);\n}"
+        }
+      ],
+      "bytes": 4120,
+      "sha256": "fbca153224c13232091a95dec3ad99b940d6fb7564ae241eeb9433db83502c50"
+    }
+  ],
+  "scope": "The dummy backend allocates owned mesh RIDs and CPU resources. These control observations do not establish GPU or renderer-deferred cleanup/performance."
+}

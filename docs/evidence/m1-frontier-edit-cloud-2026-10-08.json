@@ -1,0 +1,1325 @@
+{
+  "schema": 1,
+  "date_utc": "2026-10-08",
+  "scope": "Public cloud concurrent border-edit handover correctness; no private target evidence or qualification",
+  "passed": true,
+  "branch": "codex/m1-engine-proof",
+  "implementation_commit": "df57421ee9814fb367f603f64a545f385f852fe3",
+  "native_correction_commit": "d235c06d99f891c5e646ca14662c776d1f3413be",
+  "build_commit": "f0131627e5928c36fe310d27790605562cc895a1",
+  "implementation_and_build_tree": "648547042d45c1359e5e0ecef863048515e2da29",
+  "ci": {
+    "run": 37838887842,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842",
+    "conclusion": "success",
+    "completed_utc": "2026-10-08T20:38:07Z",
+    "jobs": [
+      {
+        "id": 113524096177,
+        "name": "static",
+        "conclusion": "success"
+      },
+      {
+        "id": 113524443107,
+        "name": "windows / native / native-binaries",
+        "conclusion": "success"
+      },
+      {
+        "id": 113524804911,
+        "name": "windows / export-and-test",
+        "conclusion": "success"
+      }
+    ],
+    "python_regressions": 76,
+    "native_sanitizer_suites": 5,
+    "source_build_run": 37821509437,
+    "final_native_source": "cache, exact freshly built key and manifest requalified",
+    "engine_run_locally": false
+  },
+  "candidate": {
+    "artifact_id": 11577910752,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37838887842/artifacts/11577910752",
+    "expires_at": "2026-11-07T20:37:34Z",
+    "artifact_bytes": 30005321,
+    "artifact_sha256": "013673aa947c5fb9db3f52f77b535420a0e7935cc69a6e9fc090bcad6ea433fb",
+    "portable_zip_bytes": 30104208,
+    "portable_zip_sha256": "29aab174e747eced9fc1b9ea800f08f2a1a4d6b9d050f255c4a24883444062a1",
+    "exe_sha256": "ffd5cfca75f24a078e20cdd57ff36ca2f0f81587ced50218c6645cc2880c7acb",
+    "pck_sha256": "bd4c2c8be514dbb37443780327273125a9bf3115a16e03a03446f744bfeab03e",
+    "pck_entries_md5_verified": 72,
+    "new_runtime_present": true,
+    "crc_paths_pe_pck_build_identity_verified": true,
+    "native_manifest_and_templates_independently_verified": true,
+    "selftest_reports_independently_verified": 8,
+    "pe_imports_independently_verified": 38,
+    "fresh_offline_extractions": 2,
+    "status": "cloud_passed_target_unverified"
+  },
+  "artifacts": {
+    "evidence": {
+      "id": 11576739930,
+      "bytes": 16498893,
+      "sha256": "08a3c9a291dd6ff86601748035034b3d3a0ce8ec12fda0a8b1a0c14fbcee61d0"
+    },
+    "native_evidence": {
+      "id": 11576653237,
+      "bytes": 12538,
+      "sha256": "6237efc5bbcd9745bb789d353061476bc73b6ecec66659edac92ba856f9042f0"
+    },
+    "fresh_source_native_bundle": {
+      "id": 11574487774,
+      "bytes": 999263181,
+      "sha256": "66a6382d33911e22f8a7bea3b6fa2a586ddf36ba95f6d91b824041777a0f0f47",
+      "verification_scope": "Cloud archive/file verification, qualification and exact reuse; full binary bundle not downloaded locally"
+    },
+    "fresh_source_native_evidence": {
+      "id": 11574652025,
+      "bytes": 80427,
+      "sha256": "d6b605fdc0f3c6e09053b538afc7f8bd1dccce892ad6513755b9d3406800c883",
+      "downloaded_size_digest_crc_verified": true
+    }
+  },
+  "pins": {
+    "engine_inputs": "25581a8d31f5a500c585135069db3a143ac7edc69d984601768910f10ce53348",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "editor_sha256": "41af7a2a5f730b91b640240550bc6920581e6ceeb0bb7cfd82458b5625a66a17",
+    "debug_template_sha256": "ed3569e23e5c9c847f47dd7444dafd41083892d3b7d8cae89a0ea88fd41f689a",
+    "release_template_sha256": "ffd5cfca75f24a078e20cdd57ff36ca2f0f81587ced50218c6645cc2880c7acb",
+    "native_cache_inputs_recomputed": true,
+    "source_build_verified_patch_entries": 37,
+    "api_source_checked": [
+      "VoxelTerrain view/schedule/apply/unload and lifecycle boundaries",
+      "VoxelMeshBlock resource/visibility/viewer reference state",
+      "Godot Thread::is_main_thread, Object::get_instance_id, String::num_uint64",
+      "Godot process/deferred tree deletion ordering"
+    ]
+  },
+  "characterization": {
+    "run": 37818620545,
+    "implementation": "d9bf55f9426b0159ed74073c5ee6c2ace0433907",
+    "build": "418ff629f46a26e7a16517eb32f6c4c1f18c2fed",
+    "candidate": false,
+    "editor_cases": 6,
+    "saved_observations": 92,
+    "native_phases": 18,
+    "operation_rows": 2826,
+    "operation_bytes": 866388,
+    "operation_sha256": "aa88210ca3ea67694b1b48e3a8aafcec4dcf23001bae974ca0d8f5de7dd25b07",
+    "evidence_artifact": 11568886138,
+    "evidence_bytes": 15044478,
+    "evidence_sha256": "c72dbc77ab4d8eacbd7d4966e74872d6d6ce720ed055d70c13139cd880da62fd",
+    "downloaded_size_digest_crc_and_exact_reports_verified": true,
+    "stationary": "submitted at both worker counts",
+    "handover_and_cancellation_requests": "superseded without a second edit at both worker counts",
+    "other_fixture_failure": "snapshot before event pop expected zero queued events; retained and corrected",
+    "release_characterization": "not_run after editor failure",
+    "failed_operation_phases": []
+  },
+  "failed_attempts": [
+    {
+      "run": 37821509437,
+      "implementation": "d235c06d99f891c5e646ca14662c776d1f3413be",
+      "native": "fresh source build and all three qualification checks passed",
+      "export": "Windows Python fixture wrote CRLF but declared LF byte count; two errors; no approved player",
+      "evidence_artifact": 11574792012,
+      "evidence_bytes": 8661,
+      "evidence_sha256": "813455232b45bb14753c268a1acc2259dea8d21ac99881757aa0ce2854c9d095"
+    },
+    {
+      "run": 37838495804,
+      "implementation": "e419ea1d6b275f09f7cd476c664eaf84443058e8",
+      "native": "passed exact cache checks and requalification",
+      "export": "real CPU editor probe passed; reader rejected new exact native key due to historical hardcoding; no approved player",
+      "evidence_artifact": 11577525427,
+      "evidence_bytes": 14685125,
+      "evidence_sha256": "b6167a95a5c437b1ebe3cc05df5aee8b5a838acac4a84fd141a5224af2c138c7"
+    }
+  ],
+  "correction": {
+    "cause": "Second visual viewer acquisition rescheduled a loaded mesh, advanced desired revision and superseded sole accepted edit",
+    "rule": "Skip redundant scheduling only for visual-only additions to loaded blocks with >1 visual owner",
+    "initial_load_post_edit_collision_scheduling_unchanged": true,
+    "accepted_edit_or_operation_threshold_changed": false,
+    "world_save_actor_storage_simulation_safety_requirements_unchanged": true,
+    "observer": "Bounded main-thread read-only counts/revisions/decimal uint64 IDs; no retained Mesh references/GPU reads; ordinary callbacks never call",
+    "submitted_revision": "Recorded only after actual visual replacement, including confirmed empty",
+    "per_block_extra_bytes": 8,
+    "at_512_blocks_extra_field_bytes": 4096,
+    "total_instrumentation_overhead": "unmeasured"
+  },
+  "native_replay": {
+    "executables": [
+      "matching_editor",
+      "packaged_release"
+    ],
+    "cases_per_executable": [
+      "stationary-1",
+      "handover-1",
+      "cancel-before-1",
+      "cancel-overlap-1",
+      "stationary-2",
+      "handover-2",
+      "cancel-before-2",
+      "cancel-overlap-2"
+    ],
+    "cases": 16,
+    "stage_observations": 204,
+    "block_observations": 2200,
+    "native_phases": 48,
+    "operation_rows": 7446,
+    "original_current_edit_revisions_preserved": true,
+    "old_column_references": "1 -> 2 -> 1 for all four old cells at both worker counts/executables",
+    "unedited_resources_stable": true,
+    "actual_current_resource_replacement_and_confirmed_empty_verified": true,
+    "next_column_actually_submitted": true,
+    "cancel_before": "Explicit collection_stop after native/node drain; not acknowledgement",
+    "cancel_overlap": "Actual pending overlap; native current submissions won deferred deletion",
+    "submission_count": 12,
+    "submission_latency_range_usec": [
+      13569,
+      13893
+    ],
+    "collection_cancellation_count": 4,
+    "collection_cancellation_latency_range_usec": [
+      41060,
+      47968
+    ],
+    "edit_guard_usec": 200000,
+    "operation_guard_usec": 750,
+    "failed_operation_phases": [],
+    "max_upload_usec": {
+      "editor": 175,
+      "release": 116
+    },
+    "max_deletion_usec": {
+      "editor": 514,
+      "release": 488
+    },
+    "peak_meshes": 511,
+    "peak_data_blocks": 867,
+    "retirement_high_water": 287,
+    "overloads": 0,
+    "complete_native_and_node_drain": true,
+    "bounds_per_executable": {
+      "stage_rows": 160,
+      "coordinates_per_observation": 10,
+      "native_api_coordinates": 16,
+      "summary_bytes": 1048576,
+      "operation_rows": 20000,
+      "operation_bytes": 8388608,
+      "settlement_drain_seconds": 60,
+      "command_seconds": 600
+    },
+    "saved_oracles": {
+      "editor": {
+        "passed": true,
+        "version": "m1-frontier-edit-1",
+        "cases": 8,
+        "native_rows": 102,
+        "mesh_observations": 1100,
+        "operation_phases": 24,
+        "operation_rows": 3723,
+        "operation_sha256": "fcc61fe76e5069c9f095c2e6cae7df8c3b84a904d03159ef22c903c96ccfe897",
+        "failed_operation_phases": [],
+        "submitted": [
+          "stationary-1",
+          "handover-1",
+          "cancel-overlap-1",
+          "stationary-2",
+          "handover-2",
+          "cancel-overlap-2"
+        ],
+        "cancellations": [
+          {
+            "case": "cancel-before-1",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-1",
+            "outcome": "submitted"
+          },
+          {
+            "case": "cancel-before-2",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-2",
+            "outcome": "submitted"
+          }
+        ],
+        "handovers": [
+          {
+            "case": "handover-1",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          },
+          {
+            "case": "handover-2",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          }
+        ],
+        "qualified": false,
+        "scope": "second boundary + one concurrent seam edit per case; cloud correctness; not full route/HD 620",
+        "summary_bytes": 457491,
+        "operation_bytes": 1142457
+      },
+      "release": {
+        "passed": true,
+        "version": "m1-frontier-edit-1",
+        "cases": 8,
+        "native_rows": 102,
+        "mesh_observations": 1100,
+        "operation_phases": 24,
+        "operation_rows": 3723,
+        "operation_sha256": "aa60db9c84d84664a9fd1c0de7fa83a1dee47f7d9ca1fc8e36fffb6cd967811b",
+        "failed_operation_phases": [],
+        "submitted": [
+          "stationary-1",
+          "handover-1",
+          "cancel-overlap-1",
+          "stationary-2",
+          "handover-2",
+          "cancel-overlap-2"
+        ],
+        "cancellations": [
+          {
+            "case": "cancel-before-1",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-1",
+            "outcome": "submitted"
+          },
+          {
+            "case": "cancel-before-2",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-2",
+            "outcome": "submitted"
+          }
+        ],
+        "handovers": [
+          {
+            "case": "handover-1",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          },
+          {
+            "case": "handover-2",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          }
+        ],
+        "qualified": false,
+        "scope": "second boundary + one concurrent seam edit per case; cloud correctness; not full route/HD 620",
+        "summary_bytes": 457396,
+        "operation_bytes": 1142345
+      }
+    },
+    "cases_by_executable": {
+      "editor": [
+        {
+          "name": "stationary-1",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13569,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 512,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 513,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 867,
+            "main_jobs": 287,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 819,
+            "pending_mesh": 455,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 287
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "stationary-1:preparation",
+              "upload": 167,
+              "deletion": 0
+            },
+            {
+              "label": "stationary-1:edit-transfer",
+              "upload": 31,
+              "deletion": 2
+            },
+            {
+              "label": "stationary-1:retirement",
+              "upload": 0,
+              "deletion": 431
+            }
+          ]
+        },
+        {
+          "name": "handover-1",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13742,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 1025,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 1026,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 286,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 449,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 286
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "handover-1:preparation",
+              "upload": 95,
+              "deletion": 0
+            },
+            {
+              "label": "handover-1:edit-transfer",
+              "upload": 48,
+              "deletion": 3
+            },
+            {
+              "label": "handover-1:retirement",
+              "upload": 0,
+              "deletion": 423
+            }
+          ]
+        },
+        {
+          "name": "cancel-before-1",
+          "outcome": "cancelled",
+          "source": "collection_stop",
+          "latency_usec": 41089,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 1577,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 1578,
+              "submitted": false
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 43,
+            "loading_data": 851,
+            "main_jobs": 265,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 456,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 265
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-before-1:preparation",
+              "upload": 114,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-1:edit-transfer",
+              "upload": 0,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-1:retirement",
+              "upload": 33,
+              "deletion": 459
+            }
+          ]
+        },
+        {
+          "name": "cancel-overlap-1",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13764,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 2125,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 2126,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 267,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 449,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 266
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-overlap-1:preparation",
+              "upload": 175,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-1:edit-transfer",
+              "upload": 33,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-1:retirement",
+              "upload": 47,
+              "deletion": 449
+            }
+          ]
+        },
+        {
+          "name": "stationary-2",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13718,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 2673,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 2674,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 44,
+            "loading_data": 851,
+            "main_jobs": 287,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 457,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 287
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "stationary-2:preparation",
+              "upload": 104,
+              "deletion": 0
+            },
+            {
+              "label": "stationary-2:edit-transfer",
+              "upload": 30,
+              "deletion": 2
+            },
+            {
+              "label": "stationary-2:retirement",
+              "upload": 0,
+              "deletion": 482
+            }
+          ]
+        },
+        {
+          "name": "handover-2",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13608,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 3186,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 3187,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 286,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 451,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 286
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "handover-2:preparation",
+              "upload": 109,
+              "deletion": 0
+            },
+            {
+              "label": "handover-2:edit-transfer",
+              "upload": 71,
+              "deletion": 4
+            },
+            {
+              "label": "handover-2:retirement",
+              "upload": 0,
+              "deletion": 474
+            }
+          ]
+        },
+        {
+          "name": "cancel-before-2",
+          "outcome": "cancelled",
+          "source": "collection_stop",
+          "latency_usec": 47968,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 3738,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 3739,
+              "submitted": false
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 44,
+            "loading_data": 851,
+            "main_jobs": 265,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 457,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 265
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-before-2:preparation",
+              "upload": 95,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-2:edit-transfer",
+              "upload": 0,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-2:retirement",
+              "upload": 55,
+              "deletion": 500
+            }
+          ]
+        },
+        {
+          "name": "cancel-overlap-2",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13770,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 4286,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 4287,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 267,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 451,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 266
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-overlap-2:preparation",
+              "upload": 130,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-2:edit-transfer",
+              "upload": 32,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-2:retirement",
+              "upload": 42,
+              "deletion": 514
+            }
+          ]
+        }
+      ],
+      "release": [
+        {
+          "name": "stationary-1",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13641,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 512,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 513,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 867,
+            "main_jobs": 287,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 819,
+            "pending_mesh": 455,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 287
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "stationary-1:preparation",
+              "upload": 77,
+              "deletion": 0
+            },
+            {
+              "label": "stationary-1:edit-transfer",
+              "upload": 42,
+              "deletion": 6
+            },
+            {
+              "label": "stationary-1:retirement",
+              "upload": 0,
+              "deletion": 357
+            }
+          ]
+        },
+        {
+          "name": "handover-1",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13600,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 1025,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 1026,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 286,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 449,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 286
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "handover-1:preparation",
+              "upload": 108,
+              "deletion": 0
+            },
+            {
+              "label": "handover-1:edit-transfer",
+              "upload": 49,
+              "deletion": 3
+            },
+            {
+              "label": "handover-1:retirement",
+              "upload": 0,
+              "deletion": 350
+            }
+          ]
+        },
+        {
+          "name": "cancel-before-1",
+          "outcome": "cancelled",
+          "source": "collection_stop",
+          "latency_usec": 41135,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 1577,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 1578,
+              "submitted": false
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 43,
+            "loading_data": 851,
+            "main_jobs": 265,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 456,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 265
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-before-1:preparation",
+              "upload": 70,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-1:edit-transfer",
+              "upload": 0,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-1:retirement",
+              "upload": 30,
+              "deletion": 358
+            }
+          ]
+        },
+        {
+          "name": "cancel-overlap-1",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13826,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 2125,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 2126,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 267,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 448,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 266
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-overlap-1:preparation",
+              "upload": 116,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-1:edit-transfer",
+              "upload": 31,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-1:retirement",
+              "upload": 43,
+              "deletion": 376
+            }
+          ]
+        },
+        {
+          "name": "stationary-2",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13783,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 2673,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 2674,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 43,
+            "loading_data": 851,
+            "main_jobs": 287,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 459,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 287
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "stationary-2:preparation",
+              "upload": 96,
+              "deletion": 0
+            },
+            {
+              "label": "stationary-2:edit-transfer",
+              "upload": 30,
+              "deletion": 3
+            },
+            {
+              "label": "stationary-2:retirement",
+              "upload": 0,
+              "deletion": 381
+            }
+          ]
+        },
+        {
+          "name": "handover-2",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13677,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 3186,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 3187,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 286,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 451,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 286
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "handover-2:preparation",
+              "upload": 112,
+              "deletion": 0
+            },
+            {
+              "label": "handover-2:edit-transfer",
+              "upload": 73,
+              "deletion": 3
+            },
+            {
+              "label": "handover-2:retirement",
+              "upload": 0,
+              "deletion": 465
+            }
+          ]
+        },
+        {
+          "name": "cancel-before-2",
+          "outcome": "cancelled",
+          "source": "collection_stop",
+          "latency_usec": 41060,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 3738,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 3739,
+              "submitted": false
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 44,
+            "loading_data": 851,
+            "main_jobs": 265,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 457,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 265
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-before-2:preparation",
+              "upload": 103,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-2:edit-transfer",
+              "upload": 0,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-before-2:retirement",
+              "upload": 65,
+              "deletion": 451
+            }
+          ]
+        },
+        {
+          "name": "cancel-overlap-2",
+          "outcome": "submitted",
+          "source": "native",
+          "latency_usec": 13893,
+          "targets": [
+            {
+              "block": [
+                7,
+                0,
+                0
+              ],
+              "revision": 4286,
+              "submitted": true
+            },
+            {
+              "block": [
+                8,
+                0,
+                0
+              ],
+              "revision": 4287,
+              "submitted": true
+            }
+          ],
+          "peaks": {
+            "generation_jobs": 48,
+            "loading_data": 851,
+            "main_jobs": 267,
+            "mesh_jobs": 4,
+            "overloads": 0,
+            "pending_data": 811,
+            "pending_mesh": 451,
+            "resident_data": 867,
+            "resident_mesh": 511,
+            "result_jobs": 4,
+            "retired_high_water": 287,
+            "retired_meshes": 266
+          },
+          "operation_evaluation": "passed",
+          "phase_maxima": [
+            {
+              "label": "cancel-overlap-2:preparation",
+              "upload": 108,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-2:edit-transfer",
+              "upload": 48,
+              "deletion": 0
+            },
+            {
+              "label": "cancel-overlap-2:retirement",
+              "upload": 42,
+              "deletion": 488
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "ordinary_short_cloud_comparison": {
+    "heavy_work_units_and_available_exact_contracts_unchanged": true,
+    "heavy_scenario_records_checked": 42,
+    "sixteen_cube_H1_H2_exposed_samples": 0,
+    "scope": "one-second development smokes only",
+    "H2_failures": [
+      "Edit visibility exceeded the 100/200 ms limits",
+      "Diagnostic callback wall time reached 1%; A/B qualification required"
+    ],
+    "ordinary_operation_exceedances": [
+      {
+        "folder": "m1-release-32-2-raw",
+        "phase": "retirement",
+        "scenario": "AB-off-2",
+        "phase_id": 34,
+        "deletion_max_usec": 841,
+        "limit_usec": 750,
+        "waived": false
+      }
+    ],
+    "calibration": "inconclusive",
+    "OpenGL_readback": "unavailable; target pixels unverified"
+  },
+  "saved_evidence_reconciliation": {
+    "ordinary_folders": 10,
+    "scenarios": 98,
+    "native_phases": 284,
+    "operation_rows": 37351,
+    "ordinary_frame_rows": 12873,
+    "edit_events": 94,
+    "all_previous_control_expectations_preserved": true,
+    "method_controls": 16,
+    "route_controls": 26,
+    "endpoint_controls": 28,
+    "endpoint_phases": 112,
+    "endpoint_rows": 168596,
+    "fixed_controls": 44,
+    "fixed_phases": 176,
+    "fixed_rows": 264852,
+    "cpu_controls": 54,
+    "cpu_phases": 216,
+    "cpu_rows": 327444,
+    "real_cpu_callbacks": 256,
+    "frame_controls": 30,
+    "frame_phases": 120,
+    "frame_control_rows": 3856,
+    "real_frame_callbacks": 512,
+    "real_frame_anchors": 16,
+    "earlier_boundary_cases": 8,
+    "earlier_boundary_rows": 160,
+    "ordinary_cpu_frame_doses": "not_run",
+    "complete_final_callback_phase_drain_io_external_finalization_retained": true
+  },
+  "qualification": {
+    "qualified": false,
+    "m1": "blocked",
+    "target_profile": "none qualified",
+    "thresholds_and_historical_verdicts_unchanged": true,
+    "new_target_run_requested": false,
+    "remaining": [
+      "Continuous native H2 travel with production actor/edit/storage schedule and several preparation transfers",
+      "Recorded target H2 upload operation failure",
+      "Ordinary H2 edit-latency/diagnostic-cost and 32-cube retirement failures",
+      "Full routes, pacing, retention and qualification repeats",
+      "CPU service, GPU and physical presentation",
+      "HD 620 noise and shared instrumentation overhead"
+    ]
+  }
+}

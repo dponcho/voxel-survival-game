@@ -1,0 +1,107 @@
+{
+  "version": "m1-preparation-demand-inventory-1",
+  "policy": "m1-shipping-diagnostics-2",
+  "operational_always_on": [
+    "collision/readiness checks and required data viewer",
+    "edit transaction/revision integrity and fixed-work proxy autosaves",
+    "native job/result/resident/payload admission limits",
+    "complete synchronous terrain enforcement clocks and whole-frame carry",
+    "geometric priority admission and one bounded directional preparation viewer"
+  ],
+  "shipping_optional": [],
+  "common_external_qualification_observers": [
+    "monotonic whole-trial, lifecycle, matching-route-section, callback and zero-request witness clocks",
+    "fixed-work interval histogram and callback accounting including the last callback",
+    "per-callback native/resource snapshots, caps, frontier scan/evaluation and bounded qualification CSV",
+    "native lifetime/phase aggregates and operation-limit checks at closure (not raw operation tracing)",
+    "accepted-edit-to-mesh-submission observer, event serialization, bounded writer and final acknowledgement",
+    "per-physics collision elapsed timers, actual pose, command fingerprint, work counts, preparation handover and dose evidence CSV",
+    "per-trial correctness report construction, serialization, hashing of trace files, flush and close",
+    "Ordered native process/current-thread cycle reads around each shared boundary snapshot; unsigned decimal serialization and exact interval arithmetic",
+    "Native per-real-tick cycle witness, bounded cycle JSONL write/flush/close in every arm; no arm requests SHA work; no observer subtraction",
+    "Perturbing native observer spans in this separate mode; thread endpoints, bounded binary trace, final drain and independently audited ownership. No subtraction or calibration claim.",
+    "Four direct native preparation owner scopes with actual pool incarnation registration, attempts/completion/overload/crossing witnesses and explicit session/recorder destruction."
+  ],
+  "outside_complete_trial_common_harness": [
+    "process launch, project import, common scene/UI initialization and one complete warm-up trial",
+    "Terminal boundary marker write with process-cycle and wall brackets, conservatively expanding both comparison arms; subsequent marker evidence recording is common batch reporting",
+    "bounded between-trial report retention/deep-copy and finite protocol selection; at most 5 trial records; shared boundary interval assembly, terminal evidence retention and exact-rational decisions",
+    "batch summary/identity hashing, independent-reader work, return-to-title UI and process exit"
+  ],
+  "disabled_in_all_pilot_modes": [
+    "native admission selection trace",
+    "deep full-height mesh-resource/vertical-voxel JSONL observer",
+    "legacy calibration/flatness classifiers as qualification decisions"
+  ],
+  "mode_switches": {
+    "bare": {
+      "shipping_optional": false,
+      "forensic_additions": false,
+      "observer_attribution": true,
+      "preparation_owners": true
+    }
+  },
+  "estimand": "Perturbing direct preparation-owner attribution only; no shipping cost, causality, complete worker/engine cost or target qualification.",
+  "boundary": "One start/end subtraction: before optional setup and fixture preparation through 4320 fixed physics ticks, final edit acknowledgement, native phase closure, writer drain, terrain/preparation retirement, optional summary serialization/flush/close and complete per-trial report serialization/flush/close. Nested spans are evidence, not additive costs.",
+  "protocol": {
+    "version": "m1-preparation-demand-attribution-1",
+    "warmup_trials": 1,
+    "bare_trials": 4,
+    "maximum_trials": 5,
+    "process_timeout_seconds": 1500,
+    "trace_cap_bytes": 33554432,
+    "automatic_retry": false,
+    "positive_request_created": false,
+    "shipping_continuation": false,
+    "stop_rule": "Stop at first work/counter/span/I/O/operation/resource failure; retain partial prefix. Always stop by five, independent of descriptive null usability.",
+    "route_authorized": false
+  },
+  "method": "m1-preparation-demand-attribution-1",
+  "attribution": {
+    "format": "cairn-observer-ledger-2; CAIRNOB2; 40-byte header, 192-byte records; v1 readers reject",
+    "slots": {
+      "1": "preparation_queries",
+      "2": "callback_queries",
+      "3": "frontier",
+      "4": "callback_output",
+      "5": "native_witness",
+      "6": "tick_output",
+      "7": "report_close",
+      "8": "worker_lifetime",
+      "9": "worker_qualification",
+      "10": "worker_proxy",
+      "11": "worker_flush",
+      "12": "boundary_snapshot",
+      "13": "native_generation",
+      "14": "native_meshing",
+      "15": "voxel_engine_process",
+      "16": "voxel_terrain_process"
+    },
+    "thread_identity": "Main is the shared boundary OS thread. Terrain lanes bind actual VoxelEngine general-pool thread-entry incarnation plus OS TID and index 0; real exit retires identity. Persistent workers have drained detach, never a fictitious pool join. Writer lanes keep their joined lifetime proof.",
+    "raw_reads": "Four current-thread stamps per span: begin API entry/exit, end API entry/exit. Each retains success/availability/error and enclosing wall bracket. Binary null payload is explicitly flagged, never a measured zero.",
+    "ownership": "Full=end_exit-begin_entry; body=end_entry-begin_exit; bookkeeping=full-body. Exclusive body subtracts direct children full spans once, on the same lane. Root/child costs are never double-added to process demand.",
+    "section": "0 preparation, 1 +X, 2 -X, 3 +Z, 4 lifecycle tail; worker records retain start/end and submission sections. Crossing workers are separate, never assigned wholly to one section.",
+    "emission": "Start precedes allocation/publication. Existing native and writer drains, writer detach, unpublish with zero in-flight scopes, copy immutable ownership/counts, destroy session, seal/emit/flush/close, explicit last-owner recorder disposal, hash, final shared boundary. Failed prefixes and raw errors remain; missing lifetime proof invalidates attribution.",
+    "unattributed": "Ledger/session setup, dispatch/return outside stamps, uncaptured pool work, task scheduling, whole-engine/frame/renderer/driver work and allocator/OS retention remain unavailable. Direct scopes perturb scheduling. No thread/process addition or subtraction, correction, normalization or cycle/time conversion.",
+    "cadence": "Native witness 4320 spans; tick output 4320 unit-bearing spans plus 3 zero-unit pose handover spans. Callback output/queries/frontier each once per gameplay/acknowledgement callback. Preparation queries once per loading callback. Four intermediate boundary snapshots. Writer lifetimes include file close before exit; queue writes distinguish qualification and proxy work.",
+    "byte_counts": "The raw byte field is reserved zero for main/flush/lifetime scopes, reported as unavailable rather than measured zero. Writer qualification/proxy scopes retain actual UTF-8 payload bytes; whole-trial raw files and existing pose/cycle counts retain main output sizes.",
+    "native_admission": "Only section 0 admits slots 13\u201316. Every admitted scope completes on actual return; retain end section and crossing demand separately, without clipping.",
+    "native_outcomes": "units=1 is an attempt; complete=1 is actual RAII completion; bytes is an outcome tag, 1 normal or 2 meshing overload, not an output byte measurement. Original native counters remain separate.",
+    "bounds": {
+      "wire_bytes": 33554432,
+      "lanes": 8,
+      "depth": 8,
+      "terrain_workers": 1,
+      "resident_memory": "Record/vector, fixed session/owner tables and bounded serialization capacities reported separately; wire cap is not resident memory."
+    }
+  },
+  "reference_shipping_inventory": {
+    "version": "m1-shipping-inventory-2",
+    "file": "shipping_cycles_inventory.json"
+  },
+  "original_forensic_additions_disabled": [
+    "native per-operation frame trace, batching, CSV writer and drain for all three phases",
+    "per-callback asynchronous renderer CPU/GPU queries and detailed JSONL write/flush",
+    "per-30-callback live diagnostic labels"
+  ]
+}

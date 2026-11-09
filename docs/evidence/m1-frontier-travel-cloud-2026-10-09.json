@@ -1,0 +1,3822 @@
+{
+  "schema": 1,
+  "date_utc": "2026-10-09",
+  "scope": "Public cloud continuous production H2 correctness/evidence integrity; conservative coverage/diagnostic failures remain; no target qualification",
+  "passed": true,
+  "branch": "codex/m1-engine-proof",
+  "implementation_commit": "abb94bf4a4eecf6de0bd9bc68f37ae261c9c9cf4",
+  "build_commit": "7f37595af6bb8d30191770c644a2b9ea5da80c92",
+  "implementation_and_build_tree": "5d3877168732610f3d418f30411d66ba59389875",
+  "build_parents": [
+    "52d8e69138478832012e8abc2743ae7be7374f0f",
+    "abb94bf4a4eecf6de0bd9bc68f37ae261c9c9cf4"
+  ],
+  "ci": {
+    "run": 37861287881,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881",
+    "conclusion": "success",
+    "completed_utc": "2026-10-09T00:10:41Z",
+    "jobs": [
+      {
+        "id": 113600503732,
+        "name": "static",
+        "conclusion": "success"
+      },
+      {
+        "id": 113600731253,
+        "name": "windows / native / native-binaries",
+        "conclusion": "success"
+      },
+      {
+        "id": 113600994486,
+        "name": "windows / export-and-test",
+        "conclusion": "success"
+      }
+    ],
+    "python_regressions": 81,
+    "native_sanitizer_suites": 5,
+    "source_build_run": 37821509437,
+    "final_native_source": "cache, exact freshly source-built manifest requalified",
+    "engine_run_locally": false
+  },
+  "candidate": {
+    "artifact_id": 11587137036,
+    "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881/artifacts/11587137036",
+    "expires_at": "2026-11-08T00:10:16Z",
+    "artifact_bytes": 30011471,
+    "artifact_sha256": "4eec3bf82c7cb191c63e9b81e898147d9267f3b2696afcdf090986e298c066b7",
+    "portable_zip_bytes": 30110198,
+    "portable_zip_sha256": "c58afe5aa3178212c438ca02202f695e344d41605e36f8dd00d5e68d1a8e4ba2",
+    "exe_sha256": "ffd5cfca75f24a078e20cdd57ff36ca2f0f81587ced50218c6645cc2880c7acb",
+    "pck_sha256": "1676b6d1480eb3b34e9c0bc738e8c379c9acb6acc117dc018512c396a7da89e4",
+    "pck_entries_md5_verified": 74,
+    "new_runtime_present": true,
+    "crc_paths_pe_pck_build_identity_verified": true,
+    "native_manifest_and_templates_independently_verified": true,
+    "selftest_reports_independently_verified": 8,
+    "pe_imports_independently_verified": 38,
+    "fresh_offline_extractions": 2,
+    "status": "cloud_passed_target_unverified"
+  },
+  "artifacts": {
+    "evidence": {
+      "id": 11587222038,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881/artifacts/11587222038",
+      "bytes": 17291047,
+      "sha256": "bf0fa45f2e7ea1430bfac35cbc118c8c5fb0e46cdf3ab4abd64761d1fddcadb7",
+      "expires_at": "2026-11-08T00:10:34Z",
+      "downloaded_size_digest_crc_paths_verified": true
+    },
+    "native_evidence": {
+      "id": 11586846022,
+      "url": "https://github.com/dponcho/voxel-survival-game/actions/runs/37861287881/artifacts/11586846022",
+      "bytes": 12543,
+      "sha256": "f02cd068ce57a9874e6797cf3ccfe601a0415d4746907dda1cc2b15c7bde813e",
+      "expires_at": "2027-01-06T23:46:35Z",
+      "downloaded_size_digest_crc_paths_verified": true
+    },
+    "fresh_source_native_bundle": {
+      "id": 11574487774,
+      "bytes": 999263181,
+      "sha256": "66a6382d33911e22f8a7bea3b6fa2a586ddf36ba95f6d91b824041777a0f0f47",
+      "verification_scope": "Cloud archive/file verification, qualification and exact reuse; full binary bundle not downloaded locally"
+    },
+    "fresh_source_native_evidence": {
+      "id": 11574652025,
+      "bytes": 80427,
+      "sha256": "d6b605fdc0f3c6e09053b538afc7f8bd1dccce892ad6513755b9d3406800c883",
+      "downloaded_size_digest_crc_verified": true
+    }
+  },
+  "pins": {
+    "engine_inputs": "25581a8d31f5a500c585135069db3a143ac7edc69d984601768910f10ce53348",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "editor_sha256": "41af7a2a5f730b91b640240550bc6920581e6ceeb0bb7cfd82458b5625a66a17",
+    "debug_template_sha256": "ed3569e23e5c9c847f47dd7444dafd41083892d3b7d8cae89a0ea88fd41f689a",
+    "release_template_sha256": "ffd5cfca75f24a078e20cdd57ff36ca2f0f81587ced50218c6645cc2880c7acb",
+    "native_cache_inputs_recomputed": true,
+    "source_build_verified_patch_entries": 37,
+    "api_source_checked": [
+      "VoxelTerrain view/schedule/apply/unload and lifecycle boundaries",
+      "VoxelMeshBlock resource/visibility/viewer reference state",
+      "Godot Thread::is_main_thread, Object::get_instance_id, String::num_uint64",
+      "Godot process/deferred tree deletion ordering",
+      "Pinned fixed-LOD pending mesh selection before worker priority, current four-task admission and retained suffix"
+    ]
+  },
+  "predeclared_bounds": {
+    "fixed_physics_ticks": 600,
+    "physics_hz": 60,
+    "workers": [
+      1,
+      2
+    ],
+    "actor_updates": 14400,
+    "rain_instances": 256,
+    "due_edits": 40,
+    "proxy_saves": 10,
+    "observer_rows_per_process": 4096,
+    "observer_bytes_per_process": 33554432,
+    "observer_row_bytes_exclusive": 32768,
+    "primary_cells_per_row": 15,
+    "lateral_cells_per_row": 2,
+    "native_observer_max_cells_per_call": 16,
+    "added_worker_or_queue": false,
+    "native_operation_ring_records": 64,
+    "disk_queue_items": 64,
+    "disk_queue_bytes": 65536,
+    "operation_row_buffer": 128,
+    "edit_pending": 64,
+    "edit_terminal": 128,
+    "frame_or_operation_file_bytes": 67108864,
+    "edit_file_bytes": 8388608,
+    "total_operation_rows_per_run": 100000,
+    "gameplay_wall_limit_seconds": 50,
+    "actions_command_timeout_seconds": 600,
+    "admission_and_resident_caps_unchanged": true
+  },
+  "travel": {
+    "m1-frontier-travel-editor-1": {
+      "passed": true,
+      "qualified": false,
+      "target_performance": "not_run",
+      "workers": 1,
+      "ticks": 600,
+      "actor_ticks": 14400,
+      "edits": {
+        "submitted": 40,
+        "superseded": 0,
+        "cancelled": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "proxy_saves": 10,
+      "handover_ticks": [
+        56,
+        204,
+        351,
+        499
+      ],
+      "observations": 1254,
+      "observation_bytes": 6787341,
+      "observation_sha256": "6451a3a9a658e278b12eab421f230c672897bac35d7ad7726f204fad612942b3",
+      "operation_rows": 1904,
+      "frame_rows": 1452,
+      "exposed_samples": 23,
+      "lateral_exposed_observations": 39,
+      "failed_operation_phases": [],
+      "edit_latency_failed": false,
+      "scenario_evaluation": "failed",
+      "reasons": [
+        "Diagnostic callback wall time reached 1%; A/B qualification required",
+        "Required mesh coverage is unready before fog obscures it"
+      ],
+      "resident_mesh": 511,
+      "resident_data": 867,
+      "travel_retired_high_water": 2,
+      "retired_high_water": 285,
+      "workload_contract": {
+        "actors": 24,
+        "autosave_interval_s": 1.0,
+        "camera_far": 96.0,
+        "camera_fov": 75.0,
+        "data_radius": 128,
+        "edit_rate": 4.0,
+        "edit_trace": true,
+        "fixture": 1,
+        "fog": {
+          "begin_m": 16.0,
+          "curve": 1.0,
+          "density": 1.0,
+          "enabled": true,
+          "end_m": 96.0,
+          "height_density": 0.0,
+          "mode": "depth"
+        },
+        "frontier_preparation": {
+          "data_radius_m": 128,
+          "enabled": true,
+          "handover": "previous process pose; base viewer retains old column before retarget",
+          "qualification": "unverified; neither complete-route coverage nor target timing",
+          "required_visual_radius_m": 96,
+          "resident_mesh_bound": 511,
+          "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+          "version": "m1-forward-four-1",
+          "viewer_count": 4,
+          "viewer_radius_m": 1
+        },
+        "max_physics_steps": 4,
+        "native_policy": {
+          "frame_upload_bytes": 1048576,
+          "frame_usec": 2000,
+          "mesh_result_bytes": 33554432,
+          "mesh_results": 16,
+          "single_upload_bytes": 262144,
+          "terrain_jobs": 64
+        },
+        "operation_trace": true,
+        "physics_hz": 60,
+        "player_start": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "rain_instances": 256,
+        "render_block": 16,
+        "render_queries": true,
+        "render_scale": 1.0,
+        "reported_window": [
+          0,
+          0
+        ],
+        "resolution": [
+          1280,
+          720
+        ],
+        "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+        "route_origin": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "seconds": 10.0,
+        "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+        "terrain_bounds": [
+          -4096.0,
+          -16.0,
+          -4096.0,
+          8192.0,
+          48.0,
+          8192.0
+        ],
+        "triangle_colliders": false,
+        "version": "m1-heavy-frontier-ab-1",
+        "visual_radius": 96,
+        "workers": 1,
+        "workload": "H2"
+      },
+      "workload_evidence": {
+        "command_hash": 1526024844,
+        "due_edits": 40,
+        "player_end": [
+          74.9997634887695,
+          0.00100000004749745,
+          10.0
+        ],
+        "route_checkpoints": [
+          {
+            "target_x": 10.1083335876465,
+            "tick": 1,
+            "yaw": -1.57079637050629
+          },
+          {
+            "target_x": 75.0,
+            "tick": 600,
+            "yaw": -1.57079637050629
+          }
+        ]
+      },
+      "edit_visibility": {
+        "accepted": 40,
+        "cancelled": 0,
+        "enabled": false,
+        "max_usec": 166097,
+        "overflow": 0,
+        "p95_upper_usec": 84000,
+        "pending": 0,
+        "pending_high_water": 1,
+        "queued": 0,
+        "submitted": 40,
+        "superseded": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "phase_aggregates": [
+        {
+          "id": 1,
+          "phase": "preparation",
+          "frames": 444,
+          "upload": {
+            "bytes": 46622240,
+            "count": 453,
+            "max_bytes": 143360,
+            "max_kind": 1,
+            "max_start_usec": 2926677,
+            "max_usec": 58,
+            "usec": 8499
+          },
+          "deletion": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "peak_frame_operation_usec": 112,
+          "peak_frame_upload_bytes": 529200
+        },
+        {
+          "id": 2,
+          "phase": "overhead_diagnostic",
+          "frames": 1453,
+          "upload": {
+            "bytes": 19449360,
+            "count": 199,
+            "max_bytes": 143360,
+            "max_kind": 1,
+            "max_start_usec": 9330354,
+            "max_usec": 37,
+            "usec": 3829
+          },
+          "deletion": {
+            "bytes": 5003040,
+            "count": 114,
+            "max_bytes": 106400,
+            "max_kind": 2,
+            "max_start_usec": 3534412,
+            "max_usec": 4,
+            "usec": 85
+          },
+          "peak_frame_operation_usec": 82,
+          "peak_frame_upload_bytes": 395360
+        },
+        {
+          "id": 3,
+          "phase": "retirement",
+          "frames": 7,
+          "upload": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "deletion": {
+            "bytes": 46790800,
+            "count": 741,
+            "max_bytes": 108640,
+            "max_kind": 2,
+            "max_start_usec": 13297555,
+            "max_usec": 415,
+            "usec": 2882
+          },
+          "peak_frame_operation_usec": 1538,
+          "peak_frame_upload_bytes": 0
+        }
+      ],
+      "phase_closure_guards": [
+        {
+          "close_after_usec": 3271692,
+          "close_before_usec": 3271649,
+          "failures": [],
+          "id": 1,
+          "phase": "preparation"
+        },
+        {
+          "close_after_usec": 13290825,
+          "close_before_usec": 13290787,
+          "failures": [],
+          "id": 2,
+          "phase": "overhead_diagnostic"
+        },
+        {
+          "close_after_usec": 13331878,
+          "close_before_usec": 13331843,
+          "failures": [],
+          "id": 3,
+          "phase": "retirement"
+        }
+      ],
+      "diagnostic_accounting": {
+        "blocks": [
+          {
+            "samples": 725,
+            "usec": 5001729
+          },
+          {
+            "samples": 725,
+            "usec": 5002500
+          }
+        ],
+        "callback_usec": 273699,
+        "callbacks": 1452,
+        "elapsed_usec": 10020580,
+        "end_usec": 13292723,
+        "finalization_usec": 1947,
+        "invalid_partition": false,
+        "last_callback_end_usec": 13290776,
+        "last_callback_usec": 332,
+        "last_shared_usec": 292,
+        "last_switched_usec": 40,
+        "maximum_callback_usec": 812,
+        "overflow": false,
+        "partial_block": {
+          "samples": 2,
+          "usec": 13812
+        },
+        "shared_usec": 217852,
+        "start_usec": 3272143,
+        "switched_calls": 1452,
+        "switched_usec": 55847,
+        "writer_drain_usec": 191
+      },
+      "combined_report_finalization": {
+        "elapsed_usec": 648700,
+        "end_usec": 13980821,
+        "excluded": "this terminal timing record write; process exit; deferred renderer work",
+        "scope": "phase closure, writer drain, summary assembly, hashing, serialization, writes/flushes and final UI",
+        "start_usec": 13332121,
+        "test_mode": true
+      },
+      "final_native": {
+        "data_apply_max_usec": 17,
+        "data_apply_usec": 2501,
+        "deletion_max_usec": 415,
+        "deletion_usec": 2967,
+        "generated": 1071,
+        "generation_jobs": 0,
+        "generation_usec": 34833,
+        "main_jobs": 0,
+        "mesh_jobs": 0,
+        "meshed": 747,
+        "meshing_usec": 60111,
+        "overloads": 0,
+        "private_bytes": 63995904,
+        "result_jobs": 0,
+        "retired_high_water": 285,
+        "retired_meshes": 0,
+        "stale_results": 0,
+        "upload_bytes": 66071600,
+        "upload_max_usec": 58,
+        "upload_usec": 12328,
+        "uploads": 652,
+        "working_set": 115834880
+      },
+      "exposed_by_block": {
+        "7;0;-1": {
+          "count": 6,
+          "first": {
+            "frame": "147",
+            "simulation_s": "1.016667",
+            "camera_x": "16.6083488464355",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9143676757812",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "2",
+            "pending_data": "0",
+            "pending_mesh": "28"
+          },
+          "last": {
+            "frame": "152",
+            "simulation_s": "1.050000",
+            "camera_x": "16.8250160217285",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.6988906860352",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "8;0;-1": {
+          "count": 6,
+          "first": {
+            "frame": "502",
+            "simulation_s": "3.466667",
+            "camera_x": "32.5333862304688",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9889297485352",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "0",
+            "pending_data": "0",
+            "pending_mesh": "29"
+          },
+          "last": {
+            "frame": "507",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7734451293945",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "23"
+          }
+        },
+        "8;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "508",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          },
+          "last": {
+            "frame": "508",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;0;-1": {
+          "count": 4,
+          "first": {
+            "frame": "860",
+            "simulation_s": "5.933333",
+            "camera_x": "48.5667572021484",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9557418823242",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "26"
+          },
+          "last": {
+            "frame": "863",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8479919433594",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "864",
+            "simulation_s": "5.966667",
+            "camera_x": "48.7834243774414",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7544860839844",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          },
+          "last": {
+            "frame": "864",
+            "simulation_s": "5.966667",
+            "camera_x": "48.7834243774414",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7544860839844",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        },
+        "10;0;-1": {
+          "count": 5,
+          "first": {
+            "frame": "1217",
+            "simulation_s": "8.400000",
+            "camera_x": "64.6001052856445",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9225692749023",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "0",
+            "pending_data": "0",
+            "pending_mesh": "26"
+          },
+          "last": {
+            "frame": "1221",
+            "simulation_s": "8.416667",
+            "camera_x": "64.7084350585938",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8148345947266",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        }
+      },
+      "lateral_first_exposure": [
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4286021,
+          "distance_m": 95.92858234582077,
+          "block": [
+            7,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 533,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 2,
+            "main_jobs": 2,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4286021,
+          "distance_m": 95.91437384356603,
+          "block": [
+            7,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 534,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 2,
+            "main_jobs": 2,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 208,
+          "stage": "physics",
+          "usec": 6735519,
+          "distance_m": 95.98892823977587,
+          "block": [
+            8,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 593,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 29,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 209,
+          "stage": "physics",
+          "usec": 6749312,
+          "distance_m": 95.89539822286791,
+          "block": [
+            8,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 592,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9205711,
+          "distance_m": 95.96994129408056,
+          "block": [
+            9,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 651,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9205711,
+          "distance_m": 95.95573891599028,
+          "block": [
+            9,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 652,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11669023,
+          "distance_m": 95.93677976973008,
+          "block": [
+            10,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 710,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11669023,
+          "distance_m": 95.92257248171629,
+          "block": [
+            10,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 711,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        }
+      ],
+      "lateral_counts": {
+        "(7, -1, -1)": 4,
+        "(7, 0, -1)": 6,
+        "(8, 0, -1)": 7,
+        "(8, -1, -1)": 4,
+        "(9, -1, -1)": 6,
+        "(9, 0, -1)": 4,
+        "(10, -1, -1)": 4,
+        "(10, 0, -1)": 4
+      },
+      "saved_files": {
+        "AB-H2-travel-frames.csv": {
+          "bytes": 408504,
+          "sha256": "4734aff2d1ead6be052397a9276598cf01d28697c3b81c4f6a84ea569544ab1f"
+        },
+        "summary.txt": {
+          "bytes": 242,
+          "sha256": "69ba2a22d47123400ae453561bb3667fa4f2e30e81da7bfc1a0edbdf54b4df58"
+        },
+        "report-finalization.json": {
+          "bytes": 276,
+          "sha256": "a7049d35ec18ff2b3217a790d29aad941b3fff403dab525fc52e9d86dd56d06c"
+        },
+        "AB-H2-travel-preparation-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-preparation-frames.csv.operations.csv": {
+          "bytes": 26670,
+          "sha256": "85a2c19f92ff5a16d03e54a2313910265ecba2708d6114a88574ae0aadf2e0f0"
+        },
+        "AB-H2-travel-retirement-frames.csv.operations.csv": {
+          "bytes": 748,
+          "sha256": "85ba0ef897a8ca5ca4b80547405c8c008e245488abda192160e484fc1049762e"
+        },
+        "travel-summary.json": {
+          "bytes": 2446,
+          "sha256": "48395a281c1af1326397eed5a0ad660a8ca2c8d8d6c7355149ded6cfd236a936"
+        },
+        "AB-H2-travel-retirement-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "travel-observations.jsonl": {
+          "bytes": 6787341,
+          "sha256": "6451a3a9a658e278b12eab421f230c672897bac35d7ad7726f204fad612942b3"
+        },
+        "summary.json": {
+          "bytes": 41682,
+          "sha256": "7311e803e03bda4b35bad4b69e08d29b620860f073e8bd4b9abfa8760238d119"
+        },
+        "AB-H2-travel-retirement-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-frames.csv.proxy.tmp": {
+          "bytes": 32819,
+          "sha256": "d9cafc0bee2235a1bc910e7ff3a61c018c46882f7fad3f095c50772ede522643"
+        },
+        "AB-H2-travel-preparation-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "AB-H2-travel-frames.csv.operations.csv": {
+          "bytes": 77983,
+          "sha256": "5772649d58fe58cc4f7e47f84e9fb717a6f2d484588563aa0fbf0bedfe3ec927"
+        },
+        "AB-H2-travel-frames.csv.edits.jsonl": {
+          "bytes": 9061,
+          "sha256": "1f1b0e84b2720f3eccc113c36c6da073620ab719f1135238fc9beac5b397bbca"
+        }
+      }
+    },
+    "m1-frontier-travel-editor-2": {
+      "passed": true,
+      "qualified": false,
+      "target_performance": "not_run",
+      "workers": 2,
+      "ticks": 600,
+      "actor_ticks": 14400,
+      "edits": {
+        "submitted": 40,
+        "superseded": 0,
+        "cancelled": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "proxy_saves": 10,
+      "handover_ticks": [
+        56,
+        204,
+        351,
+        499
+      ],
+      "observations": 1255,
+      "observation_bytes": 6793107,
+      "observation_sha256": "5e5101b43a6055301e065cd4e6dd38de853e2cbd53b1cae05397d8796249002f",
+      "operation_rows": 1906,
+      "frame_rows": 1453,
+      "exposed_samples": 23,
+      "lateral_exposed_observations": 37,
+      "failed_operation_phases": [],
+      "edit_latency_failed": false,
+      "scenario_evaluation": "failed",
+      "reasons": [
+        "Diagnostic callback wall time reached 1%; A/B qualification required",
+        "Required mesh coverage is unready before fog obscures it"
+      ],
+      "resident_mesh": 511,
+      "resident_data": 867,
+      "travel_retired_high_water": 2,
+      "retired_high_water": 285,
+      "workload_contract": {
+        "actors": 24,
+        "autosave_interval_s": 1.0,
+        "camera_far": 96.0,
+        "camera_fov": 75.0,
+        "data_radius": 128,
+        "edit_rate": 4.0,
+        "edit_trace": true,
+        "fixture": 1,
+        "fog": {
+          "begin_m": 16.0,
+          "curve": 1.0,
+          "density": 1.0,
+          "enabled": true,
+          "end_m": 96.0,
+          "height_density": 0.0,
+          "mode": "depth"
+        },
+        "frontier_preparation": {
+          "data_radius_m": 128,
+          "enabled": true,
+          "handover": "previous process pose; base viewer retains old column before retarget",
+          "qualification": "unverified; neither complete-route coverage nor target timing",
+          "required_visual_radius_m": 96,
+          "resident_mesh_bound": 511,
+          "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+          "version": "m1-forward-four-1",
+          "viewer_count": 4,
+          "viewer_radius_m": 1
+        },
+        "max_physics_steps": 4,
+        "native_policy": {
+          "frame_upload_bytes": 1048576,
+          "frame_usec": 2000,
+          "mesh_result_bytes": 33554432,
+          "mesh_results": 16,
+          "single_upload_bytes": 262144,
+          "terrain_jobs": 64
+        },
+        "operation_trace": true,
+        "physics_hz": 60,
+        "player_start": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "rain_instances": 256,
+        "render_block": 16,
+        "render_queries": true,
+        "render_scale": 1.0,
+        "reported_window": [
+          0,
+          0
+        ],
+        "resolution": [
+          1280,
+          720
+        ],
+        "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+        "route_origin": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "seconds": 10.0,
+        "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+        "terrain_bounds": [
+          -4096.0,
+          -16.0,
+          -4096.0,
+          8192.0,
+          48.0,
+          8192.0
+        ],
+        "triangle_colliders": false,
+        "version": "m1-heavy-frontier-ab-1",
+        "visual_radius": 96,
+        "workers": 2,
+        "workload": "H2"
+      },
+      "workload_evidence": {
+        "command_hash": 1526024844,
+        "due_edits": 40,
+        "player_end": [
+          74.9997634887695,
+          0.00100000004749745,
+          10.0
+        ],
+        "route_checkpoints": [
+          {
+            "target_x": 10.1083335876465,
+            "tick": 1,
+            "yaw": -1.57079637050629
+          },
+          {
+            "target_x": 75.0,
+            "tick": 600,
+            "yaw": -1.57079637050629
+          }
+        ]
+      },
+      "edit_visibility": {
+        "accepted": 40,
+        "cancelled": 0,
+        "enabled": false,
+        "max_usec": 172516,
+        "overflow": 0,
+        "p95_upper_usec": 76000,
+        "pending": 0,
+        "pending_high_water": 1,
+        "queued": 0,
+        "submitted": 40,
+        "superseded": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "phase_aggregates": [
+        {
+          "id": 1,
+          "phase": "preparation",
+          "frames": 445,
+          "upload": {
+            "bytes": 46622240,
+            "count": 453,
+            "max_bytes": 143360,
+            "max_kind": 1,
+            "max_start_usec": 706485,
+            "max_usec": 57,
+            "usec": 9555
+          },
+          "deletion": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "peak_frame_operation_usec": 148,
+          "peak_frame_upload_bytes": 573440
+        },
+        {
+          "id": 2,
+          "phase": "overhead_diagnostic",
+          "frames": 1454,
+          "upload": {
+            "bytes": 19449360,
+            "count": 199,
+            "max_bytes": 143360,
+            "max_kind": 1,
+            "max_start_usec": 6702813,
+            "max_usec": 43,
+            "usec": 4134
+          },
+          "deletion": {
+            "bytes": 5003040,
+            "count": 114,
+            "max_bytes": 106400,
+            "max_kind": 2,
+            "max_start_usec": 3556663,
+            "max_usec": 3,
+            "usec": 79
+          },
+          "peak_frame_operation_usec": 88,
+          "peak_frame_upload_bytes": 395360
+        },
+        {
+          "id": 3,
+          "phase": "retirement",
+          "frames": 7,
+          "upload": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "deletion": {
+            "bytes": 46790800,
+            "count": 741,
+            "max_bytes": 77840,
+            "max_kind": 2,
+            "max_start_usec": 13319812,
+            "max_usec": 444,
+            "usec": 3307
+          },
+          "peak_frame_operation_usec": 1297,
+          "peak_frame_upload_bytes": 0
+        }
+      ],
+      "phase_closure_guards": [
+        {
+          "close_after_usec": 3287029,
+          "close_before_usec": 3286982,
+          "failures": [],
+          "id": 1,
+          "phase": "preparation"
+        },
+        {
+          "close_after_usec": 13313029,
+          "close_before_usec": 13312989,
+          "failures": [],
+          "id": 2,
+          "phase": "overhead_diagnostic"
+        },
+        {
+          "close_after_usec": 13354124,
+          "close_before_usec": 13354083,
+          "failures": [],
+          "id": 3,
+          "phase": "retirement"
+        }
+      ],
+      "diagnostic_accounting": {
+        "blocks": [
+          {
+            "samples": 725,
+            "usec": 5002097
+          },
+          {
+            "samples": 725,
+            "usec": 5002527
+          }
+        ],
+        "callback_usec": 270008,
+        "callbacks": 1453,
+        "elapsed_usec": 10027376,
+        "end_usec": 13314901,
+        "finalization_usec": 1922,
+        "invalid_partition": false,
+        "last_callback_end_usec": 13312979,
+        "last_callback_usec": 307,
+        "last_shared_usec": 270,
+        "last_switched_usec": 37,
+        "maximum_callback_usec": 848,
+        "overflow": false,
+        "partial_block": {
+          "samples": 3,
+          "usec": 20265
+        },
+        "shared_usec": 214751,
+        "start_usec": 3287525,
+        "switched_calls": 1453,
+        "switched_usec": 55257,
+        "writer_drain_usec": 199
+      },
+      "combined_report_finalization": {
+        "elapsed_usec": 680347,
+        "end_usec": 14034674,
+        "excluded": "this terminal timing record write; process exit; deferred renderer work",
+        "scope": "phase closure, writer drain, summary assembly, hashing, serialization, writes/flushes and final UI",
+        "start_usec": 13354327,
+        "test_mode": true
+      },
+      "final_native": {
+        "data_apply_max_usec": 20,
+        "data_apply_usec": 3243,
+        "deletion_max_usec": 444,
+        "deletion_usec": 3386,
+        "generated": 1071,
+        "generation_jobs": 0,
+        "generation_usec": 42143,
+        "main_jobs": 0,
+        "mesh_jobs": 0,
+        "meshed": 747,
+        "meshing_usec": 69238,
+        "overloads": 0,
+        "private_bytes": 64184320,
+        "result_jobs": 0,
+        "retired_high_water": 285,
+        "retired_meshes": 0,
+        "stale_results": 0,
+        "upload_bytes": 66071600,
+        "upload_max_usec": 57,
+        "upload_usec": 13689,
+        "uploads": 652,
+        "working_set": 115843072
+      },
+      "exposed_by_block": {
+        "7;0;-1": {
+          "count": 6,
+          "first": {
+            "frame": "148",
+            "simulation_s": "1.016667",
+            "camera_x": "16.6083488464355",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9143676757812",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "2",
+            "pending_data": "0",
+            "pending_mesh": "28"
+          },
+          "last": {
+            "frame": "153",
+            "simulation_s": "1.050000",
+            "camera_x": "16.8250160217285",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.6988906860352",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "8;0;-1": {
+          "count": 6,
+          "first": {
+            "frame": "503",
+            "simulation_s": "3.466667",
+            "camera_x": "32.5333862304688",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9889297485352",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "0",
+            "pending_data": "0",
+            "pending_mesh": "29"
+          },
+          "last": {
+            "frame": "508",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7734451293945",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "23"
+          }
+        },
+        "8;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "509",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          },
+          "last": {
+            "frame": "509",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;0;-1": {
+          "count": 4,
+          "first": {
+            "frame": "860",
+            "simulation_s": "5.933333",
+            "camera_x": "48.5667572021484",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9557418823242",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "26"
+          },
+          "last": {
+            "frame": "863",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8479919433594",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "864",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8622131347656",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          },
+          "last": {
+            "frame": "864",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8622131347656",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        },
+        "10;0;-1": {
+          "count": 5,
+          "first": {
+            "frame": "1218",
+            "simulation_s": "8.400000",
+            "camera_x": "64.6001052856445",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9225692749023",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "0",
+            "pending_data": "0",
+            "pending_mesh": "26"
+          },
+          "last": {
+            "frame": "1222",
+            "simulation_s": "8.416667",
+            "camera_x": "64.7084350585938",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8148345947266",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        }
+      },
+      "lateral_first_exposure": [
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4308254,
+          "distance_m": 95.92858234582077,
+          "block": [
+            7,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 533,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 2,
+            "main_jobs": 2,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4308254,
+          "distance_m": 95.91437384356603,
+          "block": [
+            7,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 534,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 2,
+            "main_jobs": 2,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 208,
+          "stage": "physics",
+          "usec": 6757745,
+          "distance_m": 95.98892823977587,
+          "block": [
+            8,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 593,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 29,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 209,
+          "stage": "physics",
+          "usec": 6771545,
+          "distance_m": 95.89539822286791,
+          "block": [
+            8,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 592,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9221043,
+          "distance_m": 95.96994129408056,
+          "block": [
+            9,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 651,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9221043,
+          "distance_m": 95.95573891599028,
+          "block": [
+            9,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 652,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11691250,
+          "distance_m": 95.93677976973008,
+          "block": [
+            10,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 710,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11691250,
+          "distance_m": 95.92257248171629,
+          "block": [
+            10,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 711,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        }
+      ],
+      "lateral_counts": {
+        "(7, -1, -1)": 4,
+        "(7, 0, -1)": 6,
+        "(8, 0, -1)": 7,
+        "(8, -1, -1)": 4,
+        "(9, -1, -1)": 4,
+        "(9, 0, -1)": 4,
+        "(10, -1, -1)": 4,
+        "(10, 0, -1)": 4
+      },
+      "saved_files": {
+        "AB-H2-travel-frames.csv": {
+          "bytes": 408752,
+          "sha256": "12434259b939afcac15e9ab0fc6a3aea767729eaa82d7fc6361ae72de5c90fd4"
+        },
+        "summary.txt": {
+          "bytes": 242,
+          "sha256": "69ba2a22d47123400ae453561bb3667fa4f2e30e81da7bfc1a0edbdf54b4df58"
+        },
+        "report-finalization.json": {
+          "bytes": 276,
+          "sha256": "25c36158b92d05af34b1efa24db77d3c625bd37cdcd2e9a0a551f44300f10e3b"
+        },
+        "AB-H2-travel-preparation-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-preparation-frames.csv.operations.csv": {
+          "bytes": 26555,
+          "sha256": "3372bc5d16b0b0ade6c6118ab6b2ab43ae0c721d83803a96c523aded9f945209"
+        },
+        "AB-H2-travel-retirement-frames.csv.operations.csv": {
+          "bytes": 752,
+          "sha256": "e0d0c7a7f087cbb406e87bd63bc2ed3af1f59a5ef11ca42630441d0669a477da"
+        },
+        "travel-summary.json": {
+          "bytes": 2446,
+          "sha256": "9b5fdc115ec55e9181d14bdc31ac4b50c08edcfd3d82e6d26848e73ef9afd6ff"
+        },
+        "AB-H2-travel-retirement-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "travel-observations.jsonl": {
+          "bytes": 6793107,
+          "sha256": "5e5101b43a6055301e065cd4e6dd38de853e2cbd53b1cae05397d8796249002f"
+        },
+        "summary.json": {
+          "bytes": 42009,
+          "sha256": "785b9f8405aa30d570cb452dc7dae1848e0d97c37135b17727b3ce100560a013"
+        },
+        "AB-H2-travel-retirement-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-frames.csv.proxy.tmp": {
+          "bytes": 32819,
+          "sha256": "d9cafc0bee2235a1bc910e7ff3a61c018c46882f7fad3f095c50772ede522643"
+        },
+        "AB-H2-travel-preparation-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "AB-H2-travel-frames.csv.operations.csv": {
+          "bytes": 78044,
+          "sha256": "631da5b6c1d24abac042d3dfe02a4ec8e4f932a427e238923feddea1d85905a4"
+        },
+        "AB-H2-travel-frames.csv.edits.jsonl": {
+          "bytes": 9061,
+          "sha256": "94a86812d2a56c405a7a127688381c1b13d70d48d5a7ee4277fcb7da719017eb"
+        }
+      }
+    },
+    "m1-frontier-travel-release-1": {
+      "passed": true,
+      "qualified": false,
+      "target_performance": "not_run",
+      "workers": 1,
+      "ticks": 600,
+      "actor_ticks": 14400,
+      "edits": {
+        "submitted": 40,
+        "superseded": 0,
+        "cancelled": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "proxy_saves": 10,
+      "handover_ticks": [
+        56,
+        204,
+        351,
+        499
+      ],
+      "observations": 1255,
+      "observation_bytes": 6795286,
+      "observation_sha256": "5454e1f3e375edea42bc4338df25bd6038ed639eb12abfc1a8c1bc1dff9d3bec",
+      "operation_rows": 1905,
+      "frame_rows": 1453,
+      "exposed_samples": 22,
+      "lateral_exposed_observations": 37,
+      "failed_operation_phases": [],
+      "edit_latency_failed": false,
+      "scenario_evaluation": "failed",
+      "reasons": [
+        "Diagnostic callback wall time reached 1%; A/B qualification required",
+        "Required mesh coverage is unready before fog obscures it"
+      ],
+      "resident_mesh": 511,
+      "resident_data": 867,
+      "travel_retired_high_water": 2,
+      "retired_high_water": 285,
+      "workload_contract": {
+        "actors": 24,
+        "autosave_interval_s": 1.0,
+        "camera_far": 96.0,
+        "camera_fov": 75.0,
+        "data_radius": 128,
+        "edit_rate": 4.0,
+        "edit_trace": true,
+        "fixture": 1,
+        "fog": {
+          "begin_m": 16.0,
+          "curve": 1.0,
+          "density": 1.0,
+          "enabled": true,
+          "end_m": 96.0,
+          "height_density": 0.0,
+          "mode": "depth"
+        },
+        "frontier_preparation": {
+          "data_radius_m": 128,
+          "enabled": true,
+          "handover": "previous process pose; base viewer retains old column before retarget",
+          "qualification": "unverified; neither complete-route coverage nor target timing",
+          "required_visual_radius_m": 96,
+          "resident_mesh_bound": 511,
+          "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+          "version": "m1-forward-four-1",
+          "viewer_count": 4,
+          "viewer_radius_m": 1
+        },
+        "max_physics_steps": 4,
+        "native_policy": {
+          "frame_upload_bytes": 1048576,
+          "frame_usec": 2000,
+          "mesh_result_bytes": 33554432,
+          "mesh_results": 16,
+          "single_upload_bytes": 262144,
+          "terrain_jobs": 64
+        },
+        "operation_trace": true,
+        "physics_hz": 60,
+        "player_start": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "rain_instances": 256,
+        "render_block": 16,
+        "render_queries": true,
+        "render_scale": 1.0,
+        "reported_window": [
+          0,
+          0
+        ],
+        "resolution": [
+          1280,
+          720
+        ],
+        "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+        "route_origin": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "seconds": 10.0,
+        "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+        "terrain_bounds": [
+          -4096.0,
+          -16.0,
+          -4096.0,
+          8192.0,
+          48.0,
+          8192.0
+        ],
+        "triangle_colliders": false,
+        "version": "m1-heavy-frontier-ab-1",
+        "visual_radius": 96,
+        "workers": 1,
+        "workload": "H2"
+      },
+      "workload_evidence": {
+        "command_hash": 1526024844,
+        "due_edits": 40,
+        "player_end": [
+          74.9997634887695,
+          0.00100000004749745,
+          10.0
+        ],
+        "route_checkpoints": [
+          {
+            "target_x": 10.1083335876465,
+            "tick": 1,
+            "yaw": -1.57079637050629
+          },
+          {
+            "target_x": 75.0,
+            "tick": 600,
+            "yaw": -1.57079637050629
+          }
+        ]
+      },
+      "edit_visibility": {
+        "accepted": 40,
+        "cancelled": 0,
+        "enabled": false,
+        "max_usec": 166091,
+        "overflow": 0,
+        "p95_upper_usec": 76000,
+        "pending": 0,
+        "pending_high_water": 1,
+        "queued": 0,
+        "submitted": 40,
+        "superseded": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "phase_aggregates": [
+        {
+          "id": 1,
+          "phase": "preparation",
+          "frames": 443,
+          "upload": {
+            "bytes": 46622240,
+            "count": 453,
+            "max_bytes": 143360,
+            "max_kind": 1,
+            "max_start_usec": 573927,
+            "max_usec": 135,
+            "usec": 8749
+          },
+          "deletion": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "peak_frame_operation_usec": 135,
+          "peak_frame_upload_bytes": 573440
+        },
+        {
+          "id": 2,
+          "phase": "overhead_diagnostic",
+          "frames": 1454,
+          "upload": {
+            "bytes": 19449360,
+            "count": 199,
+            "max_bytes": 82320,
+            "max_kind": 1,
+            "max_start_usec": 11594437,
+            "max_usec": 97,
+            "usec": 4041
+          },
+          "deletion": {
+            "bytes": 5003040,
+            "count": 114,
+            "max_bytes": 106400,
+            "max_kind": 2,
+            "max_start_usec": 3464917,
+            "max_usec": 6,
+            "usec": 79
+          },
+          "peak_frame_operation_usec": 112,
+          "peak_frame_upload_bytes": 395360
+        },
+        {
+          "id": 3,
+          "phase": "retirement",
+          "frames": 8,
+          "upload": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "deletion": {
+            "bytes": 46790800,
+            "count": 741,
+            "max_bytes": 107520,
+            "max_kind": 2,
+            "max_start_usec": 13235384,
+            "max_usec": 400,
+            "usec": 2932
+          },
+          "peak_frame_operation_usec": 1277,
+          "peak_frame_upload_bytes": 0
+        }
+      ],
+      "phase_closure_guards": [
+        {
+          "close_after_usec": 3202653,
+          "close_before_usec": 3202612,
+          "failures": [],
+          "id": 1,
+          "phase": "preparation"
+        },
+        {
+          "close_after_usec": 13228641,
+          "close_before_usec": 13228608,
+          "failures": [],
+          "id": 2,
+          "phase": "overhead_diagnostic"
+        },
+        {
+          "close_after_usec": 13276635,
+          "close_before_usec": 13276606,
+          "failures": [],
+          "id": 3,
+          "phase": "retirement"
+        }
+      ],
+      "diagnostic_accounting": {
+        "blocks": [
+          {
+            "samples": 725,
+            "usec": 5002217
+          },
+          {
+            "samples": 725,
+            "usec": 5002533
+          }
+        ],
+        "callback_usec": 252904,
+        "callbacks": 1453,
+        "elapsed_usec": 10027056,
+        "end_usec": 13230120,
+        "finalization_usec": 1521,
+        "invalid_partition": false,
+        "last_callback_end_usec": 13228599,
+        "last_callback_usec": 306,
+        "last_shared_usec": 271,
+        "last_switched_usec": 35,
+        "maximum_callback_usec": 715,
+        "overflow": false,
+        "partial_block": {
+          "samples": 3,
+          "usec": 20256
+        },
+        "shared_usec": 200857,
+        "start_usec": 3203064,
+        "switched_calls": 1453,
+        "switched_usec": 52047,
+        "writer_drain_usec": 165
+      },
+      "combined_report_finalization": {
+        "elapsed_usec": 401647,
+        "end_usec": 13678443,
+        "excluded": "this terminal timing record write; process exit; deferred renderer work",
+        "scope": "phase closure, writer drain, summary assembly, hashing, serialization, writes/flushes and final UI",
+        "start_usec": 13276796,
+        "test_mode": true
+      },
+      "final_native": {
+        "data_apply_max_usec": 119,
+        "data_apply_usec": 2601,
+        "deletion_max_usec": 400,
+        "deletion_usec": 3011,
+        "generated": 1071,
+        "generation_jobs": 0,
+        "generation_usec": 31872,
+        "main_jobs": 0,
+        "mesh_jobs": 0,
+        "meshed": 747,
+        "meshing_usec": 56625,
+        "overloads": 0,
+        "private_bytes": 50720768,
+        "result_jobs": 0,
+        "retired_high_water": 285,
+        "retired_meshes": 0,
+        "stale_results": 0,
+        "upload_bytes": 66071600,
+        "upload_max_usec": 135,
+        "upload_usec": 12790,
+        "uploads": 652,
+        "working_set": 88313856
+      },
+      "exposed_by_block": {
+        "7;0;-1": {
+          "count": 5,
+          "first": {
+            "frame": "148",
+            "simulation_s": "1.016667",
+            "camera_x": "16.6083488464355",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9143676757812",
+            "generation_jobs": "0",
+            "mesh_jobs": "0",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "28"
+          },
+          "last": {
+            "frame": "152",
+            "simulation_s": "1.050000",
+            "camera_x": "16.8250160217285",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.6988906860352",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "8;0;-1": {
+          "count": 6,
+          "first": {
+            "frame": "503",
+            "simulation_s": "3.466667",
+            "camera_x": "32.5333862304688",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9889297485352",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "0",
+            "pending_data": "0",
+            "pending_mesh": "29"
+          },
+          "last": {
+            "frame": "508",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7734451293945",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "23"
+          }
+        },
+        "8;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "509",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          },
+          "last": {
+            "frame": "509",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;0;-1": {
+          "count": 4,
+          "first": {
+            "frame": "860",
+            "simulation_s": "5.933333",
+            "camera_x": "48.5667572021484",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9557418823242",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "26"
+          },
+          "last": {
+            "frame": "863",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8479919433594",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "864",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8622131347656",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          },
+          "last": {
+            "frame": "864",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8622131347656",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        },
+        "10;0;-1": {
+          "count": 5,
+          "first": {
+            "frame": "1218",
+            "simulation_s": "8.400000",
+            "camera_x": "64.6001052856445",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9225692749023",
+            "generation_jobs": "0",
+            "mesh_jobs": "0",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "26"
+          },
+          "last": {
+            "frame": "1222",
+            "simulation_s": "8.416667",
+            "camera_x": "64.7084350585938",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8148345947266",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        }
+      },
+      "lateral_first_exposure": [
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4223857,
+          "distance_m": 95.92858234582077,
+          "block": [
+            7,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 533,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 0,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4223857,
+          "distance_m": 95.91437384356603,
+          "block": [
+            7,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 534,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 0,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 208,
+          "stage": "physics",
+          "usec": 6673360,
+          "distance_m": 95.98892823977587,
+          "block": [
+            8,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 593,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 29,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 209,
+          "stage": "physics",
+          "usec": 6687156,
+          "distance_m": 95.89539822286791,
+          "block": [
+            8,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 592,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9136658,
+          "distance_m": 95.96994129408056,
+          "block": [
+            9,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 651,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9136658,
+          "distance_m": 95.95573891599028,
+          "block": [
+            9,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 652,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11606886,
+          "distance_m": 95.93677976973008,
+          "block": [
+            10,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 710,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 0,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11606886,
+          "distance_m": 95.92257248171629,
+          "block": [
+            10,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 711,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 0,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        }
+      ],
+      "lateral_counts": {
+        "(7, -1, -1)": 4,
+        "(7, 0, -1)": 6,
+        "(8, 0, -1)": 7,
+        "(8, -1, -1)": 4,
+        "(9, -1, -1)": 4,
+        "(9, 0, -1)": 4,
+        "(10, -1, -1)": 4,
+        "(10, 0, -1)": 4
+      },
+      "saved_files": {
+        "AB-H2-travel-frames.csv": {
+          "bytes": 408644,
+          "sha256": "6d51ab22362308f0577470aeec2201690cd11100f5637f8642035ac4c646b724"
+        },
+        "summary.txt": {
+          "bytes": 242,
+          "sha256": "69ba2a22d47123400ae453561bb3667fa4f2e30e81da7bfc1a0edbdf54b4df58"
+        },
+        "report-finalization.json": {
+          "bytes": 276,
+          "sha256": "13599a06d81075795a63b7d0decd934de25bfe92639fac31a933a797435aa6c1"
+        },
+        "AB-H2-travel-preparation-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-preparation-frames.csv.operations.csv": {
+          "bytes": 26507,
+          "sha256": "80ebabd4673614553a592b36df59679276ad274d41490781e73fe30917102523"
+        },
+        "AB-H2-travel-retirement-frames.csv.operations.csv": {
+          "bytes": 825,
+          "sha256": "e6e2417a4a50712c521192d9f4043982c5b787a3d4dc3eb892214a7bde570547"
+        },
+        "travel-summary.json": {
+          "bytes": 2447,
+          "sha256": "5ccc9bc41099b64a901e4619656548f99b7c7b1c4ad35ba7408f9be1b6609b43"
+        },
+        "AB-H2-travel-retirement-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "travel-observations.jsonl": {
+          "bytes": 6795286,
+          "sha256": "5454e1f3e375edea42bc4338df25bd6038ed639eb12abfc1a8c1bc1dff9d3bec"
+        },
+        "summary.json": {
+          "bytes": 41792,
+          "sha256": "4fc30deaf5884f6e0be8c572db88bdc95dabcd92593d62140adbe2cb2e058982"
+        },
+        "AB-H2-travel-retirement-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-frames.csv.proxy.tmp": {
+          "bytes": 32819,
+          "sha256": "d9cafc0bee2235a1bc910e7ff3a61c018c46882f7fad3f095c50772ede522643"
+        },
+        "AB-H2-travel-preparation-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "AB-H2-travel-frames.csv.operations.csv": {
+          "bytes": 78096,
+          "sha256": "42677fc62e77bae98dc5bfd4c8cd4c170d6294d2f5130bb031e176f597f538fc"
+        },
+        "AB-H2-travel-frames.csv.edits.jsonl": {
+          "bytes": 9059,
+          "sha256": "1ddf35d03fd32d48e370c2f0b0115ab1bfb6ca7c4570c5e5b5abd3b92a3de0c7"
+        }
+      }
+    },
+    "m1-frontier-travel-release-2": {
+      "passed": true,
+      "qualified": false,
+      "target_performance": "not_run",
+      "workers": 2,
+      "ticks": 600,
+      "actor_ticks": 14400,
+      "edits": {
+        "submitted": 40,
+        "superseded": 0,
+        "cancelled": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "proxy_saves": 10,
+      "handover_ticks": [
+        56,
+        204,
+        351,
+        499
+      ],
+      "observations": 1254,
+      "observation_bytes": 6787723,
+      "observation_sha256": "cc0bd2a9ea247fa99f7d80fea78866c4c90c110d2f129a03d821880da02fd106",
+      "operation_rows": 1905,
+      "frame_rows": 1452,
+      "exposed_samples": 22,
+      "lateral_exposed_observations": 37,
+      "failed_operation_phases": [],
+      "edit_latency_failed": false,
+      "scenario_evaluation": "failed",
+      "reasons": [
+        "Diagnostic callback wall time reached 1%; A/B qualification required",
+        "Required mesh coverage is unready before fog obscures it"
+      ],
+      "resident_mesh": 511,
+      "resident_data": 867,
+      "travel_retired_high_water": 2,
+      "retired_high_water": 285,
+      "workload_contract": {
+        "actors": 24,
+        "autosave_interval_s": 1.0,
+        "camera_far": 96.0,
+        "camera_fov": 75.0,
+        "data_radius": 128,
+        "edit_rate": 4.0,
+        "edit_trace": true,
+        "fixture": 1,
+        "fog": {
+          "begin_m": 16.0,
+          "curve": 1.0,
+          "density": 1.0,
+          "enabled": true,
+          "end_m": 96.0,
+          "height_density": 0.0,
+          "mode": "depth"
+        },
+        "frontier_preparation": {
+          "data_radius_m": 128,
+          "enabled": true,
+          "handover": "previous process pose; base viewer retains old column before retarget",
+          "qualification": "unverified; neither complete-route coverage nor target timing",
+          "required_visual_radius_m": 96,
+          "resident_mesh_bound": 511,
+          "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+          "version": "m1-forward-four-1",
+          "viewer_count": 4,
+          "viewer_radius_m": 1
+        },
+        "max_physics_steps": 4,
+        "native_policy": {
+          "frame_upload_bytes": 1048576,
+          "frame_usec": 2000,
+          "mesh_result_bytes": 33554432,
+          "mesh_results": 16,
+          "single_upload_bytes": 262144,
+          "terrain_jobs": 64
+        },
+        "operation_trace": true,
+        "physics_hz": 60,
+        "player_start": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "rain_instances": 256,
+        "render_block": 16,
+        "render_queries": true,
+        "render_scale": 1.0,
+        "reported_window": [
+          0,
+          0
+        ],
+        "resolution": [
+          1280,
+          720
+        ],
+        "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+        "route_origin": [
+          10.0,
+          8.0,
+          10.0
+        ],
+        "seconds": 10.0,
+        "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+        "terrain_bounds": [
+          -4096.0,
+          -16.0,
+          -4096.0,
+          8192.0,
+          48.0,
+          8192.0
+        ],
+        "triangle_colliders": false,
+        "version": "m1-heavy-frontier-ab-1",
+        "visual_radius": 96,
+        "workers": 2,
+        "workload": "H2"
+      },
+      "workload_evidence": {
+        "command_hash": 1526024844,
+        "due_edits": 40,
+        "player_end": [
+          74.9997634887695,
+          0.00100000004749745,
+          10.0
+        ],
+        "route_checkpoints": [
+          {
+            "target_x": 10.1083335876465,
+            "tick": 1,
+            "yaw": -1.57079637050629
+          },
+          {
+            "target_x": 75.0,
+            "tick": 600,
+            "yaw": -1.57079637050629
+          }
+        ]
+      },
+      "edit_visibility": {
+        "accepted": 40,
+        "cancelled": 0,
+        "enabled": false,
+        "max_usec": 172985,
+        "overflow": 0,
+        "p95_upper_usec": 76000,
+        "pending": 0,
+        "pending_high_water": 1,
+        "queued": 0,
+        "submitted": 40,
+        "superseded": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "phase_aggregates": [
+        {
+          "id": 1,
+          "phase": "preparation",
+          "frames": 444,
+          "upload": {
+            "bytes": 46622240,
+            "count": 453,
+            "max_bytes": 143360,
+            "max_kind": 1,
+            "max_start_usec": 3055395,
+            "max_usec": 58,
+            "usec": 9461
+          },
+          "deletion": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "peak_frame_operation_usec": 108,
+          "peak_frame_upload_bytes": 512400
+        },
+        {
+          "id": 2,
+          "phase": "overhead_diagnostic",
+          "frames": 1453,
+          "upload": {
+            "bytes": 19449360,
+            "count": 199,
+            "max_bytes": 143360,
+            "max_kind": 1,
+            "max_start_usec": 11577020,
+            "max_usec": 38,
+            "usec": 4040
+          },
+          "deletion": {
+            "bytes": 5003040,
+            "count": 114,
+            "max_bytes": 106400,
+            "max_kind": 2,
+            "max_start_usec": 3469738,
+            "max_usec": 6,
+            "usec": 75
+          },
+          "peak_frame_operation_usec": 76,
+          "peak_frame_upload_bytes": 395360
+        },
+        {
+          "id": 3,
+          "phase": "retirement",
+          "frames": 8,
+          "upload": {
+            "bytes": 0,
+            "count": 0,
+            "max_bytes": 0,
+            "max_kind": 0,
+            "max_start_usec": 0,
+            "max_usec": 0,
+            "usec": 0
+          },
+          "deletion": {
+            "bytes": 46790800,
+            "count": 741,
+            "max_bytes": 117040,
+            "max_kind": 2,
+            "max_start_usec": 13232859,
+            "max_usec": 389,
+            "usec": 3296
+          },
+          "peak_frame_operation_usec": 1253,
+          "peak_frame_upload_bytes": 0
+        }
+      ],
+      "phase_closure_guards": [
+        {
+          "close_after_usec": 3207045,
+          "close_before_usec": 3206999,
+          "failures": [],
+          "id": 1,
+          "phase": "preparation"
+        },
+        {
+          "close_after_usec": 13226136,
+          "close_before_usec": 13226102,
+          "failures": [],
+          "id": 2,
+          "phase": "overhead_diagnostic"
+        },
+        {
+          "close_after_usec": 13274137,
+          "close_before_usec": 13274109,
+          "failures": [],
+          "id": 3,
+          "phase": "retirement"
+        }
+      ],
+      "diagnostic_accounting": {
+        "blocks": [
+          {
+            "samples": 725,
+            "usec": 5001913
+          },
+          {
+            "samples": 725,
+            "usec": 5002491
+          }
+        ],
+        "callback_usec": 255736,
+        "callbacks": 1452,
+        "elapsed_usec": 10020248,
+        "end_usec": 13227598,
+        "finalization_usec": 1506,
+        "invalid_partition": false,
+        "last_callback_end_usec": 13226092,
+        "last_callback_usec": 299,
+        "last_shared_usec": 263,
+        "last_switched_usec": 36,
+        "maximum_callback_usec": 690,
+        "overflow": false,
+        "partial_block": {
+          "samples": 2,
+          "usec": 13808
+        },
+        "shared_usec": 203497,
+        "start_usec": 3207350,
+        "switched_calls": 1452,
+        "switched_usec": 52239,
+        "writer_drain_usec": 177
+      },
+      "combined_report_finalization": {
+        "elapsed_usec": 402995,
+        "end_usec": 13677293,
+        "excluded": "this terminal timing record write; process exit; deferred renderer work",
+        "scope": "phase closure, writer drain, summary assembly, hashing, serialization, writes/flushes and final UI",
+        "start_usec": 13274298,
+        "test_mode": true
+      },
+      "final_native": {
+        "data_apply_max_usec": 12,
+        "data_apply_usec": 2900,
+        "deletion_max_usec": 389,
+        "deletion_usec": 3371,
+        "generated": 1071,
+        "generation_jobs": 0,
+        "generation_usec": 37194,
+        "main_jobs": 0,
+        "mesh_jobs": 0,
+        "meshed": 747,
+        "meshing_usec": 64331,
+        "overloads": 0,
+        "private_bytes": 53792768,
+        "result_jobs": 0,
+        "retired_high_water": 285,
+        "retired_meshes": 0,
+        "stale_results": 0,
+        "upload_bytes": 66071600,
+        "upload_max_usec": 58,
+        "upload_usec": 13501,
+        "uploads": 652,
+        "working_set": 89628672
+      },
+      "exposed_by_block": {
+        "7;0;-1": {
+          "count": 6,
+          "first": {
+            "frame": "147",
+            "simulation_s": "1.016667",
+            "camera_x": "16.6083488464355",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9143676757812",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "2",
+            "pending_data": "0",
+            "pending_mesh": "28"
+          },
+          "last": {
+            "frame": "152",
+            "simulation_s": "1.050000",
+            "camera_x": "16.8250160217285",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "7;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.6988906860352",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "8;0;-1": {
+          "count": 6,
+          "first": {
+            "frame": "502",
+            "simulation_s": "3.466667",
+            "camera_x": "32.5333862304688",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9889297485352",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "0",
+            "pending_data": "0",
+            "pending_mesh": "29"
+          },
+          "last": {
+            "frame": "507",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7734451293945",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "23"
+          }
+        },
+        "8;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "508",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          },
+          "last": {
+            "frame": "508",
+            "simulation_s": "3.500000",
+            "camera_x": "32.7500534057617",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "8;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.7876739501953",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;0;-1": {
+          "count": 3,
+          "first": {
+            "frame": "860",
+            "simulation_s": "5.933333",
+            "camera_x": "48.5667572021484",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9557418823242",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "25"
+          },
+          "last": {
+            "frame": "862",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8479919433594",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "22"
+          }
+        },
+        "9;-1;-1": {
+          "count": 1,
+          "first": {
+            "frame": "863",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8622131347656",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          },
+          "last": {
+            "frame": "863",
+            "simulation_s": "5.950000",
+            "camera_x": "48.6750907897949",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "9;-1;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8622131347656",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        },
+        "10;0;-1": {
+          "count": 5,
+          "first": {
+            "frame": "1217",
+            "simulation_s": "8.400000",
+            "camera_x": "64.6001052856445",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.9225692749023",
+            "generation_jobs": "0",
+            "mesh_jobs": "1",
+            "result_jobs": "0",
+            "pending_data": "0",
+            "pending_mesh": "26"
+          },
+          "last": {
+            "frame": "1221",
+            "simulation_s": "8.416667",
+            "camera_x": "64.7084350585938",
+            "camera_y": "1.65100002288818",
+            "camera_z": "10.0",
+            "frontier_block": "10;0;-1",
+            "frontier_mesh_state": "pending",
+            "frontier_distance_m": "95.8148345947266",
+            "generation_jobs": "0",
+            "mesh_jobs": "2",
+            "result_jobs": "1",
+            "pending_data": "0",
+            "pending_mesh": "20"
+          }
+        }
+      },
+      "lateral_first_exposure": [
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4221352,
+          "distance_m": 95.92858234582077,
+          "block": [
+            7,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 533,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 2,
+            "main_jobs": 2,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 61,
+          "stage": "physics",
+          "usec": 4221352,
+          "distance_m": 95.91437384356603,
+          "block": [
+            7,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 534,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 28,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 2,
+            "main_jobs": 2,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 208,
+          "stage": "physics",
+          "usec": 6670849,
+          "distance_m": 95.98892823977587,
+          "block": [
+            8,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 593,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 29,
+          "native": {
+            "mesh_jobs": 2,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 209,
+          "stage": "physics",
+          "usec": 6684647,
+          "distance_m": 95.89539822286791,
+          "block": [
+            8,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 592,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9141046,
+          "distance_m": 95.96994129408056,
+          "block": [
+            9,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 651,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 25,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 356,
+          "stage": "physics",
+          "usec": 9141046,
+          "distance_m": 95.95573891599028,
+          "block": [
+            9,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 652,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 25,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 1,
+            "main_jobs": 1,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11604348,
+          "distance_m": 95.93677976973008,
+          "block": [
+            10,
+            -1,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 710,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        },
+        {
+          "tick": 504,
+          "stage": "physics",
+          "usec": 11604348,
+          "distance_m": 95.92257248171629,
+          "block": [
+            10,
+            0,
+            -1
+          ],
+          "collision_viewers": 0,
+          "desired_revision": 711,
+          "has_mesh": false,
+          "loaded": false,
+          "mesh_id": null,
+          "mesh_viewers": 1,
+          "queued_update": true,
+          "state": "pending",
+          "submitted_revision": null,
+          "visible": false,
+          "pending_mesh": 26,
+          "native": {
+            "mesh_jobs": 1,
+            "result_jobs": 0,
+            "main_jobs": 0,
+            "overloads": 0
+          }
+        }
+      ],
+      "lateral_counts": {
+        "(7, -1, -1)": 4,
+        "(7, 0, -1)": 6,
+        "(8, 0, -1)": 7,
+        "(8, -1, -1)": 4,
+        "(9, -1, -1)": 4,
+        "(9, 0, -1)": 4,
+        "(10, -1, -1)": 4,
+        "(10, 0, -1)": 4
+      },
+      "saved_files": {
+        "AB-H2-travel-frames.csv": {
+          "bytes": 408352,
+          "sha256": "cd0011e80c18a520cfd98b08750c6186aefc553f66c14c740f601bd96f6b1b36"
+        },
+        "summary.txt": {
+          "bytes": 242,
+          "sha256": "69ba2a22d47123400ae453561bb3667fa4f2e30e81da7bfc1a0edbdf54b4df58"
+        },
+        "report-finalization.json": {
+          "bytes": 276,
+          "sha256": "f250337952189feefadfc04b3b0e815bf7c1f1fbec869fe28dd9acc05c8164fa"
+        },
+        "AB-H2-travel-preparation-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-preparation-frames.csv.operations.csv": {
+          "bytes": 26706,
+          "sha256": "d7a01e3c4aff99f7c0a77f3121e9dcccf0d9015dcf559f1028d07ea811b780ef"
+        },
+        "AB-H2-travel-retirement-frames.csv.operations.csv": {
+          "bytes": 827,
+          "sha256": "c10e5766924c3189b5e1837e6503403d0e4c5cee0342f5a495fd06f197c833c2"
+        },
+        "travel-summary.json": {
+          "bytes": 2445,
+          "sha256": "73deff7d4e24382ae7c2255461146af5bbb89b8c3aee40dbc39f00d27b59deb6"
+        },
+        "AB-H2-travel-retirement-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "travel-observations.jsonl": {
+          "bytes": 6787723,
+          "sha256": "cc0bd2a9ea247fa99f7d80fea78866c4c90c110d2f129a03d821880da02fd106"
+        },
+        "summary.json": {
+          "bytes": 41561,
+          "sha256": "e0acdd27a6c8f3f6f069de60380150842ded230a7eac616b254b708223a31239"
+        },
+        "AB-H2-travel-retirement-frames.csv.edits.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AB-H2-travel-frames.csv.proxy.tmp": {
+          "bytes": 32819,
+          "sha256": "d9cafc0bee2235a1bc910e7ff3a61c018c46882f7fad3f095c50772ede522643"
+        },
+        "AB-H2-travel-preparation-frames.csv": {
+          "bytes": 618,
+          "sha256": "cffea04459ccfe7499c669f61ab75aaa14b84e1d09737183720859a6a8bce023"
+        },
+        "AB-H2-travel-frames.csv.operations.csv": {
+          "bytes": 77958,
+          "sha256": "bb72c96c1693795f552ee5a2062a9e46857d13a7b9f16f793689fe5826644009"
+        },
+        "AB-H2-travel-frames.csv.edits.jsonl": {
+          "bytes": 9059,
+          "sha256": "f2ddf00231b416a8873502957657a756879e757b24f50c60c282c88ce94fecd6"
+        }
+      }
+    }
+  },
+  "totals": {
+    "observations": 5018,
+    "observation_bytes": 27163457,
+    "operation_rows": 7620,
+    "frame_rows": 5810,
+    "exposed_samples": 90,
+    "lateral_exposed_observations": 150,
+    "native_phases": 12,
+    "ticks": 2400,
+    "actor_updates": 57600,
+    "submitted_edits": 160,
+    "proxy_saves": 40
+  },
+  "saved_mutation_audit": {
+    "rejected": [
+      "incomplete",
+      "qualified",
+      "identity",
+      "io",
+      "ticks",
+      "actors",
+      "edits",
+      "saves",
+      "radius",
+      "fog",
+      "camera",
+      "retirement",
+      "retirement-overload",
+      "retirement-high-water",
+      "waived-phase",
+      "lost-event",
+      "event-revision",
+      "event-clock",
+      "final-callback",
+      "terminal-frame",
+      "finalization"
+    ],
+    "count": 21,
+    "scope": "Copied actual final editor/one-worker reports; no engine executed"
+  },
+  "prior_controls": {
+    "method_controls": 16,
+    "route_controls": 26,
+    "endpoint_controls": 28,
+    "endpoint_phases": 112,
+    "endpoint_rows": 168596,
+    "fixed_work_controls": 44,
+    "fixed_work_phases": 176,
+    "fixed_work_rows": 264852,
+    "cpu_controls": 54,
+    "cpu_phases": 216,
+    "cpu_rows": 327444,
+    "frame_controls": 30,
+    "frame_phases": 120,
+    "frame_rows": 3856,
+    "native_cpu_callbacks": 256,
+    "native_frame_body_callbacks": 512,
+    "native_frame_closing_anchors": 16,
+    "boundary_runtime": {
+      "editor": {
+        "passed": true,
+        "cases": 4,
+        "native_rows": 80,
+        "baseline_missing_reproduced": true,
+        "corrected_first_boundary_submitted": true,
+        "unprepared_failure_retained": true,
+        "qualified": false,
+        "scope": "first 16\u00b3 boundary only; cloud correctness, not complete route or hardware performance"
+      },
+      "release": {
+        "passed": true,
+        "cases": 4,
+        "native_rows": 80,
+        "baseline_missing_reproduced": true,
+        "corrected_first_boundary_submitted": true,
+        "unprepared_failure_retained": true,
+        "qualified": false,
+        "scope": "first 16\u00b3 boundary only; cloud correctness, not complete route or hardware performance"
+      }
+    },
+    "concurrent_edit_runtime": {
+      "editor": {
+        "passed": true,
+        "version": "m1-frontier-edit-1",
+        "cases": 8,
+        "native_rows": 102,
+        "mesh_observations": 1100,
+        "operation_phases": 24,
+        "operation_rows": 3719,
+        "operation_sha256": "f7482ff234870feb6c8cce6d28ccd449bbd671a46180018d8bf47c7a63541cbb",
+        "failed_operation_phases": [],
+        "submitted": [
+          "stationary-1",
+          "handover-1",
+          "cancel-overlap-1",
+          "stationary-2",
+          "handover-2",
+          "cancel-overlap-2"
+        ],
+        "cancellations": [
+          {
+            "case": "cancel-before-1",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-1",
+            "outcome": "submitted"
+          },
+          {
+            "case": "cancel-before-2",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-2",
+            "outcome": "submitted"
+          }
+        ],
+        "handovers": [
+          {
+            "case": "handover-1",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          },
+          {
+            "case": "handover-2",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          }
+        ],
+        "qualified": false,
+        "scope": "second boundary + one concurrent seam edit per case; cloud correctness; not full route/HD 620"
+      },
+      "release": {
+        "passed": true,
+        "version": "m1-frontier-edit-1",
+        "cases": 8,
+        "native_rows": 102,
+        "mesh_observations": 1100,
+        "operation_phases": 24,
+        "operation_rows": 3718,
+        "operation_sha256": "226d26f06b72c4ef52f73733ae05be1a11fdc9c10fcd011a75d067085c787798",
+        "failed_operation_phases": [],
+        "submitted": [
+          "stationary-1",
+          "handover-1",
+          "cancel-overlap-1",
+          "stationary-2",
+          "handover-2",
+          "cancel-overlap-2"
+        ],
+        "cancellations": [
+          {
+            "case": "cancel-before-1",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-1",
+            "outcome": "submitted"
+          },
+          {
+            "case": "cancel-before-2",
+            "outcome": "cancelled"
+          },
+          {
+            "case": "cancel-overlap-2",
+            "outcome": "submitted"
+          }
+        ],
+        "handovers": [
+          {
+            "case": "handover-1",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          },
+          {
+            "case": "handover-2",
+            "outcome": "submitted",
+            "edit_evaluation": "passed"
+          }
+        ],
+        "qualified": false,
+        "scope": "second boundary + one concurrent seam edit per case; cloud correctness; not full route/HD 620"
+      }
+    },
+    "all_previous_expectations_preserved": true
+  },
+  "ordinary_smokes": {
+    "folders": 10,
+    "scenarios": 98,
+    "native_phases": 284,
+    "operation_rows": 37345,
+    "frame_rows": 12872,
+    "edit_events": 94,
+    "heavy_contracts_checked": 42,
+    "heavy_work_units_and_available_exact_contracts_unchanged": true,
+    "short_16_results": [
+      {
+        "folder": "m1-release-16-1-raw",
+        "scenarios": [
+          {
+            "id": "H1",
+            "evaluation": "inconclusive",
+            "reasons": [
+              "Diagnostic callback wall time reached 1%; A/B qualification required"
+            ],
+            "qualified": false,
+            "exposed_samples": 0
+          },
+          {
+            "id": "H2",
+            "evaluation": "failed",
+            "reasons": [
+              "Edit visibility exceeded the 100/200 ms limits",
+              "Diagnostic callback wall time reached 1%; A/B qualification required"
+            ],
+            "qualified": false,
+            "exposed_samples": 0
+          }
+        ]
+      },
+      {
+        "folder": "m1-release-16-2-raw",
+        "scenarios": [
+          {
+            "id": "H1",
+            "evaluation": "inconclusive",
+            "reasons": [
+              "Diagnostic callback wall time reached 1%; A/B qualification required"
+            ],
+            "qualified": false,
+            "exposed_samples": 0
+          },
+          {
+            "id": "H2",
+            "evaluation": "failed",
+            "reasons": [
+              "Edit visibility exceeded the 100/200 ms limits",
+              "Diagnostic callback wall time reached 1%; A/B qualification required"
+            ],
+            "qualified": false,
+            "exposed_samples": 0
+          }
+        ]
+      }
+    ],
+    "retained_operation_exceedances": [
+      {
+        "folder": "release-m1-heavy-ab-raw",
+        "scenario": "warmup",
+        "phase": "retirement",
+        "id": 3,
+        "max_upload_usec": 0,
+        "max_deletion_usec": 871
+      },
+      {
+        "folder": "release-m1-raw",
+        "scenario": "R1",
+        "phase": "retirement",
+        "id": 19,
+        "max_upload_usec": 0,
+        "max_deletion_usec": 955
+      },
+      {
+        "folder": "m1-heavy-ab-raw",
+        "scenario": "AB-H2-on-2",
+        "phase": "retirement",
+        "id": 24,
+        "max_upload_usec": 0,
+        "max_deletion_usec": 1320
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "run": 37859891722,
+      "implementation": "39dde208f257cbd8e91fd97adc38f491d69d27b8",
+      "build": "8e21f189dde6de30724b51656dd61fc5602a0487",
+      "tree": "cf2b24b6a94670afce67e822f7eed79c563f43a3",
+      "status": "failed_reader_serialization",
+      "evidence": {
+        "id": 11586241096,
+        "bytes": 15470349,
+        "sha256": "649ef6824a312749f2bf421d366fb7364699c29c2740b9de6a6842dc3eb6c995"
+      },
+      "python_tests": 80,
+      "native_sanitizer_suites": 5,
+      "observations": 1254,
+      "observation_bytes": 6148012,
+      "final_native": {
+        "data_apply_max_usec": 54,
+        "data_apply_usec": 5781,
+        "deletion_max_usec": 525,
+        "deletion_usec": 3872,
+        "generated": 1071,
+        "generation_jobs": 0,
+        "generation_usec": 69484,
+        "main_jobs": 0,
+        "mesh_jobs": 0,
+        "meshed": 747,
+        "meshing_usec": 138150,
+        "overloads": 0,
+        "private_bytes": 63131648,
+        "result_jobs": 0,
+        "retired_high_water": 285,
+        "retired_meshes": 0,
+        "stale_results": 0,
+        "upload_bytes": 66071600,
+        "upload_max_usec": 97,
+        "upload_usec": 23385,
+        "uploads": 652,
+        "working_set": 115531776
+      },
+      "phase_guards": [
+        {
+          "close_after_usec": 3390045,
+          "close_before_usec": 3389970,
+          "failures": [],
+          "id": 1,
+          "phase": "preparation"
+        },
+        {
+          "close_after_usec": 13409365,
+          "close_before_usec": 13409303,
+          "failures": [],
+          "id": 2,
+          "phase": "overhead_diagnostic"
+        },
+        {
+          "close_after_usec": 13457141,
+          "close_before_usec": 13457079,
+          "failures": [],
+          "id": 3,
+          "phase": "retirement"
+        }
+      ],
+      "exposed_samples": 23,
+      "edit_visibility": {
+        "accepted": 40,
+        "cancelled": 0,
+        "enabled": false,
+        "max_usec": 172530,
+        "overflow": 0,
+        "p95_upper_usec": 76000,
+        "pending": 0,
+        "pending_high_water": 1,
+        "queued": 0,
+        "submitted": 40,
+        "superseded": 0,
+        "timeout": 0,
+        "unavailable": 0
+      },
+      "reasons": [
+        "Diagnostic callback wall time reached 1%; A/B qualification required",
+        "Required mesh coverage is unready before fog obscures it"
+      ],
+      "candidate": false,
+      "independent_reconciliation_scope": "Corrected serialization reader before the two-cell lateral observer extension; later schema does not fabricate absent lateral rows",
+      "failure_reason": "Godot 15-digit yaw serialization compared to full float32 decimal exactly; correction limited to 1e-12 rad serialization roundoff",
+      "thresholds_unchanged": true
+    },
+    {
+      "run": 37860964629,
+      "implementation": "3b66475a5ba39dfb369e481890f744336254eb7d",
+      "build": "03c072cd82c05f698c9ecb5fc27163f1a915a145",
+      "tree": "1ef397ac7df8950d3cd7981ced7fec4750cad0f9",
+      "conclusion": "success",
+      "verification_scope": "All three workflow jobs passed; superseded by the final strengthened retirement audit candidate"
+    },
+    {
+      "run": 37861287881,
+      "implementation": "abb94bf4a4eecf6de0bd9bc68f37ae261c9c9cf4",
+      "conclusion": "success",
+      "verification_scope": "Final workflow and independently downloaded candidate/raw evidence"
+    }
+  ],
+  "next_bounded_task": {
+    "problem": "Lateral Z=-1 queued cells enter the 96 m conservative boundary before actual submission during four continuous +X handovers",
+    "hypothesis": "Pending-vector insertion/admission order consumes four-task capacity before worker priority applies",
+    "hypothesis_causally_verified": false,
+    "pinned_source_url": "https://github.com/Zylann/godot_voxel/blob/2ac9f5f8a8219bf499314cc0fad54ffc47df908f/terrain/fixed_lod/voxel_terrain.cpp",
+    "local_patch": "build/patches/voxel/m1-admission.json",
+    "action": "Characterize bounded rank/admission/submission deadlines; correct only demonstrated cause under same caps and 600-tick workload in editor/release, one/two workers",
+    "extra_viewers_or_increased_caps": false
+  },
+  "qualification": {
+    "qualified": false,
+    "target_performance": "not_run",
+    "milestone": "blocked",
+    "legacy_current_policy_unchanged": true,
+    "one_percent_requirement_unchanged": true,
+    "edit_limits_usec": [
+      100000,
+      200000
+    ],
+    "individual_operation_limit_usec": 750,
+    "coverage_guards_unchanged": true,
+    "synchronous_observation_perturbs_timing": true,
+    "shared_causal_overhead": null,
+    "per_frame_cpu_gpu_causal_cost": null,
+    "physical_presentation_verified": false,
+    "target_pixels_verified": false,
+    "full_or_repeated_route_verified": false,
+    "target_action_required_now": false,
+    "private_target_data_included": false
+  }
+}

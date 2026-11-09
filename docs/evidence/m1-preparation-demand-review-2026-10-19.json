@@ -1,0 +1,810 @@
+{
+  "engine_runs": 0,
+  "interpretation": "Direct main-thread bounds and unowned inner gaps; no process/thread subtraction, frame normalization, causal owner or shipping-cost estimate.",
+  "measurement_valid": false,
+  "old_audit_reproduced": true,
+  "pairs": [
+    {
+      "inner_gap_change": "-163467792",
+      "inner_main_change": "-164273023",
+      "inner_root_full_change": "-805231",
+      "main_preparation_midpoint_change": "-164283288",
+      "process_preparation_midpoint_change": "-171038473",
+      "trials": [
+        "AB-H2-observer-bare-0",
+        "AB-H2-observer-bare-3"
+      ]
+    },
+    {
+      "inner_gap_change": "174602376",
+      "inner_main_change": "177718884",
+      "inner_root_full_change": "3116508",
+      "main_preparation_midpoint_change": "177716544",
+      "process_preparation_midpoint_change": "170207007",
+      "trials": [
+        "AB-H2-observer-bare-1",
+        "AB-H2-observer-bare-2"
+      ]
+    }
+  ],
+  "qualified": false,
+  "raw_bytes_verified": 98522367,
+  "raw_files_verified": 80,
+  "schema": "m1-saved-preparation-demand-review-1",
+  "shipping_cost_estimate": null,
+  "source_evidence_sha256": "c3f39903cf7c66028a9a8d6b5124404643e4f1f55c463b5ab4727294d10d4db1",
+  "source_runtime_commit": "1146807240df15bd32c798f77de266b71b6683bf",
+  "target_performance": "not_run",
+  "trials": [
+    {
+      "id": "AB-H2-observer-warmup-0",
+      "inner_preparation": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2630843343",
+        "endpoints": [
+          "738630928",
+          "3369474271"
+        ],
+        "gap_count": 782,
+        "gap_cycles": "2600090572",
+        "gap_sequence_sha256": "4e7f9d5aedf6e1436752013b8e283bf8d5031b2ac2375b5d8cf1881a6f7d3d26",
+        "largest_gap_cycles": "7890102",
+        "nonzero_gap_count": 782,
+        "outside_inner_preparation_roots": [
+          {
+            "cycles": [
+              "3369571095",
+              "3369598804"
+            ],
+            "id": 786,
+            "slot": "boundary_snapshot",
+            "wall_usec": [
+              "5642878",
+              "5642890"
+            ]
+          }
+        ],
+        "partition_available": true,
+        "root_count": 781,
+        "root_full_cycles": "30752771",
+        "thread_id": "7280",
+        "wall_enclosure_usec": [
+          "288799",
+          "5642838"
+        ]
+      },
+      "main": {
+        "boundary_bounds": [
+          [
+            "738348982",
+            "738630928"
+          ],
+          [
+            "3369474271",
+            "3369647215"
+          ],
+          [
+            "15117121896",
+            "15117274751"
+          ],
+          [
+            "26943080878",
+            "26943226506"
+          ],
+          [
+            "38733493302",
+            "38733646549"
+          ],
+          [
+            "39015156426",
+            "39015323786"
+          ]
+        ],
+        "complete": [
+          "38276525498",
+          "38276974804"
+        ],
+        "midpoint": "38276750151",
+        "section_midpoints": [
+          "2631070788",
+          "11747637580",
+          "11825955369",
+          "11790416233",
+          "281670181"
+        ],
+        "sections": [
+          [
+            "2630843343",
+            "2631298233"
+          ],
+          [
+            "11747474681",
+            "11747800480"
+          ],
+          [
+            "11825806127",
+            "11826104610"
+          ],
+          [
+            "11790266796",
+            "11790565671"
+          ],
+          [
+            "281509877",
+            "281830484"
+          ]
+        ],
+        "thread_id": "7280"
+      },
+      "native_work": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "preparation_native_frames": 777,
+      "process_preparation_cycles": [
+        "4198527467",
+        "4199104490"
+      ],
+      "process_preparation_midpoint": "4198815979"
+    },
+    {
+      "id": "AB-H2-observer-bare-0",
+      "inner_preparation": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2782657997",
+        "endpoints": [
+          "39029512987",
+          "41812170984"
+        ],
+        "gap_count": 827,
+        "gap_cycles": "2750807083",
+        "gap_sequence_sha256": "29a8bce390839ff6d266fa37b66295c2462fbacf72a856776057ab835a9a2543",
+        "largest_gap_cycles": "4584807",
+        "nonzero_gap_count": 827,
+        "outside_inner_preparation_roots": [
+          {
+            "cycles": [
+              "41812275281",
+              "41812306959"
+            ],
+            "id": 831,
+            "slot": "boundary_snapshot",
+            "wall_usec": [
+              "83495147",
+              "83495160"
+            ]
+          }
+        ],
+        "partition_available": true,
+        "root_count": 826,
+        "root_full_cycles": "31850914",
+        "thread_id": "7280",
+        "wall_enclosure_usec": [
+          "77827322",
+          "83495104"
+        ]
+      },
+      "main": {
+        "boundary_bounds": [
+          [
+            "39029358515",
+            "39029512987"
+          ],
+          [
+            "41812170984",
+            "41812356571"
+          ],
+          [
+            "53606890652",
+            "53607046643"
+          ],
+          [
+            "65390547199",
+            "65390718701"
+          ],
+          [
+            "77160320149",
+            "77160494467"
+          ],
+          [
+            "77446811763",
+            "77447033782"
+          ]
+        ],
+        "complete": [
+          "38417298776",
+          "38417675267"
+        ],
+        "midpoint": "38417487021",
+        "section_midpoints": [
+          "2782828026",
+          "11794704870",
+          "11783664303",
+          "11769774358",
+          "286515464"
+        ],
+        "sections": [
+          [
+            "2782657997",
+            "2782998056"
+          ],
+          [
+            "11794534081",
+            "11794875659"
+          ],
+          [
+            "11783500556",
+            "11783828049"
+          ],
+          [
+            "11769601448",
+            "11769947268"
+          ],
+          [
+            "286317296",
+            "286713633"
+          ]
+        ],
+        "thread_id": "7280"
+      },
+      "native_work": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "preparation_native_frames": 824,
+      "process_preparation_cycles": [
+        "4358307303",
+        "4358963266"
+      ],
+      "process_preparation_midpoint": "4358635284"
+    },
+    {
+      "id": "AB-H2-observer-bare-1",
+      "inner_preparation": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2598401260",
+        "endpoints": [
+          "77467005400",
+          "80065406660"
+        ],
+        "gap_count": 782,
+        "gap_cycles": "2567392830",
+        "gap_sequence_sha256": "67f2bb1a4097c1bbbf6f3fb52b600d0769ed3fdf373ac47bb6ecca3cc93afdd5",
+        "largest_gap_cycles": "4573489",
+        "nonzero_gap_count": 782,
+        "outside_inner_preparation_roots": [
+          {
+            "cycles": [
+              "80065493072",
+              "80065518748"
+            ],
+            "id": 786,
+            "slot": "boundary_snapshot",
+            "wall_usec": [
+              "161033408",
+              "161033419"
+            ]
+          }
+        ],
+        "partition_available": true,
+        "root_count": 781,
+        "root_full_cycles": "31008430",
+        "thread_id": "7280",
+        "wall_enclosure_usec": [
+          "155676085",
+          "161033372"
+        ]
+      },
+      "main": {
+        "boundary_bounds": [
+          [
+            "77466841373",
+            "77467005400"
+          ],
+          [
+            "80065406660",
+            "80065564244"
+          ],
+          [
+            "91879301391",
+            "91879476345"
+          ],
+          [
+            "103678506448",
+            "103678660677"
+          ],
+          [
+            "115515066920",
+            "115515232638"
+          ],
+          [
+            "115796231505",
+            "115796412315"
+          ]
+        ],
+        "complete": [
+          "38329226105",
+          "38329570942"
+        ],
+        "midpoint": "38329398524",
+        "section_midpoints": [
+          "2598562066",
+          "11813903416",
+          "11799194694",
+          "11836566217",
+          "281172131"
+        ],
+        "sections": [
+          [
+            "2598401260",
+            "2598722871"
+          ],
+          [
+            "11813737147",
+            "11814069685"
+          ],
+          [
+            "11799030103",
+            "11799359286"
+          ],
+          [
+            "11836406243",
+            "11836726190"
+          ],
+          [
+            "280998867",
+            "281345395"
+          ]
+        ],
+        "thread_id": "7280"
+      },
+      "native_work": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "preparation_native_frames": 779,
+      "process_preparation_cycles": [
+        "4180482055",
+        "4180957478"
+      ],
+      "process_preparation_midpoint": "4180719767"
+    },
+    {
+      "id": "AB-H2-observer-bare-2",
+      "inner_preparation": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2776120144",
+        "endpoints": [
+          "115821236841",
+          "118597356985"
+        ],
+        "gap_count": 824,
+        "gap_cycles": "2741995206",
+        "gap_sequence_sha256": "63a86fa52bd1cca6867370835e6d4561f1b30ffb23dd0184da4044c433531064",
+        "largest_gap_cycles": "4589045",
+        "nonzero_gap_count": 824,
+        "outside_inner_preparation_roots": [
+          {
+            "cycles": [
+              "118597447169",
+              "118597471277"
+            ],
+            "id": 828,
+            "slot": "boundary_snapshot",
+            "wall_usec": [
+              "238877661",
+              "238877671"
+            ]
+          }
+        ],
+        "partition_available": true,
+        "root_count": 823,
+        "root_full_cycles": "34124938",
+        "thread_id": "7280",
+        "wall_enclosure_usec": [
+          "233230093",
+          "238877624"
+        ]
+      },
+      "main": {
+        "boundary_bounds": [
+          [
+            "115821077788",
+            "115821236841"
+          ],
+          [
+            "118597356985",
+            "118597514863"
+          ],
+          [
+            "130407465083",
+            "130407633225"
+          ],
+          [
+            "142223760784",
+            "142223931817"
+          ],
+          [
+            "153981479600",
+            "153981640982"
+          ],
+          [
+            "154267771067",
+            "154267968121"
+          ]
+        ],
+        "complete": [
+          "38446534226",
+          "38446890333"
+        ],
+        "midpoint": "38446712280",
+        "section_midpoints": [
+          "2776278610",
+          "11810113230",
+          "11816297146",
+          "11757713991",
+          "286309303"
+        ],
+        "sections": [
+          [
+            "2776120144",
+            "2776437075"
+          ],
+          [
+            "11809950220",
+            "11810276240"
+          ],
+          [
+            "11816127559",
+            "11816466734"
+          ],
+          [
+            "11757547783",
+            "11757880198"
+          ],
+          [
+            "286130085",
+            "286488521"
+          ]
+        ],
+        "thread_id": "7280"
+      },
+      "native_work": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "preparation_native_frames": 821,
+      "process_preparation_cycles": [
+        "4350726229",
+        "4351127318"
+      ],
+      "process_preparation_midpoint": "4350926774"
+    },
+    {
+      "id": "AB-H2-observer-bare-3",
+      "inner_preparation": {
+        "crossing_root_ids": [],
+        "demand_cycles": "2618384974",
+        "endpoints": [
+          "154295586556",
+          "156913971530"
+        ],
+        "gap_count": 782,
+        "gap_cycles": "2587339291",
+        "gap_sequence_sha256": "70ff10c8781ca6e0529f38d75bb02697e9b75276e3cd9a305d9daefd6129e124",
+        "largest_gap_cycles": "4596347",
+        "nonzero_gap_count": 782,
+        "outside_inner_preparation_roots": [
+          {
+            "cycles": [
+              "156914059338",
+              "156914083372"
+            ],
+            "id": 786,
+            "slot": "boundary_snapshot",
+            "wall_usec": [
+              "316439843",
+              "316439854"
+            ]
+          }
+        ],
+        "partition_available": true,
+        "root_count": 781,
+        "root_full_cycles": "31045683",
+        "thread_id": "7280",
+        "wall_enclosure_usec": [
+          "311082540",
+          "316439807"
+        ]
+      },
+      "main": {
+        "boundary_bounds": [
+          [
+            "154295428727",
+            "154295586556"
+          ],
+          [
+            "156913971530",
+            "156914133229"
+          ],
+          [
+            "168702708257",
+            "168702867653"
+          ],
+          [
+            "180521058729",
+            "180521215677"
+          ],
+          [
+            "192328849617",
+            "192329004751"
+          ],
+          [
+            "192614536958",
+            "192614747756"
+          ]
+        ],
+        "complete": [
+          "38318950402",
+          "38319319029"
+        ],
+        "midpoint": "38319134716",
+        "section_midpoints": [
+          "2618544738",
+          "11788735576",
+          "11818349248",
+          "11807789981",
+          "285715173"
+        ],
+        "sections": [
+          [
+            "2618384974",
+            "2618704502"
+          ],
+          [
+            "11788575028",
+            "11788896123"
+          ],
+          [
+            "11818191076",
+            "11818507420"
+          ],
+          [
+            "11807633940",
+            "11807946022"
+          ],
+          [
+            "285532207",
+            "285898139"
+          ]
+        ],
+        "thread_id": "7280"
+      },
+      "native_work": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "preparation_native_frames": 779,
+      "process_preparation_cycles": [
+        "4187382302",
+        "4187811320"
+      ],
+      "process_preparation_midpoint": "4187596811"
+    }
+  ]
+}

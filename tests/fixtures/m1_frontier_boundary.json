@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "scope": "Public cloud correctness seed; not target measurements or timing qualification",
+  "source": {
+    "run": 37804090619,
+    "evidence_artifact": 11562713891,
+    "build_commit": "62a8da6e8d1fc9b81195b6b6707d1b4bba3c446b",
+    "relative_file": "reports/m1-release-16-1-raw/M1-2026-10-08T16-06-41-16-1-4548/H1-frames.csv",
+    "file_sha256": "1ce3505c3ec27f9755125bd83e692633ccd49959200bfcc31bec633b8a29f35d",
+    "frames": [134, 135, 136],
+    "states": ["missing", "missing", "pending"],
+    "distances_m": [96.0416564941406, 95.9333190917969, 95.9333190917969]
+  },
+  "before_camera": [15.9583473205566, 1.94999694824219, 10.0],
+  "crossed_camera": [16.0666809082031, 1.66999685764313, 10.0],
+  "yaw": -1.57079637050629,
+  "pitch": -0.18,
+  "target": [7, 0, 0],
+  "fixture": 1,
+  "render_block": 16,
+  "visual_radius": 96,
+  "data_radius": 128,
+  "terrain_bounds": [-4096, -16, -4096, 8192, 48, 8192],
+  "surface_bounds": [-4096, -16, -4096, 8192, 23, 8192],
+  "fog": {"enabled": true, "mode": "depth", "density": 1.0, "height_density": 0.0, "begin_m": 16.0, "end_m": 96.0, "curve": 1.0},
+  "controls": ["baseline-1", "corrected-1", "baseline-2", "corrected-2"],
+  "preserved": "required-region scan and submitted/confirmed-empty readiness; no actor/edit/storage or full-route timing inference"
+}

@@ -1,0 +1,4043 @@
+[
+  {
+    "folder": "debug-m1-heavy-ab-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": [
+      {
+        "id": "AB-H1-off-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-on-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-on-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-off-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-off-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-on-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-on-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-off-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "folder": "debug-m1-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": [
+      {
+        "id": "H1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true
+      },
+      {
+        "id": "H2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true
+      }
+    ]
+  },
+  {
+    "folder": "m1-heavy-ab-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": [
+      {
+        "id": "AB-H1-off-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-on-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-on-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-off-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-off-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-on-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-on-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-off-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "folder": "m1-release-16-1-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 16,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": [
+      {
+        "id": "H1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true
+      },
+      {
+        "id": "H2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true
+      }
+    ]
+  },
+  {
+    "folder": "m1-release-16-2-raw",
+    "configuration": {
+      "actual_workers": 2,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 16,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 2
+    },
+    "heavy": [
+      {
+        "id": "H1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true
+      },
+      {
+        "id": "H2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true
+      }
+    ]
+  },
+  {
+    "folder": "m1-release-32-2-raw",
+    "configuration": {
+      "actual_workers": 2,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 2
+    },
+    "heavy": [
+      {
+        "id": "H1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true
+      },
+      {
+        "id": "H2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true
+      }
+    ]
+  },
+  {
+    "folder": "m1-route-calibration-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": [
+      {
+        "id": "CAL-H1-reference-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "CAL-H1-closure-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "CAL-H1-closure-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "CAL-H1-reference-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "CAL-H2-reference-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "CAL-H2-closure-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "CAL-H2-closure-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "CAL-H2-reference-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "folder": "m1-startup-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": []
+  },
+  {
+    "folder": "release-m1-heavy-ab-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": [
+      {
+        "id": "AB-H1-off-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-on-1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-on-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H1-off-2",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 12,
+          "autosave_interval_s": null,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 0,
+          "edit_trace": false,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 0,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H1"
+        },
+        "workload_evidence": {
+          "command_hash": 60726608,
+          "due_edits": 0,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-off-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-on-1",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-on-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      },
+      {
+        "id": "AB-H2-off-2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": false,
+        "workload_contract": {
+          "actors": 24,
+          "autosave_interval_s": 1,
+          "camera_far": 96,
+          "camera_fov": 75,
+          "data_radius": 128,
+          "edit_rate": 4,
+          "edit_trace": true,
+          "fixture": 1,
+          "fog": {
+            "begin_m": 16,
+            "curve": 1,
+            "density": 1,
+            "enabled": true,
+            "end_m": 96,
+            "height_density": 0,
+            "mode": "depth"
+          },
+          "frontier_preparation": {
+            "data_radius_m": 128,
+            "enabled": false,
+            "handover": "previous process pose; base viewer retains old column before retarget",
+            "qualification": "unverified; neither complete-route coverage nor target timing",
+            "required_visual_radius_m": 96,
+            "resident_mesh_bound": null,
+            "scope": "next +X column; fixture surface rows -1/0; nearest two Z cells",
+            "version": "m1-forward-four-1",
+            "viewer_count": 0,
+            "viewer_radius_m": null
+          },
+          "max_physics_steps": 4,
+          "native_policy": {
+            "frame_upload_bytes": 1048576,
+            "frame_usec": 2000,
+            "mesh_result_bytes": 33554432,
+            "mesh_results": 16,
+            "single_upload_bytes": 262144,
+            "terrain_jobs": 64
+          },
+          "operation_trace": true,
+          "physics_hz": 60,
+          "player_start": [
+            10,
+            8,
+            10
+          ],
+          "rain_instances": 256,
+          "render_block": 32,
+          "render_queries": true,
+          "render_scale": 1,
+          "reported_window": [
+            0,
+            0
+          ],
+          "resolution": [
+            1280,
+            720
+          ],
+          "route": "outward 6.5 m/s; camera reverses every 15 simulation seconds",
+          "route_origin": [
+            10,
+            8,
+            10
+          ],
+          "seconds": 1,
+          "simulation_commands": "fixed 60 Hz ticks; exact endpoint; no catch-up beyond existing four-step cap",
+          "terrain_bounds": [
+            -4096,
+            -16,
+            -4096,
+            8192,
+            48,
+            8192
+          ],
+          "triangle_colliders": false,
+          "version": "m1-heavy-frontier-ab-1",
+          "visual_radius": 96,
+          "workers": 1,
+          "workload": "H2"
+        },
+        "workload_evidence": {
+          "command_hash": 1300889870,
+          "due_edits": 4,
+          "player_end": [
+            16.5000152587891,
+            0.00100000004749745,
+            10
+          ],
+          "route_checkpoints": [
+            {
+              "target_x": 10.1083335876465,
+              "tick": 1,
+              "yaw": -1.57079637050629
+            },
+            {
+              "target_x": 16.5,
+              "tick": 60,
+              "yaw": -1.57079637050629
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "folder": "release-m1-raw",
+    "configuration": {
+      "actual_workers": 1,
+      "anti_aliasing": "disabled",
+      "data_chunk": 16,
+      "data_radius": 128,
+      "fixture_y": [
+        -16,
+        32
+      ],
+      "fog": {
+        "begin_m": 16,
+        "curve": 1,
+        "density": 1,
+        "enabled": true,
+        "end_m": 96,
+        "height_density": 0,
+        "mode": "depth"
+      },
+      "fog_density": 1,
+      "render_block": 32,
+      "render_scale": 1,
+      "reported_window_size": [
+        0,
+        0
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "shadows": false,
+      "triangle_colliders": false,
+      "visual_radius": 96,
+      "workers": 1
+    },
+    "heavy": [
+      {
+        "id": "H1",
+        "workload": "H1",
+        "simulation_ticks": 60,
+        "actor_ticks": 720,
+        "accepted_proxy_edits": 0,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 0,
+        "frontier_enabled": true
+      },
+      {
+        "id": "H2",
+        "workload": "H2",
+        "simulation_ticks": 60,
+        "actor_ticks": 1440,
+        "accepted_proxy_edits": 4,
+        "rejected_proxy_edits": 0,
+        "proxy_autosaves": 1,
+        "frontier_enabled": true
+      }
+    ]
+  }
+]

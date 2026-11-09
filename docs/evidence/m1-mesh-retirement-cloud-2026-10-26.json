@@ -1,0 +1,1987 @@
+{
+  "schema": "cairn-mesh-retirement-cloud-1",
+  "status": {
+    "capability_verified": true,
+    "qualified": false,
+    "target_performance": "not_run",
+    "m1": "blocked",
+    "laptop_action_required_now": false
+  },
+  "consumed_requests": {
+    "preparation-demand-once.json": {
+      "enabled": false,
+      "declaration_sha256": "17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad"
+    },
+    "preparation-demand-recheck-once.json": {
+      "enabled": false,
+      "source_run": 40259410841,
+      "artifact_id": 12623918109
+    }
+  },
+  "permanent_consumed_reservation": {
+    "branch": "codex/reserved-preparation-demand-17cf4e05bfa024aa93c3fcc8b5aebb061db69acf5aca7789e5dfa52d6757daad",
+    "commit": "8ab1624e0a74f153b6189afa837fb24f6688d8c9",
+    "read_only_verified": true
+  },
+  "implementation_commit": "371c39fc2af367f78642a1d9a80617f27876c54e",
+  "source_commit": "2489baaa0f2686634a1bec15b7977608372b6c35",
+  "exported_game_commit": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+  "ci": {
+    "run": {
+      "id": 40440351282,
+      "name": "CI",
+      "head_sha": "2489baaa0f2686634a1bec15b7977608372b6c35",
+      "head_branch": "codex/m1-engine-proof",
+      "run_number": 106,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/dponcho/voxel-survival-game/actions/runs/40440351282",
+      "created_at": "2026-10-27T02:46:11Z",
+      "updated_at": "2026-10-27T03:21:45Z",
+      "run_started_at": "2026-10-27T02:46:11Z",
+      "run_attempt": 1,
+      "referenced_workflows": [
+        {
+          "path": "dponcho/voxel-survival-game/.github/workflows/preparation-demand-recheck.yml@856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "sha": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "ref": "refs/pull/2/merge"
+        },
+        {
+          "path": "dponcho/voxel-survival-game/.github/workflows/preparation-demand.yml@856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "sha": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "ref": "refs/pull/2/merge"
+        },
+        {
+          "path": "dponcho/voxel-survival-game/.github/workflows/windows-build.yml@856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "sha": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "ref": "refs/pull/2/merge"
+        },
+        {
+          "path": "dponcho/voxel-survival-game/.github/workflows/engine.yml@856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "sha": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+          "ref": "refs/pull/2/merge"
+        }
+      ],
+      "head_commit": {
+        "id": "2489baaa0f2686634a1bec15b7977608372b6c35",
+        "tree_id": "d024cfb71ef50fb1edf9dc6ba3196fb1b55669d0",
+        "message": "Keep archived boundary corruption fixtures byte-exact on Windows",
+        "timestamp": "2026-10-27T02:45:58Z",
+        "author": {
+          "name": "dponcho",
+          "email": "92587172+dponcho@users.noreply.github.com"
+        },
+        "committer": {
+          "name": "dponcho",
+          "email": "92587172+dponcho@users.noreply.github.com"
+        }
+      }
+    },
+    "jobs": [
+      {
+        "id": 121978941427,
+        "name": "static",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Packaging and cache regression tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Compile-check owned cloud scripts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Native fixture checks with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Phase-local operation regression tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Edit visibility lifecycle tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Indexed mesh batch tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "World-space viewer demand tests with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Bounded mesh admission selection with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Exact cycle counter and failed-call controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Bounded native cycle dose and hard-cap controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Bounded observer ownership and raw-span controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Explicit observer disposal and retained-owner controls with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Preparation owners and publication lifetime with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 32
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33
+          }
+        ]
+      },
+      {
+        "id": 121978941629,
+        "name": "plan",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Select ordinary candidate CI or the one frozen preparation process",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          }
+        ]
+      },
+      {
+        "id": 121979649784,
+        "name": "windows / native / native-binaries",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Identify native sources, pins and compilation recipe",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Restore exact native cache",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Reuse the identical pre-redesign native build",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6
+          },
+          {
+            "name": "Verify cache or restore a qualified native artifact",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Install compiler only for a native source build",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 8
+          },
+          {
+            "name": "Build editor and matching Windows templates",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 9
+          },
+          {
+            "name": "Qualify editor and both templates independently of gameplay",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Include the pinned packaging inspector",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Save verified native bundle",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 12
+          },
+          {
+            "name": "Publish reusable native bundle",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13
+          },
+          {
+            "name": "Preserve native build and reuse evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29
+          }
+        ]
+      },
+      {
+        "id": 121979651085,
+        "name": "preparation-demand",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121979651591,
+        "name": "preparation-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121980747262,
+        "name": "windows / export-and-test",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Download qualified native binaries from this run",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Verify exact native identity and every bundle file",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Windows packaging regression tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Import, export and verify game scenarios",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "One bounded counter capability smoke per matching editor and release",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Verify collision, edits, eviction and all four profiles",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Audit portable distribution and test offline extractions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Upload portable player ZIP and identity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Download published player for independent verification",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Download native qualification evidence for independent verification",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Download the preceding public cloud contract baseline once",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 14
+          },
+          {
+            "name": "Independently verify downloaded candidate and complete saved admission evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Upload separate symbols",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Preserve export evidence even after failure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35
+          }
+        ]
+      },
+      {
+        "id": 121989527024,
+        "name": "windows / counter-artifact-recheck",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Reproduce all saved candidate/counter checks without an engine",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 121989528066,
+        "name": "windows / shipping-pilot",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121989529140,
+        "name": "windows / saved-artifact-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121989917980,
+        "name": "windows / shipping-cycles-pilot",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121989918045,
+        "name": "windows / shipping-observer-pilot",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121989918369,
+        "name": "windows / shipping-cycles-saved-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 121989918656,
+        "name": "windows / shipping-observer-saved-recheck",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 40440351282,
+        "logs_url": null,
+        "steps": null
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 12707780101,
+        "name": "Cairn-symbols-856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "size_in_bytes": 687023613,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707780101",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707780101/zip",
+        "expired": false,
+        "created_at": "2026-10-27T03:20:16Z",
+        "expires_at": "2026-11-26T03:19:57Z",
+        "updated_at": "2026-10-27T03:20:16Z",
+        "digest": "sha256:d180e0c5b7ad1ab4f6bedc545d442ab4927cfc67fb4aa3165c5e55eb7372bd0c",
+        "workflow_run": {
+          "id": 40440351282,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "2489baaa0f2686634a1bec15b7977608372b6c35"
+        }
+      },
+      {
+        "id": 12707720103,
+        "name": "Cairn-windows-x86_64-856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "size_in_bytes": 30246859,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707720103",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707720103/zip",
+        "expired": false,
+        "created_at": "2026-10-27T03:18:52Z",
+        "expires_at": "2026-11-26T03:18:50Z",
+        "updated_at": "2026-10-27T03:18:52Z",
+        "digest": "sha256:4471cb65218d401dfe447e71ebfec9da0f5cc33f2585485005781eb45cc29821",
+        "workflow_run": {
+          "id": 40440351282,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "2489baaa0f2686634a1bec15b7977608372b6c35"
+        }
+      },
+      {
+        "id": 12707522146,
+        "name": "Cairn-counter-saved-recheck-856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "size_in_bytes": 54642,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707522146",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707522146/zip",
+        "expired": false,
+        "created_at": "2026-10-27T03:21:41Z",
+        "expires_at": "2026-11-26T03:21:40Z",
+        "updated_at": "2026-10-27T03:21:41Z",
+        "digest": "sha256:083d55172144efe651ddf214d209aae72ceab150f2d5f196b11ffb4e34d8f198",
+        "workflow_run": {
+          "id": 40440351282,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "2489baaa0f2686634a1bec15b7977608372b6c35"
+        }
+      },
+      {
+        "id": 12707327990,
+        "name": "Cairn-evidence-856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "size_in_bytes": 31165528,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707327990",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12707327990/zip",
+        "expired": false,
+        "created_at": "2026-10-27T03:20:23Z",
+        "expires_at": "2026-11-26T03:20:17Z",
+        "updated_at": "2026-10-27T03:20:23Z",
+        "digest": "sha256:ed4ac40fcf38d59438a06901c38ceaa273916fc2f6549716c5d96c2c0cec0721",
+        "workflow_run": {
+          "id": 40440351282,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "2489baaa0f2686634a1bec15b7977608372b6c35"
+        }
+      },
+      {
+        "id": 12705049412,
+        "name": "Cairn-native-evidence-856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "size_in_bytes": 12536,
+        "url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12705049412",
+        "archive_download_url": "https://api.github.com/repos/dponcho/voxel-survival-game/actions/artifacts/12705049412/zip",
+        "expired": false,
+        "created_at": "2026-10-27T02:51:59Z",
+        "expires_at": "2027-01-25T02:46:11Z",
+        "updated_at": "2026-10-27T02:51:59Z",
+        "digest": "sha256:0c15fc21faf1e1cb9185a1dafa6728d25b966517e6d3066f2001566edbd1b93f",
+        "workflow_run": {
+          "id": 40440351282,
+          "repository_id": 1357754146,
+          "head_repository_id": 1357754146,
+          "head_branch": "codex/m1-engine-proof",
+          "head_sha": "2489baaa0f2686634a1bec15b7977608372b6c35"
+        }
+      }
+    ],
+    "static_log": "2026-10-27T02:48:03.0405776Z Ran 280 tests in 95.522s\n2026-10-27T02:48:03.0406050Z OK",
+    "static_log_identity": {
+      "bytes": 86854,
+      "sha256": "eacd3e7857a89f77e5432eae597e8b5ddbfbe9cf51a5a5b8a0b847115960ca59"
+    },
+    "static_log_raw": {
+      "bytes": 86854,
+      "sha256": "eacd3e7857a89f77e5432eae597e8b5ddbfbe9cf51a5a5b8a0b847115960ca59",
+      "base64_zlib": "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"
+    },
+    "export_log": "2026-10-27T02:54:05.5823672Z Ran 280 tests in 75.329s\n2026-10-27T02:54:05.5823855Z OK",
+    "export_log_identity": {
+      "bytes": 666713,
+      "sha256": "74b5337a4d76f39d9e04f9c903d2d3e23ea9303818453779e3b3b0ee332ae9df"
+    }
+  },
+  "candidate": {
+    "portable_sha256": "439d13d0d5a45f37e23876126027b945ce1d6f02bb2a0720af1b3fd5fe3200b8",
+    "portable_bytes": 30342929,
+    "exe_sha256": "7b1fcbb7fe09e0da2bd17933a97764a2306623f4f0bc77c207556304d4853281",
+    "pck_sha256": "b2499d1c344da4de213712f5acd1722e4443ab0bd9fa9ea924acd441522c2ea8",
+    "pck_entries_md5_verified": 120,
+    "pe_imports_verified": 38,
+    "self_tests_verified": 8
+  },
+  "build": {
+    "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+    "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+    "game_commit": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+    "milestone": "M1",
+    "native_source_key": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+    "ci_run": "https://github.com/dponcho/voxel-survival-game/actions/runs/40440351282",
+    "target_performance": "not_run",
+    "renderer": "gl_compatibility",
+    "engine_binaries": {
+      "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+      "editor.exe": "4e0aff303e4208b0abb3b47f66f9f51d743226abf84dc2e7ae8b2e04b005d796",
+      "template_debug.exe": "88ec6dee7ac05162e97a88398793e52a679a8dbc858e709f64f4f7eeaf3947f1",
+      "template_release.exe": "7b1fcbb7fe09e0da2bd17933a97764a2306623f4f0bc77c207556304d4853281"
+    },
+    "shipping_inventory_sha256": "e3b556c03bd80d3724f4391f5a736f3e4ab01277d43a4e1b39c611122b53882e",
+    "shipping_sources_sha256": {
+      "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+      "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+      "m1_shipping_runtime.gd": "34d4f4fef280211552eed14ab42987ed7a61cca43ad65c2b6e898330dae6377d",
+      "m1_shipping_method.gd": "eedc8520deda34927d14ca7081b8ed30623333801f6e3093ff78dec1f6fe3921",
+      "title.gd": "30f1273143c36a8e9a4e5b90d0a3f3e14f540f9ab1a5624e4c29a3fd73ef8883"
+    },
+    "cpu_cycle_capability": {
+      "schema": "cairn-cpu-cycle-capability-1",
+      "runtime_sha256": "53320ed4e5dea5355c9cfdd64742ee9d1b92340a0e2a4159b64417c8dd82e2a8",
+      "probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+      "core_sha256": "3ae8741cdfd717edc75178df6cb82c63282c5c6bca98d7b04b861223d3bdfada"
+    },
+    "shipping_cycles": {
+      "policy": "m1-shipping-diagnostics-2",
+      "method": "m1-shipping-cpu-cycles-1",
+      "inventory_sha256": "0f8c8eca85edb4acbae93bf1c1b180f8119253ff83f5cc769ea5cab03063b1f7",
+      "sources_sha256": {
+        "m1_cycle_exact.gd": "f2b956c31c6e9fb2de0a902dd2986ff3844ddb257da7aa9caca722bf10635495",
+        "m1_shipping_cycles_method.gd": "66ba172c41e6ce68578755e7b2560788122695259fc95bd4986a65f00f906227",
+        "m1_shipping_cycles_runtime.gd": "f3cd711d6c81bd5784bda92933255a904f07045201d81c80cdec83b93ff1ea56",
+        "m1_shipping_cycles_tests.gd": "7ea4a37db205084f2ead456f4446b01016b33704c2863289d7b5f0522ae5127f",
+        "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+        "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+        "title.gd": "30f1273143c36a8e9a4e5b90d0a3f3e14f540f9ab1a5624e4c29a3fd73ef8883"
+      },
+      "native_probe_sha256": "9f2f17b5263c09508ca16d386f65852c324c84dee2990edaa95969d4da6cffa9",
+      "native_dose_core_sha256": "c22f1ee3b469a61eb88453cff8d4fb40029a5dcabf2652a0d4102d01294d2036"
+    },
+    "shipping_observer": {
+      "method": "m1-shipping-observer-attribution-1",
+      "inventory_sha256": "00087cca6c0266bed5591d247aee9e6ed5b9978ed1c94e7baf3c91aba769ad5b",
+      "sources_sha256": {
+        "m1_shipping_observer_runtime.gd": "f7cf7129087561e01a3c0d12d69c06a8ac536d1835e3fd72e625b5a01360fb98",
+        "m1_shipping_observer_tests.gd": "d600893f0b78462ad03fea10f5f3123912a6ab218afd76b7f7b7e552dec818d6",
+        "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+        "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+        "title.gd": "30f1273143c36a8e9a4e5b90d0a3f3e14f540f9ab1a5624e4c29a3fd73ef8883"
+      },
+      "native_sha256": {
+        "native/sandbox_world/core/observer_ledger.h": "a615f39991027ff90aeff996d0a8cc0b7746bb52d95ab2d50a6ba28f7b0ce559",
+        "native/sandbox_world/godot/observer_probe.cpp": "36ed7db27eb9d8e01a639598fd51cc67d1718cdabc78375fbe1e8f8f5abf1852",
+        "native/sandbox_world/godot/benchmark_probe.h": "7506a1afc969690665c6135979c5d2c0f312ed76264584c9e230af1f27d26193",
+        "native/sandbox_world/godot/benchmark_probe.cpp": "29abb5e2c9ce4920ec4759b8b9187c7cfaf280885499fc0c5d702395b17a1956",
+        "native/sandbox_world/godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3",
+        "native/sandbox_world/godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83"
+      }
+    },
+    "observer_disposal": {
+      "schema": "cairn-observer-disposal-1",
+      "sources_sha256": {
+        "m1_observer_disposal_tests.gd": "362f8ab7ab82ae696ca05f44f0adc2377adedb006879083132bdea9637eb976b",
+        "title.gd": "30f1273143c36a8e9a4e5b90d0a3f3e14f540f9ab1a5624e4c29a3fd73ef8883"
+      },
+      "native_sha256": {
+        "core/observer_disposal.h": "4063087d32dc8f4c4ff041bb49b2005c07072bed2a307ea05ff6a15906b7120f",
+        "core/observer_ledger.h": "a615f39991027ff90aeff996d0a8cc0b7746bb52d95ab2d50a6ba28f7b0ce559",
+        "godot/observer_disposal.cpp": "a0b05fc70d27b766ec204fb00c19f40e6cb33dac9fb57997d578675937f741ff",
+        "godot/observer_probe.cpp": "36ed7db27eb9d8e01a639598fd51cc67d1718cdabc78375fbe1e8f8f5abf1852",
+        "godot/benchmark_probe.h": "7506a1afc969690665c6135979c5d2c0f312ed76264584c9e230af1f27d26193",
+        "godot/benchmark_probe.cpp": "29abb5e2c9ce4920ec4759b8b9187c7cfaf280885499fc0c5d702395b17a1956",
+        "godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+        "godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+      }
+    },
+    "preparation_demand": {
+      "method": "m1-preparation-demand-attribution-1",
+      "inventory": "m1-preparation-demand-inventory-1",
+      "raw_version": 2,
+      "inventory_sha256": "269adac80b939b85b0ddc8d1030b5e9b0568d0737d2dc97279582d7d8b4a9f0c",
+      "sources_sha256": {
+        "m1_preparation_demand_runtime.gd": "1817e8a33119bf8aec0fd9b25da42683667e1d71af94ec7163cc1c7dd94d65dc",
+        "m1_preparation_demand_tests.gd": "99ef44ade441ac45605c3b330a15c2135896e1ad7d70be2ee2b3bbd4a282d7d4",
+        "title.gd": "30f1273143c36a8e9a4e5b90d0a3f3e14f540f9ab1a5624e4c29a3fd73ef8883",
+        "m1_full_height_runtime.gd": "d68677cdaed73909155d01f77a7b3bc80fa198b6bb5356e24d8be232e8cadfe4",
+        "benchmark.gd": "571be37a199ca61f9731d7c5a3c0ad4034e1cec87e8e6506c71bbc5dcc338a29",
+        "m1_preparation_prefix_fixture.gd": "cd0affb7411bc7a82678eed7b8a07e047027c51402b16a987d33ae92f806d383",
+        "m1_preparation_prefix_tests.gd": "a7508c1b662a38f16338e24d7760795accbb9722ed9582bfa90b828ab8e0e030",
+        "m1_preparation_prefix_before.gd": "60cb861e505d13d59942355d912f3772e312e3861c42ad09d771ddcaf2f05006"
+      },
+      "native_sha256": {
+        "core/preparation_observer.h": "d0b701bc5e864a2c865918b41962415950ada86135905b37b19d4cacb6a51a08",
+        "core/observer_ledger.h": "a615f39991027ff90aeff996d0a8cc0b7746bb52d95ab2d50a6ba28f7b0ce559",
+        "core/observer_disposal.h": "4063087d32dc8f4c4ff041bb49b2005c07072bed2a307ea05ff6a15906b7120f",
+        "godot/preparation_probe.cpp": "b9c0280549d1536cdd14121b8b8823bf9283a0baadbd538c8fa09039e69f0682",
+        "godot/fixture_generator.cpp": "cbc199226e2cc70e6a470edde09ac6a52c7ef0709eaf5e54b855f48a61eb3623",
+        "godot/observer_probe.cpp": "36ed7db27eb9d8e01a639598fd51cc67d1718cdabc78375fbe1e8f8f5abf1852",
+        "godot/benchmark_probe.h": "7506a1afc969690665c6135979c5d2c0f312ed76264584c9e230af1f27d26193",
+        "godot/benchmark_probe.cpp": "29abb5e2c9ce4920ec4759b8b9187c7cfaf280885499fc0c5d702395b17a1956",
+        "godot/report_sink.cpp": "8ed22118829b913fe3ccb1036fbe96ec04ebe43aa537b06629100951922bba83",
+        "godot/report_sink.h": "5c6606f07cc8495afcfe60c240e135145885396b0a2e4c15043aaf722b2017d3"
+      },
+      "patches_sha256": "3bd79145e02d5b4fc2712e94b70376bc80d072f2e9fb37f707bc0bfb60b175ac"
+    },
+    "mesh_retirement": {
+      "schema": "cairn-mesh-retirement-source-1",
+      "before_run_sha256": "e99e6e65f5ccab7eb2990f49fbb5807335b6bf6655a59dcced5ffa684a412f46",
+      "sources_sha256": {
+        "m1_mesh_retirement_tests.gd": "4009c3af26f8a09bc982fdd86de6ac1f2da543a6327c823c8ee283c55fe53cd6",
+        "title.gd": "30f1273143c36a8e9a4e5b90d0a3f3e14f540f9ab1a5624e4c29a3fd73ef8883"
+      },
+      "native_sha256": {
+        "godot/retirement_probe.cpp": "e9be0ef1a6226e33251633b6804936d6eb402b15a6c682c27d4723387bcd3806",
+        "godot/retirement_before.h": "b922c68074ac20ed8505b47bf7968f1b4a1c90fd5006054f53ed3b280a75c0a3",
+        "godot/m1_hooks.h": "54af2e540b07f0fcd356b721b5fd4d32ea8c2d97501eb3df76828dd996785f48",
+        "godot/benchmark_probe.cpp": "29abb5e2c9ce4920ec4759b8b9187c7cfaf280885499fc0c5d702395b17a1956",
+        "godot/benchmark_probe.h": "7506a1afc969690665c6135979c5d2c0f312ed76264584c9e230af1f27d26193",
+        "core/operation_metrics.h": "49eddab88feb7053380eeb79d369a6f9139ab09d0cde28b24ebfe4e656e2aaaa"
+      },
+      "admission_patch_sha256": "c90e2c6301ff52fd63bf95db46aa9b8c2e962965527316d97a802e6186585ed9"
+    }
+  },
+  "native": {
+    "key": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+    "manifest": {
+      "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+      "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+      "lock": {
+        "schema": 1,
+        "godot": {
+          "version": "4.7.2",
+          "commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "url": "https://codeload.github.com/godotengine/godot/zip/ed1daf0bf001b61586d9930840f2f1394092c079",
+          "sha256": "098b0a71e95ad98ab44651199d55c3f085e4e02c735514e284a2d5263ac81fb2"
+        },
+        "voxel": {
+          "version": "1.7",
+          "commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+          "url": "https://codeload.github.com/Zylann/godot_voxel/zip/2ac9f5f8a8219bf499314cc0fad54ffc47df908f",
+          "sha256": "782c0676318f05efdd03204f70932435255464daaa80eb9d995f2ab920d32e4b"
+        },
+        "compiler": {
+          "version": "llvm-mingw-20250709-ucrt-x86_64",
+          "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20250709/llvm-mingw-20250709-ucrt-x86_64.zip",
+          "sha256": "82babcd6aae4dc3606e8e0471d816989c384b4bf86a139f184a8b4a1b2c2758d"
+        },
+        "python": "3.12.10",
+        "scons": {
+          "version": "4.9.1",
+          "url": "https://files.pythonhosted.org/packages/45/92/50b739021983b131dcacd57aa8b04d31c5acc2e7e0eb4ed4a362f438c6b7/scons-4.9.1-py3-none-any.whl",
+          "sha256": "d2db1a22eb6039e97cbbb0106f18f435af033d0aad190299c9688378e2810a5e"
+        }
+      },
+      "config": {
+        "runner": "windows-2022",
+        "jobs": 2,
+        "targets": [
+          "editor",
+          "template_debug",
+          "template_release"
+        ],
+        "flags": [
+          "platform=windows",
+          "arch=x86_64",
+          "use_mingw=yes",
+          "use_llvm=yes",
+          "use_static_cpp=yes",
+          "vulkan=no",
+          "d3d12=no",
+          "opengl3=yes",
+          "angle=no",
+          "lto=none",
+          "precision=single",
+          "debug_symbols=yes",
+          "separate_debug_symbols=yes",
+          "winrt=no",
+          "accesskit=no",
+          "voxel_gpu=no",
+          "voxel_fast_noise_2=no"
+        ]
+      },
+      "toolchain": {
+        "compiler": "[\"D:\\\\a\\\\voxel-survival-game\\\\voxel-survival-game\\\\build\\\\toolchain\\\\llvm-mingw-20250709-ucrt-x86_64\\\\bin\\\\clang++.exe\", \"--version\"]\nclang version 20.1.8 (https://github.com/llvm/llvm-project.git 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)\nTarget: x86_64-w64-windows-gnu\nThread model: posix\nInstalledDir: D:/a/voxel-survival-game/voxel-survival-game/build/toolchain/llvm-mingw-20250709-ucrt-x86_64/bin\nConfiguration file: D:/a/voxel-survival-game/voxel-survival-game/build/toolchain/llvm-mingw-20250709-ucrt-x86_64/bin/x86_64-w64-windows-gnu.cfg\n",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "compiler_archive_sha256": "82babcd6aae4dc3606e8e0471d816989c384b4bf86a139f184a8b4a1b2c2758d",
+        "runner_image": "20261022.344.1"
+      },
+      "files": {
+        "audit-tools/libc++.dll": "62722ceb24eac2bf347eb8b8b994fd86b088a3754f1927f2dc185e094217c917",
+        "audit-tools/libclang-cpp.dll": "a4556f7bf2bf39ebf0beef3eb2b5ae8d1619b3b6ad63eda9f7d7a61ce11b109e",
+        "audit-tools/libclang_rt.asan_dynamic-x86_64.dll": "15741cb648ee6e3a10070f18ffe6c39e2c4f59a152f614c1d797bb981fa80a74",
+        "audit-tools/libffi-8.dll": "88d20568d9c43243b4c3efb69a92c60904a1ee18052b79ce20a639794259e124",
+        "audit-tools/liblldb.dll": "319eb0cd7ceedc4285545956430b18c849738b0c7d60b1d130cc72cedf2c15f6",
+        "audit-tools/libLLVM-20.dll": "90f90574a6933947063ccc6d11bcb96610f886f6d00b8602535a3f7a4b21a4a7",
+        "audit-tools/libomp.dll": "071587320e48c34cbd906372c7a4eaf00335589c0146922346773d34d74c5a6d",
+        "audit-tools/libpython3.12.dll": "fb99bccbf59125735a508d5f763c1decf2c9f09af873693eef4888c8ce11aed4",
+        "audit-tools/libpython3.dll": "87bab618c3323ab2a3ae4fec821e38584e8c7ff23fed5407f11c3fe29790bfed",
+        "audit-tools/libunwind.dll": "8512f3b90cebc84cbf48054132adca567efd00fd5dc5a8a48f67975e6500d85d",
+        "audit-tools/libwinpthread-1.dll": "d49ef9b0744f560d4fc3ac1abb0c6be79411af31267ccbd2d29bbab6ac25fbb9",
+        "audit-tools/llvm-readobj.exe": "c7cdc16d7569d2e968db84072b5d94322e9392b90b7c5c6c8019008f90ecd62b",
+        "editor.exe": "4e0aff303e4208b0abb3b47f66f9f51d743226abf84dc2e7ae8b2e04b005d796",
+        "LICENSES/godot/COPYRIGHT.txt": "cb1980c88089573bcacd7221d777c689bb8bbd778799f24c27fca0fe5f774d6d",
+        "LICENSES/godot/core/license.gen.h": "f3f4ab3847e7040bb6dee45f985259f54e3adddc3b3917c9394c38dee4d51e13",
+        "LICENSES/godot/LICENSE.txt": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+        "LICENSES/godot/misc/logo/LICENSE.txt": "ecbabe930d468f0552a079cdb2cbd1eefe66f03d0aedbb13293bd1b1ec15b67c",
+        "LICENSES/godot/misc/scripts/copyright_headers.py": "72880d6961c6fabc1edde7db57ce5e38d40aaa8792d84b35bcd54a82287fd7f9",
+        "LICENSES/godot/modules/betsy/LICENSE.Betsy.md": "566a2ee167ffcad3f1c973cf0de0540c0b888da064d69cccbe081ad0f61e0497",
+        "LICENSES/godot/modules/voxel/LICENSE.md": "3a1f742145830b5702fe9e7aa2566c5896012a88fb3f70a00d6fd64e9cc203ee",
+        "LICENSES/godot/modules/voxel/thirdparty/fast_noise_2/LICENSE": "6a772f6fa13928b07693cc8643dac0284910ea031b82cba1b49e51a36616cddf",
+        "LICENSES/godot/modules/voxel/thirdparty/lz4/LICENSE": "8b58c446121a109ccf32edc094bba3010a3d85e4ee3702950db55e4d3e87736c",
+        "LICENSES/godot/modules/voxel/thirdparty/meshoptimizer/LICENSE.md": "e4a26033e3551fb2722888949fbb41e77aee628e8e8f04dcffeee301aa7e5634",
+        "LICENSES/godot/thirdparty/accesskit/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "LICENSES/godot/thirdparty/amd-fsr/license.txt": "db089274ce766da70f5b7d791029c3486f9f9e27c8c79c652689603d3192e802",
+        "LICENSES/godot/thirdparty/amd-fsr2/LICENSE.txt": "6a12d0fdb5410839473f80b5395cf9493e8c007f76faed9f3fa41ab2f273803e",
+        "LICENSES/godot/thirdparty/angle/LICENSE": "bf4da21bd20bcfb5b60b7ecc67fa864a79be049e21d6178076887f178dd6c71a",
+        "LICENSES/godot/thirdparty/astcenc/LICENSE.txt": "494accc32e50eb523a0e384d0ae6d4b702db867a89d6971216760e92b240ee12",
+        "LICENSES/godot/thirdparty/basis_universal/LICENSE": "a9dfe3795e7bdcf240626d70d72de2933964f8ff482c75e68f29253ee2e79b1b",
+        "LICENSES/godot/thirdparty/brotli/LICENSE": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+        "LICENSES/godot/thirdparty/clipper2/LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+        "LICENSES/godot/thirdparty/cvtt/LICENSE.txt": "55162613b64f29d6a6f3be61d598355dc169d01fe764ba96148e1d29098fde68",
+        "LICENSES/godot/thirdparty/d3d12ma/LICENSE.txt": "5478a2f36b736e13dd3250b9c71a4ab521bc327fb9d112a92c647bf3e69ddb68",
+        "LICENSES/godot/thirdparty/d3d12ma/NOTICES.txt": "7af18e6093af41d516228ffd65e782859bf2918931d8c3670c7ba8b74afa8288",
+        "LICENSES/godot/thirdparty/directx_headers/LICENSE": "fd532481d828e13a0b13ccb598e02338a3617740675a862ee6bdc1541b68e93d",
+        "LICENSES/godot/thirdparty/doctest/LICENSE.txt": "0fe0b331fa1513dcce8604ff1fa925f32d1cea17d8aeb1c2471fad40d291adc5",
+        "LICENSES/godot/thirdparty/dr_libs/LICENSE": "dd1c647e6f767f8ff4b2dfae0fed314726600a01e0cf1ef556afddd5fa96ff15",
+        "LICENSES/godot/thirdparty/embree/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "LICENSES/godot/thirdparty/enet/LICENSE": "a29cd246638974da7c6edf423a0a69d4a6f7d759940b7cfa9a2bc3442ac3834c",
+        "LICENSES/godot/thirdparty/etcpak/LICENSE.txt": "38f5183e1228651dc7f9dfbca5ebdcfd8711b60fabed58ed9f922bdfeaf76583",
+        "LICENSES/godot/thirdparty/fonts/LICENSE.DroidSans.txt": "d0588452395c674334105d9a39e4d8627c66080f45491013e877139581a78ed1",
+        "LICENSES/godot/thirdparty/fonts/LICENSE.Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "LICENSES/godot/thirdparty/fonts/LICENSE.JetBrainsMono.txt": "cba21c71f3727ba46904a35430c384cedc1e7fcdbb2b8ac0aae093af729290f6",
+        "LICENSES/godot/thirdparty/fonts/LICENSE.Noto.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+        "LICENSES/godot/thirdparty/fonts/LICENSE.OpenSans.txt": "01cd5ffb3a528c219a86e49a814c6c53bd8a69b9a3c305dd237074ba1c811af7",
+        "LICENSES/godot/thirdparty/fonts/LICENSE.Vazirmatn.txt": "17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31",
+        "LICENSES/godot/thirdparty/freetype/LICENSE.TXT": "bd36c8b474855fa294c2ec5c184544478ef3720aad37d65a6296a4f264fd2d3b",
+        "LICENSES/godot/thirdparty/gamepadmotionhelpers/LICENSE.txt": "cab235520dc9bda018e27ccc8c533ecf375766823f9ed918f3698fa52aaffa33",
+        "LICENSES/godot/thirdparty/glad/LICENSE": "cbb325cd4ac5bd06717ffa34a322b984f9d285e4c67c8ca1b7380d6ef08c2a77",
+        "LICENSES/godot/thirdparty/glslang/LICENSE.txt": "17e70c676e1521ff3e4686f04a2053d93a7e28a33be8de7ec37ab0ff72feb677",
+        "LICENSES/godot/thirdparty/graphite/COPYING": "2c272829ff23f182c8bf7ea12fedea69b0ae148663123ed5240c117cb129c9c1",
+        "LICENSES/godot/thirdparty/grisu2/LICENSE": "9b2646fd3a16b9c382853aadc2e707d7a872c4c03eb5af7401e6389a7fe42f1a",
+        "LICENSES/godot/thirdparty/harfbuzz/COPYING": "ba8f810f2455c2f08e2d56bb49b72f37fcf68f1f4fade38977cfd7372050ad64",
+        "LICENSES/godot/thirdparty/icu4c/LICENSE": "e55522d81edc687a341a4411e0776e54ca654e90147f354a90458aaced4116af",
+        "LICENSES/godot/thirdparty/jolt_physics/LICENSE": "800abe35d64ad9defd636ff1ee8c961e06f0ebca3ef8d10083e8aa0e8ef86ac3",
+        "LICENSES/godot/thirdparty/libbacktrace/LICENSE": "ef8a9b3247488f8901ca60de9b17b745d7bd67e5ec1e622f80d62364572200d8",
+        "LICENSES/godot/thirdparty/libjpeg-turbo/LICENSE.md": "2189dc45a8fe96204069f8124caa53a148dfdc193f50f584c6ca7849a6072872",
+        "LICENSES/godot/thirdparty/libktx/LICENSE.dfdutils.adoc": "8ee9fdaf365c301bb413656765fc85c5424a807c50e35a8ae622b99f4ea22244",
+        "LICENSES/godot/thirdparty/libktx/LICENSE.md": "0f92b4ce771585dfebc963ede074a30b4431b9e327911db44097d83ccf372128",
+        "LICENSES/godot/thirdparty/libogg/COPYING": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814",
+        "LICENSES/godot/thirdparty/libpng/LICENSE": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526",
+        "LICENSES/godot/thirdparty/libtheora/COPYING": "8417fad7da775735564e209484a2e011e0fa201e94f01fdbee6e4977e478e6fc",
+        "LICENSES/godot/thirdparty/libtheora/LICENSE": "2c902950c73a63cd285dc0c36573de9c5fefe66d49312949c51d941f33e92932",
+        "LICENSES/godot/thirdparty/libvorbis/COPYING": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a",
+        "LICENSES/godot/thirdparty/libwebp/COPYING": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf",
+        "LICENSES/godot/thirdparty/manifold/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "LICENSES/godot/thirdparty/mbedtls/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "LICENSES/godot/thirdparty/meshoptimizer/LICENSE.md": "f03037ca7bad1e3eb7f4a63fa6084a8baabd5ba30d3c239a9a7f35705d873e26",
+        "LICENSES/godot/thirdparty/metal-cpp/LICENSE.txt": "f4e92c7fe2aa066e294c0da9d08683dc9fb741ee6e6debbfad99a0c96e07c1f2",
+        "LICENSES/godot/thirdparty/mingw-std-threads/LICENSE": "86c148320eb0acc26607ed347e0fde9f49a236d0ec5291d36dc6a7e0e1d26b9f",
+        "LICENSES/godot/thirdparty/miniupnpc/LICENSE": "52bdad87d7aefe3eab35cb02426aa748510f9398a1e2d520d93bcbb18f10dd11",
+        "LICENSES/godot/thirdparty/msdfgen/LICENSE.txt": "32a94b25ad7072a78457d35019b32d73d2c265c806b0b76e9638fe800330bbe4",
+        "LICENSES/godot/thirdparty/openxr/COPYING.adoc": "b7a6297e6013f7b1664a68829e83868d1bf2cf29efa384dd0cc74f2aedd35df5",
+        "LICENSES/godot/thirdparty/openxr/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "LICENSES/godot/thirdparty/openxr/src/external/jsoncpp/LICENSE": "cec0db5f6d7ed6b3a72647bd50aed02e13c3377fd44382b96dc2915534c042ad",
+        "LICENSES/godot/thirdparty/pcre2/LICENCE.md": "197d8a73ffee0d6b09adba2f9c677b5f5aede24edf89258a68e48248d010d811",
+        "LICENSES/godot/thirdparty/re-spirv/LICENSE": "761ecab744d5ed0528b5b794239abaa6f62bd5bd36fc1980b3cb98c48ce32868",
+        "LICENSES/godot/thirdparty/recastnavigation/License.txt": "5881db2682bc4871837e36b5af4460f59905a7944848221406f841eaa3fda8c4",
+        "LICENSES/godot/thirdparty/rvo2/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "LICENSES/godot/thirdparty/sdl/hidapi/LICENSE-bsd.txt": "30eb1bef29b46f8ba7ab8b416035dbd93cb034a45481dd97815b944284582cd2",
+        "LICENSES/godot/thirdparty/sdl/hidapi/LICENSE.txt": "7d3b087c34f35d4d538e3bcddd1ff8f66e92f9ef336881999482800ddf840913",
+        "LICENSES/godot/thirdparty/sdl/include/SDL3/SDL_copying.h": "64436d5078d6742f11c8b0acf8bc87237d15da36716eb2552986a8b45c419967",
+        "LICENSES/godot/thirdparty/sdl/LICENSE.txt": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+        "LICENSES/godot/thirdparty/smaa/LICENSE.txt": "6088dabb2126729ddb2355b179ce0598e7c246406677b30395f22220695d69fe",
+        "LICENSES/godot/thirdparty/spirv-cross/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "LICENSES/godot/thirdparty/spirv-cross/LICENSES/LicenseRef-KhronosFreeUse.txt": "fbeaca472f4f70e276dd1106ca5097435967a22ad6c1d8200aef7ad9f70aaf3f",
+        "LICENSES/godot/thirdparty/spirv-headers/LICENSE": "56724af6d76732a7a1f36ea69965ed2314ae04073676313a4f94c1e2fe55342a",
+        "LICENSES/godot/thirdparty/spirv-reflect/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "LICENSES/godot/thirdparty/swappy-frame-pacing/LICENSE": "f2bdf6f48abaa135ee6feba72d3b2eb2fa242352a9e558585d1084f6f2a45811",
+        "LICENSES/godot/thirdparty/thorvg/LICENSE": "74242cdc4ccaebc73fa04fbd52a538429eae2be7a231f9eaf1dbf59d2bedc16b",
+        "LICENSES/godot/thirdparty/tinyexr/LICENSE": "b90388aaadc2b6f77a5c01278697a2a0539eab471a3befc6a081728becdc3390",
+        "LICENSES/godot/thirdparty/ufbx/LICENSE": "0dd48ebadf52273c736256325c8f078c03c8bb4facee22a4122de0ad3f615391",
+        "LICENSES/godot/thirdparty/vhacd/LICENSE": "245c933225f5bd28a10336137b26f1f86551b6b1d29f804253eb5e1d73744c2e",
+        "LICENSES/godot/thirdparty/volk/LICENSE.md": "33c831f76b79501665e66c23ac8f876020457c216d44526a8f747da897999b35",
+        "LICENSES/godot/thirdparty/vulkan/LICENSE.md": "ac24e5ea920e4318e4d02c4086ae51f53cfb03feed06c18df1019e7ada1ec7bc",
+        "LICENSES/godot/thirdparty/wayland/COPYING": "6eefcb023622a463168a5c20add95fd24a38c7482622a9254a23b99b7c153061",
+        "LICENSES/godot/thirdparty/wayland-protocols/COPYING": "f1a2b233e8a9a71c40f4aa885be08a0842ac85bb8588703c1dd7e6e6502e3124",
+        "LICENSES/godot/thirdparty/wslay/COPYING": "0e602a00db6ce15c1311a180b13563aa638918a77f813b24cd78c9fe5cab63d0",
+        "LICENSES/godot/thirdparty/xatlas/LICENSE": "2c16d5b1c2808277fe975b4f70f0fd9afc9b3bcf04e6c676665a82cb2d5579e3",
+        "LICENSES/godot/thirdparty/zlib/LICENSE": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2",
+        "LICENSES/godot/thirdparty/zstd/LICENSE": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+        "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+        "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+        "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+        "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+        "LICENSES/llvm-mingw/aarch64-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+        "LICENSES/llvm-mingw/armv7-w64-mingw32/lib/liboemlicense.a": "2c54a4d445a779f3ee616b24d10fcbaf90e7caf6cc6ca871cb0a0febfb362c00",
+        "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+        "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+        "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+        "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+        "LICENSES/llvm-mingw/armv7-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+        "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+        "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+        "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+        "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+        "LICENSES/llvm-mingw/i686-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+        "LICENSES/llvm-mingw/LICENSE.TXT": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee",
+        "LICENSES/llvm-mingw/python/lib/python3.12/LICENSE.txt": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+        "LICENSES/llvm-mingw/share/gendef/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "LICENSES/llvm-mingw/share/widl/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+        "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+        "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt": "e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd",
+        "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+        "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.winpthreads.txt": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+        "LICENSES/llvm-mingw/x86_64-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+        "symbols/godot.windows.editor.x86_64.llvm.console.exe.debugsymbols": "77dc7656a709e587ddc05f699daa2473980e5fe8fef7f3625b3ab81734f66e38",
+        "symbols/godot.windows.editor.x86_64.llvm.exe.debugsymbols": "7161156e9665f0315cda0b1f7d5d971a40ebeb40cc962eb33a8aef1e9f70a2ce",
+        "symbols/godot.windows.template_debug.x86_64.llvm.console.exe.debugsymbols": "cdde22a1d4447af83d2e2f3833bdbefc3c37ea5cb67c4776a2722861a4a7b6a0",
+        "symbols/godot.windows.template_debug.x86_64.llvm.exe.debugsymbols": "2b6af0fa43537107c6d939127a12128f7ef1dbdd4554e839643f7ba7ea1bb30c",
+        "symbols/godot.windows.template_release.x86_64.llvm.console.exe.debugsymbols": "bcfccf22d891bef73440c89098dbfea8105e3af46df29a62e102ba9ea01c8a7d",
+        "symbols/godot.windows.template_release.x86_64.llvm.exe.debugsymbols": "756af619749dcfb91bfecba4d87ba357af4a928cfbbce4d3131182ce8f23324a",
+        "template_debug.exe": "88ec6dee7ac05162e97a88398793e52a679a8dbc858e709f64f4f7eeaf3947f1",
+        "template_release.exe": "7b1fcbb7fe09e0da2bd17933a97764a2306623f4f0bc77c207556304d4853281"
+      }
+    },
+    "qualification": {
+      "editor": {
+        "errors": [],
+        "game_commit": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "identity": {
+          "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+          "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+        },
+        "passed": true
+      },
+      "debug": {
+        "errors": [],
+        "game_commit": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "identity": {
+          "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+          "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+        },
+        "passed": true
+      },
+      "release": {
+        "errors": [],
+        "game_commit": "856537ab2ca7a6c58b8168cfe975fb7c7994c302",
+        "identity": {
+          "engine_inputs": "a10b5a4e72741182ffc2f8984302936f835f86d75de054bb5d5039e93ac4b0f5",
+          "godot_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+          "voxel_commit": "2ac9f5f8a8219bf499314cc0fad54ffc47df908f"
+        },
+        "passed": true
+      }
+    }
+  },
+  "controls": {
+    "editor": {
+      "result": {
+        "passed": true,
+        "qualified": false,
+        "target_performance": "not_run",
+        "schema": "cairn-mesh-retirement-proof-1",
+        "fixture_usec": 555,
+        "cases": [
+          {
+            "name": "rejected-empty",
+            "entry": "frozen-before-run",
+            "object_id": "9223372065476707894",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 7,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "empty",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065493485110",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 1,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "surface-0",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065510262326",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 2,
+            "kind": 2,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "surface-1",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065510262326",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 0,
+            "kind": 2,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "surface-release",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065510262326",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "shared-empty",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065527039542",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "postponed",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065543816758",
+            "endpoint_object_alive": null,
+            "elapsed_usec": 0,
+            "kind": 0,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "postponed-release",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065543816758",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "non-array",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372065560593974",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 1,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "null-add",
+            "entry": "FreeMeshTask::add",
+            "object_id": "0",
+            "endpoint_object_alive": null,
+            "elapsed_usec": 0,
+            "kind": 0,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          }
+        ],
+        "rejected_lifetime_reproduced": true,
+        "corrected_object_absent_before_ending_clock": true,
+        "shared_owner_preserved": true,
+        "endpoint_hook_cleared": true,
+        "renderer_deferred": "unverified",
+        "operation_guards_valid": true,
+        "complete_process_cycles": [
+          "1200940",
+          "1283594"
+        ],
+        "mutations_rejected": [
+          "false-corrected-destruction",
+          "hidden-rejected-lifetime",
+          "false-shared-release",
+          "endpoint-after-clock",
+          "endpoint-after-return",
+          "false-owner-thread",
+          "double-charged-release",
+          "wrong-release-kind",
+          "missing-native-frame",
+          "invented-null-endpoint",
+          "destroyed-before-postpone",
+          "different-surface-owner",
+          "retained-control-hook",
+          "unallocated-mesh-resource",
+          "fixture-over-cap",
+          "failed-counter",
+          "qualified-control"
+        ]
+      },
+      "report": {
+        "bytes": 47367,
+        "sha256": "21f3cafdc269930df03ec8d8a56e256785f2a4f95b9ca873c886600146160e39",
+        "base64_zlib": "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"
+      },
+      "validation": {
+        "bytes": 3741,
+        "sha256": "a3f0e7308cf7d4070bcb384f315a827456f67eb670fa62a0eee0c58b73d94839",
+        "base64_zlib": "eNrVl81u2zAMgO8F+g6BzxXgnzhO+gC77bbbUBiKTDdebMmjpHRZsXcfZcWOk/4gXYOmOwURKZL6RMrk4/XVZBK0XGsogtuJQQs33dJPy+uqrLrVktd6t2w43oPJW8BSYcOlAJIHUpkcrQy8jhYraLhbF7xCyRrQK4ZgKoQGpGEtKlWyaKddVr+MRcitBkF70jT164Jr0LTw3f2bTB79DwkkbzqnCD9AGCgYNK3ZemudAvnArdMoUf0GyZZAsQIbAuyU1NLtzit3vmARx0mSxeEsnWazLMzmi+mBvaJVlTT5bg+B2cAYlteqeUsQ+3Nke8m6ks5LMnJO/LiplMzvLccuhN0VPKeDwLWSHYs7L/5z8xKUF1l8QYCvdBHfuF7f3p7GYpFM52kUhSew2KfIczCiy8DQFksugIVnApJGYTyLk3j23uSIn/CIP5JH9Nl4hJflgVDTLrgAldfLJrxQ2aw4vvas/guTOAuTRTqNz58pH4KkVdq0Sh5YehePaTKPZlk6P4GHtHX9Bh7hh/I4d+28gcunrB2pJOOI/GyFMwvTRbLIpv/rN9hlL+PFCYVzqHTAI/zcZeJ+7nzX2jelOTXP1PE2QPrU7xZWHPXXQiF6zf4cS01gct+s5nTKSt7nolZifbDPP865epCAeYugATdHpgdCK6XWZALcjgMNJBVAMlBACeilgZUbQN/ye60jLjrfEOvjUzRtDQYoEiVA61xsyd+obQ+iOAwX0+EC6f88Sam9HjFrrOnc6LynN9rfJTUbaLECNLkXTn+wuaqKgvr8YSDo2Q8K3sjuu3b0Yg24GC8NIPPIXxDSFGNRHtnt7oKZFWXGkDJBoeyypsBXbmB66vQBlbzvV1mXk72oqbSmu2eSoGyAlchHJ6nokqQ7Y1dXfXR7r46O2pJ8N/T0D/Veoyrpyt0Y1nc/XfiDnE7IK/ewC0VlqmrmkmiQWslr4sNdBLuxTiuLYoTaj3NMbRxL3o5YVXVn1lL8e3/DnNk79JlxfUVV9Re7Ew2D"
+      }
+    },
+    "release": {
+      "result": {
+        "passed": true,
+        "qualified": false,
+        "target_performance": "not_run",
+        "schema": "cairn-mesh-retirement-proof-1",
+        "fixture_usec": 550,
+        "cases": [
+          {
+            "name": "rejected-empty",
+            "entry": "frozen-before-run",
+            "object_id": "9223372063664768461",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 2,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "empty",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063681545677",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "surface-0",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063698322893",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 1,
+            "kind": 2,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "surface-1",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063698322893",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 0,
+            "kind": 2,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "surface-release",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063698322893",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "shared-empty",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063715100109",
+            "endpoint_object_alive": true,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "postponed",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063731877325",
+            "endpoint_object_alive": null,
+            "elapsed_usec": 0,
+            "kind": 0,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "postponed-release",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063731877325",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "non-array",
+            "entry": "FreeMeshTask::run",
+            "object_id": "9223372063748654541",
+            "endpoint_object_alive": false,
+            "elapsed_usec": 0,
+            "kind": 3,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          },
+          {
+            "name": "null-add",
+            "entry": "FreeMeshTask::add",
+            "object_id": "0",
+            "endpoint_object_alive": null,
+            "elapsed_usec": 0,
+            "kind": 0,
+            "operation_guard": "passed",
+            "operation_reasons": []
+          }
+        ],
+        "rejected_lifetime_reproduced": true,
+        "corrected_object_absent_before_ending_clock": true,
+        "shared_owner_preserved": true,
+        "endpoint_hook_cleared": true,
+        "renderer_deferred": "unverified",
+        "operation_guards_valid": true,
+        "complete_process_cycles": [
+          "1221246",
+          "1303588"
+        ],
+        "mutations_rejected": [
+          "false-corrected-destruction",
+          "hidden-rejected-lifetime",
+          "false-shared-release",
+          "endpoint-after-clock",
+          "endpoint-after-return",
+          "false-owner-thread",
+          "double-charged-release",
+          "wrong-release-kind",
+          "missing-native-frame",
+          "invented-null-endpoint",
+          "destroyed-before-postpone",
+          "different-surface-owner",
+          "retained-control-hook",
+          "unallocated-mesh-resource",
+          "fixture-over-cap",
+          "failed-counter",
+          "qualified-control"
+        ]
+      },
+      "report": {
+        "bytes": 47366,
+        "sha256": "43d71ea90cc83d9e91cca2750c8e0fc3b808557939f48cebaa583faeba514fcc",
+        "base64_zlib": "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"
+      },
+      "validation": {
+        "bytes": 3741,
+        "sha256": "58c88f27f26227c76b85ac48cfab887fe0cb4d3634be7e8cedfd79eb42991662",
+        "base64_zlib": "eNrVl81u2zAMgO8D+g6BzxXgn8Rx+gC77bbbUBiKTCdebMmjpHRZsXcfZcWOk7ZDugZtdgoiUiT1iZTJx5tPk0nQcq2hCO4mBi3cdks/LK+rsupWS17r/bLhuAKTt4ClwoZLASQPpDI5Whl4HS3W0HC3LniFkjWg1wzBVAgNSMNaVKpk0V67rH4ai5BbDYL2zGahXxdcg6aFb+7fZPLof0ggedM5RfgOwkDBoGnNzlvrFMgH7pxGieoXSLYEihXYEGCnpJZud1658wWLOE6SeRymSZpO52k2TaMje0WrKmny/R4Cs4UxLK9V85Yg9ueID5JNJZ2XZOSc+HFTKZmvLMcuhP0VPKeDwLWSHYt7L/59+xKUF1l8RoAvdBFfud7c3Z3HIotm01k6n5/B4pAiz8EIPwaGtlhyASy8FJBFlsRxtkjemhzREx7xe/KIro1H+LE8EGraBR9A5TrLZs3xb8/qPzCZR7MoDKNwcflMeRckrdKmVfLI0pt4JFE2nyfx7Awe0tb1K3iE78rjwrXzGi5XWTtSScYR+cUKZ5ql9BGeRv8tEMpexoszCudY6YhHeN1l4n7ufdfaN6U5Nc/U8TZA+tTvFlac9NdCIXrN/hxLTWBy36zmdMpKrnJRK7E52ucf51w9SMC8RdCA2xPTA6G1UhsyAW7HkQaSCiAZKKAE9NLAyi2gb/m91gkXnW+J9ekpmrYGAxSJEqB1Lnbkb9S2B1EcR/E07VEGURImsywLRswaazo3Ou/pjfZ3Sc0GWqwATe6F0x9srquioD5/GAh69oOCN7L/rp28WAMuxksDyDzyF4Q0xViUJ3a7u2BmTZkxpExQKLusKfC1G5ieOn1AJVf9Kutyshc1ldZ090wSlC2wEvnoJBVdknRn7Oqqj+7g1dFRO5Lvh57+oT5oVCVduRvD+u6nC3+Q0wl55R52oahMVc1cEg1SK3lNfLiLYD/WaWVRjFD7cY6prWPJ2xGrqu7MWor/4G+YM3uHPjNuPlFV/QH7hw2Y"
+      }
+    }
+  },
+  "windows_independent_audit_sha256": "9c0d58a8b1450fc931fe6c4311e6e76a9034145ed435a18eda20c485d155fbb9",
+  "linux_downloaded_replay": {
+    "passed": true,
+    "qualified": false,
+    "engine_executed": false,
+    "target_performance": "not_run",
+    "portable_sha256": "439d13d0d5a45f37e23876126027b945ce1d6f02bb2a0720af1b3fd5fe3200b8",
+    "counter_capability": {
+      "editor": {
+        "passed": true,
+        "qualified": false,
+        "target_performance": "not_run",
+        "schema": "cairn-cpu-cycle-capability-1",
+        "fixture_usec": 47958,
+        "hashes": {
+          "main": {
+            "process_cycles": [
+              "34041488",
+              "34109504"
+            ],
+            "thread_cycles": [
+              "34070972",
+              "34072636"
+            ],
+            "updates": 1024,
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121"
+          },
+          "worker": {
+            "process_cycles": [
+              "34374366",
+              "34436428"
+            ],
+            "thread_cycles": [
+              "34403096",
+              "34404422"
+            ],
+            "updates": 1024,
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121"
+          }
+        },
+        "worker_enclosing_process_cycles": [
+          "35021506",
+          "35089704"
+        ],
+        "worker_thread_cycles": [
+          "34403096",
+          "34404422"
+        ],
+        "wait_process_cycles": [
+          "106626",
+          "169572"
+        ],
+        "wait_requested_usec": 20000,
+        "decimals_verified": [
+          "0",
+          "9007199254740993",
+          "9223372036854775808",
+          "18446744073709551615"
+        ],
+        "note": "Capability/identity only. Wait need not have zero cycles. No sensitivity or cost pass.",
+        "saved_mutations": {
+          "rounded_uint64": "CPU cycle capability: native/GDScript/JSON decimal roundtrip",
+          "numeric_raw_cycle": "CPU cycle capability: counter/wall must be a canonical unsigned decimal string",
+          "counter_failure": "CPU cycle capability: unsuccessful counter",
+          "unavailable": "CPU cycle capability: counter unavailable, failed or contradictory",
+          "wall_reversal": "CPU cycle capability: wall bracket reversal",
+          "wrong_digest": "CPU cycle capability: incomplete or incorrect worker SHA work",
+          "incomplete_hash": "CPU cycle capability: incomplete or incorrect main SHA work",
+          "worker_not_joined": "CPU cycle capability: worker not independently witnessed and joined",
+          "failed_output_zero": "CPU cycle capability: failed/unavailable value was lost or replaced by zero",
+          "fixture_timeout": "CPU cycle capability: fixture exceeded its five-second cap",
+          "lost_worker": "CPU cycle capability: process counter lost exited worker demand",
+          "wrong_build": "CPU cycle capability: source/native identity"
+        }
+      },
+      "release": {
+        "passed": true,
+        "qualified": false,
+        "target_performance": "not_run",
+        "schema": "cairn-cpu-cycle-capability-1",
+        "fixture_usec": 48220,
+        "hashes": {
+          "main": {
+            "process_cycles": [
+              "34760856",
+              "34844160"
+            ],
+            "thread_cycles": [
+              "34785348",
+              "34786570"
+            ],
+            "updates": 1024,
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121"
+          },
+          "worker": {
+            "process_cycles": [
+              "34795774",
+              "34882952"
+            ],
+            "thread_cycles": [
+              "34845720",
+              "34847852"
+            ],
+            "updates": 1024,
+            "bytes": 4194304,
+            "digest": "e9e88a1c2e64ffc1ae98b9be4f423dba98d7b65fa119c1a04cf9c5ec934ae121"
+          }
+        },
+        "worker_enclosing_process_cycles": [
+          "35602086",
+          "35660898"
+        ],
+        "worker_thread_cycles": [
+          "34845720",
+          "34847852"
+        ],
+        "wait_process_cycles": [
+          "83616",
+          "153088"
+        ],
+        "wait_requested_usec": 20000,
+        "decimals_verified": [
+          "0",
+          "9007199254740993",
+          "9223372036854775808",
+          "18446744073709551615"
+        ],
+        "note": "Capability/identity only. Wait need not have zero cycles. No sensitivity or cost pass.",
+        "saved_mutations": {
+          "rounded_uint64": "CPU cycle capability: native/GDScript/JSON decimal roundtrip",
+          "numeric_raw_cycle": "CPU cycle capability: counter/wall must be a canonical unsigned decimal string",
+          "counter_failure": "CPU cycle capability: unsuccessful counter",
+          "unavailable": "CPU cycle capability: counter unavailable, failed or contradictory",
+          "wall_reversal": "CPU cycle capability: wall bracket reversal",
+          "wrong_digest": "CPU cycle capability: incomplete or incorrect worker SHA work",
+          "incomplete_hash": "CPU cycle capability: incomplete or incorrect main SHA work",
+          "worker_not_joined": "CPU cycle capability: worker not independently witnessed and joined",
+          "failed_output_zero": "CPU cycle capability: failed/unavailable value was lost or replaced by zero",
+          "fixture_timeout": "CPU cycle capability: fixture exceeded its five-second cap",
+          "lost_worker": "CPU cycle capability: process counter lost exited worker demand",
+          "wrong_build": "CPU cycle capability: source/native identity"
+        }
+      }
+    },
+    "candidate_audit_reproduced": true,
+    "target_action_required_now": false
+  },
+  "linux_complete_audit_matches": true,
+  "local_saved_controls": {
+    "editor": {
+      "passed": true,
+      "qualified": false,
+      "target_performance": "not_run",
+      "schema": "cairn-mesh-retirement-proof-1",
+      "fixture_usec": 555,
+      "cases": [
+        {
+          "name": "rejected-empty",
+          "entry": "frozen-before-run",
+          "object_id": "9223372065476707894",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 7,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "empty",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065493485110",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 1,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "surface-0",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065510262326",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 2,
+          "kind": 2,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "surface-1",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065510262326",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 0,
+          "kind": 2,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "surface-release",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065510262326",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "shared-empty",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065527039542",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "postponed",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065543816758",
+          "endpoint_object_alive": null,
+          "elapsed_usec": 0,
+          "kind": 0,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "postponed-release",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065543816758",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "non-array",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372065560593974",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 1,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "null-add",
+          "entry": "FreeMeshTask::add",
+          "object_id": "0",
+          "endpoint_object_alive": null,
+          "elapsed_usec": 0,
+          "kind": 0,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        }
+      ],
+      "rejected_lifetime_reproduced": true,
+      "corrected_object_absent_before_ending_clock": true,
+      "shared_owner_preserved": true,
+      "endpoint_hook_cleared": true,
+      "renderer_deferred": "unverified",
+      "operation_guards_valid": true,
+      "complete_process_cycles": [
+        "1200940",
+        "1283594"
+      ],
+      "mutations_rejected": [
+        "false-corrected-destruction",
+        "hidden-rejected-lifetime",
+        "false-shared-release",
+        "endpoint-after-clock",
+        "endpoint-after-return",
+        "false-owner-thread",
+        "double-charged-release",
+        "wrong-release-kind",
+        "missing-native-frame",
+        "invented-null-endpoint",
+        "destroyed-before-postpone",
+        "different-surface-owner",
+        "retained-control-hook",
+        "unallocated-mesh-resource",
+        "fixture-over-cap",
+        "failed-counter",
+        "qualified-control"
+      ]
+    },
+    "release": {
+      "passed": true,
+      "qualified": false,
+      "target_performance": "not_run",
+      "schema": "cairn-mesh-retirement-proof-1",
+      "fixture_usec": 550,
+      "cases": [
+        {
+          "name": "rejected-empty",
+          "entry": "frozen-before-run",
+          "object_id": "9223372063664768461",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 2,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "empty",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063681545677",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "surface-0",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063698322893",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 1,
+          "kind": 2,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "surface-1",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063698322893",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 0,
+          "kind": 2,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "surface-release",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063698322893",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "shared-empty",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063715100109",
+          "endpoint_object_alive": true,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "postponed",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063731877325",
+          "endpoint_object_alive": null,
+          "elapsed_usec": 0,
+          "kind": 0,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "postponed-release",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063731877325",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "non-array",
+          "entry": "FreeMeshTask::run",
+          "object_id": "9223372063748654541",
+          "endpoint_object_alive": false,
+          "elapsed_usec": 0,
+          "kind": 3,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        },
+        {
+          "name": "null-add",
+          "entry": "FreeMeshTask::add",
+          "object_id": "0",
+          "endpoint_object_alive": null,
+          "elapsed_usec": 0,
+          "kind": 0,
+          "operation_guard": "passed",
+          "operation_reasons": []
+        }
+      ],
+      "rejected_lifetime_reproduced": true,
+      "corrected_object_absent_before_ending_clock": true,
+      "shared_owner_preserved": true,
+      "endpoint_hook_cleared": true,
+      "renderer_deferred": "unverified",
+      "operation_guards_valid": true,
+      "complete_process_cycles": [
+        "1221246",
+        "1303588"
+      ],
+      "mutations_rejected": [
+        "false-corrected-destruction",
+        "hidden-rejected-lifetime",
+        "false-shared-release",
+        "endpoint-after-clock",
+        "endpoint-after-return",
+        "false-owner-thread",
+        "double-charged-release",
+        "wrong-release-kind",
+        "missing-native-frame",
+        "invented-null-endpoint",
+        "destroyed-before-postpone",
+        "different-surface-owner",
+        "retained-control-hook",
+        "unallocated-mesh-resource",
+        "fixture-over-cap",
+        "failed-counter",
+        "qualified-control"
+      ]
+    }
+  },
+  "source_files": {
+    "build/patches/voxel/m1-admission.json": {
+      "bytes": 19591,
+      "sha256": "c90e2c6301ff52fd63bf95db46aa9b8c2e962965527316d97a802e6186585ed9",
+      "base64_zlib": "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"
+    },
+    "native/sandbox_world/godot/retirement_probe.cpp": {
+      "bytes": 11092,
+      "sha256": "e9be0ef1a6226e33251633b6804936d6eb402b15a6c682c27d4723387bcd3806",
+      "base64_zlib": "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"
+    },
+    "native/sandbox_world/godot/retirement_before.h": {
+      "bytes": 2329,
+      "sha256": "b922c68074ac20ed8505b47bf7968f1b4a1c90fd5006054f53ed3b280a75c0a3",
+      "base64_zlib": "eNqNVW1v2zYQ/u5fcW2AQFptK+m2tlDqDFnmoMGQFEiCbegXghbPNheKFEjKLw2y374jJbt2bHcTAkUS7567e+65c5bBlTVfUYPFv7HwKKCyRtSFl0aDkmP0ssQujI0FP0UYmVoLMtLcyxlCYbS3RoHRatnvHMkxHY7h8uL67pZd3X3+Mgz/hkN2M7z/xB4u7n9nnzpHZCI1/peV1IWqBcLrktJR6LKZWaDKUE/IuXlhzUt/+vqgee2lyiZGGJ8JaalAVqKbMqmd57o44Oq4FiOzYHNjlWi9y1M2NebRBQ/NCaTiBcLXpeJa53kMBk+dLIM7VMgdAl9z5Wo7DsYVWjB044HbLoTDhlRHeFBXynCRCXL35K2UmccMA+YDGd2cgpN6orA3kzgnT6f4CKbcwcfBzyfvIdQFI2UKyhFucQ6tmcCSyoE5l94BH5kZBsTTtx+o454oQdcFynhG2FBwqkr6ZWw3p+6WVczGKKqiQGpapWpHp7Vt4ll0tfKu3ykUdw4uubT6VyRvvCLkGzJ54O4RcqjqkZIFXD+Qmu4ri1zEg6dOc5B3gC7qiSejQyg/FOGAtZpjBaF4TO5w/DGYnMeMUngKddVWw5dbdjv8MzmAlkTr9AyeN0PPjBTAhdhFjVbhkmOIvn3pmK6VStK0jXi2tjlYgQ/3wf9MbQ33R1DXMGo9zyfoWSMEb3SS9qua9FxyqZmfBl5ZGFjmquY5wIVbi7ZbrLdLRgUz0ggT6IjZZbJSdVR+nv8WBydkd92ODRyXcocT2Q+pxfGqvE1SeDWAQBC9pJHTDYtkszz6voq8lWbMz9Y62RbNJfUfFx6OC79IgfRsraTp3c7mVdRKnnNRSs+a2UpO0iAPcutXxvnKkJ4HRECNZ6sOtpHDRTJzHmqp/bufmA+cWU/mn+93WtA7Dx+I0UfHaodFslFb0NGFtXzZiImHR0KJJJy9iDUytElXy2LQ2AaVzbiSgvg8Pm6+NfFaQxqHWns6PYeTl4CUO9Bcrm0JdPX0y/egenBKI7sDF7j48S1xMVp6dFtgLdtN8/kysM2iVbLGWF1t3FXMED9+Ygp1splt2j1sK2l3LnY90u20gxBWRxv62JOFxZKElHyfk422RlL26Ght8Ayo6Efgqel0v9YWx0m6pa+GMhotY8PokZjoZyGJrHUbuXVXDG+NxT+H1kYQd6+3xg3LXcTw6ELgysoZLcxm1eKiorUr/aFVtbMA86aS5OU6fPNmf8DdOpvjqZxM2ZzysMTZzcVfycHzLuxFTrf7u9eGhuH9uw/pt+TClgiidJtEfiuxHcdn+uscoRZy3PkXSoYCtw=="
+    },
+    "native/sandbox_world/godot/m1_hooks.h": {
+      "bytes": 4445,
+      "sha256": "54af2e540b07f0fcd356b721b5fd4d32ea8c2d97501eb3df76828dd996785f48",
+      "base64_zlib": "eNrtV0uP2zYQvvtXsAmwlWOtvY8kB2vXwC6aQw+bPaQICgSBQIu0za5ECiTltbPwf+/wIVmUZW8LtD1V8EEeznu+maHelhIvC4wEz+jgLeNZXhGK3mRC0olQ8Buv3rToKqOcTiRVopIZVZOCqlXIMR5PnHBJJdZM8LSgWrJM9bNRwnS6ZorNWc70tp/JWEnnWGdHbK0ZfaYyJbTAnJxQgUnBlAKfQp5CkCqHYNZiQ/NJpVk+KbBeTeZic80C1husRcGyWYuSKU0Y17PBgGMwUuKMogwzydHLgPGccYqAYzp1kjcV8H58n+oZWkImIUOUvFzsYmT886/+wKSuUjRrjhlf1oTktGqxpjIXmKg2a32MqtKcWVXoFl3ENaHAm0PifKupalPsn0OlSuOcOr6FhESkh/IBvTZ0qInQnDbBO8mG1HaxRxJrnOKyzLdt2T3xtDSnG51KarAo+AHL9RWwAO6rXKcaqyd1jEMzSSGXppw+7pq2YstV+gwVl/2yJlXpvCJLqoHhw+UVeocuL67ex0izonVyeXGxl54LkSO1qrQ28CDi2bi+wLmiDctj3YkPrhFR05qq4fkEbfi16ULU6cqG7QHCuqub6DdpsB42VsP5Y5tjzqfTe9NDKGjQFPoq+kozLeQ1KoVixpUYeQpDEhNWqRhBXtA8F9lTqtgPGg+QfzJwXHcMnM1FxYkaQtMZlkbXgkmlY5RjpRN7shASRUYz3jBXQ/d2g64TNBqZ91qJee6N/S8l5gg6mycNnS1Q9JOPyvsI51EdzTej53vsQ6n/9QVTPy8ugHFXQy8ZjWq6UeZoMCSMC8O29+YZjZppkBgoVmYy7faR7IKYjIoxLUq9jUBTD7tNqPfi1locz+mS8cTmODygnDhBZ8NrCwo3nS6kKNKC2d6OWuUaJoNdP5jqWWg722CpFxCGy2FIgh9QJi2sxN/CkUmJXXFMpcey8t9gLQjaYu3FOtbFSw8R0GKpbawc4K+TpP/xeAqPa8EIsmZSu9SiOsj9ZB23jx+/TKcwu6H1+RI2meDR8HxmCJplT8ruJAjPg6Z3eybHtucuWARmDmvPFAWLJYB0sC+atGpZ0QRNJujThmkEOOUCoIuWYLfM8dZ5kNhlY/dMUUH7EIkZHzeancMzdPXho99eYLe35m5HhaXoiX3kvEc3t8F+PDvzscI2NR6kTeajg0QF+/OgjJLC/ZD05ywO7jdS1zl0k6M5ozkuFSVQkL9UaHTutB2t98jFqvqKDmfenBM/InhEBCrhb3GBdOti9HD3e9ShxrW4R2gL5GHyfM5scG2h3QBA9QBVOtcrSTGBglClzwXPt0jMFZVrq26MPld5DiMbgU7Gsdw22BujOzdhKDG6Mlxif1NZsA1Ah3o9kIPH+R8wkH+5h/6E+UuRXsEVi2crzJdQIhgBUBqUmVGLjC+J0ce0ArOqBEFz98uEsgXfWiojRgnWtamfFYxTrOCN7FMxDjAVvXN3voJynQJYtBR56vxJwYNhA7M9wGLbwEOoAIcklFomfSitL8Kv4DT218JKLuCK1u78036hk8ed+tbak3+8JcIvgDZ8X++Hvk8Fg+kD+uuobpLdi+t2Anonyv7DI+pWp/lfmu8NUakU8CkBn9azf2PKdHRx6D+r6jCh5/1OJQ2EvOysyV8w3vus+c5NG6sPv372arpV6H7CtYvf/yVni3t40lV8CjkQc+jiUUTsS9oFQ6jAYmI3+BPF1+rb"
+    },
+    "tools/qa/mesh_retirement.py": {
+      "bytes": 15024,
+      "sha256": "91dfe53d35680f39b4b7445ef21bcc7f76a505c1919a9a9c01f5233e04e97573",
+      "base64_zlib": "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"
+    },
+    "game/scripts/m1_mesh_retirement_tests.gd": {
+      "bytes": 1171,
+      "sha256": "4009c3af26f8a09bc982fdd86de6ac1f2da543a6327c823c8ee283c55fe53cd6",
+      "base64_zlib": "eNp9U0Fu2zAQPNuv2PIko5bSXFW4QOK4bVrECewUPRI0tbJZSKRCUk6MIH/vklQSwwV6MkXu7MzOrPHJo64cLE2F43HdawncoqgO2QTyL7A3qirHo72wYHrf9b6EtbdKb2EGjI1HtbEg7LZvUb8/KQ2362KLnsu2apRG3ju0nOpcNqFuI1W/gYoNbpV2/FH5XcbyvEW3yy16ZTE854l1xiJulL6I+w1OjC3vLNbq6b/wNENnzQYJPm+Ec1eXBTF7ob0SHjM2F8rqu1DxWq6FV3ss4UpJr4wW9kDY2KN45+DSaG9NQ7MNJNQbqxI2xjRUr40fvCuU49h2PngrdBULssQR3MpYQrIp1KJxOBn6WeyM9ScqnpmTO2wFK4HJIPyf0UmnqfNz6sY2vWoqqvyxvl0WnbAOuYtRZV9VgxdSonMxr5o+uXCvr8yiK8/OIpwrXZvijzOaTSZTCoMl5dQ2HYhn0F8OFtDNQy8aVat4GYeiO0/hEVeHlranFVqGHoxs4rbXQa4lu5DjE0r6fUcGTidNF8svTa8rrMAdtNxZo03vgEKlxB81WiBScqJFGML5TDHAt7tfZxXWaC1WuTSOcqG1Jh0i+JofCYJBt4wvBXtJSQR7oJzBkWsE11mKd3p8/3t1fb8YAnRif7QPsckH2ou+acbhr3B8EbY8fBfOG/uWUswtnVV9yNJCkFEALCxJQtRN73ZhB0eRb2CKsdLExtLSzWZw+/O1XjbGYajvqC8t3/zierXkN4v1d75a3F+vFjeL5f2MwUc4oX8+zTkucyQlTckLekuHlyAwaPAWia146JXPPgGNfYoFpJDhfDL+C5pmi/Y="
+    }
+  },
+  "retained_broader_operation_failures": [
+    {
+      "report": "debug-m1-raw/M1-2026-10-27T02-54-32-32-1-8152/summary.json",
+      "scenario": "H2",
+      "phase": "retirement",
+      "reasons": [
+        "Individual deletion exceeded 0.75 ms"
+      ],
+      "upload": {
+        "bytes": 0,
+        "count": 0,
+        "max_bytes": 0,
+        "max_kind": 0,
+        "max_start_usec": 0,
+        "max_usec": 0,
+        "usec": 0
+      },
+      "deletion": {
+        "bytes": 54128480,
+        "count": 518,
+        "max_bytes": 143360,
+        "max_kind": 2,
+        "max_start_usec": 12650779,
+        "max_usec": 1488,
+        "usec": 5939
+      },
+      "data_apply": {
+        "bytes": 0,
+        "count": 0,
+        "max_bytes": 0,
+        "max_kind": 0,
+        "max_start_usec": 0,
+        "max_usec": 0,
+        "usec": 0
+      },
+      "terrain_time_overruns": 0
+    },
+    {
+      "report": "release-m1-heavy-ab-raw/M1-2026-10-27T02-55-57-32-1-2716/summary.json",
+      "scenario": "AB-H1-on-2",
+      "phase": "preparation",
+      "reasons": [
+        "Individual upload exceeded 0.75 ms"
+      ],
+      "upload": {
+        "bytes": 53838400,
+        "count": 426,
+        "max_bytes": 143360,
+        "max_kind": 1,
+        "max_start_usec": 7595841,
+        "max_usec": 824,
+        "usec": 16256
+      },
+      "deletion": {
+        "bytes": 0,
+        "count": 0,
+        "max_bytes": 0,
+        "max_kind": 0,
+        "max_start_usec": 0,
+        "max_usec": 0,
+        "usec": 0
+      },
+      "data_apply": {
+        "bytes": 0,
+        "count": 965,
+        "max_bytes": 0,
+        "max_kind": 4,
+        "max_start_usec": 7595710,
+        "max_usec": 130,
+        "usec": 2415
+      },
+      "terrain_time_overruns": 0
+    }
+  ],
+  "validation": {
+    "python_regressions": 280,
+    "native_sanitizer_suites": 11,
+    "cases_per_binary": 10,
+    "semantic_faults_per_binary": 17,
+    "attribution_route_processes": 0,
+    "automatic_retry": false,
+    "corrected_destruction_before_ending_clock": true,
+    "external_owner_preserved": true,
+    "operation_guards_retained": true,
+    "save_generator_compatibility_changed": false
+  },
+  "prior_proofs": {
+    "m1-preparation-demand-cloud-2026-10-25.json": "adf7012ca93db9a235f58e6b1346e5d15e79fa61b5cbc3de6aec4bb5340a2a08",
+    "m1-preparation-failed-prefix-review-2026-10-26.json": "d35a4417b953648d9d78643ac195b2ebd2807cf64542c13f4b63bd8277947707",
+    "m1-retirement-call-source-2026-10-26.json": "d21072d9846d6825e3808f5cb007701d539d875c67bc21799614181d89899573",
+    "m1-mesh-retirement-native-preflight-2026-10-26.json": "48ea024aac9f2cc9ae6e54e9364123a86f4a9b30ab24a94912c092fbbe677abb",
+    "m1-retirement-headless-source-2026-10-26.json": "28b4116a4dc145a5740bdf692f0a9f204a0bc25965e97077ea52a8a114fb501c",
+    "m1-mesh-retirement-windows-preflight-2026-10-27.json": "44828e74bb0412fab390891544ca891856994e2c6a76111d552f379c336593d9"
+  },
+  "limitations": [
+    "The 819 us kind-2 surface-removal failure is retained and not explained by this kind-3 lifetime correction.",
+    "ObjectDB observations prove synchronous object lifetime order, not completion/cost of renderer-deferred work.",
+    "Capability controls are not target hardware, complete operation performance or shipping-overhead qualification.",
+    "All consumed pilot/request flags and the permanent process reservation remain consumed."
+  ]
+}

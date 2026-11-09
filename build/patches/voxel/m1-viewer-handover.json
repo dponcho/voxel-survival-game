@@ -1,0 +1,7 @@
+[
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\ttry_schedule_mesh_update(*block);\n\n\t// TODO this logic schedules a mesh update even if there is a mesh already. It hides the fact that mixing up\n\t// viewers with collisions and viewers without will not actually create colliders/meshes individually.",
+    "replacement": "\t// A second visual-only owner of an already submitted block needs no new\n\t// geometry. Rescheduling here would advance the desired revision and discard\n\t// a concurrent accepted edit replacement. Preserve its old visible resource\n\t// until that current revision submits, including confirmed-empty blocks.\n\tconst bool visual_handover = mesh_flag && !collision_flag && block->is_loaded && block->mesh_viewers.get() > 1;\n\tif (!visual_handover) try_schedule_mesh_update(*block);\n\n\t// Other viewer/flag combinations keep upstream scheduling: mixing viewers\n\t// with collisions and viewers without still needs individual collider handling."
+  }
+]

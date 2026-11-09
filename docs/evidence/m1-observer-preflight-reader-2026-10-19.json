@@ -1,0 +1,183 @@
+{
+  "schema": "cairn-observer-preflight-reader-correction-1",
+  "date": "2026-10-19",
+  "run": 39165715618,
+  "source_commit": "062c6591e715a7934dc38cbb7a3ddfb219e64d85",
+  "exported_game_commit": "578ab96665c1d4c8850e2e06a3958c7bae0d3619",
+  "original_ci_conclusion": "failure",
+  "failed_job": 117817366695,
+  "attribution_route_launched": false,
+  "original_error": "Same-frame allowance increased",
+  "artifacts": [
+    {
+      "id": 12154941189,
+      "name": "Cairn-evidence-578ab96665c1d4c8850e2e06a3958c7bae0d3619",
+      "size_in_bytes": 30586350,
+      "digest": "sha256:078aafa59e1d87180a91fd4bfb14356947864225e90b749d31f7fc0573d4b3ab"
+    },
+    {
+      "id": 12154902082,
+      "name": "Cairn-windows-x86_64-578ab96665c1d4c8850e2e06a3958c7bae0d3619",
+      "size_in_bytes": 30158456,
+      "digest": "sha256:ac3b6c1ce6972121a2c97205a8396b1a4b7fe821562038fc5dffc17484d1e17d"
+    },
+    {
+      "id": 12154031885,
+      "name": "Cairn-native-evidence-578ab96665c1d4c8850e2e06a3958c7bae0d3619",
+      "size_in_bytes": 12535,
+      "digest": "sha256:729c15fb0b52d11554262df40e55cb549019aa3cec84304c189917ac72885728"
+    }
+  ],
+  "raw_folder": "release-m1-heavy-ab-raw/M1-2026-10-18T23-17-02-32-1-8152",
+  "raw_segments": [
+    {
+      "phase_name": "retirement",
+      "file": "warmup-retirement-frames.csv.operations.csv",
+      "row": {
+        "native_frame": 310,
+        "phase": 3,
+        "start_usec": 2374970,
+        "end_usec": 2375266,
+        "phase_boundary": 1,
+        "upload_count": 0,
+        "upload_bytes": 0,
+        "upload_usec": 0,
+        "upload_max_usec": 0,
+        "upload_max_bytes": 0,
+        "upload_max_start_usec": 0,
+        "deletion_count": 0,
+        "deletion_bytes": 0,
+        "deletion_usec": 0,
+        "deletion_max_usec": 0,
+        "deletion_max_bytes": 0,
+        "deletion_max_start_usec": 0,
+        "deletion_max_kind": 0,
+        "data_apply_count": 0,
+        "data_apply_usec": 0,
+        "data_apply_max_usec": 0,
+        "data_apply_max_start_usec": 0,
+        "data_apply_nested_usec": 0,
+        "frame_terrain_usec": 0,
+        "frame_upload_bytes_total": 0,
+        "frame_time_limit_usec": 1000,
+        "frame_upload_limit_bytes": 524288,
+        "frame_single_upload_bytes": 0
+      }
+    },
+    {
+      "phase_name": "preparation",
+      "file": "AB-H1-off-1-preparation-frames.csv.operations.csv",
+      "row": {
+        "native_frame": 310,
+        "phase": 4,
+        "start_usec": 2375673,
+        "end_usec": 2376124,
+        "phase_boundary": 0,
+        "upload_count": 0,
+        "upload_bytes": 0,
+        "upload_usec": 0,
+        "upload_max_usec": 0,
+        "upload_max_bytes": 0,
+        "upload_max_start_usec": 0,
+        "deletion_count": 0,
+        "deletion_bytes": 0,
+        "deletion_usec": 0,
+        "deletion_max_usec": 0,
+        "deletion_max_bytes": 0,
+        "deletion_max_start_usec": 0,
+        "deletion_max_kind": 0,
+        "data_apply_count": 0,
+        "data_apply_usec": 0,
+        "data_apply_max_usec": 0,
+        "data_apply_max_start_usec": 0,
+        "data_apply_nested_usec": 0,
+        "frame_terrain_usec": 0,
+        "frame_upload_bytes_total": 0,
+        "frame_time_limit_usec": 2000,
+        "frame_upload_limit_bytes": 1048576,
+        "frame_single_upload_bytes": 0
+      }
+    }
+  ],
+  "raw_files": [
+    {
+      "path": "AB-H1-off-1-preparation-frames.csv.operations.csv",
+      "bytes": 23869,
+      "sha256": "c5080e173cd2869e2ef3cc1fe3dcea8831fbe30c846ec7fc82bac8415535e465"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 223806,
+      "sha256": "da9204fa4cb654009f72120877817e0c6b60e455590bad900810d856b0eeb29d"
+    },
+    {
+      "path": "warmup-retirement-frames.csv.operations.csv",
+      "bytes": 567,
+      "sha256": "b30d17b154ba394099daca79fbca9646b0ea640f18968f24111962f4115e3c3f"
+    }
+  ],
+  "diagnosis": "Both observed segments and all preceding work in native frame 310 are empty. Before a terrain operation, native seal emits current configuration; note_work latches limits only on an operation. The old reader mistook the idle configuration change for a reset after used work.",
+  "correction": "Track any counted operation, including zero-duration calls, or cumulative terrain/payload work across the frame. Enforce non-increasing allowances after that first work. Preserve all cumulative/payload/operation guards.",
+  "runtime_changed": false,
+  "native_source_key": "7a22ed313f593db4b88a75cd7abfb3031f5c60ffbbe7e7161d85733dac468571",
+  "regressions": [
+    "idle normal-to-heavy configuration before any operation",
+    "zero-duration upload/deletion/data application latches limits through an idle segment"
+  ],
+  "saved_recheck": {
+    "passed": true,
+    "engine_executed": false,
+    "full_candidate_audit_sha256": "5383631937ddb93ff67128ab4e4278f14a8c345f40674b2341081d125941d44b",
+    "qualified": false,
+    "target_performance": "not_run",
+    "portable_sha256": "d5bf41b1e86cd750b7b46515863dee644dc6ebccae81a6cedc341546a2f05e6d",
+    "portable_bytes": 30259375,
+    "self_tests_verified": 8,
+    "pck_entries_md5_verified": 105,
+    "pe_imports_verified": 38,
+    "observer_controls": {
+      "editor": {
+        "passed": true,
+        "qualified": false,
+        "method": "m1-shipping-observer-attribution-1",
+        "records": 6,
+        "native_faults": 3,
+        "closed_worker_cycles": "992960"
+      },
+      "release": {
+        "passed": true,
+        "qualified": false,
+        "method": "m1-shipping-observer-attribution-1",
+        "records": 6,
+        "native_faults": 3,
+        "closed_worker_cycles": "1167817"
+      }
+    },
+    "ordinary": {
+      "folders": 10,
+      "scenarios": 98,
+      "native_phases": 284,
+      "operation_rows": 37343,
+      "scenario_samples": 14313,
+      "edit_events": 94,
+      "heavy_contracts_checked": 42,
+      "retained_operation_exceedances": [
+        {
+          "folder": "m1-release-32-2-raw",
+          "scenario": "AB-off-2",
+          "phase": "preparation",
+          "kind": "deletion",
+          "max_usec": 1088
+        },
+        {
+          "folder": "m1-route-calibration-raw",
+          "scenario": "CAL-H2-closure-2",
+          "phase": "preparation",
+          "kind": "deletion",
+          "max_usec": 802
+        }
+      ]
+    }
+  },
+  "limitations": "Corrected evidence integrity does not qualify historical failed measurements, optional shipping cost, M1 or target performance. The one attribution process remains unrun."
+}

@@ -1,0 +1,1050 @@
+{
+  "disposition": "Retain the stopped result. Attribute common observers prospectively before any further qualification sequence.",
+  "engine_executed": false,
+  "inputs": {
+    "evidence_file": "m1-shipping-cpu-cycles-cloud-2026-10-18.json",
+    "evidence_sha256": "ad12675546382519f826613b5a46714960ebe15fdda837bfc3f980cc2f66d945",
+    "exported_game_commit": "41aa6e1cee6d3fea3a5e16d3c64e46fc8c1221eb",
+    "inventory_sha256": "0f8c8eca85edb4acbae93bf1c1b180f8119253ff83f5cc769ea5cab03063b1f7",
+    "native_source_key": "9a92d280a853f8982e65a44b27c5ded11b7888883fb132686b5fd3acd31922cd",
+    "raw_files": 75,
+    "reader_sha256": {
+      "tools/qa/cpu_cycle_capability.py": "93880950fb579c4afcde151650c46e0a2d7d817a0248f0cd298c4692af3c060c",
+      "tools/qa/shipping_cycles.py": "ee534f3f3d2421b8223e46c33650741cc6d9a11885f897f783cc25fb182c0ebb",
+      "tools/qa/shipping_cycles_review.py": "b2031f274a1cfb9bb20ab6ebaf3f68d829ce4ef61565075d53b4ae6d795dc4e8",
+      "tools/qa/shipping_diagnostics.py": "31acdd1943a2eaf7c0822a4a4731291cf571a688d31fc99acf781c954d2d1c26"
+    }
+  },
+  "interpretation": {
+    "callback_normalization_applied": false,
+    "cause_isolated": false,
+    "cycles_converted_to_time": false,
+    "fitted_correction_applied": false,
+    "process_and_thread_totals_added": false,
+    "total_common_observer_cpu_cost": "unavailable"
+  },
+  "matching_native_work": true,
+  "null": {
+    "drift_budget_with_saved_raw_range_and_marker": {
+      "d": "1086523790545089314600",
+      "n": "1610164030503316923"
+    },
+    "expanded_width": {
+      "d": "10865237905450893146",
+      "n": "309718974063102375"
+    },
+    "expansion_constraints": {
+      "jointly_feasible": false,
+      "narrowest_zero_containing_width": {
+        "d": "10865237905450893146",
+        "n": "172082297045052319"
+      },
+      "strict_width_requires_less_than": {
+        "d": "1086523790545089314600",
+        "n": "1737180737908198623"
+      },
+      "zero_containment_requires_at_least": {
+        "d": "22233755453",
+        "n": "100447240"
+      }
+    },
+    "marker_width": {
+      "d": "22233755453",
+      "n": "5198337"
+    },
+    "matching_section_width": {
+      "d": "22233755453",
+      "n": "477344851"
+    },
+    "original_envelope": {
+      "lower": {
+        "d": "10865237905450893146",
+        "n": "-240900635554077347"
+      },
+      "matching_section_drift": {
+        "d": "44467510906",
+        "n": "477344851"
+      },
+      "point": {
+        "d": "88937567896",
+        "n": "-704283607"
+      },
+      "terminal_marker_uncertainty": {
+        "d": "44467510906",
+        "n": "5198337"
+      },
+      "upper": {
+        "d": "22233755453",
+        "n": "140824354"
+      }
+    },
+    "original_null_usable": false,
+    "raw_lower": {
+      "d": "44470069462",
+      "n": "-503405433"
+    },
+    "raw_upper": {
+      "d": "22233755453",
+      "n": "-100447240"
+    },
+    "raw_width": {
+      "d": "10865237905450893146",
+      "n": "73908764296344959"
+    },
+    "reference_lower_cycles": "44467510906"
+  },
+  "original": {
+    "cycle_cost": "inconclusive",
+    "evidence_integrity": "verified",
+    "measurement_valid": false,
+    "qualified": false,
+    "shipping_cost_estimate": null,
+    "target_performance": "not_run",
+    "trial_guards_valid": true
+  },
+  "schema": "cairn-m1-shipping-cycles-null-review-1",
+  "section_pairs": {
+    "off": {
+      "absolute_midpoint_difference_sum_cycles": "460033942",
+      "boundary_uncertainty_expansion_cycles": "2941887",
+      "cancellation_cycles": "457899848",
+      "conservative_difference_sum_cycles": "462975829",
+      "fraction": {
+        "d": "44467510906",
+        "n": "462975829"
+      },
+      "sections": [
+        {
+          "conservative_absolute_difference_cycles": "174983834",
+          "fraction": {
+            "d": "22233755453",
+            "n": "87491917"
+          },
+          "section": "preparation",
+          "signed_midpoint_difference_cycles": "-174519217"
+        },
+        {
+          "conservative_absolute_difference_cycles": "107338238",
+          "fraction": {
+            "d": "3176250779",
+            "n": "7667017"
+          },
+          "section": "+X",
+          "signed_midpoint_difference_cycles": "106722454"
+        },
+        {
+          "conservative_absolute_difference_cycles": "120019873",
+          "fraction": {
+            "d": "44467510906",
+            "n": "120019873"
+          },
+          "section": "-X",
+          "signed_midpoint_difference_cycles": "119412934"
+        },
+        {
+          "conservative_absolute_difference_cycles": "55073636",
+          "fraction": {
+            "d": "22233755453",
+            "n": "27536818"
+          },
+          "section": "+Z",
+          "signed_midpoint_difference_cycles": "-54430707"
+        },
+        {
+          "conservative_absolute_difference_cycles": "5560248",
+          "fraction": {
+            "d": "22233755453",
+            "n": "2780124"
+          },
+          "section": "lifecycle_tail",
+          "signed_midpoint_difference_cycles": "4948630"
+        }
+      ],
+      "signed_complete_difference_cycles": "2134094",
+      "trials": [
+        "AB-H2-cycles-null-0",
+        "AB-H2-cycles-null-3"
+      ]
+    },
+    "on": {
+      "absolute_midpoint_difference_sum_cycles": "474443257",
+      "boundary_uncertainty_expansion_cycles": "2901594",
+      "cancellation_cycles": "174923272",
+      "conservative_difference_sum_cycles": "477344851",
+      "fraction": {
+        "d": "44467510906",
+        "n": "477344851"
+      },
+      "sections": [
+        {
+          "conservative_absolute_difference_cycles": "105533031",
+          "fraction": {
+            "d": "44467510906",
+            "n": "105533031"
+          },
+          "section": "preparation",
+          "signed_midpoint_difference_cycles": "105125670"
+        },
+        {
+          "conservative_absolute_difference_cycles": "120544592",
+          "fraction": {
+            "d": "3176250779",
+            "n": "8610328"
+          },
+          "section": "+X",
+          "signed_midpoint_difference_cycles": "119953750"
+        },
+        {
+          "conservative_absolute_difference_cycles": "162599175",
+          "fraction": {
+            "d": "44467510906",
+            "n": "162599175"
+          },
+          "section": "-X",
+          "signed_midpoint_difference_cycles": "161902201"
+        },
+        {
+          "conservative_absolute_difference_cycles": "86315662",
+          "fraction": {
+            "d": "22233755453",
+            "n": "43157831"
+          },
+          "section": "+Z",
+          "signed_midpoint_difference_cycles": "-85671912"
+        },
+        {
+          "conservative_absolute_difference_cycles": "2352391",
+          "fraction": {
+            "d": "44467510906",
+            "n": "2352391"
+          },
+          "section": "lifecycle_tail",
+          "signed_midpoint_difference_cycles": "-1789724"
+        }
+      ],
+      "signed_complete_difference_cycles": "299519985",
+      "trials": [
+        "AB-H2-cycles-null-1",
+        "AB-H2-cycles-null-2"
+      ]
+    }
+  },
+  "target_action_required_now": false,
+  "trials": [
+    {
+      "callback_count": 10440,
+      "cycle": {
+        "complete": [
+          "44186263025",
+          "44186818389"
+        ],
+        "marker": [
+          "2261326",
+          "2355895"
+        ],
+        "midpoint": "44186540707",
+        "section_midpoints": [
+          "4322077067",
+          "13175903227",
+          "13221754178",
+          "13303923618",
+          "162882617"
+        ],
+        "sections": [
+          [
+            "4321796996",
+            "4322357139"
+          ],
+          [
+            "13175695736",
+            "13176110717"
+          ],
+          [
+            "13221511335",
+            "13221997022"
+          ],
+          [
+            "13303634359",
+            "13304212876"
+          ],
+          [
+            "162631101",
+            "163134133"
+          ]
+        ]
+      },
+      "elapsed_sections_usec": [
+        5353044,
+        23997755,
+        23998111,
+        24005144,
+        136299
+      ],
+      "group": "warmup",
+      "id": "AB-H2-cycles-warmup-0",
+      "native_work_by_section": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "observers": {
+        "callback_wall_usec": {
+          "callback_usec": 1504507,
+          "shared_usec": 887081,
+          "switched_usec": 617426
+        },
+        "cycle_jsonl_bytes": 8330741,
+        "gameplay_callback_rows": {
+          "+X": 3477,
+          "+Z": 3479,
+          "-X": 3478,
+          "lifecycle_tail": 6
+        },
+        "native_phase_frames": {
+          "overhead_diagnostic": 10441,
+          "preparation": 777,
+          "retirement": 10
+        },
+        "pose_csv_bytes": 779282,
+        "zero_request_witness": {
+          "fraction_of_complete_process": [
+            {
+              "d": "44186818389",
+              "n": "595696331"
+            },
+            {
+              "d": "44186263025",
+              "n": "603271053"
+            }
+          ],
+          "legs": [
+            {
+              "rows": 1440,
+              "section": "+X",
+              "thread_cycles": [
+                "208844935",
+                "211360153"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "-X",
+              "thread_cycles": [
+                "193649951",
+                "196158627"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "+Z",
+              "thread_cycles": [
+                "193201445",
+                "195752273"
+              ]
+            }
+          ],
+          "rows": 4320,
+          "scope": "Enclosed main-thread native call only; excludes subsequent exact arithmetic, JSON/pose formatting and writes. Not total common-observer cost.",
+          "thread_cycles": [
+            "595696331",
+            "603271053"
+          ]
+        }
+      }
+    },
+    {
+      "callback_count": 10440,
+      "cycle": {
+        "complete": [
+          "44467510906",
+          "44467922897"
+        ],
+        "marker": [
+          "2215118",
+          "2310203"
+        ],
+        "midpoint": "44467716901",
+        "section_midpoints": [
+          "4469516665",
+          "13039298257",
+          "13288464055",
+          "13505632459",
+          "164805465"
+        ],
+        "sections": [
+          [
+            "4469319049",
+            "4469714281"
+          ],
+          [
+            "13039004538",
+            "13039591976"
+          ],
+          [
+            "13288166343",
+            "13288761768"
+          ],
+          [
+            "13505274967",
+            "13505989950"
+          ],
+          [
+            "164443588",
+            "165167343"
+          ]
+        ]
+      },
+      "elapsed_sections_usec": [
+        5653529,
+        23997883,
+        23998335,
+        24005051,
+        136816
+      ],
+      "group": "null",
+      "id": "AB-H2-cycles-null-0",
+      "native_work_by_section": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "observers": {
+        "callback_wall_usec": {
+          "callback_usec": 1500519,
+          "shared_usec": 879707,
+          "switched_usec": 620812
+        },
+        "cycle_jsonl_bytes": 8400699,
+        "gameplay_callback_rows": {
+          "+X": 3477,
+          "+Z": 3479,
+          "-X": 3478,
+          "lifecycle_tail": 6
+        },
+        "native_phase_frames": {
+          "overhead_diagnostic": 10441,
+          "preparation": 822,
+          "retirement": 10
+        },
+        "pose_csv_bytes": 782871,
+        "zero_request_witness": {
+          "fraction_of_complete_process": [
+            {
+              "d": "44467922897",
+              "n": "588839093"
+            },
+            {
+              "d": "22233755453",
+              "n": "298179782"
+            }
+          ],
+          "legs": [
+            {
+              "rows": 1440,
+              "section": "+X",
+              "thread_cycles": [
+                "191923632",
+                "194421345"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "-X",
+              "thread_cycles": [
+                "195129347",
+                "197618691"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "+Z",
+              "thread_cycles": [
+                "201786114",
+                "204319528"
+              ]
+            }
+          ],
+          "rows": 4320,
+          "scope": "Enclosed main-thread native call only; excludes subsequent exact arithmetic, JSON/pose formatting and writes. Not total common-observer cost.",
+          "thread_cycles": [
+            "588839093",
+            "596359564"
+          ]
+        }
+      }
+    },
+    {
+      "callback_count": 10441,
+      "cycle": {
+        "complete": [
+          "43966664029",
+          "43967100275"
+        ],
+        "marker": [
+          "2457742",
+          "2550327"
+        ],
+        "midpoint": "43966882152",
+        "section_midpoints": [
+          "4283248003",
+          "13048298180",
+          "13143754833",
+          "13319880947",
+          "171700189"
+        ],
+        "sections": [
+          [
+            "4283043428",
+            "4283452578"
+          ],
+          [
+            "13047994025",
+            "13048602335"
+          ],
+          [
+            "13143434656",
+            "13144075011"
+          ],
+          [
+            "13319643615",
+            "13320118279"
+          ],
+          [
+            "171465331",
+            "171935046"
+          ]
+        ]
+      },
+      "elapsed_sections_usec": [
+        5350030,
+        24004743,
+        24005080,
+        23998339,
+        137362
+      ],
+      "group": "null",
+      "id": "AB-H2-cycles-null-1",
+      "native_work_by_section": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "observers": {
+        "callback_wall_usec": {
+          "callback_usec": 1496816,
+          "shared_usec": 870284,
+          "switched_usec": 626532
+        },
+        "cycle_jsonl_bytes": 8440701,
+        "gameplay_callback_rows": {
+          "+X": 3478,
+          "+Z": 3478,
+          "-X": 3479,
+          "lifecycle_tail": 6
+        },
+        "native_phase_frames": {
+          "overhead_diagnostic": 10442,
+          "preparation": 778,
+          "retirement": 10
+        },
+        "pose_csv_bytes": 783864,
+        "zero_request_witness": {
+          "fraction_of_complete_process": [
+            {
+              "d": "43967100275",
+              "n": "576911704"
+            },
+            {
+              "d": "43966664029",
+              "n": "584467209"
+            }
+          ],
+          "legs": [
+            {
+              "rows": 1440,
+              "section": "+X",
+              "thread_cycles": [
+                "191824734",
+                "194361526"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "-X",
+              "thread_cycles": [
+                "190015436",
+                "192472180"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "+Z",
+              "thread_cycles": [
+                "195071534",
+                "197633503"
+              ]
+            }
+          ],
+          "rows": 4320,
+          "scope": "Enclosed main-thread native call only; excludes subsequent exact arithmetic, JSON/pose formatting and writes. Not total common-observer cost.",
+          "thread_cycles": [
+            "576911704",
+            "584467209"
+          ]
+        }
+      }
+    },
+    {
+      "callback_count": 10440,
+      "cycle": {
+        "complete": [
+          "44266187848",
+          "44266616426"
+        ],
+        "marker": [
+          "2301187",
+          "2397521"
+        ],
+        "midpoint": "44266402137",
+        "section_midpoints": [
+          "4388373673",
+          "13168251930",
+          "13305657034",
+          "13234209035",
+          "169910465"
+        ],
+        "sections": [
+          [
+            "4388170886",
+            "4388576459"
+          ],
+          [
+            "13167965244",
+            "13168538617"
+          ],
+          [
+            "13305280236",
+            "13306033831"
+          ],
+          [
+            "13233802617",
+            "13234615454"
+          ],
+          [
+            "169582655",
+            "170238275"
+          ]
+        ]
+      },
+      "elapsed_sections_usec": [
+        5667462,
+        24004701,
+        23998202,
+        23998192,
+        137179
+      ],
+      "group": "null",
+      "id": "AB-H2-cycles-null-2",
+      "native_work_by_section": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "observers": {
+        "callback_wall_usec": {
+          "callback_usec": 1538812,
+          "shared_usec": 876312,
+          "switched_usec": 662500
+        },
+        "cycle_jsonl_bytes": 8453133,
+        "gameplay_callback_rows": {
+          "+X": 3478,
+          "+Z": 3478,
+          "-X": 3478,
+          "lifecycle_tail": 6
+        },
+        "native_phase_frames": {
+          "overhead_diagnostic": 10441,
+          "preparation": 824,
+          "retirement": 10
+        },
+        "pose_csv_bytes": 783864,
+        "zero_request_witness": {
+          "fraction_of_complete_process": [
+            {
+              "d": "44266616426",
+              "n": "584297419"
+            },
+            {
+              "d": "22133093924",
+              "n": "295921631"
+            }
+          ],
+          "legs": [
+            {
+              "rows": 1440,
+              "section": "+X",
+              "thread_cycles": [
+                "194274286",
+                "196758010"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "-X",
+              "thread_cycles": [
+                "195521450",
+                "198042052"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "+Z",
+              "thread_cycles": [
+                "194501683",
+                "197043200"
+              ]
+            }
+          ],
+          "rows": 4320,
+          "scope": "Enclosed main-thread native call only; excludes subsequent exact arithmetic, JSON/pose formatting and writes. Not total common-observer cost.",
+          "thread_cycles": [
+            "584297419",
+            "591843262"
+          ]
+        }
+      }
+    },
+    {
+      "callback_count": 10441,
+      "cycle": {
+        "complete": [
+          "44469632528",
+          "44470069462"
+        ],
+        "marker": [
+          "2549543",
+          "2648010"
+        ],
+        "midpoint": "44469850995",
+        "section_midpoints": [
+          "4294997448",
+          "13146020711",
+          "13407876989",
+          "13451201752",
+          "169754095"
+        ],
+        "sections": [
+          [
+            "4294730447",
+            "4295264450"
+          ],
+          [
+            "13145698646",
+            "13146342776"
+          ],
+          [
+            "13407567762",
+            "13408186216"
+          ],
+          [
+            "13450916314",
+            "13451487189"
+          ],
+          [
+            "169504354",
+            "170003836"
+          ]
+        ]
+      },
+      "elapsed_sections_usec": [
+        5350222,
+        24004638,
+        23998264,
+        24005149,
+        136930
+      ],
+      "group": "null",
+      "id": "AB-H2-cycles-null-3",
+      "native_work_by_section": [
+        {
+          "generated": 5104,
+          "meshed": 392,
+          "overloads": 0,
+          "section": "preparation",
+          "stale_results": 0,
+          "upload_bytes": 73972640,
+          "uploads": 659
+        },
+        {
+          "generated": 2720,
+          "meshed": 435,
+          "overloads": 0,
+          "section": "+X",
+          "stale_results": 0,
+          "upload_bytes": 88395720,
+          "uploads": 848
+        },
+        {
+          "generated": 2960,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "-X",
+          "stale_results": 0,
+          "upload_bytes": 98383600,
+          "uploads": 935
+        },
+        {
+          "generated": 3200,
+          "meshed": 486,
+          "overloads": 0,
+          "section": "+Z",
+          "stale_results": 0,
+          "upload_bytes": 99313480,
+          "uploads": 908
+        },
+        {
+          "generated": 0,
+          "meshed": 2,
+          "overloads": 0,
+          "section": "lifecycle_tail",
+          "stale_results": 0,
+          "upload_bytes": 376320,
+          "uploads": 3
+        }
+      ],
+      "observers": {
+        "callback_wall_usec": {
+          "callback_usec": 1565313,
+          "shared_usec": 892756,
+          "switched_usec": 672557
+        },
+        "cycle_jsonl_bytes": 8453133,
+        "gameplay_callback_rows": {
+          "+X": 3478,
+          "+Z": 3479,
+          "-X": 3478,
+          "lifecycle_tail": 6
+        },
+        "native_phase_frames": {
+          "overhead_diagnostic": 10442,
+          "preparation": 778,
+          "retirement": 10
+        },
+        "pose_csv_bytes": 783864,
+        "zero_request_witness": {
+          "fraction_of_complete_process": [
+            {
+              "d": "44470069462",
+              "n": "600029315"
+            },
+            {
+              "d": "22234816264",
+              "n": "303766325"
+            }
+          ],
+          "legs": [
+            {
+              "rows": 1440,
+              "section": "+X",
+              "thread_cycles": [
+                "193207599",
+                "195704240"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "-X",
+              "thread_cycles": [
+                "199866748",
+                "202330766"
+              ]
+            },
+            {
+              "rows": 1440,
+              "section": "+Z",
+              "thread_cycles": [
+                "206954968",
+                "209497644"
+              ]
+            }
+          ],
+          "rows": 4320,
+          "scope": "Enclosed main-thread native call only; excludes subsequent exact arithmetic, JSON/pose formatting and writes. Not total common-observer cost.",
+          "thread_cycles": [
+            "600029315",
+            "607532650"
+          ]
+        }
+      }
+    }
+  ]
+}

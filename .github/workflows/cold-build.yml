@@ -1,18 +1,11 @@
-name: Cold source-to-ZIP proof
+name: Explicit cold source-to-ZIP proof
 on:
-  schedule:
-    - cron: '17 4 * * 1'
-  push:
-    branches: [main]
-    paths:
-      - build/dependencies.lock.json
-      - build/config/**
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 jobs:
   cold:
     uses: ./.github/workflows/windows-build.yml
     with:
       cold: true
-

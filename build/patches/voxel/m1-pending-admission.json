@@ -1,0 +1,32 @@
+[
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.h",
+    "old": "\tDictionary get_cairn_mesh_observation(Vector3i block_pos) const;",
+    "replacement": "\tDictionary get_cairn_mesh_observation(Vector3i block_pos) const;\n\tvoid set_cairn_mesh_admission(bool priority, Vector3 origin, bool trace);"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.h",
+    "old": "\tStdVector<Vector3i> _blocks_pending_update;",
+    "replacement": "\tStdVector<Vector3i> _blocks_pending_update;\n\tbool _cairn_mesh_priority = false, _cairn_mesh_trace = false;\n\tVector3 _cairn_mesh_origin;"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "Dictionary VoxelTerrain::get_cairn_mesh_observation(Vector3i block_pos) const {",
+    "replacement": "void VoxelTerrain::set_cairn_mesh_admission(bool priority, Vector3 origin, bool trace) {\n    _cairn_mesh_priority = priority;\n    _cairn_mesh_origin = origin;\n    _cairn_mesh_trace = trace;\n}\n\nDictionary VoxelTerrain::get_cairn_mesh_observation(Vector3i block_pos) const {"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\tsize_t bi = 0;\n\tfor (; bi < _blocks_pending_update.size(); ++bi) {\n\t\tif (VoxelEngine::get_singleton().get_stats().meshing_tasks + cairn::result_tasks >= 4) break;",
+    "replacement": "    cairn::MeshAdmissionRecord *cairn_admission = nullptr;\n    if (_cairn_mesh_priority || _cairn_mesh_trace) {\n        cairn_admission = &cairn::mesh_admission.current;\n        auto &r = *cairn_admission;\n        r.phase = cairn::operations.active_phase();\n        r.start_usec = OS::get_singleton()->get_ticks_usec();\n        r.priority = _cairn_mesh_priority; r.side = get_mesh_block_size();\n        r.count = _blocks_pending_update.size(); r.admitted = 0;\n        r.jobs_before = VoxelEngine::get_singleton().get_stats().meshing_tasks + cairn::result_tasks;\n        for (unsigned axis = 0; axis < 3; ++axis) r.origin[axis] = _cairn_mesh_origin[axis];\n        r.valid = r.count <= cairn::MESH_PENDING_CAP;\n        if (r.valid) for (size_t i = 0; i < r.count; ++i) {\n            const Vector3i p = _blocks_pending_update[i];\n            const VoxelMeshBlockVT *block = _mesh_map.get_block(p);\n            auto &c = r.pending[i];\n            c.x = p.x; c.y = p.y; c.z = p.z; c.flags = 0; c.desired = c.submitted = 0;\n            if (block != nullptr) {\n                c.flags = 1 | (block->mesh_viewers.get() > 0 ? 2 : 0) | (block->is_loaded ? 4 : 0) |\n                    (block->collision_viewers.get() > 0 ? 8 : 0);\n                c.desired = block->cairn_revision; c.submitted = block->cairn_submitted_revision;\n            }\n        }\n        const uint64_t decision_begin = OS::get_singleton()->get_ticks_usec();\n        r.valid = r.valid && cairn::mesh_admission_order(r.pending.data(), r.count, r.origin,\n                r.side, r.priority, r.order.data());\n        if (r.valid && r.priority) for (size_t i = 0; i < r.count; ++i) {\n            const auto &c = r.pending[r.order[i]];\n            _blocks_pending_update[i] = Vector3i(c.x, c.y, c.z);\n        }\n        r.decision_usec = OS::get_singleton()->get_ticks_usec() - decision_begin;\n        if (!r.valid) ++cairn::overloads;\n    }\n\tsize_t bi = 0;\n\tfor (; bi < _blocks_pending_update.size(); ++bi) {\n        const uint32_t cairn_admission_load = VoxelEngine::get_singleton().get_stats().meshing_tasks + cairn::result_tasks;\n        if (cairn_admission_load >= 4) break;\n        if (cairn_admission != nullptr && cairn_admission->valid) {\n            cairn_admission->loads[bi] = cairn_admission_load;\n        }"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t_blocks_pending_update.erase(_blocks_pending_update.begin(), _blocks_pending_update.begin() + bi);\n\n\t_stats.time_request_blocks_to_update",
+    "replacement": "    if (cairn_admission != nullptr) {\n        if (cairn_admission->valid && cairn_admission->admitted != bi) { cairn_admission->valid = false; ++cairn::overloads; }\n        cairn_admission->end_usec = OS::get_singleton()->get_ticks_usec();\n        cairn_admission->jobs_after = VoxelEngine::get_singleton().get_stats().meshing_tasks + cairn::result_tasks;\n        if (_cairn_mesh_trace) cairn::mesh_admission.push();\n    }\n\t_blocks_pending_update.erase(_blocks_pending_update.begin(), _blocks_pending_update.begin() + bi);\n\n\t_stats.time_request_blocks_to_update"
+  },
+  {
+    "path": "terrain/fixed_lod/voxel_terrain.cpp",
+    "old": "\t\tscheduler.push_main_task(task);\n\n\t\tmesh_block->is_in_update_list = false;",
+    "replacement": "\t\tscheduler.push_main_task(task);\n        if (cairn_admission != nullptr && cairn_admission->valid) {\n            if (cairn_admission->admitted != bi) { cairn_admission->valid = false; ++cairn::overloads; }\n            else cairn_admission->admitted = bi + 1;\n        }\n\n\t\tmesh_block->is_in_update_list = false;"
+  }
+]
