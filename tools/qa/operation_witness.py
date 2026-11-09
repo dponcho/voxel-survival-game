@@ -299,7 +299,9 @@ def mutations(report,build,raw):
         'wrong-case-thread':lambda r,b:r['native'].__setitem__('thread','0'),
         'false-destruction':lambda r,b:r['native']['cases'][4].__setitem__('endpoint_alive',True),
         'destroyed-shared-owner':lambda r,b:r['native']['cases'][6].__setitem__('alive_after',False),
-        'phase-carry-reset':lambda r,b:r['native']['cases'][12].__setitem__('charge_before_usec','0'),
+        # A genuine zero at clock resolution must still receive a changed
+        # adversarial carry, rather than silently testing the original report.
+        'phase-carry-mismatch':lambda r,b:r['native']['cases'][12].__setitem__('charge_before_usec',str(uint(r['native']['cases'][12]['charge_before_usec'])+1)),
         'double-parent-charge':lambda r,b:r['native']['cases'][10].__setitem__('charge_after_usec',str(uint(r['native']['cases'][10]['charge_after_usec'])+1)),
         'missing-refusal':lambda r,b:r['native']['cases'][7].__setitem__('postpone',False),
         'hidden-counter-error':lambda r,b:struct.pack_into('<Q',b,16+8*7,0),
@@ -311,6 +313,7 @@ def mutations(report,build,raw):
     rejected = []
     for name,change in changes.items():
         bad,blob = copy.deepcopy(report),bytearray(raw); change(bad,blob)
+        require(bad != report or blob != raw, 'Operation witness mutation made no change: '+name)
         bad['trace_sha256'] = digest(blob) # Re-sign raw mutations; exercise semantic readers.
         try: validate(bad,build,bytes(blob))
         except (RuntimeError,KeyError,TypeError,ValueError,IndexError): rejected.append(name)

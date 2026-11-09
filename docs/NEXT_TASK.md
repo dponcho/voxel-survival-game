@@ -37,6 +37,15 @@ failed-counter, injected guard-failure, first-failure/maximum and overflow paths
 with matching editor/release controls and a new portable candidate. Keep every
 numerical/work/resource gate. Read the linked six acceptance checks before editing.
 
+CI `40560322527` built and qualified the matching native binaries but failed
+Windows packaging regression `kind='backslash'` before any new live controls
+or export. The November 8 repair verifies serialized malicious member names,
+checks original ZIP names before normalization can hide them, and retains
+local-header/CRC/expansion checks. The native key remains `ff3a8494`; reuse and
+requalify that exact build. The phase-carry corruption now always changes the
+saved value, including a legitimate zero. Live Windows validation and complete
+candidate audits remain pending; this capability is not complete yet.
+
 Further main-loop owner expansion is deferred. Exact old raw topology places
 98.875–99.298% of uncaptured gap cycles between VoxelEngine-process exit and
 preparation-query entry, but identifies no intervening causal owner. Missing

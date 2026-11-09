@@ -5,9 +5,11 @@ import hashlib
 import json
 from pathlib import Path
 import stat
+import struct
 import sys
 import tempfile
 import unittest
+from unittest import mock
 import zipfile
 import zlib
 
@@ -19,6 +21,37 @@ import mesh_retirement_review as review
 def resign(data):
     return dict(bytes=len(data), sha256=hashlib.sha256(data).hexdigest(),
                 base64_zlib=base64.b64encode(zlib.compress(data)).decode())
+
+
+def artifact(path, name='raw/value', *, duplicate=False, link=False):
+    # Write safe placeholders, then replace both serialized names. ZipInfo(name)
+    # would silently remove the intended backslash fault on Windows.
+    encoded = name.encode('ascii')
+    placeholder = b'x'*len(encoded)
+    with zipfile.ZipFile(path, 'w') as z:
+        item = zipfile.ZipInfo(placeholder.decode())
+        if link: item.external_attr = (stat.S_IFLNK | 0o777) << 16
+        z.writestr(item, b'original')
+        if duplicate:
+            import warnings
+            with warnings.catch_warnings():
+                warnings.simplefilter('ignore', UserWarning)
+                z.writestr(item, b'original')
+    raw = path.read_bytes()
+    assert raw.count(placeholder) == (4 if duplicate else 2)
+    raw = raw.replace(placeholder, encoded)
+    # Independently inspect actual local and central headers, not sanitized
+    # reader fields; the outer digest below signs these final malicious bytes.
+    for signature, size, length_offset in ((b'PK\x03\x04', 30, 26), (b'PK\x01\x02', 46, 28)):
+        offset = raw.index(signature)
+        length, = struct.unpack_from('<H', raw, offset+length_offset)
+        assert raw[offset+size:offset+size+length] == encoded
+    path.write_bytes(raw)
+    return artifact_metadata(path)
+
+
+def artifact_metadata(path):
+    return dict(size_in_bytes=path.stat().st_size, digest='sha256:'+review.retirement.sha(path))
 
 
 class MeshRetirementReviewTests(unittest.TestCase):
@@ -109,19 +142,71 @@ class MeshRetirementReviewTests(unittest.TestCase):
                 review.derive(*([Path(td)/'not-opened.zip']*6), evidence=path)
 
     def test_resigned_artifact_cannot_escape_duplicate_or_supply_a_link(self):
-        for kind in ('parent', 'absolute', 'backslash', 'drive', 'duplicate', 'link'):
+        for kind in ('parent', 'absolute', 'backslash', 'drive', 'nul', 'double-slash', 'duplicate', 'link'):
             with self.subTest(kind=kind), tempfile.TemporaryDirectory() as td:
                 root = Path(td); path = root/'artifact.zip'
                 name = {'parent': '../escape', 'absolute': '/escape', 'backslash': 'raw\\escape',
-                        'drive': 'C:/escape'}.get(kind, 'raw/value')
-                with zipfile.ZipFile(path, 'w') as z:
-                    item = zipfile.ZipInfo(name)
-                    if kind == 'link': item.external_attr = (stat.S_IFLNK | 0o777) << 16
-                    z.writestr(item, b'original')
-                    if kind == 'duplicate':
-                        with self.assertWarns(UserWarning): z.writestr(item, b'original')
-                meta = dict(size_in_bytes=path.stat().st_size, digest='sha256:'+review.retirement.sha(path))
+                        'drive': 'C:/escape', 'nul': 'raw/value\x00hidden',
+                        'double-slash': 'raw//value'}.get(kind, 'raw/value')
+                meta = artifact(path, name, duplicate=kind=='duplicate', link=kind=='link')
+                with zipfile.ZipFile(path) as z:
+                    self.assertEqual(z.infolist()[0].orig_filename, name)
                 with self.assertRaises(RuntimeError): review.extract_artifact(path, meta, root/'output')
+                self.assertFalse((root/'output').exists())
+
+    def test_original_name_is_checked_even_after_windows_reader_normalization(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); path = root/'artifact.zip'
+            meta = artifact(path, 'raw\\escape')
+            original_init = zipfile.ZipInfo.__init__
+            def windows_init(item, *args, **kwargs):
+                original_init(item, *args, **kwargs)
+                item.filename = item.filename.replace('\\', '/')
+            # Exercise Windows' original/normalized distinction on every host.
+            with mock.patch.object(zipfile.ZipInfo, '__init__', windows_init):
+                with zipfile.ZipFile(path) as z:
+                    item = z.infolist()[0]
+                    self.assertEqual((item.orig_filename, item.filename), ('raw\\escape', 'raw/escape'))
+                with self.assertRaisesRegex(RuntimeError, 'Artifact path escaped'):
+                    review.extract_artifact(path, meta, root/'output')
+            self.assertFalse((root/'output').exists())
+
+    def test_valid_slash_path_is_accepted_without_renaming(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); path = root/'artifact.zip'
+            meta = artifact(path)
+            result = review.extract_artifact(path, meta, root/'output')
+            self.assertEqual(result['members'], 1)
+            self.assertEqual(result['expanded_bytes'], 8)
+            self.assertEqual((root/'output/raw/value').read_bytes(), b'original')
+
+    def test_resigned_local_header_mismatch_is_rejected_before_extraction(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); path = root/'artifact.zip'
+            artifact(path, 'raw/escape')
+            raw = path.read_bytes().replace(b'raw/escape', b'raw\\escape', 1)
+            self.assertEqual(raw[30:40], b'raw\\escape')
+            path.write_bytes(raw)
+            with zipfile.ZipFile(path) as z:
+                self.assertEqual(z.infolist()[0].orig_filename, 'raw/escape')
+            with self.assertRaisesRegex(RuntimeError, 'Artifact local header/CRC differs'):
+                review.extract_artifact(path, artifact_metadata(path), root/'output')
+            self.assertFalse((root/'output').exists())
+
+    def test_resigned_bad_crc_and_expansion_overflow_are_rejected(self):
+        for kind in ('crc', 'expansion'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as td:
+                root = Path(td); path = root/'artifact.zip'
+                artifact(path)
+                raw = bytearray(path.read_bytes())
+                if kind == 'crc':
+                    raw[raw.index(b'original')] ^= 1
+                else:
+                    struct.pack_into('<I', raw, raw.index(b'PK\x01\x02')+24, 512*1024*1024+1)
+                path.write_bytes(raw)
+                with self.assertRaises(RuntimeError):
+                    review.extract_artifact(path, artifact_metadata(path), root/'output')
+                self.assertFalse((root/'output').exists())
 
     def test_artifact_and_player_require_the_original_bytes(self):
         with tempfile.TemporaryDirectory() as td:

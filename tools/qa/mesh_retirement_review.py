@@ -114,12 +114,22 @@ def extract_artifact(path, metadata, destination):
     with zipfile.ZipFile(path) as z:
         items = z.infolist()
         require(0 < len(items) <= 4096 and len({i.filename for i in items}) == len(items) and
-                sum(i.file_size for i in items) <= 512*1024*1024 and z.testzip() is None,
-                'Artifact population/expanded bound/CRC differs')
+                sum(i.file_size for i in items) <= 512*1024*1024,
+                'Artifact population/expanded bound differs')
         for item in items:
-            parts = item.filename.rstrip('/').split('/')
-            require(all(v not in ('', '.', '..') and ':' not in v and '\\' not in v for v in parts)
+            # ZipInfo normalizes platform separators and truncates NULs. On
+            # Windows, filename alone has already lost a literal backslash.
+            name = item.orig_filename
+            parts = name.removesuffix('/').split('/')
+            require(name == item.filename and '\x00' not in name and
+                    all(v not in ('', '.', '..') and ':' not in v and '\\' not in v for v in parts)
                     and not stat.S_ISLNK(item.external_attr >> 16), 'Artifact path escaped')
+        try:
+            # Reading every member also checks its local-header name against
+            # orig_filename from the central directory before extraction.
+            require(z.testzip() is None, 'Artifact local header/CRC differs')
+        except zipfile.BadZipFile as exc:
+            raise RuntimeError('Artifact local header/CRC differs') from exc
         z.extractall(destination)
     return dict(bytes=path.stat().st_size, sha256=retirement.sha(path), members=len(items),
                 expanded_bytes=sum(i.file_size for i in items))
